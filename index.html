@@ -1,0 +1,1917 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPulse - Next-Gen Resource Hub</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f3ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#1e1b4b',
+            },
+            darkbg: '#090d16',
+            cardbg: 'rgba(15, 23, 42, 0.75)',
+          },
+          animation: {
+            'gradient-x': 'gradient-x 15s ease infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+            'shimmer': 'shimmer 2.5s infinite linear',
+            'spin-slow': 'spin 12s linear infinite',
+            'bounce-soft': 'bounceSoft 2s ease-in-out infinite',
+          },
+          keyframes: {
+            'gradient-x': {
+              '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+              '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+            },
+            'float': {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-10px) rotate(1deg)' },
+            },
+            'pulseGlow': {
+              '0%, 100%': { opacity: '0.4', filter: 'blur(20px)' },
+              '50%': { opacity: '0.8', filter: 'blur(30px)' },
+            },
+            'shimmer': {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(100%)' },
+            },
+            'bounceSoft': {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-6px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #222d48;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3b82f6;
+    }
+
+    /* Glassmorphism Styles */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.25);
+    }
+
+    .glass-nav {
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Glowing Text Effects */
+    .glow-text-cyan {
+      text-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+    }
+    .glow-text-purple {
+      text-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+    }
+    .glow-text-amber {
+      text-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+    }
+
+    /* Card 3D tilt perspective */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .tilt-card {
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+      transform-style: preserve-3d;
+    }
+
+    /* Gradient border ring animation */
+    .animated-border-box {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    .animated-border-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent 0%, #3b82f6 25%, #8b5cf6 50%, #ec4899 75%, transparent 100%);
+      animation: spin 6s linear infinite;
+      z-index: 0;
+    }
+
+    /* Wave effect */
+    @keyframes wave {
+      0% { transform: rotate(0deg); }
+      10% { transform: rotate(14deg); }
+      20% { transform: rotate(-8deg); }
+      30% { transform: rotate(14deg); }
+      40% { transform: rotate(-4deg); }
+      50% { transform: rotate(10deg); }
+      60% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .animate-wave {
+      animation: wave 2.5s infinite;
+      transform-origin: 70% 70%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+
+  <!-- Interactive Particle Background Canvas -->
+  <canvas id="bgCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Light Orbs -->
+  <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none animate-pulse-glow z-0"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none animate-pulse-glow z-0" style="animation-delay: 1.5s;"></div>
+  <div class="fixed top-[40%] right-[20%] w-[350px] h-[350px] bg-emerald-600/15 rounded-full blur-[100px] pointer-events-none animate-pulse-glow z-0" style="animation-delay: 3s;"></div>
+
+  <!-- App Container -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 glass-nav px-4 lg:px-8 py-3 transition-all duration-300" id="mainHeader">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        
+        <!-- Logo & Brand -->
+        <div class="flex items-center space-x-3 cursor-pointer group" onclick="resetFilters()">
+          <div class="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 p-[2px] shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform duration-300">
+            <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+              <i class="fa-solid fa-atom text-indigo-400 text-xl group-hover:rotate-180 transition-transform duration-700"></i>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-outfit font-extrabold text-2xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400">
+                EduPulse
+              </span>
+              <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-bold">
+                PRO 3.0
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400 hidden sm:block">Curated Knowledge & Tools Hub</p>
+          </div>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          
+          <!-- Ambient Lofi Sound Player Button -->
+          <button id="soundToggleBtn" onclick="toggleAudioGenerator()" title="Toggle Focus Ambient Sound"
+            class="px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 text-slate-300 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all duration-200 hover:text-amber-400 group">
+            <i class="fa-solid fa-headphones text-slate-400 group-hover:text-amber-400 transition-colors"></i>
+            <span class="hidden md:inline" id="soundLabel">Focus Audio</span>
+            <span id="soundPulse" class="w-2 h-2 rounded-full bg-slate-500"></span>
+          </button>
+
+          <!-- Random Link Roulette ("I'm Feeling Lucky") -->
+          <button onclick="pickRandomResource()" title="Pick Random Tool"
+            class="px-3 py-2 rounded-xl bg-gradient-to-r from-purple-600/30 to-pink-600/30 hover:from-purple-600/50 hover:to-pink-600/50 border border-purple-500/40 text-purple-200 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all duration-200 hover:scale-105 shadow-md shadow-purple-500/10">
+            <i class="fa-solid fa-dice text-pink-400 animate-spin-slow"></i>
+            <span class="hidden sm:inline">Random Launch</span>
+          </button>
+
+          <!-- Add Custom Link Modal Button -->
+          <button onclick="openAddModal()" 
+            class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-lg shadow-indigo-600/30 transition-all duration-200 hover:scale-105">
+            <i class="fa-solid fa-plus text-xs"></i>
+            <span>Add Link</span>
+          </button>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Grid Wrapper -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+      <!-- Hero Banner Section -->
+      <section class="relative rounded-3xl overflow-hidden glass-card p-6 sm:p-10 border border-slate-800/80">
+        <!-- Background shimmer animation line -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/10 to-transparent animate-shimmer pointer-events-none"></div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="space-y-3 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-semibold">
+              <span class="flex h-2 w-2 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              Ultimate JEE, NEET, Tech & Study Ecosystem <span class="animate-wave">👋</span>
+            </div>
+            
+            <h1 class="font-outfit text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Explore Top Study Tools, <br class="hidden sm:block">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-indigo-300 to-pink-400">
+                Batches, PYQs & Resources
+              </span>
+            </h1>
+            
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Instant keyless access to curated test series, books, AI study assistants, programming sandboxes, and educational portals.
+            </p>
+          </div>
+
+          <!-- Dynamic Live Stats Counter Cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full md:w-auto">
+            <div class="glass-card p-3 sm:p-4 rounded-2xl border border-slate-700/50 text-center hover:scale-105 transition-transform duration-200">
+              <div class="text-2xl sm:text-3xl font-extrabold text-indigo-400 font-outfit" id="statTotalCount">0</div>
+              <div class="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Resources</div>
+            </div>
+            <div class="glass-card p-3 sm:p-4 rounded-2xl border border-slate-700/50 text-center hover:scale-105 transition-transform duration-200">
+              <div class="text-2xl sm:text-3xl font-extrabold text-pink-400 font-outfit" id="statCategoriesCount">0</div>
+              <div class="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Categories</div>
+            </div>
+            <div class="glass-card p-3 sm:p-4 rounded-2xl border border-slate-700/50 text-center col-span-2 sm:col-span-1 hover:scale-105 transition-transform duration-200">
+              <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 font-outfit" id="statBookmarksCount">0</div>
+              <div class="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Bookmarks</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Carousel Bar -->
+        <div class="mt-8 pt-6 border-t border-slate-800/80">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-fire text-amber-400 text-sm animate-bounce"></i>
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-300">Featured Picks</span>
+            </div>
+            <span class="text-[11px] text-slate-500">Auto-scrolling showcase</span>
+          </div>
+
+          <div id="featuredContainer" class="flex gap-4 overflow-x-auto pb-2 scrollbar-none snap-x">
+            <!-- Dynamically populated featured chips -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Search & Controls Section -->
+      <section class="space-y-4 sticky top-20 z-40 bg-darkbg/90 backdrop-blur-xl p-4 rounded-2xl border border-slate-800/80 shadow-2xl">
+        
+        <!-- Search Bar with Keyboard Shortcut Badge -->
+        <div class="relative w-full">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+            <i class="fa-solid fa-magnifying-glass text-lg text-indigo-400"></i>
+          </div>
+          <input 
+            type="text" 
+            id="searchInput"
+            placeholder="Search by name, description, tags or categories... (Press 'Ctrl + K' or '/' to focus)" 
+            class="w-full pl-11 pr-24 py-3.5 bg-slate-900/90 border border-slate-700/70 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/80 focus:border-indigo-500 text-sm transition-all shadow-inner"
+            oninput="handleSearchInput(this.value)"
+          />
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center gap-2">
+            <button id="clearSearchBtn" onclick="clearSearch()" class="hidden text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <kbd class="hidden md:inline-block px-2 py-1 text-[10px] font-mono font-semibold text-slate-400 bg-slate-800 border border-slate-700 rounded-md shadow-sm">
+              ⌘K
+            </kbd>
+          </div>
+        </div>
+
+        <!-- Category Tabs Bar -->
+        <div class="flex items-center justify-between gap-2 overflow-x-auto pb-1 scrollbar-none">
+          <div class="flex items-center gap-2 min-w-max" id="categoryTabs">
+            <!-- Populated via JS -->
+          </div>
+
+          <!-- Layout View Controls -->
+          <div class="flex items-center gap-1 bg-slate-900/90 border border-slate-800 p-1 rounded-xl">
+            <button onclick="setViewMode('grid')" id="btnViewGrid" class="p-2 rounded-lg text-indigo-400 bg-slate-800 transition-all" title="Grid View">
+              <i class="fa-solid fa-border-all text-xs sm:text-sm"></i>
+            </button>
+            <button onclick="setViewMode('list')" id="btnViewList" class="p-2 rounded-lg text-slate-400 hover:text-white transition-all" title="Compact List View">
+              <i class="fa-solid fa-list text-xs sm:text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Secondary Subtags Filter Pills -->
+        <div class="flex items-center gap-2 overflow-x-auto pt-1 pb-1 scrollbar-none" id="subtagFilters">
+          <!-- Populated via JS -->
+        </div>
+
+      </section>
+
+      <!-- Active Filter Status & Items Count -->
+      <div class="flex items-center justify-between px-2 text-xs text-slate-400">
+        <div id="filterStatusText" class="font-medium">
+          Showing <span id="displayedCount" class="text-white font-bold">0</span> items
+        </div>
+        
+        <!-- Sorting dropdown -->
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500 hidden sm:inline">Sort by:</span>
+          <select id="sortSelect" onchange="handleSortChange(this.value)" class="bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1 text-slate-300 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500">
+            <option value="default">Default Featured</option>
+            <option value="rating">Highest Rated ⭐</option>
+            <option value="name">Title (A - Z)</option>
+            <option value="category">Category</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Resource Grid Display -->
+      <section id="resourceGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300">
+        <!-- Cards rendered via JavaScript -->
+      </section>
+
+      <!-- Empty Search Result State -->
+      <div id="emptyState" class="hidden flex-col items-center justify-center py-16 text-center space-y-4 glass-card rounded-3xl border border-slate-800">
+        <div class="w-20 h-20 rounded-full bg-slate-800/80 flex items-center justify-center text-slate-500 text-3xl animate-bounce-soft">
+          <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white">No Matching Resources Found</h3>
+        <p class="text-slate-400 text-sm max-w-md">
+          We couldn't find any resources matching your search or active filters. Try resetting search or checking another category.
+        </p>
+        <button onclick="resetFilters()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs sm:text-sm shadow-lg shadow-indigo-600/30 transition-all hover:scale-105">
+          Reset All Filters
+        </button>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 border-t border-slate-800/80 bg-slate-950/60 backdrop-blur-md py-8 px-4 text-center text-xs text-slate-500">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-atom text-indigo-400 text-base"></i>
+          <span class="font-outfit font-bold text-slate-300 text-sm">EduPulse Ecosystem</span>
+          <span>— Empowering Free & Open Learning</span>
+        </div>
+        <div class="flex items-center gap-4 text-slate-400">
+          <button onclick="resetToInitialData()" class="hover:text-indigo-400 transition-colors">Reset Default Data</button>
+          <span>•</span>
+          <button onclick="openAddModal()" class="hover:text-indigo-400 transition-colors">Submit Portal</button>
+          <span>•</span>
+          <a href="#mainHeader" class="hover:text-indigo-400 transition-colors">Back to Top <i class="fa-solid fa-arrow-up text-[10px]"></i></a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Add Custom Link Modal -->
+  <div id="addModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/70 backdrop-blur-md transition-opacity">
+    <div class="glass-card max-w-lg w-full rounded-3xl p-6 sm:p-8 border border-slate-700/80 space-y-6 shadow-2xl relative animate-float">
+      
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-link"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white font-outfit">Add Custom Resource</h3>
+            <p class="text-xs text-slate-400">Add a new portal or tool to your personal ecosystem</p>
+          </div>
+        </div>
+        <button onclick="closeAddModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="addResourceForm" onsubmit="handleAddResource(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Title *</label>
+          <input type="text" id="modalTitle" required placeholder="e.g. Physics Wallah Practice" 
+            class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Target URL *</label>
+          <input type="url" id="modalUrl" required placeholder="https://..." 
+            class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Category *</label>
+            <select id="modalCategory" class="w-full px-3 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
+              <option value="JEE & NEET">JEE & NEET</option>
+              <option value="Free Books">Free Books</option>
+              <option value="AI & Study">AI & Study</option>
+              <option value="Productivity">Productivity</option>
+              <option value="Coding & Tech">Coding & Tech</option>
+              <option value="Fun & Media">Fun & Media</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Subtag</label>
+            <select id="modalSubtag" class="w-full px-3 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
+              <option value="Batches">Batches</option>
+              <option value="Tests">Tests</option>
+              <option value="Books">Books</option>
+              <option value="PYQs">PYQs</option>
+              <option value="AI">AI</option>
+              <option value="Fun">Fun</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Description</label>
+          <textarea id="modalDescription" rows="2" placeholder="Brief details about this portal..." 
+            class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Badge Text</label>
+            <input type="text" id="modalBadge" placeholder="e.g. Direct Portal" 
+              class="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">FontAwesome Icon</label>
+            <input type="text" id="modalIcon" placeholder="fa-globe" 
+              class="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
+          </div>
+        </div>
+
+        <div class="pt-2 flex justify-end gap-3">
+          <button type="button" onclick="closeAddModal()" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs">
+            Cancel
+          </button>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg shadow-indigo-600/30">
+            Save Resource
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Random Link Picker Animation Overlay Modal -->
+  <div id="randomModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-lg">
+    <div class="glass-card max-w-md w-full rounded-3xl p-8 border border-slate-700 text-center space-y-6 shadow-2xl relative overflow-hidden">
+      
+      <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-500 mx-auto flex items-center justify-center text-2xl text-white shadow-lg shadow-pink-500/30">
+        <i class="fa-solid fa-dice animate-spin-slow"></i>
+      </div>
+
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-pink-400">Random Resource Picker</span>
+        <h3 id="randomModalTitle" class="text-2xl font-extrabold text-white font-outfit mt-1">Spinning...</h3>
+        <p id="randomModalDesc" class="text-xs text-slate-300 mt-2 min-h-[3rem] flex items-center justify-center">
+          Searching through database...
+        </p>
+      </div>
+
+      <div class="pt-2 flex items-center justify-center gap-3">
+        <button onclick="closeRandomModal()" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs">
+          Dismiss
+        </button>
+        <a id="randomModalLaunchBtn" href="#" target="_blank" rel="noopener noreferrer" 
+          class="hidden px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-xs shadow-lg shadow-purple-600/30">
+          Launch Portal <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    // Master Initial Data array provided in request
+    const INITIAL_RESOURCES = [
+      {
+        "id": "res_1791439790674",
+        "title": "Google Central",
+        "url": "https://google.com",
+        "category": "JEE & NEET",
+        "description": "Global quick search and educational lookup index.",
+        "badge": "Custom",
+        "rating": 5,
+        "featured": false,
+        "icon": "fa-link",
+        "color": "from-blue-600 to-indigo-600",
+        "subtag": "Batches"
+      },
+      {
+        "id": "sp1",
+        "title": "StudyPanda Live",
+        "description": "Top student resource platform offering direct links, batch lecture streams, and curated exam study materials.",
+        "category": "JEE & NEET",
+        "badge": "StudyPanda",
+        "rating": 5,
+        "url": "https://studypanda.live/",
+        "featured": true,
+        "icon": "fa-shield-cat",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Batches"
+      },
+      {
+        "id": "jn1",
+        "title": "Allen Test Series",
+        "description": "Comprehensive online mock tests, test series, and practice papers for Allen JEE/NEET preparation.",
+        "category": "JEE & NEET",
+        "badge": "Allen Tests",
+        "rating": 4.9,
+        "url": "http://test.neetxnoah1.workers.dev",
+        "featured": true,
+        "icon": "fa-vial",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Tests"
+      },
+      {
+        "id": "jn2",
+        "title": "Pikachu PW Books",
+        "description": "Direct access to Physics Wallah modules, books, DPPS, and study material PDFs.",
+        "category": "JEE & NEET",
+        "badge": "PW Books",
+        "rating": 4.8,
+        "url": "https://pikachu-books.vercel.app/",
+        "featured": true,
+        "icon": "fa-book-bookmark",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Books"
+      },
+      {
+        "id": "jn3",
+        "title": "PW Thor",
+        "description": "Physics Wallah batch lectures, DPP solutions, and live batch content streaming.",
+        "category": "JEE & NEET",
+        "badge": "PW Batches",
+        "rating": 4.9,
+        "url": "https://pwthor.live",
+        "featured": true,
+        "icon": "fa-bolt",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Batches"
+      },
+      {
+        "id": "jn5",
+        "title": "Pikachu CBT Tests",
+        "description": "Online Computer Based Test (CBT) interface for practicing full-length mock tests.",
+        "category": "JEE & NEET",
+        "badge": "CBT Portal",
+        "rating": 4.8,
+        "url": "https://pikachuxcbt.vercel.app/",
+        "featured": true,
+        "icon": "fa-laptop-code",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Tests"
+      },
+      {
+        "id": "jn6",
+        "title": "PDF to CBT Converter",
+        "description": "Web application tool to convert question paper PDFs into interactive CBT test interfaces.",
+        "category": "JEE & NEET",
+        "badge": "CBT Converter",
+        "rating": 4.9,
+        "url": "http://newtcbt.vercel.app",
+        "featured": true,
+        "icon": "fa-file-code",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Tests"
+      },
+      {
+        "id": "jn7",
+        "title": "Pikachu JEE CBT (PYQs)",
+        "description": "Topicwise and yearwise JEE Main & Advanced Previous Year Questions (PYQs) in authentic CBT format.",
+        "category": "JEE & NEET",
+        "badge": "JEE PYQs",
+        "rating": 4.9,
+        "url": "https://pikachu-jee-cbt.vercel.app/",
+        "featured": true,
+        "icon": "fa-clock-rotate-left",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "PYQs"
+      },
+      {
+        "id": "jn8",
+        "title": "Marks App (MathonGo)",
+        "description": "Top Reddit-recommended app to solve chapter-wise JEE Main, Advanced, and NEET PYQs with stats.",
+        "category": "JEE & NEET",
+        "badge": "PYQ App",
+        "rating": 4.9,
+        "url": "https://web.getmarks.app/",
+        "featured": false,
+        "icon": "fa-bullseye",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "PYQs"
+      },
+      {
+        "id": "jn10",
+        "title": "Delta Study",
+        "description": "Reddit-famous portal for free streaming of PW, Allen, and Unacademy lectures and test series.",
+        "category": "JEE & NEET",
+        "badge": "Reddit Pick",
+        "rating": 4.9,
+        "url": "https://deltastudy.site",
+        "featured": true,
+        "icon": "fa-clapperboard",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Batches"
+      },
+      {
+        "id": "jn11",
+        "title": "Ved Study",
+        "description": "High quality JEE & NEET video batch streaming portal with chapterwise DPP solvers.",
+        "category": "JEE & NEET",
+        "badge": "Free Batches",
+        "rating": 4.8,
+        "url": "https://vedstudy.site",
+        "featured": true,
+        "icon": "fa-video",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Batches"
+      },
+      {
+        "id": "jn13",
+        "title": "PW4Free Portal",
+        "description": "Direct PW batch lecture player that bypasses key generation and subscription requirements.",
+        "category": "JEE & NEET",
+        "badge": "Keyless Player",
+        "rating": 4.9,
+        "url": "https://pw4free.com",
+        "featured": true,
+        "icon": "fa-key",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Batches"
+      },
+      {
+        "id": "jn14",
+        "title": "Unacademy Hub",
+        "description": "World-class video lectures, JEE revision notes, and conceptual checklists.",
+        "category": "JEE & NEET",
+        "badge": "Physics Hub",
+        "rating": 4.9,
+        "url": "http://studyuk.online",
+        "featured": false,
+        "icon": "fa-atom",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Batches"
+      },
+      {
+        "id": "jn15",
+        "title": "ExamGoal JEE & NEET",
+        "description": "High-precision real-time exam practice platform featuring past 10+ years JEE Main/Adv and NEET CBT papers.",
+        "category": "JEE & NEET",
+        "badge": "Mock Analytics",
+        "rating": 4.9,
+        "url": "https://www.examgoal.com/",
+        "featured": false,
+        "icon": "fa-square-check",
+        "color": "from-amber-500 to-red-600",
+        "subtag": "Tests"
+      },
+      {
+        "id": "rd1",
+        "title": "Anna's Archive",
+        "description": "The world's largest open shadow library indexing LibGen, Z-Library, and Sci-Hub books and papers.",
+        "category": "Free Books",
+        "badge": "Reddit Pick",
+        "rating": 4.9,
+        "url": "https://annas-archive.org/",
+        "featured": true,
+        "icon": "fa-book-atlas",
+        "color": "from-emerald-600 to-teal-700",
+        "subtag": "Books"
+      },
+      {
+        "id": "rd2",
+        "title": "FMHY Educational Megathread",
+        "description": "FreeMediaHeckYa curated list of non-profit educational platforms, textbooks, and online courses.",
+        "category": "Productivity",
+        "badge": "Megathread",
+        "rating": 5,
+        "url": "https://fmhy.net/edupiracy",
+        "featured": true,
+        "icon": "fa-shield-halved",
+        "color": "from-indigo-600 to-violet-700",
+        "subtag": "Books"
+      },
+      {
+        "id": "1",
+        "title": "Internet Archive",
+        "description": "Non-profit library of millions of free books, movies, software, music, websites, and historic texts.",
+        "category": "Free Books",
+        "badge": "100% Free",
+        "rating": 4.8,
+        "url": "https://archive.org",
+        "featured": false,
+        "icon": "fa-box-archive",
+        "color": "from-emerald-600 to-teal-700",
+        "subtag": "Books"
+      },
+      {
+        "id": "bk2",
+        "title": "PDF Drive Library",
+        "description": "Search engine with over 75+ million free PDF books, research manuals, self-help, and textbooks.",
+        "category": "Free Books",
+        "badge": "PDF Search",
+        "rating": 4.8,
+        "url": "https://www.pdfdrive.com/",
+        "featured": false,
+        "icon": "fa-file-pdf",
+        "color": "from-emerald-600 to-teal-700",
+        "subtag": "Books"
+      },
+      {
+        "id": "bk3",
+        "title": "Open Library",
+        "description": "An open, editable library catalog attempting to create a web page for every book ever published.",
+        "category": "Free Books",
+        "badge": "Open Access",
+        "rating": 4.7,
+        "url": "https://openlibrary.org/",
+        "featured": false,
+        "icon": "fa-book-open-reader",
+        "color": "from-emerald-600 to-teal-700",
+        "subtag": "Books"
+      },
+      {
+        "id": "26",
+        "title": "Perplexity AI",
+        "description": "AI powered answer engine providing sourced research answers and citation summaries.",
+        "category": "AI & Study",
+        "badge": "Free Tier",
+        "rating": 4.8,
+        "url": "https://www.perplexity.ai",
+        "featured": true,
+        "icon": "fa-robot",
+        "color": "from-cyan-600 to-blue-700",
+        "subtag": "AI"
+      },
+      {
+        "id": "27",
+        "title": "Consensus AI",
+        "description": "AI search engine that reads peer-reviewed papers to give science-backed research answers.",
+        "category": "AI & Study",
+        "badge": "AI Research",
+        "rating": 4.7,
+        "url": "https://consensus.app",
+        "featured": false,
+        "icon": "fa-wand-magic-sparkles",
+        "color": "from-cyan-600 to-blue-700",
+        "subtag": "AI"
+      },
+      {
+        "id": "ai3",
+        "title": "Phind AI Engine",
+        "description": "Generative AI search engine built specifically for developers, complex math problems, and technical topics.",
+        "category": "AI & Study",
+        "badge": "Tech AI",
+        "rating": 4.9,
+        "url": "https://www.phind.com/",
+        "featured": false,
+        "icon": "fa-microchip",
+        "color": "from-cyan-600 to-blue-700",
+        "subtag": "AI"
+      },
+      {
+        "id": "ai4",
+        "title": "Claude AI Studio",
+        "description": "Anthropic's advanced AI assistant renowned for articulate writing, long-document reasoning, and coding.",
+        "category": "AI & Study",
+        "badge": "Top Rated",
+        "rating": 4.9,
+        "url": "https://claude.ai/",
+        "featured": false,
+        "icon": "fa-brain",
+        "color": "from-cyan-600 to-blue-700",
+        "subtag": "AI"
+      },
+      {
+        "id": "pr2",
+        "title": "LifeAt Virtual Study Spaces",
+        "description": "Immersive study environments with lofi music, pomodoro timers, and co-working virtual rooms.",
+        "category": "Productivity",
+        "badge": "Focus Space",
+        "rating": 4.8,
+        "url": "https://lifeat.io/",
+        "featured": false,
+        "icon": "fa-mug-hot",
+        "color": "from-indigo-600 to-violet-700",
+        "subtag": "Batches"
+      },
+      {
+        "id": "pr3",
+        "title": "Notion Study Templates",
+        "description": "Free customizable Notion workspace templates for student second brains, assignment tracking, and notes.",
+        "category": "Productivity",
+        "badge": "Templates",
+        "rating": 4.8,
+        "url": "https://www.notion.so/templates",
+        "featured": false,
+        "icon": "fa-table-cells",
+        "color": "from-indigo-600 to-violet-700",
+        "subtag": "Books"
+      },
+      {
+        "id": "cd1",
+        "title": "Replit Cloud IDE",
+        "description": "Instant online browser compiler and collaborative workspace supporting 50+ programming languages.",
+        "category": "Coding & Tech",
+        "badge": "Online Compiler",
+        "rating": 4.8,
+        "url": "https://replit.com/",
+        "featured": false,
+        "icon": "fa-code",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd2",
+        "title": "Excalidraw Diagramming",
+        "description": "Virtual hand-drawn sketch canvas for quick flowcharts, mind maps, and whiteboard visual study.",
+        "category": "Coding & Tech",
+        "badge": "Whiteboard",
+        "rating": 4.9,
+        "url": "https://excalidraw.com/",
+        "featured": false,
+        "icon": "fa-pen-ruler",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Fun"
+      },
+      {
+        "id": "cd3",
+        "title": "GitHub",
+        "description": "The premier platform for software developers to host, collaborate, and manage open-source code repositories.",
+        "category": "Coding & Tech",
+        "badge": "Version Control",
+        "rating": 5,
+        "url": "https://github.com/",
+        "featured": true,
+        "icon": "fa-brands fa-github",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Books"
+      },
+      {
+        "id": "cd4",
+        "title": "Stack Overflow",
+        "description": "World's largest Q&A community for programmers, software engineers, and computer science students.",
+        "category": "Coding & Tech",
+        "badge": "Dev Q&A",
+        "rating": 4.9,
+        "url": "https://stackoverflow.com/",
+        "featured": true,
+        "icon": "fa-brands fa-stack-overflow",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "PYQs"
+      },
+      {
+        "id": "cd5",
+        "title": "LeetCode",
+        "description": "Premier coding challenge platform for honing data structures, algorithms, and technical interview prep.",
+        "category": "Coding & Tech",
+        "badge": "DSA Practice",
+        "rating": 4.9,
+        "url": "https://leetcode.com/",
+        "featured": true,
+        "icon": "fa-terminal",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd6",
+        "title": "HackerRank",
+        "description": "Interactive skill practice platform covering Python, SQL, C++, algorithms, and certification badges.",
+        "category": "Coding & Tech",
+        "badge": "Coding Badges",
+        "rating": 4.8,
+        "url": "https://www.hackerrank.com/",
+        "featured": false,
+        "icon": "fa-laptop-code",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd7",
+        "title": "CodeChef",
+        "description": "Indian & global competitive programming platform hosting contests, long challenges, and beginner tutorials.",
+        "category": "Coding & Tech",
+        "badge": "Contests",
+        "rating": 4.8,
+        "url": "https://www.codechef.com/",
+        "featured": false,
+        "icon": "fa-fire",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd8",
+        "title": "Codeforces",
+        "description": "Top-rated competitive coding platform for high-frequency contests, rating levels, and algorithm problemsets.",
+        "category": "Coding & Tech",
+        "badge": "Competitive",
+        "rating": 4.9,
+        "url": "https://codeforces.com/",
+        "featured": false,
+        "icon": "fa-chart-simple",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd9",
+        "title": "freeCodeCamp",
+        "description": "Free full-stack curriculum with hands-on projects and verified certifications in web development & Python.",
+        "category": "Coding & Tech",
+        "badge": "Free Courses",
+        "rating": 5,
+        "url": "https://www.freecodecamp.org/",
+        "featured": true,
+        "icon": "fa-campground",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Batches"
+      },
+      {
+        "id": "cd10",
+        "title": "MDN Web Docs",
+        "description": "The definitive Mozilla developer documentation for HTML, CSS, JavaScript, and Web APIs.",
+        "category": "Coding & Tech",
+        "badge": "Official Docs",
+        "rating": 5,
+        "url": "https://developer.mozilla.org/",
+        "featured": true,
+        "icon": "fa-book-journal-whills",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Books"
+      },
+      {
+        "id": "cd11",
+        "title": "CodePen",
+        "description": "Social web development environment for building, testing, and showcasing front-end HTML/CSS/JS snippets.",
+        "category": "Coding & Tech",
+        "badge": "Frontend Sandbox",
+        "rating": 4.8,
+        "url": "https://codepen.io/",
+        "featured": false,
+        "icon": "fa-brands fa-codepen",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Fun"
+      },
+      {
+        "id": "cd12",
+        "title": "JSFiddle",
+        "description": "Lightweight online web sandbox for quick testing and sharing HTML, CSS, and JavaScript code snippets.",
+        "category": "Coding & Tech",
+        "badge": "Web Sandbox",
+        "rating": 4.7,
+        "url": "https://jsfiddle.net/",
+        "featured": false,
+        "icon": "fa-brands fa-js",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd13",
+        "title": "StackBlitz",
+        "description": "WebContainers-powered instant browser IDE for React, Angular, Vue, and full-stack Node.js environments.",
+        "category": "Coding & Tech",
+        "badge": "Instant Node IDE",
+        "rating": 4.9,
+        "url": "https://stackblitz.com/",
+        "featured": true,
+        "icon": "fa-bolt-lightning",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd14",
+        "title": "GeeksforGeeks",
+        "description": "Massive computer science hub featuring algorithms, DSA course notes, language syntax, and interview roadmaps.",
+        "category": "Coding & Tech",
+        "badge": "CS Tutorials",
+        "rating": 4.8,
+        "url": "https://www.geeksforgeeks.org/",
+        "featured": false,
+        "icon": "fa-square-binary",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Books"
+      },
+      {
+        "id": "cd15",
+        "title": "Roadmap.sh",
+        "description": "Community-created visual roadmaps, guidebooks, and paths for Frontend, Backend, DevOps, and AI engineering.",
+        "category": "Coding & Tech",
+        "badge": "Career Paths",
+        "rating": 4.9,
+        "url": "https://roadmap.sh/",
+        "featured": true,
+        "icon": "fa-route",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Books"
+      },
+      {
+        "id": "cd16",
+        "title": "W3Schools",
+        "description": "Beginner-friendly interactive web development tutorials, exercises, and code try-it-yourself runners.",
+        "category": "Coding & Tech",
+        "badge": "Beginner Friendly",
+        "rating": 4.7,
+        "url": "https://www.w3schools.com/",
+        "featured": false,
+        "icon": "fa-graduation-cap",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Books"
+      },
+      {
+        "id": "cd17",
+        "title": "DevDocs.io",
+        "description": "Fast, clean, offline-capable unified documentation browser for 50+ programming languages and frameworks.",
+        "category": "Coding & Tech",
+        "badge": "Unified Docs",
+        "rating": 4.9,
+        "url": "https://devdocs.io/",
+        "featured": false,
+        "icon": "fa-layer-group",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Books"
+      },
+      {
+        "id": "cd18",
+        "title": "Carbon Snippet Generator",
+        "description": "Create and share beautiful high-resolution image cards of source code snippets for notes or posts.",
+        "category": "Coding & Tech",
+        "badge": "Code Cards",
+        "rating": 4.8,
+        "url": "https://carbon.now.sh/",
+        "featured": false,
+        "icon": "fa-image",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Fun"
+      },
+      {
+        "id": "cd19",
+        "title": "Regex101",
+        "description": "Regular expression tester and debugger with instant visual breakdowns and pattern explanations.",
+        "category": "Coding & Tech",
+        "badge": "Regex Tester",
+        "rating": 4.9,
+        "url": "https://regex101.com/",
+        "featured": false,
+        "icon": "fa-asterisk",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd20",
+        "title": "Can I Use...",
+        "description": "Up-to-date web browser compatibility tables for modern HTML5, CSS3, and Web API support.",
+        "category": "Coding & Tech",
+        "badge": "Browser Compat",
+        "rating": 4.8,
+        "url": "https://caniuse.com/",
+        "featured": false,
+        "icon": "fa-window-maximize",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Books"
+      },
+      {
+        "id": "cd21",
+        "title": "Codewars",
+        "description": "Gamified programming challenges (Katas) designed to improve language syntax and algorithm mastery.",
+        "category": "Coding & Tech",
+        "badge": "Code Katas",
+        "rating": 4.8,
+        "url": "https://www.codewars.com/",
+        "featured": false,
+        "icon": "fa-khanda",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd22",
+        "title": "CS50 by Harvard",
+        "description": "Harvard's legendary introductory Computer Science lectures, problem sets, and interactive exercises.",
+        "category": "Coding & Tech",
+        "badge": "Harvard CS",
+        "rating": 5,
+        "url": "https://cs50.harvard.edu/x/",
+        "featured": true,
+        "icon": "fa-building-columns",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Batches"
+      },
+      {
+        "id": "cd23",
+        "title": "Exercism",
+        "description": "100% free mentored coding practice with human feedback across 70+ programming tracks.",
+        "category": "Coding & Tech",
+        "badge": "Mentored Tracks",
+        "rating": 4.9,
+        "url": "https://exercism.org/",
+        "featured": false,
+        "icon": "fa-dumbbell",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd24",
+        "title": "SQLZoo",
+        "description": "Interactive step-by-step SQL tutorials with direct live database query execution in-browser.",
+        "category": "Coding & Tech",
+        "badge": "Interactive SQL",
+        "rating": 4.7,
+        "url": "https://sqlzoo.net/",
+        "featured": false,
+        "icon": "fa-database",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "cd25",
+        "title": "Transform.tools",
+        "description": "Polyglot instant web converter for JSON to TypeScript, GraphQL, CSS-in-JS, Rust, and YAML.",
+        "category": "Coding & Tech",
+        "badge": "Data Converter",
+        "rating": 4.8,
+        "url": "https://transform.tools/",
+        "featured": false,
+        "icon": "fa-right-left",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Fun"
+      },
+      {
+        "id": "cd26",
+        "title": "JSON Crack",
+        "description": "Interactive JSON viewer and converter that renders raw JSON into clear visual node graphs.",
+        "category": "Coding & Tech",
+        "badge": "Visualizer",
+        "rating": 4.9,
+        "url": "https://jsoncrack.com/",
+        "featured": false,
+        "icon": "fa-sitemap",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Fun"
+      },
+      {
+        "id": "cd27",
+        "title": "Vercel Platform",
+        "description": "Popular developer cloud platform to instantly deploy frontend applications and web projects for free.",
+        "category": "Coding & Tech",
+        "badge": "Free Hosting",
+        "rating": 4.9,
+        "url": "https://vercel.com/",
+        "featured": false,
+        "icon": "fa-cloud-arrow-up",
+        "color": "from-blue-600 to-indigo-800",
+        "subtag": "Tests"
+      },
+      {
+        "id": "fun1",
+        "title": "Wotaku Wiki",
+        "description": "The premier otaku index & wiki for anime, manga, light novels, Japanese learning, and media hubs.",
+        "category": "Fun & Media",
+        "badge": "Wotaku",
+        "rating": 5,
+        "url": "https://wotaku.wiki/",
+        "featured": true,
+        "icon": "fa-torii-gate",
+        "color": "from-pink-500 to-purple-600",
+        "subtag": "Fun"
+      },
+      {
+        "id": "fun2",
+        "title": "FMHY Megathread",
+        "description": "FreeMediaHeckYa main portal - the largest curated directory for entertainment, streaming, and games.",
+        "category": "Fun & Media",
+        "badge": "FMHY Hub",
+        "rating": 5,
+        "url": "https://fmhy.net/",
+        "featured": true,
+        "icon": "fa-shield-halved",
+        "color": "from-pink-500 to-purple-600",
+        "subtag": "Fun"
+      },
+      {
+        "id": "fun3",
+        "title": "EverythingMoe Directory",
+        "description": "Ultimate curated guide and index for watching anime, reading manga, light novels, and Japanese culture.",
+        "category": "Fun & Media",
+        "badge": "Anime Index",
+        "rating": 4.9,
+        "url": "https://everythingmoe.com/",
+        "featured": true,
+        "icon": "fa-tv",
+        "color": "from-pink-500 to-purple-600",
+        "subtag": "Fun"
+      },
+      {
+        "id": "fun4",
+        "title": "Neal.fun Interactive Toys",
+        "description": "Collection of fascinating, fun, and relaxing interactive web games, space scale simulators, and web toys.",
+        "category": "Fun & Media",
+        "badge": "Web Games",
+        "rating": 4.9,
+        "url": "https://neal.fun/",
+        "featured": true,
+        "icon": "fa-gamepad",
+        "color": "from-pink-500 to-purple-600",
+        "subtag": "Fun"
+      },
+      {
+        "id": "fun5",
+        "title": "EmuOS / Emupedia",
+        "description": "Retro web OS simulation allowing you to play classic 90s video games and nostalgic software in-browser.",
+        "category": "Fun & Media",
+        "badge": "Retro Arcade",
+        "rating": 4.8,
+        "url": "https://emupedia.net/beta/emuos/",
+        "featured": false,
+        "icon": "fa-floppy-disk",
+        "color": "from-pink-500 to-purple-600",
+        "subtag": "Fun"
+      },
+      {
+        "id": "fun6",
+        "title": "The Useless Web",
+        "description": "Click the magic button to take you to a random weird, funny, or mesmerizing corner of the internet.",
+        "category": "Fun & Media",
+        "badge": "Random Portal",
+        "rating": 4.7,
+        "url": "https://theuselessweb.com/",
+        "featured": false,
+        "icon": "fa-dice",
+        "color": "from-pink-500 to-purple-600",
+        "subtag": "Fun"
+      }
+    ];
+
+    // Category Color Mapping Definition
+    const CATEGORY_COLORS = {
+      "JEE & NEET": { bg: "from-amber-500/20 to-red-500/20", text: "text-amber-400", border: "border-amber-500/30", badge: "bg-amber-500/20 text-amber-300" },
+      "Free Books": { bg: "from-emerald-500/20 to-teal-500/20", text: "text-emerald-400", border: "border-emerald-500/30", badge: "bg-emerald-500/20 text-emerald-300" },
+      "AI & Study": { bg: "from-cyan-500/20 to-blue-500/20", text: "text-cyan-400", border: "border-cyan-500/30", badge: "bg-cyan-500/20 text-cyan-300" },
+      "Productivity": { bg: "from-indigo-500/20 to-violet-500/20", text: "text-indigo-400", border: "border-indigo-500/30", badge: "bg-indigo-500/20 text-indigo-300" },
+      "Coding & Tech": { bg: "from-blue-500/20 to-indigo-600/20", text: "text-blue-400", border: "border-blue-500/30", badge: "bg-blue-500/20 text-blue-300" },
+      "Fun & Media": { bg: "from-pink-500/20 to-purple-500/20", text: "text-pink-400", border: "border-pink-500/30", badge: "bg-pink-500/20 text-pink-300" }
+    };
+
+    // State Store
+    let resourcesData = [];
+    let bookmarks = new Set();
+    let currentCategory = "ALL";
+    let currentSubtag = "ALL";
+    let searchQuery = "";
+    let currentSort = "default";
+    let viewMode = "grid"; // 'grid' | 'list'
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadLocalStorage();
+      setupCanvasBackground();
+      renderCategoryTabs();
+      renderSubtagFilters();
+      renderFeaturedItems();
+      applyFiltersAndRender();
+      setupKeyboardShortcuts();
+    });
+
+    // Local Storage Handler
+    function loadLocalStorage() {
+      const savedResources = localStorage.getItem("edupulse_resources");
+      if (savedResources) {
+        try {
+          resourcesData = JSON.parse(savedResources);
+        } catch(e) {
+          resourcesData = [...INITIAL_RESOURCES];
+        }
+      } else {
+        resourcesData = [...INITIAL_RESOURCES];
+      }
+
+      // Sanitize titles (e.g., if title is ".")
+      resourcesData = resourcesData.map(item => {
+        if (!item.title || item.title.trim() === "." || item.title.trim() === "") {
+          item.title = "Custom Portal";
+        }
+        return item;
+      });
+
+      const savedBookmarks = localStorage.getItem("edupulse_bookmarks");
+      if (savedBookmarks) {
+        try {
+          bookmarks = new Set(JSON.parse(savedBookmarks));
+        } catch(e) {
+          bookmarks = new Set();
+        }
+      }
+    }
+
+    function saveLocalStorage() {
+      localStorage.setItem("edupulse_resources", JSON.stringify(resourcesData));
+      localStorage.setItem("edupulse_bookmarks", JSON.stringify(Array.from(bookmarks)));
+    }
+
+    function resetToInitialData() {
+      if (confirm("Reset to default resource list? Your added links will be cleared.")) {
+        resourcesData = [...INITIAL_RESOURCES];
+        bookmarks.clear();
+        saveLocalStorage();
+        applyFiltersAndRender();
+        renderFeaturedItems();
+      }
+    }
+
+    function renderCategoryTabs() {
+      const categories = ["ALL", ...new Set(resourcesData.map(item => item.category)), "BOOKMARKS"];
+      const container = document.getElementById("categoryTabs");
+      container.innerHTML = "";
+
+      categories.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.onclick = () => selectCategory(cat);
+        
+        const isActive = currentCategory === cat;
+        
+        let iconHtml = "";
+        if (cat === "ALL") iconHtml = `<i class="fa-solid fa-layer-group text-xs"></i>`;
+        else if (cat === "BOOKMARKS") iconHtml = `<i class="fa-solid fa-bookmark text-xs text-amber-400"></i>`;
+        else if (cat === "JEE & NEET") iconHtml = `<i class="fa-solid fa-microscope text-xs"></i>`;
+        else if (cat === "Free Books") iconHtml = `<i class="fa-solid fa-book text-xs"></i>`;
+        else if (cat === "AI & Study") iconHtml = `<i class="fa-solid fa-robot text-xs"></i>`;
+        else if (cat === "Productivity") iconHtml = `<i class="fa-solid fa-bolt text-xs"></i>`;
+        else if (cat === "Coding & Tech") iconHtml = `<i class="fa-solid fa-code text-xs"></i>`;
+        else if (cat === "Fun & Media") iconHtml = `<i class="fa-solid fa-gamepad text-xs"></i>`;
+
+        btn.className = `px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all duration-200 border ${
+          isActive 
+            ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white border-indigo-400/50 shadow-lg shadow-indigo-600/30 scale-105" 
+            : "bg-slate-900/90 text-slate-300 border-slate-800 hover:border-slate-700 hover:bg-slate-800"
+        }`;
+        
+        let count = 0;
+        if (cat === "ALL") count = resourcesData.length;
+        else if (cat === "BOOKMARKS") count = bookmarks.size;
+        else count = resourcesData.filter(i => i.category === cat).length;
+
+        btn.innerHTML = `${iconHtml} <span>${cat}</span> <span class="text-[10px] px-1.5 py-0.5 rounded-full ${isActive ? 'bg-white/20 text-white' : 'bg-slate-800 text-slate-400'}">${count}</span>`;
+        container.appendChild(btn);
+      });
+    }
+
+    function renderSubtagFilters() {
+      const subtags = ["ALL", "Batches", "Tests", "Books", "PYQs", "AI", "Fun"];
+      const container = document.getElementById("subtagFilters");
+      container.innerHTML = `<span class="text-xs text-slate-500 font-medium mr-1"><i class="fa-solid fa-filter text-[10px]"></i> Tags:</span>`;
+
+      subtags.forEach(tag => {
+        const btn = document.createElement("button");
+        btn.onclick = () => selectSubtag(tag);
+        
+        const isActive = currentSubtag === tag;
+
+        btn.className = `px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all duration-200 border ${
+          isActive 
+            ? "bg-indigo-500/20 text-indigo-300 border-indigo-500/50 font-bold" 
+            : "bg-slate-900/60 text-slate-400 border-slate-800 hover:text-slate-200 hover:bg-slate-800"
+        }`;
+
+        btn.innerText = tag === "ALL" ? "All Tags" : `#${tag}`;
+        container.appendChild(btn);
+      });
+    }
+
+    function selectCategory(cat) {
+      currentCategory = cat;
+      renderCategoryTabs();
+      applyFiltersAndRender();
+    }
+
+    function selectSubtag(tag) {
+      currentSubtag = tag;
+      renderSubtagFilters();
+      applyFiltersAndRender();
+    }
+
+    function handleSearchInput(val) {
+      searchQuery = val.trim().toLowerCase();
+      const clearBtn = document.getElementById("clearSearchBtn");
+      if (searchQuery.length > 0) {
+        clearBtn.classList.remove("hidden");
+      } else {
+        clearBtn.classList.add("hidden");
+      }
+      applyFiltersAndRender();
+    }
+
+    function clearSearch() {
+      document.getElementById("searchInput").value = "";
+      searchQuery = "";
+      document.getElementById("clearSearchBtn").classList.add("hidden");
+      applyFiltersAndRender();
+    }
+
+    function handleSortChange(val) {
+      currentSort = val;
+      applyFiltersAndRender();
+    }
+
+    function setViewMode(mode) {
+      viewMode = mode;
+      const gridBtn = document.getElementById("btnViewGrid");
+      const listBtn = document.getElementById("btnViewList");
+
+      if (mode === 'grid') {
+        gridBtn.className = "p-2 rounded-lg text-indigo-400 bg-slate-800 transition-all";
+        listBtn.className = "p-2 rounded-lg text-slate-400 hover:text-white transition-all";
+      } else {
+        listBtn.className = "p-2 rounded-lg text-indigo-400 bg-slate-800 transition-all";
+        gridBtn.className = "p-2 rounded-lg text-slate-400 hover:text-white transition-all";
+      }
+      applyFiltersAndRender();
+    }
+
+    function resetFilters() {
+      currentCategory = "ALL";
+      currentSubtag = "ALL";
+      clearSearch();
+      renderCategoryTabs();
+      renderSubtagFilters();
+      applyFiltersAndRender();
+    }
+
+    function renderFeaturedItems() {
+      const container = document.getElementById("featuredContainer");
+      container.innerHTML = "";
+
+      const featuredList = resourcesData.filter(i => i.featured);
+      
+      featuredList.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "snap-start flex-shrink-0 w-64 glass-card rounded-2xl p-3 border border-indigo-500/30 hover:border-indigo-400 transition-all duration-300 cursor-pointer group flex items-center gap-3";
+        
+        const catConfig = CATEGORY_COLORS[item.category] || CATEGORY_COLORS["Coding & Tech"];
+        
+        card.onclick = () => window.open(item.url, "_blank");
+
+        card.innerHTML = `
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr ${item.color || 'from-indigo-600 to-purple-600'} flex items-center justify-center text-white text-base shadow-md group-hover:scale-110 transition-transform">
+            <i class="fa-solid ${item.icon || 'fa-link'}"></i>
+          </div>
+          <div class="overflow-hidden flex-1">
+            <div class="flex items-center justify-between gap-1">
+              <h4 class="text-xs font-bold text-white truncate group-hover:text-indigo-300 transition-colors">${item.title}</h4>
+              <span class="text-[9px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30">★ ${item.rating}</span>
+            </div>
+            <p class="text-[10px] text-slate-400 truncate mt-0.5">${item.badge || item.category}</p>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function applyFiltersAndRender() {
+      let filtered = [...resourcesData];
+
+      // Category filter
+      if (currentCategory === "BOOKMARKS") {
+        filtered = filtered.filter(item => bookmarks.has(item.id));
+      } else if (currentCategory !== "ALL") {
+        filtered = filtered.filter(item => item.category === currentCategory);
+      }
+
+      // Subtag filter
+      if (currentSubtag !== "ALL") {
+        filtered = filtered.filter(item => item.subtag === currentSubtag);
+      }
+
+      // Search query filter
+      if (searchQuery) {
+        filtered = filtered.filter(item => 
+          item.title.toLowerCase().includes(searchQuery) ||
+          item.description.toLowerCase().includes(searchQuery) ||
+          item.category.toLowerCase().includes(searchQuery) ||
+          (item.badge && item.badge.toLowerCase().includes(searchQuery)) ||
+          (item.subtag && item.subtag.toLowerCase().includes(searchQuery))
+        );
+      }
+
+      // Sorting
+      if (currentSort === "rating") {
+        filtered.sort((a, b) => b.rating - a.rating);
+      } else if (currentSort === "name") {
+        filtered.sort((a, b) => a.title.localeCompare(b.title));
+      } else if (currentSort === "category") {
+        filtered.sort((a, b) => a.category.localeCompare(b.category));
+      }
+
+      // Update counters
+      document.getElementById("statTotalCount").innerText = resourcesData.length;
+      document.getElementById("statCategoriesCount").innerText = new Set(resourcesData.map(i => i.category)).size;
+      document.getElementById("statBookmarksCount").innerText = bookmarks.size;
+      document.getElementById("displayedCount").innerText = filtered.length;
+
+      // Render items
+      const grid = document.getElementById("resourceGrid");
+      const emptyState = document.getElementById("emptyState");
+
+      grid.innerHTML = "";
+
+      if (filtered.length === 0) {
+        grid.classList.add("hidden");
+        emptyState.classList.remove("hidden");
+        emptyState.classList.add("flex");
+        return;
+      } else {
+        grid.classList.remove("hidden");
+        emptyState.classList.add("hidden");
+        emptyState.classList.remove("flex");
+      }
+
+      // Apply view mode grid classes
+      if (viewMode === "grid") {
+        grid.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6";
+      } else {
+        grid.className = "flex flex-col gap-3";
+      }
+
+      filtered.forEach((item, index) => {
+        const card = createResourceCard(item, index);
+        grid.appendChild(card);
+      });
+    }
+
+    function createResourceCard(item, index) {
+      const isBookmarked = bookmarks.has(item.id);
+      const catConfig = CATEGORY_COLORS[item.category] || CATEGORY_COLORS["Coding & Tech"];
+      
+      const card = document.createElement("div");
+      card.style.animationDelay = `${(index % 12) * 40}ms`;
+
+      if (viewMode === "grid") {
+        card.className = "glass-card rounded-2xl p-5 border border-slate-800 flex flex-col justify-between relative group hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 perspective-1000";
+        
+        card.innerHTML = `
+          <!-- Glowing backdrop accent -->
+          <div class="absolute -top-12 -right-12 w-28 h-28 bg-gradient-to-br ${item.color || 'from-indigo-600 to-purple-600'} opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity"></div>
+
+          <div>
+            <!-- Top Card Header: Icon, Badge, Bookmark -->
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr ${item.color || 'from-indigo-600 to-purple-600'} p-0.5 shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform duration-300">
+                <div class="w-full h-full bg-slate-950/80 rounded-[14px] flex items-center justify-center text-white text-lg">
+                  <i class="fa-solid ${item.icon || 'fa-link'}"></i>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-1.5">
+                <button onclick="toggleBookmark('${item.id}', event)" title="Bookmark item"
+                  class="w-8 h-8 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 flex items-center justify-center text-xs transition-colors ${isBookmarked ? 'text-amber-400' : 'text-slate-500 hover:text-slate-300'}">
+                  <i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Title & Subtag -->
+            <div class="space-y-1.5 mb-3">
+              <div class="flex items-center gap-2">
+                <h3 class="font-outfit font-bold text-lg text-white group-hover:text-indigo-300 transition-colors line-clamp-1">
+                  ${escapeHtml(item.title)}
+                </h3>
+                ${item.featured ? '<span class="px-1.5 py-0.5 rounded bg-pink-500/20 text-pink-300 text-[9px] font-extrabold uppercase tracking-wider border border-pink-500/30">HOT</span>' : ''}
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2 text-xs">
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold ${catConfig.badge} border ${catConfig.border}">
+                  ${item.category}
+                </span>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-800 text-slate-300 border border-slate-700">
+                  #${item.subtag || 'General'}
+                </span>
+                <span class="text-amber-400 text-[11px] font-bold ml-auto flex items-center gap-1">
+                  <i class="fa-solid fa-star text-[10px]"></i> ${item.rating || '4.8'}
+                </span>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <p class="text-slate-300 text-xs leading-relaxed line-clamp-3 mb-6">
+              ${escapeHtml(item.description || 'Curated educational portal and resources link.')}
+            </p>
+          </div>
+
+          <!-- Bottom Card Footer: Action Button -->
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-3">
+            <span class="text-[10px] font-mono text-slate-400 bg-slate-900 px-2 py-1 rounded-md border border-slate-800">
+              ${item.badge || 'Portal'}
+            </span>
+
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer" 
+              class="px-4 py-2 rounded-xl bg-indigo-600/30 hover:bg-indigo-600 border border-indigo-500/40 text-indigo-200 hover:text-white font-semibold text-xs flex items-center gap-2 transition-all duration-200 group-hover:scale-105 shadow-md">
+              <span>Visit Portal</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        `;
+      } else {
+        // Compact List View Mode
+        card.className = "glass-card rounded-xl p-3.5 border border-slate-800 flex items-center justify-between gap-4 hover:border-indigo-500/40 transition-all duration-200";
+
+        card.innerHTML = `
+          <div class="flex items-center gap-3 overflow-hidden">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr ${item.color || 'from-indigo-600 to-purple-600'} flex-shrink-0 flex items-center justify-center text-white text-sm shadow">
+              <i class="fa-solid ${item.icon || 'fa-link'}"></i>
+            </div>
+            <div class="overflow-hidden">
+              <div class="flex items-center gap-2">
+                <h3 class="font-outfit font-bold text-sm text-white truncate">${escapeHtml(item.title)}</h3>
+                <span class="px-2 py-0.2 rounded-full text-[9px] font-semibold ${catConfig.badge}">
+                  ${item.category}
+                </span>
+              </div>
+              <p class="text-slate-300 text-xs truncate mt-0.5">${escapeHtml(item.description)}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <button onclick="toggleBookmark('${item.id}', event)" 
+              class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-xs ${isBookmarked ? 'text-amber-400' : 'text-slate-500 hover:text-slate-300'}">
+              <i class="${isBookmarked ? 'fa-solid' : 'fa-regular'} fa-bookmark"></i>
+            </button>
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer" 
+              class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow">
+              <span>Open</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+            </a>
+          </div>
+        `;
+      }
+
+      return card;
+    }
+
+    // Toggle Bookmarking
+    function toggleBookmark(id, event) {
+      if (event) event.stopPropagation();
+      
+      if (bookmarks.has(id)) {
+        bookmarks.delete(id);
+      } else {
+        bookmarks.add(id);
+      }
+      saveLocalStorage();
+      renderCategoryTabs();
+      applyFiltersAndRender();
+    }
+
+    function pickRandomResource() {
+      const modal = document.getElementById("randomModal");
+      const titleEl = document.getElementById("randomModalTitle");
+      const descEl = document.getElementById("randomModalDesc");
+      const launchBtn = document.getElementById("randomModalLaunchBtn");
+
+      modal.classList.remove("hidden");
+      launchBtn.classList.add("hidden");
+
+      let counter = 0;
+      const maxSpins = 18;
+      const interval = setInterval(() => {
+        const randomIndex = Math.floor(Math.random() * resourcesData.length);
+        const picked = resourcesData[randomIndex];
+        titleEl.innerText = picked.title;
+        descEl.innerText = picked.description || picked.category;
+        counter++;
+
+        if (counter >= maxSpins) {
+          clearInterval(interval);
+          launchBtn.href = picked.url;
+          launchBtn.classList.remove("hidden");
+        }
+      }, 90);
+    }
+
+    function closeRandomModal() {
+      document.getElementById("randomModal").classList.add("hidden");
+    }
+
+    function openAddModal() {
+      document.getElementById("addModal").classList.remove("hidden");
+    }
+
+    function closeAddModal() {
+      document.getElementById("addModal").classList.add("hidden");
+    }
+
+    function handleAddResource(e) {
+      e.preventDefault();
+      
+      const newResource = {
+        id: "custom_" + Date.now(),
+        title: document.getElementById("modalTitle").value.trim() || "Custom Portal",
+        url: document.getElementById("modalUrl").value.trim(),
+        category: document.getElementById("modalCategory").value,
+        subtag: document.getElementById("modalSubtag").value,
+        description: document.getElementById("modalDescription").value.trim() || "User added custom link portal.",
+        badge: document.getElementById("modalBadge").value.trim() || "Custom",
+        icon: document.getElementById("modalIcon").value.trim() || "fa-globe",
+        rating: 5,
+        featured: false,
+        color: "from-indigo-600 to-purple-600"
+      };
+
+      resourcesData.unshift(newResource);
+      saveLocalStorage();
+      closeAddModal();
+      document.getElementById("addResourceForm").reset();
+      applyFiltersAndRender();
+      renderCategoryTabs();
+    }
+
+    // Keyboard Shortcuts (Ctrl + K)
+    function setupKeyboardShortcuts() {
+      window.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+          e.preventDefault();
+          document.getElementById("searchInput").focus();
+        }
+        if (e.key === "Escape") {
+          closeAddModal();
+          closeRandomModal();
+        }
+      });
+    }
+
+    let audioCtx = null;
+    let audioNoiseNode = null;
+    let isPlayingAudio = false;
+
+    function toggleAudioGenerator() {
+      const btnLabel = document.getElementById("soundLabel");
+      const pulseDot = document.getElementById("soundPulse");
+
+      if (!isPlayingAudio) {
+        try {
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          
+          // Generate soft pink noise rain effect
+          const bufferSize = audioCtx.sampleRate * 2;
+          const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const output = noiseBuffer.getChannelData(0);
+          let b0=0, b1=0, b2=0, b3=0, b4=0, b5=0, b6=0;
+          
+          for (let i = 0; i < bufferSize; i++) {
+            let white = Math.random() * 2 - 1;
+            b0 = 0.99886 * b0 + white * 0.0555179;
+            b1 = 0.99332 * b1 + white * 0.0750759;
+            b2 = 0.96900 * b2 + white * 0.1538520;
+            b3 = 0.86650 * b3 + white * 0.3104856;
+            b4 = 0.55000 * b4 + white * 0.5329522;
+            b5 = -0.7616 * b5 - white * 0.0168980;
+            output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
+            output[i] *= 0.015; // Soft ambient volume
+            b6 = white * 0.115926;
+          }
+
+          audioNoiseNode = audioCtx.createBufferSource();
+          audioNoiseNode.buffer = noiseBuffer;
+          audioNoiseNode.loop = true;
+          audioNoiseNode.connect(audioCtx.destination);
+          audioNoiseNode.start();
+
+          isPlayingAudio = true;
+          btnLabel.innerText = "Rain Focus (On)";
+          pulseDot.className = "w-2 h-2 rounded-full bg-emerald-400 animate-ping";
+        } catch(err) {
+          console.warn("Audio Context not allowed without interaction", err);
+        }
+      } else {
+        if (audioNoiseNode) {
+          audioNoiseNode.stop();
+          audioNoiseNode.disconnect();
+        }
+        isPlayingAudio = false;
+        btnLabel.innerText = "Focus Audio";
+        pulseDot.className = "w-2 h-2 rounded-full bg-slate-500";
+      }
+    }
+
+    function setupCanvasBackground() {
+      const canvas = document.getElementById("bgCanvas");
+      const ctx = canvas.getContext("2d");
+
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particleCount = Math.floor((width * height) / 18000);
+      const particles = [];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          radius: Math.random() * 1.8 + 0.5,
+          color: ['#6366f1', '#a855f7', '#ec4899', '#3b82f6', '#10b981'][Math.floor(Math.random() * 5)]
+        });
+      }
+
+      let mouse = { x: null, y: null };
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          let p = particles[i];
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = 0.5;
+          ctx.fill();
+
+          // Connect nearby particles
+          for (let j = i + 1; j < particles.length; j++) {
+            let p2 = particles[j];
+            let dx = p.x - p2.x;
+            let dy = p.y - p2.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 100) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = p.color;
+              ctx.globalAlpha = (1 - dist / 100) * 0.15;
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    // Helper Utility function to escape HTML
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
