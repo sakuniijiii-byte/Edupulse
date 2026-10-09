@@ -163,7 +163,6 @@
       color: var(--text-main);
     }
 
-    /* Dynamic CSS Utilities */
     .app-bg { background-color: var(--bg-main); }
     .app-card { 
       background-color: var(--card-bg); 
@@ -190,7 +189,6 @@
       border: 1px solid var(--card-border);
     }
 
-    /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 7px;
       height: 7px;
@@ -206,7 +204,6 @@
       background: rgba(148, 163, 184, 0.6);
     }
 
-    /* Marquee continuous animation */
     @keyframes marquee {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-50%); }
@@ -220,7 +217,6 @@
       animation-play-state: paused;
     }
 
-    /* Scale up animation */
     @keyframes scaleUp {
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
@@ -998,8 +994,6 @@
       { id: 'lavender', name: 'Lavender (Light)', icon: 'fa-wand-magic', mode: 'light' }
     ];
 
-    
-    // --- SYNTH AUDIO FEEDBACK HELPER ---
     const playSound = (type = 'click', isMuted = false) => {
       if (isMuted) return;
       try {
@@ -1031,11 +1025,10 @@
           osc.stop(ctx.currentTime + 0.03);
         }
       } catch (e) {
-        // Audio context safety fallback
+        // Audio context fallback
       }
     };
 
-    // --- MAIN REACT APP CONTAINER ---
     function App() {
       // Theme & Appearance State
       const [currentTheme, setCurrentTheme] = useState(() => localStorage.getItem('edupulse_theme_v3') || 'sapphire');
@@ -1088,7 +1081,6 @@
         }, 3000);
       };
 
-      // Theme Synchronization Effect
       useEffect(() => {
         const html = document.documentElement;
         html.className = `theme-${currentTheme}`;
@@ -1102,7 +1094,6 @@
         localStorage.setItem('edupulse_theme_v3', currentTheme);
       }, [currentTheme]);
 
-      // Global Keyboard Shortcuts
       useEffect(() => {
         const handleKeyDown = (e) => {
           if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -1122,7 +1113,6 @@
         return () => window.removeEventListener('keydown', handleKeyDown);
       }, [isMuted]);
 
-      // Pomodoro Interval Effect
       useEffect(() => {
         let interval = null;
         if (pomoRunning && pomoTime > 0) {
@@ -1167,7 +1157,6 @@
         localStorage.setItem('edupulse_notes', text);
       };
 
-      // Filtered & Sorted Resource Calculation
       const filteredResources = useMemo(() => {
         return resources.filter(res => {
           // Category filter
@@ -1359,7 +1348,7 @@
             </div>
           </header>
 
-          {/* MAIN APP CONTENT */}
+          {}
           <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 relative z-10">
 
             {/* DYNAMIC PARTICLE BACKGROUND CANVAS */}
@@ -1436,7 +1425,7 @@
               </div>
             </section>
 
-            {/* STUDY SCRATCHPAD NOTES WIDGET */}
+            {}
             {isScratchpadOpen && (
               <div className="p-6 rounded-3xl app-card border shadow-2xl space-y-4 animate-scale-up">
                 <div className="flex items-center justify-between">
@@ -1464,7 +1453,7 @@
                   <span>{scratchpadText.length} characters written</span>
                   <button 
                     onClick={() => { saveScratchpad(''); addToast('Scratchpad cleared', 'info'); }}
-                    className="hover:text-red-500"
+                    className="hover:text-red-500 font-semibold"
                   >
                     Clear Notes
                   </button>
@@ -1509,7 +1498,7 @@
               </div>
             )}
 
-            {/* SEARCH AND FILTER CONTROLS */}
+            {}
             <section className="space-y-4">
               
               {/* Search Bar Input */}
@@ -1620,7 +1609,7 @@
 
             </section>
 
-            {/* RESOURCE CARDS DISPLAY */}
+            {}
             <section className="space-y-4">
               <div className="flex items-center justify-between text-xs app-text-sub font-semibold">
                 <span>Showing <strong className="app-text-main">{filteredResources.length}</strong> of {resources.length} verified resources</span>
@@ -1682,7 +1671,7 @@
 
           </main>
 
-          {/* FOOTER */}
+          {}
           <footer className="border-t app-header py-8 mt-16 relative z-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs app-text-sub">
               <div className="flex items-center gap-2">
@@ -1700,7 +1689,7 @@
             </div>
           </footer>
 
-          {/* MODALS & DIALOG OVERLAYS */}
+          {}
 
           {/* 1. COMMAND PALETTE MODAL (⌘K) */}
           {isCmdKOpen && (
@@ -1722,7 +1711,7 @@
                   {filteredResources.slice(0, 8).map(res => (
                     <div 
                       key={res.id} 
-                      onClick={() => { window.open(res.url, '_blank'); setIsCmdKOpen(false); }}
+                      onClick={() => { window.open(res.url, '_blank', 'noopener,noreferrer'); setIsCmdKOpen(false); }}
                       className="p-3 rounded-xl hover:bg-indigo-500/10 flex items-center justify-between cursor-pointer group transition-colors"
                     >
                       <div className="flex items-center gap-3">
@@ -1770,6 +1759,7 @@
           {isImportExportOpen && (
             <ImportExportModal 
               bookmarks={bookmarks} 
+              addToast={addToast}
               onClose={() => setIsImportExportOpen(false)} 
               onImport={(imported) => {
                 setBookmarks(imported);
@@ -1843,8 +1833,6 @@
         </div>
       );
     }
-
-    // --- CARD & UI COMPONENTS ---
 
     function ResourceCard({ res, isBookmarked, onToggleBookmark, onPreview }) {
       const handleCardClick = () => {
@@ -1964,12 +1952,14 @@
             <button 
               onClick={(e) => { e.stopPropagation(); onToggleBookmark(); }} 
               className={`p-1.5 rounded-lg text-xs ${isBookmarked ? 'text-pink-500' : 'app-text-sub hover:text-pink-500'}`}
+              title={isBookmarked ? "Remove Bookmark" : "Save Bookmark"}
             >
               <i className="fas fa-heart"></i>
             </button>
             <button 
               onClick={(e) => { e.stopPropagation(); onPreview(); }} 
               className="p-1.5 rounded-lg text-xs app-text-sub hover:text-indigo-500"
+              title="Quick Info"
             >
               <i className="fas fa-circle-info"></i>
             </button>
@@ -1979,39 +1969,6 @@
             >
               Launch
             </button>
-          </div>
-        </div>
-      );
-    }
-
-    function ResourceListItem({ res, isBookmarked, onToggleBookmark, onPreview }) {
-      return (
-        <div className="app-card border rounded-xl p-3 flex items-center justify-between gap-4 hover:border-indigo-500/40 transition-all">
-          <div className="flex items-center gap-3 truncate">
-            <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-500 border flex items-center justify-center text-xs shrink-0">
-              <i className={`fas ${res.icon && res.icon.startsWith('fa-') ? res.icon : 'fa-globe'}`}></i>
-            </div>
-            <div className="truncate">
-              <div className="flex items-center gap-2">
-                <h4 className="font-bold text-xs truncate">{res.title}</h4>
-                <span className="px-1.5 py-0.2 rounded text-[9px] font-bold app-badge">
-                  {res.badge || res.category}
-                </span>
-              </div>
-              <p className="app-text-sub text-[11px] truncate">{res.description}</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <button onClick={onToggleBookmark} className={`p-1.5 rounded-lg text-xs ${isBookmarked ? 'text-pink-500' : 'app-text-sub'}`}>
-              <i className="fas fa-heart"></i>
-            </button>
-            <button onClick={onPreview} className="p-1.5 rounded-lg text-xs app-text-sub hover:text-indigo-500">
-              <i className="fas fa-circle-info"></i>
-            </button>
-            <a href={res.url} target="_blank" rel="noopener noreferrer" className="px-3 py-1 rounded-lg bg-indigo-600 text-white text-xs font-bold">
-              Launch
-            </a>
           </div>
         </div>
       );
@@ -2145,6 +2102,7 @@
       const [picked, setPicked] = useState(null);
 
       const handleSpin = () => {
+        if (!resources || resources.length === 0) return;
         setSpinning(true);
         setPicked(null);
         let count = 0;
@@ -2201,8 +2159,9 @@
       );
     }
 
-    function ImportExportModal({ bookmarks, onClose, onImport }) {
+    function ImportExportModal({ bookmarks, addToast, onClose, onImport }) {
       const [jsonText, setJsonText] = useState('');
+      const [errorMsg, setErrorMsg] = useState('');
 
       const handleExport = () => {
         const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(bookmarks, null, 2));
@@ -2212,18 +2171,20 @@
         document.body.appendChild(anchor);
         anchor.click();
         anchor.remove();
+        if (addToast) addToast('Bookmarks backup exported!', 'success');
       };
 
       const handleImportSubmit = () => {
+        setErrorMsg('');
         try {
           const parsed = JSON.parse(jsonText);
           if (Array.isArray(parsed)) {
             onImport(parsed);
           } else {
-            alert('Invalid JSON array format.');
+            setErrorMsg('Invalid format: Exported backup must be a valid JSON array.');
           }
         } catch (err) {
-          alert('Error parsing JSON text.');
+          setErrorMsg('Parsing error: Please verify valid JSON text syntax.');
         }
       };
 
@@ -2235,6 +2196,13 @@
               <button onClick={onClose} className="app-text-sub hover:text-indigo-500"><i className="fas fa-xmark"></i></button>
             </div>
 
+            {errorMsg && (
+              <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 text-xs font-semibold flex items-center gap-2">
+                <i className="fas fa-circle-exclamation"></i>
+                <span>{errorMsg}</span>
+              </div>
+            )}
+
             <div className="space-y-3">
               <button onClick={handleExport} className="w-full py-2.5 rounded-xl app-card hover:border-indigo-500/50 font-semibold text-xs flex items-center justify-center gap-2">
                 <i className="fas fa-download text-indigo-500"></i> Download JSON Backup
@@ -2245,7 +2213,7 @@
               <textarea 
                 rows="3" 
                 value={jsonText} 
-                onChange={e=>setJsonText(e.target.value)} 
+                onChange={e=>{ setJsonText(e.target.value); setErrorMsg(''); }} 
                 placeholder='["sp1", "jn1", "jn3"]' 
                 className="w-full app-input border rounded-xl p-3 text-xs font-mono focus:outline-none"
               ></textarea>
