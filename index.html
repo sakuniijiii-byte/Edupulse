@@ -237,7 +237,7 @@
   <script type="text/babel">
     const { useState, useEffect, useMemo, useRef } = React;
 
-    // --- FULL VERIFIED 56+ EDUCATIONAL RESOURCE DATASET ---
+    // --- FULL VERIFIED 62+ EDUCATIONAL RESOURCE DATASET ---
     const INITIAL_RESOURCES = [
       {
         id: "sp1",
@@ -456,6 +456,30 @@
         subtag: "Books"
       },
       {
+        id: "bk4",
+        title: "Project Gutenberg",
+        description: "Library of over 70,000 free eBooks, including classic literature and foundational historical books.",
+        category: "Free Books",
+        badge: "Classics",
+        rating: 4.9,
+        url: "https://www.gutenberg.org/",
+        featured: false,
+        icon: "fa-feather",
+        subtag: "Books"
+      },
+      {
+        id: "bk5",
+        title: "Library Genesis (LibGen)",
+        description: "Scientific and academic article search engine providing free access to millions of textbooks and research.",
+        category: "Free Books",
+        badge: "Academic Lib",
+        rating: 4.9,
+        url: "https://libgen.is/",
+        featured: true,
+        icon: "fa-graduation-cap",
+        subtag: "Books"
+      },
+      {
         id: "26",
         title: "Perplexity AI",
         description: "AI powered answer engine providing sourced research answers and citation summaries.",
@@ -502,6 +526,42 @@
         featured: false,
         icon: "fa-brain",
         subtag: "AI"
+      },
+      {
+        id: "ai5",
+        title: "ChatGPT",
+        description: "OpenAI's benchmark conversational AI for step-by-step problem solving, math help, and study aid.",
+        category: "AI & Study",
+        badge: "Popular AI",
+        rating: 4.9,
+        url: "https://chatgpt.com/",
+        featured: true,
+        icon: "fa-comments",
+        subtag: "AI"
+      },
+      {
+        id: "ai6",
+        title: "Google Gemini",
+        description: "Google's multimodal AI assistant for research, document analysis, image recognition, and explanations.",
+        category: "AI & Study",
+        badge: "Multimodal AI",
+        rating: 4.8,
+        url: "https://gemini.google.com/",
+        featured: false,
+        icon: "fa-sparkles",
+        subtag: "AI"
+      },
+      {
+        id: "pr1",
+        title: "AnkiWeb Flashcards",
+        description: "Powerful spaced repetition flashcards for efficient long-term memory and exam formula retention.",
+        category: "Productivity",
+        badge: "Spaced Repetition",
+        rating: 4.9,
+        url: "https://ankiweb.net/",
+        featured: true,
+        icon: "fa-layer-group",
+        subtag: "Books"
       },
       {
         id: "pr2",
@@ -1787,8 +1847,15 @@
     // --- CARD & UI COMPONENTS ---
 
     function ResourceCard({ res, isBookmarked, onToggleBookmark, onPreview }) {
+      const handleCardClick = () => {
+        window.open(res.url, '_blank', 'noopener,noreferrer');
+      };
+
       return (
-        <div className="group app-card border rounded-2xl p-4 sm:p-5 flex flex-col justify-between relative hover:-translate-y-1 transition-all duration-300">
+        <div 
+          onClick={handleCardClick}
+          className="group app-card border rounded-2xl p-4 sm:p-5 flex flex-col justify-between relative hover:-translate-y-1 hover:border-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300 cursor-pointer select-none"
+        >
           <div className="space-y-3">
             
             {/* Header: Icon, Title & Heart */}
@@ -1808,7 +1875,10 @@
               </div>
 
               <button 
-                onClick={(e) => { e.stopPropagation(); onToggleBookmark(); }}
+                onClick={(e) => { 
+                  e.stopPropagation(); 
+                  onToggleBookmark(); 
+                }}
                 className={`p-2 rounded-xl transition-all ${
                   isBookmarked 
                     ? 'bg-pink-500/20 text-pink-500 border border-pink-500/30' 
@@ -1840,22 +1910,75 @@
           {/* Action Row */}
           <div className="pt-3 mt-3 border-t flex items-center justify-between gap-2">
             <button 
-              onClick={onPreview}
-              className="p-2 rounded-lg app-card hover:border-indigo-500/50 text-xs app-text-sub hover:text-indigo-500"
+              onClick={(e) => {
+                e.stopPropagation();
+                onPreview();
+              }}
+              className="p-2 rounded-lg app-card hover:border-indigo-500/50 text-xs app-text-sub hover:text-indigo-500 transition-colors"
               title="Quick Info"
             >
               <i className="fas fa-circle-info"></i>
             </button>
             
-            <a 
-              href={res.url} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(res.url, '_blank', 'noopener,noreferrer');
+              }}
               className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-all flex items-center gap-1.5 shadow-md shadow-indigo-600/20"
             >
               <span>Launch</span>
               <i className="fas fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    function ResourceListItem({ res, isBookmarked, onToggleBookmark, onPreview }) {
+      const handleItemClick = () => {
+        window.open(res.url, '_blank', 'noopener,noreferrer');
+      };
+
+      return (
+        <div 
+          onClick={handleItemClick}
+          className="app-card border rounded-xl p-3 flex items-center justify-between gap-4 hover:border-indigo-500/50 transition-all cursor-pointer select-none group"
+        >
+          <div className="flex items-center gap-3 truncate">
+            <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-500 border flex items-center justify-center text-xs shrink-0 group-hover:scale-105 transition-transform">
+              <i className={`fas ${res.icon && res.icon.startsWith('fa-') ? res.icon : 'fa-globe'}`}></i>
+            </div>
+            <div className="truncate">
+              <div className="flex items-center gap-2">
+                <h4 className="font-bold text-xs truncate group-hover:text-indigo-500 transition-colors">{res.title}</h4>
+                <span className="px-1.5 py-0.2 rounded text-[9px] font-bold app-badge">
+                  {res.badge || res.category}
+                </span>
+              </div>
+              <p className="app-text-sub text-[11px] truncate">{res.description}</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0">
+            <button 
+              onClick={(e) => { e.stopPropagation(); onToggleBookmark(); }} 
+              className={`p-1.5 rounded-lg text-xs ${isBookmarked ? 'text-pink-500' : 'app-text-sub hover:text-pink-500'}`}
+            >
+              <i className="fas fa-heart"></i>
+            </button>
+            <button 
+              onClick={(e) => { e.stopPropagation(); onPreview(); }} 
+              className="p-1.5 rounded-lg text-xs app-text-sub hover:text-indigo-500"
+            >
+              <i className="fas fa-circle-info"></i>
+            </button>
+            <button 
+              onClick={(e) => { e.stopPropagation(); window.open(res.url, '_blank', 'noopener,noreferrer'); }} 
+              className="px-3 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all"
+            >
+              Launch
+            </button>
           </div>
         </div>
       );
