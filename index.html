@@ -1,11 +1,11 @@
+```html
 <!DOCTYPE html>
-<html lang="en" class="dark theme-sapphire">
+<html lang="en" class="dark theme-slate">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduPulse PRO 3.0 — Curated Knowledge, JEE/NEET & Tech Hub</title>
+  <title>EduPulse PRO — Modern & Animated Study Hub</title>
 
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -13,33 +13,58 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              50: '#eef2ff',
-              100: '#e0e7ff',
-              400: '#818cf8',
-              500: '#6366f1',
-              600: '#4f46e5',
-              700: '#4338ca',
-              900: '#312e81',
-              950: '#0f172a'
+            accent: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              400: '#38bdf8',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
             }
           },
           fontFamily: {
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
-            display: ['Space Grotesk', 'sans-serif']
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          animation: {
+            'pulse-glow': 'pulseGlow 3s infinite alternate',
+            'float': 'float 6s ease-in-out infinite',
+            'shimmer': 'shimmer 2.5s infinite linear',
+            'fade-in-up': 'fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'scale-up': 'scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards'
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%': { boxShadow: '0 0 15px rgba(56, 189, 248, 0.15), 0 0 30px rgba(99, 102, 241, 0.1)' },
+              '100%': { boxShadow: '0 0 25px rgba(56, 189, 248, 0.35), 0 0 50px rgba(99, 102, 241, 0.25)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-6px)' }
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' }
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(12px) scale(0.98)' },
+              '100%': { opacity: '1', transform: 'translateY(0) scale(1)' }
+            },
+            scaleUp: {
+              '0%': { transform: 'scale(0.95)', opacity: '0' },
+              '100%': { transform: 'scale(1)', opacity: '1' }
+            }
           }
         }
       }
     }
   </script>
 
-  <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- React 18 & Babel Standalone CDN -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -47,193 +72,200 @@
   <style>
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       overflow-x: hidden;
-      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* THEME VARIABLE ARCHITECTURE (SUPPORTING BOTH DARK & LIGHT MODES) */
-    
-    /* 1. Sapphire (Default Dark) */
-    .theme-sapphire {
-      --bg-main: #090d16;
-      --card-bg: rgba(15, 23, 42, 0.8);
-      --card-border: rgba(51, 65, 85, 0.6);
+    .theme-slate {
+      --bg-main: #070a12;
+      --bg-surface: rgba(15, 23, 42, 0.75);
+      --bg-card: rgba(26, 36, 56, 0.65);
+      --bg-card-hover: rgba(33, 47, 73, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(56, 189, 248, 0.4);
       --text-main: #f8fafc;
-      --text-sub: #94a3b8;
-      --accent: #6366f1;
-      --accent-glow: rgba(99, 102, 241, 0.3);
-      --header-bg: rgba(9, 13, 22, 0.85);
-      --input-bg: rgba(15, 23, 42, 0.9);
-      --badge-bg: rgba(99, 102, 241, 0.15);
-      --badge-text: #818cf8;
+      --text-muted: #94a3b8;
+      --accent-color: #38bdf8;
+      --badge-bg: rgba(56, 189, 248, 0.12);
+      --badge-text: #38bdf8;
+      --glow-gradient: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12), transparent 70%);
     }
 
-    /* 2. Cyberpunk Neon (Dark) */
-    .theme-cyberpunk {
-      --bg-main: #05050a;
-      --card-bg: rgba(18, 12, 28, 0.85);
-      --card-border: rgba(236, 72, 153, 0.4);
-      --text-main: #f4f4f5;
-      --text-sub: #a1a1aa;
-      --accent: #ec4899;
-      --accent-glow: rgba(236, 72, 153, 0.35);
-      --header-bg: rgba(5, 5, 10, 0.85);
-      --input-bg: rgba(18, 12, 28, 0.9);
-      --badge-bg: rgba(236, 72, 153, 0.15);
-      --badge-text: #f472b6;
-    }
-
-    /* 3. Emerald Matrix (Dark) */
-    .theme-emerald {
-      --bg-main: #02120d;
-      --card-bg: rgba(6, 38, 28, 0.85);
-      --card-border: rgba(16, 185, 129, 0.4);
-      --text-main: #ecfdf5;
-      --text-sub: #6ee7b7;
-      --accent: #10b981;
-      --accent-glow: rgba(16, 185, 129, 0.35);
-      --header-bg: rgba(2, 18, 13, 0.85);
-      --input-bg: rgba(6, 38, 28, 0.9);
-      --badge-bg: rgba(16, 185, 129, 0.15);
-      --badge-text: #34d399;
-    }
-
-    /* 4. Dracula Purple (Dark) */
-    .theme-dracula {
-      --bg-main: #0d0914;
-      --card-bg: rgba(26, 18, 41, 0.85);
-      --card-border: rgba(168, 85, 247, 0.4);
-      --text-main: #faf5ff;
-      --text-sub: #c084fc;
-      --accent: #a855f7;
-      --accent-glow: rgba(168, 85, 247, 0.35);
-      --header-bg: rgba(13, 9, 20, 0.85);
-      --input-bg: rgba(26, 18, 41, 0.9);
-      --badge-bg: rgba(168, 85, 247, 0.15);
-      --badge-text: #c084fc;
-    }
-
-    /* 5. Sunset Gold (Dark) */
-    .theme-sunset {
-      --bg-main: #120b07;
-      --card-bg: rgba(38, 20, 12, 0.85);
-      --card-border: rgba(245, 158, 11, 0.4);
-      --text-main: #fffbeb;
-      --text-sub: #fcd34d;
-      --accent: #f59e0b;
-      --accent-glow: rgba(245, 158, 11, 0.35);
-      --header-bg: rgba(18, 11, 7, 0.85);
-      --input-bg: rgba(38, 20, 12, 0.9);
-      --badge-bg: rgba(245, 158, 11, 0.15);
-      --badge-text: #fbbf24;
-    }
-
-    /* 6. Porcelain Pure Light */
     .theme-light {
       --bg-main: #f1f5f9;
-      --card-bg: #ffffff;
-      --card-border: #cbd5e1;
+      --bg-surface: rgba(255, 255, 255, 0.85);
+      --bg-card: rgba(255, 255, 255, 0.75);
+      --bg-card-hover: rgba(255, 255, 255, 0.98);
+      --border-color: rgba(226, 232, 240, 0.9);
+      --border-highlight: rgba(37, 99, 235, 0.4);
       --text-main: #0f172a;
-      --text-sub: #475569;
-      --accent: #4f46e5;
-      --accent-glow: rgba(79, 70, 229, 0.2);
-      --header-bg: rgba(255, 255, 255, 0.85);
-      --input-bg: #ffffff;
-      --badge-bg: rgba(79, 70, 229, 0.1);
-      --badge-text: #4338ca;
-    }
-
-    /* 7. Lavender Light Mode */
-    .theme-lavender {
-      --bg-main: #f3f0ff;
-      --card-bg: #ffffff;
-      --card-border: #ddd6fe;
-      --text-main: #1e1b4b;
-      --text-sub: #6b21a8;
-      --accent: #7c3aed;
-      --accent-glow: rgba(124, 58, 237, 0.2);
-      --header-bg: rgba(255, 255, 255, 0.9);
-      --input-bg: #ffffff;
-      --badge-bg: rgba(124, 58, 237, 0.1);
-      --badge-text: #6d28d9;
+      --text-muted: #64748b;
+      --accent-color: #2563eb;
+      --badge-bg: rgba(37, 99, 235, 0.08);
+      --badge-text: #1d4ed8;
+      --glow-gradient: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.08), transparent 70%);
     }
 
     body {
       background-color: var(--bg-main);
       color: var(--text-main);
+      background-image: var(--glow-gradient);
+      background-attachment: fixed;
     }
 
-    .app-bg { background-color: var(--bg-main); }
-    .app-card { 
-      background-color: var(--card-bg); 
-      border-color: var(--card-border); 
-      color: var(--text-main);
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .app-card:hover {
-      box-shadow: 0 10px 30px -10px var(--accent-glow);
+
+    .glass-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-highlight);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.3);
     }
-    .app-text-main { color: var(--text-main); }
-    .app-text-sub { color: var(--text-sub); }
-    .app-header { 
-      background-color: var(--header-bg); 
-      border-color: var(--card-border); 
+
+    .glass-nav {
+      background: var(--bg-surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
     }
-    .app-input { 
-      background-color: var(--input-bg); 
-      border-color: var(--card-border); 
-      color: var(--text-main); 
-    }
+
+    .app-border { border-color: var(--border-color); }
+    .app-muted { color: var(--text-muted); }
     .app-badge {
       background-color: var(--badge-bg);
       color: var(--badge-text);
-      border: 1px solid var(--card-border);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Custom animated gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .shimmer-btn {
+      background: linear-gradient(90deg, #0284c7 0%, #38bdf8 50%, #0284c7 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite linear;
     }
 
     ::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
     }
     ::-webkit-scrollbar-track {
       background: var(--bg-main);
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(100, 116, 139, 0.4);
-      border-radius: 4px;
+      background: var(--border-color);
+      border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: rgba(148, 163, 184, 0.6);
-    }
-
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
-    .animate-marquee {
-      display: flex;
-      width: 200%;
-      animation: marquee 35s linear infinite;
-    }
-    .animate-marquee:hover {
-      animation-play-state: paused;
-    }
-
-    @keyframes scaleUp {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .animate-scale-up {
-      animation: scaleUp 0.2s ease-out forwards;
+      background: var(--accent-color);
     }
   </style>
 </head>
-<body class="min-h-screen selection:bg-indigo-500 selection:text-white">
+<body class="min-h-screen selection:bg-sky-500 selection:text-white">
 
   <div id="root"></div>
 
   <script type="text/babel">
     const { useState, useEffect, useMemo, useRef } = React;
 
-    // --- FULL VERIFIED 62+ EDUCATIONAL RESOURCE DATASET ---
+    const TEACHERS_DATA = [
+      {
+        id: "t1",
+        name: "RCM Sir",
+        image: "https://i.ibb.co/tTqKFyp8/RCM-SIR.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasPhrjrSqNnxyiLwaDI_Qml",
+        subject: "Expert Educator"
+      },
+      {
+        id: "t2",
+        name: "MKG Sir",
+        image: "https://i.ibb.co/3x97xd0/MKG-SIR.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauIS74mnISFrQttmOdM1-As",
+        subject: "Expert Educator"
+      },
+      {
+        id: "t3",
+        name: "Dilip Arora Sir (DA)",
+        image: "https://i.ibb.co/ZRfPy476/DILIP-ARORA-SIR-DA.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatKeD-H1MIcRIFsfgnYoARM",
+        subject: "Expert Educator"
+      },
+      {
+        id: "t4",
+        name: "MJ Star",
+        image: "https://i.ibb.co/4gdKvtxD/MJ-STAR.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatxrU7mofuhm4EIqjJTOGsx",
+        subject: "Expert Educator"
+      },
+      {
+        id: "t5",
+        name: "INSAF ALI 25+26",
+        image: "https://i.ibb.co/PGjy3M49/INSAF-ALI-SIR.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauRxuhd51FjB4E9fx1VZHa2",
+        subject: "Batch 25+26"
+      },
+      {
+        id: "t6",
+        name: "Radhe Shyam Khandelwar (RSK)",
+        image: "https://i.ibb.co/Ldf3j5gY/RADHE-SHYAM-KHANDELWAR-RSK.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUat-QWU0bF7vGZMp3GWzeLrZ",
+        subject: "Expert Educator"
+      },
+      {
+        id: "t7",
+        name: "Acid Sir MP1",
+        image: "https://i.ibb.co/7x2rg9Hh/ACID-SIR-MP1.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauNwiUN6JfPzzn-oBmohWTp",
+        subject: "MP1 Specialist"
+      },
+      {
+        id: "t8",
+        name: "RAVI DUBEY 26",
+        image: "https://i.ibb.co/C3rtKPnn/RAVI-DUBEY-SIR.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasEpc2FqiGD9YSLb7wlhawG",
+        subject: "Batch 26"
+      },
+      {
+        id: "t9",
+        name: "TNM CONQUER 1",
+        image: "https://i.ibb.co/Y7bCYBGG/TNM-SIR.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUavDapnfWF1vAYozb6J5-WpT",
+        subject: "Conquer Series"
+      },
+      {
+        id: "t10",
+        name: "YSY CONQUER 26",
+        image: "https://i.ibb.co/XZPd2d3J/YSY-SIR.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasNSyhAj5uTe3xZFNZEo-XT",
+        subject: "Conquer 26"
+      },
+      {
+        id: "t11",
+        name: "ASHISH GUPTA SARVAN 26",
+        image: "https://i.ibb.co/1HqPrL6/ASHISH-GUPTA-SIR.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasViC2fWpvWwdSkcjSbO5tE",
+        subject: "Sarvan 26"
+      },
+      {
+        id: "t12",
+        name: "Mahesh Patidar",
+        image: "https://i.ibb.co/RTGnxShs/Smart-Select-20260609-170750-Google.jpg",
+        playlist: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatUhVc-yyM09k1idZ5ZUsdZ",
+        subject: "Expert Educator"
+      }
+    ];
+
     const INITIAL_RESOURCES = [
       {
         id: "sp1",
@@ -243,7 +275,6 @@
         badge: "StudyPanda",
         rating: 5,
         url: "https://studypanda.live/",
-        featured: true,
         icon: "fa-paw",
         subtag: "Batches"
       },
@@ -255,7 +286,6 @@
         badge: "Allen Tests",
         rating: 4.9,
         url: "http://test.neetxnoah1.workers.dev",
-        featured: true,
         icon: "fa-vial",
         subtag: "Tests"
       },
@@ -267,7 +297,6 @@
         badge: "PW Books",
         rating: 4.8,
         url: "https://pikachu-books.vercel.app/",
-        featured: true,
         icon: "fa-book-bookmark",
         subtag: "Books"
       },
@@ -279,7 +308,6 @@
         badge: "PW Batches",
         rating: 4.9,
         url: "https://pwthor.live",
-        featured: true,
         icon: "fa-bolt",
         subtag: "Batches"
       },
@@ -291,7 +319,6 @@
         badge: "CBT Portal",
         rating: 4.8,
         url: "https://pikachuxcbt.vercel.app/",
-        featured: true,
         icon: "fa-laptop-code",
         subtag: "Tests"
       },
@@ -303,7 +330,6 @@
         badge: "CBT Converter",
         rating: 4.9,
         url: "http://newtcbt.vercel.app",
-        featured: true,
         icon: "fa-file-code",
         subtag: "Tests"
       },
@@ -315,7 +341,6 @@
         badge: "JEE PYQs",
         rating: 4.9,
         url: "https://pikachu-jee-cbt.vercel.app/",
-        featured: true,
         icon: "fa-clock-rotate-left",
         subtag: "PYQs"
       },
@@ -327,7 +352,6 @@
         badge: "PYQ App",
         rating: 4.9,
         url: "https://web.getmarks.app/",
-        featured: false,
         icon: "fa-bullseye",
         subtag: "PYQs"
       },
@@ -339,7 +363,6 @@
         badge: "Reddit Pick",
         rating: 4.9,
         url: "https://deltastudy.site",
-        featured: true,
         icon: "fa-clapperboard",
         subtag: "Batches"
       },
@@ -351,7 +374,6 @@
         badge: "Free Batches",
         rating: 4.8,
         url: "https://vedstudy.site",
-        featured: true,
         icon: "fa-video",
         subtag: "Batches"
       },
@@ -363,33 +385,8 @@
         badge: "Keyless Player",
         rating: 4.9,
         url: "https://pw4free.com",
-        featured: true,
         icon: "fa-key",
         subtag: "Batches"
-      },
-      {
-        id: "jn14",
-        title: "Unacademy Free Notes",
-        description: "World-class video lectures, JEE revision notes, and conceptual checklists.",
-        category: "JEE & NEET",
-        badge: "Physics Hub",
-        rating: 4.9,
-        url: "http://studyuk.online",
-        featured: false,
-        icon: "fa-atom",
-        subtag: "Batches"
-      },
-      {
-        id: "jn15",
-        title: "ExamGoal JEE & NEET",
-        description: "High-precision real-time exam practice platform featuring past 10+ years JEE Main/Adv and NEET CBT papers.",
-        category: "JEE & NEET",
-        badge: "Mock Analytics",
-        rating: 4.9,
-        url: "https://www.examgoal.com/",
-        featured: false,
-        icon: "fa-square-check",
-        subtag: "Tests"
       },
       {
         id: "rd1",
@@ -399,7 +396,6 @@
         badge: "Shadow Library",
         rating: 4.9,
         url: "https://annas-archive.org/",
-        featured: true,
         icon: "fa-book-atlas",
         subtag: "Books"
       },
@@ -411,68 +407,7 @@
         badge: "Megathread",
         rating: 5,
         url: "https://fmhy.net/edupiracy",
-        featured: true,
         icon: "fa-shield-halved",
-        subtag: "Books"
-      },
-      {
-        id: "1",
-        title: "Internet Archive",
-        description: "Non-profit library of millions of free books, movies, software, music, websites, and historic texts.",
-        category: "Free Books",
-        badge: "100% Free",
-        rating: 4.8,
-        url: "https://archive.org",
-        featured: false,
-        icon: "fa-box-archive",
-        subtag: "Books"
-      },
-      {
-        id: "bk2",
-        title: "PDF Drive Library",
-        description: "Search engine with over 75+ million free PDF books, research manuals, self-help, and textbooks.",
-        category: "Free Books",
-        badge: "PDF Search",
-        rating: 4.8,
-        url: "https://www.pdfdrive.com/",
-        featured: false,
-        icon: "fa-file-pdf",
-        subtag: "Books"
-      },
-      {
-        id: "bk3",
-        title: "Open Library",
-        description: "An open, editable library catalog attempting to create a web page for every book ever published.",
-        category: "Free Books",
-        badge: "Open Access",
-        rating: 4.7,
-        url: "https://openlibrary.org/",
-        featured: false,
-        icon: "fa-book-open-reader",
-        subtag: "Books"
-      },
-      {
-        id: "bk4",
-        title: "Project Gutenberg",
-        description: "Library of over 70,000 free eBooks, including classic literature and foundational historical books.",
-        category: "Free Books",
-        badge: "Classics",
-        rating: 4.9,
-        url: "https://www.gutenberg.org/",
-        featured: false,
-        icon: "fa-feather",
-        subtag: "Books"
-      },
-      {
-        id: "bk5",
-        title: "Library Genesis (LibGen)",
-        description: "Scientific and academic article search engine providing free access to millions of textbooks and research.",
-        category: "Free Books",
-        badge: "Academic Lib",
-        rating: 4.9,
-        url: "https://libgen.is/",
-        featured: true,
-        icon: "fa-graduation-cap",
         subtag: "Books"
       },
       {
@@ -483,129 +418,8 @@
         badge: "Free Tier",
         rating: 4.8,
         url: "https://www.perplexity.ai",
-        featured: true,
         icon: "fa-robot",
         subtag: "AI"
-      },
-      {
-        id: "27",
-        title: "Consensus AI",
-        description: "AI search engine that reads peer-reviewed papers to give science-backed research answers.",
-        category: "AI & Study",
-        badge: "AI Research",
-        rating: 4.7,
-        url: "https://consensus.app",
-        featured: false,
-        icon: "fa-wand-magic-sparkles",
-        subtag: "AI"
-      },
-      {
-        id: "ai3",
-        title: "Phind AI Engine",
-        description: "Generative AI search engine built specifically for developers, complex math problems, and technical topics.",
-        category: "AI & Study",
-        badge: "Tech AI",
-        rating: 4.9,
-        url: "https://www.phind.com/",
-        featured: false,
-        icon: "fa-microchip",
-        subtag: "AI"
-      },
-      {
-        id: "ai4",
-        title: "Claude AI Studio",
-        description: "Anthropic's advanced AI assistant renowned for articulate writing, long-document reasoning, and coding.",
-        category: "AI & Study",
-        badge: "Top Rated",
-        rating: 4.9,
-        url: "https://claude.ai/",
-        featured: false,
-        icon: "fa-brain",
-        subtag: "AI"
-      },
-      {
-        id: "ai5",
-        title: "ChatGPT",
-        description: "OpenAI's benchmark conversational AI for step-by-step problem solving, math help, and study aid.",
-        category: "AI & Study",
-        badge: "Popular AI",
-        rating: 4.9,
-        url: "https://chatgpt.com/",
-        featured: true,
-        icon: "fa-comments",
-        subtag: "AI"
-      },
-      {
-        id: "ai6",
-        title: "Google Gemini",
-        description: "Google's multimodal AI assistant for research, document analysis, image recognition, and explanations.",
-        category: "AI & Study",
-        badge: "Multimodal AI",
-        rating: 4.8,
-        url: "https://gemini.google.com/",
-        featured: false,
-        icon: "fa-sparkles",
-        subtag: "AI"
-      },
-      {
-        id: "pr1",
-        title: "AnkiWeb Flashcards",
-        description: "Powerful spaced repetition flashcards for efficient long-term memory and exam formula retention.",
-        category: "Productivity",
-        badge: "Spaced Repetition",
-        rating: 4.9,
-        url: "https://ankiweb.net/",
-        featured: true,
-        icon: "fa-layer-group",
-        subtag: "Books"
-      },
-      {
-        id: "pr2",
-        title: "LifeAt Virtual Study Spaces",
-        description: "Immersive study environments with lofi music, pomodoro timers, and co-working virtual rooms.",
-        category: "Productivity",
-        badge: "Focus Space",
-        rating: 4.8,
-        url: "https://lifeat.io/",
-        featured: false,
-        icon: "fa-mug-hot",
-        subtag: "Batches"
-      },
-      {
-        id: "pr3",
-        title: "Notion Study Templates",
-        description: "Free customizable Notion workspace templates for student second brains, assignment tracking, and notes.",
-        category: "Productivity",
-        badge: "Templates",
-        rating: 4.8,
-        url: "https://www.notion.so/templates",
-        featured: false,
-        icon: "fa-table-cells",
-        subtag: "Books"
-      },
-      {
-        id: "cd1",
-        title: "Replit Cloud IDE",
-        description: "Instant online browser compiler and collaborative workspace supporting 50+ programming languages.",
-        category: "Coding & Tech",
-        badge: "Online Compiler",
-        rating: 4.8,
-        url: "https://replit.com/",
-        featured: false,
-        icon: "fa-code",
-        subtag: "Tests"
-      },
-      {
-        id: "cd2",
-        title: "Excalidraw Diagramming",
-        description: "Virtual hand-drawn sketch canvas for quick flowcharts, mind maps, and whiteboard visual study.",
-        category: "Coding & Tech",
-        badge: "Whiteboard",
-        rating: 4.9,
-        url: "https://excalidraw.com/",
-        featured: false,
-        icon: "fa-pen-ruler",
-        subtag: "Fun"
       },
       {
         id: "cd3",
@@ -615,297 +429,8 @@
         badge: "Version Control",
         rating: 5,
         url: "https://github.com/",
-        featured: true,
         icon: "fa-brands fa-github",
         subtag: "Books"
-      },
-      {
-        id: "cd4",
-        title: "Stack Overflow",
-        description: "World's largest Q&A community for programmers, software engineers, and computer science students.",
-        category: "Coding & Tech",
-        badge: "Dev Q&A",
-        rating: 4.9,
-        url: "https://stackoverflow.com/",
-        featured: true,
-        icon: "fa-brands fa-stack-overflow",
-        subtag: "PYQs"
-      },
-      {
-        id: "cd5",
-        title: "LeetCode",
-        description: "Premier coding challenge platform for honing data structures, algorithms, and technical interview prep.",
-        category: "Coding & Tech",
-        badge: "DSA Practice",
-        rating: 4.9,
-        url: "https://leetcode.com/",
-        featured: true,
-        icon: "fa-terminal",
-        subtag: "Tests"
-      },
-      {
-        id: "cd6",
-        title: "HackerRank",
-        description: "Interactive skill practice platform covering Python, SQL, C++, algorithms, and certification badges.",
-        category: "Coding & Tech",
-        badge: "Coding Badges",
-        rating: 4.8,
-        url: "https://www.hackerrank.com/",
-        featured: false,
-        icon: "fa-laptop-code",
-        subtag: "Tests"
-      },
-      {
-        id: "cd7",
-        title: "CodeChef",
-        description: "Indian & global competitive programming platform hosting contests, long challenges, and beginner tutorials.",
-        category: "Coding & Tech",
-        badge: "Contests",
-        rating: 4.8,
-        url: "https://www.codechef.com/",
-        featured: false,
-        icon: "fa-fire",
-        subtag: "Tests"
-      },
-      {
-        id: "cd8",
-        title: "Codeforces",
-        description: "Top-rated competitive coding platform for high-frequency contests, rating levels, and algorithm problemsets.",
-        category: "Coding & Tech",
-        badge: "Competitive",
-        rating: 4.9,
-        url: "https://codeforces.com/",
-        featured: false,
-        icon: "fa-chart-simple",
-        subtag: "Tests"
-      },
-      {
-        id: "cd9",
-        title: "freeCodeCamp",
-        description: "Free full-stack curriculum with hands-on projects and verified certifications in web development & Python.",
-        category: "Coding & Tech",
-        badge: "Free Courses",
-        rating: 5,
-        url: "https://www.freecodecamp.org/",
-        featured: true,
-        icon: "fa-campground",
-        subtag: "Batches"
-      },
-      {
-        id: "cd10",
-        title: "MDN Web Docs",
-        description: "The definitive Mozilla developer documentation for HTML, CSS, JavaScript, and Web APIs.",
-        category: "Coding & Tech",
-        badge: "Official Docs",
-        rating: 5,
-        url: "https://developer.mozilla.org/",
-        featured: true,
-        icon: "fa-book-journal-whills",
-        subtag: "Books"
-      },
-      {
-        id: "cd11",
-        title: "CodePen",
-        description: "Social web development environment for building, testing, and showcasing front-end HTML/CSS/JS snippets.",
-        category: "Coding & Tech",
-        badge: "Frontend Sandbox",
-        rating: 4.8,
-        url: "https://codepen.io/",
-        featured: false,
-        icon: "fa-brands fa-codepen",
-        subtag: "Fun"
-      },
-      {
-        id: "cd12",
-        title: "JSFiddle",
-        description: "Lightweight online web sandbox for quick testing and sharing HTML, CSS, and JavaScript code snippets.",
-        category: "Coding & Tech",
-        badge: "Web Sandbox",
-        rating: 4.7,
-        url: "https://jsfiddle.net/",
-        featured: false,
-        icon: "fa-brands fa-js",
-        subtag: "Tests"
-      },
-      {
-        id: "cd13",
-        title: "StackBlitz",
-        description: "WebContainers-powered instant browser IDE for React, Angular, Vue, and full-stack Node.js environments.",
-        category: "Coding & Tech",
-        badge: "Instant Node IDE",
-        rating: 4.9,
-        url: "https://stackblitz.com/",
-        featured: true,
-        icon: "fa-bolt-lightning",
-        subtag: "Tests"
-      },
-      {
-        id: "cd14",
-        title: "GeeksforGeeks",
-        description: "Massive computer science hub featuring algorithms, DSA course notes, language syntax, and interview roadmaps.",
-        category: "Coding & Tech",
-        badge: "CS Tutorials",
-        rating: 4.8,
-        url: "https://www.geeksforgeeks.org/",
-        featured: false,
-        icon: "fa-square-binary",
-        subtag: "Books"
-      },
-      {
-        id: "cd15",
-        title: "Roadmap.sh",
-        description: "Community-created visual roadmaps, guidebooks, and paths for Frontend, Backend, DevOps, and AI engineering.",
-        category: "Coding & Tech",
-        badge: "Career Paths",
-        rating: 4.9,
-        url: "https://roadmap.sh/",
-        featured: true,
-        icon: "fa-route",
-        subtag: "Books"
-      },
-      {
-        id: "cd16",
-        title: "W3Schools",
-        description: "Beginner-friendly interactive web development tutorials, exercises, and code try-it-yourself runners.",
-        category: "Coding & Tech",
-        badge: "Beginner Friendly",
-        rating: 4.7,
-        url: "https://www.w3schools.com/",
-        featured: false,
-        icon: "fa-graduation-cap",
-        subtag: "Books"
-      },
-      {
-        id: "cd17",
-        title: "DevDocs.io",
-        description: "Fast, clean, offline-capable unified documentation browser for 50+ programming languages and frameworks.",
-        category: "Coding & Tech",
-        badge: "Unified Docs",
-        rating: 4.9,
-        url: "https://devdocs.io/",
-        featured: false,
-        icon: "fa-layer-group",
-        subtag: "Books"
-      },
-      {
-        id: "cd18",
-        title: "Carbon Snippet Generator",
-        description: "Create and share beautiful high-resolution image cards of source code snippets for notes or posts.",
-        category: "Coding & Tech",
-        badge: "Code Cards",
-        rating: 4.8,
-        url: "https://carbon.now.sh/",
-        featured: false,
-        icon: "fa-image",
-        subtag: "Fun"
-      },
-      {
-        id: "cd19",
-        title: "Regex101",
-        description: "Regular expression tester and debugger with instant visual breakdowns and pattern explanations.",
-        category: "Coding & Tech",
-        badge: "Regex Tester",
-        rating: 4.9,
-        url: "https://regex101.com/",
-        featured: false,
-        icon: "fa-asterisk",
-        subtag: "Tests"
-      },
-      {
-        id: "cd20",
-        title: "Can I Use...",
-        description: "Up-to-date web browser compatibility tables for modern HTML5, CSS3, and Web API support.",
-        category: "Coding & Tech",
-        badge: "Browser Compat",
-        rating: 4.8,
-        url: "https://caniuse.com/",
-        featured: false,
-        icon: "fa-window-maximize",
-        subtag: "Books"
-      },
-      {
-        id: "cd21",
-        title: "Codewars",
-        description: "Gamified programming challenges (Katas) designed to improve language syntax and algorithm mastery.",
-        category: "Coding & Tech",
-        badge: "Code Katas",
-        rating: 4.8,
-        url: "https://www.codewars.com/",
-        featured: false,
-        icon: "fa-khanda",
-        subtag: "Tests"
-      },
-      {
-        id: "cd22",
-        title: "CS50 by Harvard",
-        description: "Harvard's legendary introductory Computer Science lectures, problem sets, and interactive exercises.",
-        category: "Coding & Tech",
-        badge: "Harvard CS",
-        rating: 5,
-        url: "https://cs50.harvard.edu/x/",
-        featured: true,
-        icon: "fa-building-columns",
-        subtag: "Batches"
-      },
-      {
-        id: "cd23",
-        title: "Exercism",
-        description: "100% free mentored coding practice with human feedback across 70+ programming tracks.",
-        category: "Coding & Tech",
-        badge: "Mentored Tracks",
-        rating: 4.9,
-        url: "https://exercism.org/",
-        featured: false,
-        icon: "fa-dumbbell",
-        subtag: "Tests"
-      },
-      {
-        id: "cd24",
-        title: "SQLZoo",
-        description: "Interactive step-by-step SQL tutorials with direct live database query execution in-browser.",
-        category: "Coding & Tech",
-        badge: "Interactive SQL",
-        rating: 4.7,
-        url: "https://sqlzoo.net/",
-        featured: false,
-        icon: "fa-database",
-        subtag: "Tests"
-      },
-      {
-        id: "cd25",
-        title: "Transform.tools",
-        description: "Polyglot instant web converter for JSON to TypeScript, GraphQL, CSS-in-JS, Rust, and YAML.",
-        category: "Coding & Tech",
-        badge: "Data Converter",
-        rating: 4.8,
-        url: "https://transform.tools/",
-        featured: false,
-        icon: "fa-right-left",
-        subtag: "Fun"
-      },
-      {
-        id: "cd26",
-        title: "JSON Crack",
-        description: "Interactive JSON viewer and converter that renders raw JSON into clear visual node graphs.",
-        category: "Coding & Tech",
-        badge: "Visualizer",
-        rating: 4.9,
-        url: "https://jsoncrack.com/",
-        featured: false,
-        icon: "fa-sitemap",
-        subtag: "Fun"
-      },
-      {
-        id: "cd27",
-        title: "Vercel Platform",
-        description: "Popular developer cloud platform to instantly deploy frontend applications and web projects for free.",
-        category: "Coding & Tech",
-        badge: "Free Hosting",
-        rating: 4.9,
-        url: "https://vercel.com/",
-        featured: false,
-        icon: "fa-cloud-arrow-up",
-        subtag: "Tests"
       },
       {
         id: "fun1",
@@ -915,131 +440,19 @@
         badge: "Wotaku",
         rating: 5,
         url: "https://wotaku.wiki/",
-        featured: true,
         icon: "fa-torii-gate",
         subtag: "Fun"
-      },
-      {
-        id: "fun2",
-        title: "FMHY Megathread",
-        description: "FreeMediaHeckYa main portal - the largest curated directory for entertainment, streaming, and games.",
-        category: "Fun & Media",
-        badge: "FMHY Hub",
-        rating: 5,
-        url: "https://fmhy.net/",
-        featured: true,
-        icon: "fa-shield-halved",
-        subtag: "Fun"
-      },
-      {
-        id: "fun3",
-        title: "EverythingMoe Directory",
-        description: "Ultimate curated guide and index for watching anime, reading manga, light novels, and Japanese culture.",
-        category: "Fun & Media",
-        badge: "Anime Index",
-        rating: 4.9,
-        url: "https://everythingmoe.com/",
-        featured: true,
-        icon: "fa-tv",
-        subtag: "Fun"
-      },
-      {
-        id: "fun4",
-        title: "Neal.fun Interactive Toys",
-        description: "Collection of fascinating, fun, and relaxing interactive web games, space scale simulators, and web toys.",
-        category: "Fun & Media",
-        badge: "Web Games",
-        rating: 4.9,
-        url: "https://neal.fun/",
-        featured: true,
-        icon: "fa-gamepad",
-        subtag: "Fun"
-      },
-      {
-        id: "fun5",
-        title: "EmuOS / Emupedia",
-        description: "Retro web OS simulation allowing you to play classic 90s video games and nostalgic software in-browser.",
-        category: "Fun & Media",
-        badge: "Retro Arcade",
-        rating: 4.8,
-        url: "https://emupedia.net/beta/emuos/",
-        featured: false,
-        icon: "fa-floppy-disk",
-        subtag: "Fun"
-      },
-      {
-        id: "fun6",
-        title: "The Useless Web",
-        description: "Click the magic button to take you to a random weird, funny, or mesmerizing corner of the internet.",
-        category: "Fun & Media",
-        badge: "Random Portal",
-        rating: 4.7,
-        url: "https://theuselessweb.com/",
-        featured: false,
-        icon: "fa-dice",
-        subtag: "Fun"
       }
     ];
 
-    const CATEGORIES = ['All', 'JEE & NEET', 'Free Books', 'AI & Study', 'Coding & Tech', 'Productivity', 'Fun & Media', 'Bookmarks'];
+    const CATEGORIES = ['All', 'JEE & NEET', 'Free Books', 'AI & Study', 'Coding & Tech', 'Productivity', 'Fun & Media', 'Saved Links'];
     const SUBTAGS = ['All', 'Batches', 'Tests', 'Books', 'PYQs', 'AI', 'Fun'];
 
-    const THEMES = [
-      { id: 'sapphire', name: 'Sapphire (Dark)', icon: 'fa-gem', mode: 'dark' },
-      { id: 'cyberpunk', name: 'Cyberpunk (Dark)', icon: 'fa-bolt-lightning', mode: 'dark' },
-      { id: 'emerald', name: 'Emerald (Dark)', icon: 'fa-leaf', mode: 'dark' },
-      { id: 'dracula', name: 'Dracula (Dark)', icon: 'fa-skull', mode: 'dark' },
-      { id: 'sunset', name: 'Sunset (Dark)', icon: 'fa-sun', mode: 'dark' },
-      { id: 'light', name: 'Porcelain (Light)', icon: 'fa-sun', mode: 'light' },
-      { id: 'lavender', name: 'Lavender (Light)', icon: 'fa-wand-magic', mode: 'light' }
-    ];
-
-    const playSound = (type = 'click', isMuted = false) => {
-      if (isMuted) return;
-      try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-
-        if (type === 'click') {
-          osc.frequency.setValueAtTime(450, ctx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(750, ctx.currentTime + 0.04);
-          gain.gain.setValueAtTime(0.08, ctx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
-          osc.start();
-          osc.stop(ctx.currentTime + 0.04);
-        } else if (type === 'success') {
-          osc.frequency.setValueAtTime(523.25, ctx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(659.25, ctx.currentTime + 0.12);
-          gain.gain.setValueAtTime(0.12, ctx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
-          osc.start();
-          osc.stop(ctx.currentTime + 0.12);
-        } else if (type === 'spin') {
-          osc.frequency.setValueAtTime(300 + Math.random() * 300, ctx.currentTime);
-          gain.gain.setValueAtTime(0.05, ctx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.03);
-          osc.start();
-          osc.stop(ctx.currentTime + 0.03);
-        }
-      } catch (e) {
-        // Audio context fallback
-      }
-    };
-
     function App() {
-      // Theme & Appearance State
-      const [currentTheme, setCurrentTheme] = useState(() => localStorage.getItem('edupulse_theme_v3') || 'sapphire');
-      const [isDarkMode, setIsDarkMode] = useState(() => {
-        const th = localStorage.getItem('edupulse_theme_v3') || 'sapphire';
-        return th !== 'light' && th !== 'lavender';
-      });
-      const [viewMode, setViewMode] = useState(() => localStorage.getItem('edupulse_view') || 'grid'); // 'grid' | 'list'
-      const [isMuted, setIsMuted] = useState(false);
+      const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('edupulse_minimal_theme') !== 'light');
+      const [activeTab, setActiveTab] = useState('directory'); 
+      const [viewMode, setViewMode] = useState('grid'); 
 
-      // Data Persistence State
       const [resources, setResources] = useState(() => {
         const saved = localStorage.getItem('edupulse_custom_resources_v3');
         return saved ? [...INITIAL_RESOURCES, ...JSON.parse(saved)] : INITIAL_RESOURCES;
@@ -1048,1181 +461,616 @@
         const saved = localStorage.getItem('edupulse_bookmarks_v3');
         return saved ? JSON.parse(saved) : ['sp1', 'jn1', 'jn3', '26', 'rd1', 'cd3'];
       });
-      const [scratchpadText, setScratchpadText] = useState(() => localStorage.getItem('edupulse_notes') || '');
+      const [notes, setNotes] = useState(() => localStorage.getItem('edupulse_notes') || '');
 
-      // Filtering State
       const [searchQuery, setSearchQuery] = useState('');
       const [selectedCategory, setSelectedCategory] = useState('All');
       const [selectedSubtag, setSelectedSubtag] = useState('All');
-      const [sortBy, setSortBy] = useState('default');
 
-      // Modal Controls
-      const [isCmdKOpen, setIsCmdKOpen] = useState(false);
+      // Modals
       const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-      const [isSpinModalOpen, setIsSpinModalOpen] = useState(false);
-      const [isImportExportOpen, setIsImportExportOpen] = useState(false);
-      const [isPomodoroOpen, setIsPomodoroOpen] = useState(false);
-      const [isScratchpadOpen, setIsScratchpadOpen] = useState(false);
-      const [previewResource, setPreviewResource] = useState(null);
+      const [isPomoOpen, setIsPomoOpen] = useState(false);
       const [toasts, setToasts] = useState([]);
 
-      // Pomodoro State
+      // Pomodoro state
       const [pomoTime, setPomoTime] = useState(25 * 60);
-      const [pomoRunning, setPomoRunning] = useState(false);
-      const [pomoMode, setPomoMode] = useState('work'); // 'work' | 'break'
-
-      // Toast Helper
-      const addToast = (message, type = 'info') => {
-        const id = Date.now();
-        setToasts(prev => [...prev, { id, message, type }]);
-        playSound(type === 'success' ? 'success' : 'click', isMuted);
-        setTimeout(() => {
-          setToasts(prev => prev.filter(t => t.id !== id));
-        }, 3000);
-      };
+      const [pomoActive, setPomoActive] = useState(false);
 
       useEffect(() => {
         const html = document.documentElement;
-        html.className = `theme-${currentTheme}`;
-        if (currentTheme === 'light' || currentTheme === 'lavender') {
-          html.classList.remove('dark');
-          setIsDarkMode(false);
+        if (isDarkMode) {
+          html.className = 'dark theme-slate';
+          localStorage.setItem('edupulse_minimal_theme', 'dark');
         } else {
-          html.classList.add('dark');
-          setIsDarkMode(true);
+          html.className = 'theme-light';
+          localStorage.setItem('edupulse_minimal_theme', 'light');
         }
-        localStorage.setItem('edupulse_theme_v3', currentTheme);
-      }, [currentTheme]);
+      }, [isDarkMode]);
 
       useEffect(() => {
-        const handleKeyDown = (e) => {
-          if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-            e.preventDefault();
-            setIsCmdKOpen(prev => !prev);
-            playSound('click', isMuted);
-          } else if (e.key === 'Escape') {
-            setIsCmdKOpen(false);
-            setIsAddModalOpen(false);
-            setIsSpinModalOpen(false);
-            setIsImportExportOpen(false);
-            setIsScratchpadOpen(false);
-            setPreviewResource(null);
-          }
-        };
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-      }, [isMuted]);
-
-      useEffect(() => {
-        let interval = null;
-        if (pomoRunning && pomoTime > 0) {
-          interval = setInterval(() => setPomoTime(prev => prev - 1), 1000);
+        let timer = null;
+        if (pomoActive && pomoTime > 0) {
+          timer = setInterval(() => setPomoTime(t => t - 1), 1000);
         } else if (pomoTime === 0) {
-          addToast(pomoMode === 'work' ? 'Study session completed! Take a 5 min break.' : 'Break ended! Back to study session.', 'success');
-          if (pomoMode === 'work') {
-            setPomoMode('break');
-            setPomoTime(5 * 60);
-          } else {
-            setPomoMode('work');
-            setPomoTime(25 * 60);
-          }
-          setPomoRunning(false);
+          addToast('Pomodoro Timer Finished!', 'success');
+          setPomoActive(false);
         }
-        return () => clearInterval(interval);
-      }, [pomoRunning, pomoTime, pomoMode]);
+        return () => clearInterval(timer);
+      }, [pomoActive, pomoTime]);
 
-      // Bookmark Toggle Handler
+      const addToast = (msg, type = 'info') => {
+        const id = Date.now();
+        setToasts(prev => [...prev, { id, msg, type }]);
+        setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 2800);
+      };
+
       const toggleBookmark = (id) => {
         setBookmarks(prev => {
           const updated = prev.includes(id) ? prev.filter(bId => bId !== id) : [...prev, id];
           localStorage.setItem('edupulse_bookmarks_v3', JSON.stringify(updated));
-          addToast(prev.includes(id) ? 'Removed from saved bookmarks' : 'Added to saved bookmarks!', 'success');
+          addToast(prev.includes(id) ? 'Removed from saved links' : 'Saved to bookmarks', 'success');
           return updated;
         });
       };
 
-      // Direct Theme Toggle (Dark vs Light)
-      const toggleDarkLight = () => {
-        if (isDarkMode) {
-          setCurrentTheme('light');
-        } else {
-          setCurrentTheme('sapphire');
-        }
-        playSound('click', isMuted);
-      };
-
-      // Notes Save Handler
-      const saveScratchpad = (text) => {
-        setScratchpadText(text);
-        localStorage.setItem('edupulse_notes', text);
-      };
-
       const filteredResources = useMemo(() => {
         return resources.filter(res => {
-          // Category filter
-          if (selectedCategory === 'Bookmarks') {
+          if (selectedCategory === 'Saved Links') {
             if (!bookmarks.includes(res.id)) return false;
           } else if (selectedCategory !== 'All' && res.category !== selectedCategory) {
             return false;
           }
 
-          // Subtag filter
           if (selectedSubtag !== 'All' && res.subtag !== selectedSubtag) {
             return false;
           }
 
-          // Search query
           if (searchQuery.trim() !== '') {
             const q = searchQuery.toLowerCase();
-            const matchTitle = res.title.toLowerCase().includes(q);
-            const matchDesc = res.description.toLowerCase().includes(q);
-            const matchCat = res.category.toLowerCase().includes(q);
-            const matchBadge = res.badge && res.badge.toLowerCase().includes(q);
-            const matchSubtag = res.subtag && res.subtag.toLowerCase().includes(q);
-            return matchTitle || matchDesc || matchCat || matchBadge || matchSubtag;
+            return (
+              res.title.toLowerCase().includes(q) ||
+              res.description.toLowerCase().includes(q) ||
+              res.category.toLowerCase().includes(q) ||
+              (res.badge && res.badge.toLowerCase().includes(q))
+            );
           }
 
           return true;
-        }).sort((a, b) => {
-          if (sortBy === 'rating') return b.rating - a.rating;
-          if (sortBy === 'name') return a.title.localeCompare(b.title);
-          if (sortBy === 'category') return a.category.localeCompare(b.category);
-          return 0;
         });
-      }, [resources, bookmarks, selectedCategory, selectedSubtag, searchQuery, sortBy]);
-
-      const featuredPicks = useMemo(() => resources.filter(r => r.featured), [resources]);
+      }, [resources, bookmarks, selectedCategory, selectedSubtag, searchQuery]);
 
       return (
-        <div className="min-h-screen flex flex-col relative transition-colors duration-300 app-bg app-text-main">
+        <div className="min-h-screen flex flex-col font-sans transition-colors duration-200">
           
-          {/* TOAST NOTIFICATIONS */}
-          <div className="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none">
+          {/* TOAST NOTIFICATIONS WITH MODERN SLIDE ANIMATION */}
+          <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2.5 pointer-events-none">
             {toasts.map(t => (
-              <div 
-                key={t.id} 
-                className="pointer-events-auto px-4 py-3 rounded-2xl shadow-2xl border border-indigo-500/30 app-card backdrop-blur-md flex items-center gap-3 animate-scale-up text-xs font-semibold"
-              >
-                <i className={`fas ${t.type === 'success' ? 'fa-circle-check text-emerald-500' : 'fa-circle-info text-indigo-500'}`}></i>
-                <span>{t.message}</span>
+              <div key={t.id} className="pointer-events-auto px-4 py-2.5 rounded-xl glass-card shadow-2xl text-xs font-semibold flex items-center gap-3 animate-fade-in-up border-l-4 border-l-sky-500">
+                <i className={`fas ${t.type === 'success' ? 'fa-circle-check text-emerald-400 text-sm' : 'fa-circle-info text-sky-400 text-sm'}`}></i>
+                <span>{t.msg}</span>
               </div>
             ))}
           </div>
 
-          {/* HEADER NAV BAR */}
-          <header className="sticky top-0 z-40 backdrop-blur-xl border-b app-header transition-all shadow-sm">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+          {/* MODERN GLASS NAVBAR */}
+          <header className="sticky top-0 z-40 glass-nav">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
               
-              {/* Brand Logo */}
-              <div 
-                className="flex items-center gap-3 cursor-pointer group" 
-                onClick={() => { setSelectedCategory('All'); setSelectedSubtag('All'); setSearchQuery(''); playSound('click', isMuted); }}
-              >
-                <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform">
-                  <i className="fas fa-bolt text-white text-xl animate-pulse"></i>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-display font-extrabold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-                      EduPulse
-                    </span>
-                    <span className="px-2 py-0.5 text-[10px] font-extrabold tracking-wider rounded-full app-badge uppercase">
-                      PRO 3.0
-                    </span>
+              <div className="flex items-center gap-8">
+                <div 
+                  onClick={() => { setActiveTab('directory'); setSelectedCategory('All'); setSearchQuery(''); }}
+                  className="flex items-center gap-3 cursor-pointer group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 text-white flex items-center justify-center font-extrabold text-base shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform duration-300">
+                    EP
                   </div>
-                  <p className="text-[11px] app-text-sub font-medium">Verified JEE, NEET & Tech Portal</p>
+                  <div>
+                    <span className="font-extrabold text-lg tracking-tight gradient-text">EduPulse</span>
+                    <span className="block text-[10px] app-muted font-mono tracking-wider font-semibold -mt-1">ULTRA HUB</span>
+                  </div>
                 </div>
+
+                {/* Main Desktop Navigation */}
+                <nav className="hidden md:flex items-center gap-1.5 text-xs font-semibold">
+                  <button 
+                    onClick={() => setActiveTab('directory')}
+                    className={`px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 ${
+                      activeTab === 'directory' 
+                        ? 'bg-sky-500/15 text-sky-400 border border-sky-500/30 shadow-sm' 
+                        : 'app-muted hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    <i className="fas fa-compass"></i>
+                    <span>Directory</span>
+                    <span className="px-1.5 py-0.5 text-[10px] rounded-full bg-sky-500/20 font-mono">{resources.length}</span>
+                  </button>
+
+                  <button 
+                    onClick={() => setActiveTab('teachers')}
+                    className={`px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 ${
+                      activeTab === 'teachers' 
+                        ? 'bg-sky-500/15 text-sky-400 border border-sky-500/30 shadow-sm' 
+                        : 'app-muted hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    <i className="fas fa-graduation-cap"></i>
+                    <span>Faculty Hub</span>
+                    <span className="px-1.5 py-0.5 text-[10px] rounded-full bg-indigo-500/20 font-mono">{TEACHERS_DATA.length}</span>
+                  </button>
+
+                  <button 
+                    onClick={() => setActiveTab('tools')}
+                    className={`px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 ${
+                      activeTab === 'tools' 
+                        ? 'bg-sky-500/15 text-sky-400 border border-sky-500/30 shadow-sm' 
+                        : 'app-muted hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    <i className="fas fa-pen-ruler"></i>
+                    <span>Scratchpad & Timer</span>
+                  </button>
+                </nav>
               </div>
 
-              {/* Action Toolbar */}
-              <div className="flex items-center gap-2 sm:gap-3">
-                
-                {/* Search Bar Shortcut */}
-                <button 
-                  onClick={() => { setIsCmdKOpen(true); playSound('click', isMuted); }}
-                  className="hidden md:flex items-center gap-3 px-4 py-2 rounded-xl app-card text-xs font-medium hover:border-indigo-500/50 transition-all"
-                >
-                  <i className="fas fa-magnifying-glass text-slate-400"></i>
-                  <span className="app-text-sub">Search 56+ links...</span>
-                  <kbd className="px-2 py-0.5 text-[10px] font-bold app-badge rounded-md">⌘K</kbd>
-                </button>
-
-                {/* Dark / Light Quick Switcher */}
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2.5">
                 <button
-                  onClick={toggleDarkLight}
-                  title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-                  className="p-2.5 rounded-xl app-card hover:border-indigo-500/50 transition-all text-xs"
-                >
-                  <i className={`fas ${isDarkMode ? 'fa-sun text-amber-400' : 'fa-moon text-indigo-600'}`}></i>
-                </button>
-
-                {/* Study Scratchpad Notes Modal Toggle */}
-                <button
-                  onClick={() => { setIsScratchpadOpen(!isScratchpadOpen); playSound('click', isMuted); }}
-                  title="Study Scratchpad Notes"
-                  className={`p-2.5 sm:px-3.5 sm:py-2 rounded-xl border transition-all text-xs font-semibold flex items-center gap-1.5 ${
-                    isScratchpadOpen ? 'bg-indigo-600 text-white' : 'app-card hover:border-indigo-500/50'
+                  onClick={() => setIsPomoOpen(!isPomoOpen)}
+                  className={`px-3 py-2 rounded-xl border text-xs font-medium transition-all duration-200 flex items-center gap-2 ${
+                    isPomoOpen 
+                      ? 'bg-sky-500/20 border-sky-500/50 text-sky-400 shadow-lg shadow-sky-500/10' 
+                      : 'glass-card hover:border-sky-500/40'
                   }`}
+                  title="Toggle Focus Timer"
                 >
-                  <i className="fas fa-note-sticky text-indigo-400"></i>
-                  <span className="hidden sm:inline">Notes</span>
+                  <i className="fas fa-stopwatch text-sky-400 animate-pulse"></i>
+                  <span className="hidden sm:inline font-mono">
+                    {Math.floor(pomoTime / 60).toString().padStart(2, '0')}:{(pomoTime % 60).toString().padStart(2, '0')}
+                  </span>
                 </button>
 
-                {/* Pomodoro Timer Toggle */}
                 <button
-                  onClick={() => { setIsPomodoroOpen(!isPomodoroOpen); playSound('click', isMuted); }}
-                  title="Pomodoro Timer"
-                  className={`p-2.5 sm:px-3.5 sm:py-2 rounded-xl border transition-all text-xs font-semibold flex items-center gap-1.5 ${
-                    isPomodoroOpen ? 'bg-amber-500/20 border-amber-500/50 text-amber-500' : 'app-card hover:border-amber-500/50'
-                  }`}
+                  onClick={() => setIsDarkMode(!isDarkMode)}
+                  className="p-2.5 rounded-xl border glass-card hover:border-sky-500/40 text-xs transition-all duration-200"
+                  title="Toggle Theme"
                 >
-                  <i className="fas fa-hourglass-half text-amber-500"></i>
-                  <span className="hidden sm:inline">Timer</span>
+                  <i className={`fas ${isDarkMode ? 'fa-sun text-amber-400' : 'fa-moon text-indigo-600'} text-sm`}></i>
                 </button>
 
-                {/* Random Tool Picker */}
                 <button
-                  onClick={() => { setIsSpinModalOpen(true); playSound('click', isMuted); }}
-                  title="Random Tool Spinner"
-                  className="p-2.5 sm:px-3.5 sm:py-2 rounded-xl app-card hover:border-purple-500/50 transition-all text-xs font-semibold flex items-center gap-1.5"
+                  onClick={() => setIsAddModalOpen(true)}
+                  className="px-4 py-2 rounded-xl shimmer-btn text-white font-bold text-xs transition-all duration-200 shadow-md shadow-sky-500/20 hover:scale-105 active:scale-95 flex items-center gap-2"
                 >
-                  <i className="fas fa-dice text-purple-500"></i>
-                  <span className="hidden sm:inline">Spin</span>
+                  <i className="fas fa-plus text-xs"></i>
+                  <span className="hidden sm:inline">Add Resource</span>
                 </button>
+              </div>
 
-                {/* Audio Sound Toggle */}
-                <button
-                  onClick={() => { setIsMuted(!isMuted); playSound('click', !isMuted); }}
-                  title={isMuted ? "Unmute Audio" : "Mute Audio"}
-                  className="p-2.5 rounded-xl app-card transition-all text-xs"
-                >
-                  <i className={`fas ${isMuted ? 'fa-volume-xmark text-red-500' : 'fa-volume-high text-emerald-500'}`}></i>
-                </button>
+            </div>
 
-                {/* Import / Export Backup */}
-                <button
-                  onClick={() => { setIsImportExportOpen(true); playSound('click', isMuted); }}
-                  title="Import or Export Bookmarks"
-                  className="p-2.5 rounded-xl app-card transition-all text-xs"
-                >
-                  <i className="fas fa-file-arrow-up text-indigo-400"></i>
-                </button>
+            {/* Mobile Navigation Bar */}
+            <div className="md:hidden flex border-t app-border px-3 py-2 gap-1.5 text-xs font-semibold">
+              <button 
+                onClick={() => setActiveTab('directory')}
+                className={`flex-1 py-2 rounded-lg text-center transition-all ${
+                  activeTab === 'directory' ? 'bg-sky-500/20 text-sky-400 border border-sky-500/30' : 'app-muted'
+                }`}
+              >
+                Directory
+              </button>
+              <button 
+                onClick={() => setActiveTab('teachers')}
+                className={`flex-1 py-2 rounded-lg text-center transition-all ${
+                  activeTab === 'teachers' ? 'bg-sky-500/20 text-sky-400 border border-sky-500/30' : 'app-muted'
+                }`}
+              >
+                Faculty
+              </button>
+              <button 
+                onClick={() => setActiveTab('tools')}
+                className={`flex-1 py-2 rounded-lg text-center transition-all ${
+                  activeTab === 'tools' ? 'bg-sky-500/20 text-sky-400 border border-sky-500/30' : 'app-muted'
+                }`}
+              >
+                Tools
+              </button>
+            </div>
+          </header>
 
-                {/* Add Custom Site */}
-                <button
-                  onClick={() => { setIsAddModalOpen(true); playSound('click', isMuted); }}
-                  className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-lg shadow-indigo-600/30 transition-all flex items-center gap-1.5"
-                >
-                  <i className="fas fa-plus"></i>
-                  <span className="hidden sm:inline">Add Link</span>
-                </button>
+          {/* MAIN CONTAINER */}
+          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-8">
 
-                {/* Theme Selector Palette Dropdown */}
-                <div className="relative group">
-                  <button className="p-2.5 rounded-xl app-card hover:border-indigo-500/50 transition-all flex items-center gap-1 text-xs text-indigo-500">
-                    <i className="fas fa-palette"></i>
-                    <i className="fas fa-chevron-down text-[10px]"></i>
+            {/* FLOATING POMODORO TIMER PANEL */}
+            {isPomoOpen && (
+              <div className="p-5 rounded-2xl glass-card flex flex-col sm:flex-row items-center justify-between gap-4 animate-scale-up border-l-4 border-l-sky-500">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-xl animate-pulse">
+                    <i className="fas fa-stopwatch"></i>
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-sm tracking-tight">Focus Pomodoro Timer</h4>
+                    <span className="font-mono text-2xl font-black text-sky-400 tracking-wider">
+                      {Math.floor(pomoTime / 60).toString().padStart(2, '0')}:{(pomoTime % 60).toString().padStart(2, '0')}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                  <button 
+                    onClick={() => setPomoActive(!pomoActive)}
+                    className="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all shadow-lg shadow-sky-600/20 active:scale-95"
+                  >
+                    {pomoActive ? <><i className="fas fa-pause mr-1.5"></i> Pause</> : <><i className="fas fa-play mr-1.5"></i> Start</>}
                   </button>
-                  <div className="absolute right-0 top-full mt-2 w-48 py-2 app-card rounded-2xl shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50 space-y-1 p-1">
-                    <div className="px-3 py-1 text-[10px] font-bold app-text-sub uppercase tracking-wider">Themes</div>
-                    {THEMES.map(th => (
+                  <button 
+                    onClick={() => { setPomoActive(false); setPomoTime(25 * 60); }}
+                    className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl border glass-card app-muted hover:text-white font-semibold text-xs transition-all"
+                  >
+                    Reset
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {}
+            {activeTab === 'directory' && (
+              <section className="space-y-6 animate-fade-in-up">
+                
+                {/* HERO BANNER & SEARCH BAR */}
+                <div className="relative p-6 sm:p-8 rounded-3xl glass-card overflow-hidden border border-sky-500/20">
+                  <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                  <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                  <div className="relative z-10 max-w-2xl space-y-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                      <span className="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+                      Curated Study Hub for Aspirants
+                    </div>
+                    <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+                      Find lectures, test series & materials in <span className="gradient-text">seconds</span>.
+                    </h1>
+                    
+                    {/* Modern Search Field */}
+                    <div className="relative pt-2">
+                      <i className="fas fa-magnifying-glass absolute left-4 top-6 text-sm text-sky-400"></i>
+                      <input 
+                        type="text" 
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        placeholder="Search books, test series, modules, PYQs, AI tools..." 
+                        className="w-full pl-11 pr-10 py-3.5 rounded-2xl glass-card text-xs sm:text-sm font-medium focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 transition-all shadow-inner"
+                      />
+                      {searchQuery && (
+                        <button 
+                          onClick={() => setSearchQuery('')} 
+                          className="absolute right-3.5 top-5 p-1 text-xs app-muted hover:text-white transition-colors"
+                        >
+                          <i className="fas fa-xmark"></i>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* CATEGORY NAV & VIEW SWITCHER */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  {/* Category Pills */}
+                  <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none text-xs font-semibold">
+                    {CATEGORIES.map(cat => (
                       <button
-                        key={th.id}
-                        onClick={() => { setCurrentTheme(th.id); playSound('click', isMuted); }}
-                        className={`w-full px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-all ${
-                          currentTheme === th.id ? 'bg-indigo-600 text-white' : 'hover:bg-indigo-500/10'
+                        key={cat}
+                        onClick={() => setSelectedCategory(cat)}
+                        className={`px-4 py-2 rounded-xl border whitespace-nowrap transition-all duration-200 ${
+                          selectedCategory === cat 
+                            ? 'bg-gradient-to-r from-sky-500 to-indigo-600 border-transparent text-white shadow-lg shadow-sky-500/25' 
+                            : 'glass-card hover:border-sky-500/30 app-muted hover:text-white'
                         }`}
                       >
-                        <span className="flex items-center gap-2">
-                          <i className={`fas ${th.icon}`}></i>
-                          {th.name}
-                        </span>
-                        {currentTheme === th.id && <i className="fas fa-check text-xs"></i>}
+                        {cat} {cat === 'Saved Links' && `(${bookmarks.length})`}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* View Switching Control */}
+                  <div className="flex items-center justify-between sm:justify-end gap-3">
+                    <span className="text-xs font-mono app-muted">{filteredResources.length} resources</span>
+                    <div className="flex items-center p-1 rounded-xl glass-card border app-border">
+                      <button 
+                        onClick={() => setViewMode('grid')}
+                        className={`px-3 py-1.5 rounded-lg text-xs transition-all ${viewMode === 'grid' ? 'bg-sky-500 text-white shadow' : 'app-muted'}`}
+                        title="Grid Layout"
+                      >
+                        <i className="fas fa-border-all"></i>
+                      </button>
+                      <button 
+                        onClick={() => setViewMode('list')}
+                        className={`px-3 py-1.5 rounded-lg text-xs transition-all ${viewMode === 'list' ? 'bg-sky-500 text-white shadow' : 'app-muted'}`}
+                        title="Compact List Layout"
+                      >
+                        <i className="fas fa-list-ul"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Subtag Pill Filters */}
+                <div className="flex items-center gap-2 text-xs pt-2">
+                  <span className="app-muted font-mono text-[11px]">Subtags:</span>
+                  <div className="flex items-center gap-1.5 overflow-x-auto">
+                    {SUBTAGS.map(st => (
+                      <button
+                        key={st}
+                        onClick={() => setSelectedSubtag(st)}
+                        className={`px-3 py-1 rounded-lg text-[11px] font-semibold transition-all ${
+                          selectedSubtag === st 
+                            ? 'bg-sky-500/20 text-sky-400 border border-sky-500/30' 
+                            : 'app-muted hover:text-white hover:bg-white/5'
+                        }`}
+                      >
+                        #{st}
                       </button>
                     ))}
                   </div>
                 </div>
 
-              </div>
-
-            </div>
-          </header>
-
-          {}
-          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 relative z-10">
-
-            {/* DYNAMIC PARTICLE BACKGROUND CANVAS */}
-            <HeroCanvas theme={currentTheme} isDarkMode={isDarkMode} />
-
-            {/* HERO BANNER SECTION */}
-            <section className="relative overflow-hidden rounded-3xl p-6 sm:p-10 border app-card shadow-2xl">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                
-                <div className="lg:col-span-8 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full app-badge text-xs font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
-                    2026 Ecosystem • {resources.length} Meticulously Curated Links
-                  </div>
-                  
-                  <h1 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-                    Unified Portal for <br/>
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-                      JEE, NEET, Shadow Libraries & Dev Tools
-                    </span>
-                  </h1>
-
-                  <p className="app-text-sub text-xs sm:text-sm max-w-2xl leading-relaxed">
-                    Instant access to PW Batches, Allen Test Series, Anna's Shadow Archive, Marks PYQ App, AI Assistants, and Browser Cloud Sandboxes in both Dark & Light themes.
-                  </p>
-
-                  {/* Dynamic Stats Row */}
-                  <div className="pt-3 flex flex-wrap items-center gap-6 border-t border-slate-700/30 text-xs">
-                    <div>
-                      <div className="text-xl font-extrabold">{resources.length}</div>
-                      <div className="app-text-sub font-medium">Curated Sites</div>
+                {/* RESOURCE CARDS DISPLAY */}
+                {filteredResources.length === 0 ? (
+                  <div className="py-16 text-center rounded-2xl border border-dashed app-border glass-card space-y-3">
+                    <div className="w-12 h-12 mx-auto rounded-full bg-sky-500/10 text-sky-400 flex items-center justify-center text-lg">
+                      <i className="fas fa-search"></i>
                     </div>
-                    <div className="w-px h-7 bg-slate-700/40"></div>
-                    <div>
-                      <div className="text-xl font-extrabold text-purple-500">{CATEGORIES.length - 1}</div>
-                      <div className="app-text-sub font-medium">Categories</div>
-                    </div>
-                    <div className="w-px h-7 bg-slate-700/40"></div>
-                    <div>
-                      <div className="text-xl font-extrabold text-pink-500">{bookmarks.length}</div>
-                      <div className="app-text-sub font-medium">Saved Bookmarks</div>
-                    </div>
+                    <p className="text-sm font-semibold">No learning resources found matching your filter.</p>
+                    <button 
+                      onClick={() => { setSearchQuery(''); setSelectedCategory('All'); setSelectedSubtag('All'); }} 
+                      className="px-4 py-2 rounded-xl bg-sky-500/20 text-sky-400 text-xs font-bold hover:bg-sky-500/30 transition-all"
+                    >
+                      Clear Search Filters
+                    </button>
                   </div>
-                </div>
-
-                {/* Hero Featured Live Marquee Ticker */}
-                <div className="lg:col-span-4 app-card p-4 rounded-2xl border space-y-3 shadow-inner">
-                  <div className="flex items-center justify-between text-xs font-bold app-text-sub uppercase tracking-wider">
-                    <span><i className="fas fa-fire text-amber-500 mr-1"></i> Featured Picks</span>
-                    <span className="text-[10px] opacity-70">Live Ticker</span>
-                  </div>
-                  
-                  <div className="overflow-hidden rounded-xl border border-indigo-500/20 py-2">
-                    <div className="animate-marquee gap-3 px-2">
-                      {featuredPicks.concat(featuredPicks).map((res, i) => (
-                        <div 
-                          key={i} 
-                          onClick={() => { setPreviewResource(res); playSound('click', isMuted); }}
-                          className="flex-none px-3 py-2 rounded-xl app-card border flex items-center gap-2.5 cursor-pointer hover:border-indigo-500 transition-all min-w-[180px]"
-                        >
-                          <div className="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-500 flex items-center justify-center text-xs">
-                            <i className={`fas ${res.icon.startsWith('fa-') ? res.icon : 'fa-globe'}`}></i>
+                ) : viewMode === 'grid' ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {filteredResources.map(res => (
+                      <div 
+                        key={res.id}
+                        onClick={() => window.open(res.url, '_blank')}
+                        className="glass-card p-5 rounded-2xl cursor-pointer flex flex-col justify-between space-y-4 group relative overflow-hidden"
+                      >
+                        <div className="space-y-3">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500/20 to-indigo-500/20 text-sky-400 border border-sky-500/30 flex items-center justify-center text-sm shrink-0 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
+                                <i className={`fas ${res.icon || 'fa-globe'}`}></i>
+                              </div>
+                              <div>
+                                <h3 className="font-bold text-sm tracking-tight group-hover:text-sky-400 transition-colors line-clamp-1">
+                                  {res.title}
+                                </h3>
+                                <span className="text-[10px] font-mono app-muted">#{res.subtag}</span>
+                              </div>
+                            </div>
+                            <button 
+                              onClick={(e) => { e.stopPropagation(); toggleBookmark(res.id); }}
+                              className={`p-2 rounded-lg transition-transform active:scale-75 ${bookmarks.includes(res.id) ? 'text-amber-400' : 'app-muted hover:text-amber-400'}`}
+                              title={bookmarks.includes(res.id) ? "Bookmarked" : "Bookmark link"}
+                            >
+                              <i className={`fa-${bookmarks.includes(res.id) ? 'solid' : 'regular'} fa-star text-sm`}></i>
+                            </button>
                           </div>
-                          <div className="truncate">
-                            <div className="text-xs font-bold truncate">{res.title}</div>
-                            <div className="text-[10px] text-indigo-500 font-medium">{res.badge || res.category}</div>
-                          </div>
+
+                          <p className="text-xs app-muted leading-relaxed line-clamp-2">
+                            {res.description}
+                          </p>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
 
-              </div>
-            </section>
-
-            {}
-            {isScratchpadOpen && (
-              <div className="p-6 rounded-3xl app-card border shadow-2xl space-y-4 animate-scale-up">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-500 flex items-center justify-center text-lg">
-                      <i className="fas fa-note-sticky"></i>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-sm">Quick Study Scratchpad & Notes</h3>
-                      <p className="text-xs app-text-sub">Auto-saved to local browser storage</p>
-                    </div>
+                        <div className="flex items-center justify-between text-[11px] pt-3 border-t app-border">
+                          <span className="app-badge px-2.5 py-1 rounded-lg font-mono text-[10px] font-bold">
+                            {res.badge || res.category}
+                          </span>
+                          <span className="text-sky-400 group-hover:translate-x-1 transition-transform flex items-center gap-1.5 font-bold">
+                            Visit Hub <i className="fas fa-arrow-right text-[10px]"></i>
+                          </span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <button onClick={() => setIsScratchpadOpen(false)} className="app-text-sub hover:text-indigo-500">
-                    <i className="fas fa-xmark"></i>
-                  </button>
-                </div>
-                <textarea 
-                  rows="4" 
-                  value={scratchpadText} 
-                  onChange={(e) => saveScratchpad(e.target.value)}
-                  placeholder="Write important JEE formulas, syllabus checklists, or homework tasks here..."
-                  className="w-full p-4 rounded-2xl app-input text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono shadow-inner"
-                ></textarea>
-                <div className="flex items-center justify-between text-xs app-text-sub">
-                  <span>{scratchpadText.length} characters written</span>
-                  <button 
-                    onClick={() => { saveScratchpad(''); addToast('Scratchpad cleared', 'info'); }}
-                    className="hover:text-red-500 font-semibold"
-                  >
-                    Clear Notes
-                  </button>
-                </div>
-              </div>
+                ) : (
+                  <div className="space-y-2">
+                    {filteredResources.map(res => (
+                      <div 
+                        key={res.id}
+                        onClick={() => window.open(res.url, '_blank')}
+                        className="glass-card p-3.5 rounded-xl cursor-pointer flex items-center justify-between gap-4 text-xs group hover:border-sky-500/50"
+                      >
+                        <div className="flex items-center gap-3.5 truncate">
+                          <div className="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center text-xs shrink-0 group-hover:bg-sky-500 group-hover:text-white transition-all">
+                            <i className={`fas ${res.icon || 'fa-globe'}`}></i>
+                          </div>
+                          <span className="font-bold truncate text-sm">{res.title}</span>
+                          <span className="app-muted text-xs hidden md:inline truncate">— {res.description}</span>
+                        </div>
+                        <div className="flex items-center gap-3 shrink-0">
+                          <span className="app-badge px-2.5 py-1 rounded-md text-[10px] font-mono font-bold">{res.badge || res.category}</span>
+                          <button 
+                            onClick={(e) => { e.stopPropagation(); toggleBookmark(res.id); }}
+                            className={`p-1 ${bookmarks.includes(res.id) ? 'text-amber-400' : 'app-muted hover:text-amber-400'}`}
+                          >
+                            <i className={`fa-${bookmarks.includes(res.id) ? 'solid' : 'regular'} fa-star`}></i>
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+              </section>
             )}
 
-            {/* POMODORO TIMER BAR */}
-            {isPomodoroOpen && (
-              <div className="p-6 rounded-3xl app-card border shadow-2xl flex flex-wrap items-center justify-between gap-6 animate-scale-up">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-500 border border-amber-500/30 flex items-center justify-center text-xl font-bold">
-                    <i className="fas fa-hourglass-start animate-spin"></i>
-                  </div>
+            {}
+            {activeTab === 'teachers' && (
+              <section className="space-y-6 animate-fade-in-up">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl glass-card border-l-4 border-l-red-500">
                   <div>
-                    <h3 className="font-bold text-base">Study Pomodoro Timer</h3>
-                    <p className="text-xs app-text-sub">Mode: <span className="text-amber-500 uppercase font-bold">{pomoMode}</span> (25 min focus / 5 min break)</p>
+                    <div className="flex items-center gap-2 text-red-500 text-xs font-bold uppercase tracking-wider mb-1">
+                      <i className="fab fa-youtube text-sm"></i> YouTube Masterclass Faculty
+                    </div>
+                    <h2 className="text-xl font-extrabold">Top Educator Playlists</h2>
+                    <p className="text-xs app-muted mt-1">Direct access to structured YouTube courses, batch lectures, and revision playlists.</p>
                   </div>
+                  <span className="app-badge px-3 py-1.5 rounded-xl text-xs font-mono font-bold self-start sm:self-center">
+                    {TEACHERS_DATA.length} Top Educators
+                  </span>
                 </div>
 
-                <div className="text-4xl font-black font-mono tracking-wider text-amber-500 app-card px-6 py-2 rounded-2xl border shadow-inner">
-                  {Math.floor(pomoTime / 60).toString().padStart(2, '0')}:{(pomoTime % 60).toString().padStart(2, '0')}
-                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {TEACHERS_DATA.map(t => (
+                    <div key={t.id} className="glass-card p-5 rounded-2xl flex flex-col justify-between space-y-4 group">
+                      <div className="flex items-center gap-3.5">
+                        <div className="relative shrink-0">
+                          <img 
+                            src={t.image} 
+                            alt={t.name}
+                            className="w-14 h-14 rounded-xl object-cover border-2 border-sky-500/30 group-hover:border-red-500 transition-colors shadow-md"
+                            onError={(e) => { e.target.src = "https://placehold.co/150x150/0284c7/ffffff?text=Faculty"; }}
+                          />
+                          <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-red-600 rounded-full flex items-center justify-center text-[8px] text-white">
+                            <i className="fas fa-play"></i>
+                          </span>
+                        </div>
+                        <div className="truncate">
+                          <h3 className="font-extrabold text-xs sm:text-sm truncate group-hover:text-sky-400 transition-colors">{t.name}</h3>
+                          <span className="text-[10px] font-mono app-muted block mt-0.5">{t.subject}</span>
+                        </div>
+                      </div>
 
-                <div className="flex items-center gap-2">
-                  <button 
-                    onClick={() => { setPomoRunning(!pomoRunning); playSound('click', isMuted); }} 
-                    className={`px-5 py-2.5 rounded-xl font-bold text-xs transition-all ${pomoRunning ? 'bg-amber-600 text-white' : 'bg-emerald-600 text-white'}`}
-                  >
-                    {pomoRunning ? 'Pause Session' : 'Start Focus'}
-                  </button>
-                  <button 
-                    onClick={() => { setPomoRunning(false); setPomoTime(25 * 60); setPomoMode('work'); playSound('click', isMuted); }}
-                    className="px-4 py-2.5 rounded-xl app-card font-semibold text-xs"
-                  >
-                    Reset
-                  </button>
-                  <button onClick={() => setIsPomodoroOpen(false)} className="p-2.5 app-text-sub hover:text-indigo-500">
-                    <i className="fas fa-xmark"></i>
-                  </button>
+                      <a 
+                        href={t.playlist} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="w-full py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs text-center transition-all shadow-md shadow-red-600/20 active:scale-95 flex items-center justify-center gap-2"
+                      >
+                        <i className="fab fa-youtube text-sm"></i>
+                        <span>Open Playlist</span>
+                      </a>
+                    </div>
+                  ))}
                 </div>
-              </div>
+              </section>
             )}
 
             {}
-            <section className="space-y-4">
-              
-              {/* Search Bar Input */}
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none app-text-sub">
-                  <i className="fas fa-magnifying-glass text-base"></i>
-                </div>
-                <input 
-                  type="text" 
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search 56+ links, Allen tests, PW books, Anna's archive, PYQs, AI engines, IDEs..." 
-                  className="w-full pl-11 pr-12 py-3.5 rounded-2xl app-input text-xs sm:text-sm font-medium shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
-                />
-                {searchQuery && (
-                  <button 
-                    onClick={() => setSearchQuery('')}
-                    className="absolute inset-y-0 right-0 pr-4 flex items-center app-text-sub hover:text-indigo-500"
-                  >
-                    <i className="fas fa-circle-xmark"></i>
-                  </button>
-                )}
-              </div>
-
-              {/* Category Pills Navigation */}
-              <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-                {CATEGORIES.map(cat => {
-                  const isActive = selectedCategory === cat;
-                  return (
-                    <button
-                      key={cat}
-                      onClick={() => { setSelectedCategory(cat); setSelectedSubtag('All'); playSound('click', isMuted); }}
-                      className={`px-4 py-2 rounded-xl font-bold text-xs whitespace-nowrap transition-all flex items-center gap-2 ${
-                        isActive 
-                          ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30' 
-                          : 'app-card hover:border-indigo-500/50'
-                      }`}
-                    >
-                      {cat === 'Bookmarks' && <i className="fas fa-heart text-pink-500"></i>}
-                      {cat}
-                      {cat === 'Bookmarks' && (
-                        <span className="ml-1 px-2 py-0.2 text-[10px] rounded-full bg-pink-500/20 text-pink-500 font-bold">
-                          {bookmarks.length}
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Subtag Chip Filters & View Switcher */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t border-slate-700/30">
-                
-                {/* Subtag Filters */}
-                <div className="flex flex-wrap items-center gap-1.5 text-xs">
-                  <span className="app-text-sub font-bold mr-1">Tag:</span>
-                  {SUBTAGS.map(st => (
-                    <button
-                      key={st}
-                      onClick={() => { setSelectedSubtag(st); playSound('click', isMuted); }}
-                      className={`px-3 py-1 rounded-lg border text-xs transition-all ${
-                        selectedSubtag === st 
-                          ? 'bg-indigo-500/20 border-indigo-500 text-indigo-500 font-bold' 
-                          : 'app-card hover:border-indigo-500/30'
-                      }`}
-                    >
-                      {st}
-                    </button>
-                  ))}
-                </div>
-
-                {/* View Switcher & Sorting */}
-                <div className="flex items-center gap-3 self-end sm:self-auto">
-                  
-                  {/* Grid vs List Mode Switch */}
-                  <div className="flex items-center app-card rounded-xl p-1 gap-1 border">
+            {activeTab === 'tools' && (
+              <section className="space-y-6 animate-fade-in-up">
+                <div className="glass-card p-6 rounded-2xl space-y-4">
+                  <div className="flex items-center justify-between border-b app-border pb-3">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-sm">
+                        <i className="fas fa-pen-to-square"></i>
+                      </div>
+                      <div>
+                        <h2 className="text-sm font-extrabold">Aspirant's Study Scratchpad</h2>
+                        <span className="text-[10px] app-muted block font-mono">Persisted instantly in your browser</span>
+                      </div>
+                    </div>
                     <button 
-                      onClick={() => { setViewMode('grid'); localStorage.setItem('edupulse_view', 'grid'); playSound('click', isMuted); }}
-                      className={`p-1.5 rounded-lg text-xs ${viewMode === 'grid' ? 'bg-indigo-600 text-white' : 'app-text-sub'}`}
-                      title="Grid Layout"
+                      onClick={() => { setNotes(''); localStorage.removeItem('edupulse_notes'); addToast('Scratchpad cleared'); }}
+                      className="px-3 py-1.5 rounded-lg text-xs font-semibold text-rose-400 hover:bg-rose-500/10 transition-all"
                     >
-                      <i className="fas fa-border-all"></i>
-                    </button>
-                    <button 
-                      onClick={() => { setViewMode('list'); localStorage.setItem('edupulse_view', 'list'); playSound('click', isMuted); }}
-                      className={`p-1.5 rounded-lg text-xs ${viewMode === 'list' ? 'bg-indigo-600 text-white' : 'app-text-sub'}`}
-                      title="Compact List Layout"
-                    >
-                      <i className="fas fa-list"></i>
+                      <i className="fas fa-trash-can mr-1"></i> Clear Notes
                     </button>
                   </div>
 
-                  {/* Sort Selection */}
-                  <select 
-                    value={sortBy} 
-                    onChange={(e) => setSortBy(e.target.value)}
-                    className="app-input border rounded-xl px-3 py-1.5 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                  >
-                    <option value="default">Featured First</option>
-                    <option value="rating">Highest Rated ⭐</option>
-                    <option value="name">Title (A - Z)</option>
-                    <option value="category">Category</option>
-                  </select>
+                  <textarea 
+                    value={notes}
+                    onChange={(e) => { setNotes(e.target.value); localStorage.setItem('edupulse_notes', e.target.value); }}
+                    rows="10"
+                    placeholder="Write down today's targets, formula shortcuts, remaining backlogs, revision checklist..."
+                    className="w-full p-4 rounded-xl glass-card text-xs sm:text-sm font-mono focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 transition-all leading-relaxed"
+                  ></textarea>
 
-                </div>
-
-              </div>
-
-            </section>
-
-            {}
-            <section className="space-y-4">
-              <div className="flex items-center justify-between text-xs app-text-sub font-semibold">
-                <span>Showing <strong className="app-text-main">{filteredResources.length}</strong> of {resources.length} verified resources</span>
-                {(searchQuery || selectedCategory !== 'All' || selectedSubtag !== 'All') && (
-                  <button 
-                    onClick={() => { setSearchQuery(''); setSelectedCategory('All'); setSelectedSubtag('All'); playSound('click', isMuted); }}
-                    className="text-indigo-500 hover:underline"
-                  >
-                    Reset active filters
-                  </button>
-                )}
-              </div>
-
-              {filteredResources.length === 0 ? (
-                /* Empty Results State */
-                <div className="py-16 text-center rounded-3xl border border-dashed app-card space-y-4">
-                  <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center mx-auto text-2xl">
-                    <i className="fas fa-magnifying-glass"></i>
+                  <div className="flex justify-between items-center text-[11px] app-muted font-mono pt-1">
+                    <span>{notes.length} characters</span>
+                    <span>Auto-saved locally</span>
                   </div>
-                  <h3 className="text-lg font-bold">No Matching Links Found</h3>
-                  <p className="app-text-sub text-xs max-w-md mx-auto">
-                    Try refining your search keyword or clearing subtag constraints.
-                  </p>
-                  <button 
-                    onClick={() => { setSearchQuery(''); setSelectedCategory('All'); setSelectedSubtag('All'); }}
-                    className="px-4 py-2 rounded-xl bg-indigo-600 text-white font-semibold text-xs"
-                  >
-                    Clear Search Filters
-                  </button>
                 </div>
-              ) : viewMode === 'grid' ? (
-                /* GRID DISPLAY */
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                  {filteredResources.map(res => (
-                    <ResourceCard 
-                      key={res.id} 
-                      res={res} 
-                      isBookmarked={bookmarks.includes(res.id)} 
-                      onToggleBookmark={() => toggleBookmark(res.id)} 
-                      onPreview={() => { setPreviewResource(res); playSound('click', isMuted); }} 
-                    />
-                  ))}
-                </div>
-              ) : (
-                /* LIST DISPLAY */
-                <div className="space-y-2">
-                  {filteredResources.map(res => (
-                    <ResourceListItem 
-                      key={res.id} 
-                      res={res} 
-                      isBookmarked={bookmarks.includes(res.id)} 
-                      onToggleBookmark={() => toggleBookmark(res.id)} 
-                      onPreview={() => { setPreviewResource(res); playSound('click', isMuted); }} 
-                    />
-                  ))}
-                </div>
-              )}
-            </section>
+              </section>
+            )}
 
           </main>
 
           {}
-          <footer className="border-t app-header py-8 mt-16 relative z-10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs app-text-sub">
-              <div className="flex items-center gap-2">
-                <i className="fas fa-bolt text-indigo-500"></i>
-                <span className="font-bold app-text-main">EduPulse PRO Ecosystem</span>
-                <span>— Verifiable Open Learning Hub</span>
+          {/* MODAL: ADD CUSTOM RESOURCE */}
+          {isAddModalOpen && (
+            <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4">
+              <div className="p-6 rounded-2xl glass-card max-w-md w-full space-y-5 animate-scale-up border-sky-500/30">
+                <div className="flex items-center justify-between border-b app-border pb-3">
+                  <h3 className="text-sm font-extrabold flex items-center gap-2">
+                    <i className="fas fa-plus-circle text-sky-400"></i> Add New Study Resource
+                  </h3>
+                  <button onClick={() => setIsAddModalOpen(false)} className="app-muted hover:text-white p-1">
+                    <i className="fas fa-xmark text-sm"></i>
+                  </button>
+                </div>
+
+                <form onSubmit={(e) => {
+                  e.preventDefault();
+                  const form = e.target;
+                  const newRes = {
+                    id: Date.now().toString(),
+                    title: form.title.value,
+                    url: form.url.value,
+                    category: form.category.value,
+                    badge: form.badge.value || 'Custom',
+                    description: form.desc.value || 'User added link.',
+                    icon: 'fa-globe',
+                    subtag: 'Batches'
+                  };
+                  const updated = [...resources, newRes];
+                  setResources(updated);
+                  const customOnly = updated.filter(r => !INITIAL_RESOURCES.some(i => i.id === r.id));
+                  localStorage.setItem('edupulse_custom_resources_v3', JSON.stringify(customOnly));
+                  addToast('Resource added successfully!', 'success');
+                  setIsAddModalOpen(false);
+                }} className="space-y-4 text-xs font-semibold">
+                  <div>
+                    <label className="block app-muted mb-1 font-mono">Resource Title *</label>
+                    <input name="title" required className="w-full p-2.5 rounded-xl glass-card focus:outline-none focus:border-sky-500" placeholder="e.g. Organic Chemistry Module" />
+                  </div>
+                  <div>
+                    <label className="block app-muted mb-1 font-mono">Website URL *</label>
+                    <input name="url" type="url" required className="w-full p-2.5 rounded-xl glass-card focus:outline-none focus:border-sky-500" placeholder="https://..." />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block app-muted mb-1 font-mono">Category</label>
+                      <select name="category" className="w-full p-2.5 rounded-xl glass-card focus:outline-none focus:border-sky-500">
+                        {CATEGORIES.filter(c => c !== 'All' && c !== 'Saved Links').map(c => <option key={c} value={c}>{c}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block app-muted mb-1 font-mono">Badge Label</label>
+                      <input name="badge" className="w-full p-2.5 rounded-xl glass-card focus:outline-none focus:border-sky-500" placeholder="e.g. Physics" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block app-muted mb-1 font-mono">Description</label>
+                    <input name="desc" className="w-full p-2.5 rounded-xl glass-card focus:outline-none focus:border-sky-500" placeholder="Short description..." />
+                  </div>
+                  <button type="submit" className="w-full py-3 rounded-xl shimmer-btn text-white font-bold transition-all shadow-lg active:scale-95">
+                    Save Resource Link
+                  </button>
+                </form>
               </div>
-              <div className="flex items-center gap-4">
-                <span>Updated 2026 Edition</span>
-                <span>•</span>
-                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-indigo-500">
-                  Back to Top <i className="fas fa-arrow-up ml-1"></i>
-                </button>
-              </div>
+            </div>
+          )}
+
+          {/* FOOTER */}
+          <footer className="border-t glass-nav py-6 text-xs app-muted mt-auto">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span className="font-semibold">EduPulse PRO • Modern Study Portal</span>
+              <span className="font-mono text-[11px]">All 12 Faculty Playlists & Links Active</span>
             </div>
           </footer>
 
-          {}
-
-          {/* 1. COMMAND PALETTE MODAL (⌘K) */}
-          {isCmdKOpen && (
-            <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-start justify-center pt-20 p-4">
-              <div className="app-card border rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden animate-scale-up">
-                <div className="p-4 border-b flex items-center gap-3">
-                  <i className="fas fa-magnifying-glass text-indigo-500"></i>
-                  <input 
-                    type="text" 
-                    autoFocus 
-                    placeholder="Search all 56+ links directly..." 
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-transparent app-text-main placeholder-slate-500 focus:outline-none text-sm font-medium"
-                  />
-                  <kbd className="px-2 py-0.5 text-xs app-badge rounded">ESC</kbd>
-                </div>
-                <div className="max-h-96 overflow-y-auto p-2 space-y-1">
-                  {filteredResources.slice(0, 8).map(res => (
-                    <div 
-                      key={res.id} 
-                      onClick={() => { window.open(res.url, '_blank', 'noopener,noreferrer'); setIsCmdKOpen(false); }}
-                      className="p-3 rounded-xl hover:bg-indigo-500/10 flex items-center justify-between cursor-pointer group transition-colors"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-500 flex items-center justify-center text-xs">
-                          <i className={`fas ${res.icon.startsWith('fa-') ? res.icon : 'fa-globe'}`}></i>
-                        </div>
-                        <div>
-                          <div className="font-bold text-xs group-hover:text-indigo-500">{res.title}</div>
-                          <div className="text-[10px] app-text-sub">{res.category} • {res.badge}</div>
-                        </div>
-                      </div>
-                      <i className="fas fa-arrow-up-right-from-square text-xs app-text-sub group-hover:text-indigo-500"></i>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* 2. ADD CUSTOM SITE MODAL */}
-          {isAddModalOpen && (
-            <AddResourceModal 
-              onClose={() => setIsAddModalOpen(false)} 
-              onAdd={(newRes) => {
-                const updated = [...resources, newRes];
-                setResources(updated);
-                const customOnly = updated.filter(r => !INITIAL_RESOURCES.some(i => i.id === r.id));
-                localStorage.setItem('edupulse_custom_resources_v3', JSON.stringify(customOnly));
-                addToast('Custom site saved to your library!', 'success');
-                setIsAddModalOpen(false);
-              }}
-            />
-          )}
-
-          {/* 3. RANDOM WHEEL PICKER MODAL */}
-          {isSpinModalOpen && (
-            <SpinWheelModal 
-              resources={resources} 
-              isMuted={isMuted}
-              onClose={() => setIsSpinModalOpen(false)} 
-            />
-          )}
-
-          {/* 4. IMPORT / EXPORT BACKUP MODAL */}
-          {isImportExportOpen && (
-            <ImportExportModal 
-              bookmarks={bookmarks} 
-              addToast={addToast}
-              onClose={() => setIsImportExportOpen(false)} 
-              onImport={(imported) => {
-                setBookmarks(imported);
-                localStorage.setItem('edupulse_bookmarks_v3', JSON.stringify(imported));
-                addToast('Bookmarks imported successfully!', 'success');
-                setIsImportExportOpen(false);
-              }}
-            />
-          )}
-
-          {/* 5. QUICK PREVIEW DRAWER MODAL */}
-          {previewResource && (
-            <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-              <div className="app-card border rounded-3xl max-w-lg w-full p-6 space-y-6 shadow-2xl relative animate-scale-up">
-                <button 
-                  onClick={() => setPreviewResource(null)}
-                  className="absolute top-5 right-5 app-text-sub hover:text-indigo-500"
-                >
-                  <i className="fas fa-xmark text-lg"></i>
-                </button>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-indigo-500/20 text-indigo-500 border flex items-center justify-center text-2xl">
-                    <i className={`fas ${previewResource.icon.startsWith('fa-') ? previewResource.icon : 'fa-globe'}`}></i>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold text-indigo-500 uppercase tracking-wider">{previewResource.category}</span>
-                    <h3 className="text-lg font-bold leading-tight">{previewResource.title}</h3>
-                    <div className="flex items-center gap-2 text-xs app-text-sub mt-1">
-                      <span>⭐ {previewResource.rating}</span>
-                      <span>•</span>
-                      <span className="text-emerald-500 font-semibold">{previewResource.badge || 'Verified'}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <p className="app-text-sub text-xs sm:text-sm leading-relaxed">{previewResource.description}</p>
-
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2.5 py-1 rounded-lg app-badge text-xs font-semibold">
-                    Category: {previewResource.category}
-                  </span>
-                  <span className="px-2.5 py-1 rounded-lg app-badge text-xs font-semibold">
-                    Tag: #{previewResource.subtag}
-                  </span>
-                </div>
-
-                <div className="pt-4 border-t flex items-center justify-end gap-3">
-                  <button 
-                    onClick={() => {
-                      navigator.clipboard.writeText(previewResource.url);
-                      addToast('Site link copied to clipboard!', 'success');
-                    }}
-                    className="px-4 py-2.5 rounded-xl app-card text-xs font-bold hover:border-indigo-500/50"
-                  >
-                    <i className="fas fa-copy mr-1.5"></i> Copy Link
-                  </button>
-                  <a 
-                    href={previewResource.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all"
-                  >
-                    Launch Site <i className="fas fa-arrow-up-right-from-square ml-1.5"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          )}
-
-        </div>
-      );
-    }
-
-    function ResourceCard({ res, isBookmarked, onToggleBookmark, onPreview }) {
-      const handleCardClick = () => {
-        window.open(res.url, '_blank', 'noopener,noreferrer');
-      };
-
-      return (
-        <div 
-          onClick={handleCardClick}
-          className="group app-card border rounded-2xl p-4 sm:p-5 flex flex-col justify-between relative hover:-translate-y-1 hover:border-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300 cursor-pointer select-none"
-        >
-          <div className="space-y-3">
-            
-            {/* Header: Icon, Title & Heart */}
-            <div className="flex items-start justify-between gap-2">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-500 border flex items-center justify-center text-lg shrink-0 group-hover:scale-110 transition-transform">
-                  <i className={`fas ${res.icon && res.icon.startsWith('fa-') ? res.icon : 'fa-globe'}`}></i>
-                </div>
-                <div>
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-indigo-500 block">
-                    {res.badge || res.category}
-                  </span>
-                  <h3 className="font-bold text-sm leading-snug group-hover:text-indigo-500 transition-colors line-clamp-1">
-                    {res.title}
-                  </h3>
-                </div>
-              </div>
-
-              <button 
-                onClick={(e) => { 
-                  e.stopPropagation(); 
-                  onToggleBookmark(); 
-                }}
-                className={`p-2 rounded-xl transition-all ${
-                  isBookmarked 
-                    ? 'bg-pink-500/20 text-pink-500 border border-pink-500/30' 
-                    : 'app-card text-slate-400 hover:text-pink-500'
-                }`}
-                title={isBookmarked ? "Remove Bookmark" : "Save Bookmark"}
-              >
-                <i className={`fas fa-heart ${isBookmarked ? 'text-pink-500' : ''}`}></i>
-              </button>
-            </div>
-
-            {/* Description */}
-            <p className="app-text-sub text-xs line-clamp-2 leading-relaxed">
-              {res.description}
-            </p>
-
-            {/* Tag Pills */}
-            <div className="flex items-center gap-1.5 pt-1">
-              <span className="px-2 py-0.5 rounded-md app-badge text-[10px] font-semibold">
-                #{res.subtag}
-              </span>
-              <span className="px-2 py-0.5 rounded-md app-badge text-amber-500 text-[10px] font-semibold flex items-center gap-1">
-                <i className="fas fa-star text-[9px]"></i> {res.rating}
-              </span>
-            </div>
-
-          </div>
-
-          {/* Action Row */}
-          <div className="pt-3 mt-3 border-t flex items-center justify-between gap-2">
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
-                onPreview();
-              }}
-              className="p-2 rounded-lg app-card hover:border-indigo-500/50 text-xs app-text-sub hover:text-indigo-500 transition-colors"
-              title="Quick Info"
-            >
-              <i className="fas fa-circle-info"></i>
-            </button>
-            
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open(res.url, '_blank', 'noopener,noreferrer');
-              }}
-              className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-all flex items-center gap-1.5 shadow-md shadow-indigo-600/20"
-            >
-              <span>Launch</span>
-              <i className="fas fa-arrow-up-right-from-square text-[10px]"></i>
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    function ResourceListItem({ res, isBookmarked, onToggleBookmark, onPreview }) {
-      const handleItemClick = () => {
-        window.open(res.url, '_blank', 'noopener,noreferrer');
-      };
-
-      return (
-        <div 
-          onClick={handleItemClick}
-          className="app-card border rounded-xl p-3 flex items-center justify-between gap-4 hover:border-indigo-500/50 transition-all cursor-pointer select-none group"
-        >
-          <div className="flex items-center gap-3 truncate">
-            <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-500 border flex items-center justify-center text-xs shrink-0 group-hover:scale-105 transition-transform">
-              <i className={`fas ${res.icon && res.icon.startsWith('fa-') ? res.icon : 'fa-globe'}`}></i>
-            </div>
-            <div className="truncate">
-              <div className="flex items-center gap-2">
-                <h4 className="font-bold text-xs truncate group-hover:text-indigo-500 transition-colors">{res.title}</h4>
-                <span className="px-1.5 py-0.2 rounded text-[9px] font-bold app-badge">
-                  {res.badge || res.category}
-                </span>
-              </div>
-              <p className="app-text-sub text-[11px] truncate">{res.description}</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <button 
-              onClick={(e) => { e.stopPropagation(); onToggleBookmark(); }} 
-              className={`p-1.5 rounded-lg text-xs ${isBookmarked ? 'text-pink-500' : 'app-text-sub hover:text-pink-500'}`}
-              title={isBookmarked ? "Remove Bookmark" : "Save Bookmark"}
-            >
-              <i className="fas fa-heart"></i>
-            </button>
-            <button 
-              onClick={(e) => { e.stopPropagation(); onPreview(); }} 
-              className="p-1.5 rounded-lg text-xs app-text-sub hover:text-indigo-500"
-              title="Quick Info"
-            >
-              <i className="fas fa-circle-info"></i>
-            </button>
-            <button 
-              onClick={(e) => { e.stopPropagation(); window.open(res.url, '_blank', 'noopener,noreferrer'); }} 
-              className="px-3 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all"
-            >
-              Launch
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    function HeroCanvas({ theme, isDarkMode }) {
-      const canvasRef = useRef(null);
-      useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let animationFrameId;
-
-        const resize = () => {
-          canvas.width = window.innerWidth;
-          canvas.height = 300;
-        };
-        resize();
-        window.addEventListener('resize', resize);
-
-        const particles = Array.from({ length: 35 }, () => ({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 2 + 1,
-          dx: (Math.random() - 0.5) * 0.5,
-          dy: (Math.random() - 0.5) * 0.5,
-          alpha: Math.random() * 0.4 + 0.1
-        }));
-
-        const render = () => {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          particles.forEach(p => {
-            p.x += p.dx;
-            p.y += p.dy;
-            if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-            if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = isDarkMode ? `rgba(129, 140, 248, ${p.alpha})` : `rgba(79, 70, 229, ${p.alpha})`;
-            ctx.fill();
-          });
-          animationFrameId = requestAnimationFrame(render);
-        };
-        render();
-
-        return () => {
-          window.removeEventListener('resize', resize);
-          cancelAnimationFrame(animationFrameId);
-        };
-      }, [theme, isDarkMode]);
-
-      return <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-[300px] pointer-events-none opacity-25 z-0" />;
-    }
-
-    function AddResourceModal({ onClose, onAdd }) {
-      const [title, setTitle] = useState('');
-      const [url, setUrl] = useState('');
-      const [category, setCategory] = useState('JEE & NEET');
-      const [badge, setBadge] = useState('Custom');
-      const [description, setDescription] = useState('');
-      const [subtag, setSubtag] = useState('Batches');
-
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!title || !url) return;
-        const newRes = {
-          id: Date.now().toString(),
-          title,
-          url,
-          category,
-          badge,
-          description: description || 'User saved educational portal link.',
-          rating: 5.0,
-          featured: false,
-          icon: 'fa-globe',
-          subtag
-        };
-        onAdd(newRes);
-      };
-
-      return (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="app-card border rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4 animate-scale-up">
-            <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold">Add Custom Site Link</h3>
-              <button onClick={onClose} className="app-text-sub hover:text-indigo-500"><i className="fas fa-xmark"></i></button>
-            </div>
-            <form onSubmit={handleSubmit} className="space-y-3 text-xs">
-              <div>
-                <label className="block app-text-sub font-bold mb-1">Site Title *</label>
-                <input type="text" required value={title} onChange={e=>setTitle(e.target.value)} className="w-full app-input border rounded-xl p-2.5" placeholder="e.g. Physics Wallah Vault" />
-              </div>
-              <div>
-                <label className="block app-text-sub font-bold mb-1">URL *</label>
-                <input type="url" required value={url} onChange={e=>setUrl(e.target.value)} className="w-full app-input border rounded-xl p-2.5" placeholder="https://..." />
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="block app-text-sub font-bold mb-1">Category</label>
-                  <select value={category} onChange={e=>setCategory(e.target.value)} className="w-full app-input border rounded-xl p-2.5">
-                    {CATEGORIES.filter(c => c !== 'All' && c !== 'Bookmarks').map(c => <option key={c} value={c}>{c}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label className="block app-text-sub font-bold mb-1">Subtag</label>
-                  <select value={subtag} onChange={e=>setSubtag(e.target.value)} className="w-full app-input border rounded-xl p-2.5">
-                    {SUBTAGS.filter(s => s !== 'All').map(s => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label className="block app-text-sub font-bold mb-1">Badge Tag</label>
-                <input type="text" value={badge} onChange={e=>setBadge(e.target.value)} className="w-full app-input border rounded-xl p-2.5" placeholder="e.g. Free Modules" />
-              </div>
-              <div>
-                <label className="block app-text-sub font-bold mb-1">Description</label>
-                <textarea rows="2" value={description} onChange={e=>setDescription(e.target.value)} className="w-full app-input border rounded-xl p-2.5" placeholder="Brief summary..."></textarea>
-              </div>
-              <button type="submit" className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg mt-2">
-                Save Site
-              </button>
-            </form>
-          </div>
-        </div>
-      );
-    }
-
-    function SpinWheelModal({ resources, isMuted, onClose }) {
-      const [spinning, setSpinning] = useState(false);
-      const [picked, setPicked] = useState(null);
-
-      const handleSpin = () => {
-        if (!resources || resources.length === 0) return;
-        setSpinning(true);
-        setPicked(null);
-        let count = 0;
-        const interval = setInterval(() => {
-          const rand = resources[Math.floor(Math.random() * resources.length)];
-          setPicked(rand);
-          playSound('spin', isMuted);
-          count++;
-          if (count > 22) {
-            clearInterval(interval);
-            setSpinning(false);
-            playSound('success', isMuted);
-          }
-        }, 80);
-      };
-
-      return (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="app-card border rounded-3xl max-w-sm w-full p-6 text-center space-y-5 shadow-2xl animate-scale-up">
-            <div className="flex justify-between items-center">
-              <h3 className="font-bold text-sm">Random Tool Picker</h3>
-              <button onClick={onClose} className="app-text-sub hover:text-indigo-500"><i className="fas fa-xmark"></i></button>
-            </div>
-
-            <div className="py-6 border border-dashed rounded-2xl app-card flex flex-col items-center justify-center min-h-[150px]">
-              {picked ? (
-                <div className="space-y-2 animate-scale-up">
-                  <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-500 mx-auto flex items-center justify-center text-xl">
-                    <i className={`fas ${picked.icon && picked.icon.startsWith('fa-') ? picked.icon : 'fa-globe'}`}></i>
-                  </div>
-                  <div className="font-bold text-sm">{picked.title}</div>
-                  <span className="text-[10px] text-indigo-500 font-semibold uppercase">{picked.badge || picked.category}</span>
-                </div>
-              ) : (
-                <div className="app-text-sub text-xs">Click Spin to pick a random tool!</div>
-              )}
-            </div>
-
-            <button 
-              onClick={handleSpin} 
-              disabled={spinning}
-              className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs transition-all shadow-lg shadow-purple-600/30"
-            >
-              {spinning ? 'Selecting Portal...' : 'Spin Wheel 🎲'}
-            </button>
-
-            {picked && !spinning && (
-              <a href={picked.url} target="_blank" rel="noopener noreferrer" className="block w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs">
-                Launch Picked Portal <i className="fas fa-arrow-up-right-from-square ml-1"></i>
-              </a>
-            )}
-          </div>
-        </div>
-      );
-    }
-
-    function ImportExportModal({ bookmarks, addToast, onClose, onImport }) {
-      const [jsonText, setJsonText] = useState('');
-      const [errorMsg, setErrorMsg] = useState('');
-
-      const handleExport = () => {
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(bookmarks, null, 2));
-        const anchor = document.createElement('a');
-        anchor.setAttribute("href", dataStr);
-        anchor.setAttribute("download", "edupulse_bookmarks.json");
-        document.body.appendChild(anchor);
-        anchor.click();
-        anchor.remove();
-        if (addToast) addToast('Bookmarks backup exported!', 'success');
-      };
-
-      const handleImportSubmit = () => {
-        setErrorMsg('');
-        try {
-          const parsed = JSON.parse(jsonText);
-          if (Array.isArray(parsed)) {
-            onImport(parsed);
-          } else {
-            setErrorMsg('Invalid format: Exported backup must be a valid JSON array.');
-          }
-        } catch (err) {
-          setErrorMsg('Parsing error: Please verify valid JSON text syntax.');
-        }
-      };
-
-      return (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="app-card border rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl animate-scale-up">
-            <div className="flex justify-between items-center">
-              <h3 className="font-bold text-sm">Backup / Restore Bookmarks</h3>
-              <button onClick={onClose} className="app-text-sub hover:text-indigo-500"><i className="fas fa-xmark"></i></button>
-            </div>
-
-            {errorMsg && (
-              <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 text-xs font-semibold flex items-center gap-2">
-                <i className="fas fa-circle-exclamation"></i>
-                <span>{errorMsg}</span>
-              </div>
-            )}
-
-            <div className="space-y-3">
-              <button onClick={handleExport} className="w-full py-2.5 rounded-xl app-card hover:border-indigo-500/50 font-semibold text-xs flex items-center justify-center gap-2">
-                <i className="fas fa-download text-indigo-500"></i> Download JSON Backup
-              </button>
-
-              <div className="app-text-sub text-[10px] font-bold text-center uppercase tracking-wider">or Paste JSON String</div>
-
-              <textarea 
-                rows="3" 
-                value={jsonText} 
-                onChange={e=>{ setJsonText(e.target.value); setErrorMsg(''); }} 
-                placeholder='["sp1", "jn1", "jn3"]' 
-                className="w-full app-input border rounded-xl p-3 text-xs font-mono focus:outline-none"
-              ></textarea>
-
-              <button onClick={handleImportSubmit} className="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs">
-                Import Bookmarks
-              </button>
-            </div>
-          </div>
         </div>
       );
     }
@@ -2231,3 +1079,4 @@
   </script>
 </body>
 </html>
+```
