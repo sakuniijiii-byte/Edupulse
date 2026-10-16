@@ -27,7 +27,8 @@
           },
           animation: {
             'pulse-glow': 'pulseGlow 3s infinite alternate',
-            'float': 'float 6s ease-in-out infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'bounce-slow': 'bounce 3s infinite',
             'shimmer': 'shimmer 2.5s infinite linear',
             'fade-in-up': 'fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
             'scale-up': 'scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards'
@@ -38,8 +39,8 @@
               '100%': { boxShadow: '0 0 25px rgba(56, 189, 248, 0.35), 0 0 50px rgba(99, 102, 241, 0.25)' }
             },
             float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-6px)' }
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-10px) rotate(2deg)' }
             },
             shimmer: {
               '0%': { backgroundPosition: '-200% 0' },
@@ -155,6 +156,28 @@
       animation: shimmer 3s infinite linear;
     }
 
+    /* Mascot Speech Bubble Style */
+    .speech-bubble {
+      position: relative;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 1rem;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+    }
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 24px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid rgba(56, 189, 248, 0.4);
+    }
+
     ::-webkit-scrollbar {
       width: 8px;
       height: 8px;
@@ -267,7 +290,7 @@
 
     const INITIAL_RESOURCES = [
       {
-            id: "sp999",
+        id: "sp999",
         title: "Allen neet",
         description: "Top student resource platform offering direct links, batch lecture streams, and curated exam study materials.",
         category: "JEE & NEET",
@@ -277,8 +300,8 @@
         icon: "fa-paw",
         subtag: "Batches"
       },
-  
-      {id: "sp99",
+      {
+        id: "sp99",
         title: "allen jee",
         description: "Top student resource platform offering direct links, batch lecture streams, and curated exam study materials.",
         category: "JEE ",
@@ -480,6 +503,14 @@
     const CATEGORIES = ['All', 'JEE & NEET', 'Free Books', 'AI & Study', 'Coding & Tech', 'Productivity', 'Fun & Media', 'Saved Links'];
     const SUBTAGS = ['All', 'Batches', 'Tests', 'Books', 'PYQs', 'AI', 'Fun'];
 
+    const MASCOT_QUOTES = [
+      "Keep pushing! You're closer to your dream rank than yesterday! 🚀",
+      "Did you take a 5-minute break? Remember to hydrate! 💧",
+      "Consistency beats intensity. Keep solving those PYQs! 🎯",
+      "Need a lecture or test series? Check out the faculty hub! ✨",
+      "You've got this! Let's conquer today's study goal! 🌟"
+    ];
+
     function App() {
       const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('edupulse_minimal_theme') !== 'light');
       const [activeTab, setActiveTab] = useState('directory'); 
@@ -498,6 +529,10 @@
       const [searchQuery, setSearchQuery] = useState('');
       const [selectedCategory, setSelectedCategory] = useState('All');
       const [selectedSubtag, setSelectedSubtag] = useState('All');
+
+      // Mascot dialogue state
+      const [quoteIndex, setQuoteIndex] = useState(0);
+      const [showSpeech, setShowSpeech] = useState(true);
 
       // Modals
       const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -545,6 +580,11 @@
         });
       };
 
+      const handleMascotClick = () => {
+        setQuoteIndex((prev) => (prev + 1) % MASCOT_QUOTES.length);
+        setShowSpeech(true);
+      };
+
       const filteredResources = useMemo(() => {
         return resources.filter(res => {
           if (selectedCategory === 'Saved Links') {
@@ -574,7 +614,7 @@
       return (
         <div className="min-h-screen flex flex-col font-sans transition-colors duration-200">
           
-          {/* TOAST NOTIFICATIONS WITH MODERN SLIDE ANIMATION */}
+          {/* TOAST NOTIFICATIONS */}
           <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2.5 pointer-events-none">
             {toasts.map(t => (
               <div key={t.id} className="pointer-events-auto px-4 py-2.5 rounded-xl glass-card shadow-2xl text-xs font-semibold flex items-center gap-3 animate-fade-in-up border-l-4 border-l-sky-500">
@@ -602,7 +642,7 @@
                   </div>
                 </div>
 
-                {/* Main Desktop Navigation */}
+                {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-1.5 text-xs font-semibold">
                   <button 
                     onClick={() => setActiveTab('directory')}
@@ -680,7 +720,7 @@
 
             </div>
 
-            {/* Mobile Navigation Bar */}
+            {/* Mobile Navigation */}
             <div className="md:hidden flex border-t app-border px-3 py-2 gap-1.5 text-xs font-semibold">
               <button 
                 onClick={() => setActiveTab('directory')}
@@ -748,12 +788,12 @@
             {activeTab === 'directory' && (
               <section className="space-y-6 animate-fade-in-up">
                 
-                {/* HERO BANNER & SEARCH BAR */}
-                <div className="relative p-6 sm:p-8 rounded-3xl glass-card overflow-hidden border border-sky-500/20">
+                {/* HERO BANNER & 3D MASCOT INTEGRATION */}
+                <div className="relative p-6 sm:p-10 rounded-3xl glass-card overflow-hidden border border-sky-500/25 flex flex-col lg:flex-row items-center justify-between gap-8">
                   <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
                   <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                  <div className="relative z-10 max-w-2xl space-y-4">
+                  <div className="relative z-10 max-w-xl space-y-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20">
                       <span className="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
                       Curated Study Hub for Aspirants
@@ -762,7 +802,7 @@
                       Find lectures, test series & materials in <span className="gradient-text">seconds</span>.
                     </h1>
                     
-                    {/* Modern Search Field */}
+                    {/* Search Field */}
                     <div className="relative pt-2">
                       <i className="fas fa-magnifying-glass absolute left-4 top-6 text-sm text-sky-400"></i>
                       <input 
@@ -782,11 +822,55 @@
                       )}
                     </div>
                   </div>
+
+                  {/* 3D COSTUME KID MASCOT WIDGET */}
+                  <div className="relative z-10 flex flex-col items-center shrink-0">
+                    {showSpeech && (
+                      <div className="speech-bubble mb-3 max-w-[240px] text-xs font-semibold text-sky-200 animate-fade-in-up flex items-start gap-2">
+                        <i className="fas fa-sparkles text-amber-400 mt-0.5 shrink-0"></i>
+                        <p>{MASCOT_QUOTES[quoteIndex]}</p>
+                      </div>
+                    )}
+                    
+                    <div 
+                      onClick={handleMascotClick}
+                      className="relative cursor-pointer group animate-float"
+                      title="Click mascot for study motivation!"
+                    >
+                      <div className="absolute -inset-2 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-70 transition duration-500"></div>
+                      
+                      <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-2xl glass-card border-2 border-sky-500/40 flex items-center justify-center p-3 overflow-hidden shadow-2xl group-hover:scale-105 transition-all">
+                        <img 
+                          src="https://i.ibb.co/Q7xVk7yR/photo-AQADwh-Fr-G9n-Ik-FZ8.jpg" 
+                          alt="3D Study Mascot"
+                          className="w-full h-full object-cover rounded-xl group-hover:rotate-3 transition-transform duration-300"
+                          onError={(e) => {
+                            e.target.src = "https://placehold.co/200x200/0369a1/ffffff?text=3D+Mascot";
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end justify-center pb-2">
+                          <span className="px-2.5 py-0.5 rounded-full bg-sky-500/90 text-white text-[10px] font-extrabold shadow tracking-wider uppercase">
+                            ✨ EduBuddy
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* LEGAL DISCLAIMER BADGE */}
+                    <div className="mt-3 max-w-[220px] p-2.5 rounded-xl border border-white/10 bg-black/30 backdrop-blur-md text-[10px] leading-relaxed app-muted text-center space-y-1">
+                      <div className="flex items-center justify-center gap-1.5 font-bold text-sky-400 font-mono text-[11px] uppercase tracking-wider">
+                        <i className="fas fa-shield-halved text-[10px]"></i> Disclaimer
+                      </div>
+                      <p>
+                        EduPulse operates purely as an index and directory hub. We do not host, own, or store any content. All links redirect users to third-party platforms and external web services.
+                      </p>
+                    </div>
+                  </div>
+
                 </div>
 
                 {/* CATEGORY NAV & VIEW SWITCHER */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  {/* Category Pills */}
                   <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none text-xs font-semibold">
                     {CATEGORIES.map(cat => (
                       <button
@@ -803,7 +887,6 @@
                     ))}
                   </div>
 
-                  {/* View Switching Control */}
                   <div className="flex items-center justify-between sm:justify-end gap-3">
                     <span className="text-xs font-mono app-muted">{filteredResources.length} resources</span>
                     <div className="flex items-center p-1 rounded-xl glass-card border app-border">
