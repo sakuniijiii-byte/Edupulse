@@ -100,7 +100,7 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
 .practice{margin-top:14px;color:var(--teal);font-weight:800;background:none;padding:0;display:inline-flex;align-items:center;gap:4px;font-size:13px}
 .controls input,.controls select{padding:8px 12px;border:1px solid var(--border-color);border-radius:12px;background:var(--card-bg);color:var(--text-primary);outline:none;font-size:13px}
 .controls input:focus, .controls select:focus{border-color:var(--teal)}
-.custom-modal{position:fixed;inset:0;background:rgba(18,32,44,0.6);backdrop-filter:blur(4px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease;padding:16px}.custom-modal.open{opacity:1;pointer-events:auto}.modal-box{background:var(--card-bg);color:var(--text-primary);width:100%;max-width:500px;border-radius:20px;padding:24px;border:1px solid var(--border-color);box-shadow:0 20px 40px rgba(15, 23, 42, 0.18);transform:translateY(10px) scale(0.98);transition:transform 0.2s ease;max-height:85vh;overflow:auto}.custom-modal.open .modal-box{transform:scale(1)}
+.custom-modal{position:fixed;inset:0;background:rgba(18,32,44,0.6);backdrop-filter:blur(4px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease;padding:16px}.custom-modal.open{opacity:1;pointer-events:auto}.modal-box{background:var(--card-bg);color:var(--text-primary);width:100%;max-width:700px;border-radius:20px;padding:24px;border:1px solid var(--border-color);box-shadow:0 20px 40px rgba(15, 23, 42, 0.18);transform:translateY(10px) scale(0.98);transition:transform 0.2s ease;max-height:88vh;overflow:auto}.custom-modal.open .modal-box{transform:scale(1)}
 .mobile-nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px);z-index:45;opacity:0;pointer-events:none;transition:opacity 0.2s ease}.mobile-nav-overlay.open{opacity:1;pointer-events:auto}
 @media (max-width: 1023px){.sidebar-drawer{position:fixed;top:0;left:0;bottom:0;width:280px;background:var(--paper);z-index:50;transform:translateX(-100%);transition:transform 0.3s ease;padding:20px;display:flex;flex-direction:column;overflow-y:auto}.sidebar-drawer.open{transform:translateX(0)}}
 </style>
@@ -256,10 +256,12 @@ let userNotes = localStorage.getItem('edupulse_scratchpad') || '';
 let timerInterval = null;
 let timerSeconds = 25 * 60;
 let userProgress = JSON.parse(localStorage.getItem('edupulse_progress')) || {};
+const quizState = { questions: [], currentIndex: 0, score: 0, selectedOption: null, answered: false, showResults: false };
 
 const LIVING_WORLD_JSON_URLS = [
     'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/Data/living_world_mcqs.json',
-    'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/data/living_world_mcqs.json'
+    'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/data/living_world_mcqs.json',
+    'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/Data/living-world-mcqs.json'
 ];
 
 const FALLBACK_LIVING_WORLD_QUESTIONS = [
@@ -291,67 +293,190 @@ async function loadLivingWorldQuestions() {
     if (livingWorldQuestionsCache.loading) return null;
 
     livingWorldQuestionsCache.loading = true;
-
     for (const url of LIVING_WORLD_JSON_URLS) {
         try {
             const response = await fetch(url, { cache: 'no-store' });
             if (!response.ok) continue;
-
             const text = await response.text();
-            const questions = JSON.parse(text);
-            if (Array.isArray(questions) && questions.length) {
-                livingWorldQuestionsCache.data = questions;
+            const data = JSON.parse(text);
+            if (Array.isArray(data) && data.length > 0) {
+                livingWorldQuestionsCache.data = data;
                 livingWorldQuestionsCache.error = null;
                 livingWorldQuestionsCache.loading = false;
-                return questions;
+                return data;
             }
         } catch (error) {
-            console.warn('Remote Living World JSON failed to parse, using fallback data.', error);
+            console.warn('Remote JSON failed for Living World, trying fallback.', error);
         }
     }
 
     livingWorldQuestionsCache.data = FALLBACK_LIVING_WORLD_QUESTIONS;
-    livingWorldQuestionsCache.error = 'The source JSON is malformed, so a fallback question set is being used.';
+    livingWorldQuestionsCache.error = 'Remote data unavailable, using local fallback set.';
     livingWorldQuestionsCache.loading = false;
     return FALLBACK_LIVING_WORLD_QUESTIONS;
 }
 
-function buildLivingWorldQuestionsMarkup(questions) {
-    if (!Array.isArray(questions) || !questions.length) {
-        return '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300">Unable to load the Living World MCQ data from the remote JSON source. A fallback set is being used instead.</div>';
-    }
-
-    return `
-        <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
-            ${questions.map((question, index) => {
-                const options = Array.isArray(question.options) ? question.options : [];
-                const answer = question.answer || 'Answer not provided';
-                const qNumber = question.id || index + 1;
-                return `
-                    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900/40">
-                        <div class="mb-2 flex items-center justify-between gap-3">
-                            <span class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-teal-600 dark:text-teal-400">Q${qNumber}</span>
-                        </div>
-                        <p class="text-sm font-semibold leading-6 text-slate-800 dark:text-slate-100">${escapeHtml(question.question || 'Question unavailable')}</p>
-                        <div class="mt-3 space-y-2">
-                            ${options.map((option, optIndex) => `
-                                <div class="flex items-start gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">
-                                    <span class="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[10px] font-bold text-slate-600 dark:bg-slate-700 dark:text-slate-300">${String.fromCharCode(65 + optIndex)}</span>
-                                    <span>${escapeHtml(option)}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div class="mt-3 rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300">
-                            Answer: ${escapeHtml(answer)}
-                        </div>
-                    </div>
-                `;
-            }).join('')}
-        </div>
-    `;
+function normalizeQuestion(option) {
+    return String(option).trim();
 }
 
-document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+function renderLivingWorldQuiz() {
+    const currentQuestion = quizState.questions[quizState.currentIndex];
+    if (!currentQuestion) return;
+
+    const currentQuestionNumber = quizState.currentIndex + 1;
+    const isAnswered = quizState.answered;
+    const selected = quizState.selectedOption;
+    const correctAnswer = currentQuestion.answer;
+
+    const optionsMarkup = currentQuestion.options.map((option) => {
+        const normalizedOption = normalizeQuestion(option);
+        const isSelected = selected === normalizedOption;
+        const isCorrect = normalizedOption === normalizeQuestion(correctAnswer);
+
+        let optionClasses = 'flex items-center gap-3 w-full rounded-xl border px-4 py-3 text-left text-sm font-medium transition ';
+
+        if (isAnswered) {
+            if (isCorrect) {
+                optionClasses += 'border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900/20 dark:text-emerald-200';
+            } else if (isSelected && !isCorrect) {
+                optionClasses += 'border-rose-500 bg-rose-100 text-rose-900 dark:bg-rose-950/20 dark:text-rose-200';
+            } else {
+                optionClasses += 'border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200';
+            }
+        } else {
+            optionClasses += isSelected
+                ? 'border-teal-500 bg-teal-50 text-teal-900 dark:bg-teal-950/30 dark:text-teal-100'
+                : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 hover:bg-teal-50/40 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700';
+        }
+
+        return `
+            <button type="button" data-option="${escapeHtml(normalizedOption)}" class="${optionClasses}" onclick="chooseLivingWorldOption('${escapeHtml(normalizedOption)}')">
+                <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + currentQuestion.options.indexOf(option))}</span>
+                <span>${escapeHtml(option)}</span>
+            </button>
+        `;
+    }).join('');
+
+    const resultMarkup = isAnswered ? `
+        <div class="mt-4 rounded-xl border ${selected === normalizeQuestion(correctAnswer) ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-300'} px-4 py-3 text-sm font-semibold">
+            ${selected === normalizeQuestion(correctAnswer) ? 'Correct!' : 'Wrong answer.'} Correct answer: <span class="font-black">${escapeHtml(correctAnswer)}</span>
+        </div>
+    ` : '';
+
+    const isLastQuestion = quizState.currentIndex === quizState.questions.length - 1;
+    const nextButtonLabel = isLastQuestion ? 'Finish Quiz' : 'Next Question';
+
+    const content = `
+        <div class="w-full max-w-3xl mx-auto">
+            <div class="mb-5 flex items-center justify-between gap-3">
+                <div>
+                    <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">The Living World</div>
+                    <div class="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">Question ${currentQuestionNumber} of ${quizState.questions.length}</div>
+                </div>
+                <div class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-200">
+                    Score: ${quizState.score}/${quizState.questions.length}
+                </div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900/50">
+                <p class="text-lg font-bold leading-7 text-slate-900 dark:text-slate-100">${escapeHtml(currentQuestion.question)}</p>
+                <div class="mt-5 space-y-3">${optionsMarkup}</div>
+                ${resultMarkup}
+            </div>
+
+            <div class="mt-5 flex justify-between gap-3">
+                <button type="button" onclick="closeModal()" class="rounded-xl bg-slate-200 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Close</button>
+                <button type="button" onclick="${isAnswered ? (isLastQuestion ? 'finishLivingWorldQuiz()' : 'goToNextLivingWorldQuestion()') : 'submitLivingWorldAnswer()'}" class="rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50">
+                    ${isAnswered ? nextButtonLabel : 'Submit Answer'}
+                </button>
+            </div>
+        </div>
+    `;
+    document.getElementById('modalTitle').textContent = 'Living World Quiz';
+    document.getElementById('modalBody').textContent = 'Answer each question and track your score in real time.';
+    document.getElementById('modalContentSlot').innerHTML = content;
+    document.getElementById('modalActions').innerHTML = '';
+    openModal();
+}
+
+function chooseLivingWorldOption(optionValue) {
+    if (quizState.answered) return;
+    quizState.selectedOption = optionValue;
+    const currentQuestion = quizState.questions[quizState.currentIndex];
+    if (!currentQuestion) return;
+
+    const correctAnswer = normalizeQuestion(currentQuestion.answer);
+    if (normalizeQuestion(optionValue) === correctAnswer) {
+        quizState.score += 1;
+    }
+    quizState.answered = true;
+    renderLivingWorldQuiz();
+}
+
+function submitLivingWorldAnswer() {
+    if (quizState.answered || quizState.selectedOption === null) return;
+    chooseLivingWorldOption(quizState.selectedOption);
+}
+
+function goToNextLivingWorldQuestion() {
+    quizState.currentIndex += 1;
+    quizState.selectedOption = null;
+    quizState.answered = false;
+
+    if (quizState.currentIndex >= quizState.questions.length) {
+        finishLivingWorldQuiz();
+        return;
+    }
+    renderLivingWorldQuiz();
+}
+
+function finishLivingWorldQuiz() {
+    const total = quizState.questions.length;
+    const score = quizState.score;
+    const percent = Math.round((score / total) * 100);
+
+    const resultHtml = `
+        <div class="w-full max-w-md mx-auto rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center dark:border-slate-700 dark:bg-slate-900/50">
+            <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">Quiz Result</div>
+            <div class="mt-3 text-4xl font-black text-slate-900 dark:text-slate-100">${score}/${total}</div>
+            <div class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300">Accuracy: ${percent}%</div>
+            <div class="mt-5 text-sm text-slate-600 dark:text-slate-300">
+                ${percent >= 70 ? 'Excellent! You are well prepared.' : percent >= 50 ? 'Good work — keep revising the weak spots.' : 'Keep practicing. Review the explanations and retake the set.'}
+            </div>
+            <div class="mt-5 flex justify-center gap-3">
+                <button type="button" onclick="restartLivingWorldQuiz()" class="rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-teal-700">Retake Quiz</button>
+                <button type="button" onclick="closeModal()" class="rounded-xl bg-slate-200 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Close</button>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('modalTitle').textContent = 'Quiz Complete';
+    document.getElementById('modalBody').textContent = 'Your Living World practice session is finished.';
+    document.getElementById('modalContentSlot').innerHTML = resultHtml;
+    document.getElementById('modalActions').innerHTML = '';
+    openModal();
+}
+
+function restartLivingWorldQuiz() {
+    quizState.currentIndex = 0;
+    quizState.score = 0;
+    quizState.selectedOption = null;
+    quizState.answered = false;
+    quizState.showResults = false;
+    renderLivingWorldQuiz();
+}
+
+async function startLivingWorldQuiz() {
+    const questions = await loadLivingWorldQuestions();
+    quizState.questions = Array.isArray(questions) ? questions : FALLBACK_LIVING_WORLD_QUESTIONS;
+    quizState.currentIndex = 0;
+    quizState.score = 0;
+    quizState.selectedOption = null;
+    quizState.answered = false;
+    quizState.showResults = false;
+    renderLivingWorldQuiz();
+}
 
 function toggleTheme() {
     document.body.classList.toggle('dark');
@@ -436,17 +561,8 @@ function startTimer() {
     }, 1000);
 }
 
-function pauseTimer() {
-    clearInterval(timerInterval);
-    timerInterval = null;
-}
-
-function resetTimer() {
-    pauseTimer();
-    timerSeconds = 25 * 60;
-    updateTimerDisplay();
-}
-
+function pauseTimer() { clearInterval(timerInterval); timerInterval = null; }
+function resetTimer() { pauseTimer(); timerSeconds = 25 * 60; updateTimerDisplay(); }
 function updateTimerDisplay() {
     const el = document.getElementById('timerDisplay');
     if (!el) return;
@@ -455,33 +571,14 @@ function updateTimerDisplay() {
     el.textContent = `${mins}:${secs}`;
 }
 
-function saveScratchpad(text) {
-    userNotes = text;
-    localStorage.setItem('edupulse_scratchpad', text);
-}
+function saveScratchpad(text) { userNotes = text; localStorage.setItem('edupulse_scratchpad', text); }
 
 async function handleChapterClick(chapterName) {
     const isCompleted = userProgress[chapterName] && userProgress[chapterName].completed;
     const safeName = chapterName.replace(/'/g, "\\'");
 
     if (chapterName === 'The Living World') {
-        const questions = await loadLivingWorldQuestions();
-        const content = buildLivingWorldQuestionsMarkup(questions);
-        showModal(
-            `Chapter: ${chapterName}`,
-            'Practice the chapter with MCQs loaded from the raw GitHub JSON file. If the source JSON is malformed, the app automatically falls back to a valid built-in set.',
-            `
-            <div class="flex flex-wrap gap-2 justify-end w-full">
-                <button onclick="toggleChapterProgress('${safeName}')" class="px-4 py-2 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold text-xs">
-                    ${isCompleted ? 'Mark as Pending' : 'Mark as Completed ✓'}
-                </button>
-                <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 text-xs">
-                    Close
-                </button>
-            </div>
-            `,
-            content
-        );
+        startLivingWorldQuiz();
         return;
     }
 
@@ -722,10 +819,7 @@ function renderView() {
     }
 }
 
-function setSubject(s) {
-    subject = s;
-    renderView();
-}
+function setSubject(s) { subject = s; renderView(); }
 
 function renderChapters() {
     const searchInput = document.getElementById('search');
@@ -778,7 +872,6 @@ function updateGlobalProgress() {
     const totalChapters = 79;
     const completedCount = Object.values(userProgress).filter(p => p && p.completed).length;
     const pct = Math.round((completedCount / totalChapters) * 100);
-
     const bar = document.getElementById('sidebar-progress-bar');
     const txt = document.getElementById('sidebar-progress-text');
     if (bar) bar.style.width = pct + '%';
