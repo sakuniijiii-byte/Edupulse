@@ -1,0 +1,1982 @@
+[
+{
+"id": 1,
+"question": "House fly and wheat families respectively are",
+"options": [
+"Anacardiaceae, Solanacceae",
+"Muscidae, Poaceae",
+"Poaceae, Sapendales",
+"Poaceae, Muscidae"
+],
+"answer": "Muscidae, Poaceae"
+},
+{
+"id": 2,
+"question": "Select a genus not related to family Solanaceae",
+"options": [
+"Solanum",
+"Mangifera",
+"Petunia",
+"Datura"
+],
+"answer": "Mangifera"
+},
+{
+"id": 3,
+"question": "Select the correct related to man",
+"options": [
+"Genus - Homonidae",
+"Order - Primata",
+"Family - mamalia",
+"Division - Chordata"
+],
+"answer": "Order - Primata"
+},
+{
+"id": 4,
+"question": "Select a non-living object showing growth",
+"options": [
+"Mountain",
+"Sand mound",
+"Boulder",
+"1, 2 and 3"
+],
+"answer": "1, 2 and 3"
+},
+{
+"id": 5,
+"question": "In hierarchical classification, class is placed between",
+"options": [
+"Kingdom and phylum",
+"Order and family",
+"Phylum and order",
+"Family and genus"
+],
+"answer": "Phylum and order"
+},
+{
+"id": 6,
+"question": "International code for botanical nomenclature is applicable to",
+"options": [
+"Viruses",
+"Plants",
+"Animals",
+"Both 2 & 3"
+],
+"answer": "Plants"
+},
+{
+"id": 7,
+"question": "A number of families having common character is called",
+"options": [
+"Order",
+"Class",
+"Phylum",
+"Sub class"
+],
+"answer": "Order"
+},
+{
+"id": 8,
+"question": "Which one of the following taxonomic categories top the hierarchy of categories?",
+"options": [
+"Order",
+"Division",
+"Class",
+"Genus"
+],
+"answer": "Division"
+},
+{
+"id": 9,
+"question": "Genera consists of which of the following\nI. order\tII. class\nIII. family\tIV. species",
+"options": [
+"I only",
+"II only",
+"IV only",
+"I and III only"
+],
+"answer": "IV only"
+},
+{
+"id": 10,
+"question": "The number of species that are known and described, are approximately",
+"options": [
+"0.5-1.0 million",
+"1.7-1.8 million",
+"3.3-3.5 million",
+"13-14 million"
+],
+"answer": "1.7-1.8 million"
+},
+{
+"id": 11,
+"question": "Which of the following is not the correct hierarchical arrangement?\n(I) Class -> Family -> Genus\n(II) Phylum -> Order -> Family\n(III) Class -> Order -> Family\n(IV) Family -> Class -> Order\n(V) Kingdom -> Division -> Class",
+"options": [
+"I, II, IV",
+"II, III, V",
+"I, II, III",
+"I, II, III, IV"
+],
+"answer": "I, II, IV"
+},
+{
+"id": 12,
+"question": "The word systematics is derived from",
+"options": [
+"Greek word systema",
+"Italic word systema",
+"Latin word systema",
+"English word system"
+],
+"answer": "Latin word systema"
+},
+{
+"id": 13,
+"question": "Class mammalia consists of",
+"options": [
+"Order primata",
+"Class primata",
+"Order carnivora",
+"Both 1 and 3"
+],
+"answer": "Both 1 and 3"
+},
+{
+"id": 14,
+"question": "Why reproduction cannot be considered as an inclusive defining characteristic of all living organisms?",
+"options": [
+"Non-living organisms also reproduce",
+"Some living organisms are sterile and cannot produce offsprings",
+"Some living organisms are sterile and can produce offsprings",
+"Both 1 and 2"
+],
+"answer": "Some living organisms are sterile and cannot produce offsprings"
+},
+{
+"id": 15,
+"question": "In case of plants, classes with a few similar characters are assigned to higher category called",
+"options": [
+"Class",
+"Phylum",
+"Division",
+"Family"
+],
+"answer": "Division"
+},
+{
+"id": 16,
+"question": "The sum total of all the chemical reactions occurring in our body is called",
+"options": [
+"Anabolism",
+"Catabolism",
+"Metabolism",
+"Carboxylation"
+],
+"answer": "Metabolism"
+},
+{
+"id": 17,
+"question": "Taxon ending with a suffix -ales",
+"options": [
+"Species",
+"Order",
+"Taxonomy",
+"Classes"
+],
+"answer": "Order"
+},
+{
+"id": 18,
+"question": "A group of plants or animals with similar traits of any rank is",
+"options": [
+"Species",
+"Genus",
+"Order",
+"Taxon"
+],
+"answer": "Taxon"
+},
+{
+"id": 19,
+"question": "Solanum, Datura and Nicotiana belong to the same\n(a) Species\n(b) Division\n(c) Family\n(d) Genus",
+"options": [
+"a and b only",
+"b and d only",
+"b and c only",
+"c and d only"
+],
+"answer": "b and c only"
+},
+{
+"id": 20,
+"question": "Which is a taxonomic category?",
+"options": [
+"Canidae",
+"Felidae",
+"Phylum",
+"Solanaceae"
+],
+"answer": "Phylum"
+},
+{
+"id": 21,
+"question": "Which of the following is a defining characteristic of living organisms",
+"options": [
+"Growth",
+"Unable to grow",
+"Reproduction",
+"Response to external stimuli"
+],
+"answer": "Response to external stimuli"
+},
+{
+"id": 22,
+"question": "Which taxonomic category of mango and wheat is similar?",
+"options": [
+"Order and family",
+"Only Division",
+"Division and class",
+"Division, Class & Order"
+],
+"answer": "Only Division"
+},
+{
+"id": 23,
+"question": "'Order' related to "brinjal" is",
+"options": [
+"Poales",
+"Sapindales",
+"Dicotyledonae",
+"Polymoniales"
+],
+"answer": "Polymoniales"
+},
+{
+"id": 24,
+"question": "Choose the correct statement-",
+"options": [
+"Growth in multicellular organisms cannot take place in in vitro culture.",
+"Growth by cell division in unicellular organisms can be observed in in vivo culture.",
+"Growth by cell division in unicellular organisms cannot be observed by any method.",
+"Growth by cell division in unicellular organisms can be observed in in vitro culture."
+],
+"answer": "Growth by cell division in unicellular organisms can be observed in in vitro culture."
+},
+{
+"id": 25,
+"question": "Select a species which belongs to genus solanum",
+"options": [
+"tuberosum",
+"melongena",
+"nigrum",
+"All of them"
+],
+"answer": "All of them"
+},
+{
+"id": 26,
+"question": "Identify the correct statement/option:\n(I) Convolvulaceae, Solanaceae - Plant families\n(II) Felidae, Canidae - Animal family\n(III) Systema Natura - Whittaker\n(IV) Category represents rank",
+"options": [
+"I, II, III",
+"I, III, IV",
+"I, II, IV",
+"I, III"
+],
+"answer": "I, II, IV"
+},
+{
+"id": 27,
+"question": "Consciousness is the defining property of living organisms because",
+"options": [
+"Photoperiod affects reproduction in seasonal breeders in both plants and animals",
+"Plants respond to external factors like temperature and light",
+"All organisms handle chemicals entering their bodies",
+"All of the above"
+],
+"answer": "All of the above"
+},
+{
+"id": 28,
+"question": "Which of the following covers a greater number of animals?",
+"options": [
+"Class",
+"Order",
+"Genus",
+"Phylum"
+],
+"answer": "Phylum"
+},
+{
+"id": 29,
+"question": "Identify the incorrect statement:\n(I) Characterisation, identification, classification and nomenclature are the processes that are basic to taxonomy.\n(II) A true species consists of a population that are reproductively isolated\n(III) The sum total of all the chemical reactions occurring in our body is metabolism.\n(IV) All plants, animals, fungi exhibit metabolism and microbes donot exhibit metabolism.",
+"options": [
+"I, III",
+"I, IV",
+"I, II, IV",
+"IV"
+],
+"answer": "IV"
+},
+{
+"id": 30,
+"question": "Taxon refers to",
+"options": [
+"Species",
+"Family",
+"Genus",
+"All of these"
+],
+"answer": "All of these"
+},
+{
+"id": 31,
+"question": "Organisms with their taxonomic categories in order with common name -> biological name:\nI. Man -> Homo sapiens -> Homo -> Hominidae -> Mammalia\nII. Housefly -> Musca domestica -> Arthropoda -> muscidae -> Diptera\nIII. Mango -> Mangifera indica -> Mangifera -> Anacardiaceae -> Dicotyledonae\nIV. Wheat -> Triticum vulgare -> Triticum -> Poaceae -> Monocotyledonae",
+"options": [
+"I and II correct",
+"II only correct",
+"I and III correct",
+"I, III and IV correct"
+],
+"answer": "I and III correct"
+},
+{
+"id": 32,
+"question": "Wheat belongs to which family",
+"options": [
+"Solanaceae",
+"Anacardiaceae",
+"Liliaceae",
+"Poaceae"
+],
+"answer": "Poaceae"
+},
+{
+"id": 33,
+"question": "Identify the organisms that are fertile?\ni. mules,\nii. female worker bees,\niii. sterile human couples",
+"options": [
+"i only",
+"i, ii only",
+"i, ii, iii",
+"None of them"
+],
+"answer": "None of them"
+},
+{
+"id": 34,
+"question": "Identify the incorrect statement",
+"options": [
+"Living world consists of amazing diversity of living organisms",
+"Early man could easily perceive the difference between inanimate and living organisms",
+"Systematic description of life forms is brought about by Identification, Nomenclature and Classification",
+"Societies which indulged in 'anthropocentric' view of biology registered huge progress in biology knowledge"
+],
+"answer": "Societies which indulged in 'anthropocentric' view of biology registered huge progress in biology knowledge"
+},
+{
+"id": 35,
+"question": "Polymoniales and Sapindales represent",
+"options": [
+"Genus",
+"Class",
+"Order",
+"Species"
+],
+"answer": "Order"
+},
+{
+"id": 36,
+"question": "Match the following and choose the correct option:\n(I) Family - Dicot\n(II) Kingdom - Plantae\n(III) Order - Polymoniales\n(IV) Species - tuberosum\n(V) Genus - Solanum",
+"options": [
+"I",
+"II, III, IV, V",
+"I, II, IV",
+"I, IV, V"
+],
+"answer": "II, III, IV, V"
+},
+{
+"id": 37,
+"question": "'The Darwin of the 20th century', this title is given to",
+"options": [
+"Mendel",
+"Linnaeus",
+"Ernst Mayr",
+"Ernst Haecke"
+],
+"answer": "Ernst Mayr"
+},
+{
+"id": 38,
+"question": "Which of the following 'suffixes' used for units of classification in plants indicates a taxonomic category of 'family'",
+"options": [
+"-ales",
+"-onae",
+"-aceae",
+"-ae"
+],
+"answer": "-aceae"
+},
+{
+"id": 39,
+"question": "What is the fundamental taxonomic category or basic unit of classification?",
+"options": [
+"Kingdom",
+"Order",
+"Species",
+"Genus"
+],
+"answer": "Species"
+},
+{
+"id": 40,
+"question": "ICBN stands for",
+"options": [
+"International Code for Botanical Nomenclature",
+"International Code for Biological Names",
+"Indian Code of Botanical Nomenclature",
+"Indian Congress of Biological Names"
+],
+"answer": "International Code for Botanical Nomenclature"
+},
+{
+"id": 41,
+"question": "Nomenclature or naming is only possible when the organism is described correctly and we know to what organism the name is attached to. This is",
+"options": [
+"Taxonomy",
+"Classification",
+"Binomial system",
+"Identification"
+],
+"answer": "Identification"
+},
+{
+"id": 42,
+"question": "Reproduction can occur within members of a",
+"options": [
+"Genus",
+"Species",
+"Order",
+"Family"
+],
+"answer": "Species"
+},
+{
+"id": 43,
+"question": "The order-Carnivora includes family",
+"options": [
+"Felidae",
+"Convolvulaceae",
+"Felidae and Canidae",
+"Canidae"
+],
+"answer": "Felidae and Canidae"
+},
+{
+"id": 44,
+"question": "Select an organism showing growth upto a certain age only",
+"options": [
+"Rose",
+"Humans",
+"Papaya",
+"Mango"
+],
+"answer": "Humans"
+},
+{
+"id": 45,
+"question": "Select the correctly matched pair of organisms with their order.",
+"options": [
+"Musa, domestica: Diptera",
+"Homo, sapiens: Poales",
+"Mangifera, indica: Primata",
+"Triticum, aestivum: Sapindales"
+],
+"answer": "Musa, domestica: Diptera"
+},
+{
+"id": 46,
+"question": "The taxonomic unit 'Phylum' in the classification of animals is equivalent to which hierarchial level in classification of plants",
+"options": [
+"Class",
+"Order",
+"Division",
+"Family"
+],
+"answer": "Division"
+},
+{
+"id": 47,
+"question": "Read the following statements and select the incorrect one.",
+"options": [
+"Isolated metabolic reactions in vitro are living things",
+"Many organism like mules, sterile worker bees and infertile human couples do not reproduce at all",
+"Living organism are self-replicating, evolving and self-regulating interactive systems capable of responding to external stimuli.",
+"Mountains, boulders and sand mounds do grow if we take increase in body mass as criterion for growth."
+],
+"answer": "Isolated metabolic reactions in vitro are living things"
+},
+{
+"id": 48,
+"question": "Dead organisms",
+"options": [
+"Grow",
+"Do not grow",
+"Sometimes grow",
+"Exhibit external growth only"
+],
+"answer": "Do not grow"
+},
+{
+"id": 49,
+"question": "Match the following columns and select the correct choice about humans:\nA. Family -> P. Homo\nB. Kingdom -> Q. Sapiens\nC. Order -> R. Primates\nD. Species -> S. Animalia\nE. Genus -> T. Hominidae",
+"options": [
+"A-T, B-S, C-R, D-Q, E-P",
+"A-P, B-S, C-R, D-Q, E-T",
+"A-T, B-S, C-R, D-P, E-Q",
+"A-T, B-R, C-Q, D-S, E-P"
+],
+"answer": "A-T, B-S, C-R, D-Q, E-P"
+},
+{
+"id": 50,
+"question": "Which of the following is not a result of cell division",
+"options": [
+"Metabolism",
+"Growth",
+"Repair",
+"Reproduction"
+],
+"answer": "Metabolism"
+},
+{
+"id": 51,
+"question": "Unit of classification is",
+"options": [
+"Taxon",
+"Rank",
+"Category",
+"All of the above"
+],
+"answer": "All of the above"
+},
+{
+"id": 52,
+"question": "Identify the correct statement/option:\n(I) The Darwin of the 20th century- Ernst Bayer\n(II) Planaria (round worms) - true regeneration\n(III) Protista and Primata - Order\n(IV) Sapindales - Order",
+"options": [
+"I, II, IV",
+"I, IV",
+"IV",
+"I, II, III"
+],
+"answer": "IV"
+},
+{
+"id": 53,
+"question": "A true regeneration was observed in",
+"options": [
+"Hydra",
+"Sponges",
+"Planaria",
+"Fungi"
+],
+"answer": "Planaria"
+},
+{
+"id": 54,
+"question": "An increase in the size or number of cells best describes",
+"options": [
+"Homeostasis",
+"Biological growth",
+"Asexual reproduction",
+"Chemical level of organisation"
+],
+"answer": "Biological growth"
+},
+{
+"id": 55,
+"question": "Select the incorrect statement about living processes.",
+"options": [
+"All living phenomena is due to underlying interaction.",
+"Properties of tissues are not present in the constituent cells.",
+"The interactions result in emergent properties at a higher level of organisation.",
+"Properties of cellular organelles are present in the molecular constituents of the organelles."
+],
+"answer": "Properties of cellular organelles are present in the molecular constituents of the organelles."
+},
+{
+"id": 56,
+"question": "Identify the correct statement given below",
+"options": [
+"In binomial nomenclature, the name of an organism consists of three components",
+"Consciousness is the property shared by non-living organisms",
+"Cellular organisation of the body is the defining feature of non-living forms.",
+"Human beings are the only organisms, who is aware of himself, i.e. self-conscious"
+],
+"answer": "Human beings are the only organisms, who is aware of himself, i.e. self-conscious"
+},
+{
+"id": 57,
+"question": "Which one is species?",
+"options": [
+"Cannis",
+"Solanum",
+"Leo",
+"Panthera"
+],
+"answer": "Leo"
+},
+{
+"id": 58,
+"question": "First act of taxonomy is",
+"options": [
+"Description",
+"Identification",
+"Naming",
+"Classification"
+],
+"answer": "Identification"
+},
+{
+"id": 59,
+"question": "Which of the following scientific name is most correct according to ICBN (International Code of Botanical Nomenclature)?\n(I) Mangifera Indica Linn\n(II) Solanum tuberosum Linn\n(III) Solanum tuberosum Linn\n(IV) Solanum tuberosum Linn\n(V) Solanum tuberosum Linn\n(VI) Mangifera indica Linn\n(VII) Mangifera indica Linn",
+"options": [
+"IV, VI",
+"III, VI",
+"I, II, IV",
+"I, V, VI"
+],
+"answer": "IV, VI"
+},
+{
+"id": 60,
+"question": "Which one of the following belongs to the family Muscidae?",
+"options": [
+"Fire fly",
+"Grasshopper",
+"Cockroach",
+"House fly"
+],
+"answer": "House fly"
+},
+{
+"id": 61,
+"question": "Read the following statements and identify the incorrect statement",
+"options": [
+"Scientific names are often descriptive and tell us some important characters of an organism",
+"Scientific names indicate relationship between species",
+"Scientific names favour multiple naming for the same kind of an organism",
+"Scientific names are used all over the world"
+],
+"answer": "Scientific names favour multiple naming for the same kind of an organism"
+},
+{
+"id": 62,
+"question": "Metabolism is",
+"options": [
+"Release of energy",
+"Gain of energy",
+"Release or gain of energy",
+"Catabolism of a reaction"
+],
+"answer": "Release or gain of energy"
+},
+{
+"id": 63,
+"question": "What are the basis of modern taxonomic studies?",
+"options": [
+"Internal structure",
+"Ecological information",
+"Structure of cell",
+"All of the above"
+],
+"answer": "All of the above"
+},
+{
+"id": 64,
+"question": "The common characteristics between tomato and potato will be maximum at the level of their",
+"options": [
+"Genus",
+"Family",
+"Order",
+"Division"
+],
+"answer": "Family"
+},
+{
+"id": 65,
+"question": "In referring to an organism in writing, such as in a newspaper, textbook, or lab report, which of these rules should be followed?\ni. Underline or italicize genus\nii. Underline or italicize species\niii. First letter of species should be uppercase\niv. First letter of genus should be uppercase",
+"options": [
+"i, ii, iii",
+"i, ii, iv",
+"ii, iii, iv",
+"i, iii, iv"
+],
+"answer": "i, ii, iv"
+},
+{
+"id": 66,
+"question": "Which of the following is the defining feature of all the living organisms?",
+"options": [
+"Growth",
+"Reproduction",
+"Metabolism",
+"Self consciousness"
+],
+"answer": "Metabolism"
+},
+{
+"id": 67,
+"question": "What is the most obvious and technically complicated feature of all living organisms?",
+"options": [
+"Growth",
+"Metabolism",
+"Reproduction",
+"Irritability"
+],
+"answer": "Irritability"
+},
+{
+"id": 68,
+"question": "Identify the 'order' from the following.",
+"options": [
+"Carnivora",
+"Muscidae",
+"Insecta",
+"Panthera"
+],
+"answer": "Carnivora"
+},
+{
+"id": 69,
+"question": "Genus represents",
+"options": [
+"An individual plant or animal",
+"A collection of plants or animals",
+"Group of closely related species of plants or animals",
+"None of these"
+],
+"answer": "Group of closely related species of plants or animals"
+},
+{
+"id": 70,
+"question": "Higher level of organisation emerges from",
+"options": [
+"A tissue itself",
+"Interactions among organisms",
+"Organelle itself",
+"Interactions between the chemicals and organelles"
+],
+"answer": "Interactions between the chemicals and organelles"
+},
+{
+"id": 71,
+"question": "According to the hierarchical system of classification, which of the following statements is/ are correct?\n(I) Species is the most basic level of the taxonomic category followed immediately by family.\n(II) Similarities decrease from species to kingdom.\n(III) Similarities increase from kingdom to species.\n(IV) Dissimilarities decrease from division to species.\n(V) Similarities decrease from species to class.",
+"options": [
+"III, IV",
+"II, III, IV, V",
+"I, II, IV",
+"IV, V"
+],
+"answer": "II, III, IV, V"
+},
+{
+"id": 72,
+"question": "Point out the correct method of showing scientific name of Coconut Palm",
+"options": [
+"Coco Nucifera",
+"Cocos Nucifera",
+"Cocos nucifera",
+"Cocos nucifera"
+],
+"answer": "Cocos nucifera"
+},
+{
+"id": 73,
+"question": "ICZN stands for",
+"options": [
+"International Code of Botanical Nomenclature",
+"International Code of Zoological Nomenclature",
+"International Code of Viral Nomenclature",
+"International Code of Zoo Nomenclature"
+],
+"answer": "International Code of Zoological Nomenclature"
+},
+{
+"id": 74,
+"question": "Choose the organism which does not belong to genus Solanum.",
+"options": [
+"Potato",
+"Tomato",
+"Brinjal",
+"Onion"
+],
+"answer": "Onion"
+},
+{
+"id": 75,
+"question": "The category situated in middle of hierarchical arrangement",
+"options": [
+"Division",
+"Class",
+"Family",
+"Order"
+],
+"answer": "Order"
+},
+{
+"id": 76,
+"question": "Which is a common phenomenon exhibited by living and non-living organisms to show the feature of growth?",
+"options": [
+"Increase in mass",
+"Cell division",
+"Increase in replication rate",
+"Cell differentiation"
+],
+"answer": "Increase in mass"
+},
+{
+"id": 77,
+"question": "The most important prerequisite in taxonomy based on field and lab tests that effects other aspects is",
+"options": [
+"Identification",
+"Nomenclature",
+"Classification",
+"None of these"
+],
+"answer": "Identification"
+},
+{
+"id": 78,
+"question": "Match the columns I and II.\nA. Fragmentation -> P. Fragmentation\nB. Hydra -> Q. Protonema of moss\nC. Planaria -> R. Budding",
+"options": [
+"A-R, B-P, C-Q",
+"A-Q, B-R, C-P",
+"A-P, B-R, C-Q",
+"A-Q, B-P, C-R"
+],
+"answer": "A-Q, B-R, C-P"
+},
+{
+"id": 79,
+"question": "More number of common characters are observed in members of a",
+"options": [
+"Family",
+"Species",
+"Genus",
+"Kingdom"
+],
+"answer": "Species"
+},
+{
+"id": 80,
+"question": "The term not applicable to truely living organisms is",
+"options": [
+"Self-replicating",
+"Evolving",
+"Self regulating",
+"Inert system"
+],
+"answer": "Inert system"
+},
+{
+"id": 81,
+"question": "Which is the odd one?",
+"options": [
+"Species",
+"Order",
+"Genus",
+"Solanaceae"
+],
+"answer": "Solanaceae"
+},
+{
+"id": 82,
+"question": "Lowest category of animal kingdom is",
+"options": [
+"Genus",
+"Species",
+"Kingdom",
+"Taxon"
+],
+"answer": "Species"
+},
+{
+"id": 83,
+"question": "Carnivora includes",
+"options": [
+"Group of organisms belonging to related genera",
+"Group of organisms belonging to realted species",
+"Group of organisms which are similar in all features",
+"Group of organisms belonging to related families"
+],
+"answer": "Group of organisms belonging to related families"
+},
+{
+"id": 84,
+"question": "Plants differ from animals in having",
+"options": [
+"Definite life span",
+"Localized growth",
+"Indefinite growth",
+"Both 1 and 2"
+],
+"answer": "Indefinite growth"
+},
+{
+"id": 85,
+"question": "Two plants can be conclusively said to belong to the same species if they",
+"options": [
+"Can reproduce freely with each other and form seeds",
+"Have more than 90% similar genes",
+"Look similar and possess identical secondary metabolites",
+"Have same number of chromosomes"
+],
+"answer": "Can reproduce freely with each other and form seeds"
+},
+{
+"id": 86,
+"question": "The plant family - Solanaceae is included in which order?",
+"options": [
+"Felidae",
+"Conidae",
+"Polymoniales",
+"Dimoniales"
+],
+"answer": "Polymoniales"
+},
+{
+"id": 87,
+"question": "In Mangifera indica Linn. indica refers to",
+"options": [
+"Genus",
+"Author",
+"Family",
+"Specific epithet"
+],
+"answer": "Specific epithet"
+},
+{
+"id": 88,
+"question": "What kind of growth is exhibited by non-living organisms?",
+"options": [
+"Accumulation of material on surface",
+"Accumulation of material inside",
+"Accumulation of material inside and outside",
+"None of the above"
+],
+"answer": "Accumulation of material on surface"
+},
+{
+"id": 89,
+"question": "All living organisms present, past and future, are linked to one another by the sharing of the common genetic material, but to varying degrees",
+"options": [
+"Genetic material, unchanging",
+"Genetic material, varying",
+"Proteinaceous material, varying",
+"Proteinaceous material, unchanging"
+],
+"answer": "Genetic material, varying"
+},
+{
+"id": 90,
+"question": "Maximum common characters will be available at",
+"options": [
+"Genus",
+"Family",
+"Order",
+"Class"
+],
+"answer": "Genus"
+},
+{
+"id": 91,
+"question": "Genus represents",
+"options": [
+"Group of unrelated species of plants or animals",
+"A collection of plants or animals",
+"Group of related species of plants or animals",
+"A group of plants in a given area"
+],
+"answer": "Group of related species of plants or animals"
+},
+{
+"id": 92,
+"question": "Mango family",
+"options": [
+"Hominidae",
+"Muscidae",
+"Anacardiaceae",
+"Poaceae"
+],
+"answer": "Anacardiaceae"
+},
+{
+"id": 93,
+"question": "Which one of the following taxonomic categories tops the hierarchy of categories?",
+"options": [
+"Genus",
+"Kingdom",
+"Class",
+"Phylum"
+],
+"answer": "Kingdom"
+},
+{
+"id": 94,
+"question": "In majority of higher animals and plants, reproduction and growth are",
+"options": [
+"Mutually exclusive events",
+"Mutually inclusive events",
+"Both (1) or (2)",
+"None of the above"
+],
+"answer": "Mutually exclusive events"
+},
+{
+"id": 95,
+"question": "Which is exclusive of humans?",
+"options": [
+"Sense organs",
+"Self consciousness",
+"Respiratory organs",
+"All"
+],
+"answer": "Self consciousness"
+},
+{
+"id": 96,
+"question": "Scientific names are printed in italics and are derived from Latin",
+"options": [
+"Italics and English",
+"Latin and Italics",
+"Italics and Italics",
+"Italics and Latin"
+],
+"answer": "Italics and Latin"
+},
+{
+"id": 97,
+"question": "The study of different kinds of organisms, the diversities and also the relationship among them referred to as",
+"options": [
+"Category",
+"Systematics",
+"Classifications",
+"Publication"
+],
+"answer": "Systematics"
+},
+{
+"id": 98,
+"question": "Standardising the name of living organisms is known as",
+"options": [
+"Classification",
+"Identification",
+"Nomenclature",
+"Both 1 and 3"
+],
+"answer": "Nomenclature"
+},
+{
+"id": 99,
+"question": "Metabolism is\nA. The sum total of all the chemical reactions occuring in the body of organisms\nB. Observed even outside the body in a test tube\nC. Not observed in nonliving objects",
+"options": [
+"A only",
+"C only",
+"A, C only",
+"A, B, C"
+],
+"answer": "A, B, C"
+},
+{
+"id": 100,
+"question": "Which taxonomic term may be suggested for any rank in the classification?",
+"options": [
+"Class",
+"Order",
+"Species",
+"Taxon"
+],
+"answer": "Taxon"
+},
+{
+"id": 101,
+"question": "Prerequisite to observe metabolism is",
+"options": [
+"Growth",
+"Cellular organisation",
+"Reproduction",
+"Consciousness"
+],
+"answer": "Cellular organisation"
+},
+{
+"id": 102,
+"question": "Plants grow throughout life by which method?",
+"options": [
+"Cell dedifferentiation",
+"Mitosis",
+"Cell division",
+"Both 2 and 3"
+],
+"answer": "Both 2 and 3"
+},
+{
+"id": 103,
+"question": "Which one of the following has least similar character?",
+"options": [
+"Family",
+"Kingdom",
+"Genus",
+"Species"
+],
+"answer": "Kingdom"
+},
+{
+"id": 104,
+"question": "House fly belongs to",
+"options": [
+"Order - Insecta",
+"Family - Musca",
+"Genus - Diptera",
+"Phylum - Arthropoda"
+],
+"answer": "Phylum - Arthropoda"
+},
+{
+"id": 105,
+"question": "Reproduction is synonymous with growth in which of the following set of organisms?",
+"options": [
+"Bacteria, unicellular algae and Amoeba",
+"Bacteria, Amoeba and fungi",
+"Unicellular algae and fungi",
+"Unicellular algae and multicellular algae"
+],
+"answer": "Bacteria, unicellular algae and Amoeba"
+},
+{
+"id": 106,
+"question": "Two animals which are the members of the same order must also be the members of the same",
+"options": [
+"class",
+"family",
+"genus",
+"species"
+],
+"answer": "class"
+},
+{
+"id": 107,
+"question": "Which of the following is a class",
+"options": [
+"Insecta",
+"Mammalia",
+"Dicotyledonae",
+"All of them"
+],
+"answer": "All of them"
+},
+{
+"id": 108,
+"question": "The species (man, housefly, mango, wheat, dog, cat, lion, tiger, potato, brinjal, makoi, and leopard) given here belong to how many different families?",
+"options": [
+"4",
+"5",
+"7",
+"6"
+],
+"answer": "7"
+},
+{
+"id": 109,
+"question": "Which one of the following organisms is scientifically correctly named, correctly printed according to the International Rules of Nomenclature and correctly described?",
+"options": [
+"Musca domestica - the house lizard, a reptile",
+"Plasmodium falciparum - a protozoan pathogen causing the most serious type of malaria",
+"Felis Tigris - the Indian tiger, well protected in Gir forests.",
+"E.coli - full name Entamoeba coli, a commonly occurring bacterium in the human intestine."
+],
+"answer": "Plasmodium falciparum - a protozoan pathogen causing the most serious type of malaria"
+},
+{
+"id": 110,
+"question": "Species is considered as",
+"options": [
+"A taxon of taxonomy/classification with least no. of similar characters",
+"The smallest taxon of taxonomy/classification",
+"Both smallest and the largest unit of taxonomy/classification",
+"None of the above"
+],
+"answer": "The smallest taxon of taxonomy/classification"
+},
+{
+"id": 111,
+"question": "Botanical names of plants are written in Latin because:",
+"options": [
+"Rules of nomenclature were framed by Italian botanist and they were speaking Latin",
+"It is to pronounce multiple meaning",
+"Latin is the national language of many countries",
+"Latin was a dead language, its words would convey meaning, it was the mother of many European languages and all the early botanical literature was in latin"
+],
+"answer": "Latin was a dead language, its words would convey meaning, it was the mother of many European languages and all the early botanical literature was in latin"
+},
+{
+"id": 112,
+"question": "Which order includes Convolvulaceae and Solanaceae",
+"options": [
+"Poales",
+"Polymoniales",
+"Coniferales",
+"Sapindales"
+],
+"answer": "Polymoniales"
+},
+{
+"id": 113,
+"question": "Match the following and choose the correct option for the housefly:\n(I) Family - Muscidae\n(II) Kingdom - Animalia\n(III) Order - Diptera\n(IV) Phylum - Arthropoda\n(V) Class - Mammalia",
+"options": [
+"I, II, III, IV",
+"III, IV, V",
+"I, II, IV",
+"I, IV, V"
+],
+"answer": "I, II, III, IV"
+},
+{
+"id": 114,
+"question": "Identify the incorrect statement:\n(I) Consciousness therefore, becomes the defining property of living organisms.\n(II) Biodiversity means the number and types of organisms present on earth\n(III) Solanum and Panthera are species.\n(IV) Arthropoda -three pairs of jointed legs.",
+"options": [
+"I, II, III",
+"I, IV",
+"III, IV",
+"IV"
+],
+"answer": "III, IV"
+},
+{
+"id": 115,
+"question": "The basic components of taxonomy are\n(a) Characterization (b) Identification\n(c) Classification (d) Nomenclature",
+"options": [
+"b,c,d only",
+"a,b,d only",
+"a,b,c,d",
+"c,d only"
+],
+"answer": "a,b,c,d"
+},
+{
+"id": 116,
+"question": "Which one of the following animals is correctly matched with its particular named taxonomic categories?",
+"options": [
+"Tiger - tigris, the species",
+"Cuttlefish - Mollusca, a class",
+"Humans - Primate, the family",
+"Housefly - Musca, an order"
+],
+"answer": "Tiger - tigris, the species"
+},
+{
+"id": 117,
+"question": "Which of the following taxonomic catagories includes all the other categories?",
+"options": [
+"Class",
+"Order",
+"Family",
+"Genus"
+],
+"answer": "Class"
+},
+{
+"id": 118,
+"question": "Which of the following set of organisms reproduce by fragmentation?",
+"options": [
+"Amoeba, fungi and filamentous algae",
+"Fungi, Amoeba and bacteria",
+"Fungi, filamentous algae and protonema of mosses",
+"Filamentous algae, bacteria and fungi"
+],
+"answer": "Fungi, filamentous algae and protonema of mosses"
+},
+{
+"id": 119,
+"question": "In Solanum melongena, first and second words stand for, respectively",
+"options": [
+"Genus, generic name",
+"Specific epithet, species",
+"Specific name and generic name",
+"Genus and species"
+],
+"answer": "Genus and species"
+},
+{
+"id": 120,
+"question": "Solanum and Mangifera are",
+"options": [
+"Genus, species",
+"Genus and genus",
+"Species and species",
+"Species and genus"
+],
+"answer": "Genus and genus"
+},
+{
+"id": 121,
+"question": "The response to environmental stimuli is called",
+"options": [
+"Metabolism",
+"Irritability",
+"Chemical reaction",
+"Growth"
+],
+"answer": "Irritability"
+},
+{
+"id": 122,
+"question": "In binomial nomenclature, the name of author appears before the",
+"options": [
+"Genus",
+"Family",
+"Species",
+"None of them"
+],
+"answer": "None of them"
+},
+{
+"id": 123,
+"question": "Determining whether a collected organism is entirely new or already known is called",
+"options": [
+"Nomenclature",
+"Identification",
+"Classification",
+"Characterisation"
+],
+"answer": "Identification"
+},
+{
+"id": 124,
+"question": "In Binomial nomenclature",
+"options": [
+"Both genus and species are printed in italics",
+"Genus and species name starts with small alphabet also",
+"Both in genus and species the first letter is capital",
+"Genus is written after the species"
+],
+"answer": "Both genus and species are printed in italics"
+},
+{
+"id": 125,
+"question": "Latin origin is indicated by",
+"options": [
+"They are latinised",
+"By printing in italics",
+"Written in bold",
+"All of these"
+],
+"answer": "By printing in italics"
+},
+{
+"id": 126,
+"question": "Biological species concept was given by",
+"options": [
+"Aristotle",
+"John Ray",
+"Ernst Mayr",
+"Buffon"
+],
+"answer": "Ernst Mayr"
+},
+{
+"id": 127,
+"question": "The word ending with -aceae indicates",
+"options": [
+"Genera",
+"Family",
+"Order",
+"Species"
+],
+"answer": "Family"
+},
+{
+"id": 128,
+"question": "Which one of the following has least similar characters?",
+"options": [
+"Family",
+"Class",
+"Genus",
+"Species"
+],
+"answer": "Class"
+},
+{
+"id": 129,
+"question": "Systema naturae is published by",
+"options": [
+"Linnaeus",
+"Darwin",
+"Ernst Mayer",
+"Aristotle"
+],
+"answer": "Linnaeus"
+},
+{
+"id": 130,
+"question": "In Mangifera indica, the word Mangifera is a",
+"options": [
+"Genus",
+"Species",
+"Variety",
+"Order"
+],
+"answer": "Genus"
+},
+{
+"id": 131,
+"question": "Statements unrelated to Systema Naturae is/ are",
+"options": [
+"Written by Linnaeus",
+"Has description of systematic arrangement/ classification of animals",
+"Animal names in this book are coined following binomial nomenclature",
+"Specific group of plants are described ahead of his time."
+],
+"answer": "Specific group of plants are described ahead of his time."
+},
+{
+"id": 132,
+"question": "Match the taxonomic categories of Mango and identify the correct option:\n(I) Genus - Mangifera\n(II) Class - Dicotyledonae\n(III) Order - Sapindales\n(IV) Family - Anacardiaceae\n(V) Species - Indica",
+"options": [
+"I, II, III, IV, V",
+"II, III, V",
+"I, II, III",
+"I, II, III, IV"
+],
+"answer": "I, II, III, IV, V"
+},
+{
+"id": 133,
+"question": "Ascending or descending arrangement of taxonomic categories is known as",
+"options": [
+"Classification",
+"Key",
+"Taxonomy",
+"Hierarchy"
+],
+"answer": "Hierarchy"
+},
+{
+"id": 134,
+"question": "Metabolism can be best defined as",
+"options": [
+"The process in which a chemical is formed inside the body",
+"The process in which a chemical is destroyed inside the body",
+"The sum of total of all chemical reactions occuring in the body",
+"A complex construction process only"
+],
+"answer": "The sum of total of all chemical reactions occuring in the body"
+},
+{
+"id": 135,
+"question": "All living organisms are linked to one another because",
+"options": [
+"They have common genetic material of the same type",
+"They share common genetic material but to varying degrees",
+"All have common cellular organization",
+"All of above"
+],
+"answer": "All of above"
+},
+{
+"id": 136,
+"question": "A group of related genera which resemble each other in floral characteristics represent",
+"options": [
+"Order",
+"Taxa",
+"Family",
+"Species"
+],
+"answer": "Family"
+},
+{
+"id": 137,
+"question": "The odd taxonomic category among the given options is",
+"options": [
+"Triticum",
+"Homo",
+"Musca",
+"Polymoniales"
+],
+"answer": "Polymoniales"
+},
+{
+"id": 138,
+"question": "Mark the correct statement",
+"options": [
+"Only living organisms grow",
+"Plants grow only up to a certain age",
+"The growth in living organisms is from inside",
+"All of these"
+],
+"answer": "The growth in living organisms is from inside"
+},
+{
+"id": 139,
+"question": "Higher taxa share",
+"options": [
+"Least common characters",
+"Maximum common characters",
+"No common characters",
+"Character as a point is never considered"
+],
+"answer": "Least common characters"
+},
+{
+"id": 140,
+"question": "Match the following columns and select the correct choice:\nA. Humans -> P. Panthera tigris\nB. Mango -> Q. Homo sapien\nC. Wheat -> R. Mangifera indica\nD. Tiger -> S. Triticum aestivum",
+"options": [
+"A-S, B-Q, C-P, D-R",
+"A-Q, B-R, C-S, D-P",
+"A-S, B-Q, C-R, D-P",
+"A-R, B-Q, C-S, D-P"
+],
+"answer": "A-Q, B-R, C-S, D-P"
+},
+{
+"id": 141,
+"question": "Which naming system is practised by biologist all over the world?",
+"options": [
+"Trivial system",
+"Binomial system",
+"Artification system",
+"All of the above"
+],
+"answer": "Binomial system"
+},
+{
+"id": 142,
+"question": "Human belong to the family",
+"options": [
+"Hominidae",
+"Primata",
+"Mammalia",
+"Chordata"
+],
+"answer": "Hominidae"
+},
+{
+"id": 143,
+"question": "Growth in unicellular organisms can be observed by",
+"options": [
+"Counting the mass of cultured cells",
+"Simply counting the number of cells under microscope during in vivo culture",
+"Growth never occurs in unicellular organisms",
+"Simply counting the number of cells under microscope during in vitro culture"
+],
+"answer": "Simply counting the number of cells under microscope during in vitro culture"
+},
+{
+"id": 144,
+"question": "Effect of day length on flower induction is called",
+"options": [
+"Photo tropsin",
+"Photoperiodism",
+"Photosynthesis",
+"Photo oxidation"
+],
+"answer": "Photoperiodism"
+},
+{
+"id": 145,
+"question": "Phylogeny refers to",
+"options": [
+"Developemental history of an organism",
+"Evolutionary history of an organism",
+"Evolutionary history of only plants",
+"Evolutionary history of only animals"
+],
+"answer": "Evolutionary history of an organism"
+},
+{
+"id": 146,
+"question": "Which of the following is a defining characteristic of living organisms?",
+"options": [
+"Growth",
+"Ability to make sound",
+"Reproduction",
+"Response to external stimuli"
+],
+"answer": "Response to external stimuli"
+},
+{
+"id": 147,
+"question": "Match the following and choose the correct option:\n(I) Genus - Group of related species.\n(II) Family - Group of related genera.\n(III) Order - Group of related families.\n(IV) Class - Group of related orders.\n(V) Species - Group of potentially breeding individuals.\n(VI) Kingdom - Group of related orders.",
+"options": [
+"I, II, III, IV, V",
+"I, II, III, V",
+"I, II, IV, VI",
+"I, IV, V, VI"
+],
+"answer": "I, II, III, IV, V"
+},
+{
+"id": 148,
+"question": "Dicotyledonae represents one of the taxonomic category of mango. The similar taxonomic category of man is",
+"options": [
+"Mammalia",
+"Chordata",
+"Primata",
+"Eutheria"
+],
+"answer": "Mammalia"
+},
+{
+"id": 149,
+"question": "Two different genera are classified in the same taxonomic category, family. Which of the following statement is correct about their classification?",
+"options": [
+"The same class but different species",
+"A different class and different order",
+"The same phylum but different class",
+"A different kingdom and different phylum"
+],
+"answer": "The same class but different species"
+},
+{
+"id": 150,
+"question": "Which of the following plants is a monocotyledon?",
+"options": [
+"Tobacco",
+"Potato",
+"Wheat",
+"Mango"
+],
+"answer": "Wheat"
+},
+{
+"id": 151,
+"question": "Select the correct statement from the following.",
+"options": [
+"Mules can reproduce",
+"Worker bee undergoes reproduction to generate new progeny",
+"Mule and worker bees are both fertile",
+"None of the above"
+],
+"answer": "None of the above"
+},
+{
+"id": 152,
+"question": "Generally growth and reproduction are-",
+"options": [
+"Mutually inclusive events",
+"Mutually exclusive events",
+"Either (1) or (2)",
+"None"
+],
+"answer": "Mutually exclusive events"
+},
+{
+"id": 153,
+"question": "Select the correct match with respect to brinjal:\n(I) Family - Solanaceae.\n(II) Class - Dicotyledonae.\n(III) Genus - Solanum.\n(IV) Order - Sapindales.\n(V) Species - melongena.",
+"options": [
+"I, II, III, IV",
+"I, II, III, V",
+"I, II, IV",
+"I, IV, V"
+],
+"answer": "I, II, III, V"
+},
+{
+"id": 154,
+"question": "The twin characteristics of growth are",
+"options": [
+"Increase in number of individuals, increase in mass",
+"Increase in height and decrease in weight",
+"Increase in weight and increase in mass",
+"Increase in size and decrease in mass"
+],
+"answer": "Increase in number of individuals, increase in mass"
+},
+{
+"id": 155,
+"question": "Match the following and choose the correct option:\nA. Family -> P. tuberosum\nB. Kingdom -> Q. Polymoniales\nC. Order -> R. Solanum\nD. Species -> S. Plantae\nE. Genus -> T. Solanaceae",
+"options": [
+"P-D, Q-C, R-E, S-B, T-A",
+"P-E, Q-D, R-B, S-A, T-C",
+"P-D, Q-E, R-B, S-A, T-C",
+"P-E, Q-C, R-B, S-A, T-D"
+],
+"answer": "P-D, Q-C, R-E, S-B, T-A"
+},
+{
+"id": 156,
+"question": "Linnaeus is credited with",
+"options": [
+"Binomial nomenclature",
+"Theory of biogenesis",
+"Discovery of microscope",
+"Discovery of blood circulation"
+],
+"answer": "Binomial nomenclature"
+},
+{
+"id": 157,
+"question": "All the given options represent the basic process of taxonomy except",
+"options": [
+"Classification",
+"Identification",
+"Specification",
+"Nomenclature"
+],
+"answer": "Specification"
+},
+{
+"id": 158,
+"question": "Choose the correct match",
+"options": [
+"Order - a group of related division",
+"Genus - a group of related species",
+"Class - a group of related genera",
+"Division - a group of related phyla"
+],
+"answer": "Genus - a group of related species"
+},
+{
+"id": 159,
+"question": "Which of the following are correct statements?\n(I) Genus is a group of related species.\n(II) Family is a group of related genera.\n(III) Class is a group of related orders.\n(IV) Order is a higher category than family.\n(V) Domain is a group of classes.",
+"options": [
+"I, II, III, IV",
+"II, III, V",
+"I, II, III",
+"I, IV, V"
+],
+"answer": "I, II, III, IV"
+},
+{
+"id": 160,
+"question": "Which one is the correct form of the scientific name for man",
+"options": [
+"homo sapiens",
+"Homo sapiens",
+"homo Sapiens",
+"Homo Sapiens"
+],
+"answer": "Homo sapiens"
+},
+{
+"id": 161,
+"question": "In the taxonomic categories which heirarchial arrangement in ascending order is correct in case of animals?",
+"options": [
+"Kingdom, Class, Phylum, Family, Order, Genus, Species",
+"Kingdom, Order, Class, Phylum, Family, Genus, Species",
+"Kingdom, Order, Phylum, Class, Family, Genus, Species",
+"Kingdom, Phylum, Class, Order, Family, Genus, Species"
+],
+"answer": "Kingdom, Phylum, Class, Order, Family, Genus, Species"
+},
+{
+"id": 162,
+"question": "Which of the following can be considered as the defining property of living organisms?\ni. Consciousness\nii. Growth\niii. Cellular organisation\niv. Metabolism\nv. Reproduction",
+"options": [
+"i, ii, iii, iv",
+"i, iii, iv, v",
+"i, iii, iv",
+"iii, iv"
+],
+"answer": "i, iii, iv"
+},
+{
+"id": 163,
+"question": "Individuals of which taxa can interbreed freely?",
+"options": [
+"Genus",
+"Species",
+"Family",
+"Order"
+],
+"answer": "Species"
+},
+{
+"id": 164,
+"question": "The scientific name of wheat is",
+"options": [
+"Triticum Aestivum",
+"Triticum aestivum",
+"Triticum poales",
+"Aestivum triticum"
+],
+"answer": "Triticum aestivum"
+},
+{
+"id": 165,
+"question": "Binomial nomenclature means writing the name of an organism in two words which designate",
+"options": [
+"Order and family",
+"Family and genus",
+"Species and family",
+"Genus and species"
+],
+"answer": "Genus and species"
+},
+{
+"id": 166,
+"question": "Which is an exclusive trait of living things",
+"options": [
+"Isolated metabolic reactions occur in in vitro",
+"Increase in mass from inside body",
+"Perception of events happening in the environment and their memory",
+"Increase in mass by accumulation of material both on surface as well as internally."
+],
+"answer": "Perception of events happening in the environment and their memory"
+},
+{
+"id": 167,
+"question": "The term 'systematics' refers to:",
+"options": [
+"Identification and study of organ systems",
+"Identification and preservation of plants and animals",
+"Diversity of kinds of organisms and their relationship",
+"Study of habitats of organisms and their classification"
+],
+"answer": "Diversity of kinds of organisms and their relationship"
+},
+{
+"id": 168,
+"question": "Patient in "COMA" can show",
+"options": [
+"Irritability",
+"Self consciousness",
+"Consciousness",
+"Metabolism (aided by Machines)"
+],
+"answer": "Metabolism (aided by Machines)"
+},
+{
+"id": 169,
+"question": "Select the correct option with respect to classification of potato?\n(I) Family - Solanaceae.\n(II) Order - Poales.\n(III) Genus - Solanum.\n(IV) Class - Dicotyledonae.\n(V) Division - Angiospermae.",
+"options": [
+"I, II",
+"I, II, III, V",
+"I, III, IV, V",
+"I, IV, V"
+],
+"answer": "I, III, IV, V"
+},
+{
+"id": 170,
+"question": "Which of the following is not an universal rule for nomenclature of organisms?",
+"options": [
+"New names are derived from Latin or are Latinized",
+"The name, when handwritten, should be separately underlined or printed in italics.",
+"The first word denoting genus should always be in capital letters while species name starts in a small letter.",
+"Each taxonomic group above the rank of species can have more than one correct name."
+],
+"answer": "Each taxonomic group above the rank of species can have more than one correct name."
+},
+{
+"id": 171,
+"question": "Properties of tissues are not present in the constituent cells but arise as a result of interaction among cells.",
+"options": [
+"Interactions",
+"Irritability",
+"Genetic material",
+"None"
+],
+"answer": "Interactions"
+},
+{
+"id": 172,
+"question": "Match the following columns and select the correct choice:\nA. Family -> P. melongena\nB. Kingdom -> Q. Polymoniales\nC. Order -> R. Datura\nD. Species -> S. Plantae\nE. Genus -> T. Solanaceae",
+"options": [
+"A-T, B-S, C-Q, D-P, E-R",
+"A-T, B-Q, C-S, D-P, E-R",
+"A-P, B-Q, C-R, D-S, E-T",
+"A-P, B-Q, C-S, D-R, E-T"
+],
+"answer": "A-T, B-S, C-Q, D-P, E-R"
+},
+{
+"id": 173,
+"question": "The highest taxon in taxonomic hierarchy is",
+"options": [
+"Species",
+"Kingdom",
+"Order",
+"Division"
+],
+"answer": "Kingdom"
+},
+{
+"id": 174,
+"question": "A human being and a cow can be differentiated in the following defined feature",
+"options": [
+"Growth, Reproduction",
+"Reproduction, Metabolism",
+"Cellular organization, Reproduction",
+"Self consciousness"
+],
+"answer": "Self consciousness"
+},
+{
+"id": 175,
+"question": "The correct order of Taxonomic categories in ascending order is\nI. Kingdom -> division -> class -> order -> genus -> family -> species\nII. Kingdom -> division -> order -> class -> family -> species\nIII. Kingdom -> species -> order -> class -> family (Descending order)\nIV. Species -> genus -> family -> order -> class -> division -> kingdom",
+"options": [
+"II",
+"I",
+"III",
+"IV"
+],
+"answer": "IV"
+},
+{
+"id": 176,
+"question": "Specific epithet is",
+"options": [
+"First word in the scientific name of a species",
+"Second word in the scientific name of a species",
+"Both 1 & 2",
+"None of these"
+],
+"answer": "Second word in the scientific name of a species"
+},
+{
+"id": 177,
+"question": "The housefly belongs to which order in taxonomical classification?",
+"options": [
+"Musca",
+"Diptera",
+"Muscidae",
+"Insecta"
+],
+"answer": "Diptera"
+},
+{
+"id": 178,
+"question": "What is the utility of hierarchical taxonomic system?",
+"options": [
+"As each higher taxonomic category contains groups/categories below it",
+"It is helpful to establish classification",
+"Taxonomic categories help in identification",
+"All of them"
+],
+"answer": "All of them"
+},
+{
+"id": 179,
+"question": "Which of the following statements is correct for families in taxonomy",
+"options": [
+"Animal families ends with suffix - idea",
+"A family is a group of related genera with less number of similarities as compared to genus and species.",
+"Both vegetative and reproduction features are taken as the basis of plant classification",
+"All of the above"
+],
+"answer": "All of the above"
+},
+{
+"id": 180,
+"question": "A taxon is a",
+"options": [
+"Group of related species",
+"Group of related families",
+"Type of living organisms",
+"Taxonomic group of any ranking"
+],
+"answer": "Taxonomic group of any ranking"
+}
+  ]
