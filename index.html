@@ -261,6 +261,20 @@ const LIVING_WORLD_JSON_URLS = [
     'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/Data/living_world_mcqs.json',
     'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/data/living_world_mcqs.json'
 ];
+
+const FALLBACK_LIVING_WORLD_QUESTIONS = [
+    { id: 1, question: 'House fly and wheat families respectively are', options: ['Anacardiaceae, Solanacceae','Muscidae, Poaceae','Poaceae, Sapendales','Poaceae, Muscidae'], answer: 'Muscidae, Poaceae' },
+    { id: 2, question: 'Select a genus not related to family Solanaceae', options: ['Solanum','Mangifera','Petunia','Datura'], answer: 'Mangifera' },
+    { id: 3, question: 'Select the correct related to man', options: ['Genus - Homonidae','Order - Primata','Family - mamalia','Division - Chordata'], answer: 'Order - Primata' },
+    { id: 4, question: 'Select a non-living object showing growth', options: ['Mountain','Sand mound','Boulder','1, 2 and 3'], answer: '1, 2 and 3' },
+    { id: 5, question: 'In hierarchical classification, class is placed between', options: ['Kingdom and phylum','Order and family','Phylum and order','Family and genus'], answer: 'Phylum and order' },
+    { id: 6, question: 'International code for botanical nomenclature is applicable to', options: ['Viruses','Plants','Animals','Both 2 & 3'], answer: 'Plants' },
+    { id: 7, question: 'A number of families having common character is called', options: ['Order','Class','Phylum','Sub class'], answer: 'Order' },
+    { id: 8, question: 'Which one of the following taxonomic categories top the hierarchy of categories?', options: ['Order','Division','Class','Genus'], answer: 'Division' },
+    { id: 9, question: 'Genera consists of which of the following\nI. order\tII. class\nIII. family\tIV. species', options: ['I only','II only','IV only','I and III only'], answer: 'IV only' },
+    { id: 10, question: 'The number of species that are known and described, are approximately', options: ['0.5-1.0 million','1.7-1.8 million','3.3-3.5 million','13-14 million'], answer: '1.7-1.8 million' }
+];
+
 const livingWorldQuestionsCache = { data: null, loading: false, error: null };
 
 function escapeHtml(value = '') {
@@ -282,25 +296,29 @@ async function loadLivingWorldQuestions() {
         try {
             const response = await fetch(url, { cache: 'no-store' });
             if (!response.ok) continue;
-            const questions = await response.json();
-            const valid = Array.isArray(questions) ? questions : [];
-            livingWorldQuestionsCache.data = valid;
-            livingWorldQuestionsCache.error = null;
-            livingWorldQuestionsCache.loading = false;
-            return valid;
+
+            const text = await response.text();
+            const questions = JSON.parse(text);
+            if (Array.isArray(questions) && questions.length) {
+                livingWorldQuestionsCache.data = questions;
+                livingWorldQuestionsCache.error = null;
+                livingWorldQuestionsCache.loading = false;
+                return questions;
+            }
         } catch (error) {
-            console.error('Failed to load Living World JSON from:', url, error);
+            console.warn('Remote Living World JSON failed to parse, using fallback data.', error);
         }
     }
 
-    livingWorldQuestionsCache.error = 'The Living World MCQ JSON could not be loaded.';
+    livingWorldQuestionsCache.data = FALLBACK_LIVING_WORLD_QUESTIONS;
+    livingWorldQuestionsCache.error = 'The source JSON is malformed, so a fallback question set is being used.';
     livingWorldQuestionsCache.loading = false;
-    return [];
+    return FALLBACK_LIVING_WORLD_QUESTIONS;
 }
 
 function buildLivingWorldQuestionsMarkup(questions) {
-    if (!questions.length) {
-        return '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300">Unable to load the Living World MCQ data from the remote JSON source. Please check the raw GitHub URL.</div>';
+    if (!Array.isArray(questions) || !questions.length) {
+        return '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300">Unable to load the Living World MCQ data from the remote JSON source. A fallback set is being used instead.</div>';
     }
 
     return `
@@ -451,7 +469,7 @@ async function handleChapterClick(chapterName) {
         const content = buildLivingWorldQuestionsMarkup(questions);
         showModal(
             `Chapter: ${chapterName}`,
-            'Practice the chapter with MCQs loaded from the raw GitHub JSON file.',
+            'Practice the chapter with MCQs loaded from the raw GitHub JSON file. If the source JSON is malformed, the app automatically falls back to a valid built-in set.',
             `
             <div class="flex flex-wrap gap-2 justify-end w-full">
                 <button onclick="toggleChapterProgress('${safeName}')" class="px-4 py-2 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold text-xs">
