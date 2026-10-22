@@ -29,13 +29,13 @@
     --text-primary:#0f172a;
     --text-muted:#64748b;
     --border-color:#e2e8f0;
+    --repo-bg:rgba(0,0,0,0.05);
     --bio-bg:#ecfdf5;
     --bio-text:#047857;
     --chem-bg:#f5f3ff;
     --chem-text:#6d28d9;
     --phy-bg:#f0fdfa;
     --phy-text:#0f766e;
-    --accent-glow: rgba(13, 148, 136, 0.15);
 }
 
 body.dark {
@@ -43,7 +43,7 @@ body.dark {
     --muted:#94a3b8;
     --line:#334155;
     --paper:#1e293b;
-    --bg:#0b1329;
+    --bg:#0f172a;
     --teal:#14b8a6;
     --deep:#0f2e33;
     --lime:#bef264;
@@ -51,17 +51,17 @@ body.dark {
     --text-primary:#f8fafc;
     --text-muted:#94a3b8;
     --border-color:#334155;
+    --repo-bg:rgba(255,255,255,0.08);
     --bio-bg:rgba(16,185,129,0.15);
     --bio-text:#6ee7b7;
     --chem-bg:rgba(139,92,246,0.15);
     --chem-text:#c4b5fd;
     --phy-bg:rgba(20,184,166,0.15);
     --phy-text:#5eead4;
-    --accent-glow: rgba(20, 184, 166, 0.25);
 }
 
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;transition:background-color 0.25s ease, color 0.25s ease; -webkit-tap-highlight-color: transparent;}
+body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;transition:background-color 0.2s, color 0.2s; -webkit-tap-highlight-color: transparent;}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0}
 
@@ -73,108 +73,103 @@ button{cursor:pointer;border:0}
 }
 
 @media (min-width: 1024px) {
-    .app-layout { flex-direction: row; }
+    .app-layout {
+        flex-direction: row;
+    }
     .sidebar {
         position: fixed;
         inset: 0 auto 0 0;
-        width: 270px;
+        width: 260px;
         height: 100vh;
         overflow-y: auto;
     }
     .content {
-        margin-left: 270px;
+        margin-left: 260px;
         flex: 1;
-        width: calc(100% - 270px);
+        width: calc(100% - 260px);
     }
 }
 
 .brand{display:flex;gap:12px;align-items:center}
-.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg, #0d9488, #123c42);color:var(--lime);font-weight:900;box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);}
-.brand b{font-size:17px;color:var(--text-primary);letter-spacing:-0.02em;}
+.logo{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:var(--deep);color:var(--lime);font-weight:900}
+.brand b{font-size:16px;color:var(--text-primary)}
 .brand b span{color:var(--teal)}
 .eyebrow{margin:2px 0 0;color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
 
-.nav button{padding:11px 14px;border-radius:14px;background:none;color:var(--text-muted);text-align:left;font-weight:700;transition:all 0.2s ease;display:flex;align-items:center;gap:12px;width:100%;font-size:13.5px;}
-.nav button:hover{background:rgba(16,155,141,0.08);color:var(--teal);transform:translateX(3px);}
-.nav button.active{background:linear-gradient(135deg, rgba(16,155,141,0.2), rgba(16,155,141,0.08));color:var(--teal);box-shadow: inset 0 0 0 1px rgba(16,155,141,0.25);}
+.nav button{padding:10px 12px;border-radius:12px;background:none;color:var(--text-muted);text-align:left;font-weight:700;transition:all 0.2s;display:flex;align-items:center;gap:10px;width:100%;}
+.nav button:hover{background:rgba(16,155,141,0.08);color:var(--teal)}
+.nav button.active{background:rgba(16,155,141,0.18);color:var(--teal)}
 
-.goal{background:linear-gradient(135deg, rgba(16,185,129,0.12), rgba(13,148,136,0.05));border:1px solid rgba(16,185,129,0.25);border-radius:18px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,0.02);}
+.goal{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:16px;padding:14px}
 .goal small{color:var(--teal);text-transform:uppercase;font-weight:800;letter-spacing:.1em;font-size:10px}
-.goal strong{display:block;margin-top:4px;font-size:13.5px;color:var(--text-primary)}
-.bar{height:7px;background:rgba(0,0,0,0.08);border-radius:99px;margin-top:10px;overflow:hidden}
-body.dark .bar{background:rgba(255,255,255,0.12)}
-.bar i{display:block;height:100%;background:linear-gradient(90deg, #10b981, #14b8a6);border-radius:99px;transition:width 0.6s cubic-bezier(0.4, 0, 0.2, 1)}
-.goal p{font-size:11px;color:var(--text-muted);margin-top:8px;font-weight:600;}
+.goal strong{display:block;margin-top:4px;font-size:13px;color:var(--text-primary)}
+.bar{height:6px;background:rgba(0,0,0,0.1);border-radius:99px;margin-top:8px;overflow:hidden}
+body.dark .bar{background:rgba(255,255,255,0.15)}
+.bar i{display:block;height:100%;background:var(--teal);transition:width 0.5s ease}
+.goal p{font-size:11px;color:var(--text-muted);margin-top:6px}
 
-.topbar{height:72px;border-bottom:1px solid var(--border-color);background:rgba(255,255,255,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:30;transition:background-color 0.25s, border-color 0.25s}
-body.dark .topbar{background:rgba(15,23,42,0.85);}
-.date{color:var(--text-muted);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
-.topbar h1{font-size:19px;margin:2px 0 0;color:var(--text-primary);font-weight:800;letter-spacing:-0.02em;}
-.profile{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg, #f6c4a5, #f1a980);color:#5c2d1e;font-weight:800;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.topbar{height:70px;border-bottom:1px solid var(--border-color);background:var(--paper);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:30;transition:background-color 0.2s, border-color 0.2s}
+.date{color:var(--text-muted);font-size:11px;font-weight:600;}
+.topbar h1{font-size:18px;margin:2px 0 0;color:var(--text-primary);font-weight:800;}
 
-.main{max-width:1400px;margin:auto;padding:28px}
+.main{max-width:1400px;margin:auto;padding:24px}
 .tag{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.17em;font-size:11px}
-.primary{padding:11px 20px;border-radius:14px;background:linear-gradient(135deg, #0d9488, #0f766e);color:#fff;font-weight:800;transition:all 0.2s ease;font-size:14px;box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);}
-.primary:hover{transform:translateY(-1px);box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);}
+.primary{padding:10px 18px;border-radius:12px;background:var(--teal);color:#fff;font-weight:800;transition:opacity 0.2s;font-size:14px}
+.primary:hover{opacity:0.9}
 
-.card,.library{background:var(--card-bg);border:1px solid var(--border-color);border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,0.02);transition:all 0.25s ease}
-.card:hover{border-color:rgba(13,148,136,0.3);}
+.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:18px;box-shadow:0 2px 8px rgba(0,0,0,0.03);transition:background-color 0.2s, border-color 0.2s}
 
-.subject{padding:16px 18px;border:1px solid var(--border-color);border-radius:18px;background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all 0.2s ease;color:var(--text-primary)}
-.subject:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.04);}
-.subject.selected{border-color:var(--teal);background:linear-gradient(135deg, rgba(16,155,141,0.12), rgba(16,155,141,0.03));box-shadow: 0 0 0 1px var(--teal);}
-.subject b{display:block;color:var(--text-primary);font-size:15px;font-weight:800}
-.subject small{display:block;color:var(--text-muted);margin-top:2px;font-size:12px;font-weight:600}
+.subject{padding:14px 16px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all 0.2s;color:var(--text-primary)}
+.subject.selected{border-color:var(--teal);background:rgba(16,155,141,0.08)}
+.subject b{display:block;color:var(--text-primary);font-size:14px}
+.subject small{display:block;color:var(--text-muted);margin-top:2px;font-size:12px}
 
-.chip{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:11px;font-weight:900;flex-shrink:0}
+.chip{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:10px;font-weight:900;flex-shrink:0}
 .bio{background:var(--bio-bg);color:var(--bio-text)}
 .chem{background:var(--chem-bg);color:var(--chem-text)}
 .phy{background:var(--phy-bg);color:var(--phy-text)}
 
-.chapter{padding:20px;transition:all 0.25s cubic-bezier(0.16, 1, 0.3, 1);display:flex;flex-direction:column;justify-content:space-between;border-radius:20px}
-.chapter:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,0.06)}
-.chapter-title{font-weight:800;font-size:14.5px;margin-top:14px;color:var(--text-primary);line-height:1.4}
-.meta{display:flex;justify-content:space-between;color:var(--text-muted);font-size:11px;font-weight:700;margin-top:14px}
+.chapter{padding:18px;transition:transform 0.2s, box-shadow 0.2s;display:flex;flex-direction:column;justify-content:space-between}
+.chapter:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.06)}
+.chapter-title{font-weight:800;font-size:14px;margin-top:14px;color:var(--text-primary);line-height:1.4}
+.meta{display:flex;justify-content:space-between;color:var(--text-muted);font-size:11px;margin-top:12px}
 .progress{height:6px;background:rgba(0,0,0,0.06);border-radius:99px;margin-top:6px;overflow:hidden}
 body.dark .progress{background:rgba(255,255,255,0.1)}
-.progress i{display:block;height:100%;background:linear-gradient(90deg, #10b981, #14b8a6);border-radius:99px;transition:width 0.5s ease}
+.progress i{display:block;height:100%;background:var(--teal);transition:width 0.4s ease}
+.practice{margin-top:14px;color:var(--teal);font-weight:800;background:none;padding:0;display:inline-flex;align-items:center;gap:4px;font-size:13px}
 
-.controls input,.controls select{padding:10px 14px;border:1px solid var(--border-color);border-radius:14px;background:var(--card-bg);color:var(--text-primary);outline:none;font-size:13px;font-weight:600;transition:all 0.2s}
-.controls input:focus, .controls select:focus{border-color:var(--teal);box-shadow:0 0 0 3px var(--accent-glow);}
+.controls input,.controls select{padding:8px 12px;border:1px solid var(--border-color);border-radius:12px;background:var(--card-bg);color:var(--text-primary);outline:none;font-size:13px}
+.controls input:focus, .controls select:focus{border-color:var(--teal)}
 
 /* Custom modal */
 .custom-modal {
-    position: fixed; inset: 0; background: rgba(18,32,44,0.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    display: grid; place-items: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+    position: fixed; inset: 0; background: rgba(18,32,44,0.6); backdrop-filter: blur(4px);
+    display: grid; place-items: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
     padding: 16px;
 }
 .custom-modal.open { opacity: 1; pointer-events: auto; }
-.modal-box { background: var(--card-bg); color: var(--text-primary); width: 100%; max-width: 520px; border-radius: 24px; padding: 28px; border: 1px solid var(--border-color); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); transform: scale(0.95); transition: transform 0.25s ease; max-height: 90vh; overflow-y: auto; }
+.modal-box { background: var(--card-bg); color: var(--text-primary); width: 100%; max-width: 500px; border-radius: 20px; padding: 24px; border: 1px solid var(--border-color); box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: scale(0.95); transition: transform 0.2s ease; max-height: 90vh; overflow-y: auto; }
 .custom-modal.open .modal-box { transform: scale(1); }
 
 /* Mobile Menu & Drawer Style */
 .mobile-nav-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 45; opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); z-index: 45; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
 }
 .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
-
-/* Dynamic Badge Styles */
-.badge-tag { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 8px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
 
 @media (max-width: 1023px) {
     .sidebar-drawer {
         position: fixed;
         top: 0; left: 0; bottom: 0;
-        width: 290px;
+        width: 280px;
         background: var(--paper);
         z-index: 50;
         transform: translateX(-100%);
-        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        padding: 24px;
+        transition: transform 0.3s ease;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-        box-shadow: 10px 0 30px rgba(0,0,0,0.15);
     }
     .sidebar-drawer.open {
         transform: translateX(0);
@@ -191,7 +186,7 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
         <div class="brand justify-between items-center w-full">
             <div class="flex items-center gap-3">
                 <div class="logo">✦</div>
-                <div><b>Edu<span>Pulse</span></b><p class="eyebrow">NEET practice</p></div>
+                <div><b>Edu<span>Pulse</span></b><p class="eyebrow">NEET Ecosystem</p></div>
             </div>
             <button class="lg:hidden text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1" onclick="toggleMobileNav(false)">
                 <i class="fa-solid fa-xmark text-lg"></i>
@@ -200,18 +195,14 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
 
         <nav class="nav my-6 space-y-1">
             <button onclick="switchTab('home')" id="nav-home" class="active"><i class="fa-solid fa-house w-5"></i> Home</button>
-            <button onclick="switchTab('overview')" id="nav-overview"><i class="fa-solid fa-chart-pie w-5"></i> Dashboard</button>
             <button onclick="switchTab('practice')" id="nav-practice"><i class="fa-solid fa-list-check w-5"></i> Practice <small style="margin-left:auto;background:#c6f36b;color:#30521e;border-radius:99px;padding:2px 7px;font-size:9px">Focus</small></button>
             <button onclick="switchTab('directory')" id="nav-directory"><i class="fa-solid fa-book-bookmark w-5"></i> Resource Directory</button>
             <button onclick="switchTab('faculty')" id="nav-faculty"><i class="fa-solid fa-chalkboard-user w-5"></i> Faculty Hub</button>
-            <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Timer & Notes</button>
-            <button onclick="switchTab('mocks')" id="nav-mocks"><i class="fa-solid fa-file-pen w-5"></i> Mock Tests</button>
-            <button onclick="switchTab('analytics')" id="nav-analytics"><i class="fa-solid fa-chart-line w-5"></i> Analytics</button>
-            <button onclick="switchTab('bank')" id="nav-bank"><i class="fa-solid fa-database w-5"></i> Question Bank</button>
+            <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Focus Timer & Notes</button>
         </nav>
 
         <div class="goal mt-auto">
-            <small>Your goal</small>
+            <small>Syllabus Goal</small>
             <strong>Finish every chapter</strong>
             <div class="bar"><i id="sidebar-progress-bar" style="width:0%"></i></div>
             <p id="sidebar-progress-text">0% syllabus covered</p>
@@ -229,8 +220,8 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
                     <i class="fa-solid fa-arrow-left text-xs"></i> Back
                 </button>
                 <div>
-                    <div class="date" id="current-date">Today</div>
-                    <h1 class="hidden sm:block">Good day, Aspirant<span style="color:#ef8a5f">.</span></h1>
+                    <div class="date" id="current-date">Thursday, 22 October 2026</div>
+                    <h1 class="hidden sm:block">Welcome, Aspirant<span style="color:#0d9488">.</span></h1>
                     <h1 class="sm:hidden text-base">EduPulse PRO</h1>
                 </div>
             </div>
@@ -240,12 +231,11 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
                     <i class="fa-solid fa-moon dark:hidden text-sm sm:text-base"></i>
                     <i class="fa-solid fa-sun hidden dark:inline text-sm sm:text-base"></i>
                 </button>
-                <div class="profile" title="Aspirant">AS</div>
             </div>
         </header>
 
         <main class="main" id="main-container">
-            <!-- Dynamic view content renders here -->
+            <!-- Dynamic content view rendered here -->
         </main>
     </section>
 </div>
@@ -254,7 +244,7 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
 <div class="custom-modal" id="appModal">
     <div class="modal-box">
         <h3 id="modalTitle" class="text-xl font-bold mb-2 text-slate-900 dark:text-slate-100">Notification</h3>
-        <p id="modalBody" class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Modal message goes here.</p>
+        <p id="modalBody" class="text-slate-500 dark:text-slate-400 mb-4 text-sm">Modal message goes here.</p>
         <div id="modalContentSlot"></div>
         <div class="flex justify-end gap-3 mt-4" id="modalActions">
             <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-sm">Close</button>
@@ -263,7 +253,7 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
 </div>
 
 <script>
-// Data structure for subjects and chapters
+// Curriculum Subject & Chapter Data Structure (79 Total Chapters)
 const data = {
     Biology: [
         'The Living World','Biological Classification','Plant Kingdom','Animal Kingdom',
@@ -301,7 +291,7 @@ const data = {
     ]
 };
 
-// Teacher Cards Data
+// Real Teacher Cards Data (Faculty Hub)
 const TEACHERS_DATA = [
     { id: "t1", name: "RCM Sir", badge: "Expert Educator", img: "https://i.ibb.co/tTqKFyp8/RCM-SIR.jpg", playlist: "RCM Sir Playlist" },
     { id: "t2", name: "MKG Sir", badge: "Expert Educator", img: "https://i.ibb.co/3x97xd0/MKG-SIR.jpg", playlist: "MKG Sir Playlist" },
@@ -317,7 +307,7 @@ const TEACHERS_DATA = [
     { id: "t12", name: "Mahesh Patidar", badge: "Expert Educator", img: "https://i.ibb.co/RTGnxShs/Smart-Select-20260609-170750-Google.jpg", playlist: "Mahesh Patidar Playlist" }
 ];
 
-// Resource Links Directory Data
+// Real Resource Links Directory Data
 const INITIAL_RESOURCES = [
     { id: "sp999", title: "Allen neet", category: "JEE & NEET", subtag: "Batches", badge: "StudyPanda", url: "http://Amity18.carrd.co" },
     { id: "sp99", title: "allen jee", category: "JEE", subtag: "Batches", badge: "jee", url: "https://dusra-aur.github.io/alien-jaddu//" },
@@ -344,28 +334,19 @@ const INITIAL_RESOURCES = [
 let currentTab = 'home';
 let previousTab = 'home';
 let subject = 'Biology';
+let searchQuery = '';
+let filterStatus = 'all';
 let bookmarks = JSON.parse(localStorage.getItem('edupulse_bookmarks')) || [];
 let userNotes = localStorage.getItem('edupulse_scratchpad') || '';
 
-// Timer state
+// Focus Timer State
 let timerInterval = null;
 let timerSeconds = 25 * 60;
 
-// Dynamic User Progress from actual activity
+// Dynamic User Progress from LocalStorage
 let userProgress = JSON.parse(localStorage.getItem('edupulse_progress')) || {};
 
-// Quiz state
-let activeQuizIndex = 0;
-let quizScore = 0;
-
-const SAMPLE_QUIZ = [
-    { question: "Which organelle is known as the 'Powerhouse of the Cell'?", options: ["Ribosome", "Mitochondria", "Golgi Apparatus", "Lysosome"], answer: 1 },
-    { question: "What is the unit of Electric Current in SI units?", options: ["Volt", "Joule", "Ampere", "Ohm"], answer: 2 },
-    { question: "Which acid is present in gastric juice in human stomach?", options: ["Nitric Acid", "Sulfuric Acid", "Hydrochloric Acid", "Acetic Acid"], answer: 2 },
-    { question: "What is the hybridization of Carbon in Methane (CH4)?", options: ["sp", "sp2", "sp3", "sp3d"], answer: 2 }
-];
-
-// Set dynamic date in topbar
+// Set dynamic date in header
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
 function toggleTheme() {
@@ -375,7 +356,8 @@ function toggleTheme() {
     localStorage.setItem('edupulse_theme', isDark ? 'dark' : 'light');
 }
 
-if(localStorage.getItem('edupulse_theme') === 'dark') {
+// Load theme preference on startup
+if (localStorage.getItem('edupulse_theme') === 'dark') {
     document.body.classList.add('dark');
     document.documentElement.classList.add('dark');
 }
@@ -383,7 +365,7 @@ if(localStorage.getItem('edupulse_theme') === 'dark') {
 function toggleMobileNav(open) {
     const drawer = document.getElementById('sidebarDrawer');
     const overlay = document.getElementById('navOverlay');
-    if(open) {
+    if (open) {
         drawer.classList.add('open');
         overlay.classList.add('open');
     } else {
@@ -408,16 +390,8 @@ function goBack() {
     switchTab(previousTab || 'home');
 }
 
-function setSubject(subj) {
-    subject = subj;
-    renderChapters();
-    document.querySelectorAll('.subject').forEach(el => el.classList.remove('selected'));
-    const targetBtn = document.getElementById(`subj-btn-${subj}`);
-    if(targetBtn) targetBtn.classList.add('selected');
-}
-
 function toggleBookmark(resourceId) {
-    if(bookmarks.includes(resourceId)) {
+    if (bookmarks.includes(resourceId)) {
         bookmarks = bookmarks.filter(b => b !== resourceId);
     } else {
         bookmarks.push(resourceId);
@@ -426,18 +400,16 @@ function toggleBookmark(resourceId) {
     renderView();
 }
 
-function toggleChapterComplete(chapName) {
-    userProgress[chapName] = !userProgress[chapName];
-    localStorage.setItem('edupulse_progress', JSON.stringify(userProgress));
-    updateGlobalProgress();
-    renderChapters();
-}
-
-function showModal(title, bodyText) {
+function showModal(title, message, actionsHtml = null) {
     document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalBody').textContent = bodyText;
+    document.getElementById('modalBody').textContent = message;
     document.getElementById('modalContentSlot').innerHTML = '';
-    document.getElementById('modalActions').innerHTML = `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-sm">Close</button>`;
+    const actionsContainer = document.getElementById('modalActions');
+    if (actionsHtml) {
+        actionsContainer.innerHTML = actionsHtml;
+    } else {
+        actionsContainer.innerHTML = `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-sm">Close</button>`;
+    }
     openModal();
 }
 
@@ -449,113 +421,16 @@ function closeModal() {
     document.getElementById('appModal').classList.remove('open');
 }
 
-function openChapterDetails(chapName) {
-    const isCompleted = userProgress[chapName];
-    document.getElementById('modalTitle').textContent = chapName;
-    document.getElementById('modalBody').textContent = `Subject: ${subject} • Chapter Practice`;
-    
-    const slot = document.getElementById('modalContentSlot');
-    if (slot) {
-        slot.innerHTML = `
-            <div class="py-4 text-center space-y-4">
-                <div class="w-16 h-16 mx-auto rounded-2xl bg-teal-500/10 text-teal-500 flex items-center justify-center text-2xl font-black shadow-inner">
-                    <i class="fa-solid fa-rocket"></i>
-                </div>
-                <div>
-                    <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
-                        ✨ Feature Coming Soon
-                    </span>
-                    <h4 class="text-lg font-extrabold text-slate-900 dark:text-slate-100 mt-2">Interactive Quiz Mode in Progress</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto mt-1 leading-relaxed">
-                        Full NEET-pattern Question Bank and Chapter Tests for <b>${chapName}</b> are currently being populated.
-                    </p>
-                </div>
-                <div class="pt-2">
-                    <button onclick="toggleChapterComplete('${chapName.replace(/'/g, "\\'")}'); closeModal();" class="w-full py-3 rounded-xl ${isCompleted ? 'bg-amber-500/10 text-amber-600 border border-amber-500/20' : 'bg-teal-500 text-slate-950 font-bold'} text-xs font-black transition flex items-center justify-center gap-2">
-                        <i class="${isCompleted ? 'fa-solid fa-rotate-left' : 'fa-solid fa-circle-check'} text-sm"></i>
-                        ${isCompleted ? 'Mark Chapter as Pending' : 'Mark Chapter as Completed'}
-                    </button>
-                </div>
-            </div>
-        `;
-    }
-    document.getElementById('modalActions').innerHTML = `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-sm">Close</button>`;
-    openModal();
-}
-
-function updateGlobalProgress() {
-    const totalChapters = data.Biology.length + data.Chemistry.length + data.Physics.length;
-    const completedCount = Object.values(userProgress).filter(Boolean).length;
-    const percentage = totalChapters > 0 ? Math.round((completedCount / totalChapters) * 100) : 0;
-
-    const progressBar = document.getElementById('sidebar-progress-bar');
-    const progressText = document.getElementById('sidebar-progress-text');
-
-    if (progressBar) progressBar.style.width = percentage + '%';
-    if (progressText) progressText.textContent = `${percentage}% syllabus covered`;
-
-    return { totalChapters, completedCount, percentage };
-}
-
-function renderChapters() {
-    const list = data[subject] || [];
-    const searchVal = (document.getElementById('search')?.value || '').toLowerCase();
-    const filterVal = document.getElementById('statusFilter')?.value || 'all';
-    
-    const container = document.getElementById('chapters');
-    if(!container) return;
-
-    let filtered = list.filter(ch => ch.toLowerCase().includes(searchVal));
-
-    if(filterVal === 'completed') {
-        filtered = filtered.filter(ch => userProgress[ch]);
-    } else if(filterVal === 'pending') {
-        filtered = filtered.filter(ch => !userProgress[ch]);
-    }
-
-    const countEl = document.getElementById('count');
-    if(countEl) countEl.textContent = `${filtered.length} of ${list.length} chapters matching`;
-
-    if(filtered.length === 0) {
-        container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 font-semibold text-sm">No matching chapters found.</div>`;
-        return;
-    }
-
-    container.innerHTML = filtered.map(ch => {
-        const isDone = userProgress[ch];
-        return `
-            <div class="card chapter cursor-pointer group" onclick="openChapterDetails('${ch.replace(/'/g, "\\'")}')">
-                <div class="flex items-start justify-between gap-2">
-                    <span class="badge-tag ${subject === 'Biology' ? 'bg-emerald-500/10 text-emerald-600' : subject === 'Chemistry' ? 'bg-purple-500/10 text-purple-600' : 'bg-teal-500/10 text-teal-600'}">
-                        ${subject.slice(0,3)}
-                    </span>
-                    <button onclick="event.stopPropagation(); toggleChapterComplete('${ch.replace(/'/g, "\\'")}')" class="text-lg transition-transform active:scale-95" title="${isDone ? 'Mark as Pending' : 'Mark as Completed'}">
-                        <i class="${isDone ? 'fa-solid fa-circle-check text-emerald-500' : 'fa-regular fa-circle text-slate-400 hover:text-teal-500'}"></i>
-                    </button>
-                </div>
-                <div class="chapter-title group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">${ch}</div>
-                <div class="meta">
-                    <span>${isDone ? 'Completed' : 'In Progress'}</span>
-                    <span class="text-teal-600 dark:text-teal-400 font-extrabold flex items-center gap-1">Practice <i class="fa-solid fa-angle-right text-[10px]"></i></span>
-                </div>
-                <div class="progress">
-                    <i style="width: ${isDone ? '100%' : '15%'}"></i>
-                </div>
-            </div>
-        `;
-    }).join('');
-}
-
 function startTimer() {
-    if(timerInterval) return;
+    if (timerInterval) return;
     timerInterval = setInterval(() => {
-        if(timerSeconds > 0) {
+        if (timerSeconds > 0) {
             timerSeconds--;
             updateTimerDisplay();
         } else {
             clearInterval(timerInterval);
             timerInterval = null;
-            showModal("Time's Up!", "Your 25-minute Pomodoro focus block is complete. Take a 5-minute break!");
+            showModal("Time's Up!", "Your 25-minute focus block is complete. Take a well-deserved short break!");
         }
     }, 1000);
 }
@@ -579,69 +454,47 @@ function updateTimerDisplay() {
     el.textContent = `${mins}:${secs}`;
 }
 
-function saveScratchpad(val) {
-    userNotes = val;
-    localStorage.setItem('edupulse_scratchpad', val);
+function saveScratchpad(text) {
+    userNotes = text;
+    localStorage.setItem('edupulse_scratchpad', text);
 }
 
-function triggerFlashcardQuiz() {
-    activeQuizIndex = 0;
-    quizScore = 0;
-    renderQuizModal();
-    openModal();
-}
-
-function renderQuizModal() {
-    const q = SAMPLE_QUIZ[activeQuizIndex];
-    document.getElementById('modalTitle').textContent = `Quick Focus Practice (${activeQuizIndex + 1}/${SAMPLE_QUIZ.length})`;
-    document.getElementById('modalBody').textContent = `Test your core concepts for active recall:`;
+function handleChapterClick(chapterName) {
+    const isCompleted = userProgress[chapterName] && userProgress[chapterName].completed;
     
-    const slot = document.getElementById('modalContentSlot');
-    if (!slot) return;
-
-    if (!q) {
-        slot.innerHTML = `
-            <div class="text-center py-6">
-                <div class="w-16 h-16 mx-auto bg-teal-500/10 text-teal-500 rounded-full flex items-center justify-center text-2xl font-black mb-3">
-                    <i class="fa-solid fa-trophy"></i>
-                </div>
-                <h4 class="text-lg font-bold">Quiz Complete!</h4>
-                <p class="text-sm text-slate-500 mt-1">You scored <span class="font-extrabold text-teal-500">${quizScore}</span> out of <span class="font-bold">${SAMPLE_QUIZ.length}</span>.</p>
-            </div>
-        `;
-        document.getElementById('modalActions').innerHTML = `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-teal-500 text-slate-950 font-bold text-sm">Finish & Return</button>`;
-        return;
-    }
-
-    slot.innerHTML = `
-        <div class="space-y-4">
-            <p class="font-bold text-base text-slate-900 dark:text-slate-100">${q.question}</p>
-            <div class="grid grid-cols-1 gap-2.5">
-                ${q.options.map((opt, idx) => `
-                    <button onclick="handleAnswer(${idx})" class="w-full text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-teal-500 bg-slate-50 dark:bg-slate-900/60 text-xs sm:text-sm font-semibold transition flex items-center justify-between">
-                        <span>${opt}</span>
-                        <i class="fa-regular fa-circle text-slate-400"></i>
-                    </button>
-                `).join('')}
-            </div>
+    showModal(
+        `Chapter: ${chapterName}`,
+        `Coming Soon! Interactive Question Practice & CBT Sets for "${chapterName}" are currently under preparation. You can track your progress by toggling this chapter below:`,
+        `
+        <div class="flex flex-wrap gap-2 justify-end w-full">
+            <button onclick="toggleChapterProgress('${chapterName.replace(/'/g, "\\'")}')" class="px-4 py-2 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold text-xs">
+                ${isCompleted ? 'Mark as Pending' : 'Mark as Completed ✓'}
+            </button>
+            <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 text-xs">
+                Close
+            </button>
         </div>
-    `;
-    document.getElementById('modalActions').innerHTML = `<button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500">Cancel</button>`;
+        `
+    );
 }
 
-function handleAnswer(idx) {
-    const q = SAMPLE_QUIZ[activeQuizIndex];
-    if (idx === q.answer) {
-        quizScore++;
+function toggleChapterProgress(chapterName) {
+    if (!userProgress[chapterName]) {
+        userProgress[chapterName] = { completed: true, pct: 100 };
+    } else {
+        userProgress[chapterName].completed = !userProgress[chapterName].completed;
+        userProgress[chapterName].pct = userProgress[chapterName].completed ? 100 : 0;
     }
-    activeQuizIndex++;
-    renderQuizModal();
+    localStorage.setItem('edupulse_progress', JSON.stringify(userProgress));
+    closeModal();
+    renderView();
 }
 
 function renderView() {
     const container = document.getElementById('main-container');
-    const stats = updateGlobalProgress();
+    updateGlobalProgress();
 
+    // Toggle Back Button visibility
     const backBtn = document.getElementById('back-btn');
     if (backBtn) {
         if (currentTab === 'home') {
@@ -654,180 +507,130 @@ function renderView() {
     }
 
     if (currentTab === 'home') {
+        const totalChapters = 79;
+        const completedCount = Object.values(userProgress).filter(p => p && p.completed).length;
+        const pctCompleted = Math.round((completedCount / totalChapters) * 100);
+
         container.innerHTML = `
-            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-900 via-slate-900 to-teal-950 text-white p-6 sm:p-10 shadow-2xl border border-teal-500/20">
-                <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-teal-500/15 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -left-12 -top-12 w-64 h-64 bg-lime-400/10 rounded-full blur-2xl pointer-events-none"></div>
-                
+            <!-- Hero Banner & Intro -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-900 via-slate-900 to-teal-950 text-white p-6 sm:p-10 shadow-xl">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="relative z-10 max-w-2xl">
-                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold bg-teal-500/20 text-teal-300 border border-teal-500/30 mb-4 backdrop-blur-md">
-                        <span class="w-2 h-2 rounded-full bg-lime-400 animate-ping"></span> Live NEET Prep Ecosystem
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 mb-4">
+                        <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span> Complete NEET Preparation Ecosystem
                     </span>
                     <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
-                        Master NEET with Precision & Active Recall.
+                        Master NEET with Precision & Focus.
                     </h1>
-                    <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed font-normal">
-                        EduPulse PRO brings together chapter-wise mastery, verified study link directories, top faculty playlists, and instant focus tools.
+                    <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
+                        EduPulse PRO integrates chapter-wise syllabus tracking, verified resource links, focus timers, and educator playlists in one focused interface.
                     </p>
-                    <div class="flex flex-wrap gap-3 mt-7">
-                        <button onclick="switchTab('practice')" class="px-6 py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-sm transition flex items-center gap-2 shadow-lg shadow-teal-500/25">
-                            Start Practice <i class="fa-solid fa-arrow-right text-xs"></i>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <button onclick="switchTab('practice')" class="px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-sm transition flex items-center gap-2 shadow-lg shadow-teal-500/20">
+                            Explore Practice <i class="fa-solid fa-arrow-right text-xs"></i>
                         </button>
-                        <button onclick="triggerFlashcardQuiz()" class="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-teal-300 border border-teal-500/30 font-bold text-sm transition flex items-center gap-2">
-                            <i class="fa-solid fa-bolt text-amber-400"></i> Active Recall Quiz
+                        <button onclick="switchTab('directory')" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm transition">
+                            Resource Directory
                         </button>
                     </div>
                 </div>
             </div>
 
+            <!-- Dynamic Real Data Metrics Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
-                <div class="card p-4.5 flex flex-col justify-between border-slate-200/80 dark:border-slate-800">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Completed</span>
-                    <div class="flex items-baseline gap-2 mt-3">
-                        <span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">${stats.completedCount}</span>
-                        <span class="text-xs font-extrabold text-teal-500">/ ${stats.totalChapters} Ch.</span>
+                <div class="card p-4 flex flex-col justify-between">
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Syllabus Covered</span>
+                    <div class="flex items-baseline gap-2 mt-2">
+                        <span class="text-2xl font-black text-slate-900 dark:text-slate-100">${pctCompleted}%</span>
+                        <span class="text-xs font-bold text-teal-500">Overall</span>
                     </div>
                 </div>
-                <div class="card p-4.5 flex flex-col justify-between border-slate-200/80 dark:border-slate-800">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Syllabus Covered</span>
-                    <div class="flex items-baseline gap-2 mt-3">
-                        <span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">${stats.percentage}%</span>
-                        <span class="text-xs font-bold text-emerald-500">Live Tracked</span>
+                <div class="card p-4 flex flex-col justify-between">
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Completed Chapters</span>
+                    <div class="flex items-baseline gap-2 mt-2">
+                        <span class="text-2xl font-black text-slate-900 dark:text-slate-100">${completedCount} / 79</span>
+                        <span class="text-xs font-bold text-emerald-500">Done</span>
                     </div>
                 </div>
-                <div class="card p-4.5 flex flex-col justify-between border-slate-200/80 dark:border-slate-800">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Faculty Courses</span>
-                    <div class="flex items-baseline gap-2 mt-3">
-                        <span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">${TEACHERS_DATA.length}</span>
-                        <span class="text-xs font-bold text-indigo-500">Playlists</span>
+                <div class="card p-4 flex flex-col justify-between">
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Verified Resources</span>
+                    <div class="flex items-baseline gap-2 mt-2">
+                        <span class="text-2xl font-black text-slate-900 dark:text-slate-100">${INITIAL_RESOURCES.length}</span>
+                        <span class="text-xs font-bold text-indigo-500">Links</span>
                     </div>
                 </div>
-                <div class="card p-4.5 flex flex-col justify-between border-slate-200/80 dark:border-slate-800">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Study Links</span>
-                    <div class="flex items-baseline gap-2 mt-3">
-                        <span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">${INITIAL_RESOURCES.length}</span>
-                        <span class="text-xs font-bold text-lime-600 dark:text-lime-400">Portals</span>
+                <div class="card p-4 flex flex-col justify-between">
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Faculty Playlists</span>
+                    <div class="flex items-baseline gap-2 mt-2">
+                        <span class="text-2xl font-black text-slate-900 dark:text-slate-100">${TEACHERS_DATA.length}</span>
+                        <span class="text-xs font-bold text-amber-500">Educators</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Features Grid -->
             <div class="mt-8">
-                <div class="tag">✦ Modules</div>
-                <h2 class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 mt-0.5">Explore Learning Hub</h2>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="tag">✦ Core Modules</div>
+                        <h2 class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 mt-0.5">Explore Ecosystem</h2>
+                    </div>
+                </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
-                    <div class="card p-6 hover:border-teal-500/50 transition cursor-pointer flex flex-col justify-between" onclick="switchTab('practice')">
-                        <div>
-                            <div class="w-12 h-12 rounded-2xl bg-teal-500/10 text-teal-600 dark:text-teal-400 grid place-items-center text-xl font-bold mb-4">
-                                <i class="fa-solid fa-list-check"></i>
-                            </div>
-                            <h3 class="font-extrabold text-slate-900 dark:text-slate-100 text-base">Syllabus Tracker</h3>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-                                Complete 79 chapter breakdown for Biology, Chemistry, and Physics with instant completion toggles.
-                            </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+                    <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('practice')">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950/80 text-teal-600 dark:text-teal-300 grid place-items-center text-lg font-bold mb-4">
+                            <i class="fa-solid fa-list-check"></i>
                         </div>
-                        <span class="text-xs font-extrabold text-teal-600 dark:text-teal-400 mt-5 inline-flex items-center gap-1.5">Go to practice →</span>
+                        <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Chapter Practice</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
+                            Complete curriculum breakdown for 79 chapters across Physics, Chemistry, and Biology.
+                        </p>
+                        <span class="text-xs font-bold text-teal-600 dark:text-teal-400 mt-4 inline-flex items-center gap-1">View chapters →</span>
                     </div>
 
-                    <div class="card p-6 hover:border-teal-500/50 transition cursor-pointer flex flex-col justify-between" onclick="switchTab('directory')">
-                        <div>
-                            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 grid place-items-center text-xl font-bold mb-4">
-                                <i class="fa-solid fa-book-bookmark"></i>
-                            </div>
-                            <h3 class="font-extrabold text-slate-900 dark:text-slate-100 text-base">Resource Directory</h3>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-                                Curated study material, CBT portals, PYQs, and test series verified links.
-                            </p>
+                    <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('directory')">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-300 grid place-items-center text-lg font-bold mb-4">
+                            <i class="fa-solid fa-book-bookmark"></i>
                         </div>
-                        <span class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 mt-5 inline-flex items-center gap-1.5">Open directory →</span>
+                        <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Resource Directory</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
+                            Verified study links, open portals, test generators, and PDF shadow libraries.
+                        </p>
+                        <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 mt-4 inline-flex items-center gap-1">Browse directory →</span>
                     </div>
 
-                    <div class="card p-6 hover:border-teal-500/50 transition cursor-pointer flex flex-col justify-between" onclick="switchTab('faculty')">
-                        <div>
-                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 grid place-items-center text-xl font-bold mb-4">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                            </div>
-                            <h3 class="font-extrabold text-slate-900 dark:text-slate-100 text-base">Faculty Hub</h3>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-                                Curated video playlists and lectures from RCM Sir, MKG Sir, Dilip Arora Sir & experts.
-                            </p>
+                    <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('faculty')">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-300 grid place-items-center text-lg font-bold mb-4">
+                            <i class="fa-solid fa-chalkboard-user"></i>
                         </div>
-                        <span class="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 mt-5 inline-flex items-center gap-1.5">Browse faculty →</span>
+                        <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Faculty Hub</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
+                            Quick access to premier faculty playlists including RCM Sir, MKG Sir, Acid Sir, and DA Sir.
+                        </p>
+                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mt-4 inline-flex items-center gap-1">View faculty →</span>
+                    </div>
+
+                    <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('tools')">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-300 grid place-items-center text-lg font-bold mb-4">
+                            <i class="fa-solid fa-stopwatch"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Focus Timer & Notes</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
+                            Boost focus with a 25-minute Pomodoro timer and built-in auto-saving formula scratchpad.
+                        </p>
+                        <span class="text-xs font-bold text-amber-600 dark:text-amber-400 mt-4 inline-flex items-center gap-1">Open focus suite →</span>
                     </div>
                 </div>
-            </div>
-        `;
-    } else if (currentTab === 'overview' || currentTab === 'analytics') {
-        const bioDone = data.Biology.filter(c => userProgress[c]).length;
-        const chemDone = data.Chemistry.filter(c => userProgress[c]).length;
-        const phyDone = data.Physics.filter(c => userProgress[c]).length;
-
-        const bioPct = Math.round((bioDone / data.Biology.length) * 100);
-        const chemPct = Math.round((chemDone / data.Chemistry.length) * 100);
-        const phyPct = Math.round((phyDone / data.Physics.length) * 100);
-
-        container.innerHTML = `
-            <div>
-                <div class="tag">✦ Performance Analytics</div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Analytics Dashboard</h2>
-                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Detailed subject completion and progress stats.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-6">
-                <div class="card p-5 border-t-4 border-t-emerald-500">
-                    <div class="flex items-center justify-between">
-                        <span class="chip bio">BIO</span>
-                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">${bioPct}% Complete</span>
-                    </div>
-                    <div class="mt-4">
-                        <h3 class="text-2xl font-black text-slate-800 dark:text-slate-100">${bioDone} / ${data.Biology.length}</h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Biology Chapters</p>
-                        <div class="progress mt-3"><i style="width: ${bioPct}%"></i></div>
-                    </div>
-                </div>
-
-                <div class="card p-5 border-t-4 border-t-purple-500">
-                    <div class="flex items-center justify-between">
-                        <span class="chip chem">CHEM</span>
-                        <span class="text-xs font-bold text-purple-600 dark:text-purple-400">${chemPct}% Complete</span>
-                    </div>
-                    <div class="mt-4">
-                        <h3 class="text-2xl font-black text-slate-800 dark:text-slate-100">${chemDone} / ${data.Chemistry.length}</h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Chemistry Chapters</p>
-                        <div class="progress mt-3"><i style="width: ${chemPct}%"></i></div>
-                    </div>
-                </div>
-
-                <div class="card p-5 border-t-4 border-t-teal-500">
-                    <div class="flex items-center justify-between">
-                        <span class="chip phy">PHY</span>
-                        <span class="text-xs font-bold text-teal-600 dark:text-teal-400">${phyPct}% Complete</span>
-                    </div>
-                    <div class="mt-4">
-                        <h3 class="text-2xl font-black text-slate-800 dark:text-slate-100">${phyDone} / ${data.Physics.length}</h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Physics Chapters</p>
-                        <div class="progress mt-3"><i style="width: ${phyPct}%"></i></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card p-6 mt-6 bg-gradient-to-r from-teal-900/40 to-slate-900 border-teal-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div>
-                    <h3 class="text-base font-extrabold text-white">Test Your Prep with Active Recall</h3>
-                    <p class="text-xs text-slate-300 mt-1">Take quick formula and flashcard questions directly inside the app.</p>
-                </div>
-                <button onclick="triggerFlashcardQuiz()" class="px-5 py-2.5 bg-teal-500 text-slate-950 font-black text-xs rounded-xl hover:bg-teal-400 transition flex items-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-bolt"></i> Start Quick Quiz
-                </button>
             </div>
         `;
     } else if (currentTab === 'practice') {
         container.innerHTML = `
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                    <div class="tag">✦ Chapter Tracker</div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100" id="subject-title">${subject} Chapters</h2>
-                    <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1" id="count">Subject Chapter List</p>
+                    <div class="tag">✦ Chapter Practice</div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100" id="subject-title">Biology chapters</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1" id="count">31 chapters · chapter-wise practice</p>
                 </div>
                 <div class="controls flex flex-wrap items-center gap-2">
                     <input type="text" id="search" oninput="renderChapters()" placeholder="Search chapter..." class="w-full sm:w-auto">
@@ -839,46 +642,50 @@ function renderView() {
                 </div>
             </div>
 
-            <div class="grid grid-cols-3 gap-3.5 mt-6">
-                <button id="subj-btn-Biology" onclick="setSubject('Biology')" class="subject ${subject === 'Biology' ? 'selected' : ''}">
-                    <div><b>Biology</b><small>${data.Biology.length} Chapters</small></div>
+            <!-- Subject Selector -->
+            <div class="grid grid-cols-3 gap-3 mt-6">
+                <button onclick="setSubject('Biology')" class="subject ${subject === 'Biology' ? 'selected' : ''}">
+                    <div><b>Biology</b><small>31 Chapters</small></div>
                     <span class="chip bio hidden sm:grid">BIO</span>
                 </button>
-                <button id="subj-btn-Chemistry" onclick="setSubject('Chemistry')" class="subject ${subject === 'Chemistry' ? 'selected' : ''}">
-                    <div><b>Chemistry</b><small>${data.Chemistry.length} Chapters</small></div>
+                <button onclick="setSubject('Chemistry')" class="subject ${subject === 'Chemistry' ? 'selected' : ''}">
+                    <div><b>Chemistry</b><small>20 Chapters</small></div>
                     <span class="chip chem hidden sm:grid">CHEM</span>
                 </button>
-                <button id="subj-btn-Physics" onclick="setSubject('Physics')" class="subject ${subject === 'Physics' ? 'selected' : ''}">
-                    <div><b>Physics</b><small>${data.Physics.length} Chapters</small></div>
+                <button onclick="setSubject('Physics')" class="subject ${subject === 'Physics' ? 'selected' : ''}">
+                    <div><b>Physics</b><small>28 Chapters</small></div>
                     <span class="chip phy hidden sm:grid">PHY</span>
                 </button>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6" id="chapters"></div>
+            <!-- Chapter Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6" id="chapters">
+                <!-- Chapters populated by JS -->
+            </div>
         `;
         renderChapters();
     } else if (currentTab === 'directory') {
         container.innerHTML = `
             <div>
-                <div class="tag">✦ Curated Links</div>
+                <div class="tag">✦ Curated Directory</div>
                 <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Resource Links Directory</h2>
-                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Verified study resources, batch links, CBT generators, and books.</p>
+                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Verified study resources, free batches, PDF shadow libraries, and test portals.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4.5 mt-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
                 ${INITIAL_RESOURCES.map(res => `
-                    <div class="card p-5 flex flex-col justify-between">
+                    <div class="card p-4 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between">
-                                <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-extrabold text-slate-600 dark:text-slate-300 uppercase">${res.badge}</span>
-                                <button onclick="toggleBookmark('${res.id}')" class="text-slate-400 hover:text-amber-500 transition p-1">
-                                    <i class="${bookmarks.includes(res.id) ? 'fa-solid text-amber-500' : 'fa-regular'} fa-bookmark text-base"></i>
+                                <span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">${res.badge}</span>
+                                <button onclick="toggleBookmark('${res.id}')" class="text-slate-400 hover:text-amber-500 transition">
+                                    <i class="${bookmarks.includes(res.id) ? 'fa-solid text-amber-500' : 'fa-regular'} fa-bookmark"></i>
                                 </button>
                             </div>
-                            <h3 class="font-extrabold text-slate-900 dark:text-slate-100 text-base mt-3">${res.title}</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">${res.category} • ${res.subtag}</p>
+                            <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base mt-2">${res.title}</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${res.category} • ${res.subtag}</p>
                         </div>
-                        <a href="${res.url}" target="_blank" rel="noopener noreferrer" class="mt-5 w-full py-2.5 bg-teal-500/10 hover:bg-teal-500/20 text-teal-600 dark:text-teal-300 text-center font-extrabold text-xs rounded-xl transition flex items-center justify-center gap-2">
-                            Visit Resource <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        <a href="${res.url}" target="_blank" class="mt-4 w-full py-2 bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300 hover:bg-teal-100 text-center font-bold text-xs rounded-xl transition">
+                            Visit Link <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i>
                         </a>
                     </div>
                 `).join('')}
@@ -887,74 +694,120 @@ function renderView() {
     } else if (currentTab === 'faculty') {
         container.innerHTML = `
             <div>
-                <div class="tag">✦ Educator Hub</div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Faculty Hub</h2>
-                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Direct access to renowned NEET & JEE faculty courses.</p>
+                <div class="tag">✦ Faculty Directory</div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Teacher Cards & Playlists</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Direct access to renowned NEET faculty lectures and course playlists.</p>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">
                 ${TEACHERS_DATA.map(fac => `
-                    <div class="card p-3.5 flex flex-col justify-between text-center items-center">
+                    <div class="card p-3 flex flex-col justify-between text-center items-center">
                         <div class="w-full flex flex-col items-center">
-                            <img src="${fac.img}" alt="${fac.name}" class="w-20 h-20 rounded-2xl object-cover border border-slate-200 dark:border-slate-700 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/200x200/123c42/bef264?text=${encodeURIComponent(fac.name)}';">
-                            <span class="mt-2.5 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                            <img src="${fac.img}" alt="${fac.name}" class="w-20 h-20 rounded-2xl object-cover border border-slate-200 dark:border-slate-700 shadow-sm" onerror="this.src='https://placehold.co/200x200/123c42/bef264?text=Teacher'">
+                            <span class="mt-2 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
                                 ${fac.badge}
                             </span>
-                            <h4 class="font-extrabold text-xs sm:text-sm mt-2 text-slate-800 dark:text-slate-100 line-clamp-1">${fac.name}</h4>
+                            <h4 class="font-bold text-xs sm:text-sm mt-1.5 text-slate-800 dark:text-slate-100 line-clamp-1">${fac.name}</h4>
                         </div>
-                        <button onclick="showModal('${fac.name.replace(/'/g, "\\'")}', 'Opening video lectures playlist for ${fac.playlist.replace(/'/g, "\\'")}')" class="mt-3.5 w-full py-2 bg-teal-500 text-slate-950 text-xs font-extrabold rounded-xl hover:bg-teal-400 transition flex items-center justify-center gap-1.5 shadow-sm">
-                            <i class="fa-solid fa-circle-play text-[11px]"></i> Playlist
+                        <button onclick="showModal('${fac.name}', 'Opening faculty playlist: ${fac.playlist}')" class="mt-3 w-full py-1.5 bg-teal-600 text-white text-xs font-bold rounded-xl hover:bg-teal-700 transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-circle-play text-[10px]"></i> Playlist
                         </button>
                     </div>
                 `).join('')}
             </div>
         `;
     } else if (currentTab === 'tools') {
-        const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
-        const secs = (timerSeconds % 60).toString().padStart(2, '0');
-
         container.innerHTML = `
             <div>
-                <div class="tag">✦ Productivity Tools</div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Focus Timer & Quick Notes</h2>
+                <div class="tag">✦ Productivity Suite</div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Focus Timer & Notes</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Maintain deep focus during study blocks and record quick formula notes.</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <div class="card p-6 flex flex-col items-center text-center justify-center">
-                    <span class="text-xs font-extrabold text-teal-500 uppercase tracking-widest">Pomodoro Focus Timer</span>
-                    <div class="text-6xl font-black text-slate-900 dark:text-slate-100 my-6 tracking-tight font-mono" id="timerDisplay">
-                        ${mins}:${secs}
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <button onclick="startTimer()" class="px-5 py-2.5 rounded-xl bg-teal-500 text-slate-950 font-extrabold text-sm hover:bg-teal-400 transition">Start</button>
-                        <button onclick="pauseTimer()" class="px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-extrabold text-sm hover:bg-slate-300 dark:hover:bg-slate-700 transition">Pause</button>
-                        <button onclick="resetTimer()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 font-extrabold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition">Reset</button>
+                <div class="card p-6 text-center">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Focus Block (25 Min)</h3>
+                    <div class="text-4xl sm:text-5xl font-black my-6 tracking-wider text-teal-600 dark:text-teal-400 font-mono" id="timerDisplay">25:00</div>
+                    <div class="flex justify-center gap-2 sm:gap-3">
+                        <button onclick="startTimer()" class="px-5 py-2 bg-teal-600 text-white rounded-xl font-bold hover:bg-teal-700 text-sm">Start</button>
+                        <button onclick="pauseTimer()" class="px-5 py-2 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-bold text-sm">Pause</button>
+                        <button onclick="resetTimer()" class="px-5 py-2 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-xl font-bold text-sm">Reset</button>
                     </div>
                 </div>
-
                 <div class="card p-6 flex flex-col">
-                    <span class="text-xs font-extrabold text-teal-500 uppercase tracking-widest mb-3">Formula & Fact Scratchpad</span>
-                    <textarea oninput="saveScratchpad(this.value)" placeholder="Type key formulas, organic reaction steps, or study reminders here..." class="w-full flex-1 h-48 p-3.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-teal-500 resize-none font-mono leading-relaxed">${userNotes}</textarea>
+                    <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-slate-100">Quick Scratchpad & Notes</h3>
+                    <textarea id="scratchpadArea" oninput="saveScratchpad(this.value)" placeholder="Type key formulas, weak topics, or daily targets..." class="w-full h-40 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:border-teal-500 resize-none">${userNotes}</textarea>
+                    <span class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 font-semibold">Auto-saved to local storage</span>
                 </div>
-            </div>
-        `;
-    } else if (currentTab === 'mocks' || currentTab === 'bank') {
-        container.innerHTML = `
-            <div>
-                <div class="tag">✦ Assessment</div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">${currentTab === 'mocks' ? 'Full Mock Tests' : 'Question Bank'}</h2>
-                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Full-length test series and practice question repos.</p>
-            </div>
-            <div class="card p-8 mt-6 text-center">
-                <i class="fa-solid fa-file-signature text-4xl text-teal-500 mb-3"></i>
-                <h3 class="text-lg font-extrabold text-slate-900 dark:text-slate-100">NTA Pattern Mock Exam 1</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-md mx-auto">200 Questions (Physics, Chemistry, Biology) • 3 Hours 20 Minutes</p>
-                <button onclick="showModal('Mock Test Ready', 'Timer and test portal session initialized successfully.')" class="mt-5 primary">Start Test Session</button>
             </div>
         `;
     }
 }
 
-// Initial initialization
+function setSubject(s) {
+    subject = s;
+    renderView();
+}
+
+function renderChapters() {
+    const searchInput = document.getElementById('search');
+    if (searchInput) searchQuery = searchInput.value;
+    const filterSelect = document.getElementById('statusFilter');
+    if (filterSelect) filterStatus = filterSelect.value;
+
+    let list = data[subject].filter(x => x.toLowerCase().includes(searchQuery.toLowerCase()));
+    
+    if (filterStatus === 'completed') {
+        list = list.filter(x => userProgress[x] && userProgress[x].completed);
+    } else if (filterStatus === 'pending') {
+        list = list.filter(x => !userProgress[x] || !userProgress[x].completed);
+    }
+
+    const titleEl = document.getElementById('subject-title');
+    const countEl = document.getElementById('count');
+    const chaptersEl = document.getElementById('chapters');
+
+    if (titleEl) titleEl.textContent = subject + ' chapters';
+    if (countEl) countEl.textContent = list.length + ' chapters · chapter-wise practice';
+    
+    if (chaptersEl) {
+        chaptersEl.innerHTML = list.map((x) => {
+            const isDone = userProgress[x] && userProgress[x].completed;
+            const prog = isDone ? 100 : 0;
+            const chipClass = subject === 'Biology' ? 'bio' : subject === 'Chemistry' ? 'chem' : 'phy';
+            const chipText = subject === 'Chemistry' ? 'CHEM' : subject.slice(0, 3).toUpperCase();
+            
+            return `
+                <article class="card chapter relative cursor-pointer" onclick="handleChapterClick('${x.replace(/'/g, "\\'")}')">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="chip ${chipClass}">${chipText}</span>
+                            ${isDone ? '<span class="bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 text-[10px] font-extrabold px-2 py-0.5 rounded-full">Completed ✓</span>' : '<span class="bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold px-2 py-0.5 rounded-full">Pending</span>'}
+                        </div>
+                        <div class="chapter-title">${x}</div>
+                    </div>
+                    <div>
+                        <div class="meta"><span>Progress</span><b>${prog}%</b></div>
+                        <div class="progress"><i style="width:${prog}%"></i></div>
+                        <button class="practice" onclick="event.stopPropagation(); handleChapterClick('${x.replace(/'/g, "\\'")}')">Open chapter →</button>
+                    </div>
+                </article>
+            `;
+        }).join('');
+    }
+}
+
+function updateGlobalProgress() {
+    const totalChapters = 79;
+    const completedCount = Object.values(userProgress).filter(p => p && p.completed).length;
+    const pct = Math.round((completedCount / totalChapters) * 100);
+
+    const bar = document.getElementById('sidebar-progress-bar');
+    const txt = document.getElementById('sidebar-progress-text');
+    
+    if (bar) bar.style.width = pct + '%';
+    if (txt) txt.textContent = pct + '% syllabus covered';
+}
+
+// Initial App Render
 renderView();
 </script>
 </body>
