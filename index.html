@@ -308,19 +308,6 @@ let timerSeconds = 25 * 60;
 // Persistent progress tracker stored in memory / localStorage
 let userProgress = JSON.parse(localStorage.getItem('edupulse_progress')) || {};
 
-// Initialize mock question bank for practice sessions
-const sampleQuestions = {
-    "The Living World": [
-        { q: "Which of the following is defining property of living organisms?", options: ["Growth", "Reproduction", "Consciousness", "Metabolic reactions in vitro"], ans: 2, exp: "Consciousness is the defining property of all living organisms without exception." },
-        { q: "ICBN stands for:", options: ["International Code of Botanical Nomenclature", "International Congress of Biological Names", "Indian Code of Botanical Nomenclature", "International Class of Biological Nomenclature"], ans: 0, exp: "ICBN stands for International Code of Botanical Nomenclature." },
-        { q: "Taxonomy hierarchy includes which of the following descending order?", options: ["Species -> Genus -> Family", "Kingdom -> Phylum -> Class", "Order -> Family -> Genus", "All of the above"], ans: 3, exp: "Taxonomic hierarchy follows hierarchical ranks like Kingdom, Phylum, Class, Order, Family, Genus, Species." }
-    ],
-    "Default": [
-        { q: "What is the primary objective of solving NEET chapter MCQs?", options: ["Speed and accuracy under exam constraints", "Memorizing every textbook line", "Skipping difficult concepts", "None of the above"], ans: 0, exp: "NEET demands high accuracy and time management under strict national testing standards." },
-        { q: "Which fundamental law governs most physical phenomena in mechanics?", options: ["Newton's Laws of Motion", "Boyle's Law", "Mendel's Law of Segregation", "Le Chatelier's Principle"], ans: 0, exp: "Newton's laws form the cornerstone of classical mechanics." }
-    ]
-};
-
 // Set dynamic date in topbar
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -436,8 +423,8 @@ function renderView() {
 
             <div class="stats">
                 <div class="card stat"><div class="stat-icon">▣</div><div><strong>80 chapters</strong><small>Complete NEET syllabus</small></div></div>
-                <div class="card stat"><div class="stat-icon">◎</div><div id="stat-progress-val"><strong>68%</strong><small>Syllabus covered</small></div></div>
-                <div class="card stat"><div class="stat-icon">✦</div><div><strong>12 days</strong><small>Current streak</small></div></div>
+                <div class="card stat"><div class="stat-icon">◎</div><div id="stat-progress-val"><strong>0%</strong><small>Syllabus covered</small></div></div>
+                <div class="card stat"><div class="stat-icon">✦</div><div><strong id="stat-streak">0 days</strong><small>Current streak</small></div></div>
             </div>
 
             <section class="library">
@@ -477,35 +464,44 @@ function renderView() {
         `;
         renderChapters();
     } else if (currentTab === 'overview') {
+        const dashboardStats = JSON.parse(localStorage.getItem('edupulse_dash_stats')) || {
+            streak: 0,
+            questionsPracticed: 0,
+            accuracy: 0,
+            bioMastery: 0,
+            chemMastery: 0,
+            phyMastery: 0
+        };
+
         container.innerHTML = `
             <div class="hero">
                 <div>
                     <div class="tag">✦ Dashboard Overview</div>
                     <h2>Welcome back, Aspirant!</h2>
-                    <p>Your preparation is on track. Here is your daily summary and performance snapshot.</p>
+                    <p>Your preparation is on track. Here is your daily summary and performance snapshot stored in local storage.</p>
                 </div>
                 <button class="primary" onclick="switchTab('practice')">Resume Practice →</button>
             </div>
             <div class="stats">
-                <div class="card stat"><div class="stat-icon">🔥</div><div><strong>12 Days</strong><small>Consistency Streak</small></div></div>
-                <div class="card stat"><div class="stat-icon">🎯</div><div><strong>1,420</strong><small>Questions Practiced</small></div></div>
-                <div class="card stat"><div class="stat-icon">⭐</div><div><strong>84%</strong><small>Average Accuracy</small></div></div>
+                <div class="card stat"><div class="stat-icon">🔥</div><div><strong>${dashboardStats.streak} Days</strong><small>Consistency Streak</small></div></div>
+                <div class="card stat"><div class="stat-icon">🎯</div><div><strong>${dashboardStats.questionsPracticed}</strong><small>Questions Practiced</small></div></div>
+                <div class="card stat"><div class="stat-icon">⭐</div><div><strong>${dashboardStats.accuracy}%</strong><small>Average Accuracy</small></div></div>
             </div>
             <div class="card p-6 mt-8">
                 <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-slate-100">Subject Mastery Breakdown</h3>
                 <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Track your strength across Physics, Chemistry, and Biology.</p>
                 <div class="space-y-4">
                     <div>
-                        <div class="flex justify-between text-sm font-bold mb-1"><span>Biology (Botany & Zoology)</span><span class="text-emerald-600 dark:text-emerald-400">78% Mastered</span></div>
-                        <div class="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full" style="width:78%"></div></div>
+                        <div class="flex justify-between text-sm font-bold mb-1"><span>Biology (Botany & Zoology)</span><span class="text-emerald-600 dark:text-emerald-400">${dashboardStats.bioMastery}% Mastered</span></div>
+                        <div class="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full transition-all duration-500" style="width:${dashboardStats.bioMastery}%"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between text-sm font-bold mb-1"><span>Chemistry (Physical, Organic, Inorganic)</span><span class="text-indigo-600 dark:text-indigo-400">62% Mastered</span></div>
-                        <div class="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-indigo-500 rounded-full" style="width:62%"></div></div>
+                        <div class="flex justify-between text-sm font-bold mb-1"><span>Chemistry (Physical, Organic, Inorganic)</span><span class="text-indigo-600 dark:text-indigo-400">${dashboardStats.chemMastery}% Mastered</span></div>
+                        <div class="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-indigo-500 rounded-full transition-all duration-500" style="width:${dashboardStats.chemMastery}%"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between text-sm font-bold mb-1"><span>Physics (Mechanics, Optics, Electrodynamics)</span><span class="text-teal-600 dark:text-teal-400">58% Mastered</span></div>
-                        <div class="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-teal-500 rounded-full" style="width:58%"></div></div>
+                        <div class="flex justify-between text-sm font-bold mb-1"><span>Physics (Mechanics, Optics, Electrodynamics)</span><span class="text-teal-600 dark:text-teal-400">${dashboardStats.phyMastery}% Mastered</span></div>
+                        <div class="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-teal-500 rounded-full transition-all duration-500" style="width:${dashboardStats.phyMastery}%"></div></div>
                     </div>
                 </div>
             </div>
@@ -713,9 +709,8 @@ function renderChapters() {
     if(countEl) countEl.textContent = list.length + ' chapters · chapter-wise practice';
     
     if(chaptersEl) {
-        chaptersEl.innerHTML = list.map((x, i) => {
-            const prog = userProgress[x] ? (userProgress[x].pct || [72,48,31,64,18,83][i%6]) : [72,48,31,64,18,83][i%6];
-            const qCount = 120 + (i % 5) * 24;
+        chaptersEl.innerHTML = list.map((x) => {
+            const prog = userProgress[x] ? (userProgress[x].pct || 0) : 0;
             const isDone = userProgress[x] && userProgress[x].completed;
             const chipClass = subject === 'Biology' ? 'bio' : subject === 'Chemistry' ? 'chem' : 'phy';
             const chipText = subject === 'Chemistry' ? 'CHEM' : subject.slice(0, 3).toUpperCase();
@@ -725,7 +720,7 @@ function renderChapters() {
                     ${isDone ? '<span class="absolute top-4 right-4 bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 text-[10px] font-extrabold px-2 py-0.5 rounded-full">Completed ✓</span>' : ''}
                     <span class="chip ${chipClass}">${chipText}</span>
                     <div class="chapter-title">${x}</div>
-                    <div class="meta"><span>${qCount} questions</span><b>${prog}%</b></div>
+                    <div class="meta"><span>Question Bank</span><b>${prog}%</b></div>
                     <div class="progress"><i style="width:${prog}%"></i></div>
                     <button class="practice" onclick="openPracticeSession('${x.replace(/'/g, "\\'")}')">Practice chapter →</button>
                 </article>
@@ -736,83 +731,38 @@ function renderChapters() {
 
 function updateGlobalProgress() {
     let totalChapters = 80;
-    let completedCount = Object.values(userProgress).filter(p => p.completed).length;
+    let completedCount = Object.values(userProgress).filter(p => p && p.completed).length;
     let pct = Math.round((completedCount / totalChapters) * 100);
-    if(pct < 68) pct = 68;
 
     const bar = document.getElementById('sidebar-progress-bar');
     const txt = document.getElementById('sidebar-progress-text');
     const statVal = document.getElementById('stat-progress-val');
+    const streakEl = document.getElementById('stat-streak');
+    
+    const dashboardStats = JSON.parse(localStorage.getItem('edupulse_dash_stats')) || { streak: 0 };
+    
     if(bar) bar.style.width = pct + '%';
     if(txt) txt.textContent = pct + '% syllabus covered';
     if(statVal) statVal.innerHTML = `<strong>${pct}%</strong><small>Syllabus covered</small>`;
+    if(streakEl) streakEl.textContent = `${dashboardStats.streak || 0} days`;
 }
 
 function openPracticeSession(chapterName) {
-    const qList = sampleQuestions[chapterName] || sampleQuestions["Default"];
-    let currentQIndex = 0;
-    let score = 0;
-
-    function renderQuestion() {
-        const q = qList[currentQIndex];
-        const html = `
-            <div class="mb-4">
-                <span class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase">Question ${currentQIndex + 1} of ${qList.length}</span>
-                <h4 class="text-lg font-bold text-slate-800 dark:text-slate-100 mt-1">${q.q}</h4>
+    document.getElementById('modalTitle').textContent = chapterName;
+    document.getElementById('modalBody').textContent = "Chapter Practice Portal";
+    document.getElementById('modalContentSlot').innerHTML = `
+        <div class="text-center py-8">
+            <div class="w-16 h-16 bg-teal-100 dark:bg-teal-900/40 text-teal-600 dark:text-teal-400 rounded-2xl grid place-items-center mx-auto text-2xl font-bold mb-4">
+                <i class="fa-solid fa-clock"></i>
             </div>
-            <div class="space-y-2.5 my-6" id="optionsList">
-                ${q.options.map((opt, idx) => `
-                    <button onclick="selectOption(${idx}, ${q.ans})" class="w-full text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-teal-500 hover:bg-teal-50 dark:hover:bg-teal-950/40 font-medium text-sm text-slate-700 dark:text-slate-200 transition flex items-center justify-between option-btn">
-                        <span><b>${String.fromCharCode(65 + idx)}.</b> ${opt}</span>
-                    </button>
-                `).join('')}
-            </div>
-            <div id="explanationBox" class="hidden p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 mb-4">
-                <strong class="text-slate-900 dark:text-slate-100">Explanation:</strong> ${q.exp}
-            </div>
-        `;
-        document.getElementById('modalTitle').textContent = chapterName;
-        document.getElementById('modalBody').textContent = "Interactive Chapter Practice Session";
-        document.getElementById('modalContentSlot').innerHTML = html;
-        document.getElementById('modalActions').innerHTML = `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">Exit Practice</button>`;
-        openModal();
-    }
-
-    window.selectOption = function(selectedIdx, correctIdx) {
-        const buttons = document.querySelectorAll('.option-btn');
-        buttons.forEach((btn, idx) => {
-            btn.disabled = true;
-            if(idx === correctIdx) {
-                btn.classList.add('bg-emerald-100', 'dark:bg-emerald-950/80', 'border-emerald-500', 'text-emerald-900', 'dark:text-emerald-200');
-            } else if(idx === selectedIdx && selectedIdx !== correctIdx) {
-                btn.classList.add('bg-rose-100', 'dark:bg-rose-950/80', 'border-rose-500', 'text-rose-900', 'dark:text-rose-200');
-            }
-        });
-        if(selectedIdx === correctIdx) score++;
-        document.getElementById('explanationBox').classList.remove('hidden');
-
-        setTimeout(() => {
-            if(currentQIndex < qList.length - 1) {
-                currentQIndex++;
-                renderQuestion();
-            } else {
-                userProgress[chapterName] = { completed: true, pct: 100 };
-                localStorage.setItem('edupulse_progress', JSON.stringify(userProgress));
-                updateGlobalProgress();
-                renderChapters();
-
-                document.getElementById('modalContentSlot').innerHTML = `
-                    <div class="text-center py-6">
-                        <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 rounded-full grid place-items-center mx-auto text-2xl font-bold mb-3">✓</div>
-                        <h4 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-1">Session Complete!</h4>
-                        <p class="text-sm text-slate-500 dark:text-slate-400">Score: ${score} / ${qList.length} correct</p>
-                    </div>
-                `;
-            }
-        }, 1500);
-    };
-
-    renderQuestion();
+            <h4 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">Coming Soon!</h4>
+            <p class="text-sm text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
+                Questions for <strong>${chapterName}</strong> are currently being linked to the GitHub repository. Check back soon for full practice sets!
+            </p>
+        </div>
+    `;
+    document.getElementById('modalActions').innerHTML = `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">Close</button>`;
+    openModal();
 }
 
 // Initial Render
