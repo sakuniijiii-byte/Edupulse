@@ -4,16 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>EduPulse PRO — NEET Preparation Platform</title>
-<!-- Tailwind CSS for rich responsive utility styling -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-    tailwind.config = {
-        darkMode: 'class',
-    }
+    tailwind.config = { darkMode: 'class' }
 </script>
-<!-- Font Awesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<!-- Google Fonts & Inter -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -37,7 +32,6 @@
     --phy-bg:#f0fdfa;
     --phy-text:#0f766e;
 }
-
 body.dark {
     --ink:#f8fafc;
     --muted:#94a3b8;
@@ -59,47 +53,20 @@ body.dark {
     --phy-bg:rgba(20,184,166,0.15);
     --phy-text:#5eead4;
 }
-
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;transition:background-color 0.2s, color 0.2s; -webkit-tap-highlight-color: transparent;}
+body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;transition:background-color 0.2s, color 0.2s; -webkit-font-smoothing:antialiased;}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0}
-
-/* Adaptive Layout System */
-.app-layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-@media (min-width: 1024px) {
-    .app-layout {
-        flex-direction: row;
-    }
-    .sidebar {
-        position: fixed;
-        inset: 0 auto 0 0;
-        width: 260px;
-        height: 100vh;
-        overflow-y: auto;
-    }
-    .content {
-        margin-left: 260px;
-        flex: 1;
-        width: calc(100% - 260px);
-    }
-}
-
+.app-layout{display:flex;flex-direction:column;min-height:100vh}
+@media (min-width: 1024px){.app-layout{flex-direction:row}.sidebar{position:fixed;inset:0 auto 0 0;width:260px;height:100vh;overflow-y:auto}.content{margin-left:260px;flex:1;width:calc(100% - 260px)}}
 .brand{display:flex;gap:12px;align-items:center}
 .logo{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:var(--deep);color:var(--lime);font-weight:900}
 .brand b{font-size:16px;color:var(--text-primary)}
 .brand b span{color:var(--teal)}
 .eyebrow{margin:2px 0 0;color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-
-.nav button{padding:10px 12px;border-radius:12px;background:none;color:var(--text-muted);text-align:left;font-weight:700;transition:all 0.2s;display:flex;align-items:center;gap:10px;width:100%;}
+.nav button{padding:10px 12px;border-radius:12px;background:none;color:var(--text-muted);text-align:left;font-weight:700;transition:all 0.2s;display:flex;align-items:center;gap:10px;width:100%}
 .nav button:hover{background:rgba(16,155,141,0.08);color:var(--teal)}
 .nav button.active{background:rgba(16,155,141,0.18);color:var(--teal)}
-
 .goal{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:16px;padding:14px}
 .goal small{color:var(--teal);text-transform:uppercase;font-weight:800;letter-spacing:.1em;font-size:10px}
 .goal strong{display:block;margin-top:4px;font-size:13px;color:var(--text-primary)}
@@ -107,28 +74,22 @@ button{cursor:pointer;border:0}
 body.dark .bar{background:rgba(255,255,255,0.15)}
 .bar i{display:block;height:100%;background:var(--teal);transition:width 0.5s ease}
 .goal p{font-size:11px;color:var(--text-muted);margin-top:6px}
-
-.topbar{height:70px;border-bottom:1px solid var(--border-color);background:var(--paper);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:30;transition:background-color 0.2s, border-color 0.2s}
-.date{color:var(--text-muted);font-size:11px;font-weight:600;}
-.topbar h1{font-size:18px;margin:2px 0 0;color:var(--text-primary);font-weight:800;}
-
+.topbar{height:70px;border-bottom:1px solid var(--border-color);background:var(--paper);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:10}
+.date{color:var(--text-muted);font-size:11px;font-weight:600}
+.topbar h1{font-size:18px;margin:2px 0 0;color:var(--text-primary);font-weight:800}
 .main{max-width:1400px;margin:auto;padding:24px}
 .tag{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.17em;font-size:11px}
 .primary{padding:10px 18px;border-radius:12px;background:var(--teal);color:#fff;font-weight:800;transition:opacity 0.2s;font-size:14px}
 .primary:hover{opacity:0.9}
-
 .card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:18px;box-shadow:0 2px 8px rgba(0,0,0,0.03);transition:background-color 0.2s, border-color 0.2s}
-
-.subject{padding:14px 16px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all 0.2s;color:var(--text-primary)}
+.subject{padding:14px 16px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all 0.2s}
 .subject.selected{border-color:var(--teal);background:rgba(16,155,141,0.08)}
 .subject b{display:block;color:var(--text-primary);font-size:14px}
 .subject small{display:block;color:var(--text-muted);margin-top:2px;font-size:12px}
-
 .chip{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:10px;font-weight:900;flex-shrink:0}
 .bio{background:var(--bio-bg);color:var(--bio-text)}
 .chem{background:var(--chem-bg);color:var(--chem-text)}
 .phy{background:var(--phy-bg);color:var(--phy-text)}
-
 .chapter{padding:18px;transition:transform 0.2s, box-shadow 0.2s;display:flex;flex-direction:column;justify-content:space-between}
 .chapter:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.06)}
 .chapter-title{font-weight:800;font-size:14px;margin-top:14px;color:var(--text-primary);line-height:1.4}
@@ -137,51 +98,16 @@ body.dark .bar{background:rgba(255,255,255,0.15)}
 body.dark .progress{background:rgba(255,255,255,0.1)}
 .progress i{display:block;height:100%;background:var(--teal);transition:width 0.4s ease}
 .practice{margin-top:14px;color:var(--teal);font-weight:800;background:none;padding:0;display:inline-flex;align-items:center;gap:4px;font-size:13px}
-
 .controls input,.controls select{padding:8px 12px;border:1px solid var(--border-color);border-radius:12px;background:var(--card-bg);color:var(--text-primary);outline:none;font-size:13px}
 .controls input:focus, .controls select:focus{border-color:var(--teal)}
-
-/* Custom modal */
-.custom-modal {
-    position: fixed; inset: 0; background: rgba(18,32,44,0.6); backdrop-filter: blur(4px);
-    display: grid; place-items: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
-    padding: 16px;
-}
-.custom-modal.open { opacity: 1; pointer-events: auto; }
-.modal-box { background: var(--card-bg); color: var(--text-primary); width: 100%; max-width: 500px; border-radius: 20px; padding: 24px; border: 1px solid var(--border-color); box-shadow: 0 20px 40px rgba(0,0,0,0.2); transform: scale(0.95); transition: transform 0.2s ease; max-height: 90vh; overflow-y: auto; }
-.custom-modal.open .modal-box { transform: scale(1); }
-
-/* Mobile Menu & Drawer Style */
-.mobile-nav-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); z-index: 45; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
-}
-.mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
-
-@media (max-width: 1023px) {
-    .sidebar-drawer {
-        position: fixed;
-        top: 0; left: 0; bottom: 0;
-        width: 280px;
-        background: var(--paper);
-        z-index: 50;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-    }
-    .sidebar-drawer.open {
-        transform: translateX(0);
-    }
-}
+.custom-modal{position:fixed;inset:0;background:rgba(18,32,44,0.6);backdrop-filter:blur(4px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease;padding:16px}.custom-modal.open{opacity:1;pointer-events:auto}.modal-box{background:var(--card-bg);color:var(--text-primary);width:100%;max-width:500px;border-radius:20px;padding:24px;border:1px solid var(--border-color);box-shadow:0 20px 40px rgba(15, 23, 42, 0.18);transform:translateY(10px) scale(0.98);transition:transform 0.2s ease;max-height:85vh;overflow:auto}.custom-modal.open .modal-box{transform:scale(1)}
+.mobile-nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px);z-index:45;opacity:0;pointer-events:none;transition:opacity 0.2s ease}.mobile-nav-overlay.open{opacity:1;pointer-events:auto}
+@media (max-width: 1023px){.sidebar-drawer{position:fixed;top:0;left:0;bottom:0;width:280px;background:var(--paper);z-index:50;transform:translateX(-100%);transition:transform 0.3s ease;padding:20px;display:flex;flex-direction:column;overflow-y:auto}.sidebar-drawer.open{transform:translateX(0)}}
 </style>
 </head>
 <body>
 <div class="app-layout">
-    <!-- Desktop Sidebar & Mobile Drawer -->
     <div class="mobile-nav-overlay" id="navOverlay" onclick="toggleMobileNav(false)"></div>
-    
     <aside class="sidebar sidebar-drawer border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900" id="sidebarDrawer">
         <div class="brand justify-between items-center w-full">
             <div class="flex items-center gap-3">
@@ -192,15 +118,13 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
         </div>
-
         <nav class="nav my-6 space-y-1">
             <button onclick="switchTab('home')" id="nav-home" class="active"><i class="fa-solid fa-house w-5"></i> Home</button>
-            <button onclick="switchTab('practice')" id="nav-practice"><i class="fa-solid fa-list-check w-5"></i> Practice <small style="margin-left:auto;background:#c6f36b;color:#30521e;border-radius:99px;padding:2px 7px;font-size:9px">Focus</small></button>
+            <button onclick="switchTab('practice')" id="nav-practice"><i class="fa-solid fa-list-check w-5"></i> Practice <small style="margin-left:auto;background:#c6f36b;color:#30521e;border-radius:999px;padding:2px 6px;font-size:9px;">79</small></button>
             <button onclick="switchTab('directory')" id="nav-directory"><i class="fa-solid fa-book-bookmark w-5"></i> Resource Directory</button>
             <button onclick="switchTab('faculty')" id="nav-faculty"><i class="fa-solid fa-chalkboard-user w-5"></i> Faculty Hub</button>
             <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Focus Timer & Notes</button>
         </nav>
-
         <div class="goal mt-auto">
             <small>Syllabus Goal</small>
             <strong>Finish every chapter</strong>
@@ -209,14 +133,13 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
         </div>
     </aside>
 
-    <!-- Content Area -->
     <section class="content">
         <header class="topbar">
             <div class="flex items-center gap-2 sm:gap-3">
                 <button onclick="toggleMobileNav(true)" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition">
                     <i class="fa-solid fa-bars text-lg"></i>
                 </button>
-                <button id="back-btn" onclick="goBack()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-bold transition">
+                <button id="back-btn" onclick="goBack()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700">
                     <i class="fa-solid fa-arrow-left text-xs"></i> Back
                 </button>
                 <div>
@@ -225,22 +148,18 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
                     <h1 class="sm:hidden text-base">EduPulse PRO</h1>
                 </div>
             </div>
-            
             <div class="flex items-center gap-2 sm:gap-3">
-                <button onclick="toggleTheme()" class="p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Toggle Theme">
+                <button onclick="toggleTheme()" class="p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
                     <i class="fa-solid fa-moon dark:hidden text-sm sm:text-base"></i>
                     <i class="fa-solid fa-sun hidden dark:inline text-sm sm:text-base"></i>
                 </button>
             </div>
         </header>
 
-        <main class="main" id="main-container">
-            <!-- Dynamic content view rendered here -->
-        </main>
+        <main class="main" id="main-container"></main>
     </section>
 </div>
 
-<!-- Custom Modal Box -->
 <div class="custom-modal" id="appModal">
     <div class="modal-box">
         <h3 id="modalTitle" class="text-xl font-bold mb-2 text-slate-900 dark:text-slate-100">Notification</h3>
@@ -253,7 +172,6 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
 </div>
 
 <script>
-// Curriculum Subject & Chapter Data Structure (79 Total Chapters)
 const data = {
     Biology: [
         'The Living World','Biological Classification','Plant Kingdom','Animal Kingdom',
@@ -291,7 +209,6 @@ const data = {
     ]
 };
 
-// Real Teacher Cards Data (Faculty Hub)
 const TEACHERS_DATA = [
     { id: "t1", name: "RCM Sir", badge: "Expert Educator", img: "https://i.ibb.co/tTqKFyp8/RCM-SIR.jpg", playlist: "RCM Sir Playlist" },
     { id: "t2", name: "MKG Sir", badge: "Expert Educator", img: "https://i.ibb.co/3x97xd0/MKG-SIR.jpg", playlist: "MKG Sir Playlist" },
@@ -307,7 +224,6 @@ const TEACHERS_DATA = [
     { id: "t12", name: "Mahesh Patidar", badge: "Expert Educator", img: "https://i.ibb.co/RTGnxShs/Smart-Select-20260609-170750-Google.jpg", playlist: "Mahesh Patidar Playlist" }
 ];
 
-// Real Resource Links Directory Data
 const INITIAL_RESOURCES = [
     { id: "sp999", title: "Allen neet", category: "JEE & NEET", subtag: "Batches", badge: "StudyPanda", url: "http://Amity18.carrd.co" },
     { id: "sp99", title: "allen jee", category: "JEE", subtag: "Batches", badge: "jee", url: "https://dusra-aur.github.io/alien-jaddu//" },
@@ -330,7 +246,6 @@ const INITIAL_RESOURCES = [
     { id: "fun1", title: "Wotaku Wiki", category: "Fun & Media", subtag: "Fun", badge: "Wotaku", url: "https://wotaku.wiki/" }
 ];
 
-// Application State
 let currentTab = 'home';
 let previousTab = 'home';
 let subject = 'Biology';
@@ -338,15 +253,86 @@ let searchQuery = '';
 let filterStatus = 'all';
 let bookmarks = JSON.parse(localStorage.getItem('edupulse_bookmarks')) || [];
 let userNotes = localStorage.getItem('edupulse_scratchpad') || '';
-
-// Focus Timer State
 let timerInterval = null;
 let timerSeconds = 25 * 60;
-
-// Dynamic User Progress from LocalStorage
 let userProgress = JSON.parse(localStorage.getItem('edupulse_progress')) || {};
 
-// Set dynamic date in header
+const LIVING_WORLD_JSON_URLS = [
+    'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/Data/living_world_mcqs.json',
+    'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/data/living_world_mcqs.json'
+];
+const livingWorldQuestionsCache = { data: null, loading: false, error: null };
+
+function escapeHtml(value = '') {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+async function loadLivingWorldQuestions() {
+    if (livingWorldQuestionsCache.data) return livingWorldQuestionsCache.data;
+    if (livingWorldQuestionsCache.loading) return null;
+
+    livingWorldQuestionsCache.loading = true;
+
+    for (const url of LIVING_WORLD_JSON_URLS) {
+        try {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (!response.ok) continue;
+            const questions = await response.json();
+            const valid = Array.isArray(questions) ? questions : [];
+            livingWorldQuestionsCache.data = valid;
+            livingWorldQuestionsCache.error = null;
+            livingWorldQuestionsCache.loading = false;
+            return valid;
+        } catch (error) {
+            console.error('Failed to load Living World JSON from:', url, error);
+        }
+    }
+
+    livingWorldQuestionsCache.error = 'The Living World MCQ JSON could not be loaded.';
+    livingWorldQuestionsCache.loading = false;
+    return [];
+}
+
+function buildLivingWorldQuestionsMarkup(questions) {
+    if (!questions.length) {
+        return '<div class="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300">Unable to load the Living World MCQ data from the remote JSON source. Please check the raw GitHub URL.</div>';
+    }
+
+    return `
+        <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+            ${questions.map((question, index) => {
+                const options = Array.isArray(question.options) ? question.options : [];
+                const answer = question.answer || 'Answer not provided';
+                const qNumber = question.id || index + 1;
+                return `
+                    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900/40">
+                        <div class="mb-2 flex items-center justify-between gap-3">
+                            <span class="text-[10px] font-extrabold uppercase tracking-[0.16em] text-teal-600 dark:text-teal-400">Q${qNumber}</span>
+                        </div>
+                        <p class="text-sm font-semibold leading-6 text-slate-800 dark:text-slate-100">${escapeHtml(question.question || 'Question unavailable')}</p>
+                        <div class="mt-3 space-y-2">
+                            ${options.map((option, optIndex) => `
+                                <div class="flex items-start gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                                    <span class="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[10px] font-bold text-slate-600 dark:bg-slate-700 dark:text-slate-300">${String.fromCharCode(65 + optIndex)}</span>
+                                    <span>${escapeHtml(option)}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="mt-3 rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300">
+                            Answer: ${escapeHtml(answer)}
+                        </div>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    `;
+}
+
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
 function toggleTheme() {
@@ -356,7 +342,6 @@ function toggleTheme() {
     localStorage.setItem('edupulse_theme', isDark ? 'dark' : 'light');
 }
 
-// Load theme preference on startup
 if (localStorage.getItem('edupulse_theme') === 'dark') {
     document.body.classList.add('dark');
     document.documentElement.classList.add('dark');
@@ -375,13 +360,11 @@ function toggleMobileNav(open) {
 }
 
 function switchTab(tab) {
-    if (currentTab !== tab) {
-        previousTab = currentTab;
-    }
+    if (currentTab !== tab) previousTab = currentTab;
     currentTab = tab;
     document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
     const btn = document.getElementById('nav-' + tab);
-    if(btn) btn.classList.add('active');
+    if (btn) btn.classList.add('active');
     toggleMobileNav(false);
     renderView();
 }
@@ -400,10 +383,10 @@ function toggleBookmark(resourceId) {
     renderView();
 }
 
-function showModal(title, message, actionsHtml = null) {
+function showModal(title, message, actionsHtml = null, contentHtml = '') {
     document.getElementById('modalTitle').textContent = title;
     document.getElementById('modalBody').textContent = message;
-    document.getElementById('modalContentSlot').innerHTML = '';
+    document.getElementById('modalContentSlot').innerHTML = contentHtml;
     const actionsContainer = document.getElementById('modalActions');
     if (actionsHtml) {
         actionsContainer.innerHTML = actionsHtml;
@@ -430,7 +413,7 @@ function startTimer() {
         } else {
             clearInterval(timerInterval);
             timerInterval = null;
-            showModal("Time's Up!", "Your 25-minute focus block is complete. Take a well-deserved short break!");
+            showModal("Time's Up!", 'Your 25-minute focus block is complete. Take a well-deserved short break!');
         }
     }, 1000);
 }
@@ -459,15 +442,37 @@ function saveScratchpad(text) {
     localStorage.setItem('edupulse_scratchpad', text);
 }
 
-function handleChapterClick(chapterName) {
+async function handleChapterClick(chapterName) {
     const isCompleted = userProgress[chapterName] && userProgress[chapterName].completed;
-    
+    const safeName = chapterName.replace(/'/g, "\\'");
+
+    if (chapterName === 'The Living World') {
+        const questions = await loadLivingWorldQuestions();
+        const content = buildLivingWorldQuestionsMarkup(questions);
+        showModal(
+            `Chapter: ${chapterName}`,
+            'Practice the chapter with MCQs loaded from the raw GitHub JSON file.',
+            `
+            <div class="flex flex-wrap gap-2 justify-end w-full">
+                <button onclick="toggleChapterProgress('${safeName}')" class="px-4 py-2 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold text-xs">
+                    ${isCompleted ? 'Mark as Pending' : 'Mark as Completed ✓'}
+                </button>
+                <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 text-xs">
+                    Close
+                </button>
+            </div>
+            `,
+            content
+        );
+        return;
+    }
+
     showModal(
         `Chapter: ${chapterName}`,
         `Coming Soon! Interactive Question Practice & CBT Sets for "${chapterName}" are currently under preparation. You can track your progress by toggling this chapter below:`,
         `
         <div class="flex flex-wrap gap-2 justify-end w-full">
-            <button onclick="toggleChapterProgress('${chapterName.replace(/'/g, "\\'")}')" class="px-4 py-2 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold text-xs">
+            <button onclick="toggleChapterProgress('${safeName}')" class="px-4 py-2 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold text-xs">
                 ${isCompleted ? 'Mark as Pending' : 'Mark as Completed ✓'}
             </button>
             <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 text-xs">
@@ -494,7 +499,6 @@ function renderView() {
     const container = document.getElementById('main-container');
     updateGlobalProgress();
 
-    // Toggle Back Button visibility
     const backBtn = document.getElementById('back-btn');
     if (backBtn) {
         if (currentTab === 'home') {
@@ -512,31 +516,21 @@ function renderView() {
         const pctCompleted = Math.round((completedCount / totalChapters) * 100);
 
         container.innerHTML = `
-            <!-- Hero Banner & Intro -->
             <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-900 via-slate-900 to-teal-950 text-white p-6 sm:p-10 shadow-xl">
                 <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="relative z-10 max-w-2xl">
                     <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 mb-4">
                         <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span> Complete NEET Preparation Ecosystem
                     </span>
-                    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
-                        Master NEET with Precision & Focus.
-                    </h1>
-                    <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
-                        EduPulse PRO integrates chapter-wise syllabus tracking, verified resource links, focus timers, and educator playlists in one focused interface.
-                    </p>
+                    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">Master NEET with Precision & Focus.</h1>
+                    <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">EduPulse PRO integrates chapter-wise syllabus tracking, verified resource links, focus timers, and educator playlists in one focused interface.</p>
                     <div class="flex flex-wrap gap-3 mt-6">
-                        <button onclick="switchTab('practice')" class="px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-sm transition flex items-center gap-2 shadow-lg shadow-teal-500/20">
-                            Explore Practice <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </button>
-                        <button onclick="switchTab('directory')" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm transition">
-                            Resource Directory
-                        </button>
+                        <button onclick="switchTab('practice')" class="px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-sm transition flex items-center gap-2 shadow-lg shadow-teal-900/20">Explore Practice <i class="fa-solid fa-arrow-right text-xs"></i></button>
+                        <button onclick="switchTab('directory')" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm transition">Resource Directory</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Dynamic Real Data Metrics Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
                 <div class="card p-4 flex flex-col justify-between">
                     <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Syllabus Covered</span>
@@ -568,7 +562,6 @@ function renderView() {
                 </div>
             </div>
 
-            <!-- Features Grid -->
             <div class="mt-8">
                 <div class="flex items-center justify-between">
                     <div>
@@ -579,46 +572,27 @@ function renderView() {
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
                     <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('practice')">
-                        <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950/80 text-teal-600 dark:text-teal-300 grid place-items-center text-lg font-bold mb-4">
-                            <i class="fa-solid fa-list-check"></i>
-                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950/80 text-teal-600 dark:text-teal-300 grid place-items-center text-lg font-bold mb-4"><i class="fa-solid fa-list-check"></i></div>
                         <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Chapter Practice</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
-                            Complete curriculum breakdown for 79 chapters across Physics, Chemistry, and Biology.
-                        </p>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">Complete curriculum breakdown for 79 chapters across Physics, Chemistry, and Biology.</p>
                         <span class="text-xs font-bold text-teal-600 dark:text-teal-400 mt-4 inline-flex items-center gap-1">View chapters →</span>
                     </div>
-
                     <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('directory')">
-                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-300 grid place-items-center text-lg font-bold mb-4">
-                            <i class="fa-solid fa-book-bookmark"></i>
-                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-300 grid place-items-center text-lg font-bold mb-4"><i class="fa-solid fa-book-bookmark"></i></div>
                         <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Resource Directory</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
-                            Verified study links, open portals, test generators, and PDF shadow libraries.
-                        </p>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">Verified study links, open portals, test generators, and PDF shadow libraries.</p>
                         <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 mt-4 inline-flex items-center gap-1">Browse directory →</span>
                     </div>
-
                     <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('faculty')">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-300 grid place-items-center text-lg font-bold mb-4">
-                            <i class="fa-solid fa-chalkboard-user"></i>
-                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-300 grid place-items-center text-lg font-bold mb-4"><i class="fa-solid fa-chalkboard-user"></i></div>
                         <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Faculty Hub</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
-                            Quick access to premier faculty playlists including RCM Sir, MKG Sir, Acid Sir, and DA Sir.
-                        </p>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">Quick access to premier faculty playlists including RCM Sir, MKG Sir, Acid Sir, and DA Sir.</p>
                         <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mt-4 inline-flex items-center gap-1">View faculty →</span>
                     </div>
-
                     <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('tools')">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-300 grid place-items-center text-lg font-bold mb-4">
-                            <i class="fa-solid fa-stopwatch"></i>
-                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-300 grid place-items-center text-lg font-bold mb-4"><i class="fa-solid fa-stopwatch"></i></div>
                         <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Focus Timer & Notes</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
-                            Boost focus with a 25-minute Pomodoro timer and built-in auto-saving formula scratchpad.
-                        </p>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">Boost focus with a 25-minute Pomodoro timer and built-in auto-saving formula scratchpad.</p>
                         <span class="text-xs font-bold text-amber-600 dark:text-amber-400 mt-4 inline-flex items-center gap-1">Open focus suite →</span>
                     </div>
                 </div>
@@ -642,7 +616,6 @@ function renderView() {
                 </div>
             </div>
 
-            <!-- Subject Selector -->
             <div class="grid grid-cols-3 gap-3 mt-6">
                 <button onclick="setSubject('Biology')" class="subject ${subject === 'Biology' ? 'selected' : ''}">
                     <div><b>Biology</b><small>31 Chapters</small></div>
@@ -658,10 +631,7 @@ function renderView() {
                 </button>
             </div>
 
-            <!-- Chapter Cards Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6" id="chapters">
-                <!-- Chapters populated by JS -->
-            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6" id="chapters"></div>
         `;
         renderChapters();
     } else if (currentTab === 'directory') {
@@ -677,16 +647,12 @@ function renderView() {
                         <div>
                             <div class="flex items-center justify-between">
                                 <span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">${res.badge}</span>
-                                <button onclick="toggleBookmark('${res.id}')" class="text-slate-400 hover:text-amber-500 transition">
-                                    <i class="${bookmarks.includes(res.id) ? 'fa-solid text-amber-500' : 'fa-regular'} fa-bookmark"></i>
-                                </button>
+                                <button onclick="toggleBookmark('${res.id}')" class="text-slate-400 hover:text-amber-500 transition"><i class="${bookmarks.includes(res.id) ? 'fa-solid text-amber-500' : 'fa-regular'} fa-bookmark"></i></button>
                             </div>
                             <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base mt-2">${res.title}</h3>
                             <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${res.category} • ${res.subtag}</p>
                         </div>
-                        <a href="${res.url}" target="_blank" class="mt-4 w-full py-2 bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300 hover:bg-teal-100 text-center font-bold text-xs rounded-xl transition">
-                            Visit Link <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i>
-                        </a>
+                        <a href="${res.url}" target="_blank" class="mt-4 w-full py-2 bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300 hover:bg-teal-100 text-center font-bold text-xs rounded-xl">Visit Link <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></a>
                     </div>
                 `).join('')}
             </div>
@@ -702,15 +668,11 @@ function renderView() {
                 ${TEACHERS_DATA.map(fac => `
                     <div class="card p-3 flex flex-col justify-between text-center items-center">
                         <div class="w-full flex flex-col items-center">
-                            <img src="${fac.img}" alt="${fac.name}" class="w-20 h-20 rounded-2xl object-cover border border-slate-200 dark:border-slate-700 shadow-sm" onerror="this.src='https://placehold.co/200x200/123c42/bef264?text=Teacher'">
-                            <span class="mt-2 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
-                                ${fac.badge}
-                            </span>
+                            <img src="${fac.img}" alt="${fac.name}" class="w-20 h-20 rounded-2xl object-cover border border-slate-200 dark:border-slate-700 shadow-sm" onerror="this.src='https://placehold.co/200x200/0f172a/ffffff?text=EduPulse'">
+                            <span class="mt-2 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">${fac.badge}</span>
                             <h4 class="font-bold text-xs sm:text-sm mt-1.5 text-slate-800 dark:text-slate-100 line-clamp-1">${fac.name}</h4>
                         </div>
-                        <button onclick="showModal('${fac.name}', 'Opening faculty playlist: ${fac.playlist}')" class="mt-3 w-full py-1.5 bg-teal-600 text-white text-xs font-bold rounded-xl hover:bg-teal-700 transition flex items-center justify-center gap-1.5">
-                            <i class="fa-solid fa-circle-play text-[10px]"></i> Playlist
-                        </button>
+                        <button onclick="showModal('${fac.name}', 'Opening faculty playlist: ${fac.playlist}')" class="mt-3 w-full py-1.5 bg-teal-600 text-white text-xs font-bold rounded-xl hover:bg-teal-700"><i class="fa-solid fa-circle-play text-[10px]"></i> Playlist</button>
                     </div>
                 `).join('')}
             </div>
@@ -734,7 +696,7 @@ function renderView() {
                 </div>
                 <div class="card p-6 flex flex-col">
                     <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-slate-100">Quick Scratchpad & Notes</h3>
-                    <textarea id="scratchpadArea" oninput="saveScratchpad(this.value)" placeholder="Type key formulas, weak topics, or daily targets..." class="w-full h-40 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:border-teal-500 resize-none">${userNotes}</textarea>
+                    <textarea id="scratchpadArea" oninput="saveScratchpad(this.value)" placeholder="Type key formulas, weak topics, or daily targets..." class="w-full h-40 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-teal-500">${userNotes}</textarea>
                     <span class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 font-semibold">Auto-saved to local storage</span>
                 </div>
             </div>
@@ -754,7 +716,7 @@ function renderChapters() {
     if (filterSelect) filterStatus = filterSelect.value;
 
     let list = data[subject].filter(x => x.toLowerCase().includes(searchQuery.toLowerCase()));
-    
+
     if (filterStatus === 'completed') {
         list = list.filter(x => userProgress[x] && userProgress[x].completed);
     } else if (filterStatus === 'pending') {
@@ -767,20 +729,19 @@ function renderChapters() {
 
     if (titleEl) titleEl.textContent = subject + ' chapters';
     if (countEl) countEl.textContent = list.length + ' chapters · chapter-wise practice';
-    
+
     if (chaptersEl) {
         chaptersEl.innerHTML = list.map((x) => {
             const isDone = userProgress[x] && userProgress[x].completed;
             const prog = isDone ? 100 : 0;
             const chipClass = subject === 'Biology' ? 'bio' : subject === 'Chemistry' ? 'chem' : 'phy';
             const chipText = subject === 'Chemistry' ? 'CHEM' : subject.slice(0, 3).toUpperCase();
-            
             return `
                 <article class="card chapter relative cursor-pointer" onclick="handleChapterClick('${x.replace(/'/g, "\\'")}')">
                     <div>
                         <div class="flex justify-between items-start gap-2">
                             <span class="chip ${chipClass}">${chipText}</span>
-                            ${isDone ? '<span class="bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 text-[10px] font-extrabold px-2 py-0.5 rounded-full">Completed ✓</span>' : '<span class="bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold px-2 py-0.5 rounded-full">Pending</span>'}
+                            ${isDone ? '<span class="bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 text-[10px] font-extrabold px-2 py-0.5 rounded-full">Completed</span>' : '<span class="bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 text-[10px] font-extrabold px-2 py-0.5 rounded-full">Pending</span>'}
                         </div>
                         <div class="chapter-title">${x}</div>
                     </div>
@@ -802,12 +763,10 @@ function updateGlobalProgress() {
 
     const bar = document.getElementById('sidebar-progress-bar');
     const txt = document.getElementById('sidebar-progress-text');
-    
     if (bar) bar.style.width = pct + '%';
     if (txt) txt.textContent = pct + '% syllabus covered';
 }
 
-// Initial App Render
 renderView();
 </script>
 </body>
