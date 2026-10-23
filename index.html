@@ -117,7 +117,25 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
 
 .mobile-nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px);z-index:45;opacity:0;pointer-events:none;transition:opacity 0.2s ease}.mobile-nav-overlay.open{opacity:1;pointer-events:auto}
 @media (max-width: 1023px){.sidebar-drawer{position:fixed;top:0;left:0;bottom:0;width:280px;background:var(--paper);z-index:50;transform:translateX(-100%);transition:transform 0.3s ease;padding:20px;display:flex;flex-direction:column;overflow-y:auto}.sidebar-drawer.open{transform:translateX(0)}}
+
+/* Lock Animation Styles */
+@keyframes lockBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.05); }
+}
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 15px rgba(234, 179, 8, 0.2); }
+    50% { box-shadow: 0 0 35px rgba(234, 179, 8, 0.5); }
+}
+.animate-lock-bounce {
+    animation: lockBounce 2s ease-in-out infinite;
+}
+.animate-pulse-glow {
+    animation: pulseGlow 2.5s infinite;
+}
 </style>
+</head>
+
 </head>
 <body>
 <div class="app-layout">
@@ -137,7 +155,7 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
             <button onclick="switchTab('practice')" id="nav-practice"><i class="fa-solid fa-list-check w-5"></i> Practice <small style="margin-left:auto;background:#c6f36b;color:#30521e;border-radius:999px;padding:2px 6px;font-size:9px;">79</small></button>
             <button onclick="switchTab('directory')" id="nav-directory"><i class="fa-solid fa-book-bookmark w-5"></i> Resource Directory</button>
             <button onclick="switchTab('faculty')" id="nav-faculty"><i class="fa-solid fa-chalkboard-user w-5"></i> Faculty Hub</button>
-            <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Focus Timer & Notes</button>
+            <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Focus & Planner</button>
         </nav>
         <div class="goal mt-auto">
             <small>Syllabus Goal</small>
@@ -374,9 +392,23 @@ let filterStatus = 'all';
 let bookmarks = JSON.parse(localStorage.getItem('edupulse_bookmarks')) || [];
 let userNotes = localStorage.getItem('edupulse_scratchpad') || '';
 let timerInterval = null;
-let timerSeconds = 25 * 60;
 let userProgress = JSON.parse(localStorage.getItem('edupulse_progress')) || {};
+let todos = JSON.parse(localStorage.getItem('edupulse_todos')) || [
+    { id: 'td1', title: 'Revise 180 MCQs of The Living World', subject: 'Biology', priority: 'high', completed: false, createdAt: Date.now() },
+    { id: 'td2', title: 'Solve Chemical Bonding PYQs', subject: 'Chemistry', priority: 'medium', completed: false, createdAt: Date.now() }
+];
+let timerSessionCount = parseInt(localStorage.getItem('edupulse_focus_sessions') || '0', 10);
+let timerInitialSeconds = parseInt(localStorage.getItem('edupulse_timer_preset') || '1500', 10);
+let timerSeconds = timerInitialSeconds;
+let timerMode = 'work'; // 'work' | 'break'
 const quizState = { questions: [], currentIndex: 0, score: 0, userAnswers: {}, skippedQuestions: {}, answered: false, showResults: false, paletteExpanded: false };
+
+function saveToLocalStorage() {
+    localStorage.setItem('edupulse_todos', JSON.stringify(todos));
+    localStorage.setItem('edupulse_progress', JSON.stringify(userProgress));
+    localStorage.setItem('edupulse_focus_sessions', timerSessionCount.toString());
+    localStorage.setItem('edupulse_timer_preset', timerInitialSeconds.toString());
+}
 
 function escapeHtml(value = '') {
     return String(value)
@@ -571,7 +603,7 @@ function renderLivingWorldQuiz() {
                 </div>
             </div>
 
-            <!-- Expandable Sheet / Modal Palette Grid overlay (like in screenshot) -->
+            <!-- Expandable Sheet / Modal Palette Grid overlay -->
             ${quizState.paletteExpanded ? `
                 <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex flex-col justify-end transition-opacity animate-fade-in" onclick="togglePaletteExpanded(false)">
                     <div class="bg-white dark:bg-slate-900 rounded-t-3xl p-4 sm:p-6 max-h-[80vh] flex flex-col shadow-2xl border-t border-slate-200 dark:border-slate-800" onclick="event.stopPropagation()">
@@ -584,7 +616,7 @@ function renderLivingWorldQuiz() {
                             </button>
                         </div>
 
-                        <!-- 10 Column Grid matching original interface -->
+                        <!-- Grid matching original interface -->
                         <div class="grid grid-cols-6 sm:grid-cols-10 gap-2 overflow-y-auto p-1 max-h-[60vh]">
                             ${quizState.questions.map((_, idx) => {
                                 const isCurrent = idx === currentIdx;
@@ -648,7 +680,7 @@ function finishLivingWorldQuiz() {
 
     if (percent >= 60) {
         userProgress['The Living World'] = { completed: true, pct: 100 };
-        localStorage.setItem('edupulse_progress', JSON.stringify(userProgress));
+        saveToLocalStorage();
         updateGlobalProgress();
     }
 
@@ -772,32 +804,6 @@ function closeModal() {
     document.getElementById('appModal').classList.remove('open');
 }
 
-function startTimer() {
-    if (timerInterval) return;
-    timerInterval = setInterval(() => {
-        if (timerSeconds > 0) {
-            timerSeconds--;
-            updateTimerDisplay();
-        } else {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            showModal("Time's Up!", 'Your 25-minute focus block is complete. Take a short break!');
-        }
-    }, 1000);
-}
-
-function pauseTimer() { clearInterval(timerInterval); timerInterval = null; }
-function resetTimer() { pauseTimer(); timerSeconds = 25 * 60; updateTimerDisplay(); }
-function updateTimerDisplay() {
-    const el = document.getElementById('timerDisplay');
-    if (!el) return;
-    const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
-    const secs = (timerSeconds % 60).toString().padStart(2, '0');
-    el.textContent = `${mins}:${secs}`;
-}
-
-function saveScratchpad(text) { userNotes = text; localStorage.setItem('edupulse_scratchpad', text); }
-
 async function handleChapterClick(chapterName) {
     const isCompleted = userProgress[chapterName] && userProgress[chapterName].completed;
     const safeName = chapterName.replace(/'/g, "\\'");
@@ -807,20 +813,44 @@ async function handleChapterClick(chapterName) {
         return;
     }
 
-    showModal(
-        `Chapter: ${chapterName}`,
-        `Interactive Practice & CBT Sets for "${chapterName}" are active in your study plan:`,
-        `
-        <div class="flex flex-wrap gap-2 justify-end w-full">
-            <button onclick="toggleChapterProgress('${safeName}')" class="px-4 py-2 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold text-xs">
-                ${isCompleted ? 'Mark as Pending' : 'Mark as Completed ✓'}
-            </button>
-            <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 text-xs">
-                Close
-            </button>
+    // Coming Soon Modal with Lock Animation for all other chapters
+    const comingSoonHtml = `
+        <div class="flex flex-col items-center justify-center text-center py-6 px-2">
+            <div class="relative mb-5">
+                <div class="w-20 h-20 rounded-3xl bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-500 animate-pulse-glow animate-lock-bounce shadow-xl">
+                    <i class="fa-solid fa-lock text-3xl sm:text-4xl"></i>
+                </div>
+                <div class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] flex items-center justify-center">
+                    ✦
+                </div>
+            </div>
+
+            <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-extrabold text-[11px] uppercase tracking-wider mb-2 border border-amber-500/20">
+                Coming Soon 🔒
+            </span>
+
+            <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100">${escapeHtml(chapterName)}</h3>
+
+            <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm max-w-md mt-2.5 leading-relaxed">
+                180 High-Yield NCERT Practice MCQs, CBT pattern test series, and detailed video solutions for <span class="font-bold text-slate-700 dark:text-slate-200">${escapeHtml(chapterName)}</span> are currently being compiled by top educators!
+            </p>
+
+            <div class="mt-6 flex flex-wrap items-center justify-center gap-3 w-full">
+                <button onclick="toggleChapterProgress('${safeName}')" class="px-4 py-2.5 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600 text-slate-950' : 'bg-emerald-600 hover:bg-emerald-700 text-white'} font-bold text-xs transition shadow-sm">
+                    ${isCompleted ? 'Mark as Pending' : 'Mark as Completed ✓'}
+                </button>
+                <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs transition">
+                    Got it
+                </button>
+            </div>
         </div>
-        `
-    );
+    `;
+
+    document.getElementById('modalTitle').textContent = '';
+    document.getElementById('modalBody').textContent = '';
+    document.getElementById('modalContentSlot').innerHTML = comingSoonHtml;
+    document.getElementById('modalActions').innerHTML = '';
+    openModal();
 }
 
 function toggleChapterProgress(chapterName) {
@@ -830,8 +860,116 @@ function toggleChapterProgress(chapterName) {
         userProgress[chapterName].completed = !userProgress[chapterName].completed;
         userProgress[chapterName].pct = userProgress[chapterName].completed ? 100 : 0;
     }
-    localStorage.setItem('edupulse_progress', JSON.stringify(userProgress));
+    saveToLocalStorage();
     closeModal();
+    renderView();
+}
+
+function setTimerPreset(minutes, mode = 'work') {
+    pauseTimer();
+    timerMode = mode;
+    timerInitialSeconds = minutes * 60;
+    timerSeconds = timerInitialSeconds;
+    saveToLocalStorage();
+    updateTimerDisplay();
+}
+
+function startTimer() {
+    if (timerInterval) return;
+    const timerCard = document.getElementById('timerCard');
+    if (timerCard) timerCard.classList.add('border-teal-500', 'ring-2', 'ring-teal-500/20');
+
+    timerInterval = setInterval(() => {
+        if (timerSeconds > 0) {
+            timerSeconds--;
+            updateTimerDisplay();
+        } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            if (timerMode === 'work') {
+                timerSessionCount++;
+                saveToLocalStorage();
+                showModal("Focus Block Complete! 🎉", "Great job! You completed a study block. Take a 5-minute break now.");
+                setTimerPreset(5, 'break');
+            } else {
+                showModal("Break Over! ⚡", "Ready for another session? Choose your focus duration and start.");
+                setTimerPreset(25, 'work');
+            }
+            renderView();
+        }
+    }, 1000);
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    const timerCard = document.getElementById('timerCard');
+    if (timerCard) timerCard.classList.remove('border-teal-500', 'ring-2', 'ring-teal-500/20');
+}
+
+function resetTimer() {
+    pauseTimer();
+    timerSeconds = timerInitialSeconds;
+    updateTimerDisplay();
+}
+
+function updateTimerDisplay() {
+    const el = document.getElementById('timerDisplay');
+    const progressEl = document.getElementById('timerProgressBar');
+    if (!el) return;
+    const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+    const secs = (timerSeconds % 60).toString().padStart(2, '0');
+    el.textContent = `${mins}:${secs}`;
+
+    if (progressEl && timerInitialSeconds > 0) {
+        const pct = Math.round(((timerInitialSeconds - timerSeconds) / timerInitialSeconds) * 100);
+        progressEl.style.width = `${pct}%`;
+    }
+}
+
+function saveScratchpad(text) { 
+    userNotes = text; 
+    localStorage.setItem('edupulse_scratchpad', text); 
+}
+
+function addTodo(e) {
+    if (e) e.preventDefault();
+    const input = document.getElementById('todoInput');
+    const subjectSelect = document.getElementById('todoSubjectSelect');
+    const prioritySelect = document.getElementById('todoPrioritySelect');
+
+    if (!input || !input.value.trim()) return;
+
+    const newTodo = {
+        id: 'td_' + Date.now(),
+        title: input.value.trim(),
+        subject: subjectSelect ? subjectSelect.value : 'General',
+        priority: prioritySelect ? prioritySelect.value : 'medium',
+        completed: false,
+        createdAt: Date.now()
+    };
+
+    todos.unshift(newTodo);
+    saveToLocalStorage();
+    input.value = '';
+    renderView();
+}
+
+function toggleTodo(id) {
+    todos = todos.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+    saveToLocalStorage();
+    renderView();
+}
+
+function deleteTodo(id) {
+    todos = todos.filter(t => t.id !== id);
+    saveToLocalStorage();
+    renderView();
+}
+
+function clearCompletedTodos() {
+    todos = todos.filter(t => !t.completed);
+    saveToLocalStorage();
     renderView();
 }
 
@@ -886,8 +1024,8 @@ function renderView() {
                         <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold mb-3 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-stopwatch text-lg"></i>
                         </div>
-                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">25m Focus Block</h4>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Launch Pomodoro timer</p>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">Focus & Planner</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">To-Do list & Focus Timer</p>
                     </button>
 
                     <button onclick="switchTab('faculty')" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent border border-indigo-500/20 hover:border-indigo-500/50 hover:shadow-md text-left transition group">
@@ -1013,25 +1151,120 @@ function renderView() {
             </div>
         `;
     } else if (currentTab === 'tools') {
+        const activeTodos = todos.filter(t => !t.completed);
+        const completedTodos = todos.filter(t => t.completed);
+
         container.innerHTML = `
             <div>
-                <div class="tag">✦ Productivity Suite</div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Focus Timer & Notes</h2>
+                <div class="tag">✦ Productivity & Study Suite</div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Focus Timer & Daily Planner</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <div class="card p-6 text-center">
-                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Focus Block (25 Min)</h3>
-                    <div class="text-4xl sm:text-5xl font-black my-6 tracking-wider text-teal-600 dark:text-teal-400 font-mono" id="timerDisplay">25:00</div>
-                    <div class="flex justify-center gap-2 sm:gap-3">
-                        <button onclick="startTimer()" class="px-5 py-2 bg-teal-600 text-white rounded-xl font-bold hover:bg-teal-700 text-sm">Start</button>
-                        <button onclick="pauseTimer()" class="px-5 py-2 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-bold text-sm">Pause</button>
-                        <button onclick="resetTimer()" class="px-5 py-2 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-xl font-bold text-sm">Reset</button>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                <!-- Enhanced Focus Timer Card -->
+                <div class="card p-6 flex flex-col justify-between transition-all" id="timerCard">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-dot text-[10px] ${timerInterval ? 'animate-ping text-teal-500' : 'text-slate-400'}"></i>
+                                ${timerMode === 'work' ? 'Focus Session' : 'Rest Break'}
+                            </span>
+                            <span class="px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800 text-[10px] font-black text-teal-700 dark:text-teal-300">
+                                🎯 ${timerSessionCount} Blocks Done
+                            </span>
+                        </div>
+
+                        <!-- Presets -->
+                        <div class="flex items-center justify-center gap-1.5 my-4">
+                            <button onclick="setTimerPreset(15)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${timerInitialSeconds === 900 ? 'bg-teal-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'} hover:bg-teal-500 hover:text-white transition">15m</button>
+                            <button onclick="setTimerPreset(25)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${timerInitialSeconds === 1500 ? 'bg-teal-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'} hover:bg-teal-500 hover:text-white transition">25m</button>
+                            <button onclick="setTimerPreset(45)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${timerInitialSeconds === 2700 ? 'bg-teal-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'} hover:bg-teal-500 hover:text-white transition">45m</button>
+                            <button onclick="setTimerPreset(5, 'break')" class="px-2.5 py-1 rounded-lg text-xs font-bold ${timerInitialSeconds === 300 ? 'bg-amber-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'} hover:bg-amber-500 hover:text-white transition">5m Break</button>
+                        </div>
+
+                        <div class="text-5xl sm:text-6xl font-black my-4 text-center tracking-wider text-slate-900 dark:text-slate-100 font-mono" id="timerDisplay">
+                            ${Math.floor(timerSeconds / 60).toString().padStart(2, '0')}:${(timerSeconds % 60).toString().padStart(2, '0')}
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mb-6">
+                            <div id="timerProgressBar" class="bg-teal-500 h-full transition-all duration-300" style="width: ${Math.round(((timerInitialSeconds - timerSeconds) / timerInitialSeconds) * 100)}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-2">
+                        <button onclick="startTimer()" class="flex-1 py-2.5 bg-teal-600 text-white rounded-xl font-bold hover:bg-teal-700 text-xs transition flex items-center justify-center gap-1.5"><i class="fa-solid fa-play text-[10px]"></i> Start</button>
+                        <button onclick="pauseTimer()" class="flex-1 py-2.5 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-bold text-xs hover:bg-slate-300 dark:hover:bg-slate-600 transition flex items-center justify-center gap-1.5"><i class="fa-solid fa-pause text-[10px]"></i> Pause</button>
+                        <button onclick="resetTimer()" class="px-4 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-xl font-bold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 transition"><i class="fa-solid fa-rotate-left"></i></button>
                     </div>
                 </div>
-                <div class="card p-6 flex flex-col">
-                    <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-slate-100">Quick Scratchpad & Notes</h3>
-                    <textarea id="scratchpadArea" oninput="saveScratchpad(this.value)" placeholder="Type key formulas, weak topics, or daily targets..." class="w-full h-40 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-teal-500">${userNotes}</textarea>
+
+                <!-- Integrated To-Do Planner -->
+                <div class="lg:col-span-2 card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                                <i class="fa-solid fa-square-check text-teal-600 dark:text-teal-400"></i> Daily Study Planner
+                            </h3>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">${activeTodos.length} Pending</span>
+                                ${completedTodos.length > 0 ? `<button onclick="clearCompletedTodos()" class="text-[11px] font-bold text-rose-500 hover:underline">Clear Done</button>` : ''}
+                            </div>
+                        </div>
+
+                        <!-- Add Task Form -->
+                        <form onsubmit="addTodo(event)" class="flex flex-wrap sm:flex-nowrap gap-2 mb-4">
+                            <input type="text" id="todoInput" placeholder="Add new task (e.g., Solve 50 Physics MCQs)..." class="flex-1 px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 focus:border-teal-500 focus:outline-none text-xs font-medium">
+                            <select id="todoSubjectSelect" class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold focus:outline-none">
+                                <option value="Biology">Biology</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Physics">Physics</option>
+                                <option value="General">General</option>
+                            </select>
+                            <select id="todoPrioritySelect" class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold focus:outline-none">
+                                <option value="high">🔴 High</option>
+                                <option value="medium" selected>🟡 Med</option>
+                                <option value="low">🟢 Low</option>
+                            </select>
+                            <button type="submit" class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-bold text-xs transition shrink-0">+ Add</button>
+                        </form>
+
+                        <!-- Task List -->
+                        <div class="space-y-2 max-h-56 overflow-y-auto pr-1">
+                            ${todos.length === 0 ? `<p class="text-xs text-center text-slate-400 py-6">No tasks added yet. Plan your NEET targets above!</p>` : ''}
+                            ${todos.map(t => {
+                                const tagBg = t.subject === 'Biology' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300' :
+                                              t.subject === 'Chemistry' ? 'bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300' :
+                                              t.subject === 'Physics' ? 'bg-teal-100 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300' : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300';
+                                
+                                const prioBorder = t.priority === 'high' ? 'border-l-4 border-l-rose-500' : t.priority === 'medium' ? 'border-l-4 border-l-amber-500' : 'border-l-4 border-l-emerald-500';
+
+                                return `
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/70 ${prioBorder} transition">
+                                        <div class="flex items-center gap-3 flex-1 min-w-0 pr-2">
+                                            <button onclick="toggleTodo('${t.id}')" class="w-5 h-5 rounded-md border border-slate-300 dark:border-slate-600 flex items-center justify-center shrink-0 ${t.completed ? 'bg-teal-600 border-teal-600 text-white' : 'bg-white dark:bg-slate-700'}">
+                                                ${t.completed ? '<i class="fa-solid fa-check text-[10px]"></i>' : ''}
+                                            </button>
+                                            <span class="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate ${t.completed ? 'line-through opacity-50' : ''}">${escapeHtml(t.title)}</span>
+                                        </div>
+                                        <div class="flex items-center gap-2 shrink-0">
+                                            <span class="px-2 py-0.5 rounded-md text-[9px] font-bold ${tagBg}">${t.subject}</span>
+                                            <button onclick="deleteTodo('${t.id}')" class="text-slate-400 hover:text-rose-500 p-1 text-xs"><i class="fa-solid fa-trash-can"></i></button>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Scratchpad Area -->
+            <div class="card p-6 mt-6">
+                <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square text-teal-600 dark:text-teal-400"></i> Quick Scratchpad & Weak Notes
+                </h3>
+                <textarea id="scratchpadArea" oninput="saveScratchpad(this.value)" placeholder="Type key formulas, weak topics, or daily targets (auto-saved to Local Storage)..." class="w-full h-32 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-teal-500 text-xs">${userNotes}</textarea>
             </div>
         `;
     }
