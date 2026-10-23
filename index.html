@@ -10,6 +10,9 @@
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- PWA Manifest Integration -->
+<link rel="manifest" id="pwa-manifest" href="data:application/manifest+json;utf8,%7B%22name%22%3A%22EduPulse%20PRO%22%2C%22short_name%22%3A%22EduPulse%22%2C%22start_url%22%3A%22%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230f172a%22%2C%22theme_color%22%3A%22%230d9488%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fapi.iconify.design%2Flucide%3Asparkles.svg%3Fcolor%3D%25230d9488%26width%3D192%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%2C%7B%22src%22%3A%22https%3A%2F%2Fapi.iconify.design%2Flucide%3Asparkles.svg%3Fcolor%3D%25230d9488%26width%3D512%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<meta name="theme-color" content="#0d9488">
 <style>
 :root{
     --ink:#12202c;
@@ -181,6 +184,10 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
                 </div>
             </div>
             <div class="flex items-center gap-2 sm:gap-3">
+                <!-- PWA Install Button -->
+                <button id="pwa-install-btn" onclick="triggerPwaInstall()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition">
+                    <i class="fa-solid fa-download text-xs"></i> Install App
+                </button>
                 <button onclick="toggleTheme()" class="p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
                     <i class="fa-solid fa-moon dark:hidden text-sm sm:text-base"></i>
                     <i class="fa-solid fa-sun hidden dark:inline text-sm sm:text-base"></i>
@@ -397,6 +404,50 @@ let todos = JSON.parse(localStorage.getItem('edupulse_todos')) || [
     { id: 'td1', title: 'Revise 180 MCQs of The Living World', subject: 'Biology', priority: 'high', completed: false, createdAt: Date.now() },
     { id: 'td2', title: 'Solve Chemical Bonding PYQs', subject: 'Chemistry', priority: 'medium', completed: false, createdAt: Date.now() }
 ];
+
+// PWA Install Prompt Handler
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const installBtn = document.getElementById('pwa-install-btn');
+    if (installBtn) {
+        installBtn.classList.remove('hidden');
+        installBtn.classList.add('inline-flex');
+    }
+});
+
+function triggerPwaInstall() {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+            const installBtn = document.getElementById('pwa-install-btn');
+            if (installBtn) installBtn.classList.add('hidden');
+        }
+        deferredPrompt = null;
+    });
+}
+
+// Inline Service Worker Registration for offline caching
+if ('serviceWorker' in navigator) {
+    const swCode = `
+        const CACHE_NAME = 'edupulse-v1';
+        self.addEventListener('install', (e) => {
+            e.waitUntil(
+                caches.open(CACHE_NAME).then((cache) => cache.addAll(['/']))
+            );
+        });
+        self.addEventListener('fetch', (e) => {
+            e.respondWith(
+                caches.match(e.request).then((res) => res || fetch(e.request))
+            );
+        });
+    `;
+    const blob = new Blob([swCode], { type: 'application/javascript' });
+    navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
+}
+
 let timerSessionCount = parseInt(localStorage.getItem('edupulse_focus_sessions') || '0', 10);
 let timerInitialSeconds = parseInt(localStorage.getItem('edupulse_timer_preset') || '1500', 10);
 let timerSeconds = timerInitialSeconds;
