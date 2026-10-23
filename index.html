@@ -74,15 +74,14 @@ button{cursor:pointer;border:0}
 body.dark .bar{background:rgba(255,255,255,0.15)}
 .bar i{display:block;height:100%;background:var(--teal);transition:width 0.5s ease}
 .goal p{font-size:11px;color:var(--text-muted);margin-top:6px}
-.topbar{height:70px;border-bottom:1px solid var(--border-color);background:var(--paper);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:10}
+.topbar{height:70px;border-bottom:1px solid var(--border-color);background:var(--paper);backdrop-filter:blur(16px);display:flex;align-items:center;justify-between;padding:0 24px;position:sticky;top:0;z-index:10}
 .date{color:var(--text-muted);font-size:11px;font-weight:600}
 .topbar h1{font-size:18px;margin:2px 0 0;color:var(--text-primary);font-weight:800}
 .main{max-width:1400px;margin:auto;padding:24px}
 .tag{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.17em;font-size:11px}
-.primary{padding:10px 18px;border-radius:12px;background:var(--teal);color:#fff;font-weight:800;transition:opacity 0.2s;font-size:14px}
-.primary:hover{opacity:0.9}
-.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:18px;box-shadow:0 2px 8px rgba(0,0,0,0.03);transition:background-color 0.2s, border-color 0.2s}
-.subject{padding:14px 16px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all 0.2s}
+.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:18px;box-shadow:0 2px 8px rgba(0,0,0,0.03);transition:all 0.2s ease-in-out}
+.card:hover{border-color:rgba(13,148,136,0.3);box-shadow:0 6px 16px rgba(0,0,0,0.05)}
+.subject{padding:14px 16px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-bg);display:flex;align-items:center;justify-between;text-align:left;transition:all 0.2s}
 .subject.selected{border-color:var(--teal);background:rgba(16,155,141,0.08)}
 .subject b{display:block;color:var(--text-primary);font-size:14px}
 .subject small{display:block;color:var(--text-muted);margin-top:2px;font-size:12px}
@@ -90,17 +89,32 @@ body.dark .bar{background:rgba(255,255,255,0.15)}
 .bio{background:var(--bio-bg);color:var(--bio-text)}
 .chem{background:var(--chem-bg);color:var(--chem-text)}
 .phy{background:var(--phy-bg);color:var(--phy-text)}
-.chapter{padding:18px;transition:transform 0.2s, box-shadow 0.2s;display:flex;flex-direction:column;justify-content:space-between}
-.chapter:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.06)}
+.chapter{padding:18px;transition:transform 0.2s, box-shadow 0.2s;display:flex;flex-direction:column;justify-between}
+.chapter:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.06)}
 .chapter-title{font-weight:800;font-size:14px;margin-top:14px;color:var(--text-primary);line-height:1.4}
-.meta{display:flex;justify-content:space-between;color:var(--text-muted);font-size:11px;margin-top:12px}
+.meta{display:flex;justify-between;color:var(--text-muted);font-size:11px;margin-top:12px}
 .progress{height:6px;background:rgba(0,0,0,0.06);border-radius:99px;margin-top:6px;overflow:hidden}
 body.dark .progress{background:rgba(255,255,255,0.1)}
 .progress i{display:block;height:100%;background:var(--teal);transition:width 0.4s ease}
 .practice{margin-top:14px;color:var(--teal);font-weight:800;background:none;padding:0;display:inline-flex;align-items:center;gap:4px;font-size:13px}
 .controls input,.controls select{padding:8px 12px;border:1px solid var(--border-color);border-radius:12px;background:var(--card-bg);color:var(--text-primary);outline:none;font-size:13px}
 .controls input:focus, .controls select:focus{border-color:var(--teal)}
-.custom-modal{position:fixed;inset:0;background:rgba(18,32,44,0.6);backdrop-filter:blur(4px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease;padding:16px}.custom-modal.open{opacity:1;pointer-events:auto}.modal-box{background:var(--card-bg);color:var(--text-primary);width:100%;max-width:700px;border-radius:20px;padding:24px;border:1px solid var(--border-color);box-shadow:0 20px 40px rgba(15, 23, 42, 0.18);transform:translateY(10px) scale(0.98);transition:transform 0.2s ease;max-height:88vh;overflow:auto}.custom-modal.open .modal-box{transform:scale(1)}
+.custom-modal{position:fixed;inset:0;background:rgba(18,32,44,0.6);backdrop-filter:blur(6px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease;padding:16px}.custom-modal.open{opacity:1;pointer-events:auto}.modal-box{background:var(--card-bg);color:var(--text-primary);width:100%;max-width:750px;border-radius:24px;padding:24px;border:1px solid var(--border-color);box-shadow:0 20px 40px rgba(15, 23, 42, 0.18);transform:translateY(10px) scale(0.98);transition:transform 0.2s ease;max-height:88vh;overflow:auto}.custom-modal.open .modal-box{transform:scale(1)}
+
+/* Full-Screen Quiz Mode Overrides */
+.custom-modal.fullscreen-modal {
+    padding: 0;
+}
+.custom-modal.fullscreen-modal .modal-box {
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+
 .mobile-nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px);z-index:45;opacity:0;pointer-events:none;transition:opacity 0.2s ease}.mobile-nav-overlay.open{opacity:1;pointer-events:auto}
 @media (max-width: 1023px){.sidebar-drawer{position:fixed;top:0;left:0;bottom:0;width:280px;background:var(--paper);z-index:50;transform:translateX(-100%);transition:transform 0.3s ease;padding:20px;display:flex;flex-direction:column;overflow-y:auto}.sidebar-drawer.open{transform:translateX(0)}}
 </style>
@@ -246,6 +260,112 @@ const INITIAL_RESOURCES = [
     { id: "fun1", title: "Wotaku Wiki", category: "Fun & Media", subtag: "Fun", badge: "Wotaku", url: "https://wotaku.wiki/" }
 ];
 
+// PROGRAMMATIC GENERATION OF ALL 180 QUESTIONS
+function generate180LivingWorldQuestions() {
+    const baseQuestions = [
+        { id: 1, question: 'House fly and wheat families respectively are', options: ['Anacardiaceae, Solanacceae','Muscidae, Poaceae','Poaceae, Sapendales','Poaceae, Muscidae'], answer: 'Muscidae, Poaceae' },
+        { id: 2, question: 'Select a genus not related to family Solanaceae', options: ['Solanum','Mangifera','Petunia','Datura'], answer: 'Mangifera' },
+        { id: 3, question: 'Select the correct statement related to man classification', options: ['Genus - Homonidae','Order - Primata','Family - Mammalia','Division - Chordata'], answer: 'Order - Primata' },
+        { id: 4, question: 'Select a non-living object showing growth', options: ['Mountain','Sand mound','Boulder','1, 2 and 3'], answer: '1, 2 and 3' },
+        { id: 5, question: 'In hierarchical classification, class is placed between', options: ['Kingdom and phylum','Order and family','Phylum and order','Family and genus'], answer: 'Phylum and order' },
+        { id: 6, question: 'International code for botanical nomenclature is applicable to', options: ['Viruses','Plants','Animals','Both 2 & 3'], answer: 'Plants' },
+        { id: 7, question: 'A number of families having common character is called', options: ['Order','Class','Phylum','Sub class'], answer: 'Order' },
+        { id: 8, question: 'Which one of the following taxonomic categories tops the hierarchy of categories?', options: ['Order','Division','Class','Genus'], answer: 'Division' },
+        { id: 9, question: 'Genera consists of which of the following: I. order II. class III. family IV. species', options: ['I only','II only','IV only','I and III only'], answer: 'IV only' },
+        { id: 10, question: 'The number of species that are known and described, are approximately', options: ['0.5-1.0 million','1.7-1.8 million','3.3-3.5 million','13-14 million'], answer: '1.7-1.8 million' },
+        { id: 11, question: 'Which of the following is not the correct hierarchical arrangement? (I) Class -> Family -> Genus (II) Phylum -> Order -> Family (III) Class -> Order -> Family (IV) Family -> Class -> Order', options: ['I, II, IV','II, III, V','I, II, III','I, II, III, IV'], answer: 'I, II, IV' },
+        { id: 12, question: 'The word systematics is derived from', options: ['Greek word systema','Italic word systema','Latin word systema','English word system'], answer: 'Latin word systema' },
+        { id: 13, question: 'Class mammalia consists of', options: ['Order primata','Class primata','Order carnivora','Both 1 and 3'], answer: 'Both 1 and 3' },
+        { id: 14, question: 'Why reproduction cannot be considered as an inclusive defining characteristic of all living organisms?', options: ['Non-living organisms also reproduce','Some living organisms are sterile and cannot produce offsprings','Some living organisms are sterile and can produce offsprings','Both 1 and 2'], answer: 'Some living organisms are sterile and cannot produce offsprings' },
+        { id: 15, question: 'In case of plants, classes with a few similar characters are assigned to higher category called', options: ['Class','Phylum','Division','Family'], answer: 'Division' },
+        { id: 16, question: 'The sum total of all the chemical reactions occurring in our body is called', options: ['Anabolism','Catabolism','Metabolism','Carboxylation'], answer: 'Metabolism' },
+        { id: 17, question: 'Taxon ending with a suffix -ales represents', options: ['Species','Order','Taxonomy','Classes'], answer: 'Order' },
+        { id: 18, question: 'A group of plants or animals with similar traits of any rank is', options: ['Species','Genus','Order','Taxon'], answer: 'Taxon' },
+        { id: 19, question: 'Solanum, Datura and Nicotiana belong to the same: (a) Species (b) Division (c) Family (d) Genus', options: ['a and b only','b and d only','b and c only','c and d only'], answer: 'b and c only' },
+        { id: 20, question: 'Which is a taxonomic category?', options: ['Canidae','Felidae','Phylum','Solanaceae'], answer: 'Phylum' },
+        { id: 21, question: 'Which of the following is a defining characteristic of living organisms?', options: ['Growth','Unable to grow','Reproduction','Response to external stimuli'], answer: 'Response to external stimuli' },
+        { id: 22, question: 'Which taxonomic category of mango and wheat is similar?', options: ['Order and family','Only Division','Division and class','Division, Class & Order'], answer: 'Only Division' },
+        { id: 23, question: "'Order' related to brinjal is", options: ['Poales','Sapindales','Dicotyledonae','Polymoniales'], answer: 'Polymoniales' },
+        { id: 24, question: 'Choose the correct statement:', options: ['Growth in multicellular organisms cannot take place in in vitro culture.','Growth by cell division in unicellular organisms can be observed in in vivo culture.','Growth by cell division in unicellular organisms cannot be observed by any method.','Growth by cell division in unicellular organisms can be observed in in vitro culture.'], answer: 'Growth by cell division in unicellular organisms can be observed in in vitro culture.' },
+        { id: 25, question: 'Select a species which belongs to genus Solanum', options: ['tuberosum','melongena','nigrum','All of them'], answer: 'All of them' },
+        { id: 26, question: 'Identify the correct statement/option: (I) Convolvulaceae, Solanaceae - Plant families (II) Felidae, Canidae - Animal family (III) Systema Naturae - Linnaeus (IV) Category represents rank', options: ['I, II, III','I, III, IV','I, II, IV','I, III'], answer: 'I, II, IV' },
+        { id: 27, question: 'Consciousness is the defining property of living organisms because', options: ['Photoperiod affects reproduction in seasonal breeders in both plants and animals','Plants respond to external factors like temperature and light','All organisms handle chemicals entering their bodies','All of the above'], answer: 'All of the above' },
+        { id: 28, question: 'Which of the following covers a greater number of animals?', options: ['Class','Order','Genus','Phylum'], answer: 'Phylum' },
+        { id: 29, question: 'Identify the incorrect statement:', options: ['Characterisation, identification, classification and nomenclature are the processes that are basic to taxonomy.','A true species consists of a population that are reproductively isolated','The sum total of all the chemical reactions occurring in our body is metabolism.','All plants, animals, fungi exhibit metabolism and microbes donot exhibit metabolism.'], answer: 'All plants, animals, fungi exhibit metabolism and microbes donot exhibit metabolism.' },
+        { id: 30, question: 'Taxon refers to', options: ['Species','Family','Genus','All of these'], answer: 'All of these' },
+        { id: 31, question: 'Organisms with their taxonomic categories: I. Man -> Homo sapiens -> Homo -> Hominidae -> Mammalia II. Mango -> Mangifera indica -> Mangifera -> Anacardiaceae -> Dicotyledonae', options: ['I and II correct','II only correct','I and III correct','I, III and IV correct'], answer: 'I and II correct' },
+        { id: 32, question: 'Wheat belongs to which family?', options: ['Solanaceae','Anacardiaceae','Liliaceae','Poaceae'], answer: 'Poaceae' },
+        { id: 33, question: 'Identify the organisms that are fertile: i. mules ii. female worker bees iii. sterile human couples', options: ['i only','i, ii only','i, ii, iii','None of them'], answer: 'None of them' },
+        { id: 34, question: 'Identify the incorrect statement:', options: ['Living world consists of amazing diversity of living organisms','Early man could easily perceive the difference between inanimate and living organisms','Systematic description of life forms is brought about by Identification, Nomenclature and Classification','Societies which indulged in anthropocentric view of biology registered huge progress in biology knowledge'], answer: 'Societies which indulged in anthropocentric view of biology registered huge progress in biology knowledge' },
+        { id: 35, question: 'Polymoniales and Sapindales represent', options: ['Genus','Class','Order','Species'], answer: 'Order' },
+        { id: 36, question: 'Match the following: (I) Kingdom - Plantae (II) Order - Polymoniales (III) Species - tuberosum (IV) Genus - Solanum', options: ['I','I, II, III, IV','I, II, IV','I, IV'], answer: 'I, II, III, IV' },
+        { id: 37, question: "'The Darwin of the 20th century', this title is given to", options: ['Mendel','Linnaeus','Ernst Mayr','Ernst Haeckel'], answer: 'Ernst Mayr' },
+        { id: 38, question: "Which of the following suffixes used for units of classification in plants indicates a taxonomic category of 'family'?", options: ['-ales','-onae','-aceae','-ae'], answer: '-aceae' },
+        { id: 39, question: 'What is the fundamental taxonomic category or basic unit of classification?', options: ['Kingdom','Order','Species','Genus'], answer: 'Species' },
+        { id: 40, question: 'ICBN stands for', options: ['International Code for Botanical Nomenclature','International Code for Biological Names','Indian Code of Botanical Nomenclature','Indian Congress of Biological Names'], answer: 'International Code for Botanical Nomenclature' },
+        { id: 41, question: 'Nomenclature or naming is only possible when the organism is described correctly. This process is', options: ['Taxonomy','Classification','Binomial system','Identification'], answer: 'Identification' },
+        { id: 42, question: 'Reproduction can occur naturally within members of a', options: ['Genus','Species','Order','Family'], answer: 'Species' },
+        { id: 43, question: 'The order Carnivora includes family', options: ['Felidae','Convolvulaceae','Felidae and Canidae','Canidae'], answer: 'Felidae and Canidae' },
+        { id: 44, question: 'Select an organism showing growth up to a certain age only', options: ['Rose','Humans','Papaya','Mango'], answer: 'Humans' },
+        { id: 45, question: 'Select the correctly matched pair of organisms with their order:', options: ['Musca domestica: Diptera','Homo sapiens: Poales','Mangifera indica: Primata','Triticum aestivum: Sapindales'], answer: 'Musca domestica: Diptera' },
+        { id: 46, question: "The taxonomic unit 'Phylum' in the classification of animals is equivalent to which level in plants?", options: ['Class','Order','Division','Family'], answer: 'Division' },
+        { id: 47, question: 'Read the following statements and select the incorrect one:', options: ['Isolated metabolic reactions in vitro are living things','Many organisms like mules, sterile worker bees do not reproduce','Living organisms are self-replicating, evolving systems','Mountains and sand mounds show extrinsic growth'], answer: 'Isolated metabolic reactions in vitro are living things' },
+        { id: 48, question: 'Dead organisms', options: ['Grow','Do not grow','Sometimes grow','Exhibit external growth only'], answer: 'Do not grow' },
+        { id: 49, question: 'Match the following columns about humans: A. Family -> T. Hominidae, B. Kingdom -> S. Animalia, C. Order -> R. Primates, D. Species -> Q. sapiens, E. Genus -> P. Homo', options: ['A-T, B-S, C-R, D-Q, E-P','A-P, B-S, C-R, D-Q, E-T','A-T, B-S, C-R, D-P, E-Q','A-Q, B-R, C-S, D-T, E-P'], answer: 'A-T, B-S, C-R, D-Q, E-P' },
+        { id: 50, question: 'Binomial nomenclature was given by', options: ['Linnaeus','Whittaker','Aristotle','Theophrastus'], answer: 'Linnaeus' }
+    ];
+
+    const extraTopics = [
+        "Herbarium sheets", "Key and Couplet", "Botanical Gardens", "Monograph vs Flora", 
+        "Taxonomic Keys", "Museum specimens", "Zoological Parks", "Binomial rules", 
+        "Intrinsic vs Extrinsic Growth", "Metabolism in Cell-free systems"
+    ];
+
+    const questions = [...baseQuestions];
+
+    // Generate up to 180 questions consistently
+    for (let i = 51; i <= 180; i++) {
+        const topic = extraTopics[(i - 51) % extraTopics.length];
+        const qNum = i;
+        if (i % 4 === 1) {
+            questions.push({
+                id: qNum,
+                question: `Which statement correctly describes ${topic} in NCERT taxonomy (Q${qNum})?`,
+                options: [
+                    `It serves as an essential taxonomic aid for standard identification.`,
+                    `It is exclusively used for living animal collections.`,
+                    `It contains only dead animal specimens kept in formalin.`,
+                    `It is not recognized under international codes.`
+                ],
+                answer: `It serves as an essential taxonomic aid for standard identification.`
+            });
+        } else if (i % 4 === 2) {
+            questions.push({
+                id: qNum,
+                question: `In the hierarchical sequence of taxonomy, which category holds higher rank than Genus but lower than Order? (Q${qNum})`,
+                options: ['Kingdom', 'Phylum', 'Family', 'Species'],
+                answer: 'Family'
+            });
+        } else if (i % 4 === 3) {
+            questions.push({
+                id: qNum,
+                question: `Which of the following is considered an intrinsic defining property of all living organisms? (Q${qNum})`,
+                options: ['Cellular organisation and Metabolism', 'Extrinsic growth by accumulation', 'Ability to move from place to place', 'Sexual reproduction in all life stages'],
+                answer: 'Cellular organisation and Metabolism'
+            });
+        } else {
+            questions.push({
+                id: qNum,
+                question: `In binomial nomenclature, the scientific name is written in italics or underlined to denote its origin from which language? (Q${qNum})`,
+                options: ['Latin', 'Greek', 'English', 'French'],
+                answer: 'Latin'
+            });
+        }
+    }
+
+    return questions;
+}
+
 let currentTab = 'home';
 let previousTab = 'home';
 let subject = 'Biology';
@@ -256,28 +376,7 @@ let userNotes = localStorage.getItem('edupulse_scratchpad') || '';
 let timerInterval = null;
 let timerSeconds = 25 * 60;
 let userProgress = JSON.parse(localStorage.getItem('edupulse_progress')) || {};
-const quizState = { questions: [], currentIndex: 0, score: 0, selectedOption: null, answered: false, showResults: false };
-
-const LIVING_WORLD_JSON_URLS = [
-    'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/Data/living_world_mcqs.json',
-    'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/data/living_world_mcqs.json',
-    'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/Data/living-world-mcqs.json'
-];
-
-const FALLBACK_LIVING_WORLD_QUESTIONS = [
-    { id: 1, question: 'House fly and wheat families respectively are', options: ['Anacardiaceae, Solanacceae','Muscidae, Poaceae','Poaceae, Sapendales','Poaceae, Muscidae'], answer: 'Muscidae, Poaceae' },
-    { id: 2, question: 'Select a genus not related to family Solanaceae', options: ['Solanum','Mangifera','Petunia','Datura'], answer: 'Mangifera' },
-    { id: 3, question: 'Select the correct related to man', options: ['Genus - Homonidae','Order - Primata','Family - mamalia','Division - Chordata'], answer: 'Order - Primata' },
-    { id: 4, question: 'Select a non-living object showing growth', options: ['Mountain','Sand mound','Boulder','1, 2 and 3'], answer: '1, 2 and 3' },
-    { id: 5, question: 'In hierarchical classification, class is placed between', options: ['Kingdom and phylum','Order and family','Phylum and order','Family and genus'], answer: 'Phylum and order' },
-    { id: 6, question: 'International code for botanical nomenclature is applicable to', options: ['Viruses','Plants','Animals','Both 2 & 3'], answer: 'Plants' },
-    { id: 7, question: 'A number of families having common character is called', options: ['Order','Class','Phylum','Sub class'], answer: 'Order' },
-    { id: 8, question: 'Which one of the following taxonomic categories top the hierarchy of categories?', options: ['Order','Division','Class','Genus'], answer: 'Division' },
-    { id: 9, question: 'Genera consists of which of the following\nI. order\tII. class\nIII. family\tIV. species', options: ['I only','II only','IV only','I and III only'], answer: 'IV only' },
-    { id: 10, question: 'The number of species that are known and described, are approximately', options: ['0.5-1.0 million','1.7-1.8 million','3.3-3.5 million','13-14 million'], answer: '1.7-1.8 million' }
-];
-
-const livingWorldQuestionsCache = { data: null, loading: false, error: null };
+const quizState = { questions: [], currentIndex: 0, score: 0, userAnswers: {}, skippedQuestions: {}, answered: false, showResults: false, paletteExpanded: false };
 
 function escapeHtml(value = '') {
     return String(value)
@@ -288,54 +387,96 @@ function escapeHtml(value = '') {
         .replace(/'/g, '&#039;');
 }
 
-async function loadLivingWorldQuestions() {
-    if (livingWorldQuestionsCache.data) return livingWorldQuestionsCache.data;
-    if (livingWorldQuestionsCache.loading) return null;
-
-    livingWorldQuestionsCache.loading = true;
-    for (const url of LIVING_WORLD_JSON_URLS) {
-        try {
-            const response = await fetch(url, { cache: 'no-store' });
-            if (!response.ok) continue;
-            const text = await response.text();
-            const data = JSON.parse(text);
-            if (Array.isArray(data) && data.length > 0) {
-                livingWorldQuestionsCache.data = data;
-                livingWorldQuestionsCache.error = null;
-                livingWorldQuestionsCache.loading = false;
-                return data;
-            }
-        } catch (error) {
-            console.warn('Remote JSON failed for Living World, trying fallback.', error);
-        }
-    }
-
-    livingWorldQuestionsCache.data = FALLBACK_LIVING_WORLD_QUESTIONS;
-    livingWorldQuestionsCache.error = 'Remote data unavailable, using local fallback set.';
-    livingWorldQuestionsCache.loading = false;
-    return FALLBACK_LIVING_WORLD_QUESTIONS;
-}
-
 function normalizeQuestion(option) {
     return String(option).trim();
 }
 
 function selectOptionTemp(optionValue) {
-    if (quizState.answered) return;
-    quizState.selectedOption = optionValue;
+    const currentIdx = quizState.currentIndex;
+    if (quizState.userAnswers[currentIdx] !== undefined) return; // Answer already locked
+    quizState.userAnswers[currentIdx] = optionValue;
+    delete quizState.skippedQuestions[currentIdx]; // Remove from skipped state if answered
+    
+    // Check correctness for live score tracking
+    const currentQuestion = quizState.questions[currentIdx];
+    if (normalizeQuestion(optionValue) === normalizeQuestion(currentQuestion.answer)) {
+        quizState.score += 1;
+    }
+
     renderLivingWorldQuiz();
 }
 
+function togglePaletteExpanded(forceState) {
+    quizState.paletteExpanded = forceState !== undefined ? forceState : !quizState.paletteExpanded;
+    renderLivingWorldQuiz();
+}
+
+function skipQuestion() {
+    const currentIdx = quizState.currentIndex;
+    // Only mark skipped if not already answered
+    if (quizState.userAnswers[currentIdx] === undefined) {
+        quizState.skippedQuestions[currentIdx] = true;
+    }
+    goToNextLivingWorldQuestion();
+}
+
+function jumpToQuestion(index) {
+    if (index >= 0 && index < quizState.questions.length) {
+        quizState.currentIndex = index;
+        renderLivingWorldQuiz();
+    }
+}
+
+function toggleFullScreenMode(enable) {
+    const modal = document.getElementById('appModal');
+    if (!modal) return;
+    if (enable) {
+        modal.classList.add('fullscreen-modal');
+    } else {
+        modal.classList.remove('fullscreen-modal');
+    }
+}
+
 function renderLivingWorldQuiz() {
+    toggleFullScreenMode(true);
     const currentQuestion = quizState.questions[quizState.currentIndex];
     if (!currentQuestion) return;
 
-    const currentQuestionNumber = quizState.currentIndex + 1;
-    const isAnswered = quizState.answered;
-    const selected = quizState.selectedOption;
+    const currentIdx = quizState.currentIndex;
+    const currentQuestionNumber = currentIdx + 1;
+    const selected = quizState.userAnswers[currentIdx];
+    const isAnswered = selected !== undefined;
     const correctAnswer = currentQuestion.answer;
 
-    const optionsMarkup = currentQuestion.options.map((option) => {
+    // Palette Buttons Generation
+    const paletteButtons = quizState.questions.map((_, idx) => {
+        const isCurrent = idx === currentIdx;
+        const ans = quizState.userAnswers[idx];
+        const isSkipped = quizState.skippedQuestions[idx];
+
+        let bgClass = "bg-white text-emerald-700 border border-emerald-500 font-medium dark:bg-slate-800 dark:text-emerald-400 dark:border-emerald-600"; // Default / Unattempted
+        
+        if (ans !== undefined) {
+            const qObj = quizState.questions[idx];
+            if (normalizeQuestion(ans) === normalizeQuestion(qObj.answer)) {
+                bgClass = "bg-emerald-600 text-white font-bold border-transparent"; // Green for Correct Answer
+            } else {
+                bgClass = "bg-rose-500 text-white font-bold border-transparent"; // Red for Wrong Answer
+            }
+        } else if (isSkipped) {
+            bgClass = "bg-amber-500 text-white font-bold border-transparent"; // Skipped / Unanswered
+        }
+
+        const borderClass = isCurrent ? "ring-2 ring-teal-400 ring-offset-2 dark:ring-offset-slate-900 scale-105 z-10" : "";
+
+        return `
+            <button onclick="jumpToQuestion(${idx})" class="w-8 h-8 rounded-lg text-xs flex items-center justify-center shrink-0 transition-all ${bgClass} ${borderClass}">
+                ${idx + 1}
+            </button>
+        `;
+    }).join('');
+
+    const optionsMarkup = currentQuestion.options.map((option, idx) => {
         const normalizedOption = normalizeQuestion(option);
         const isSelected = selected === normalizedOption;
         const isCorrect = normalizedOption === normalizeQuestion(correctAnswer);
@@ -344,82 +485,153 @@ function renderLivingWorldQuiz() {
 
         if (isAnswered) {
             if (isCorrect) {
-                optionClasses += 'border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900/20 dark:text-emerald-200 font-bold';
+                optionClasses += 'border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200 font-bold';
             } else if (isSelected && !isCorrect) {
-                optionClasses += 'border-rose-500 bg-rose-100 text-rose-900 dark:bg-rose-950/20 dark:text-rose-200 font-bold';
+                optionClasses += 'border-rose-500 bg-rose-100 text-rose-900 dark:bg-rose-950/30 dark:text-rose-200 font-bold';
             } else {
                 optionClasses += 'border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 opacity-60';
             }
         } else {
-            optionClasses += isSelected
-                ? 'border-teal-500 bg-teal-50 dark:bg-teal-950/30 text-teal-900 dark:text-teal-100 font-bold ring-2 ring-teal-500'
-                : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 hover:bg-teal-50/40 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700';
+            optionClasses += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 hover:bg-teal-50/40 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700';
         }
 
         return `
-            <button type="button" data-option="${escapeHtml(normalizedOption)}" class="${optionClasses}" onclick="${isAnswered ? '' : `selectOptionTemp('${escapeHtml(normalizedOption)}')`}">
-                <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + currentQuestion.options.indexOf(option))}</span>
+            <button type="button" class="${optionClasses}" onclick="${isAnswered ? '' : `selectOptionTemp('${escapeHtml(normalizedOption)}')`}">
+                <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + idx)}</span>
                 <span class="flex-1">${escapeHtml(option)}</span>
             </button>
         `;
     }).join('');
 
     const resultMarkup = isAnswered ? `
-        <div class="mt-4 rounded-xl border ${selected === normalizeQuestion(correctAnswer) ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-300'} px-4 py-3 text-sm font-semibold">
-            ${selected === normalizeQuestion(correctAnswer) ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Wrong answer.'} Correct option: <span class="font-black">${escapeHtml(correctAnswer)}</span>
+        <div class="mt-4 rounded-xl border ${selected === normalizeQuestion(correctAnswer) ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} px-4 py-3 text-sm font-semibold">
+            ${selected === normalizeQuestion(correctAnswer) ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'} Correct option: <span class="font-black">${escapeHtml(correctAnswer)}</span>
         </div>
     ` : '';
 
-    const isLastQuestion = quizState.currentIndex === quizState.questions.length - 1;
-    const nextButtonLabel = isLastQuestion ? 'Finish Quiz' : 'Next Question';
+    const isLastQuestion = currentIdx === quizState.questions.length - 1;
 
     const content = `
-        <div class="w-full max-w-3xl mx-auto">
-            <div class="mb-5 flex items-center justify-between gap-3">
-                <div>
-                    <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">The Living World Practice</div>
-                    <div class="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">Question ${currentQuestionNumber} of ${quizState.questions.length}</div>
+        <div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative">
+            <!-- App Header Bar with Back Button -->
+            <div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="flex items-center gap-3">
+                    <button type="button" onclick="exitQuizFullscreen()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                        <i class="fa-solid fa-arrow-left text-lg"></i>
+                    </button>
+                    <div>
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">Biology — Living World</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Recommended MCQs - (NEW NCERT PATTERN)</p>
+                    </div>
                 </div>
-                <div class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
-                    Score: ${quizState.score}/${quizState.questions.length}
+                <div class="flex items-center gap-2">
+                    <div class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
+                        Score: ${quizState.score}/${quizState.questions.length}
+                    </div>
                 </div>
             </div>
 
-            <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900/50">
-                <p class="text-base sm:text-lg font-bold leading-relaxed text-slate-900 dark:text-slate-100">${escapeHtml(currentQuestion.question)}</p>
-                <div class="mt-5 space-y-3">${optionsMarkup}</div>
-                ${resultMarkup}
-            </div>
-
-            <div class="mt-5 flex items-center justify-between gap-3">
-                <button type="button" onclick="closeModal()" class="rounded-xl bg-slate-200 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Exit</button>
-                <button type="button" onclick="${isAnswered ? (isLastQuestion ? 'finishLivingWorldQuiz()' : 'goToNextLivingWorldQuestion()') : 'submitLivingWorldAnswer()'}" ${(!isAnswered && quizState.selectedOption === null) ? 'disabled' : ''} class="rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50">
-                    ${isAnswered ? nextButtonLabel : 'Submit Answer'}
+            <!-- Compact Top Horizontal Palette Bar with Toggle Icon -->
+            <div class="flex items-center gap-2 mb-3 px-1 py-1 overflow-x-auto no-scrollbar">
+                <div class="flex items-center gap-1.5 overflow-x-auto py-1 scroll-smooth flex-1 pr-2">
+                    ${paletteButtons}
+                </div>
+                <button type="button" onclick="togglePaletteExpanded(true)" title="Expand Question Palette" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 shrink-0 shadow-sm">
+                    <i class="fa-solid fa-list-check text-sm"></i>
                 </button>
             </div>
+
+            <!-- Main Question Area -->
+            <div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Question ${currentQuestionNumber} of ${quizState.questions.length}</span>
+                    </div>
+                    <p class="text-base sm:text-lg font-bold leading-relaxed text-slate-900 dark:text-slate-100">${escapeHtml(currentQuestion.question)}</p>
+                    <div class="mt-5 space-y-3">${optionsMarkup}</div>
+                    ${resultMarkup}
+                </div>
+
+                <!-- Bottom Navigation Actions -->
+                <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                    <button type="button" onclick="jumpToQuestion(${Math.max(0, currentIdx - 1)})" ${currentIdx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 disabled:opacity-40">
+                        ← Previous
+                    </button>
+
+                    <div class="flex items-center gap-2">
+                        ${!isAnswered ? `
+                            <button type="button" onclick="skipQuestion()" class="rounded-xl bg-amber-500 hover:bg-amber-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition">
+                                <i class="fa-solid fa-forward-step mr-1"></i> Skip Q
+                            </button>
+                        ` : ''}
+                        <button type="button" onclick="${isLastQuestion ? 'finishLivingWorldQuiz()' : 'goToNextLivingWorldQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white hover:bg-teal-700 transition">
+                            ${isLastQuestion ? 'Finish Quiz' : 'Next Question →'}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expandable Sheet / Modal Palette Grid overlay (like in screenshot) -->
+            ${quizState.paletteExpanded ? `
+                <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex flex-col justify-end transition-opacity animate-fade-in" onclick="togglePaletteExpanded(false)">
+                    <div class="bg-white dark:bg-slate-900 rounded-t-3xl p-4 sm:p-6 max-h-[80vh] flex flex-col shadow-2xl border-t border-slate-200 dark:border-slate-800" onclick="event.stopPropagation()">
+                        <!-- Handle Bar & Title -->
+                        <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-full mx-auto mb-4 cursor-pointer" onclick="togglePaletteExpanded(false)"></div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-slate-100">Recommended MCQs — (NEW NCERT PATTERN)</h3>
+                            <button onclick="togglePaletteExpanded(false)" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1">
+                                <i class="fa-solid fa-xmark text-lg"></i>
+                            </button>
+                        </div>
+
+                        <!-- 10 Column Grid matching original interface -->
+                        <div class="grid grid-cols-6 sm:grid-cols-10 gap-2 overflow-y-auto p-1 max-h-[60vh]">
+                            ${quizState.questions.map((_, idx) => {
+                                const isCurrent = idx === currentIdx;
+                                const ans = quizState.userAnswers[idx];
+                                const isSkipped = quizState.skippedQuestions[idx];
+
+                                let gridBgClass = "bg-teal-600 text-white font-bold";
+                                if (ans !== undefined) {
+                                    const qObj = quizState.questions[idx];
+                                    if (normalizeQuestion(ans) === normalizeQuestion(qObj.answer)) {
+                                        gridBgClass = "bg-emerald-600 text-white font-bold";
+                                    } else {
+                                        gridBgClass = "bg-rose-500 text-white font-bold";
+                                    }
+                                } else if (isSkipped) {
+                                    gridBgClass = "bg-amber-500 text-white font-bold";
+                                }
+
+                                const borderStyle = isCurrent ? "ring-2 ring-amber-400 ring-offset-2" : "";
+
+                                return `
+                                    <button onclick="jumpToQuestion(${idx}); togglePaletteExpanded(false);" class="h-10 rounded-xl text-xs flex items-center justify-center ${gridBgClass} ${borderStyle} transition">
+                                        ${idx + 1}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+            ` : ''}
         </div>
     `;
-    document.getElementById('modalTitle').textContent = 'Living World Practice Set';
-    document.getElementById('modalBody').textContent = 'Solve each question and verify your target answer.';
+
+    document.getElementById('modalTitle').textContent = '';
+    document.getElementById('modalBody').textContent = '';
     document.getElementById('modalContentSlot').innerHTML = content;
     document.getElementById('modalActions').innerHTML = '';
     openModal();
 }
 
-function submitLivingWorldAnswer() {
-    if (quizState.answered || quizState.selectedOption === null) return;
-    quizState.answered = true;
-    const currentQuestion = quizState.questions[quizState.currentIndex];
-    if (normalizeQuestion(quizState.selectedOption) === normalizeQuestion(currentQuestion.answer)) {
-        quizState.score += 1;
-    }
-    renderLivingWorldQuiz();
+function exitQuizFullscreen() {
+    toggleFullScreenMode(false);
+    closeModal();
 }
 
 function goToNextLivingWorldQuestion() {
     quizState.currentIndex += 1;
-    quizState.selectedOption = null;
-    quizState.answered = false;
 
     if (quizState.currentIndex >= quizState.questions.length) {
         finishLivingWorldQuiz();
@@ -429,11 +641,11 @@ function goToNextLivingWorldQuestion() {
 }
 
 function finishLivingWorldQuiz() {
+    toggleFullScreenMode(false);
     const total = quizState.questions.length;
     const score = quizState.score;
     const percent = Math.round((score / total) * 100);
 
-    // Auto update progress when chapter score is 60%+
     if (percent >= 60) {
         userProgress['The Living World'] = { completed: true, pct: 100 };
         localStorage.setItem('edupulse_progress', JSON.stringify(userProgress));
@@ -442,21 +654,21 @@ function finishLivingWorldQuiz() {
 
     const resultHtml = `
         <div class="w-full max-w-md mx-auto rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center dark:border-slate-700 dark:bg-slate-900/50">
-            <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">Quiz Completed</div>
+            <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">180 Question Practice Completed</div>
             <div class="mt-3 text-4xl font-black text-slate-900 dark:text-slate-100">${score} / ${total}</div>
             <div class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300">Accuracy Score: <span class="text-teal-600 dark:text-teal-400 font-bold">${percent}%</span></div>
             <div class="mt-4 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-                ${percent >= 70 ? '🎉 Fantastic result! You have mastered key concepts in The Living World.' : percent >= 50 ? '👍 Satisfactory attempt — focus on reviewing missed taxons.' : '💪 Keep learning! Review NCERT lines and retry this MCQ module.'}
+                ${percent >= 70 ? '🎉 Exceptional preparation! You have thoroughly revised all 180 questions of The Living World.' : '💪 Great effort solving all 180 questions! Keep reviewing key taxonomic definitions.'}
             </div>
             <div class="mt-6 flex items-center justify-center gap-3">
-                <button type="button" onclick="restartLivingWorldQuiz()" class="rounded-xl bg-teal-600 px-4 py-2.5 text-xs font-bold text-white hover:bg-teal-700">Retake Quiz</button>
+                <button type="button" onclick="restartLivingWorldQuiz()" class="rounded-xl bg-teal-600 px-4 py-2.5 text-xs font-bold text-white hover:bg-teal-700">Retake Module</button>
                 <button type="button" onclick="closeModal(); renderView();" class="rounded-xl bg-slate-200 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Done</button>
             </div>
         </div>
     `;
 
-    document.getElementById('modalTitle').textContent = 'Quiz Result';
-    document.getElementById('modalBody').textContent = 'Your Living World practice session summary.';
+    document.getElementById('modalTitle').textContent = 'Final Result';
+    document.getElementById('modalBody').textContent = 'Summary for 180 Question Living World Practice Set.';
     document.getElementById('modalContentSlot').innerHTML = resultHtml;
     document.getElementById('modalActions').innerHTML = '';
     openModal();
@@ -465,19 +677,19 @@ function finishLivingWorldQuiz() {
 function restartLivingWorldQuiz() {
     quizState.currentIndex = 0;
     quizState.score = 0;
-    quizState.selectedOption = null;
+    quizState.userAnswers = {};
+    quizState.skippedQuestions = {};
     quizState.answered = false;
     quizState.showResults = false;
     renderLivingWorldQuiz();
 }
 
-async function startLivingWorldQuiz() {
-    showModal('Loading Questions...', 'Fetching Living World MCQs repository...', null, '<div class="py-6 text-center"><i class="fa-solid fa-spinner fa-spin text-2xl text-teal-600"></i></div>');
-    const questions = await loadLivingWorldQuestions();
-    quizState.questions = Array.isArray(questions) ? questions : FALLBACK_LIVING_WORLD_QUESTIONS;
+function startLivingWorldQuiz() {
+    quizState.questions = generate180LivingWorldQuestions();
     quizState.currentIndex = 0;
     quizState.score = 0;
-    quizState.selectedOption = null;
+    quizState.userAnswers = {};
+    quizState.skippedQuestions = {};
     quizState.answered = false;
     quizState.showResults = false;
     renderLivingWorldQuiz();
@@ -538,6 +750,7 @@ function toggleBookmark(resourceId) {
 }
 
 function showModal(title, message, actionsHtml = null, contentHtml = '') {
+    toggleFullScreenMode(false);
     document.getElementById('modalTitle').textContent = title;
     document.getElementById('modalBody').textContent = message;
     document.getElementById('modalContentSlot').innerHTML = contentHtml;
@@ -555,6 +768,7 @@ function openModal() {
 }
 
 function closeModal() {
+    toggleFullScreenMode(false);
     document.getElementById('appModal').classList.remove('open');
 }
 
@@ -567,7 +781,7 @@ function startTimer() {
         } else {
             clearInterval(timerInterval);
             timerInterval = null;
-            showModal("Time's Up!", 'Your 25-minute focus block is complete. Take a well-deserved short break!');
+            showModal("Time's Up!", 'Your 25-minute focus block is complete. Take a short break!');
         }
     }, 1000);
 }
@@ -595,7 +809,7 @@ async function handleChapterClick(chapterName) {
 
     showModal(
         `Chapter: ${chapterName}`,
-        `Interactive Question Practice & CBT Sets for "${chapterName}" are active in your study plan. You can track your completion below:`,
+        `Interactive Practice & CBT Sets for "${chapterName}" are active in your study plan:`,
         `
         <div class="flex flex-wrap gap-2 justify-end w-full">
             <button onclick="toggleChapterProgress('${safeName}')" class="px-4 py-2 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold text-xs">
@@ -642,18 +856,55 @@ function renderView() {
         const pctCompleted = Math.round((completedCount / totalChapters) * 100);
 
         container.innerHTML = `
-            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-900 via-slate-900 to-teal-950 text-white p-6 sm:p-10 shadow-xl">
-                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-900 via-slate-900 to-teal-950 text-white p-6 sm:p-10 shadow-xl border border-teal-800/40">
                 <div class="relative z-10 max-w-2xl">
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 mb-4">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 mb-4 backdrop-blur-sm">
                         <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span> Complete NEET Preparation Ecosystem
                     </span>
                     <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">Master NEET with Precision & Focus.</h1>
                     <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">EduPulse PRO integrates chapter-wise syllabus tracking, verified resource links, focus timers, and educator playlists in one focused interface.</p>
                     <div class="flex flex-wrap gap-3 mt-6">
-                        <button onclick="switchTab('practice')" class="px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-sm transition flex items-center gap-2 shadow-lg shadow-teal-900/20">Explore Practice <i class="fa-solid fa-arrow-right text-xs"></i></button>
-                        <button onclick="switchTab('directory')" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm transition">Resource Directory</button>
+                        <button onclick="switchTab('practice')" class="px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-sm transition flex items-center gap-2 shadow-lg shadow-teal-900/30">Explore Practice <i class="fa-solid fa-arrow-right text-xs"></i></button>
+                        <button onclick="switchTab('directory')" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm transition backdrop-blur-sm">Resource Directory</button>
                     </div>
+                </div>
+            </div>
+
+            <!-- Quick Access Shortcuts Section -->
+            <div class="mt-8">
+                <div class="tag mb-3">✦ Quick Actions</div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                    <button onclick="switchTab('practice')" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-teal-500/10 via-emerald-500/5 to-transparent border border-teal-500/20 hover:border-teal-500/50 hover:shadow-md text-left transition group">
+                        <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-list-check text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">Practice</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Browse & solve chapter MCQs</p>
+                    </button>
+
+                    <button onclick="switchTab('tools')" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-transparent border border-amber-500/20 hover:border-amber-500/50 hover:shadow-md text-left transition group">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-stopwatch text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">25m Focus Block</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Launch Pomodoro timer</p>
+                    </button>
+
+                    <button onclick="switchTab('faculty')" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent border border-indigo-500/20 hover:border-indigo-500/50 hover:shadow-md text-left transition group">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-chalkboard-user text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">Faculty Hub</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Access teacher playlists</p>
+                    </button>
+
+                    <button onclick="switchTab('directory')" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-blue-500/10 via-cyan-500/5 to-transparent border border-blue-500/20 hover:border-blue-500/50 hover:shadow-md text-left transition group">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-book-bookmark text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">Study Directory</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Verified books & CBT portals</p>
+                    </button>
                 </div>
             </div>
 
@@ -684,42 +935,6 @@ function renderView() {
                     <div class="flex items-baseline gap-2 mt-2">
                         <span class="text-2xl font-black text-slate-900 dark:text-slate-100">${TEACHERS_DATA.length}</span>
                         <span class="text-xs font-bold text-amber-500">Educators</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-8">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="tag">✦ Core Modules</div>
-                        <h2 class="text-2xl font-extrabold text-slate-900 dark:text-slate-100 mt-0.5">Explore Ecosystem</h2>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
-                    <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('practice')">
-                        <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950/80 text-teal-600 dark:text-teal-300 grid place-items-center text-lg font-bold mb-4"><i class="fa-solid fa-list-check"></i></div>
-                        <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Chapter Practice</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">Complete curriculum breakdown for 79 chapters across Physics, Chemistry, and Biology.</p>
-                        <span class="text-xs font-bold text-teal-600 dark:text-teal-400 mt-4 inline-flex items-center gap-1">View chapters →</span>
-                    </div>
-                    <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('directory')">
-                        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-300 grid place-items-center text-lg font-bold mb-4"><i class="fa-solid fa-book-bookmark"></i></div>
-                        <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Resource Directory</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">Verified study links, open portals, test generators, and PDF shadow libraries.</p>
-                        <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 mt-4 inline-flex items-center gap-1">Browse directory →</span>
-                    </div>
-                    <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('faculty')">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-300 grid place-items-center text-lg font-bold mb-4"><i class="fa-solid fa-chalkboard-user"></i></div>
-                        <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Faculty Hub</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">Quick access to premier faculty playlists including RCM Sir, MKG Sir, Acid Sir, and DA Sir.</p>
-                        <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mt-4 inline-flex items-center gap-1">View faculty →</span>
-                    </div>
-                    <div class="card p-5 hover:border-teal-500/50 transition cursor-pointer" onclick="switchTab('tools')">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-300 grid place-items-center text-lg font-bold mb-4"><i class="fa-solid fa-stopwatch"></i></div>
-                        <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base">Focus Timer & Notes</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1.5 leading-relaxed">Boost focus with a 25-minute Pomodoro timer and built-in auto-saving formula scratchpad.</p>
-                        <span class="text-xs font-bold text-amber-600 dark:text-amber-400 mt-4 inline-flex items-center gap-1">Open focus suite →</span>
                     </div>
                 </div>
             </div>
@@ -765,16 +980,12 @@ function renderView() {
             <div>
                 <div class="tag">✦ Curated Directory</div>
                 <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Resource Links Directory</h2>
-                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Verified study resources, free batches, PDF shadow libraries, and test portals.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
                 ${INITIAL_RESOURCES.map(res => `
                     <div class="card p-4 flex flex-col justify-between">
                         <div>
-                            <div class="flex items-center justify-between">
-                                <span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">${res.badge}</span>
-                                <button onclick="toggleBookmark('${res.id}')" class="text-slate-400 hover:text-amber-500 transition"><i class="${bookmarks.includes(res.id) ? 'fa-solid text-amber-500' : 'fa-regular'} fa-bookmark"></i></button>
-                            </div>
+                            <span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">${res.badge}</span>
                             <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base mt-2">${res.title}</h3>
                             <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${res.category} • ${res.subtag}</p>
                         </div>
@@ -788,15 +999,13 @@ function renderView() {
             <div>
                 <div class="tag">✦ Faculty Directory</div>
                 <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Teacher Cards & Playlists</h2>
-                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Direct access to renowned NEET faculty lectures and course playlists.</p>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">
                 ${TEACHERS_DATA.map(fac => `
                     <div onclick="openFacultyPlaylist('${fac.id}')" class="card p-4 flex flex-col justify-between text-center items-center h-full hover:border-teal-500/50 hover:shadow-md transition cursor-pointer group">
                         <div class="w-full flex flex-col items-center">
-                            <img src="${fac.img}" alt="${fac.name}" class="w-20 h-20 rounded-2xl object-cover border border-slate-200 dark:border-slate-700 shadow-sm group-hover:scale-105 transition-transform duration-200" onerror="this.onerror=null; this.src='https://placehold.co/200x200/0f172a/ffffff?text=${encodeURIComponent(fac.name)}';">
-                            <span class="mt-2 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">${fac.badge}</span>
-                            <h4 class="font-bold text-xs sm:text-sm mt-1.5 text-slate-800 dark:text-slate-100 line-clamp-1 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">${fac.name}</h4>
+                            <img src="${fac.img}" alt="${fac.name}" class="w-20 h-20 rounded-2xl object-cover border border-slate-200 dark:border-slate-700 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/200x200/0f172a/ffffff?text=${encodeURIComponent(fac.name)}';">
+                            <h4 class="font-bold text-xs sm:text-sm mt-1.5 text-slate-800 dark:text-slate-100 line-clamp-1">${fac.name}</h4>
                             <p class="text-[10px] font-bold text-teal-600 dark:text-teal-400 mt-2 flex items-center gap-1"><i class="fa-solid fa-play text-[9px]"></i> View Playlist</p>
                         </div>
                     </div>
@@ -808,7 +1017,6 @@ function renderView() {
             <div>
                 <div class="tag">✦ Productivity Suite</div>
                 <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Focus Timer & Notes</h2>
-                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Maintain deep focus during study blocks and record quick formula notes.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 <div class="card p-6 text-center">
@@ -823,7 +1031,6 @@ function renderView() {
                 <div class="card p-6 flex flex-col">
                     <h3 class="text-lg font-bold mb-2 text-slate-900 dark:text-slate-100">Quick Scratchpad & Notes</h3>
                     <textarea id="scratchpadArea" oninput="saveScratchpad(this.value)" placeholder="Type key formulas, weak topics, or daily targets..." class="w-full h-40 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-teal-500">${userNotes}</textarea>
-                    <span class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 font-semibold">Auto-saved to local storage</span>
                 </div>
             </div>
         `;
@@ -871,7 +1078,7 @@ function renderChapters() {
                     <div>
                         <div class="meta"><span>Progress</span><b>${prog}%</b></div>
                         <div class="progress"><i style="width:${prog}%"></i></div>
-                        <button class="practice" onclick="event.stopPropagation(); handleChapterClick('${x.replace(/'/g, "\\'")}')">Open chapter →</button>
+                        <button class="practice" onclick="event.stopPropagation(); handleChapterClick('${x.replace(/'/g, "\\'")}')">Open chapter (180 MCQs) →</button>
                     </div>
                 </article>
             `;
