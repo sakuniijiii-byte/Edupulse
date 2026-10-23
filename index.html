@@ -320,6 +320,12 @@ function normalizeQuestion(option) {
     return String(option).trim();
 }
 
+function selectOptionTemp(optionValue) {
+    if (quizState.answered) return;
+    quizState.selectedOption = optionValue;
+    renderLivingWorldQuiz();
+}
+
 function renderLivingWorldQuiz() {
     const currentQuestion = quizState.questions[quizState.currentIndex];
     if (!currentQuestion) return;
@@ -334,33 +340,33 @@ function renderLivingWorldQuiz() {
         const isSelected = selected === normalizedOption;
         const isCorrect = normalizedOption === normalizeQuestion(correctAnswer);
 
-        let optionClasses = 'flex items-center gap-3 w-full rounded-xl border px-4 py-3 text-left text-sm font-medium transition ';
+        let optionClasses = 'flex items-center gap-3 w-full rounded-xl border px-4 py-3 text-left text-sm font-medium transition cursor-pointer ';
 
         if (isAnswered) {
             if (isCorrect) {
-                optionClasses += 'border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900/20 dark:text-emerald-200';
+                optionClasses += 'border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900/20 dark:text-emerald-200 font-bold';
             } else if (isSelected && !isCorrect) {
-                optionClasses += 'border-rose-500 bg-rose-100 text-rose-900 dark:bg-rose-950/20 dark:text-rose-200';
+                optionClasses += 'border-rose-500 bg-rose-100 text-rose-900 dark:bg-rose-950/20 dark:text-rose-200 font-bold';
             } else {
-                optionClasses += 'border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200';
+                optionClasses += 'border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 opacity-60';
             }
         } else {
             optionClasses += isSelected
-                ? 'border-teal-500 bg-teal-50 text-teal-900 dark:bg-teal-950/30 dark:text-teal-100'
+                ? 'border-teal-500 bg-teal-50 dark:bg-teal-950/30 text-teal-900 dark:text-teal-100 font-bold ring-2 ring-teal-500'
                 : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 hover:bg-teal-50/40 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700';
         }
 
         return `
-            <button type="button" data-option="${escapeHtml(normalizedOption)}" class="${optionClasses}" onclick="chooseLivingWorldOption('${escapeHtml(normalizedOption)}')">
+            <button type="button" data-option="${escapeHtml(normalizedOption)}" class="${optionClasses}" onclick="${isAnswered ? '' : `selectOptionTemp('${escapeHtml(normalizedOption)}')`}">
                 <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + currentQuestion.options.indexOf(option))}</span>
-                <span>${escapeHtml(option)}</span>
+                <span class="flex-1">${escapeHtml(option)}</span>
             </button>
         `;
     }).join('');
 
     const resultMarkup = isAnswered ? `
         <div class="mt-4 rounded-xl border ${selected === normalizeQuestion(correctAnswer) ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-300'} px-4 py-3 text-sm font-semibold">
-            ${selected === normalizeQuestion(correctAnswer) ? 'Correct!' : 'Wrong answer.'} Correct answer: <span class="font-black">${escapeHtml(correctAnswer)}</span>
+            ${selected === normalizeQuestion(correctAnswer) ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Wrong answer.'} Correct option: <span class="font-black">${escapeHtml(correctAnswer)}</span>
         </div>
     ` : '';
 
@@ -371,52 +377,43 @@ function renderLivingWorldQuiz() {
         <div class="w-full max-w-3xl mx-auto">
             <div class="mb-5 flex items-center justify-between gap-3">
                 <div>
-                    <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">The Living World</div>
+                    <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">The Living World Practice</div>
                     <div class="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">Question ${currentQuestionNumber} of ${quizState.questions.length}</div>
                 </div>
-                <div class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-200">
+                <div class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
                     Score: ${quizState.score}/${quizState.questions.length}
                 </div>
             </div>
 
             <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900/50">
-                <p class="text-lg font-bold leading-7 text-slate-900 dark:text-slate-100">${escapeHtml(currentQuestion.question)}</p>
+                <p class="text-base sm:text-lg font-bold leading-relaxed text-slate-900 dark:text-slate-100">${escapeHtml(currentQuestion.question)}</p>
                 <div class="mt-5 space-y-3">${optionsMarkup}</div>
                 ${resultMarkup}
             </div>
 
-            <div class="mt-5 flex justify-between gap-3">
-                <button type="button" onclick="closeModal()" class="rounded-xl bg-slate-200 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Close</button>
-                <button type="button" onclick="${isAnswered ? (isLastQuestion ? 'finishLivingWorldQuiz()' : 'goToNextLivingWorldQuestion()') : 'submitLivingWorldAnswer()'}" class="rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50">
+            <div class="mt-5 flex items-center justify-between gap-3">
+                <button type="button" onclick="closeModal()" class="rounded-xl bg-slate-200 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Exit</button>
+                <button type="button" onclick="${isAnswered ? (isLastQuestion ? 'finishLivingWorldQuiz()' : 'goToNextLivingWorldQuestion()') : 'submitLivingWorldAnswer()'}" ${(!isAnswered && quizState.selectedOption === null) ? 'disabled' : ''} class="rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50">
                     ${isAnswered ? nextButtonLabel : 'Submit Answer'}
                 </button>
             </div>
         </div>
     `;
-    document.getElementById('modalTitle').textContent = 'Living World Quiz';
-    document.getElementById('modalBody').textContent = 'Answer each question and track your score in real time.';
+    document.getElementById('modalTitle').textContent = 'Living World Practice Set';
+    document.getElementById('modalBody').textContent = 'Solve each question and verify your target answer.';
     document.getElementById('modalContentSlot').innerHTML = content;
     document.getElementById('modalActions').innerHTML = '';
     openModal();
 }
 
-function chooseLivingWorldOption(optionValue) {
-    if (quizState.answered) return;
-    quizState.selectedOption = optionValue;
-    const currentQuestion = quizState.questions[quizState.currentIndex];
-    if (!currentQuestion) return;
-
-    const correctAnswer = normalizeQuestion(currentQuestion.answer);
-    if (normalizeQuestion(optionValue) === correctAnswer) {
-        quizState.score += 1;
-    }
-    quizState.answered = true;
-    renderLivingWorldQuiz();
-}
-
 function submitLivingWorldAnswer() {
     if (quizState.answered || quizState.selectedOption === null) return;
-    chooseLivingWorldOption(quizState.selectedOption);
+    quizState.answered = true;
+    const currentQuestion = quizState.questions[quizState.currentIndex];
+    if (normalizeQuestion(quizState.selectedOption) === normalizeQuestion(currentQuestion.answer)) {
+        quizState.score += 1;
+    }
+    renderLivingWorldQuiz();
 }
 
 function goToNextLivingWorldQuestion() {
@@ -436,23 +433,30 @@ function finishLivingWorldQuiz() {
     const score = quizState.score;
     const percent = Math.round((score / total) * 100);
 
+    // Auto update progress when chapter score is 60%+
+    if (percent >= 60) {
+        userProgress['The Living World'] = { completed: true, pct: 100 };
+        localStorage.setItem('edupulse_progress', JSON.stringify(userProgress));
+        updateGlobalProgress();
+    }
+
     const resultHtml = `
-        <div class="w-full max-w-md mx-auto rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center dark:border-slate-700 dark:bg-slate-900/50">
-            <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">Quiz Result</div>
-            <div class="mt-3 text-4xl font-black text-slate-900 dark:text-slate-100">${score}/${total}</div>
-            <div class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300">Accuracy: ${percent}%</div>
-            <div class="mt-5 text-sm text-slate-600 dark:text-slate-300">
-                ${percent >= 70 ? 'Excellent! You are well prepared.' : percent >= 50 ? 'Good work — keep revising the weak spots.' : 'Keep practicing. Review the explanations and retake the set.'}
+        <div class="w-full max-w-md mx-auto rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center dark:border-slate-700 dark:bg-slate-900/50">
+            <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">Quiz Completed</div>
+            <div class="mt-3 text-4xl font-black text-slate-900 dark:text-slate-100">${score} / ${total}</div>
+            <div class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300">Accuracy Score: <span class="text-teal-600 dark:text-teal-400 font-bold">${percent}%</span></div>
+            <div class="mt-4 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                ${percent >= 70 ? '🎉 Fantastic result! You have mastered key concepts in The Living World.' : percent >= 50 ? '👍 Satisfactory attempt — focus on reviewing missed taxons.' : '💪 Keep learning! Review NCERT lines and retry this MCQ module.'}
             </div>
-            <div class="mt-5 flex justify-center gap-3">
-                <button type="button" onclick="restartLivingWorldQuiz()" class="rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-teal-700">Retake Quiz</button>
-                <button type="button" onclick="closeModal()" class="rounded-xl bg-slate-200 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Close</button>
+            <div class="mt-6 flex items-center justify-center gap-3">
+                <button type="button" onclick="restartLivingWorldQuiz()" class="rounded-xl bg-teal-600 px-4 py-2.5 text-xs font-bold text-white hover:bg-teal-700">Retake Quiz</button>
+                <button type="button" onclick="closeModal(); renderView();" class="rounded-xl bg-slate-200 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Done</button>
             </div>
         </div>
     `;
 
-    document.getElementById('modalTitle').textContent = 'Quiz Complete';
-    document.getElementById('modalBody').textContent = 'Your Living World practice session is finished.';
+    document.getElementById('modalTitle').textContent = 'Quiz Result';
+    document.getElementById('modalBody').textContent = 'Your Living World practice session summary.';
     document.getElementById('modalContentSlot').innerHTML = resultHtml;
     document.getElementById('modalActions').innerHTML = '';
     openModal();
@@ -468,6 +472,7 @@ function restartLivingWorldQuiz() {
 }
 
 async function startLivingWorldQuiz() {
+    showModal('Loading Questions...', 'Fetching Living World MCQs repository...', null, '<div class="py-6 text-center"><i class="fa-solid fa-spinner fa-spin text-2xl text-teal-600"></i></div>');
     const questions = await loadLivingWorldQuestions();
     quizState.questions = Array.isArray(questions) ? questions : FALLBACK_LIVING_WORLD_QUESTIONS;
     quizState.currentIndex = 0;
