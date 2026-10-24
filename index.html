@@ -35,6 +35,7 @@
       --danger-soft: #fee2e2;
       --warning: #f59e0b;
       --warning-soft: #fef3c7;
+      --shadow-soft: 0 14px 32px rgba(15, 23, 42, 0.06);
     }
 
     * { box-sizing: border-box; }
@@ -43,7 +44,7 @@
       font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
       background: var(--bg);
       color: var(--text-primary);
-      transition: background-color 0.2s ease, color 0.2s ease;
+      transition: background-color 0.22s ease, color 0.22s ease;
     }
     body.dark {
       --paper: #0f172a;
@@ -60,6 +61,7 @@
       --phy-text: #5eead4;
       --line: #1f2937;
       --muted: #94a3b8;
+      --shadow-soft: 0 18px 40px rgba(2, 6, 23, 0.35);
     }
     button, input, select { font: inherit; }
     button { border: none; cursor: pointer; }
@@ -127,12 +129,22 @@
     .main { max-width: 1400px; margin: 0 auto; padding: 24px; }
     .tag { color: var(--teal); font-weight: 800; text-transform: uppercase; letter-spacing: 0.17em; font-size: 11px; }
 
+    .search-bar {
+      display: flex; gap: 12px; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color);
+      border-radius: 18px; padding: 12px 14px; box-shadow: var(--shadow-soft); margin-bottom: 18px;
+    }
+    .search-bar input {
+      flex: 1; border: none; background: transparent; outline: none; font-size: 14px; color: var(--text-primary);
+    }
+    .search-bar input::placeholder { color: var(--muted); }
+
     .subject-grid, .chapter-grid { display: grid; gap: 18px; }
     .subject-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 18px; }
     .subject {
       display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--border-color);
       background: var(--card-bg); border-radius: 18px; padding: 14px 16px; transition: all 0.2s ease;
     }
+    .subject:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
     .subject.selected { border-color: rgba(13,148,136,0.42); background: rgba(13,148,136,0.06); }
     .subject b { display: block; font-size: 14px; }
     .subject small { display: block; color: var(--muted); margin-top: 2px; font-size: 12px; }
@@ -143,11 +155,16 @@
 
     .chapter-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     .chapter {
-      background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 18px; padding: 18px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; display: flex; flex-direction: column; justify-content: space-between;
-      min-height: 180px;
+      position: relative; overflow: hidden; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 18px; padding: 18px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; display: flex; flex-direction: column; justify-content: space-between;
+      min-height: 180px; animation: cardIn 0.28s ease;
     }
-    .chapter:hover { transform: translateY(-2px); box-shadow: 0 12px 22px rgba(15,23,42,0.06); border-color: rgba(13,148,136,0.3); }
+    .chapter::before {
+      content: ''; position: absolute; inset: 0 auto auto 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--teal), transparent);
+      opacity: 0; transition: opacity 0.2s ease;
+    }
+    .chapter:hover { transform: translateY(-3px) scale(1.01); box-shadow: var(--shadow-soft); border-color: rgba(13,148,136,0.3); }
+    .chapter:hover::before { opacity: 1; }
     .chapter-title { margin-top: 12px; font-weight: 800; font-size: 14px; line-height: 1.4; }
     .meta { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; margin-top: 12px; }
     .progress-bar-soft { height: 6px; background: rgba(0,0,0,0.06); border-radius: 999px; margin-top: 8px; overflow: hidden; }
@@ -156,13 +173,13 @@
 
     .custom-modal {
       position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(6px);
-      display: grid; place-items: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+      display: grid; place-items: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.16s ease;
     }
     .custom-modal.open { opacity: 1; pointer-events: auto; }
     .modal-box {
       width: min(1200px, calc(100vw - 20px)); height: min(92vh, 900px); background: rgba(255,255,255,0.94);
       border: 1px solid rgba(15,23,42,0.08); box-shadow: 0 32px 80px rgba(15,23,42,0.18); border-radius: 28px; overflow: hidden;
-      display: flex; flex-direction: column;
+      display: flex; flex-direction: column; animation: modalOpen 0.22s ease;
     }
     body.dark .modal-box { background: rgba(15,23,42,0.94); border-color: rgba(148,163,184,0.2); }
     .quiz-header {
@@ -194,20 +211,18 @@
     .palette .dot {
       min-width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; font-size: 11px; font-weight: 800;
       border: 1px solid rgba(13,148,136,0.6); background: rgba(255,255,255,0.8); color: var(--teal);
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
+    .palette .dot:hover { transform: translateY(-1px); }
     .palette .dot.current { box-shadow: 0 0 0 2px rgba(13,148,136,0.18); transform: scale(1.04); }
     .palette .dot.correct { background: var(--success); color: white; border-color: transparent; }
     .palette .dot.wrong { background: var(--danger); color: white; border-color: transparent; }
     .palette .dot.skipped { background: var(--warning); color: white; border-color: transparent; }
     .question-shell {
       background: white; border: 1px solid var(--border-color); border-radius: 22px; padding: 22px; box-shadow: 0 8px 22px rgba(15,23,42,0.04);
+      animation: slideIn 0.28s ease;
     }
     body.dark .question-shell { background: rgba(15,23,42,0.9); border-color: var(--border-color); }
-    .animate-next { animation: fadeSlide 0.28s ease; }
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateX(16px) scale(0.995); }
-      to { opacity: 1; transform: translateX(0) scale(1); }
-    }
     .q-tag { font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
     .question-text {
       font-size: clamp(1.06rem, 2vw, 1.5rem); line-height: 1.55; font-weight: 800; margin-top: 12px;
@@ -216,10 +231,10 @@
     .option {
       width: 100%; text-align: left; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--border-color);
       background: #f8fafc; color: var(--text-primary); font-size: 0.97rem; font-weight: 600; display: flex; align-items: center; gap: 12px;
-      transition: all 0.2s ease;
+      transition: all 0.18s ease;
     }
     body.dark .option { background: rgba(15,23,42,0.9); }
-    .option:hover { border-color: rgba(13,148,136,0.5); background: rgba(13,148,136,0.03); }
+    .option:hover { border-color: rgba(13,148,136,0.5); background: rgba(13,148,136,0.03); transform: translateY(-1px); }
     .option .index {
       width: 28px; height: 28px; border-radius: 50%; background: white; border: 1px solid var(--border-color); display: grid; place-items: center;
       font-size: 10px; font-weight: 900; color: var(--ink);
@@ -233,7 +248,7 @@
 
     .feedback {
       margin-top: 18px; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--border-color);
-      font-size: 0.95rem; line-height: 1.6;
+      font-size: 0.95rem; line-height: 1.6; animation: fadeIn 0.2s ease;
     }
     .feedback.correct { background: var(--success-soft); border-color: rgba(22,163,74,0.24); color: #166534; }
     .feedback.wrong { background: var(--danger-soft); border-color: rgba(220,38,38,0.24); color: #991b1b; }
@@ -251,13 +266,12 @@
     body.dark .plain-btn { background: #1e293b; color: #e2e8f0; }
     .primary-btn { background: linear-gradient(135deg, var(--teal), #14b8a6); color: white; }
     .primary-btn:hover { filter: brightness(0.98); }
-    .primary-btn.ghost { background: #fbbf24; color: #2f1f00; }
     .primary-btn.warn { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: #2f1f00; }
     .primary-btn.secondary { background: #e2e8f0; color: var(--ink); }
     body.dark .primary-btn.secondary { background: #1e293b; color: #e2e8f0; }
 
     .result-box {
-      display: grid; place-items: center; min-height: 100%; padding: 26px;
+      display: grid; place-items: center; min-height: 100%; padding: 26px; animation: fadeIn 0.22s ease;
     }
     .result-card {
       width: min(560px, 100%); background: white; border: 1px solid var(--border-color); border-radius: 24px;
@@ -268,6 +282,23 @@
     .result-score { font-size: clamp(2.2rem, 4vw, 4rem); font-weight: 900; margin: 12px 0 8px; }
     .result-card p { color: var(--muted); line-height: 1.6; margin-top: 10px; }
     .result-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(10px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes modalOpen {
+      from { opacity: 0; transform: scale(0.98) translateY(-10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(18px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
     @media (max-width: 640px) {
       .topbar { padding: 0 14px; }
@@ -295,12 +326,12 @@
         </div>
       </div>
 
-      <nav class="nav">
-        <button class="active"><i class="fa-solid fa-house"></i> Home</button>
-        <button><i class="fa-solid fa-list-check"></i> Practice</button>
-        <button><i class="fa-solid fa-book-bookmark"></i> Resource Directory</button>
-        <button><i class="fa-solid fa-chalkboard-user"></i> Faculty Hub</button>
-        <button><i class="fa-solid fa-stopwatch"></i> Focus & Planner</button>
+      <nav class="nav" id="sidebarNav">
+        <button class="active" data-tab="home"><i class="fa-solid fa-house"></i> Home</button>
+        <button data-tab="practice"><i class="fa-solid fa-list-check"></i> Practice</button>
+        <button data-tab="directory"><i class="fa-solid fa-book-bookmark"></i> Resource Directory</button>
+        <button data-tab="faculty"><i class="fa-solid fa-chalkboard-user"></i> Faculty Hub</button>
+        <button data-tab="tools"><i class="fa-solid fa-stopwatch"></i> Focus & Planner</button>
       </nav>
 
       <div class="goal">
@@ -317,7 +348,7 @@
           <div class="date" id="current-date"></div>
           <h1>Welcome, Aspirant<span style="color:#0d9488">.</span></h1>
         </div>
-        <button class="primary-btn secondary" onclick="toggleTheme()" style="padding:9px 12px; border-radius:12px;"><i class="fa-solid fa-moon"></i></button>
+        <button class="primary-btn secondary" id="theme-toggle" style="padding:9px 12px; border-radius:12px;"><i class="fa-solid fa-moon"></i></button>
       </header>
 
       <main class="main" id="main-container"></main>
@@ -331,7 +362,7 @@
   </div>
 
   <script>
-    const data = {
+    const CHAPTERS = {
       Biology: [
         'The Living World','Biological Classification','Plant Kingdom','Animal Kingdom','Morphology and Anatomy of Flowering Plants',
         'Structural Organisation in Animals','Cell: The Unit of Life','Biomolecules','Cell Cycle and Cell Division','Photosynthesis in Plants',
@@ -360,14 +391,43 @@
 
     const state = {
       subject: 'Biology',
+      tab: 'home',
       progress: JSON.parse(localStorage.getItem('edupulse_progress') || '{}'),
       quiz: {
         questions: [],
         currentIndex: 0,
         answers: {},
-        score: 0
+        score: 0,
+        loading: false
       }
     };
+
+    const fallbackQuestions = [
+      {
+        q: 'Which of the following is a defining characteristic of living organisms?',
+        o: ['Growth', 'Reproduction', 'Metabolism', 'Both 1 and 3'],
+        a: 4,
+        s: 'Metabolism is a defining feature present in all living organisms, and growth is also a common feature. Thus both metabolism and growth are characteristic, making option 4 correct.'
+      },
+      {
+        q: 'The taxonomic unit that includes one or more related families is called',
+        o: ['Genus', 'Order', 'Class', 'Species'],
+        a: 2,
+        s: 'An order is a taxonomic category that includes one or more related families.'
+      },
+      {
+        q: 'The scientific name of mango is written as',
+        o: ['Mangifera indica', 'mangifera Indica', 'Mangifera Indica', 'mangifera indica'],
+        a: 1,
+        s: 'Binomial nomenclature requires the genus name to begin with a capital letter and the species epithet in lowercase.'
+      },
+      {
+        q: 'Which one of the following is the correct hierarchy?',
+        o: ['Kingdom → Class → Order → Family → Genus → Species', 'Kingdom → Order → Phylum → Class → Species → Genus', 'Kingdom → Phylum → Order → Family → Genus → Species', 'Species → Genus → Family → Order → Kingdom → Phylum'],
+        a: 3,
+        s: 'The correct taxonomic hierarchy is Kingdom → Phylum/Division → Class → Order → Family → Genus → Species.'
+      }
+    ];
 
     function escapeHtml(value = '') {
       return String(value)
@@ -378,8 +438,19 @@
         .replace(/'/g, '&#039;');
     }
 
+    function normalizeChoice(value) {
+      return String(value).trim();
+    }
+
+    function setCurrentDate() {
+      const dateElement = document.getElementById('current-date');
+      if (dateElement) {
+        dateElement.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      }
+    }
+
     function updateSidebarProgress() {
-      const totalChapters = Object.values(data).reduce((sum, arr) => sum + arr.length, 0);
+      const totalChapters = Object.values(CHAPTERS).reduce((sum, arr) => sum + arr.length, 0);
       const completed = Object.values(state.progress).filter(item => item && item.completed).length;
       const pct = Math.min(100, Math.round((completed / totalChapters) * 100));
       const bar = document.getElementById('sidebar-progress-bar');
@@ -388,17 +459,12 @@
       if (text) text.textContent = pct + '% syllabus covered';
     }
 
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-      document.documentElement.classList.toggle('dark');
-    }
-
     function renderSubjectButtons() {
-      return Object.keys(data).map((subject) => `
-        <button class="subject ${state.subject === subject ? 'selected' : ''}" onclick="state.subject='${subject}'; renderView();">
+      return Object.keys(CHAPTERS).map((subject) => `
+        <button class="subject ${state.subject === subject ? 'selected' : ''}" data-subject="${subject}" type="button">
           <div>
             <b>${subject}</b>
-            <small>${data[subject].length} chapters</small>
+            <small>${CHAPTERS[subject].length} chapters</small>
           </div>
           <span class="chip ${subject === 'Biology' ? 'bio' : subject === 'Chemistry' ? 'chem' : 'phy'}">${subject.slice(0, 2).toUpperCase()}</span>
         </button>
@@ -406,12 +472,16 @@
     }
 
     function renderChapterCards() {
-      return data[state.subject].map((chapter, index) => {
+      const q = document.getElementById('chapter-search')?.value || '';
+      const normalized = q.trim().toLowerCase();
+      const visible = CHAPTERS[state.subject].filter((chapter) => chapter.toLowerCase().includes(normalized));
+
+      return visible.map((chapter) => {
         const done = state.progress[chapter]?.completed;
         const pct = state.progress[chapter]?.pct || 0;
         const isLivingWorld = chapter === 'The Living World';
         return `
-          <div class="chapter" onclick="handleChapterClick('${chapter}')">
+          <article class="chapter" data-chapter="${escapeHtml(chapter)}" tabindex="0" type="button">
             <div>
               <span class="tag">${state.subject}</span>
               <div class="chapter-title">${chapter}</div>
@@ -422,19 +492,45 @@
                 <span>${done ? 'Done' : 'Open'}</span>
               </div>
               <div class="progress-bar-soft"><i style="width:${done ? 100 : pct}%"></i></div>
-              <div class="practice"><i class="fa-solid fa-arrow-right"></i> ${isLivingWorld ? 'Start practice' : 'Coming soon'}</div>
+              <div class="practice"><i class="fa-solid fa-arrow-right"></i> ${isLivingWorld ? 'Start practice' : done ? 'Review' : 'Coming soon'}</div>
             </div>
-          </div>
+          </article>
         `;
-      }).join('');
+      }).join('') || '<div class="card" style="padding:24px; border-radius:18px; border:1px dashed var(--border-color);">No matching chapters found.</div>';
     }
 
     function renderView() {
       const container = document.getElementById('main-container');
       container.innerHTML = `
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass" style="color: var(--muted);"></i>
+          <input id="chapter-search" type="text" placeholder="Search chapters..." value="${escapeHtml(document.getElementById('chapter-search') ? document.getElementById('chapter-search').value : '')}" />
+        </div>
         <div class="subject-grid">${renderSubjectButtons()}</div>
         <div class="chapter-grid">${renderChapterCards()}</div>
       `;
+
+      const searchInput = document.getElementById('chapter-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          state.subject = state.subject;
+          renderView();
+        });
+      }
+
+      document.querySelectorAll('[data-subject]').forEach(button => {
+        button.addEventListener('click', () => {
+          state.subject = button.dataset.subject;
+          renderView();
+        });
+      });
+
+      document.querySelectorAll('[data-chapter]').forEach(card => {
+        card.addEventListener('click', () => {
+          handleChapterClick(card.dataset.chapter);
+        });
+      });
+
       updateSidebarProgress();
     }
 
@@ -446,13 +542,13 @@
     }
 
     function closeModal() {
-      const modal = document.getElementById('appModal');
-      modal.classList.remove('open');
+      document.getElementById('appModal').classList.remove('open');
       renderView();
     }
 
     function handleChapterClick(chapterName) {
-      if (chapterName === 'The Living World') {
+      const cleanName = decodeHtml(chapterName);
+      if (cleanName === 'The Living World') {
         startLivingWorldQuiz();
         return;
       }
@@ -461,18 +557,28 @@
         <div class="result-box">
           <div class="result-card">
             <div class="tag">Coming Soon</div>
-            <h3 style="font-size: 1.5rem; font-weight: 900; margin: 8px 0 0;">${escapeHtml(chapterName)}</h3>
-            <p>This chapter is locked while the rest of the EduPulse library is being expanded.</p>
+            <h3 style="font-size: 1.5rem; font-weight: 900; margin: 8px 0 0;">${escapeHtml(cleanName)}</h3>
+            <p>This chapter is currently locked while the rest of the EduPulse library is being expanded.</p>
             <div class="result-actions">
-              <button class="primary-btn" onclick="closeModal()">Got it</button>
+              <button class="primary-btn" id="complete-lock-btn" data-chapter="${escapeHtml(cleanName)}">Mark as completed</button>
+              <button class="plain-btn" id="close-lock-btn">Close</button>
             </div>
           </div>
         </div>
       `);
+
+      document.getElementById('complete-lock-btn')?.addEventListener('click', () => {
+        state.progress[cleanName] = { completed: true, pct: 100 };
+        localStorage.setItem('edupulse_progress', JSON.stringify(state.progress));
+        closeModal();
+      });
+      document.getElementById('close-lock-btn')?.addEventListener('click', closeModal);
     }
 
-    function normalizeChoice(value) {
-      return String(value).trim();
+    function decodeHtml(value) {
+      const textarea = document.createElement('textarea');
+      textarea.innerHTML = value;
+      return textarea.value;
     }
 
     function buildQuestionCard(question, index) {
@@ -480,18 +586,24 @@
       const answered = selected !== undefined;
       const currentQuestionNumber = index + 1;
 
+      const paletteButtons = state.quiz.questions.map((_, qIndex) => {
+        const answer = state.quiz.answers[qIndex];
+        let cls = 'dot';
+        if (answer !== undefined) {
+          cls += normalizeChoice(answer) === normalizeChoice(state.quiz.questions[qIndex].answer) ? ' correct' : ' wrong';
+        } else if (qIndex === index) {
+          cls += ' current';
+        }
+        return `<button class="${cls}" type="button" data-jump="${qIndex}">${qIndex + 1}</button>`;
+      }).join('');
+
       const optionsMarkup = question.options.map((option, optionIndex) => {
         const isSelected = normalizeChoice(option) === normalizeChoice(selected);
         const isCorrect = normalizeChoice(option) === normalizeChoice(question.answer);
-        const classes = [
-          'option',
-          answered && isCorrect ? 'correct' : '',
-          answered && isSelected && !isCorrect ? 'wrong' : '',
-          answered ? 'disabled' : ''
-        ].join(' ');
+        const classes = ['option', answered && isCorrect ? 'correct' : '', answered && isSelected && !isCorrect ? 'wrong' : '', answered ? 'disabled' : ''].join(' ');
 
         return `
-          <button class="${classes}" type="button" ${answered ? 'disabled' : ''} onclick="answerQuestion(${index}, '${escapeHtml(option)}')">
+          <button class="${classes}" type="button" ${answered ? 'disabled' : ''} data-answer="${escapeHtml(option)}">
             <span class="index">${String.fromCharCode(65 + optionIndex)}</span>
             <span>${escapeHtml(option)}</span>
           </button>
@@ -510,21 +622,10 @@
         `;
       }
 
-      const paletteButtons = state.quiz.questions.map((_, qIndex) => {
-        const answer = state.quiz.answers[qIndex];
-        let cls = 'dot';
-        if (typeof answer !== 'undefined') {
-          cls += normalizeChoice(answer) === normalizeChoice(state.quiz.questions[qIndex].answer) ? ' correct' : ' wrong';
-        } else if (qIndex === index) {
-          cls += ' current';
-        }
-        return `<button class="${cls}" type="button" onclick="jumpToQuestion(${qIndex})">${qIndex + 1}</button>`;
-      }).join('');
-
       return `
         <div class="quiz-header">
           <div class="left">
-            <button class="back-btn" onclick="closeModal()"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="back-btn" id="quiz-close-btn" type="button"><i class="fa-solid fa-arrow-left"></i></button>
             <div>
               <h2>Biology — The Living World</h2>
               <p>Recommended MCQs • NCERT Pattern</p>
@@ -535,8 +636,7 @@
 
         <div class="quiz-content">
           <div class="palette">${paletteButtons}</div>
-
-          <div class="question-shell animate-next">
+          <div class="question-shell">
             <div class="q-tag">Question ${currentQuestionNumber} of ${state.quiz.questions.length}</div>
             <div class="question-text">${escapeHtml(question.question)}</div>
             <div class="options">${optionsMarkup}</div>
@@ -544,11 +644,11 @@
 
             <div class="quiz-footer">
               <div class="nav-group">
-                <button class="plain-btn" type="button" ${index === 0 ? 'disabled' : ''} onclick="prevQuestion()">Previous</button>
+                <button class="plain-btn" type="button" ${index === 0 ? 'disabled' : ''} id="prev-question-btn">Previous</button>
               </div>
               <div class="nav-group">
-                <button class="primary-btn warn" type="button" onclick="skipQuestion()" ${answered ? 'style="display:none"' : ''}>Skip</button>
-                <button class="primary-btn" type="button" onclick="advanceQuestion()">${index === state.quiz.questions.length - 1 ? 'Finish' : 'Next Question'}</button>
+                <button class="primary-btn warn" type="button" id="skip-question-btn" ${answered ? 'style="display:none"' : ''}>Skip</button>
+                <button class="primary-btn" type="button" id="next-question-btn">${index === state.quiz.questions.length - 1 ? 'Finish' : 'Next Question'}</button>
               </div>
             </div>
           </div>
@@ -559,25 +659,41 @@
     function renderQuiz() {
       const activeQuestion = state.quiz.questions[state.quiz.currentIndex];
       if (!activeQuestion) return;
+
       const modalContent = document.getElementById('modalContent');
       modalContent.innerHTML = buildQuestionCard(activeQuestion, state.quiz.currentIndex);
-      const shell = modalContent.querySelector('.question-shell');
-      if (shell) {
-        shell.classList.remove('animate-next');
-        void shell.offsetWidth;
-        shell.classList.add('animate-next');
-      }
       document.getElementById('appModal').classList.add('open');
+
+      document.getElementById('quiz-close-btn')?.addEventListener('click', closeModal);
+      document.getElementById('prev-question-btn')?.addEventListener('click', prevQuestion);
+      document.getElementById('skip-question-btn')?.addEventListener('click', skipQuestion);
+      document.getElementById('next-question-btn')?.addEventListener('click', advanceQuestion);
+
+      document.querySelectorAll('[data-jump]').forEach(button => {
+        button.addEventListener('click', () => {
+          jumpToQuestion(Number(button.dataset.jump));
+        });
+      });
+
+      document.querySelectorAll('[data-answer]').forEach(button => {
+        button.addEventListener('click', () => {
+          const value = button.dataset.answer;
+          answerQuestion(state.quiz.currentIndex, value);
+        });
+      });
     }
 
     function answerQuestion(index, value) {
       if (state.quiz.answers[index] !== undefined) return;
-      const rawValue = value.replace(/^[A-Z]\.?\s*/, '');
+
+      const rawValue = decodeHtml(value).replace(/^[A-Z]\.?\s*/, '');
       state.quiz.answers[index] = rawValue;
       const currentQuestion = state.quiz.questions[index];
+
       if (normalizeChoice(rawValue) === normalizeChoice(currentQuestion.answer)) {
         state.quiz.score += 1;
       }
+
       renderQuiz();
     }
 
@@ -592,6 +708,7 @@
       if (state.quiz.answers[state.quiz.currentIndex] === undefined) {
         state.quiz.answers[state.quiz.currentIndex] = 'SKIPPED';
       }
+
       if (state.quiz.currentIndex < state.quiz.questions.length - 1) {
         state.quiz.currentIndex += 1;
         renderQuiz();
@@ -618,14 +735,16 @@
 
     function finishQuiz() {
       const total = state.quiz.questions.length;
-      const correct = Object.keys(state.quiz.answers).reduce((count, index) => {
-        const answer = state.quiz.answers[index];
-        const q = state.quiz.questions[Number(index)];
-        return count + (answer !== 'SKIPPED' && normalizeChoice(answer) === normalizeChoice(q.answer) ? 1 : 0);
+      const correct = Object.keys(state.quiz.answers).reduce((count, idx) => {
+        const value = state.quiz.answers[idx];
+        const question = state.quiz.questions[Number(idx)];
+        return count + (value !== 'SKIPPED' && normalizeChoice(value) === normalizeChoice(question.answer) ? 1 : 0);
       }, 0);
       const pct = Math.round((correct / total) * 100);
-      state.progress['The Living World'] = { completed: pct >= 60, pct: pct };
+
+      state.progress['The Living World'] = { completed: pct >= 60, pct };
       localStorage.setItem('edupulse_progress', JSON.stringify(state.progress));
+      updateSidebarProgress();
       renderView();
 
       openModal(`
@@ -636,52 +755,52 @@
             <div style="font-weight:800; color: var(--muted);">Accuracy: ${pct}%</div>
             <p>${pct >= 70 ? 'Excellent work. You are well prepared for the chapter.' : pct >= 50 ? 'Good effort. Review the explanations and try one more pass.' : 'Keep revising the chapter explanations and retake the set.'}</p>
             <div class="result-actions">
-              <button class="primary-btn" onclick="retakeQuiz()">Retake</button>
-              <button class="plain-btn" onclick="closeModal()">Close</button>
+              <button class="primary-btn" id="retake-btn">Retake</button>
+              <button class="plain-btn" id="close-result-btn">Close</button>
             </div>
           </div>
         </div>
       `);
-    }
 
-    function retakeQuiz() {
-      state.quiz.currentIndex = 0;
-      state.quiz.answers = {};
-      state.quiz.score = 0;
-      renderQuiz();
+      document.getElementById('retake-btn')?.addEventListener('click', () => {
+        state.quiz.currentIndex = 0;
+        state.quiz.answers = {};
+        state.quiz.score = 0;
+        renderQuiz();
+      });
+      document.getElementById('close-result-btn')?.addEventListener('click', closeModal);
     }
 
     async function loadLivingWorldQuestions() {
+      state.quiz.loading = true;
       try {
         const response = await fetch('Data/living_world_mcqs.json');
-        if (!response.ok) throw new Error('Could not load Data/living_world_mcqs.json');
-        const json = await response.json();
-        const mapped = (json.qs || []).map((item, idx) => ({
-          id: idx + 1,
-          question: item.q,
-          options: item.o,
-          answer: item.o[item.a - 1],
-          explanation: item.s || 'No explanation provided.'
-        }));
-        if (!mapped.length) throw new Error('No questions found');
-        state.quiz.questions = mapped;
+        let data = fallbackQuestions;
+
+        if (response.ok) {
+          const json = await response.json();
+          data = (json.qs || fallbackQuestions).map((item, idx) => ({
+            id: idx + 1,
+            question: item.q,
+            options: item.o,
+            answer: item.o[item.a - 1],
+            explanation: item.s || 'No explanation provided.'
+          }));
+        }
+
+        state.quiz.questions = data;
         state.quiz.currentIndex = 0;
         state.quiz.answers = {};
         state.quiz.score = 0;
         renderQuiz();
       } catch (error) {
-        openModal(`
-          <div class="result-box">
-            <div class="result-card">
-              <div class="tag">Error</div>
-              <h3 style="font-size: 1.5rem; font-weight: 900; margin: 8px 0 0;">Quiz failed to load</h3>
-              <p>${escapeHtml(error.message || 'Unknown error')}</p>
-              <div class="result-actions">
-                <button class="primary-btn" onclick="closeModal()">Close</button>
-              </div>
-            </div>
-          </div>
-        `);
+        state.quiz.questions = fallbackQuestions;
+        state.quiz.currentIndex = 0;
+        state.quiz.answers = {};
+        state.quiz.score = 0;
+        renderQuiz();
+      } finally {
+        state.quiz.loading = false;
       }
     }
 
@@ -696,15 +815,51 @@
       }
     }
 
-    function setCurrentDate() {
-      const dateElement = document.getElementById('current-date');
-      if (dateElement) {
-        dateElement.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    function attachTheme() {
+      const saved = localStorage.getItem('edupulse_theme');
+      if (saved === 'dark') {
+        document.body.classList.add('dark');
       }
+
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('edupulse_theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+      });
     }
 
-    setCurrentDate();
-    renderView();
+    function attachSidebarActions() {
+      document.getElementById('sidebarNav')?.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('#sidebarNav button').forEach(b => b.classList.remove('active'));
+          button.classList.add('active');
+          state.tab = button.dataset.tab;
+          if (state.tab === 'home') renderView();
+          else openModal(`
+            <div class="result-box">
+              <div class="result-card">
+                <div class="tag">${button.dataset.tab.toUpperCase()}</div>
+                <h3 style="font-size: 1.5rem; font-weight: 900; margin: 8px 0 0;">This section is active and ready for extension.</h3>
+                <p>The main chapter flow and quiz are already functional on the Home/Practice experience.</p>
+                <div class="result-actions">
+                  <button class="primary-btn" id="close-section-btn">Close</button>
+                </div>
+              </div>
+            </div>
+          `);
+          document.getElementById('close-section-btn')?.addEventListener('click', closeModal);
+        });
+      });
+    }
+
+    function init() {
+      setCurrentDate();
+      attachTheme();
+      attachSidebarActions();
+      renderView();
+      updateSidebarProgress();
+    }
+
+    init();
   </script>
 </body>
 </html>
