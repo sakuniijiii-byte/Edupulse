@@ -140,7 +140,7 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 <script>
 // ===== Quiz data location =====
 // Files are named  <subject>-<chapter>.json  (lowercase, hyphens), e.g. biology-plant-kingdom.json
-const DATA_BASE = "https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/Data/";
+const DATA_BASE = "Data/";
 const FILE_OVERRIDES = { 'The Living World': 'living_world_mcqs.json' }; // files that don't follow the pattern
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const quizUrl = chapter => DATA_BASE + (FILE_OVERRIDES[chapter] || `${slugify(subject + ' ' + chapter)}.json`);
