@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <!-- PWA Manifest Integration -->
-<link rel="manifest" id="pwa-manifest" href="data:application/manifest+json;utf8,%7B%22name%22%3A%22EduPulse%20PRO%22%2C%22short_name%22%3A%22EduPulse%22%2C%22start_url%22%3A%22%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230f172a%22%2C%22theme_color%22%3A%22%230d9488%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fapi.iconify.design%2Flucide%3Asparkles.svg%3Fcolor%3D%25230d9488%26width%3D192%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%2C%7B%22src%22%3A%22https%3A%2F%2Fapi.iconify.design%2Flucide%3Asparkles.svg%3Fcolor%3D%25230d9488%26width%3D512%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link rel="manifest" id="pwa-manifest" href="data:application/manifest+json;utf8,%7B%22name%22%3A%22EduPulse%20PRO%22%2C%22short_name%22%3A%22EduPulse%22%2C%22start_url%22%3A%22%2F%22%2C%22display[...]
 <meta name="theme-color" content="#0d9488">
 <style>
 :root{
@@ -53,13 +53,13 @@ body.dark {
     --deep: #0f2e33;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;transition:background-color 0.2s, color 0.2s; -webkit-font-smoothing:antialiased;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;transition:background-color 0.2s, color 0.2s; -webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0}
 .app-layout{display:flex;flex-direction:column;min-height:100vh}
 @media (min-width: 1024px){.app-layout{flex-direction:row}.sidebar{position:fixed;inset:0 auto 0 0;width:260px;height:100vh;overflow-y:auto}.content{margin-left:260px;flex:1;width:calc(100% - 260px)}}
 .brand{display:flex;gap:12px;align-items:center}
-.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg, var(--teal-strong), var(--teal));color:white;font-weight:900;box-shadow:0 10px 20px rgba(13, 148, 136, 0.2)}
+.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg, var(--teal-strong), var(--teal));color:white;font-weight:900;box-shadow:0 10px 20px rgba(13,148,136,0.25)}
 .brand b{font-size:16px;color:var(--text)}
 .brand b span{color:var(--teal)}
 .eyebrow{margin:2px 0 0;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
@@ -73,14 +73,14 @@ button{cursor:pointer;border:0}
 body.dark .bar{background:rgba(255,255,255,0.15)}
 .bar i{display:block;height:100%;background:var(--teal);transition:width 0.5s ease}
 .goal p{font-size:11px;color:var(--muted);margin-top:6px}
-.topbar{height:70px;border-bottom:1px solid var(--border);background:var(--panel);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:10}
+.topbar{height:70px;border-bottom:1px solid var(--border);background:var(--panel);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:20}
 .date{color:var(--muted);font-size:11px;font-weight:600}
 .topbar h1{font-size:18px;margin:2px 0 0;color:var(--text);font-weight:800}
 .main{max-width:1400px;margin:auto;padding:24px}
 .tag{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.17em;font-size:11px}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:24px;box-shadow:var(--shadow);transition:all 0.2s ease-in-out}
 .card:hover{border-color:rgba(13,148,136,0.3);box-shadow:0 6px 16px rgba(0,0,0,0.05)}
-.subject{padding:14px 16px;border:1px solid var(--border);border-radius:16px;background:var(--panel);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all 0.2s}
+.subject{padding:14px 16px;border:1px solid var(--border);border-radius:16px;background:var(--panel);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all 0.2s ease}
 .subject.selected{border-color:var(--teal);background:rgba(16,155,141,0.08)}
 .subject b{display:block;color:var(--text);font-size:14px}
 .subject small{display:block;color:var(--muted);margin-top:2px;font-size:12px}
@@ -98,41 +98,19 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
 .practice{margin-top:14px;color:var(--teal);font-weight:800;background:none;padding:0;display:inline-flex;align-items:center;gap:4px;font-size:13px}
 .controls input,.controls select{padding:8px 12px;border:1px solid var(--border);border-radius:12px;background:var(--panel);color:var(--text);outline:none;font-size:13px}
 .controls input:focus, .controls select:focus{border-color:var(--teal)}
-.custom-modal{position:fixed;inset:0;background:rgba(15, 23, 42, 0.65);backdrop-filter:blur(6px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease;padding:16px}.custom-modal.open{opacity:1;pointer-events:auto}.modal-box{background:var(--panel);color:var(--text);width:100%;max-width:980px;border-radius:24px;padding:24px;border:1px solid var(--border);box-shadow:var(--shadow);transform:translateY(10px) scale(0.98);transition:transform 0.2s ease;max-height:88vh;overflow:auto}
+.custom-modal{position:fixed;inset:0;background:rgba(15, 23, 42, 0.65);backdrop-filter:blur(6px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity 0.2s ease}
+.custom-modal.open{opacity:1;pointer-events:auto}
 .custom-modal.open .modal-box{transform:scale(1)}
-
+.custom-modal .modal-box{width:min(92vw,700px);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:24px;padding:22px 20px;transform:scale(0.96);transition:transform 0.2s ease;box-shadow:var(--shadow)}
 /* Full-Screen Quiz Mode Overrides */
-.custom-modal.fullscreen-modal {
-    padding: 0;
-}
-.custom-modal.fullscreen-modal .modal-box {
-    max-width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
-    border-radius: 0;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-}
-
+.custom-modal.fullscreen-modal { padding: 0; }
+.custom-modal.fullscreen-modal .modal-box { max-width: 100vw; width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; border: none; display: flex; flex-direction: column; padding: 0; }
 .mobile-nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px);z-index:45;opacity:0;pointer-events:none;transition:opacity 0.2s ease}.mobile-nav-overlay.open{opacity:1;pointer-events:auto}
-@media (max-width: 1023px){.sidebar-drawer{position:fixed;top:0;left:0;bottom:0;width:280px;background:var(--panel);z-index:50;transform:translateX(-100%);transition:transform 0.3s ease;padding:20px;display:flex;flex-direction:column;overflow-y:auto}.sidebar-drawer.open{transform:translateX(0)}}
-
-@keyframes lockBounce {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-8px) scale(1.05); }
-}
-@keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 15px rgba(234, 179, 8, 0.2); }
-    50% { box-shadow: 0 0 35px rgba(234, 179, 8, 0.5); }
-}
-.animate-lock-bounce {
-    animation: lockBounce 2s ease-in-out infinite;
-}
-.animate-pulse-glow {
-    animation: pulseGlow 2.5s infinite;
-}
+@media (max-width: 1023px){.sidebar-drawer{position:fixed;top:0;left:0;bottom:0;width:280px;background:var(--panel);z-index:50;transform:translateX(-100%);transition:transform 0.3s ease;padding:20px 16px}.sidebar-drawer.open{transform:translateX(0)}}
+@keyframes lockBounce {0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.05); }}
+@keyframes pulseGlow {0%, 100% { box-shadow: 0 0 15px rgba(234, 179, 8, 0.2); } 50% { box-shadow: 0 0 35px rgba(234, 179, 8, 0.5); }}
+.animate-lock-bounce { animation: lockBounce 2s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 2.5s infinite; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
@@ -153,7 +131,7 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
         </div>
         <nav class="nav my-6 space-y-1">
             <button onclick="switchTab('home')" id="nav-home" class="active"><i class="fa-solid fa-house w-5"></i> Home</button>
-            <button onclick="switchTab('practice')" id="nav-practice"><i class="fa-solid fa-list-check w-5"></i> Practice <small style="margin-left:auto;background:#c6f36b;color:#30521e;border-radius:999px;padding:2px 6px;font-size:9px;">79</small></button>
+            <button onclick="switchTab('practice')" id="nav-practice"><i class="fa-solid fa-list-check w-5"></i> Practice <small style="margin-left:auto;background:#c6f36b;color:#30521e;border-radius:999px;padding:2px 8px;font-size:9px;font-weight:800">LIVE</small></button>
             <button onclick="switchTab('directory')" id="nav-directory"><i class="fa-solid fa-book-bookmark w-5"></i> Resource Directory</button>
             <button onclick="switchTab('faculty')" id="nav-faculty"><i class="fa-solid fa-chalkboard-user w-5"></i> Faculty Hub</button>
             <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Focus & Planner</button>
@@ -172,7 +150,7 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
                 <button onclick="toggleMobileNav(true)" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition">
                     <i class="fa-solid fa-bars text-lg"></i>
                 </button>
-                <button id="back-btn" onclick="goBack()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700">
+                <button id="back-btn" onclick="goBack()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition text-xs font-bold">
                     <i class="fa-solid fa-arrow-left text-xs"></i> Back
                 </button>
                 <div>
@@ -182,8 +160,7 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
                 </div>
             </div>
             <div class="flex items-center gap-2 sm:gap-3">
-                <!-- PWA Install Button -->
-                <button id="pwa-install-btn" onclick="triggerPwaInstall()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition">
+                <button id="pwa-install-btn" onclick="triggerPwaInstall()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm">
                     <i class="fa-solid fa-download text-xs"></i> Install App
                 </button>
                 <button onclick="toggleTheme()" class="p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
@@ -209,6 +186,8 @@ body.dark .progress{background:rgba(255,255,255,0.1)}
 </div>
 
 <script>
+const LIVING_WORLD_DATA_URL = 'https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/Data/living_world_mcqs.json';
+
 const data = {
     Biology: [
         'The Living World','Biological Classification','Plant Kingdom','Animal Kingdom',
@@ -249,16 +228,16 @@ const data = {
 const TEACHERS_DATA = [
     { id: "t1", name: "RCM Sir", badge: "Expert Educator", img: "https://i.ibb.co/tTqKFyp8/RCM-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasPhrjrSqNnxyiLwaDI_Qml" },
     { id: "t2", name: "MKG Sir", badge: "Expert Educator", img: "https://i.ibb.co/3x97xd0/MKG-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauIS74mnISFrQttmOdM1-As" },
-    { id: "t3", name: "Dilip Arora Sir (DA)", badge: "Expert Educator", img: "https://i.ibb.co/ZRfPy476/DILIP-ARORA-SIR-DA.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatKeD-H1MIcRIFsfgnYoARM" },
+    { id: "t3", name: "Dilip Arora Sir (DA)", badge: "Expert Educator", img: "https://i.ibb.co/ZRfPy476/DILIP-ARORA-SIR-DA.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatKk-hN3y5_ptI6dwNzkvKv" },
     { id: "t4", name: "MJ Star", badge: "Expert Educator", img: "https://i.ibb.co/4gdKvtxD/MJ-STAR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatxrU7mofuhm4EIqjJTOGsx" },
-    { id: "t5", name: "INSAF ALI 25+26", badge: "Batch 25+26", img: "https://i.ibb.co/PGjy3M49/INSAF-ALI-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauRxuhd51FjB4E9fx1VZHa2" },
-    { id: "t6", name: "Radhe Shyam Khandelwar (RSK)", badge: "Expert Educator", img: "https://i.ibb.co/Ldf3j5gY/RADHE-SHYAM-KHANDELWAR-RSK.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUat-QWU0bF7vGZMp3GWzeLrZ" },
-    { id: "t7", name: "Acid Sir MP1", badge: "MP1 Specialist", img: "https://i.ibb.co/7x2rg9Hh/ACID-SIR-MP1.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauNwiUN6JfPzzn-oBmohWTp" },
-    { id: "t8", name: "RAVI DUBEY 26", badge: "Batch 26", img: "https://i.ibb.co/C3rtKPnn/RAVI-DUBEY-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasEpc2FqiGD9YSLb7wlhawG" },
-    { id: "t9", name: "TNM CONQUER 1", badge: "Conquer Series", img: "https://i.ibb.co/Y7bCYBGG/TNM-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUavDapnfWF1vAYozb6J5-WpT" },
+    { id: "t5", name: "INSAF ALI 25+26", badge: "Batch 25+26", img: "https://i.ibb.co/PGjy3M49/INSAF-ALI-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauRxuhd51FjB4E9fxbF39B5" },
+    { id: "t6", name: "Radhe Shyam Khandelwar (RSK)", badge: "Expert Educator", img: "https://i.ibb.co/Ldf3j5gY/RADHE-SHYAM-KHANDELWAR-RSK.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauF4QdZSk9qG3nZ9YtD8wEJ" },
+    { id: "t7", name: "Acid Sir MP1", badge: "MP1 Specialist", img: "https://i.ibb.co/7x2rg9Hh/ACID-SIR-MP1.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauNwiUN6JfPzzn-oBmwG1ix" },
+    { id: "t8", name: "RAVI DUBEY 26", badge: "Batch 26", img: "https://i.ibb.co/C3rtKPnn/RAVI-DUBEY-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasEpc2FqiGD9YSLb7wlhaP4" },
+    { id: "t9", name: "TNM CONQUER 1", badge: "Conquer Series", img: "https://i.ibb.co/Y7bCYBGG/TNM-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUavDapnfWF1vAYozb6J5-Wp8" },
     { id: "t10", name: "YSY CONQUER 26", badge: "Conquer 26", img: "https://i.ibb.co/XZPd2d3J/YSY-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasNSyhAj5uTe3xZFNZEo-XT" },
-    { id: "t11", name: "ASHISH GUPTA SARVAN 26", badge: "Sarvan 26", img: "https://i.ibb.co/1HqPrL6/ASHISH-GUPTA-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasViC2fWpvWwdSkcjSbO5tE" },
-    { id: "t12", name: "Mahesh Patidar", badge: "Expert Educator", img: "https://i.ibb.co/RTGnxShs/Smart-Select-20260609-170750-Google.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatUhVc-yyM09k1idZ5ZUsdZ" }
+    { id: "t11", name: "ASHISH GUPTA SARVAN 26", badge: "Sarvan 26", img: "https://i.ibb.co/1HqPrL6/ASHISH-GUPTA-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasViC2fWpWjLh0RrZSsM5af" },
+    { id: "t12", name: "Mahesh Patidar", badge: "Expert Educator", img: "https://i.ibb.co/RTGnxShs/Smart-Select-20260609-170750-Google.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUaR0Lf3zS-hS4fOQfG9qS0fV" }
 ];
 
 const INITIAL_RESOURCES = [
@@ -283,7 +262,6 @@ const INITIAL_RESOURCES = [
     { id: "fun1", title: "Wotaku Wiki", category: "Fun & Media", subtag: "Fun", badge: "Wotaku", url: "https://wotaku.wiki/" }
 ];
 
-// PROGRAMMATIC GENERATION OF ALL 180 QUESTIONS
 function generate180LivingWorldQuestions() {
     const baseQuestions = [
         { id: 1, question: 'House fly and wheat families respectively are', options: ['Anacardiaceae, Solanacceae','Muscidae, Poaceae','Poaceae, Sapendales','Poaceae, Muscidae'], answer: 'Muscidae, Poaceae' },
@@ -296,7 +274,7 @@ function generate180LivingWorldQuestions() {
         { id: 8, question: 'Which one of the following taxonomic categories tops the hierarchy of categories?', options: ['Order','Division','Class','Genus'], answer: 'Division' },
         { id: 9, question: 'Genera consists of which of the following: I. order II. class III. family IV. species', options: ['I only','II only','IV only','I and III only'], answer: 'IV only' },
         { id: 10, question: 'The number of species that are known and described, are approximately', options: ['0.5-1.0 million','1.7-1.8 million','3.3-3.5 million','13-14 million'], answer: '1.7-1.8 million' },
-        { id: 11, question: 'Which of the following is not the correct hierarchical arrangement? (I) Class -> Family -> Genus (II) Phylum -> Order -> Family (III) Class -> Order -> Family (IV) Family -> Class -> Order', options: ['I, II, IV','II, III, V','I, II, III','I, II, III, IV'], answer: 'I, II, IV' },
+        { id: 11, question: 'Which of the following is not the correct hierarchical arrangement?', options: ['I, II, IV','II, III, V','I, II, III','I, II, III, IV'], answer: 'I, II, IV' },
         { id: 12, question: 'The word systematics is derived from', options: ['Greek word systema','Italic word systema','Latin word systema','English word system'], answer: 'Latin word systema' },
         { id: 13, question: 'Class mammalia consists of', options: ['Order primata','Class primata','Order carnivora','Both 1 and 3'], answer: 'Both 1 and 3' },
         { id: 14, question: 'Why reproduction cannot be considered as an inclusive defining characteristic of all living organisms?', options: ['Non-living organisms also reproduce','Some living organisms are sterile and cannot produce offsprings','Some living organisms are sterile and can produce offsprings','Both 1 and 2'], answer: 'Some living organisms are sterile and cannot produce offsprings' },
@@ -308,22 +286,22 @@ function generate180LivingWorldQuestions() {
         { id: 20, question: 'Which is a taxonomic category?', options: ['Canidae','Felidae','Phylum','Solanaceae'], answer: 'Phylum' },
         { id: 21, question: 'Which of the following is a defining characteristic of living organisms?', options: ['Growth','Unable to grow','Reproduction','Response to external stimuli'], answer: 'Response to external stimuli' },
         { id: 22, question: 'Which taxonomic category of mango and wheat is similar?', options: ['Order and family','Only Division','Division and class','Division, Class & Order'], answer: 'Only Division' },
-        { id: 23, question: "'Order' related to brinjal is", options: ['Poales','Sapindales','Dicotyledonae','Polymoniales'], answer: 'Polymoniales' },
+        { id: 23, question: 'Order related to brinjal is', options: ['Poales','Sapindales','Dicotyledonae','Polymoniales'], answer: 'Polymoniales' },
         { id: 24, question: 'Choose the correct statement:', options: ['Growth in multicellular organisms cannot take place in in vitro culture.','Growth by cell division in unicellular organisms can be observed in in vivo culture.','Growth by cell division in unicellular organisms cannot be observed by any method.','Growth by cell division in unicellular organisms can be observed in in vitro culture.'], answer: 'Growth by cell division in unicellular organisms can be observed in in vitro culture.' },
         { id: 25, question: 'Select a species which belongs to genus Solanum', options: ['tuberosum','melongena','nigrum','All of them'], answer: 'All of them' },
-        { id: 26, question: 'Identify the correct statement/option: (I) Convolvulaceae, Solanaceae - Plant families (II) Felidae, Canidae - Animal family (III) Systema Naturae - Linnaeus (IV) Category represents rank', options: ['I, II, III','I, III, IV','I, II, IV','I, III'], answer: 'I, II, IV' },
+        { id: 26, question: 'Identify the correct statement/option:', options: ['I, II, III','I, III, IV','I, II, IV','I, III'], answer: 'I, II, IV' },
         { id: 27, question: 'Consciousness is the defining property of living organisms because', options: ['Photoperiod affects reproduction in seasonal breeders in both plants and animals','Plants respond to external factors like temperature and light','All organisms handle chemicals entering their bodies','All of the above'], answer: 'All of the above' },
         { id: 28, question: 'Which of the following covers a greater number of animals?', options: ['Class','Order','Genus','Phylum'], answer: 'Phylum' },
-        { id: 29, question: 'Identify the incorrect statement:', options: ['Characterisation, identification, classification and nomenclature are the processes that are basic to taxonomy.','A true species consists of a population that are reproductively isolated','The sum total of all the chemical reactions occurring in our body is metabolism.','All plants, animals, fungi exhibit metabolism and microbes donot exhibit metabolism.'], answer: 'All plants, animals, fungi exhibit metabolism and microbes donot exhibit metabolism.' },
+        { id: 29, question: 'Identify the incorrect statement:', options: ['I, III','I, IV','I, II, IV','IV'], answer: 'IV' },
         { id: 30, question: 'Taxon refers to', options: ['Species','Family','Genus','All of these'], answer: 'All of these' },
-        { id: 31, question: 'Organisms with their taxonomic categories: I. Man -> Homo sapiens -> Homo -> Hominidae -> Mammalia II. Mango -> Mangifera indica -> Mangifera -> Anacardiaceae -> Dicotyledonae', options: ['I and II correct','II only correct','I and III correct','I, III and IV correct'], answer: 'I and II correct' },
-        { id: 32, question: 'Wheat belongs to which family?', options: ['Solanaceae','Anacardiaceae','Liliaceae','Poaceae'], answer: 'Poaceae' },
-        { id: 33, question: 'Identify the organisms that are fertile: i. mules ii. female worker bees iii. sterile human couples', options: ['i only','i, ii only','i, ii, iii','None of them'], answer: 'None of them' },
-        { id: 34, question: 'Identify the incorrect statement:', options: ['Living world consists of amazing diversity of living organisms','Early man could easily perceive the difference between inanimate and living organisms','Systematic description of life forms is brought about by Identification, Nomenclature and Classification','Societies which indulged in anthropocentric view of biology registered huge progress in biology knowledge'], answer: 'Societies which indulged in anthropocentric view of biology registered huge progress in biology knowledge' },
+        { id: 31, question: 'Organisms with their taxonomic categories in order with common name -> biological name:', options: ['I and II correct','II only correct','I and III correct','I, III and IV correct'], answer: 'I and III correct' },
+        { id: 32, question: 'Wheat belongs to which family', options: ['Solanaceae','Anacardiaceae','Liliaceae','Poaceae'], answer: 'Poaceae' },
+        { id: 33, question: 'Identify the organisms that are fertile?', options: ['i only','i, ii only','i, ii, iii','None of them'], answer: 'None of them' },
+        { id: 34, question: 'Identify the incorrect statement', options: ['Living world consists of amazing diversity of living organisms','Early man could easily perceive the difference between inanimate and living organisms','Systematic description of life forms is brought about by Identification, Nomenclature and Classification','Societies which indulged in anthropocentric view of biology registered huge progress in biology knowledge'], answer: 'Societies which indulged in anthropocentric view of biology registered huge progress in biology knowledge' },
         { id: 35, question: 'Polymoniales and Sapindales represent', options: ['Genus','Class','Order','Species'], answer: 'Order' },
-        { id: 36, question: 'Match the following: (I) Kingdom - Plantae (II) Order - Polymoniales (III) Species - tuberosum (IV) Genus - Solanum', options: ['I','I, II, III, IV','I, II, IV','I, IV'], answer: 'I, II, III, IV' },
-        { id: 37, question: "'The Darwin of the 20th century', this title is given to", options: ['Mendel','Linnaeus','Ernst Mayr','Ernst Haeckel'], answer: 'Ernst Mayr' },
-        { id: 38, question: "Which of the following suffixes used for units of classification in plants indicates a taxonomic category of 'family'?", options: ['-ales','-onae','-aceae','-ae'], answer: '-aceae' },
+        { id: 36, question: 'Match the following and choose the correct option:', options: ['I','II, III, IV, V','I, II, IV','I, IV, V'], answer: 'II, III, IV, V' },
+        { id: 37, question: 'The Darwin of the 20th century, this title is given to', options: ['Mendel','Linnaeus','Ernst Mayr','Ernst Haecke'], answer: 'Ernst Mayr' },
+        { id: 38, question: 'Which of the following suffixes used for units of classification in plants indicates a taxonomic category of family?', options: ['-ales','-onae','-aceae','-ae'], answer: '-aceae' },
         { id: 39, question: 'What is the fundamental taxonomic category or basic unit of classification?', options: ['Kingdom','Order','Species','Genus'], answer: 'Species' },
         { id: 40, question: 'ICBN stands for', options: ['International Code for Botanical Nomenclature','International Code for Biological Names','Indian Code of Botanical Nomenclature','Indian Congress of Biological Names'], answer: 'International Code for Botanical Nomenclature' },
         { id: 41, question: 'Nomenclature or naming is only possible when the organism is described correctly. This process is', options: ['Taxonomy','Classification','Binomial system','Identification'], answer: 'Identification' },
@@ -331,61 +309,57 @@ function generate180LivingWorldQuestions() {
         { id: 43, question: 'The order Carnivora includes family', options: ['Felidae','Convolvulaceae','Felidae and Canidae','Canidae'], answer: 'Felidae and Canidae' },
         { id: 44, question: 'Select an organism showing growth up to a certain age only', options: ['Rose','Humans','Papaya','Mango'], answer: 'Humans' },
         { id: 45, question: 'Select the correctly matched pair of organisms with their order:', options: ['Musca domestica: Diptera','Homo sapiens: Poales','Mangifera indica: Primata','Triticum aestivum: Sapindales'], answer: 'Musca domestica: Diptera' },
-        { id: 46, question: "The taxonomic unit 'Phylum' in the classification of animals is equivalent to which level in plants?", options: ['Class','Order','Division','Family'], answer: 'Division' },
-        { id: 47, question: 'Read the following statements and select the incorrect one:', options: ['Isolated metabolic reactions in vitro are living things','Many organisms like mules, sterile worker bees do not reproduce','Living organisms are self-replicating, evolving systems','Mountains and sand mounds show extrinsic growth'], answer: 'Isolated metabolic reactions in vitro are living things' },
+        { id: 46, question: 'The taxonomic unit Phylum in the classification of animals is equivalent to which hierarchial level in classification of plants?', options: ['Class','Order','Division','Family'], answer: 'Division' },
+        { id: 47, question: 'Read the following statements and select the incorrect one:', options: ['Isolated metabolic reactions in vitro are living things','Many organisms like mules, sterile worker bees and infertile human couples do not reproduce at all','Living organisms are self-replicating, evolving and self-regulating interactive systems capable of responding to external stimuli.','Mountains, boulders and sand mounds do grow if we take increase in body mass as criterion for growth.'], answer: 'Isolated metabolic reactions in vitro are living things' },
         { id: 48, question: 'Dead organisms', options: ['Grow','Do not grow','Sometimes grow','Exhibit external growth only'], answer: 'Do not grow' },
-        { id: 49, question: 'Match the following columns about humans: A. Family -> T. Hominidae, B. Kingdom -> S. Animalia, C. Order -> R. Primates, D. Species -> Q. sapiens, E. Genus -> P. Homo', options: ['A-T, B-S, C-R, D-Q, E-P','A-P, B-S, C-R, D-Q, E-T','A-T, B-S, C-R, D-P, E-Q','A-Q, B-R, C-S, D-T, E-P'], answer: 'A-T, B-S, C-R, D-Q, E-P' },
+        { id: 49, question: 'Match the following columns and select the correct choice about humans:', options: ['A-T, B-S, C-R, D-Q, E-P','A-P, B-S, C-R, D-Q, E-T','A-T, B-S, C-R, D-P, E-Q','A-T, B-R, C-Q, D-S, E-P'], answer: 'A-T, B-S, C-R, D-Q, E-P' },
         { id: 50, question: 'Binomial nomenclature was given by', options: ['Linnaeus','Whittaker','Aristotle','Theophrastus'], answer: 'Linnaeus' }
     ];
 
     const extraTopics = [
-        "Herbarium sheets", "Key and Couplet", "Botanical Gardens", "Monograph vs Flora", 
-        "Taxonomic Keys", "Museum specimens", "Zoological Parks", "Binomial rules", 
-        "Intrinsic vs Extrinsic Growth", "Metabolism in Cell-free systems"
+        'Herbarium sheets', 'Key and Couplet', 'Botanical Gardens', 'Monograph vs Flora',
+        'Taxonomic Keys', 'Museum specimens', 'Zoological Parks', 'Binomial rules',
+        'Intrinsic vs Extrinsic Growth', 'Metabolism in Cell-free systems'
     ];
 
     const questions = [...baseQuestions];
-
     for (let i = 51; i <= 180; i++) {
         const topic = extraTopics[(i - 51) % extraTopics.length];
-        const qNum = i;
         if (i % 4 === 1) {
-            questions.push({
-                id: qNum,
-                question: `Which statement correctly describes ${topic} in NCERT taxonomy (Q${qNum})?`,
-                options: [
-                    `It serves as an essential taxonomic aid for standard identification.`,
-                    `It is exclusively used for living animal collections.`,
-                    `It contains only dead animal specimens kept in formalin.`,
-                    `It is not recognized under international codes.`
-                ],
-                answer: `It serves as an essential taxonomic aid for standard identification.`
-            });
+            questions.push({ id: i, question: `Which statement correctly describes ${topic} in NCERT taxonomy (Q${i})?`, options: ['It serves as an essential taxonomic aid for standard identification.','It is exclusively used for living animal collections.','It contains only dead animal specimens kept in formalin.','It is not recognized under international codes.'], answer: 'It serves as an essential taxonomic aid for standard identification.' });
         } else if (i % 4 === 2) {
-            questions.push({
-                id: qNum,
-                question: `In the hierarchical sequence of taxonomy, which category holds higher rank than Genus but lower than Order? (Q${qNum})`,
-                options: ['Kingdom', 'Phylum', 'Family', 'Species'],
-                answer: 'Family'
-            });
+            questions.push({ id: i, question: `In the hierarchical sequence of taxonomy, which category holds higher rank than Genus but lower than Order? (Q${i})`, options: ['Kingdom','Phylum','Family','Species'], answer: 'Family' });
         } else if (i % 4 === 3) {
-            questions.push({
-                id: qNum,
-                question: `Which of the following is considered an intrinsic defining property of all living organisms? (Q${qNum})`,
-                options: ['Cellular organisation and Metabolism', 'Extrinsic growth by accumulation', 'Ability to move from place to place', 'Sexual reproduction in all life stages'],
-                answer: 'Cellular organisation and Metabolism'
-            });
+            questions.push({ id: i, question: `Which of the following is considered an intrinsic defining property of all living organisms? (Q${i})`, options: ['Cellular organisation and Metabolism','Extrinsic growth by accumulation','Ability to move from place to place','Sexual reproduction in all life stages'], answer: 'Cellular organisation and Metabolism' });
         } else {
-            questions.push({
-                id: qNum,
-                question: `In binomial nomenclature, the scientific name is written in italics or underlined to denote its origin from which language? (Q${qNum})`,
-                options: ['Latin', 'Greek', 'English', 'French'],
-                answer: 'Latin'
-            });
+            questions.push({ id: i, question: `In binomial nomenclature, the scientific name is written in italics or underlined to denote its origin from which language? (Q${i})`, options: ['Latin','Greek','English','French'], answer: 'Latin' });
         }
     }
 
     return questions;
+}
+
+async function loadLivingWorldQuestions() {
+    try {
+        const response = await fetch(LIVING_WORLD_DATA_URL, { cache: 'no-store' });
+        if (!response.ok) throw new Error('Failed to fetch Living World JSON');
+
+        const payload = await response.json();
+        const set = Array.isArray(payload?.qs) ? payload.qs : [];
+
+        if (set.length) {
+            return set.map((item, index) => ({
+                id: index + 1,
+                question: item.q,
+                options: Array.isArray(item.o) ? item.o : [],
+                answer: Array.isArray(item.o) && Number.isInteger(item.a) && item.a > 0 && item.a <= item.o.length ? item.o[item.a - 1] : item.o?.[0] || ''
+            }));
+        }
+    } catch (error) {
+        console.warn('Falling back to bundled living world data:', error);
+    }
+
+    return generate180LivingWorldQuestions();
 }
 
 let currentTab = 'home';
@@ -523,7 +497,7 @@ function renderChapters() {
     const subjectBadgeClass = subject === 'Biology' ? 'bio' : subject === 'Chemistry' ? 'chem' : 'phy';
     const subjectShort = subject === 'Biology' ? 'BIO' : subject === 'Chemistry' ? 'CHEM' : 'PHY';
 
-    container.innerHTML = filtered.map((ch, idx) => {
+    container.innerHTML = filtered.map((ch) => {
         const isDone = userProgress[ch] && userProgress[ch].completed;
         const safeName = ch.replace(/'/g, "\\'");
         return `
@@ -531,7 +505,7 @@ function renderChapters() {
                 <div>
                     <div class="flex items-center justify-between">
                         <span class="chip ${subjectBadgeClass}">${subjectShort}</span>
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${isDone ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400'}">
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${isDone ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'}">
                             ${isDone ? 'Completed ✓' : 'Pending'}
                         </span>
                     </div>
@@ -612,20 +586,20 @@ function renderLivingWorldQuiz() {
         const ans = quizState.userAnswers[idx];
         const isSkipped = quizState.skippedQuestions[idx];
 
-        let bgClass = "bg-white text-emerald-700 border border-emerald-500 font-medium dark:bg-slate-800 dark:text-emerald-400 dark:border-emerald-600";
+        let bgClass = 'bg-white text-emerald-700 border border-emerald-500 font-medium dark:bg-slate-800 dark:text-emerald-400 dark:border-emerald-600';
         
         if (ans !== undefined) {
             const qObj = quizState.questions[idx];
             if (normalizeQuestion(ans) === normalizeQuestion(qObj.answer)) {
-                bgClass = "bg-emerald-600 text-white font-bold border-transparent";
+                bgClass = 'bg-emerald-600 text-white font-bold border-transparent';
             } else {
-                bgClass = "bg-rose-500 text-white font-bold border-transparent";
+                bgClass = 'bg-rose-500 text-white font-bold border-transparent';
             }
         } else if (isSkipped) {
-            bgClass = "bg-amber-500 text-white font-bold border-transparent";
+            bgClass = 'bg-amber-500 text-white font-bold border-transparent';
         }
 
-        const borderClass = isCurrent ? "ring-2 ring-teal-400 ring-offset-2 dark:ring-offset-slate-900 scale-105 z-10" : "";
+        const borderClass = isCurrent ? 'ring-2 ring-teal-400 ring-offset-2 dark:ring-offset-slate-900 scale-105 z-10' : '';
 
         return `
             <button onclick="jumpToQuestion(${idx})" class="w-8 h-8 rounded-lg text-xs flex items-center justify-center shrink-0 transition-all ${bgClass} ${borderClass}">
@@ -654,7 +628,7 @@ function renderLivingWorldQuiz() {
         }
 
         return `
-            <button type="button" class="${optionClasses}" onclick="${isAnswered ? '' : `selectOptionTemp('${escapeHtml(normalizedOption)}')`}">
+            <button type="button" class="${optionClasses}" onclick="${isAnswered ? '' : `selectOptionTemp('${escapeHtml(normalizedOption)}')'}">
                 <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + idx)}</span>
                 <span class="flex-1">${escapeHtml(option)}</span>
             </button>
@@ -662,8 +636,8 @@ function renderLivingWorldQuiz() {
     }).join('');
 
     const resultMarkup = isAnswered ? `
-        <div class="mt-4 rounded-xl border ${selected === normalizeQuestion(correctAnswer) ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} px-4 py-3 text-sm font-semibold">
-            ${selected === normalizeQuestion(correctAnswer) ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'} Correct option: <span class="font-black">${escapeHtml(correctAnswer)}</span>
+        <div class="mt-4 rounded-xl border ${selected === normalizeQuestion(correctAnswer) ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-200'} px-4 py-3 text-sm font-semibold">
+            ${selected === normalizeQuestion(correctAnswer) ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Wrong answer'}
         </div>
     ` : '';
 
@@ -676,11 +650,11 @@ function renderLivingWorldQuiz() {
                     <div class="logo">✦</div>
                     <div>
                         <div class="brand-text">Edu<span>Pulse</span> Quiz</div>
-                        <div class="sub">Biology — The Living World (180 MCQs)</div>
+                        <div class="sub">Biology — The Living World (${quizState.questions.length} MCQs)</div>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
-                    <div class="rounded-full bg-emerald-50 dark:bg-emerald-950 px-3 py-1 text-xs font-extrabold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                    <div class="rounded-full bg-emerald-50 dark:bg-emerald-950 px-3 py-1 text-xs font-extrabold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900">
                         Score: ${quizState.score}/${quizState.questions.length}
                     </div>
                     <button type="button" onclick="exitQuizFullscreen()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
@@ -693,7 +667,7 @@ function renderLivingWorldQuiz() {
                 <div class="flex items-center gap-1.5 overflow-x-auto py-1 scroll-smooth flex-1 pr-2">
                     ${paletteButtons}
                 </div>
-                <button type="button" onclick="togglePaletteExpanded(true)" title="Expand Question Palette" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 shrink-0 shadow-sm">
+                <button type="button" onclick="togglePaletteExpanded(true)" title="Expand Question Palette" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shrink-0">
                     <i class="fa-solid fa-list-check text-sm"></i>
                 </button>
             </div>
@@ -709,7 +683,7 @@ function renderLivingWorldQuiz() {
                 </div>
 
                 <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
-                    <button type="button" onclick="jumpToQuestion(${Math.max(0, currentIdx - 1)})" ${currentIdx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-200 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-300 disabled:opacity-40">
+                    <button type="button" onclick="jumpToQuestion(${Math.max(0, currentIdx - 1)})" ${currentIdx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-200 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-200 ${currentIdx === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-slate-300 dark:hover:bg-slate-700'} transition">
                         ← Previous
                     </button>
 
@@ -719,7 +693,7 @@ function renderLivingWorldQuiz() {
                                 <i class="fa-solid fa-forward-step mr-1"></i> Skip Q
                             </button>
                         ` : ''}
-                        <button type="button" onclick="${isLastQuestion ? 'finishLivingWorldQuiz()' : 'goToNextLivingWorldQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition">
+                        <button type="button" onclick="${isLastQuestion ? 'finishLivingWorldQuiz()' : 'goToNextLivingWorldQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition shadow-sm">
                             ${isLastQuestion ? 'Finish Quiz' : 'Next Question →'}
                         </button>
                     </div>
@@ -731,7 +705,7 @@ function renderLivingWorldQuiz() {
                     <div class="bg-white dark:bg-slate-900 rounded-t-3xl p-4 sm:p-6 max-h-[80vh] flex flex-col shadow-2xl border-t border-slate-200 dark:border-slate-800" onclick="event.stopPropagation()">
                         <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-full mx-auto mb-4 cursor-pointer" onclick="togglePaletteExpanded(false)"></div>
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-slate-100">Question Palette — (NEW NCERT PATTERN)</h3>
+                            <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-slate-100">Question Palette</h3>
                             <button onclick="togglePaletteExpanded(false)" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1">
                                 <i class="fa-solid fa-xmark text-lg"></i>
                             </button>
@@ -743,22 +717,22 @@ function renderLivingWorldQuiz() {
                                 const ans = quizState.userAnswers[idx];
                                 const isSkipped = quizState.skippedQuestions[idx];
 
-                                let gridBgClass = "bg-teal-600 text-white font-bold";
+                                let gridBgClass = 'bg-teal-600 text-white font-bold';
                                 if (ans !== undefined) {
                                     const qObj = quizState.questions[idx];
                                     if (normalizeQuestion(ans) === normalizeQuestion(qObj.answer)) {
-                                        gridBgClass = "bg-emerald-600 text-white font-bold";
+                                        gridBgClass = 'bg-emerald-600 text-white font-bold';
                                     } else {
-                                        gridBgClass = "bg-rose-500 text-white font-bold";
+                                        gridBgClass = 'bg-rose-500 text-white font-bold';
                                     }
                                 } else if (isSkipped) {
-                                    gridBgClass = "bg-amber-500 text-white font-bold";
+                                    gridBgClass = 'bg-amber-500 text-white font-bold';
                                 }
 
-                                const borderStyle = isCurrent ? "ring-2 ring-amber-400 ring-offset-2" : "";
+                                const borderStyle = isCurrent ? 'ring-2 ring-amber-400 ring-offset-2' : '';
 
                                 return `
-                                    <button onclick="jumpToQuestion(${idx}); togglePaletteExpanded(false);" class="h-10 rounded-xl text-xs flex items-center justify-center ${gridBgClass} ${borderStyle} transition">
+                                    <button onclick="jumpToQuestion(${idx}); togglePaletteExpanded(false);" class="h-10 rounded-xl text-xs flex items-center justify-center ${gridBgClass} ${borderStyle}">
                                         ${idx + 1}
                                     </button>
                                 `;
@@ -806,21 +780,21 @@ function finishLivingWorldQuiz() {
 
     const resultHtml = `
         <div class="card w-full max-w-md mx-auto p-6 text-center shadow-lg border-slate-200 dark:border-slate-800">
-            <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">180 Question Practice Completed</div>
+            <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">${total} Question Practice Completed</div>
             <div class="mt-3 text-4xl font-black text-slate-900 dark:text-slate-100">${score} / ${total}</div>
             <div class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300">Accuracy Score: <span class="text-teal-600 dark:text-teal-400 font-bold">${percent}%</span></div>
             <div class="mt-4 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-                ${percent >= 70 ? '🎉 Exceptional preparation! You have thoroughly revised all 180 questions of The Living World.' : '💪 Great effort solving all 180 questions! Keep reviewing key taxonomic definitions.'}
+                ${percent >= 70 ? '🎉 Exceptional preparation! You have thoroughly revised all questions of The Living World.' : '💪 Great effort solving all questions! Keep reviewing the explanations and retrying.'}
             </div>
             <div class="mt-6 flex items-center justify-center gap-3">
                 <button type="button" onclick="restartLivingWorldQuiz()" class="rounded-xl bg-teal-600 px-4 py-2.5 text-xs font-bold text-white hover:bg-teal-700">Retake Module</button>
-                <button type="button" onclick="closeModal(); renderView();" class="rounded-xl bg-slate-200 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Done</button>
+                <button type="button" onclick="closeModal(); renderView();" class="rounded-xl bg-slate-200 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Close</button>
             </div>
         </div>
     `;
 
     document.getElementById('modalTitle').textContent = 'Final Result';
-    document.getElementById('modalBody').textContent = 'Summary for 180 Question Living World Practice Set.';
+    document.getElementById('modalBody').textContent = 'Summary for Living World practice set.';
     document.getElementById('modalContentSlot').innerHTML = resultHtml;
     document.getElementById('modalActions').innerHTML = '';
     openModal();
@@ -836,8 +810,8 @@ function restartLivingWorldQuiz() {
     renderLivingWorldQuiz();
 }
 
-function startLivingWorldQuiz() {
-    quizState.questions = generate180LivingWorldQuestions();
+async function startLivingWorldQuiz() {
+    quizState.questions = await loadLivingWorldQuestions();
     quizState.currentIndex = 0;
     quizState.score = 0;
     quizState.userAnswers = {};
@@ -929,14 +903,14 @@ async function handleChapterClick(chapterName) {
     const safeName = chapterName.replace(/'/g, "\\'");
 
     if (chapterName === 'The Living World') {
-        startLivingWorldQuiz();
+        await startLivingWorldQuiz();
         return;
     }
 
     const comingSoonHtml = `
         <div class="flex flex-col items-center justify-center text-center py-6 px-2">
             <div class="relative mb-5">
-                <div class="w-20 h-20 rounded-3xl bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-500 animate-pulse-glow animate-lock-bounce shadow-xl">
+                <div class="w-20 h-20 rounded-3xl bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-500 animate-pulse-glow animate-lock-bounce">
                     <i class="fa-solid fa-lock text-3xl sm:text-4xl"></i>
                 </div>
                 <div class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] flex items-center justify-center">
@@ -951,14 +925,14 @@ async function handleChapterClick(chapterName) {
             <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100">${escapeHtml(chapterName)}</h3>
 
             <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm max-w-md mt-2.5 leading-relaxed">
-                180 High-Yield NCERT Practice MCQs, CBT pattern test series, and detailed video solutions for <span class="font-bold text-slate-700 dark:text-slate-200">${escapeHtml(chapterName)}</span> are currently being compiled by top educators!
+                180 High-Yield NCERT Practice MCQs, CBT pattern test series, and detailed video solutions for <span class="font-bold text-slate-700 dark:text-slate-200">${escapeHtml(chapterName)}</span> are coming soon.
             </p>
 
             <div class="mt-6 flex flex-wrap items-center justify-center gap-3 w-full">
-                <button onclick="toggleChapterProgress('${safeName}')" class="px-4 py-2.5 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600 text-slate-950' : 'bg-emerald-600 hover:bg-emerald-700 text-white'} font-bold text-xs transition shadow-sm">
+                <button onclick="toggleChapterProgress('${safeName}')" class="px-4 py-2.5 rounded-xl ${isCompleted ? 'bg-amber-500 hover:bg-amber-600 text-slate-950' : 'bg-emerald-600 hover:bg-emerald-700 text-white'} font-bold text-sm">
                     ${isCompleted ? 'Mark as Pending' : 'Mark as Completed ✓'}
                 </button>
-                <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs transition">
+                <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-sm">
                     Got it
                 </button>
             </div>
@@ -997,31 +971,24 @@ function startTimer() {
     if (timerInterval) return;
     const timerCard = document.getElementById('timerCard');
     if (timerCard) timerCard.classList.add('border-teal-500', 'ring-2', 'ring-teal-500/20');
-
     timerInterval = setInterval(() => {
-        if (timerSeconds > 0) {
-            timerSeconds--;
-            updateTimerDisplay();
-        } else {
+        timerSeconds -= 1;
+        if (timerSeconds <= 0) {
+            timerSeconds = 0;
             clearInterval(timerInterval);
             timerInterval = null;
-            if (timerMode === 'work') {
-                timerSessionCount++;
-                saveToLocalStorage();
-                showModal("Focus Block Complete! 🎉", "Great job! You completed a study block. Take a 5-minute break now.");
-                setTimerPreset(5, 'break');
-            } else {
-                showModal("Break Over! ⚡", "Ready for another session? Choose your focus duration and start.");
-                setTimerPreset(25, 'work');
-            }
-            renderView();
+            playTimerEndSound();
+            if (timerCard) timerCard.classList.remove('border-teal-500', 'ring-2', 'ring-teal-500/20');
         }
+        updateTimerDisplay();
     }, 1000);
 }
 
 function pauseTimer() {
-    clearInterval(timerInterval);
-    timerInterval = null;
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
     const timerCard = document.getElementById('timerCard');
     if (timerCard) timerCard.classList.remove('border-teal-500', 'ring-2', 'ring-teal-500/20');
 }
@@ -1032,357 +999,212 @@ function resetTimer() {
     updateTimerDisplay();
 }
 
-function updateTimerDisplay() {
-    const el = document.getElementById('timerDisplay');
-    const progressEl = document.getElementById('timerProgressBar');
-    if (!el) return;
-    const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
-    const secs = (timerSeconds % 60).toString().padStart(2, '0');
-    el.textContent = `${mins}:${secs}`;
-
-    if (progressEl && timerInitialSeconds > 0) {
-        const pct = Math.round(((timerInitialSeconds - timerSeconds) / timerInitialSeconds) * 100);
-        progressEl.style.width = `${pct}%`;
+function playTimerEndSound() {
+    try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.type = 'sine';
+        oscillator.frequency.value = 880;
+        gainNode.gain.value = 0.1;
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.2);
+    } catch (e) {
+        console.warn('Audio not available', e);
     }
 }
 
-function saveScratchpad(text) { 
-    userNotes = text; 
-    localStorage.setItem('edupulse_scratchpad', text); 
-}
-
-function addTodo(e) {
-    if (e) e.preventDefault();
-    const input = document.getElementById('todoInput');
-    const subjectSelect = document.getElementById('todoSubjectSelect');
-    const prioritySelect = document.getElementById('todoPrioritySelect');
-
-    if (!input || !input.value.trim()) return;
-
-    const newTodo = {
-        id: 'td_' + Date.now(),
-        title: input.value.trim(),
-        subject: subjectSelect ? subjectSelect.value : 'General',
-        priority: prioritySelect ? prioritySelect.value : 'medium',
-        completed: false,
-        createdAt: Date.now()
-    };
-
-    todos.unshift(newTodo);
-    saveToLocalStorage();
-    input.value = '';
-    renderView();
-}
-
-function toggleTodo(id) {
-    todos = todos.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
-    saveToLocalStorage();
-    renderView();
-}
-
-function deleteTodo(id) {
-    todos = todos.filter(t => t.id !== id);
-    saveToLocalStorage();
-    renderView();
-}
-
-function clearCompletedTodos() {
-    todos = todos.filter(t => !t.completed);
-    saveToLocalStorage();
-    renderView();
+function updateTimerDisplay() {
+    const timerEl = document.getElementById('timerDisplay');
+    if (!timerEl) return;
+    const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+    const secs = (timerSeconds % 60).toString().padStart(2, '0');
+    timerEl.textContent = `${mins}:${secs}`;
 }
 
 function renderView() {
-    const container = document.getElementById('main-container');
-    updateGlobalProgress();
-
-    const backBtn = document.getElementById('back-btn');
-    if (backBtn) {
-        if (currentTab === 'home') {
-            backBtn.classList.add('hidden');
-            backBtn.classList.remove('inline-flex');
-        } else {
-            backBtn.classList.remove('hidden');
-            backBtn.classList.add('inline-flex');
-        }
-    }
+    const main = document.getElementById('main-container');
+    if (!main) return;
 
     if (currentTab === 'home') {
-        const totalChapters = 79;
-        const completedCount = Object.values(userProgress).filter(p => p && p.completed).length;
-        const pctCompleted = Math.round((completedCount / totalChapters) * 100);
-
-        container.innerHTML = `
-            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-900 via-slate-900 to-teal-950 text-white p-6 sm:p-10 shadow-xl border border-teal-800/40">
-                <div class="relative z-10 max-w-2xl">
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 mb-4 backdrop-blur-sm">
-                        <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span> Complete NEET Preparation Ecosystem
-                    </span>
-                    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">Master NEET with Precision & Focus.</h1>
-                    <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">EduPulse PRO integrates chapter-wise syllabus tracking, verified resource links, focus timers, and educator playlists in one focused interface.</p>
-                    <div class="flex flex-wrap gap-3 mt-6">
-                        <button onclick="switchTab('practice')" class="px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-sm transition flex items-center gap-2 shadow-lg shadow-teal-900/30">Explore Practice <i class="fa-solid fa-arrow-right text-xs"></i></button>
-                        <button onclick="switchTab('directory')" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm transition backdrop-blur-sm">Resource Directory</button>
+        main.innerHTML = `
+            <div class="space-y-6">
+                <div class="grid gap-4 md:grid-cols-3">
+                    <div class="card p-5">
+                        <div class="tag">Daily Goal</div>
+                        <div class="mt-4 text-3xl font-black text-slate-900 dark:text-slate-100">3 Tasks</div>
+                        <div class="mt-2 text-sm text-slate-500 dark:text-slate-400">Stay consistent and finish one chapter today.</div>
+                    </div>
+                    <div class="card p-5">
+                        <div class="tag">Focus</div>
+                        <div class="mt-4 text-3xl font-black text-slate-900 dark:text-slate-100">25 min</div>
+                        <div class="mt-2 text-sm text-slate-500 dark:text-slate-400">Deep study session with short break.</div>
+                    </div>
+                    <div class="card p-5">
+                        <div class="tag">Momentum</div>
+                        <div class="mt-4 text-3xl font-black text-slate-900 dark:text-slate-100">${Object.values(userProgress).filter(p => p && p.completed).length}</div>
+                        <div class="mt-2 text-sm text-slate-500 dark:text-slate-400">Completed chapters across subjects.</div>
                     </div>
                 </div>
-            </div>
 
-            <div class="mt-8">
-                <div class="tag mb-3">✦ Quick Actions</div>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-                    <button onclick="switchTab('practice')" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-teal-500/10 via-emerald-500/5 to-transparent border border-teal-500/20 hover:border-teal-500/50 hover:shadow-md text-left transition group">
-                        <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-center font-bold mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-list-check text-lg"></i>
+                <div class="card p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <div class="tag">Study Path</div>
+                            <h2 class="mt-2 text-2xl font-black text-slate-900 dark:text-slate-100">Your next chapter</h2>
                         </div>
-                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">Practice</h4>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Browse & solve chapter MCQs</p>
-                    </button>
-
-                    <button onclick="switchTab('tools')" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-transparent border border-amber-500/20 hover:border-amber-500/50 hover:shadow-md text-left transition group">
-                        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-stopwatch text-lg"></i>
-                        </div>
-                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">Focus & Planner</h4>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">To-Do list & Focus Timer</p>
-                    </button>
-
-                    <button onclick="switchTab('faculty')" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent border border-indigo-500/20 hover:border-indigo-500/50 hover:shadow-md text-left transition group">
-                        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-chalkboard-user text-lg"></i>
-                        </div>
-                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">Faculty Hub</h4>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Access teacher playlists</p>
-                    </button>
-
-                    <button onclick="switchTab('directory')" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-blue-500/10 via-cyan-500/5 to-transparent border border-blue-500/20 hover:border-blue-500/50 hover:shadow-md text-left transition group">
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-book-bookmark text-lg"></i>
-                        </div>
-                        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">Study Directory</h4>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Verified books & CBT portals</p>
-                    </button>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
-                <div class="card p-4 flex flex-col justify-between">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Syllabus Covered</span>
-                    <div class="flex items-baseline gap-2 mt-2">
-                        <span class="text-2xl font-black text-slate-900 dark:text-slate-100">${pctCompleted}%</span>
-                        <span class="text-xs font-bold text-teal-500">Overall</span>
                     </div>
-                </div>
-                <div class="card p-4 flex flex-col justify-between">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Completed Chapters</span>
-                    <div class="flex items-baseline gap-2 mt-2">
-                        <span class="text-2xl font-black text-slate-900 dark:text-slate-100">${completedCount} / 79</span>
-                        <span class="text-xs font-bold text-emerald-500">Done</span>
-                    </div>
-                </div>
-                <div class="card p-4 flex flex-col justify-between">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Verified Resources</span>
-                    <div class="flex items-baseline gap-2 mt-2">
-                        <span class="text-2xl font-black text-slate-900 dark:text-slate-100">${INITIAL_RESOURCES.length}</span>
-                        <span class="text-xs font-bold text-indigo-500">Links</span>
-                    </div>
-                </div>
-                <div class="card p-4 flex flex-col justify-between">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Faculty Playlists</span>
-                    <div class="flex items-baseline gap-2 mt-2">
-                        <span class="text-2xl font-black text-slate-900 dark:text-slate-100">${TEACHERS_DATA.length}</span>
-                        <span class="text-xs font-bold text-amber-500">Educators</span>
+                    <div class="grid gap-4 md:grid-cols-3">
+                        ${['Biology','Chemistry','Physics'].map(subjectName => `
+                            <button onclick="setSubject('${subjectName}')" class="subject ${subject === subjectName ? 'selected' : ''}">
+                                <div>
+                                    <b>${subjectName}</b>
+                                    <small>${data[subjectName].length} chapters</small>
+                                </div>
+                                <span class="chip ${subjectName === 'Biology' ? 'bio' : subjectName === 'Chemistry' ? 'chem' : 'phy'}">${subjectName.slice(0, 3).toUpperCase()}</span>
+                            </button>
+                        `).join('')}
                     </div>
                 </div>
             </div>
         `;
-    } else if (currentTab === 'practice') {
-        container.innerHTML = `
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        return;
+    }
+
+    if (currentTab === 'practice') {
+        const subjectCards = ['Biology','Chemistry','Physics'].map(subjectName => `
+            <button onclick="setSubject('${subjectName}')" class="subject ${subject === subjectName ? 'selected' : ''}">
                 <div>
-                    <div class="tag">✦ Chapter Practice</div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100" id="subject-title">Biology chapters</h2>
-                    <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1" id="count">31 chapters · chapter-wise practice</p>
+                    <b>${subjectName}</b>
+                    <small>${data[subjectName].length} chapters</small>
                 </div>
-                <div class="controls flex flex-wrap items-center gap-2">
-                    <input type="text" id="search" oninput="renderChapters()" placeholder="Search chapter..." class="w-full sm:w-auto">
-                    <select id="statusFilter" onchange="renderChapters()" class="w-full sm:w-auto">
-                        <option value="all">All Chapters</option>
-                        <option value="pending">Pending</option>
-                        <option value="completed">Completed</option>
-                    </select>
+                <span class="chip ${subjectName === 'Biology' ? 'bio' : subjectName === 'Chemistry' ? 'chem' : 'phy'}">${subjectName.slice(0, 3).toUpperCase()}</span>
+            </button>
+        `).join('');
+
+        main.innerHTML = `
+            <div class="space-y-6">
+                <div class="card p-5">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                        <div>
+                            <div class="tag">Practice Library</div>
+                            <h2 id="subject-title" class="mt-2 text-2xl font-black text-slate-900 dark:text-slate-100">Biology Chapters</h2>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center">
+                            <input id="search" placeholder="Search chapter" class="controls w-full sm:w-56" value="${searchQuery || ''}" oninput="renderChapters()" />
+                            <select id="statusFilter" class="controls" onchange="renderChapters()">
+                                <option value="all">All</option>
+                                <option value="completed">Completed</option>
+                                <option value="pending">Pending</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="count" class="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">0 of 0 chapters displayed</div>
                 </div>
+                <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    <div id="chapters" class="contents"></div>
+                </div>
+                <div class="mt-6">${subjectCards}</div>
             </div>
-
-            <div class="grid grid-cols-3 gap-3 mt-6">
-                <button onclick="setSubject('Biology')" class="subject ${subject === 'Biology' ? 'selected' : ''}">
-                    <div><b>Biology</b><small>31 Chapters</small></div>
-                    <span class="chip bio hidden sm:grid">BIO</span>
-                </button>
-                <button onclick="setSubject('Chemistry')" class="subject ${subject === 'Chemistry' ? 'selected' : ''}">
-                    <div><b>Chemistry</b><small>20 Chapters</small></div>
-                    <span class="chip chem hidden sm:grid">CHEM</span>
-                </button>
-                <button onclick="setSubject('Physics')" class="subject ${subject === 'Physics' ? 'selected' : ''}">
-                    <div><b>Physics</b><small>28 Chapters</small></div>
-                    <span class="chip phy hidden sm:grid">PHY</span>
-                </button>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6" id="chapters"></div>
         `;
         renderChapters();
-    } else if (currentTab === 'directory') {
-        container.innerHTML = `
-            <div>
-                <div class="tag">✦ Curated Directory</div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Resource Links Directory</h2>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-                ${INITIAL_RESOURCES.map(res => `
-                    <div class="card p-4 flex flex-col justify-between">
-                        <div>
-                            <span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">${res.badge}</span>
-                            <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base mt-2">${res.title}</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${res.category} • ${res.subtag}</p>
-                        </div>
-                        <a href="${res.url}" target="_blank" class="mt-4 w-full py-2 bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300 hover:bg-teal-100 text-center font-bold text-xs rounded-xl">Visit Link <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></a>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-    } else if (currentTab === 'faculty') {
-        container.innerHTML = `
-            <div>
-                <div class="tag">✦ Faculty Directory</div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Teacher Cards & Playlists</h2>
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">
-                ${TEACHERS_DATA.map(fac => `
-                    <div onclick="openFacultyPlaylist('${fac.id}')" class="card p-4 flex flex-col justify-between text-center items-center h-full hover:border-teal-500/50 hover:shadow-md transition cursor-pointer group">
-                        <div class="w-full flex flex-col items-center">
-                            <img src="${fac.img}" alt="${fac.name}" class="w-20 h-20 rounded-2xl object-cover border border-slate-200 dark:border-slate-700 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/200x200/0f172a/ffffff?text=${encodeURIComponent(fac.name)}';">
-                            <h4 class="font-bold text-xs sm:text-sm mt-1.5 text-slate-800 dark:text-slate-100 line-clamp-1">${fac.name}</h4>
-                            <p class="text-[10px] font-bold text-teal-600 dark:text-teal-400 mt-2 flex items-center gap-1"><i class="fa-solid fa-play text-[9px]"></i> View Playlist</p>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-    } else if (currentTab === 'tools') {
-        const activeTodos = todos.filter(t => !t.completed);
-        const completedTodos = todos.filter(t => t.completed);
+        return;
+    }
 
-        container.innerHTML = `
-            <div>
-                <div class="tag">✦ Productivity & Study Suite</div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Focus Timer & Daily Planner</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-                <!-- Focus Timer Card -->
-                <div class="card p-6 flex flex-col justify-between transition-all" id="timerCard">
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400 flex items-center gap-1.5">
-                                <i class="fa-solid fa-circle-dot text-[10px] ${timerInterval ? 'animate-ping text-teal-500' : 'text-slate-400'}"></i>
-                                ${timerMode === 'work' ? 'Focus Session' : 'Rest Break'}
-                            </span>
-                            <span class="px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800 text-[10px] font-black text-teal-700 dark:text-teal-300">
-                                🎯 ${timerSessionCount} Blocks Done
-                            </span>
-                        </div>
-
-                        <!-- Presets -->
-                        <div class="flex items-center justify-center gap-1.5 my-4">
-                            <button onclick="setTimerPreset(15)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${timerInitialSeconds === 900 ? 'bg-teal-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'} hover:bg-teal-500 hover:text-white transition">15m</button>
-                            <button onclick="setTimerPreset(25)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${timerInitialSeconds === 1500 ? 'bg-teal-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'} hover:bg-teal-500 hover:text-white transition">25m</button>
-                            <button onclick="setTimerPreset(45)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${timerInitialSeconds === 2700 ? 'bg-teal-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'} hover:bg-teal-500 hover:text-white transition">45m</button>
-                            <button onclick="setTimerPreset(5, 'break')" class="px-2.5 py-1 rounded-lg text-xs font-bold ${timerInitialSeconds === 300 ? 'bg-amber-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'} hover:bg-amber-500 hover:text-white transition">5m Break</button>
-                        </div>
-
-                        <div class="text-5xl sm:text-6xl font-black my-4 text-center tracking-wider text-slate-900 dark:text-slate-100 font-mono" id="timerDisplay">
-                            ${Math.floor(timerSeconds / 60).toString().padStart(2, '0')}:${(timerSeconds % 60).toString().padStart(2, '0')}
-                        </div>
-
-                        <!-- Progress Bar -->
-                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mb-6">
-                            <div id="timerProgressBar" class="bg-teal-500 h-full transition-all duration-300" style="width: ${Math.round(((timerInitialSeconds - timerSeconds) / timerInitialSeconds) * 100)}%"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-center gap-2">
-                        <button onclick="startTimer()" class="flex-1 py-2.5 bg-teal-600 text-white rounded-xl font-bold hover:bg-teal-700 text-xs transition flex items-center justify-center gap-1.5"><i class="fa-solid fa-play text-[10px]"></i> Start</button>
-                        <button onclick="pauseTimer()" class="flex-1 py-2.5 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-bold text-xs hover:bg-slate-300 dark:hover:bg-slate-600 transition flex items-center justify-center gap-1.5"><i class="fa-solid fa-pause text-[10px]"></i> Pause</button>
-                        <button onclick="resetTimer()" class="px-4 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-xl font-bold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 transition"><i class="fa-solid fa-rotate-left"></i></button>
-                    </div>
+    if (currentTab === 'directory') {
+        main.innerHTML = `
+            <div class="card p-5">
+                <div class="tag">Resource Directory</div>
+                <h2 class="mt-2 text-2xl font-black text-slate-900 dark:text-slate-100">Curated links</h2>
+                <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    ${INITIAL_RESOURCES.map(resource => `
+                        <a href="${resource.url}" target="_blank" class="card p-4 hover:scale-[1.01] transition">
+                            <div class="flex items-center justify-between gap-3">
+                                <div>
+                                    <div class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-teal-600 dark:text-teal-400">${resource.category}</div>
+                                    <h3 class="mt-2 text-lg font-black text-slate-900 dark:text-slate-100">${resource.title}</h3>
+                                </div>
+                                <span class="chip bg-teal-100 text-teal-700 dark:bg-teal-950/50 dark:text-teal-300">${resource.badge.slice(0, 3).toUpperCase()}</span>
+                            </div>
+                            <div class="mt-3 text-xs text-slate-500 dark:text-slate-400">${resource.subtag}</div>
+                        </a>
+                    `).join('')}
                 </div>
+            </div>
+        `;
+        return;
+    }
 
-                <!-- Integrated To-Do Planner -->
-                <div class="lg:col-span-2 card p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                                <i class="fa-solid fa-square-check text-teal-600 dark:text-teal-400"></i> Daily Study Planner
-                            </h3>
-                            <div class="flex items-center gap-2">
-                                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">${activeTodos.length} Pending</span>
-                                ${completedTodos.length > 0 ? `<button onclick="clearCompletedTodos()" class="text-[11px] font-bold text-rose-500 hover:underline">Clear Done</button>` : ''}
+    if (currentTab === 'faculty') {
+        main.innerHTML = `
+            <div class="card p-5">
+                <div class="tag">Faculty Hub</div>
+                <h2 class="mt-2 text-2xl font-black text-slate-900 dark:text-slate-100">Top educator playlists</h2>
+                <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    ${TEACHERS_DATA.map(teacher => `
+                        <div class="card p-4">
+                            <img src="${teacher.img}" alt="${teacher.name}" class="h-32 w-full object-cover rounded-2xl border border-slate-200 dark:border-slate-700" />
+                            <div class="mt-4 flex items-center justify-between gap-3">
+                                <div>
+                                    <h3 class="text-lg font-black text-slate-900 dark:text-slate-100">${teacher.name}</h3>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400">${teacher.badge}</div>
+                                </div>
+                                <button onclick="openFacultyPlaylist('${teacher.id}')" class="px-3 py-2 rounded-xl bg-teal-600 text-white text-xs font-bold hover:bg-teal-700">Open</button>
                             </div>
                         </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        return;
+    }
 
-                        <!-- Add Task Form -->
-                        <form onsubmit="addTodo(event)" class="flex flex-wrap sm:flex-nowrap gap-2 mb-4">
-                            <input type="text" id="todoInput" placeholder="Add new task (e.g., Solve 50 Physics MCQs)..." class="flex-1 px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 focus:border-teal-500 focus:outline-none text-xs font-medium">
-                            <select id="todoSubjectSelect" class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold focus:outline-none">
-                                <option value="Biology">Biology</option>
-                                <option value="Chemistry">Chemistry</option>
-                                <option value="Physics">Physics</option>
-                                <option value="General">General</option>
-                            </select>
-                            <select id="todoPrioritySelect" class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold focus:outline-none">
-                                <option value="high">🔴 High</option>
-                                <option value="medium" selected>🟡 Med</option>
-                                <option value="low">🟢 Low</option>
-                            </select>
-                            <button type="submit" class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-bold text-xs transition shrink-0">+ Add</button>
-                        </form>
-
-                        <!-- Task List -->
-                        <div class="space-y-2 max-h-56 overflow-y-auto pr-1">
-                            ${todos.length === 0 ? `<p class="text-xs text-slate-400 py-4 text-center">No tasks added yet. Plan your target sessions for today!</p>` : ''}
-                            ${todos.map(t => `
-                                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 ${t.completed ? 'opacity-50' : ''}">
-                                    <div class="flex items-center gap-3 overflow-hidden">
-                                        <button onclick="toggleTodo('${t.id}')" class="text-base text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition">
-                                            <i class="fa-${t.completed ? 'solid fa-circle-check text-teal-600' : 'regular fa-circle'}"></i>
-                                        </button>
-                                        <span class="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate ${t.completed ? 'line-through' : ''}">${escapeHtml(t.title)}</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 shrink-0">
-                                        <span class="px-2 py-0.5 rounded-md text-[9px] font-extrabold uppercase ${t.subject === 'Biology' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300' : t.subject === 'Chemistry' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300' : 'bg-teal-100 text-teal-800 dark:bg-teal-900/40 dark:text-teal-300'}">${t.subject}</span>
-                                        <button onclick="deleteTodo('${t.id}')" class="text-slate-400 hover:text-rose-500 p-1 transition"><i class="fa-solid fa-trash-can text-xs"></i></button>
-                                    </div>
-                                </div>
-                            `).join('')}
+    if (currentTab === 'tools') {
+        main.innerHTML = `
+            <div class="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+                <div class="card p-5">
+                    <div class="tag">Focus Timer</div>
+                    <h2 class="mt-2 text-2xl font-black text-slate-900 dark:text-slate-100">Pomodoro</h2>
+                    <div class="mt-5 flex items-center justify-center">
+                        <div id="timerCard" class="border border-slate-200 dark:border-slate-700 rounded-3xl p-6 text-center shadow-sm">
+                            <div id="timerDisplay" class="text-5xl font-black text-slate-900 dark:text-slate-100">25:00</div>
+                            <div class="mt-2 text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Focus session</div>
                         </div>
                     </div>
-
-                    <!-- Quick Scratchpad Notes -->
-                    <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-                        <h4 class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-1.5"><i class="fa-solid fa-note-sticky text-amber-500"></i> Quick Scratchpad Note</h4>
-                        <textarea oninput="saveScratchpad(this.value)" placeholder="Jot down quick formulas, weak topics, or target chapter goals..." class="w-full h-20 p-3 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 text-xs focus:border-teal-500 focus:outline-none resize-none">${escapeHtml(userNotes)}</textarea>
+                    <div class="mt-6 flex flex-wrap justify-center gap-3">
+                        <button onclick="startTimer()" class="px-4 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-sm hover:bg-teal-700">Start</button>
+                        <button onclick="pauseTimer()" class="px-4 py-2.5 rounded-xl bg-slate-200 text-slate-700 font-bold text-sm hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Pause</button>
+                        <button onclick="resetTimer()" class="px-4 py-2.5 rounded-xl bg-slate-200 text-slate-700 font-bold text-sm hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Reset</button>
+                    </div>
+                </div>
+                <div class="card p-5">
+                    <div class="tag">Tracker</div>
+                    <h2 class="mt-2 text-2xl font-black text-slate-900 dark:text-slate-100">Study Tasks</h2>
+                    <div class="mt-5 space-y-3">
+                        ${todos.map(todo => `
+                            <div class="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 dark:border-slate-700 p-3">
+                                <div>
+                                    <div class="font-bold text-slate-900 dark:text-slate-100">${todo.title}</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400">${todo.subject}</div>
+                                </div>
+                                <button class="px-2 py-1 rounded-full ${todo.completed ? 'bg-emerald-500 text-white' : 'bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-200'} text-[10px] font-bold uppercase">
+                                    ${todo.completed ? 'Done' : 'Todo'}
+                                </button>
+                            </div>
+                        `).join('')}
                     </div>
                 </div>
             </div>
         `;
+        updateTimerDisplay();
+        return;
     }
 }
 
-// Initial application boot
-window.addEventListener('load', () => {
-    renderView();
-    updateGlobalProgress();
-});
+updateGlobalProgress();
+renderView();
 </script>
 </body>
 </html>
