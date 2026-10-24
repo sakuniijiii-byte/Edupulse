@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>EduPulse PRO — NEET Preparation Platform</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { darkMode: 'class' }</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- PWA: real files (manifest.json, sw.js, icons/) must sit next to this file -->
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="theme-color" content="#0d9488">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{--ink:#12202c;--muted:#64748b;--line:#dfe8e7;--paper:#ffffff;--bg:#f8fafc;--teal:#0d9488;--deep:#123c42;--lime:#bef264;--card-bg:#ffffff;--text-primary:#0f172a;--text-muted:#64748b;--border-color:#e2e8f0;--bio-bg:#ecfdf5;--bio-text:#047857;--chem-bg:#f5f3ff;--chem-text:#6d28d9;--phy-bg:#f0fdfa;--phy-text:#0f766e}
+body.dark{--ink:#f8fafc;--muted:#94a3b8;--line:#334155;--paper:#1e293b;--bg:#0f172a;--teal:#14b8a6;--deep:#0f2e33;--card-bg:#1e293b;--text-primary:#f8fafc;--text-muted:#94a3b8;--border-color:#334155;--bio-bg:rgba(16,185,129,.15);--bio-text:#6ee7b7;--chem-bg:rgba(139,92,246,.15);--chem-text:#c4b5fd;--phy-bg:rgba(20,184,166,.15);--phy-text:#5eead4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;transition:background-color .2s,color .2s;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0}
+.app-layout{display:flex;flex-direction:column;min-height:100vh}
+@media (min-width:1024px){.app-layout{flex-direction:row}.sidebar{position:fixed;inset:0 auto 0 0;width:260px;height:100vh;overflow-y:auto}.content{margin-left:260px;flex:1;width:calc(100% - 260px)}}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:var(--deep);color:var(--lime);font-weight:900}
+.brand b{font-size:16px;color:var(--text-primary)}
+.brand b span{color:var(--teal)}
+.eyebrow{margin:2px 0 0;color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.nav button{padding:10px 12px;border-radius:12px;background:none;color:var(--text-muted);text-align:left;font-weight:700;transition:all .2s;display:flex;align-items:center;gap:10px;width:100%}
+.nav button:hover{background:rgba(16,155,141,.08);color:var(--teal)}
+.nav button.active{background:rgba(16,155,141,.18);color:var(--teal)}
+.goal{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);border-radius:16px;padding:14px}
+.goal small{color:var(--teal);text-transform:uppercase;font-weight:800;letter-spacing:.1em;font-size:10px}
+.goal strong{display:block;margin-top:4px;font-size:13px;color:var(--text-primary)}
+.bar{height:6px;background:rgba(0,0,0,.1);border-radius:99px;margin-top:8px;overflow:hidden}
+body.dark .bar{background:rgba(255,255,255,.15)}
+.bar i{display:block;height:100%;background:var(--teal);transition:width .5s ease}
+.goal p{font-size:11px;color:var(--text-muted);margin-top:6px}
+.topbar{height:70px;border-bottom:1px solid var(--border-color);background:var(--paper);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:10}
+.date{color:var(--text-muted);font-size:11px;font-weight:600}
+.topbar h1{font-size:18px;margin:2px 0 0;color:var(--text-primary);font-weight:800}
+.main{max-width:1400px;margin:auto;padding:24px}
+.tag{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.17em;font-size:11px}
+.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:18px;box-shadow:0 2px 8px rgba(0,0,0,.03);transition:all .2s ease-in-out}
+.card:hover{border-color:rgba(13,148,136,.3);box-shadow:0 6px 16px rgba(0,0,0,.05)}
+.subject{padding:14px 16px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all .2s}
+.subject.selected{border-color:var(--teal);background:rgba(16,155,141,.08)}
+.subject b{display:block;color:var(--text-primary);font-size:14px}
+.subject small{display:block;color:var(--text-muted);margin-top:2px;font-size:12px}
+.chip{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:10px;font-weight:900;flex-shrink:0}
+.bio{background:var(--bio-bg);color:var(--bio-text)}.chem{background:var(--chem-bg);color:var(--chem-text)}.phy{background:var(--phy-bg);color:var(--phy-text)}
+.chapter{padding:18px;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;justify-content:space-between}
+.chapter:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.06)}
+.chapter-title{font-weight:800;font-size:14px;margin-top:14px;color:var(--text-primary);line-height:1.4}
+.progress{height:6px;background:rgba(0,0,0,.06);border-radius:99px;margin-top:6px;overflow:hidden}
+body.dark .progress{background:rgba(255,255,255,.1)}
+.progress i{display:block;height:100%;background:var(--teal);transition:width .4s ease}
+.practice{margin-top:14px;color:var(--teal);font-weight:800;background:none;padding:0;display:inline-flex;align-items:center;gap:4px;font-size:13px}
+.controls input,.controls select{padding:8px 12px;border:1px solid var(--border-color);border-radius:12px;background:var(--card-bg);color:var(--text-primary);outline:none;font-size:13px}
+.controls input:focus,.controls select:focus{border-color:var(--teal)}
+.custom-modal{position:fixed;inset:0;background:rgba(18,32,44,.6);backdrop-filter:blur(6px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity .2s ease;padding:16px}
+.custom-modal.open{opacity:1;pointer-events:auto}
+.modal-box{background:var(--card-bg);color:var(--text-primary);width:100%;max-width:750px;border-radius:24px;padding:24px;border:1px solid var(--border-color);box-shadow:0 20px 40px rgba(15,23,42,.18);transform:translateY(10px) scale(.98);transition:transform .2s ease;max-height:88vh;overflow:auto}
+.custom-modal.open .modal-box{transform:scale(1)}
+.custom-modal.fullscreen-modal{padding:0}
+.custom-modal.fullscreen-modal .modal-box{max-width:100vw;height:100vh;max-height:100vh;border-radius:0;border:none;display:flex;flex-direction:column}
+.mobile-nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(2px);z-index:45;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.mobile-nav-overlay.open{opacity:1;pointer-events:auto}
+@media (max-width:1023px){.sidebar-drawer{position:fixed;top:0;left:0;bottom:0;width:280px;background:var(--paper);z-index:50;transform:translateX(-100%);transition:transform .3s ease;padding:20px;display:flex;flex-direction:column;overflow-y:auto}.sidebar-drawer.open{transform:translateX(0)}}
+@keyframes lockBounce{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.05)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 15px rgba(234,179,8,.2)}50%{box-shadow:0 0 35px rgba(234,179,8,.5)}}
+.animate-lock-bounce{animation:lockBounce 2s ease-in-out infinite}
+.animate-pulse-glow{animation:pulseGlow 2.5s infinite}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+</style>
+</head>
+
+<body>
+<div class="app-layout">
+    <div class="mobile-nav-overlay" id="navOverlay" onclick="toggleMobileNav(false)"></div>
+    <aside class="sidebar sidebar-drawer border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900" id="sidebarDrawer">
+        <div class="brand justify-between items-center w-full">
+            <div class="flex items-center gap-3">
+                <div class="logo">✦</div>
+                <div><b>Edu<span>Pulse</span></b><p class="eyebrow">NEET Ecosystem</p></div>
+            </div>
+            <button class="lg:hidden text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1" onclick="toggleMobileNav(false)"><i class="fa-solid fa-xmark text-lg"></i></button>
+        </div>
+        <nav class="nav my-6 space-y-1">
+            <button onclick="switchTab('home')" id="nav-home" class="active"><i class="fa-solid fa-house w-5"></i> Home</button>
+            <button onclick="switchTab('practice')" id="nav-practice"><i class="fa-solid fa-list-check w-5"></i> Practice <small style="margin-left:auto;background:#c6f36b;color:#30521e;border-radius:999px;padding:2px 6px;font-size:9px;">79</small></button>
+            <button onclick="switchTab('directory')" id="nav-directory"><i class="fa-solid fa-book-bookmark w-5"></i> Resource Directory</button>
+            <button onclick="switchTab('faculty')" id="nav-faculty"><i class="fa-solid fa-chalkboard-user w-5"></i> Faculty Hub</button>
+            <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Focus & Planner</button>
+        </nav>
+        <div class="goal mt-auto">
+            <small>Syllabus Goal</small>
+            <strong>Finish every chapter</strong>
+            <div class="bar"><i id="sidebar-progress-bar" style="width:0%"></i></div>
+            <p id="sidebar-progress-text">0% syllabus covered</p>
+        </div>
+    </aside>
+
+    <section class="content">
+        <header class="topbar">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="toggleMobileNav(true)" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition"><i class="fa-solid fa-bars text-lg"></i></button>
+                <button id="back-btn" onclick="goBack()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700"><i class="fa-solid fa-arrow-left text-xs"></i> Back</button>
+                <div>
+                    <div class="date" id="current-date">NEET Prep Ecosystem</div>
+                    <h1 class="hidden sm:block">Welcome, Aspirant<span style="color:#0d9488">.</span></h1>
+                    <h1 class="sm:hidden text-base">EduPulse PRO</h1>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="pwa-install-btn" onclick="triggerPwaInstall()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition"><i class="fa-solid fa-download text-xs"></i> Install App</button>
+                <button onclick="toggleTheme()" class="p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-moon dark:hidden text-sm sm:text-base"></i>
+                    <i class="fa-solid fa-sun hidden dark:inline text-sm sm:text-base"></i>
+                </button>
+            </div>
+        </header>
+        <main class="main" id="main-container"></main>
+    </section>
+</div>
+
+<div class="custom-modal" id="appModal">
+    <div class="modal-box">
+        <h3 id="modalTitle" class="text-xl font-bold mb-2 text-slate-900 dark:text-slate-100"></h3>
+        <p id="modalBody" class="text-slate-500 dark:text-slate-400 mb-4 text-sm"></p>
+        <div id="modalContentSlot" class="flex-1 min-h-0"></div>
+        <div class="flex justify-end gap-3 mt-4" id="modalActions"></div>
+    </div>
+</div>
+
+<script>
+// ===== Quiz data location =====
+// Files are named  <subject>-<chapter>.json  (lowercase, hyphens), e.g. biology-plant-kingdom.json
+const DATA_BASE = "https://raw.githubusercontent.com/sakuniijiii-byte/Edupulse/main/Data/";
+const FILE_OVERRIDES = { 'The Living World': 'living_world_mcqs.json' }; // files that don't follow the pattern
+const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const quizUrl = chapter => DATA_BASE + (FILE_OVERRIDES[chapter] || `${slugify(subject + ' ' + chapter)}.json`);
+
+const data = {
+    Biology: ['The Living World','Biological Classification','Plant Kingdom','Animal Kingdom','Morphology and Anatomy of Flowering Plants','Structural Organisation in Animals','Cell: The Unit of Life','Biomolecules','Cell Cycle and Cell Division','Photosynthesis in Plants','Respiration in Plants','Plant Growth and Development','Breathing and Exchange of Gases','Body Fluids and Circulation','Excretory Products and their Elimination','Locomotion and Movement','Neural Control and Coordination','Chemical Coordination and Integration','Sexual Reproduction in Flowering Plants','Human Reproduction','Reproductive Health','Principles of Inheritance and Variation','Molecular Basis of Inheritance','Evolution','Human Health and Disease','Microbes in Human Welfare','Biotechnology: Principles and Processes','Biotechnology and its Applications','Organisms and Populations','Ecosystem','Biodiversity and Conservation'],
+    Chemistry: ['Some Basic Concepts of Chemistry','Structure of Atom','Chemical Thermodynamics','Chemical and Ionic Equilibrium','Solutions','Electrochemistry and Redox Reactions','Chemical Kinetics','Classification of Elements and Periodicity','Chemical Bonding','p-Block Elements','d- and f-Block Elements','Coordination Compounds','Purification and Characterisation','General Organic Chemistry','Hydrocarbons','Haloalkanes and Haloarenes','Oxygen-Containing Compounds','Nitrogen-Containing Compounds','Biomolecules','Principles Related to Practical Chemistry'],
+    Physics: ['Units and Measurements','Motion in a Straight Line','Motion in a Plane','Laws of Motion','Work, Energy and Power','Rotational Motion','Gravitation','Mechanical Properties of Solids','Mechanical Properties of Fluids','Thermal Properties of Matter','Thermodynamics','Kinetic Theory of Gases','Oscillations','Waves','Electric Charges and Fields','Electrostatic Potential and Capacitance','Current Electricity','Moving Charges and Magnetism','Magnetism and Matter','Electromagnetic Induction','Alternating Current','Electromagnetic Waves','Ray Optics and Optical Instruments','Wave Optics','Dual Nature of Radiation and Matter','Atoms','Nuclei','Semiconductor Electronics']
+};
+const TOTAL_CHAPTERS = Object.values(data).reduce((n, l) => n + l.length, 0);
+
+const TEACHERS_DATA = [
+    { id: "t1", name: "RCM Sir", img: "https://i.ibb.co/tTqKFyp8/RCM-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasPhrjrSqNnxyiLwaDI_Qml" },
+    { id: "t2", name: "MKG Sir", img: "https://i.ibb.co/3x97xd0/MKG-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauIS74mnISFrQttmOdM1-As" },
+    { id: "t3", name: "Dilip Arora Sir (DA)", img: "https://i.ibb.co/ZRfPy476/DILIP-ARORA-SIR-DA.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatKeD-H1MIcRIFsfgnYoARM" },
+    { id: "t4", name: "MJ Star", img: "https://i.ibb.co/4gdKvtxD/MJ-STAR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatxrU7mofuhm4EIqjJTOGsx" },
+    { id: "t5", name: "INSAF ALI 25+26", img: "https://i.ibb.co/PGjy3M49/INSAF-ALI-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauRxuhd51FjB4E9fx1VZHa2" },
+    { id: "t6", name: "Radhe Shyam Khandelwar (RSK)", img: "https://i.ibb.co/Ldf3j5gY/RADHE-SHYAM-KHANDELWAR-RSK.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUat-QWU0bF7vGZMp3GWzeLrZ" },
+    { id: "t7", name: "Acid Sir MP1", img: "https://i.ibb.co/7x2rg9Hh/ACID-SIR-MP1.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauNwiUN6JfPzzn-oBmohWTp" },
+    { id: "t8", name: "RAVI DUBEY 26", img: "https://i.ibb.co/C3rtKPnn/RAVI-DUBEY-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasEpc2FqiGD9YSLb7wlhawG" },
+    { id: "t9", name: "TNM CONQUER 1", img: "https://i.ibb.co/Y7bCYBGG/TNM-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUavDapnfWF1vAYozb6J5-WpT" },
+    { id: "t10", name: "YSY CONQUER 26", img: "https://i.ibb.co/XZPd2d3J/YSY-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasNSyhAj5uTe3xZFNZEo-XT" },
+    { id: "t11", name: "ASHISH GUPTA SARVAN 26", img: "https://i.ibb.co/1HqPrL6/ASHISH-GUPTA-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasViC2fWpvWwdSkcjSbO5tE" },
+    { id: "t12", name: "Mahesh Patidar", img: "https://i.ibb.co/RTGnxShs/Smart-Select-20260609-170750-Google.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatUhVc-yyM09k1idZ5ZUsdZ" }
+];
+
+const INITIAL_RESOURCES = [
+    { id: "sp999", title: "Allen neet", category: "JEE & NEET", subtag: "Batches", badge: "StudyPanda", url: "http://Amity18.carrd.co" },
+    { id: "sp99", title: "allen jee", category: "JEE", subtag: "Batches", badge: "jee", url: "https://dusra-aur.github.io/alien-jaddu//" },
+    { id: "sp0", title: "Unacademy", category: "JEE & NEET", subtag: "Batches", badge: "Unacademy", url: "http://studyuk.online" },
+    { id: "sp1", title: "StudyPanda Live", category: "JEE & NEET", subtag: "Batches", badge: "StudyPanda", url: "https://studypanda.live/" },
+    { id: "jn1", title: "Allen Test Series", category: "JEE & NEET", subtag: "Tests", badge: "Allen Tests", url: "http://test.neetxnoah1.workers.dev" },
+    { id: "jn2", title: "Pikachu PW Books", category: "JEE & NEET", subtag: "Books", badge: "PW Books", url: "https://pikachu-books.vercel.app/" },
+    { id: "jn3", title: "PW Thor", category: "JEE & NEET", subtag: "Batches", badge: "PW Batches", url: "https://pwthor.live" },
+    { id: "jn5", title: "Pikachu CBT Tests", category: "JEE & NEET", subtag: "Tests", badge: "CBT Portal", url: "https://pikachuxcbt.vercel.app/" },
+    { id: "jn6", title: "PDF to CBT Converter", category: "JEE & NEET", subtag: "Tests", badge: "CBT Converter", url: "http://newtcbt.vercel.app" },
+    { id: "jn7", title: "Pikachu JEE CBT (PYQs)", category: "JEE & NEET", subtag: "PYQs", badge: "JEE PYQs", url: "https://pikachu-jee-cbt.vercel.app/" },
+    { id: "jn8", title: "Marks App (MathonGo)", category: "JEE & NEET", subtag: "PYQs", badge: "PYQ App", url: "https://web.getmarks.app/" },
+    { id: "jn10", title: "Delta Study", category: "JEE & NEET", subtag: "Batches", badge: "Reddit Pick", url: "https://deltastudy.site" },
+    { id: "jn11", title: "Ved Study", category: "JEE & NEET", subtag: "Batches", badge: "Free Batches", url: "https://vedstudy.site" },
+    { id: "jn13", title: "PW4Free Portal", category: "JEE & NEET", subtag: "Batches", badge: "Keyless Player", url: "https://pw4free.com" },
+    { id: "rd1", title: "Anna's Archive", category: "Free Books", subtag: "Books", badge: "Shadow Library", url: "https://annas-archive.org/" },
+    { id: "rd2", title: "FMHY Educational Megathread", category: "Productivity", subtag: "Books", badge: "Megathread", url: "https://fmhy.net/edupiracy" },
+    { id: "26", title: "Perplexity AI", category: "AI & Study", subtag: "AI", badge: "Free Tier", url: "https://www.perplexity.ai" },
+    { id: "cd3", title: "GitHub", category: "Coding & Tech", subtag: "Books", badge: "Version Control", url: "https://github.com/" },
+    { id: "fun1", title: "Wotaku Wiki", category: "Fun & Media", subtag: "Fun", badge: "Wotaku", url: "https://wotaku.wiki/" }
+];
+
+// ===== State =====
+const safeParse = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } };
+let currentTab = 'home', previousTab = 'home', subject = 'Biology';
+let timerInterval = null;
+let userProgress = safeParse('edupulse_progress', {});
+let todos = safeParse('edupulse_todos', [
+    { id: 'td1', title: 'Revise Living World MCQs', subject: 'Biology', priority: 'high', completed: false, createdAt: Date.now() },
+    { id: 'td2', title: 'Solve Chemical Bonding PYQs', subject: 'Chemistry', priority: 'medium', completed: false, createdAt: Date.now() }
+]);
+let timerSessionCount = parseInt(localStorage.getItem('edupulse_focus_sessions') || '0', 10);
+let timerInitialSeconds = parseInt(localStorage.getItem('edupulse_timer_preset') || '1500', 10);
+let timerSeconds = timerInitialSeconds;
+let timerMode = 'work';
+// userAnswers stores the chosen option INDEX; q.correct is the correct option INDEX (0-based)
+const quizState = { chapter: '', title: '', questions: [], currentIndex: 0, score: 0, userAnswers: {}, skippedQuestions: {}, paletteExpanded: false };
+
+function saveToLocalStorage() {
+    try {
+        localStorage.setItem('edupulse_todos', JSON.stringify(todos));
+        localStorage.setItem('edupulse_progress', JSON.stringify(userProgress));
+        localStorage.setItem('edupulse_focus_sessions', String(timerSessionCount));
+        localStorage.setItem('edupulse_timer_preset', String(timerInitialSeconds));
+    } catch (e) { console.warn('Storage unavailable', e); }
+}
+
+function escapeHtml(v = '') {
+    return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+// keeps line breaks (\n) from the JSON visible in question text
+const multiline = v => escapeHtml(v).replace(/\n/g, '<br>');
+const jsArg = s => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+
+// ===== PWA =====
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const b = document.getElementById('pwa-install-btn');
+    if (b) { b.classList.remove('hidden'); b.classList.add('inline-flex'); }
+});
+window.addEventListener('appinstalled', () => {
+    const b = document.getElementById('pwa-install-btn');
+    if (b) { b.classList.add('hidden'); b.classList.remove('inline-flex'); }
+    deferredPrompt = null;
+});
+function triggerPwaInstall() {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+}
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => console.error('SW registration failed:', err));
+    });
+}
+
+// ===== Progress / chapters =====
+function updateGlobalProgress() {
+    const done = Object.values(userProgress).filter(p => p && p.completed).length;
+    const pct = Math.round((done / TOTAL_CHAPTERS) * 100);
+    const bar = document.getElementById('sidebar-progress-bar'), txt = document.getElementById('sidebar-progress-text');
+    if (bar) bar.style.width = `${pct}%`;
+    if (txt) txt.textContent = `${pct}% syllabus covered`;
+}
+
+function setSubject(s) { subject = s; renderView(); }
+
+function renderChapters() {
+    const list = data[subject] || [];
+    const query = (document.getElementById('search')?.value || '').toLowerCase().trim();
+    const filter = document.getElementById('statusFilter')?.value || 'all';
+    const titleEl = document.getElementById('subject-title'), countEl = document.getElementById('count');
+    if (titleEl) titleEl.textContent = `${subject} Chapters`;
+
+    const filtered = list.filter(ch => {
+        const match = ch.toLowerCase().includes(query);
+        const done = userProgress[ch] && userProgress[ch].completed;
+        return filter === 'completed' ? match && done : filter === 'pending' ? match && !done : match;
+    });
+    if (countEl) countEl.textContent = `${filtered.length} of ${list.length} chapters displayed`;
+
+    const container = document.getElementById('chapters');
+    if (!container) return;
+    if (!filtered.length) {
+        container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-400"><i class="fa-solid fa-magnifying-glass text-3xl mb-2"></i><p class="text-sm font-semibold">No chapters match your search or filter</p></div>`;
+        return;
+    }
+    const cls = subject === 'Biology' ? 'bio' : subject === 'Chemistry' ? 'chem' : 'phy';
+    const short = subject === 'Biology' ? 'BIO' : subject === 'Chemistry' ? 'CHEM' : 'PHY';
+    container.innerHTML = filtered.map(ch => {
+        const done = userProgress[ch] && userProgress[ch].completed;
+        return `
+        <div class="card chapter">
+            <div>
+                <div class="flex items-center justify-between">
+                    <span class="chip ${cls}">${short}</span>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${done ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400'}">${done ? 'Completed ✓' : 'Pending'}</span>
+                </div>
+                <h3 class="chapter-title">${escapeHtml(ch)}</h3>
+            </div>
+            <div>
+                <div class="progress"><i style="width:${done ? '100%' : '0%'}"></i></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+                    <button onclick="handleChapterClick('${jsArg(ch)}')" class="practice">Practice Chapter <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i></button>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+// ===== Modal helpers =====
+function openModal() { document.getElementById('appModal').classList.add('open'); }
+function toggleFullScreenMode(on) { document.getElementById('appModal')?.classList.toggle('fullscreen-modal', !!on); }
+function closeModal() { toggleFullScreenMode(false); document.getElementById('appModal').classList.remove('open'); }
+function setModal(title, body, html, actions = '') {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalBody').textContent = body;
+    document.getElementById('modalContentSlot').innerHTML = html;
+    document.getElementById('modalActions').innerHTML = actions;
+    openModal();
+}
+
+// ===== Quiz =====
+function handleChapterClick(chapterName) { startQuiz(chapterName); }
+
+async function startQuiz(chapterName) {
+    toggleFullScreenMode(false);
+    setModal('', '', `
+        <div class="flex flex-col items-center justify-center py-10">
+            <i class="fa-solid fa-spinner fa-spin text-4xl text-teal-600 mb-4"></i>
+            <p class="text-sm font-bold text-slate-700 dark:text-slate-200">Loading ${escapeHtml(chapterName)}...</p>
+        </div>`);
+    try {
+        const res = await fetch(quizUrl(chapterName), { cache: 'no-cache' });
+        if (res.status === 404) { showComingSoon(chapterName); return; }   // no file yet
+        if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
+
+        const raw = await res.json();
+        const list = Array.isArray(raw) ? raw : raw.qs;                    // file wraps questions in "qs"
+        if (!Array.isArray(list) || !list.length) throw new Error('The file has no questions.');
+
+        const questions = list.map((q, i) => {
+            const options = (q.o || q.options || q.opts || []).map(String);
+            const a = q.a ?? q.answer ?? q.ans;
+            let correct = typeof a === 'number' ? a - 1                      // "a" is 1-based in your files
+                : options.findIndex(o => o.trim() === String(a).trim());
+            if (correct < 0 || correct >= options.length) correct = 0;
+            return { question: q.q || q.question || `Question ${i + 1}`, options, correct, explanation: q.s || '' };
+        });
+
+        Object.assign(quizState, {
+            chapter: chapterName, title: `${subject} — ${raw.name || chapterName}`,
+            questions, currentIndex: 0, score: 0, userAnswers: {}, skippedQuestions: {}, paletteExpanded: false
+        });
+        renderQuiz();
+    } catch (err) {
+        console.error('Quiz load error:', err);
+        setModal('Unable to load questions', '', `
+            <div class="text-center py-6">
+                <i class="fa-solid fa-triangle-exclamation text-4xl text-amber-500 mb-3"></i>
+                <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Couldn't load this chapter.</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(err.message)}</p>
+                <button onclick="startQuiz('${jsArg(chapterName)}')" class="mt-5 px-5 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-700"><i class="fa-solid fa-rotate-right mr-1.5"></i> Retry</button>
+            </div>`,
+            `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 text-xs">Close</button>`);
+    }
+}
+
+function showComingSoon(chapterName) {
+    const done = userProgress[chapterName] && userProgress[chapterName].completed;
+    const n = escapeHtml(chapterName);
+    setModal('', '', `
+        <div class="flex flex-col items-center justify-center text-center py-6 px-2">
+            <div class="relative mb-5">
+                <div class="w-20 h-20 rounded-3xl bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-500 animate-pulse-glow animate-lock-bounce shadow-xl"><i class="fa-solid fa-lock text-3xl sm:text-4xl"></i></div>
+                <div class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] flex items-center justify-center">✦</div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-extrabold text-[11px] uppercase tracking-wider mb-2 border border-amber-500/20">Coming Soon 🔒</span>
+            <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100">${n}</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm max-w-md mt-2.5 leading-relaxed">Practice MCQs for <span class="font-bold text-slate-700 dark:text-slate-200">${n}</span> are being prepared. Check back soon.</p>
+            <div class="mt-6 flex flex-wrap items-center justify-center gap-3 w-full">
+                <button onclick="toggleChapterProgress('${jsArg(chapterName)}')" class="px-4 py-2.5 rounded-xl ${done ? 'bg-amber-500 hover:bg-amber-600 text-slate-950' : 'bg-emerald-600 hover:bg-emerald-700 text-white'} font-bold text-xs transition shadow-sm">${done ? 'Mark as Pending' : 'Mark as Completed ✓'}</button>
+                <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs transition">Got it</button>
+            </div>
+        </div>`);
+}
+
+function selectOption(i) {
+    const idx = quizState.currentIndex;
+    if (quizState.userAnswers[idx] !== undefined) return;
+    quizState.userAnswers[idx] = i;
+    delete quizState.skippedQuestions[idx];
+    if (i === quizState.questions[idx].correct) quizState.score += 1;
+    renderQuiz();
+}
+function togglePaletteExpanded(force) { quizState.paletteExpanded = force !== undefined ? force : !quizState.paletteExpanded; renderQuiz(); }
+function skipQuestion() {
+    if (quizState.userAnswers[quizState.currentIndex] === undefined) quizState.skippedQuestions[quizState.currentIndex] = true;
+    goToNextQuestion();
+}
+function jumpToQuestion(i) { if (i >= 0 && i < quizState.questions.length) { quizState.currentIndex = i; renderQuiz(); } }
+function goToNextQuestion() {
+    quizState.currentIndex += 1;
+    if (quizState.currentIndex >= quizState.questions.length) { quizState.currentIndex = quizState.questions.length - 1; finishQuiz(); return; }
+    renderQuiz();
+}
+function exitQuizFullscreen() { closeModal(); }
+
+function paletteClass(idx, base) {
+    const ans = quizState.userAnswers[idx];
+    if (ans !== undefined) return ans === quizState.questions[idx].correct ? 'bg-emerald-600 text-white font-bold border-transparent' : 'bg-rose-500 text-white font-bold border-transparent';
+    if (quizState.skippedQuestions[idx]) return 'bg-amber-500 text-white font-bold border-transparent';
+    return base;
+}
+
+function renderQuiz() {
+    toggleFullScreenMode(true);
+    const q = quizState.questions[quizState.currentIndex];
+    if (!q) return;
+    const idx = quizState.currentIndex, total = quizState.questions.length;
+    const selected = quizState.userAnswers[idx], answered = selected !== undefined;
+    const isRight = selected === q.correct;
+
+    const palette = quizState.questions.map((_, i) => {
+        const base = 'bg-white text-emerald-700 border border-emerald-500 font-medium dark:bg-slate-800 dark:text-emerald-400 dark:border-emerald-600';
+        const ring = i === idx ? 'ring-2 ring-teal-400 ring-offset-2 dark:ring-offset-slate-900 scale-105 z-10' : '';
+        return `<button onclick="jumpToQuestion(${i})" class="w-8 h-8 rounded-lg text-xs flex items-center justify-center shrink-0 transition-all ${paletteClass(i, base)} ${ring}">${i + 1}</button>`;
+    }).join('');
+
+    const options = q.options.map((opt, i) => {
+        let c = 'flex items-center gap-3 w-full rounded-xl border px-4 py-3 text-left text-sm font-medium transition cursor-pointer ';
+        if (answered) {
+            if (i === q.correct) c += 'border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200 font-bold';
+            else if (i === selected) c += 'border-rose-500 bg-rose-100 text-rose-900 dark:bg-rose-950/30 dark:text-rose-200 font-bold';
+            else c += 'border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 opacity-60';
+        } else {
+            c += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 hover:bg-teal-50/40 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700';
+        }
+        return `<button type="button" class="${c}" ${answered ? 'disabled' : `onclick="selectOption(${i})"`}>
+            <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span>
+            <span class="flex-1">${escapeHtml(opt)}</span></button>`;
+    }).join('');
+
+    const result = answered ? `
+        <div class="mt-4 rounded-xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} px-4 py-3 text-sm font-semibold">
+            ${isRight ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'}
+            Correct option: <span class="font-black">${String.fromCharCode(65 + q.correct)}. ${escapeHtml(q.options[q.correct])}</span>
+            ${q.explanation ? `<div class="mt-2 text-xs font-medium opacity-80">${escapeHtml(q.explanation)}</div>` : ''}
+        </div>` : '';
+
+    const last = idx === total - 1;
+    const sheet = quizState.paletteExpanded ? `
+        <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex flex-col justify-end" onclick="togglePaletteExpanded(false)">
+            <div class="bg-white dark:bg-slate-900 rounded-t-3xl p-4 sm:p-6 max-h-[80vh] flex flex-col shadow-2xl border-t border-slate-200 dark:border-slate-800" onclick="event.stopPropagation()">
+                <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-700 rounded-full mx-auto mb-4 cursor-pointer" onclick="togglePaletteExpanded(false)"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-slate-100">Question Navigation</h3>
+                    <button onclick="togglePaletteExpanded(false)" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <div class="grid grid-cols-6 sm:grid-cols-10 gap-2 overflow-y-auto p-1 max-h-[60vh]">
+                    ${quizState.questions.map((_, i) => `<button onclick="jumpToQuestion(${i}); togglePaletteExpanded(false);" class="h-10 rounded-xl text-xs flex items-center justify-center ${paletteClass(i, 'bg-teal-600 text-white font-bold')} ${i === idx ? 'ring-2 ring-amber-400 ring-offset-2' : ''} transition">${i + 1}</button>`).join('')}
+                </div>
+            </div>
+        </div>` : '';
+
+    const html = `
+        <div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative">
+            <div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="flex items-center gap-3">
+                    <button type="button" onclick="exitQuizFullscreen()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button>
+                    <div>
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">NCERT-pattern practice set</p>
+                    </div>
+                </div>
+                <div class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Score: ${quizState.score}/${total}</div>
+            </div>
+            <div class="flex items-center gap-2 mb-3 px-1 py-1">
+                <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth flex-1">${palette}</div>
+                <button type="button" onclick="togglePaletteExpanded(true)" title="Expand question palette" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 shrink-0 shadow-sm"><i class="fa-solid fa-list-check text-sm"></i></button>
+            </div>
+            <div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span>
+                    <p class="mt-3 text-base sm:text-lg font-bold leading-relaxed text-slate-900 dark:text-slate-100">${multiline(q.question)}</p>
+                    <div class="mt-5 space-y-3">${options}</div>
+                    ${result}
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                    <button type="button" onclick="jumpToQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 disabled:opacity-40">← Previous</button>
+                    <div class="flex items-center gap-2">
+                        ${!answered && !last ? `<button type="button" onclick="skipQuestion()" class="rounded-xl bg-amber-500 hover:bg-amber-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition"><i class="fa-solid fa-forward-step mr-1"></i> Skip</button>` : ''}
+                        <button type="button" onclick="${last ? 'finishQuiz()' : 'goToNextQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white hover:bg-teal-700 transition">${last ? 'Finish Quiz' : 'Next →'}</button>
+                    </div>
+                </div>
+            </div>
+            ${sheet}
+        </div>`;
+    setModal('', '', html);
+}
+
+function finishQuiz() {
+    toggleFullScreenMode(false);
+    const total = quizState.questions.length, score = quizState.score;
+    const pct = total ? Math.round((score / total) * 100) : 0;
+    const attempted = Object.keys(quizState.userAnswers).length;
+    if (pct >= 50) {
+        userProgress[quizState.chapter] = { completed: true, pct: 100 };
+        saveToLocalStorage();
+        updateGlobalProgress();
+    }
+    setModal('Final Result', `Summary for ${quizState.chapter}.`, `
+        <div class="w-full max-w-md mx-auto rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center dark:border-slate-700 dark:bg-slate-900/50">
+            <div class="text-[10px] font-extrabold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">${escapeHtml(quizState.chapter)} completed</div>
+            <div class="mt-3 text-4xl font-black text-slate-900 dark:text-slate-100">${score} / ${total}</div>
+            <div class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300">Accuracy: <span class="text-teal-600 dark:text-teal-400 font-bold">${pct}%</span> · Attempted ${attempted}</div>
+            <div class="mt-4 text-xs leading-relaxed text-slate-600 dark:text-slate-300">${pct >= 70 ? '🎉 Excellent work. You have revised this chapter thoroughly.' : pct >= 50 ? '👍 Good progress. Review the questions you missed.' : '💪 Keep going. Re-read the NCERT chapter and try again.'}</div>
+            <div class="mt-6 flex items-center justify-center gap-3">
+                <button type="button" onclick="restartQuiz()" class="rounded-xl bg-teal-600 px-4 py-2.5 text-xs font-bold text-white hover:bg-teal-700">Retake</button>
+                <button type="button" onclick="closeModal(); renderView();" class="rounded-xl bg-slate-200 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Done</button>
+            </div>
+        </div>`);
+}
+
+function restartQuiz() {
+    Object.assign(quizState, { currentIndex: 0, score: 0, userAnswers: {}, skippedQuestions: {}, paletteExpanded: false });
+    renderQuiz();
+}
+
+function toggleChapterProgress(name) {
+    if (!userProgress[name]) userProgress[name] = { completed: true, pct: 100 };
+    else { userProgress[name].completed = !userProgress[name].completed; userProgress[name].pct = userProgress[name].completed ? 100 : 0; }
+    saveToLocalStorage();
+    closeModal();
+    renderView();
+}
+
+// ===== Misc UI =====
+function openFacultyPlaylist(id) {
+    const f = TEACHERS_DATA.find(t => t.id === id);
+    if (f && f.playlistUrl) window.open(f.playlistUrl, '_blank', 'noopener');
+}
+function toggleTheme() {
+    document.body.classList.toggle('dark');
+    document.documentElement.classList.toggle('dark');
+    try { localStorage.setItem('edupulse_theme', document.body.classList.contains('dark') ? 'dark' : 'light'); } catch {}
+}
+if (localStorage.getItem('edupulse_theme') === 'dark') {
+    document.body.classList.add('dark');
+    document.documentElement.classList.add('dark');
+}
+function toggleMobileNav(open) {
+    document.getElementById('sidebarDrawer').classList.toggle('open', !!open);
+    document.getElementById('navOverlay').classList.toggle('open', !!open);
+}
+function switchTab(tab) {
+    if (currentTab !== tab) previousTab = currentTab;
+    currentTab = tab;
+    document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById('nav-' + tab)?.classList.add('active');
+    toggleMobileNav(false);
+    renderView();
+}
+function goBack() { switchTab(previousTab || 'home'); }
+
+// ===== Timer =====
+function setTimerPreset(minutes, mode = 'work') {
+    pauseTimer();
+    timerMode = mode;
+    timerInitialSeconds = minutes * 60;
+    timerSeconds = timerInitialSeconds;
+    saveToLocalStorage();
+    if (currentTab === 'tools') renderView(); else updateTimerDisplay();
+}
+function startTimer() {
+    if (timerInterval) return;
+    document.getElementById('timerCard')?.classList.add('border-teal-500', 'ring-2', 'ring-teal-500/20');
+    timerInterval = setInterval(() => {
+        if (timerSeconds > 0) { timerSeconds--; updateTimerDisplay(); return; }
+        clearInterval(timerInterval); timerInterval = null;
+        if (timerMode === 'work') { timerSessionCount++; saveToLocalStorage(); setTimerPreset(5, 'break'); }
+        else setTimerPreset(25, 'work');
+    }, 1000);
+}
+function pauseTimer() {
+    clearInterval(timerInterval); timerInterval = null;
+    document.getElementById('timerCard')?.classList.remove('border-teal-500', 'ring-2', 'ring-teal-500/20');
+}
+function resetTimer() { pauseTimer(); timerSeconds = timerInitialSeconds; updateTimerDisplay(); }
+function updateTimerDisplay() {
+    const el = document.getElementById('timerDisplay'), bar = document.getElementById('timerProgressBar');
+    if (!el) return;
+    el.textContent = `${String(Math.floor(timerSeconds / 60)).padStart(2, '0')}:${String(timerSeconds % 60).padStart(2, '0')}`;
+    if (bar && timerInitialSeconds > 0) bar.style.width = `${Math.round(((timerInitialSeconds - timerSeconds) / timerInitialSeconds) * 100)}%`;
+}
+
+// ===== Todos =====
+function addTodo(e) {
+    if (e) e.preventDefault();
+    const input = document.getElementById('todoInput');
+    if (!input || !input.value.trim()) return;
+    todos.unshift({
+        id: 'td_' + Date.now(), title: input.value.trim(),
+        subject: document.getElementById('todoSubjectSelect')?.value || 'General',
+        priority: document.getElementById('todoPrioritySelect')?.value || 'medium',
+        completed: false, createdAt: Date.now()
+    });
+    saveToLocalStorage(); input.value = ''; renderView();
+}
+function toggleTodo(id) { todos = todos.map(t => t.id === id ? { ...t, completed: !t.completed } : t); saveToLocalStorage(); renderView(); }
+function deleteTodo(id) { todos = todos.filter(t => t.id !== id); saveToLocalStorage(); renderView(); }
+function clearCompletedTodos() { todos = todos.filter(t => !t.completed); saveToLocalStorage(); renderView(); }
+
+// ===== Views =====
+function quickAction(tab, color, icon, title, desc) {
+    return `<button onclick="switchTab('${tab}')" class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-${color}-500/10 via-${color}-500/5 to-transparent border border-${color}-500/20 hover:border-${color}-500/50 hover:shadow-md text-left transition group">
+        <div class="w-10 h-10 rounded-xl bg-${color}-500/20 text-${color}-600 dark:text-${color}-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid ${icon} text-lg"></i></div>
+        <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">${title}</h4>
+        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium">${desc}</p></button>`;
+}
+function statCard(label, value, sub, color) {
+    return `<div class="card p-4 flex flex-col justify-between"><span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">${label}</span>
+        <div class="flex items-baseline gap-2 mt-2"><span class="text-2xl font-black text-slate-900 dark:text-slate-100">${value}</span><span class="text-xs font-bold text-${color}-500">${sub}</span></div></div>`;
+}
+
+function renderView() {
+    const container = document.getElementById('main-container');
+    updateGlobalProgress();
+    const back = document.getElementById('back-btn');
+    if (back) { back.classList.toggle('hidden', currentTab === 'home'); back.classList.toggle('inline-flex', currentTab !== 'home'); }
+
+    if (currentTab === 'home') {
+        const done = Object.values(userProgress).filter(p => p && p.completed).length;
+        const pct = Math.round((done / TOTAL_CHAPTERS) * 100);
+        container.innerHTML = `
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-900 via-slate-900 to-teal-950 text-white p-6 sm:p-10 shadow-xl border border-teal-800/40">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 mb-4"><span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span> Complete NEET Preparation Ecosystem</span>
+                    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">Master NEET with Precision & Focus.</h1>
+                    <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">EduPulse PRO combines chapter-wise syllabus tracking, practice MCQs, focus timers, resource links and educator playlists in one place.</p>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <button onclick="switchTab('practice')" class="px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-sm transition flex items-center gap-2 shadow-lg shadow-teal-900/30">Explore Practice <i class="fa-solid fa-arrow-right text-xs"></i></button>
+                        <button onclick="switchTab('directory')" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm transition">Resource Directory</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8">
+                <div class="tag mb-3">✦ Quick Actions</div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                    ${quickAction('practice', 'teal', 'fa-list-check', 'Practice', 'Browse & solve chapter MCQs')}
+                    ${quickAction('tools', 'amber', 'fa-stopwatch', 'Focus & Planner', 'To-do list & focus timer')}
+                    ${quickAction('faculty', 'indigo', 'fa-chalkboard-user', 'Faculty Hub', 'Access teacher playlists')}
+                    ${quickAction('directory', 'blue', 'fa-book-bookmark', 'Study Directory', 'Books & CBT portals')}
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
+                ${statCard('Syllabus Covered', pct + '%', 'Overall', 'teal')}
+                ${statCard('Completed Chapters', `${done} / ${TOTAL_CHAPTERS}`, 'Done', 'emerald')}
+                ${statCard('Resources', INITIAL_RESOURCES.length, 'Links', 'indigo')}
+                ${statCard('Faculty Playlists', TEACHERS_DATA.length, 'Educators', 'amber')}
+            </div>`;
+    } else if (currentTab === 'practice') {
+        const sel = s => subject === s ? 'selected' : '';
+        container.innerHTML = `
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="tag">✦ Chapter Practice</div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100" id="subject-title">Biology Chapters</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1" id="count"></p>
+                </div>
+                <div class="controls flex flex-wrap items-center gap-2">
+                    <input type="text" id="search" oninput="renderChapters()" placeholder="Search chapter..." class="w-full sm:w-auto">
+                    <select id="statusFilter" onchange="renderChapters()" class="w-full sm:w-auto">
+                        <option value="all">All Chapters</option><option value="pending">Pending</option><option value="completed">Completed</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-3 mt-6">
+                <button onclick="setSubject('Biology')" class="subject ${sel('Biology')}"><div><b>Biology</b><small>${data.Biology.length} Chapters</small></div><span class="chip bio hidden sm:grid">BIO</span></button>
+                <button onclick="setSubject('Chemistry')" class="subject ${sel('Chemistry')}"><div><b>Chemistry</b><small>${data.Chemistry.length} Chapters</small></div><span class="chip chem hidden sm:grid">CHEM</span></button>
+                <button onclick="setSubject('Physics')" class="subject ${sel('Physics')}"><div><b>Physics</b><small>${data.Physics.length} Chapters</small></div><span class="chip phy hidden sm:grid">PHY</span></button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6" id="chapters"></div>`;
+        renderChapters();
+    } else if (currentTab === 'directory') {
+        container.innerHTML = `
+            <div><div class="tag">✦ Curated Directory</div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Resource Links Directory</h2></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                ${INITIAL_RESOURCES.map(r => `
+                <div class="card p-4 flex flex-col justify-between">
+                    <div>
+                        <span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">${escapeHtml(r.badge)}</span>
+                        <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base mt-2">${escapeHtml(r.title)}</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(r.category)} • ${escapeHtml(r.subtag)}</p>
+                    </div>
+                    <a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer" class="mt-4 w-full py-2 bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300 hover:bg-teal-100 text-center font-bold text-xs rounded-xl block">Visit Link <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i></a>
+                </div>`).join('')}
+            </div>`;
+    } else if (currentTab === 'faculty') {
+        container.innerHTML = `
+            <div><div class="tag">✦ Faculty Directory</div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Teacher Cards & Playlists</h2></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">
+                ${TEACHERS_DATA.map(f => `
+                <div onclick="openFacultyPlaylist('${f.id}')" class="card p-4 flex flex-col text-center items-center h-full hover:border-teal-500/50 hover:shadow-md transition cursor-pointer">
+                    <img src="${f.img}" alt="${escapeHtml(f.name)}" class="w-20 h-20 rounded-2xl object-cover border border-slate-200 dark:border-slate-700 shadow-sm" onerror="this.onerror=null;this.src='https://placehold.co/200x200/0f172a/ffffff?text=${encodeURIComponent(f.name)}';">
+                    <h4 class="font-bold text-xs sm:text-sm mt-1.5 text-slate-800 dark:text-slate-100">${escapeHtml(f.name)}</h4>
+                    <p class="text-[10px] font-bold text-teal-600 dark:text-teal-400 mt-2 flex items-center gap-1"><i class="fa-solid fa-play text-[9px]"></i> View Playlist</p>
+                </div>`).join('')}
+            </div>`;
+    } else if (currentTab === 'tools') {
+        const active = todos.filter(t => !t.completed), doneTodos = todos.filter(t => t.completed);
+        const mm = String(Math.floor(timerSeconds / 60)).padStart(2, '0'), ss = String(timerSeconds % 60).padStart(2, '0');
+        const preset = (min, label, secs, on, off) => `<button onclick="setTimerPreset(${min}${min === 5 ? ", 'break'" : ''})" class="px-2.5 py-1 rounded-lg text-xs font-bold ${timerInitialSeconds === secs ? on : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'} ${off} hover:text-white transition">${label}</button>`;
+        container.innerHTML = `
+            <div><div class="tag">✦ Productivity & Study Suite</div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Focus Timer & Daily Planner</h2></div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                <div class="card p-6 flex flex-col justify-between transition-all ${timerInterval ? 'border-teal-500 ring-2 ring-teal-500/20' : ''}" id="timerCard">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400 flex items-center gap-1.5"><i class="fa-solid fa-circle-dot text-[10px] ${timerInterval ? 'text-teal-500' : 'text-slate-400'}"></i> ${timerMode === 'work' ? 'Focus Session' : 'Rest Break'}</span>
+                            <span class="px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800 text-[10px] font-black text-teal-700 dark:text-teal-300">🎯 ${timerSessionCount} Blocks Done</span>
+                        </div>
+                        <div class="flex items-center justify-center gap-1.5 my-4">
+                            ${preset(15, '15m', 900, 'bg-teal-600 text-white', 'hover:bg-teal-500')}
+                            ${preset(25, '25m', 1500, 'bg-teal-600 text-white', 'hover:bg-teal-500')}
+                            ${preset(45, '45m', 2700, 'bg-teal-600 text-white', 'hover:bg-teal-500')}
+                            ${preset(5, '5m Break', 300, 'bg-amber-500 text-white', 'hover:bg-amber-500')}
+                        </div>
+                        <div class="text-5xl sm:text-6xl font-black my-4 text-center tracking-wider text-slate-900 dark:text-slate-100 font-mono" id="timerDisplay">${mm}:${ss}</div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mb-6"><div id="timerProgressBar" class="bg-teal-500 h-full transition-all duration-300" style="width:${Math.round(((timerInitialSeconds - timerSeconds) / timerInitialSeconds) * 100)}%"></div></div>
+                    </div>
+                    <div class="flex justify-center gap-2">
+                        <button onclick="startTimer()" class="flex-1 py-2.5 bg-teal-600 text-white rounded-xl font-bold hover:bg-teal-700 text-xs transition flex items-center justify-center gap-1.5"><i class="fa-solid fa-play text-[10px]"></i> Start</button>
+                        <button onclick="pauseTimer()" class="flex-1 py-2.5 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-bold text-xs hover:bg-slate-300 dark:hover:bg-slate-600 transition flex items-center justify-center gap-1.5"><i class="fa-solid fa-pause text-[10px]"></i> Pause</button>
+                        <button onclick="resetTimer()" class="px-4 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-xl font-bold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 transition"><i class="fa-solid fa-rotate-left"></i></button>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2"><i class="fa-solid fa-square-check text-teal-600 dark:text-teal-400"></i> Daily Study Planner</h3>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-slate-500 dark:text-slate-400">${active.length} Pending</span>
+                            ${doneTodos.length ? `<button onclick="clearCompletedTodos()" class="text-[11px] font-bold text-rose-500 hover:underline">Clear Done</button>` : ''}
+                        </div>
+                    </div>
+                    <form onsubmit="addTodo(event)" class="flex flex-wrap sm:flex-nowrap gap-2 mb-4">
+                        <input type="text" id="todoInput" placeholder="Add a task (e.g., Solve 50 Physics MCQs)..." class="flex-1 px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 focus:border-teal-500 focus:outline-none text-xs font-medium">
+                        <select id="todoSubjectSelect" class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold focus:outline-none"><option>Biology</option><option>Chemistry</option><option>Physics</option><option>General</option></select>
+                        <select id="todoPrioritySelect" class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold focus:outline-none"><option value="high">🔴 High</option><option value="medium" selected>🟡 Med</option><option value="low">🟢 Low</option></select>
+                        <button type="submit" class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-bold text-xs transition shrink-0">+ Add</button>
+                    </form>
+                    <div class="space-y-2 max-h-56 overflow-y-auto pr-1">
+                        ${todos.length ? '' : `<p class="text-xs text-slate-400 py-4 text-center">No tasks yet. Add your first target for today.</p>`}
+                        ${todos.map(t => `
+                        <div class="flex items-center justify-between p-3 rounded-xl border ${t.completed ? 'bg-slate-50/50 dark:bg-slate-800/30 border-slate-200 dark:border-slate-800 opacity-60' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700'} transition">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" ${t.completed ? 'checked' : ''} onchange="toggleTodo('${t.id}')" class="w-4 h-4 rounded text-teal-600 cursor-pointer">
+                                <div><p class="text-xs font-bold ${t.completed ? 'line-through text-slate-400' : 'text-slate-800 dark:text-slate-100'}">${escapeHtml(t.title)}</p><span class="text-[10px] text-slate-400 font-semibold">${escapeHtml(t.subject)}</span></div>
+                            </div>
+                            <button onclick="deleteTodo('${t.id}')" class="text-slate-400 hover:text-rose-500 p-1 transition"><i class="fa-solid fa-trash text-xs"></i></button>
+                        </div>`).join('')}
+                    </div>
+                </div>
+            </div>`;
+    }
+}
+
+window.onload = renderView;
+</script>
+</body>
+</html>
