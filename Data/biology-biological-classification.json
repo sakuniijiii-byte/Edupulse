@@ -3,37 +3,3371 @@
 "no": 2,
 "name": "Biological Classification",
 "storageKey": "medzenith_quiz_v1_biological_classification",
-"qs": [
 {
-"q": "According to Whittaker's classification, how many of the following characteristics are present in both Kingdom Plantae and Fungi?\n(I) Eukaryotic, generally multicellular.\n(II) Heterotrophic mode of nutrition.\n(III) Polysaccharide cell wall.\n(IV) True tissue present, and both asexual and sexual reproduction occur.\n(V) Well-developed nucleus and other organelles.\n(VI) Presence of chloroplast.",
-"o": [
-"II, III, IV, V",
-"I, III, IV, V",
-"III, V, VI",
-"I, II, VI"
-],
-"a": 2,
-"s": "Both Kingdom Plantae and Fungi share eukaryotic multicellular structure, polysaccharide cell wall, tissue-level organization with both sexual and asexual reproduction, and well-developed cell organelles."
-},
+"questions": [
 {
-"q": "Which of the following statements about mycoplasma is wrong?",
+"q": "Which of the following character is common in Monera, Protista and Fungi?",
 "o": [
-"They are sensitive to penicillin.",
-"They are pleomorphic.",
-"They are also called PPLO.",
-"They cause disease in plants."
+"Presence of cell wall",
+"Presence of nuclear membrane",
+"Presence of membrane bound organelles",
+"Eukaryotic nature"
 ],
 "a": 1,
-"s": "Mycoplasmas lack a cell wall, making them insensitive to penicillin which targets cell wall synthesis."
+"s": "All three kingdoms contain organisms that possess a cell wall, although their composition varies (peptidoglycan in Monera, cellulosic/siliceous in some Protista, and chitin in Fungi)."
 },
 {
-"q": "How many of the following list of organisms lacks cellulosic cell wall\nDiatoms, Cyanobacteria, Chlorella,\nChlamydomonas, Spirogyra, Nostoc,\nAnabaena, Archaea, Eubacteria,\nDinoflagellates, Gonyaulax,\nSpores of Slime moulds",
+"q": "How many domain(s) in three domain system include prokaryotic organisms?",
 "o": [
-"5",
-"4",
-"6",
-"10"
+"One",
+"Two",
+"Three",
+"Four"
 ],
+"a": 2,
+"s": "In Carl Woese's three-domain system, two domains—Archaea and Bacteria—comprise prokaryotic organisms."
+},
+{
+"q": "Match the Column-I with Column-II and select the correct option from code given below:\n\nColumn-I\nA. Planaria\nB. Fungi\nC. Yeast\nD. Amoeba\n\nColumn-II\n(i) Binary fission\n(ii) Budding\n(iii) True regeneration\n(iv) Fragmentation",
+"o": [
+"A-(iii), B-(iv), C-(ii), D-(i)",
+"A-(iii), B-(ii), C-(iv), D-(i)",
+"A-(i), B-(ii), C-(iii), D-(iv)",
+"A-(ii), B-(i), C-(iv), D-(iii)"
+],
+"a": 1,
+"s": "Planaria shows true regeneration, Fungi reproduce by fragmentation, Yeast by budding, and Amoeba by binary fission."
+},
+{
+"q": "Bacteria show a great diversity in:",
+"o": [
+"Shape",
+"Metabolism",
+"Structure",
+"Both (1) and (2)"
+],
+"a": 2,
+"s": "Though structurally very simple, bacteria exhibit extensive metabolic diversity."
+},
+{
+"q": "Kingdom Protista forms a link with:",
+"o": [
+"Plantae only",
+"Fungi only",
+"Animalia only",
+"Plantae, Fungi and Animalia"
+],
+"a": 4,
+"s": "Kingdom Protista connects unicellular prokaryotes to the other three eukaryotic kingdoms: Plantae, Fungi, and Animalia."
+},
+{
+"q": "Members of Kingdom Protista are primarily:",
+"o": [
+"Parasites",
+"Terrestrial",
+"Aquatic",
+"Photosynthetic"
+],
+"a": 3,
+"s": "Members of Kingdom Protista are predominantly aquatic organisms."
+},
+{
+"q": "Which of the following is correct statement about Archaebacteria?",
+"o": [
+"They differ from other bacteria in having a different cell wall structure.",
+"This cell wall structure is responsible for their survival in extreme conditions.",
+"Methanogens are present in the gut of several ruminant animals.",
+"All of the above"
+],
+"a": 4,
+"s": "Archaebacteria possess a distinct cell wall composition that enables them to inhabit extreme environments; methanogens occur in ruminant guts."
+},
+{
+"q": "Cyanobacteria are also known as:",
+"o": [
+"Blue green algae",
+"Red algae",
+"Brown algae",
+"Golden algae"
+],
+"a": 1,
+"s": "Cyanobacteria are photosynthetic prokaryotes commonly referred to as blue-green algae."
+},
+{
+"q": "The colonies of cyanobacteria are generally surrounded by:",
+"o": [
+"Protein coat",
+"Gelatinous sheath",
+"Siliceous shell",
+"Chitinous coat"
+],
+"a": 2,
+"s": "Colonies of Cyanobacteria are typically enveloped by a gelatinous or mucilaginous sheath."
+},
+{
+"q": "Which of the following organisms can fix atmospheric nitrogen in specialized cells called heterocysts?",
+"o": [
+"Nostoc and Anabaena",
+"Euglena and Paramecium",
+"Rhizopus and Mucor",
+"Mycoplasma and Spirochete"
+],
+"a": 1,
+"s": "Nostoc and Anabaena are cyanobacteria that possess specialized thick-walled cells called heterocysts for nitrogen fixation."
+},
+{
+"q": "Mycoplasma are organisms that:",
+"o": [
+"Completely lack a cell wall",
+"Are the smallest living cells known",
+"Can survive without oxygen",
+"All of the above"
+],
+"a": 4,
+"s": "Mycoplasmas lack a cell wall, are the smallest known living cells, and are facultative anaerobes."
+},
+{
+"q": "Chief producers in the oceans are:",
+"o": [
+"Euglenoids",
+"Diatoms",
+"Dinoflagellates",
+"Slime moulds"
+],
+"a": 2,
+"s": "Diatoms (a class of chrysophytes) are the chief primary producers in marine ecosystems."
+},
+{
+"q": "Diatomaceous earth is formed due to the deposition of cell walls of diatoms over billions of years. It is used in:",
+"o": [
+"Polishing",
+"Filtration of oils",
+"Filtration of syrups",
+"All of the above"
+],
+"a": 4,
+"s": "Diatomaceous earth is gritty and porous, making it useful in polishing, filtration of oils, and syrups."
+},
+{
+"q": "Red tides in warm oceans are often caused by rapid multiplication of:",
+"o": [
+"Gonyaulax",
+"Euglena",
+"Trypanosoma",
+"Plasmodium"
+],
+"a": 1,
+"s": "Gonyaulax, a dinoflagellate, multiplies rapidly causing red tides."
+},
+{
+"q": "Instead of a cell wall, Euglenoids have a protein-rich layer called:",
+"o": [
+"Capsule",
+"Pellicle",
+"Cuticle",
+"Mucilage"
+],
+"a": 2,
+"s": "Euglenoids lack a cell wall and instead have a flexible proteinaceous outer layer termed a pellicle."
+},
+{
+"q": "Under suitable conditions, slime moulds form an aggregation called:",
+"o": [
+"Mycelium",
+"Plasmodium",
+"Pseudopodia",
+"Fruiting body"
+],
+"a": 2,
+"s": "In favorable conditions, slime moulds aggregate to form a multinucleate mass called a plasmodium."
+},
+{
+"q": "During unfavorable conditions, slime moulds form:",
+"o": [
+"Spores inside fruiting bodies",
+"Flagellated cells",
+"Cysts",
+"Zygospores"
+],
+"a": 1,
+"s": "Under adverse conditions, the plasmodium differentiates into fruiting bodies bearing resistant spores."
+},
+{
+"q": "Which protozoan causes sleeping sickness?",
+"o": [
+"Amoeba",
+"Entamoeba",
+"Trypanosoma",
+"Paramecium"
+],
+"a": 3,
+"s": "Trypanosoma is a flagellated protozoan parasite that causes sleeping sickness."
+},
+{
+"q": "Fungi show a great diversity in:",
+"o": [
+"Morphology",
+"Habitat",
+"Nutrition",
+"Both (1) and (2)"
+],
+"a": 4,
+"s": "Fungi display extensive diversity in both morphological form and environmental habitats."
+},
+{
+"q": "Cell wall of fungi is composed of:",
+"o": [
+"Chitin and polysaccharides",
+"Cellulose and pectin",
+"Peptidoglycan",
+"Silica"
+],
+"a": 1,
+"s": "Fungal cell walls are predominantly composed of chitin and complex polysaccharides."
+},
+{
+"q": "Fungi prefer to grow in places that are:",
+"o": [
+"Cold and dry",
+"Warm and humid",
+"Cold and humid",
+"Warm and dry"
+],
+"a": 2,
+"s": "Warm and humid conditions favor fungal growth and spore germination."
+},
+{
+"q": "A network of hyphae in fungi is known as:",
+"o": [
+"Mycelium",
+"Thallus",
+"Sorus",
+"Plasmodium"
+],
+"a": 1,
+"s": "The vegetative body of a fungus consists of a mass of thread-like hyphae known as a mycelium."
+},
+{
+"q": "Hyphae that are continuous tubes filled with multinucleated cytoplasm are called:",
+"o": [
+"Septate hyphae",
+"Coenocytic hyphae",
+"Haustoria",
+"Pseudohyphae"
+],
+"a": 2,
+"s": "Aseptate, multinucleate hyphae are termed coenocytic hyphae."
+},
+{
+"q": "Fungi storing food as:",
+"o": [
+"Starch and oil",
+"Glycogen and oil",
+"Cellulose",
+"Sucrose"
+],
+"a": 2,
+"s": "Fungi store reserve food material primarily in the form of glycogen and lipid/oil droplets."
+},
+{
+"q": "The sexual cycle in fungi involves three steps in which sequence?",
+"o": [
+"Karyogamy, Plasmogamy, Meiosis",
+"Plasmogamy, Karyogamy, Meiosis",
+"Meiosis, Karyogamy, Plasmogamy",
+"Plasmogamy, Meiosis, Karyogamy"
+],
+"a": 2,
+"s": "The fungal sexual cycle proceeds through Plasmogamy (fusion of protoplasm), Karyogamy (fusion of nuclei), and Meiosis."
+},
+{
+"q": "A dikaryon condition (n+n) is characteristic of:",
+"o": [
+"Phycomycetes and Ascomycetes",
+"Ascomycetes and Basidiomycetes",
+"Phycomycetes and Deuteromycetes",
+"Basidiomycetes and Phycomycetes"
+],
+"a": 2,
+"s": "An intervening dikaryotic stage (n+n) occurs prominently in Ascomycetes and Basidiomycetes."
+},
+{
+"q": "Members of Phycomycetes are found in:",
+"o": [
+"Aquatic habitats",
+"Decaying wood in moist and damp places",
+"Obligate parasites on plants",
+"All of the above"
+],
+"a": 4,
+"s": "Phycomycetes inhabit aquatic habitats, decaying organic matter in damp areas, and act as obligate plant parasites."
+},
+{
+"q": "Asexual reproduction in Phycomycetes takes place by motile spores called _______ or non-motile spores called _______.",
+"o": [
+"Aplanospores, Zoospores",
+"Zoospores, Aplanospores",
+"Conidia, Ascospores",
+"Basidiospores, Conidia"
+],
+"a": 2,
+"s": "In Phycomycetes, motile asexual spores are zoospores, whereas non-motile spores are aplanospores."
+},
+{
+"q": "Which of the following is an example of Phycomycetes?",
+"o": [
+"Mucor",
+"Rhizopus",
+"Albugo",
+"All of the above"
+],
+"a": 4,
+"s": "Mucor, Rhizopus (bread mould), and Albugo (parasitic fungus on mustard) are all Phycomycetes."
+},
+{
+"q": "Ascomycetes are commonly known as:",
+"o": [
+"Bracket fungi",
+"Sac fungi",
+"Imperfect fungi",
+"Algal fungi"
+],
+"a": 2,
+"s": "Ascomycetes are commonly called sac fungi because their sexual spores are produced inside a sac-like ascus."
+},
+{
+"q": "Which of the following is a unicellular ascomycete?",
+"o": [
+"Penicillium",
+"Saccharomyces (Yeast)",
+"Aspergillus",
+"Neurospora"
+],
+"a": 2,
+"s": "Yeast (Saccharomyces) is a unicellular representative of Ascomycetes."
+},
+{
+"q": "Asexual spores in Ascomycetes are called _______ and are produced _______ on conidiophores.",
+"o": [
+"Conidia, exogenously",
+"Ascospores, endogenously",
+"Zoospores, endogenously",
+"Basidiospores, exogenously"
+],
+"a": 1,
+"s": "Ascomycetes produce asexual spores called conidia exogenously on specialized structures termed conidiophores."
+},
+{
+"q": "Sexual spores in Ascomycetes are called _______ and are produced _______ in sac-like asci.",
+"o": [
+"Conidia, exogenously",
+"Ascospores, endogenously",
+"Basidiospores, exogenously",
+"Zoospores, endogenously"
+],
+"a": 2,
+"s": "Ascospores are sexual spores generated endogenously within sac-like asci."
+},
+{
+"q": "Neurospora is extensively used in:",
+"o": [
+"Biochemical and genetic work",
+"Making bread and beer",
+"Antibiotic production",
+"Cheese ripening"
+],
+"a": 1,
+"s": "Neurospora crassa is widely used as a model organism in experimental genetics and biochemistry."
+},
+{
+"q": "Morels and truffles belong to class _______ and are _______.",
+"o": [
+"Basidiomycetes, poisonous",
+"Ascomycetes, edible delicacies",
+"Phycomycetes, saprophytes",
+"Deuteromycetes, parasites"
+],
+"a": 2,
+"s": "Morels and truffles are edible members of Ascomycetes prized as delicacies."
+},
+{
+"q": "Commonly known forms of Basidiomycetes are:",
+"o": [
+"Mushrooms",
+"Bracket fungi",
+"Puffballs",
+"All of the above"
+],
+"a": 4,
+"s": "Basidiomycetes include mushrooms, bracket fungi, and puffballs."
+},
+{
+"q": "In Basidiomycetes, vegetative reproduction occurs commonly by:",
+"o": [
+"Fragmentation",
+"Budding",
+"Aplanospores",
+"Conidia"
+],
+"a": 1,
+"s": "Vegetative propagation in Basidiomycetes proceeds predominantly through fragmentation."
+},
+{
+"q": "Sex organs are absent in which class of fungi, but sexual reproduction takes place by somatogamy?",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 3,
+"s": "In Basidiomycetes, specialized sex organs are absent; sexual reproduction occurs by somatogamy between vegetative cells."
+},
+{
+"q": "Basidiospores are produced _______ on the basidium.",
+"o": [
+"Endogenously",
+"Exogenously",
+"Both (1) and (2)",
+"None of the above"
+],
+"a": 2,
+"s": "Basidiospores are borne exogenously on the exterior of the basidium."
+},
+{
+"q": "Which of the following is a rust fungus belonging to Basidiomycetes?",
+"o": [
+"Ustilago",
+"Puccinia",
+"Agaricus",
+"Alternaria"
+],
+"a": 2,
+"s": "Puccinia causes rust diseases (e.g., wheat rust) and belongs to Basidiomycetes."
+},
+{
+"q": "Ustilago causes which disease in plants?",
+"o": [
+"Rust",
+"Smut",
+"Blight",
+"Powdery mildew"
+],
+"a": 2,
+"s": "Ustilago is commonly known as smut fungus and causes smut diseases in crops."
+},
+{
+"q": "Deuteromycetes are called 'imperfect fungi' because:",
+"o": [
+"They have no cell wall",
+"Only sexual stages are known",
+"Only asexual or vegetative stages are known",
+"They do not form mycelium"
+],
+"a": 3,
+"s": "Deuteromycetes are termed imperfect fungi because their sexual (perfect) stage is absent or unknown."
+},
+{
+"q": "When sexual forms of Deuteromycetes were discovered, they were often moved to:",
+"o": [
+"Phycomycetes",
+"Ascomycetes and Basidiomycetes",
+"Protista",
+"Monera"
+],
+"a": 2,
+"s": "Upon discovery of their perfect (sexual) stages, members of Deuteromycetes are reclassified into Ascomycetes or Basidiomycetes."
+},
+{
+"q": "Deuteromycetes reproduce only by asexual spores known as:",
+"o": [
+"Zoospores",
+"Aplanospores",
+"Conidia",
+"Basidiospores"
+],
+"a": 3,
+"s": "Deuteromycetes reproduce asexually primarily through conidia."
+},
+{
+"q": "Which of the following belongs to Deuteromycetes?",
+"o": [
+"Alternaria",
+"Colletotrichum",
+"Trichoderma",
+"All of the above"
+],
+"a": 4,
+"s": "Alternaria, Colletotrichum, and Trichoderma are representative genera of Deuteromycetes."
+},
+{
+"q": "Bladderwort and Venus flytrap are examples of:",
+"o": [
+"Parasitic plants",
+"Insectivorous plants",
+"Saprophytic plants",
+"Symbiotic plants"
+],
+"a": 2,
+"s": "Bladderwort and Venus flytrap are partially heterotrophic, insectivorous plants."
+},
+{
+"q": "Cuscuta is an example of a:",
+"o": [
+"Photosynthetic plant",
+"Parasite",
+"Insectivorous plant",
+"Symbiont"
+],
+"a": 2,
+"s": "Cuscuta (dodder) is a non-green parasitic plant."
+},
+{
+"q": "Plant cell walls are predominantly made of:",
+"o": [
+"Chitin",
+"Cellulose",
+"Peptidoglycan",
+"Silica"
+],
+"a": 2,
+"s": "The primary structural component of plant cell walls is cellulose."
+},
+{
+"q": "The life cycle of plants has two distinct phases - the diploid _______ and the haploid _______.",
+"o": [
+"Gametophyte, Sporophyte",
+"Sporophyte, Gametophyte",
+"Zygote, Spore",
+"Thallus, Mycelium"
+],
+"a": 2,
+"s": "Plants exhibit alternation of generations between a diploid sporophyte and a haploid gametophyte."
+},
+{
+"q": "Viruses did not find a place in Whittaker's classification system because:",
+"o": [
+"They are non-cellular organisms",
+"They are not truly 'living'",
+"They are obligate parasites",
+"All of the above"
+],
+"a": 4,
+"s": "Whittaker's 5-kingdom system excluded viruses because they lack cellular organization and true living status outside a host."
+},
+{
+"q": "The name 'virus' (meaning venom or poisonous fluid) was given by:",
+"o": [
+"D.J. Ivanowsky",
+"M.W. Beijerinek",
+"Dmitri Ivanowsky / Pasteur",
+"W.M. Stanley"
+],
+"a": 3,
+"s": "The term virus, meaning venom or poisonous fluid, was coined by Louis Pasteur (and recognized in early studies by Ivanowsky)."
+},
+{
+"q": "Who demonstrated that the extract of infected tobacco plants could cause infection in healthy plants and called the fluid 'Contagium vivum fluidum'?",
+"o": [
+"D.J. Ivanowsky",
+"M.W. Beijerinek",
+"W.M. Stanley",
+"T.O. Diener"
+],
+"a": 2,
+"s": "M.W. Beijerinck (1898) coined 'Contagium vivum fluidum' (infectious living fluid) for tobacco mosaic pathogen."
+},
+{
+"q": "Who showed that viruses could be crystallized and crystals consist largely of proteins?",
+"o": [
+"D.J. Ivanowsky",
+"M.W. Beijerinek",
+"W.M. Stanley",
+"T.O. Diener"
+],
+"a": 3,
+"s": "W.M. Stanley (1935) crystallized Tobacco Mosaic Virus (TMV) and showed it consists mostly of protein."
+},
+{
+"q": "In general, viruses that infect plants have _______ and viruses that infect animals have _______.",
+"o": [
+"Single-stranded RNA; single or double-stranded RNA or double-stranded DNA",
+"Double-stranded DNA; single-stranded RNA",
+"Single-stranded DNA; double-stranded RNA",
+"Double-stranded RNA; single-stranded DNA"
+],
+"a": 1,
+"s": "Plant viruses usually contain single-stranded RNA, whereas animal viruses possess ssRNA, dsRNA, or dsDNA."
+},
+{
+"q": "Bacteriophages (viruses that infect bacteria) usually have:",
+"o": [
+"Single-stranded RNA",
+"Double-stranded DNA",
+"Single-stranded DNA",
+"Double-stranded RNA"
+],
+"a": 2,
+"s": "Bacteriophages generally contain double-stranded DNA as their genetic material."
+},
+{
+"q": "The protein coat of a virus is called _______ and is made of small subunits called _______.",
+"o": [
+"Capsid, Capsomeres",
+"Capsule, Peptidoglycan",
+"Pellicle, Proteins",
+"Envelope, Lipids"
+],
+"a": 1,
+"s": "The protective protein coat of a virus is the capsid, which consists of protein subunits called capsomeres."
+},
+{
+"q": "Viroids were discovered by:",
+"o": [
+"D.J. Ivanowsky",
+"M.W. Beijerinek",
+"W.M. Stanley",
+"T.O. Diener"
+],
+"a": 4,
+"s": "T.O. Diener discovered viroids in 1971 as infectious agents smaller than viruses."
+},
+{
+"q": "Viroids differ from viruses in that they:",
+"o": [
+"Lack a protein coat",
+"Have free low molecular weight RNA",
+"Are smaller in size",
+"All of the above"
+],
+"a": 4,
+"s": "Viroids lack a protein capsid, consist of naked low-molecular-weight RNA, and are smaller than viruses."
+},
+{
+"q": "Potato spindle tuber disease is caused by a:",
+"o": [
+"Virus",
+"Viroid",
+"Prion",
+"Bacterium"
+],
+"a": 2,
+"s": "Potato spindle tuber disease (PSTD) is caused by a viroid."
+},
+{
+"q": "Prions are infectious agents consisting of abnormally folded:",
+"o": [
+"RNA",
+"DNA",
+"Protein",
+"Lipids"
+],
+"a": 3,
+"s": "Prions are misfolded, infectious protein molecules devoid of nucleic acids."
+},
+{
+"q": "Which of the following diseases is caused by prions?",
+"o": [
+"Bovine Spongiform Encephalopathy (BSE) / Mad cow disease",
+"Cr-Jacob disease (CJD) in humans",
+"Both (1) and (2)",
+"Potato spindle tuber disease"
+],
+"a": 3,
+"s": "Prions cause BSE in cattle and its human variant Creutzfeldt-Jakob disease (CJD)."
+},
+{
+"q": "Lichens are symbiotic associations between:",
+"o": [
+"Algae and Fungi",
+"Fungi and roots of higher plants",
+"Algae and Bacteria",
+"Fungi and Cyanobacteria only"
+],
+"a": 1,
+"s": "Lichens are mutualistic symbiotic associations between an algal component and a fungal component."
+},
+{
+"q": "In a lichen, the algal component is called _______ and the fungal component is called _______.",
+"o": [
+"Mycobiont, Phycobiont",
+"Phycobiont, Mycobiont",
+"Autotroph, Heterotroph",
+"Both (2) and (3)"
+],
+"a": 4,
+"s": "The algal partner is the phycobiont (autotrophic) and the fungal partner is the mycobiont (heterotrophic)."
+},
+{
+"q": "Lichens are very good indicators of:",
+"o": [
+"Water pollution",
+"Air pollution (SO2)",
+"Soil pollution",
+"Noise pollution"
+],
+"a": 2,
+"s": "Lichens do not grow in polluted areas and serve as sensitive bioindicators of air pollution, especially SO2."
+},
+{
+"q": "Mycorrhiza is a symbiotic association between:",
+"o": [
+"Algae and Fungi",
+"Fungi and roots of higher plants",
+"Bacteria and roots of legumes",
+"Cyanobacteria and Ferns"
+],
+"a": 2,
+"s": "Mycorrhiza represents a mutualistic association between fungi and roots of higher plants."
+},
+{
+"q": "The bacteria present in the gut of several ruminant animals",
+"o": [
+"Are similar to other bacteria in cell wall structure",
+"Are anaerobes with peptidoglycan cell wall",
+"Are known as halophiles",
+"Are responsible for production of biogas"
+],
+"a": 4,
+"s": "Methanogenic archaebacteria in ruminant guts produce methane gas (biogas)."
+},
+{
+"q": "Find the incorrect statements from the following:\n(I) Truffles - Club fungi\n(II) Methanogens - Human intestine\n(III) Thermoacidophiles - Hot sulphur springs\n(IV) Slime moulds - True wall found in the vegetative stage.\n(V) Whittaker's system of Classification brought together Chlamydomonas, Chlorella with Paramoecium, Amoeba in protista.\n(VI) Roquefort cheese - Ascomycetes",
+"o": [
+"I, II, IV",
+"II, III, IV, VI",
+"I, IV, V, VI",
+"I, II"
+],
+"a": 1,
+"s": "Truffles are sac fungi (Ascomycetes), methanogens inhabit ruminant guts, and slime mould spores (not vegetative stage) have true walls."
+},
+{
+"q": "Ciliates differ from all other protozoans in",
+"o": [
+"using pseudopodia for capturing prey",
+"having a contractile vacuole for removing excess water",
+"using flagella for locomotion",
+"having two types of nuclei"
+],
+"a": 4,
+"s": "Ciliates display nuclear dimorphism, featuring a macronucleus for vegetative functions and a micronucleus for reproduction."
+},
+{
+"q": "Study the following characters carefully and give answer:-\ni. Bacterial structure is very simple because they are prokaryotic and unicellular\nii. Bacteria as a group show most extensive metabolic diversity\niii. Based on shape, bacteria are grouped into two categories only.\niv. Most of the bacteria do not have cell wall.",
+"o": [
+"i, ii-correct; iii, iv-incorrect",
+"iii, iv-correct; i, ii-incorrect",
+"i, iv-correct; ii, iii-incorrect",
+"ii, iii-correct; i, iv-incorrect"
+],
+"a": 1,
+"s": "Bacteria are simple prokaryotic single cells with vast metabolic diversity; they are grouped into four shapes and mostly have cell walls."
+},
+{
+"q": "Select the correct answer\nI. Chemosynthetic autotrophs bacteria oxidise various inorganic substances such as nitrates, nitrites and ammonia and use the released energy for their ATP production.\nII. The organisms forming blooms in polluted water bodies are nutritionally Photosynthetic autotrophs.",
+"o": [
+"I is correct",
+"II is correct",
+"Both are correct",
+"None are correct"
+],
+"a": 3,
+"s": "Chemosynthetic autotrophs derive energy from inorganic oxidations, and bloom-forming cyanobacteria are photosynthetic autotrophs."
+},
+{
+"q": "Which of the following organisms in the list given below are autotrophs and perform oxygenic photosynthesis?",
+"o": [
+"Purple sulphur bacteria, Oscillatoria",
+"Nostoc, Anabaena, Oscillatoria",
+"Anabaena, Sacharomyces, Green sulphur bacteria, Frankia",
+"Rhizobium, Nostoc, Anabaena"
+],
+"a": 2,
+"s": "Nostoc, Anabaena, and Oscillatoria are cyanobacteria that perform oxygenic photosynthesis."
+},
+{
+"q": "Identify the organisms that produce their own food in kingdom Monera?\nA. Algae\nB. BGA\nC. Cyanobacteria\nD. Nitrifying bacteria\nE. Mycoplasma\nF. Nitrogen fixation bacteria",
+"o": [
+"A, B, C",
+"B, C, D",
+"A, B, C, D",
+"B, C"
+],
+"a": 2,
+"s": "BGA/Cyanobacteria (photoautotrophs) and nitrifying bacteria (chemoautotrophs) produce their own food in Monera."
+},
+{
+"q": "Kingdom Monera includes",
+"o": [
+"Unicellular and multicellular microorganisms with simplest metabolism",
+"The most ancient microorganisms which are nutritionally heterotrophs only",
+"Most ancient, the smallest, and most abundant microorganisms",
+"Only unicellular photosynthetic microorganism"
+],
+"a": 3,
+"s": "Monera consists of unicellular prokaryotes, which are the most ancient, smallest, and abundant organisms."
+},
+{
+"q": "Identify the correct statement about three domains of life?",
+"o": [
+"The three-domain system divides the Kingdom Monera into two domains",
+"The three-domain system divides the Kingdom Monera into three domains",
+"The three-domain system puts Kingdom Monera into first domain only",
+"The three-domain system didnot include archaebacteria"
+],
+"a": 1,
+"s": "Carl Woese's three-domain system splits Kingdom Monera into Archaea and Bacteria."
+},
+{
+"q": "Sacharomyces, Albugo, Rhizopus, Ustilago, Puccinia, Agaricus, Trichoderma, Alternaria. Which of the following examples are belongs to class basidiomycetes.",
+"o": [
+"Ustilago, Puccinia, Agaricus",
+"Agaricus, Trichoderma, Alternaria",
+"Sacharomyces, Albugo, Rhizopus",
+"Puccinia, Agaricus, Trichoderma"
+],
+"a": 1,
+"s": "Ustilago (smut), Puccinia (rust), and Agaricus (mushroom) belong to Basidiomycetes."
+},
+{
+"q": "Find the correct matching options from the following:\n(I) Plasmodium -> Slime moulds -> Saprotrophic protists\n(II) Experimental genetic -> Neurospora -> Ascomycetes\n(III) Prions -> PSTD -> Protein\n(IV) Edible fungi -> Truffles and Morels -> Ascomycetes\n(V) Animal virus -> ssRNA -> HIV",
+"o": [
+"I, II, IV, V",
+"III, IV",
+"II, IV",
+"II, III, IV, V"
+],
+"a": 1,
+"s": "Prions cause diseases like BSE/CJD (PSTD is a plant viroid disease), making statement III incorrect."
+},
+{
+"q": "Which of the following are found in extreme saline conditions?",
+"o": [
+"Eubacteria",
+"Cyanobacteria",
+"Mycobacteria",
+"Archaebacteria"
+],
+"a": 4,
+"s": "Halophilic Archaebacteria are specifically adapted to extreme saline conditions."
+},
+{
+"q": "Which of the following is correct statements?",
+"o": [
+"Bacteria are exclusively heterotrophic organisms",
+"Slime moulds are saprophytic organisms classified under Kingdom Monera.",
+"Mycoplasma have DNA, Ribosome and cell wall",
+"Cyanobacteria are a group of autotrophic organisms classified under Kingdom Monera."
+],
+"a": 4,
+"s": "Cyanobacteria are autotrophic photosynthetic monerans."
+},
+{
+"q": "Select the correct answer about slimemould spores\ni. The spores possess true walls.\nii. They are extremely resistant and survive for many years, even under adverse conditions\niii. The spores are dispersed by water currents",
+"o": [
+"i is correct",
+"ii is correct",
+"i, ii are correct",
+"All are correct"
+],
+"a": 3,
+"s": "Slime mould spores have true cell walls and high resistance; they are dispersed by air currents, not water."
+},
+{
+"q": "Protista is similar to Plantae and different from Monera in having:",
+"o": [
+"Protista and Plantae have a nuclear membrane.",
+"(II) Protista and Plantae are eukaryotes, whereas Monera are prokaryotes.",
+"(III) All Protista and Plantae are chlorophyll bearing and perform photosynthesis.",
+"(IV) Protista and Plantae have a cellulosic cell wall.",
+"1, II",
+"III, IV",
+"1, IV",
+"I, III"
+],
+"a": 1,
+"s": "Protists and Plants are eukaryotic organisms possessing nuclear membranes, unlike prokaryotic Monerans."
+},
+{
+"q": "Which statement is wrong for viruses?",
+"o": [
+"They have ability to synthesise nucleic acids and proteins.",
+"Antibiotics have no effect on them.",
+"All are parasites.",
+"All of them have helical symmetry."
+],
+"a": 4,
+"s": "Viruses exhibit various architectural forms including polyhedral, helical, and complex structures."
+},
+{
+"q": "Select the correct statement:-",
+"o": [
+"Sporangiospores are exogenously produced in sporangium",
+"Conidia after germination produced conidiophore.",
+"In basidiomycetes asexual spores are generally not found.",
+"Alternaria is a example of ascomycetes"
+],
+"a": 3,
+"s": "Asexual spores are generally absent in Basidiomycetes."
+},
+{
+"q": "Which of the following is/are correct combinations with respect to their mycelium and mode of sexual reproduction:-\ni. Albugo-Coenocytic mycelium and oogamy.\nii. Rhizopus- Aseptate mycelium and Isogamy.\niii. Puccinia - Septate mycelium and Anisogamy.\niv. Trichoderma - Aseptate mycelium and conidia formation",
+"o": [
+"Only i and ii",
+"Only ii and iii",
+"Only iii and iv",
+"Only ii and iv"
+],
+"a": 1,
+"s": "Albugo and Rhizopus possess coenocytic/aseptate mycelia reproducing sexually via oogamy and isogamy respectively."
+},
+{
+"q": "Which one of the following also acts as a catalyst in a bacterial cell?",
+"o": [
+"5S r RNA",
+"sn RNA",
+"hn RNA",
+"23S r RNA"
+],
+"a": 4,
+"s": "23S rRNA in the prokaryotic 50S ribosomal subunit acts as a ribozyme for peptidyl transferase activity."
+},
+{
+"q": "Which one of the following is true for fungi?",
+"o": [
+"They lack a rigid cell wall",
+"They are saprophytic",
+"They lack nuclear membrane",
+"They are phagotrophs"
+],
+"a": 2,
+"s": "Fungi are heterotrophic eukaryotes that absorb nutrients primarily as saprotrophs."
+},
+{
+"q": "Which of the following are characteristics of members of Kingdom Protista?\ni. Nucleus is present and DNA is associated with histone proteins.\nii. Cytoplasmic ribosomes are 80S while organelle ribosomes are 70S.\niii. Members of the kingdom are heterotrophic with absorptive type of nutrition.\niv. Sap vacuoles are absent.",
+"o": [
+"i and ii only",
+"i, iii and iv only",
+"i and iv only",
+"i, ii and iii only"
+],
+"a": 1,
+"s": "Protists are eukaryotes with histone-associated DNA and possess 80S cytosolic and 70S organellar ribosomes."
+},
+{
+"q": "Consider the statements\ni. Organisms are known by only vegetative or asexual stage\nii. Most of the members are decomposers of litter\nThese statements are true for",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 4,
+"s": "Deuteromycetes (Imperfect Fungi) are characterized by the absence of a known sexual stage and play a major role in decomposing litter."
+},
+{
+"q": "What is the criteria used by Whittaker for classification?\n(i) Cell structure (ii) Body organisation\n(iii) Mode of nutrition (iv) Reproduction\n(v) Phylogenetic relationship\n(vi) Presence of mitochondria\n(vii) Morphological character",
+"o": [
+"i, ii, iii, v, vi",
+"i, ii, iii, iv, vi",
+"i, ii, iii, iv, v",
+"i, ii, iii, iv, v, vi, vii"
+],
+"a": 3,
+"s": "Whittaker used five main criteria: cell structure, thallus organization, mode of nutrition, reproduction, and phylogenetic relationships."
+},
+{
+"q": "Identify the true (T) and false (F) statements w.r.t. diatoms\ni. They are microscopic and float passively in water currents.\nii. Cell wall is made up of stiff cellulosic plates.\niii. Cell wall form two thin overlapping shells which fit together as in soap box.\niv. Cell wall is destructible and over few hundred years forms "diatomaceous earth"",
+"o": [
+"i-F, ii-T, iii - T, iv - F",
+"i-F, ii-F, iii -T, iv-T",
+"i-T, ii-T, iii - F, iv - F",
+"i-T, ii-F, iii -T, iv - F"
+],
+"a": 4,
+"s": "Diatoms float as plankton (i-T), have silica shells instead of cellulose (ii-F), fit like a soap box (iii-T), and possess non-destructible walls (iv-F)."
+},
+{
+"q": "Nuclear membrane is absent in",
+"o": [
+"Volvox",
+"Nostoc",
+"Penicillium",
+"Agaricus"
+],
+"a": 2,
+"s": "Nostoc is a prokaryotic cyanobacterium, so it lacks a membrane-bound nucleus."
+},
+{
+"q": "Single celled eukaryotes are included in",
+"o": [
+"Archaea",
+"Fungi",
+"Monera",
+"Protista"
+],
+"a": 4,
+"s": "All single-celled eukaryotic organisms are categorized under Kingdom Protista."
+},
+{
+"q": "Consider the following statements about Ascomycetes. Which one of the statement given below is false?",
+"o": [
+"They are saprophytic, decomposer, coprophilous and parasitic",
+"Include unicellular and multicellular forms",
+"Mycelium is coenocytic and aseptate",
+"Aspergillus, Claviceps, and Neurospora are important examples of Ascomycetes"
+],
+"a": 3,
+"s": "The mycelium in Ascomycetes is branched and septate, not coenocytic."
+},
+{
+"q": "Match Column I with Column II\nChoose the correct answer from the options given below:\nA. Rhizopus - P. Mushroom\nB. Ustilago - Q. Smut fungus\nC. Puccinia - R. Bread mould\nD. Agaricus - S. Rust fungus",
+"o": [
+"A-R, B-Q, C-S, D-P",
+"A-P, B-R, C-Q, D-S",
+"A-R, B-Q, C-P, D-S",
+"A-S, B-R, C-Q, D-P"
+],
+"a": 1,
+"s": "Rhizopus is bread mould, Ustilago is smut fungus, Puccinia is rust fungus, and Agaricus is mushroom."
+},
+{
+"q": "Character belongs to slime moulds\nA. Saprophytes\nB. Forms plasmodium under unfavourable condition\nC. Spores posses true walls\nD. Spores are dispersed by water\nE. Body moves along decaying twings and leaves engulfing organic matter.",
+"o": [
+"All except A, E",
+"All except B, D",
+"All except C and E",
+"All except B, E"
+],
+"a": 2,
+"s": "Plasmodium forms under favorable conditions, and spores are dispersed by air currents, making B and D false."
+},
+{
+"q": "Select the correct statement..",
+"o": [
+"Members of kingdom fungi show a great diversity in structures and habitat",
+"Most fungi are saprophytic, some are parasites and some symbiotic",
+"There are four classes under kingdom fungi",
+"All of the above"
+],
+"a": 4,
+"s": "Fungi display wide diversity in structure, habitat, nutrition, and are categorized into four major classes."
+},
+{
+"q": "In which group of organisms the cell walls form two thin overlapping shells which fit together?",
+"o": [
+"Euglenoids",
+"Dinoflagellates",
+"Chrysophytes",
+"Slime moulds"
+],
+"a": 3,
+"s": "In Chrysophytes (specifically diatoms), cell walls form two overlapping siliceous shells fitting together like a soap box."
+},
+{
+"q": "Pick up the wrong statement",
+"o": [
+"Cell wall is absent in Animalia.",
+"Protists have photosynthetic and heterotrophic modes of nutrition.",
+"Some fungi are edible.",
+"Nuclear membrane is present in Monera."
+],
+"a": 4,
+"s": "Kingdom Monera contains prokaryotes, which lack an organized nuclear membrane."
+},
+{
+"q": "Which of the following statement about Euglena is/are true?",
+"o": [
+"Euglenoids bear flagella",
+"Euglena is always autotrophic",
+"The pigments of Euglena are quite different from those of green plants",
+"Euglena is a protozoa"
+],
+"a": 1,
+"s": "Euglenoids bear flagella and are mixotrophic, behaving heterotrophically in the dark."
+},
+{
+"q": "What is true regarding plasmids?\n(I) Plasmids are used to monitor genetic transformation.\n(II) Plasmids are present in bacterial cells.\n(III) Plasmids are organisms with antibiotic resistance.\n(IV) Plasmids are DNA molecules with Ori (origin of replication).",
+"o": [
+"I, II, III",
+"III, IV",
+"I, II, IV",
+"I, III"
+],
+"a": 3,
+"s": "Plasmids are extrachromosomal DNA molecules containing an Ori, found in bacteria, used in monitoring genetic transformation."
+},
+{
+"q": "Consider the following statements and select the correct option, stating which one is true (T) and which one is false (F)?\ni. Blue green algae are the photosynthetic monerans.\nii. Genetic material in eukaryotes is circular, double stranded, helical DNA not enclosed by nuclear envelope\niii. Sexual reproduction in Rhizopus is oogamous and the mode of sexual fusion is gametangial contact type.\niv. Noctiluca is the first dinoflagellate to show bioluminescence.\nv. The fungal component of lichen is called phycobiont and the algal component is called mycobiont.",
+"o": [
+"i-T, ii-F, iii - F, iv-T, v - F",
+"i-T, ii-F, iii - F, iv-T, v-T",
+"i-T, ii-F, iii - T, iv - F, v-T",
+"i-F, ii-F, iii - F, iv-T, v-F"
+],
+"a": 1,
+"s": "i is T; ii is F (eukaryotic DNA is linear and enclosed); iii is F (isogamous); iv is T; v is F (fungal component is mycobiont)."
+},
+{
+"q": "The unique kingdom of heterotrophic organisms with loose tissue level organisation shows\ni. Diversity in habitat\nii. Diversity in morphology of mycelium\niii. Chitin in cell wall\niv. Degeneration of sex organs from lower to higher group\nv. Optimum in growth in cool and humid places",
+"o": [
+"Only v is incorrect",
+"i, ii, iii and v are correct",
+"iii and v are incorrect",
+"All are correct"
+],
+"a": 1,
+"s": "Fungi grow best in warm and humid conditions, making statement v incorrect."
+},
+{
+"q": "Chrysophytes, Euglenoids, Dinoflagellates and Slimemoulds are included in the kingdom",
+"o": [
+"Protista",
+"Fungi",
+"Animalia",
+"Monera"
+],
+"a": 1,
+"s": "Chrysophytes, Euglenoids, Dinoflagellates, and Slime moulds are single-celled eukaryotic protists."
+},
+{
+"q": "The following features belongs to class\nA. Sexual spores produced endogenously.\nB. Asexual spores conidia produced exogenously.\nC. Many members of this class are edible.",
+"o": [
+"Ascomycetes",
+"Phycomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 1,
+"s": "Ascomycetes produce exogenous conidia and endogenous ascospores, with several edible members like morels and truffles."
+},
+{
+"q": "Find the correct matching options from the following:\n(I) Antibiotic source - Penicillium-Ascomycetes\n(II) Paramecium - Ciliated protozoan - Two nuclei\n(III) Trypanosoma - Flagellated protist - Sleeping sickness\n(IV) Viroids - PSTD-DNA\n(V) Yeast - Unicellular - Ascospore",
+"o": [
+"I, II, IV, V",
+"I, II, III, V",
+"I, II, III, IV",
+"II, III, IV, V"
+],
+"a": 2,
+"s": "Viroids contain free RNA, not DNA; hence IV is incorrect while I, II, III, and V are correct matches."
+},
+{
+"q": "Identify the incorrect statement regarding Kingdon Monera.",
+"o": [
+"Bacteria are the sole members of the Kingdom Monera.",
+"They are the most abundant micro-organisms.",
+"They also live in extreme habitats such as hot springs, deserts, snow and deep oceans where very few other life forms can survive.",
+"Bacteria are categorized into 4 groups based on their nutrition."
+],
+"a": 4,
+"s": "Bacteria are categorized into 4 groups based on shape (Coccus, Bacillus, Vibrium, Spirillum), not nutrition."
+},
+{
+"q": "Select the correct option w.r.t Archaebacteria.",
+"o": [
+"Halophiles - Hot spring",
+"Thermoacidophiles - Extreme salty area",
+"Methanogens - Gut of ruminants",
+"Methanogens - Marshy areas",
+"Only C and D"
+],
+"a": 5,
+"s": "Halophiles inhabit extreme salty areas, Thermoacidophiles live in hot springs, and Methanogens occur in marshy areas and ruminant guts."
+},
+{
+"q": "Read the following statements and select the correct option.\nStatement A: Cyanobacteria are unicellular, colonial or filamentous, marine or terrestrial algae.\nStatement B: The colonies are generally surrounded by gelatinous sheath.",
+"o": [
+"Both statements A and B are correct.",
+"Statement A is correct and statement B is incorrect.",
+"Statement A is incorrect and statement B is correct.",
+"Both statements A and B are incorrect."
+],
+"a": 1,
+"s": "Cyanobacteria are unicellular, colonial or filamentous algae found in freshwater, marine or terrestrial habitats, enclosed in a gelatinous sheath."
+},
+{
+"q": "Organism which play a great role in recycling nutrients like nitrogen, phosphorous, iron and sulphur are",
+"o": [
+"Photosynthetic autotrophic bacteria",
+"Chemosynthetic autotrophic bacteria",
+"Parasitic bacteria",
+"Saprophytic bacteria"
+],
+"a": 2,
+"s": "Chemosynthetic autotrophs oxidize inorganic substances to release energy and recycle nitrogen, phosphorus, iron, and sulfur."
+},
+{
+"q": "Select the incorrect statement.",
+"o": [
+"Heterotrophic bacteria are most abundant in nature.",
+"The majority are important decomposers.",
+"They are helpful in making curd from milk, production of antibiotics, fixing nitrogen in legume roots, etc.",
+"Some are pathogens causing damage to human beings, crops, farm animals and pets. Cholera, typhoid, tetanus, citrus canker are well known diseases caused by different viruses."
+],
+"a": 4,
+"s": "Cholera, typhoid, tetanus, and citrus canker are bacterial diseases, not viral."
+},
+{
+"q": "Which of the following is correct regarding Mycoplasma?",
+"o": [
+"Organisms that completely lack a cell wall.",
+"Smallest living cells known.",
+"Can survive without oxygen.",
+"Many mycoplasma are pathogenic in animals and plants.",
+"All of these"
+],
+"a": 5,
+"s": "Mycoplasmas lack cell walls, are the smallest known cells, survive anaerobically, and cause plant and animal diseases."
+},
+{
+"q": "Consider the following statements and select the correct option.\nStatement A: Chrysophytes are found in fresh water as well as in marine environments.\nStatement B: Diatoms have cell walls forming two thin overlapping shells, which fit together as in a soap box.",
+"o": [
+"Both statements A and B are correct.",
+"Statement A is correct and statement B is incorrect.",
+"Statement A is incorrect and statement B is correct.",
+"Both statements A and B are incorrect."
+],
+"a": 1,
+"s": "Chrysophytes inhabit fresh and marine waters, and diatoms possess overlapping siliceous shells like a soap box."
+},
+{
+"q": "Read the following statements regarding Euglenoids:\nI. Majority of them are fresh water organisms found in stagnant water.\nII. Instead of a cell wall, they have a protein rich layer called pellicle which makes their body flexible.\nIII. They have two flagella, a short and a long one.\nIV. Though they are photosynthetic in the presence of sunlight, when deprived of sunlight they behave like heterotrophs by predating on other smaller organisms.",
+"o": [
+"I and II are correct",
+"II and III are correct",
+"I, II and III are correct",
+"I, II, III and IV are correct"
+],
+"a": 4,
+"s": "All given statements accurately describe euglenoid habitat, pellicle, flagellar setup, and mixotrophic nutrition."
+},
+{
+"q": "Spores of slime moulds possess",
+"o": [
+"No cell wall",
+"True walls",
+"Protein rich layer",
+"Silica in cell wall"
+],
+"a": 2,
+"s": "Spores of slime moulds are resistant because they possess true cell walls."
+},
+{
+"q": "Read the following statements and select the correct option.\nStatement A: Protozoans are believed to be primitive relatives of animals.\nStatement B: All protozoans are heterotrophs and live as predators or parasites.",
+"o": [
+"Both statements A and B are correct.",
+"Statement A is correct and statement B is incorrect.",
+"Statement A is incorrect and statement B is correct.",
+"Both statements A and B are incorrect."
+],
+"a": 1,
+"s": "Protozoans are heterotrophic eukaryotic protists regarded as primitive animal relatives."
+},
+{
+"q": "Select the correct option representing the missing terms A, B, C and D in the given table:\n\nClass | Asexual spores | Sexual spores | Mycelium\nPhycomycetes | Zoospore / Aplanospore | Zygospore | Aseptate, Coenocytic\nAscomycetes | A | Ascospores | B\nBasidiomycetes | Absent | C | Septate, Branched\nDeuteromycetes | Conidia | D | Septate, Branched",
+"o": [
+"A - Conidia, B - Septate, Branched, C - Basidiospores, D - Absent",
+"A - Ascospores, B - Aseptate, Coenocytic, C - Conidia, D - Basidiospores",
+"A - Conidia, B - Aseptate, Coenocytic, C - Ascospores, D - Absent",
+"A - Basidiospores, B - Septate, Branched, C - Conidia, D - Ascospores"
+],
+"a": 1,
+"s": "Ascomycetes asexual spores are conidia with branched/septate mycelium; Basidiomycetes sexual spores are basidiospores; Deuteromycetes lack a sexual stage (absent)."
+},
+{
+"q": "Fusion of protoplasms between two motile or non-motile gametes is called",
+"o": [
+"Karyogamy",
+"Plasmogamy",
+"Meiosis",
+"Mitosis"
+],
+"a": 2,
+"s": "Plasmogamy is the initial step in fungal sexual reproduction involving fusion of cytoplasm."
+},
+{
+"q": "Dikaryophase (n+n) is observed in:",
+"o": [
+"Phycomycetes",
+"Ascomycetes and Basidiomycetes",
+"Deuteromycetes",
+"Cyanobacteria"
+],
+"a": 2,
+"s": "Ascomycetes and Basidiomycetes undergo a distinct dikaryotic phase (n+n) prior to nuclear fusion."
+},
+{
+"q": "Aseptate and coenocytic mycelium is found in class:",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 1,
+"s": "Phycomycetes possess continuous, multinucleate, non-septate (coenocytic) hyphae."
+},
+{
+"q": "Which class of fungi is commonly called 'Sac-fungi'?",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 2,
+"s": "Ascomycetes produce sexual ascospores inside sac-like asci and are termed sac-fungi."
+},
+{
+"q": "Unicellular fungus used in bread and beer making is",
+"o": [
+"Penicillium",
+"Yeast (Saccharomyces)",
+"Agaricus",
+"Rhizopus"
+],
+"a": 2,
+"s": "Saccharomyces cerevisiae (brewer's/baker's yeast) is used in baking and fermentation."
+},
+{
+"q": "Conidia are produced _______ on special mycelium called conidiophores.",
+"o": [
+"Endogenously",
+"Exogenously",
+"Both (1) and (2)",
+"None of these"
+],
+"a": 2,
+"s": "Conidia are non-motile asexual spores produced externally/exogenously on conidiophores."
+},
+{
+"q": "Ascospores are produced _______ in sac like asci.",
+"o": [
+"Exogenously",
+"Endogenously",
+"Both (1) and (2)",
+"None of these"
+],
+"a": 2,
+"s": "Ascospores form internally/endogenously within sac-like sporangia called asci."
+},
+{
+"q": "Experimental genetics heavily relies on which fungus?",
+"o": [
+"Neurospora",
+"Aspergillus",
+"Claviceps",
+"Mucor"
+],
+"a": 1,
+"s": "Neurospora is a classic genetic model organism, often called the Drosophila of the plant kingdom."
+},
+{
+"q": "Which of the following fungal class includes Puffballs and Bracket fungi?",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 3,
+"s": "Puffballs, bracket fungi, and mushrooms belong to Basidiomycetes."
+},
+{
+"q": "Sex organs are absent, but plasmogamy is brought about by fusion of two vegetative or somatic cells of different strains in:",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 3,
+"s": "Basidiomycetes lack differentiated sex organs; plasmogamy occurs through somatic cell fusion (somatogamy)."
+},
+{
+"q": "In Basidiomycetes, basidiospores are produced _______ on the basidium.",
+"o": [
+"Endogenously",
+"Exogenously",
+"Both (1) and (2)",
+"None of these"
+],
+"a": 2,
+"s": "Basidiospores develop externally/exogenously on sterigmata of the basidium."
+},
+{
+"q": "Commonly known as 'imperfect fungi' because only the asexual or vegetative phases of these fungi are known:",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 4,
+"s": "Deuteromycetes lack a documented sexual cycle and are classified as imperfect fungi."
+},
+{
+"q": "Match Column-I with Column-II and select the correct option.\n\nColumn-I\nA. Puccinia\nB. Ustilago\nC. Agaricus\nD. Trichoderma\n\nColumn-II\n(i) Mushroom\n(ii) Smut fungus\n(iii) Rust fungus\n(iv) Imperfect fungus",
+"o": [
+"A-(iii), B-(ii), C-(i), D-(iv)",
+"A-(ii), B-(iii), C-(i), D-(iv)",
+"A-(iii), B-(i), C-(ii), D-(iv)",
+"A-(iv), B-(ii), C-(i), D-(iii)"
+],
+"a": 1,
+"s": "Puccinia is rust fungus, Ustilago is smut fungus, Agaricus is mushroom, and Trichoderma is an imperfect fungus."
+},
+{
+"q": "Viruses, viroids and lichens are not included in Whittaker's Five Kingdom classification because:",
+"o": [
+"They are non-cellular / acellular organisms",
+"They are obligate parasites",
+"They do not have a cell structure of their own",
+"All of the above"
+],
+"a": 4,
+"s": "Whittaker omitted viruses, viroids, and lichens because they lack typical cellular organization."
+},
+{
+"q": "The name virus that means venom or poisonous fluid was given by:",
+"o": [
+"Pasteur",
+"D.J. Ivanowsky",
+"M.W. Beijerinek",
+"W.M. Stanley"
+],
+"a": 1,
+"s": "Louis Pasteur coined the term virus, meaning venom or toxic fluid."
+},
+{
+"q": "Contagium vivum fluidum (infectious living fluid) was stated by:",
+"o": [
+"D.J. Ivanowsky",
+"M.W. Beijerinek",
+"W.M. Stanley",
+"T.O. Diener"
+],
+"a": 2,
+"s": "M.W. Beijerinck introduced the concept of Contagium vivum fluidum for viral filtrates."
+},
+{
+"q": "Viruses could be crystallized and crystals consist largely of proteins. This was shown by:",
+"o": [
+"D.J. Ivanowsky",
+"M.W. Beijerinek",
+"W.M. Stanley",
+"T.O. Diener"
+],
+"a": 3,
+"s": "W.M. Stanley demonstrated that TMV can be crystallized into infectious protein complexes."
+},
+{
+"q": "A virus is a nucleoprotein and the genetic material is:",
+"o": [
+"Infectious",
+"Non-infectious",
+"Proteinaceous only",
+"Lipid based"
+],
+"a": 1,
+"s": "Viruses are nucleoprotein entities in which the nucleic acid core carries host infection capability."
+},
+{
+"q": "Viruses that infect plants generally have:",
+"o": [
+"Single stranded RNA",
+"Double stranded RNA",
+"Single stranded DNA",
+"Double stranded DNA"
+],
+"a": 1,
+"s": "Plant viruses typically possess single-stranded RNA as genetic material."
+},
+{
+"q": "Bacteriophages are usually:",
+"o": [
+"Single stranded RNA viruses",
+"Double stranded DNA viruses",
+"Single stranded DNA viruses",
+"Double stranded RNA viruses"
+],
+"a": 2,
+"s": "Bacterial viruses (bacteriophages) mostly possess double-stranded DNA genomes."
+},
+{
+"q": "The protein coat called capsid made of small subunits called capsomeres protects the:",
+"o": [
+"Cell wall",
+"Nucleic acid",
+"Cell membrane",
+"Cytoplasm"
+],
+"a": 2,
+"s": "The capsid encapsulates and protects the central nucleic acid core."
+},
+{
+"q": "T.O. Diener discovered a new infectious agent that was smaller than viruses and caused:",
+"o": [
+"Potato spindle tuber disease",
+"Tobacco mosaic disease",
+"Mad cow disease",
+"Citrus canker"
+],
+"a": 1,
+"s": "T.O. Diener discovered viroids, the causative agents of Potato Spindle Tuber Disease (PSTD)."
+},
+{
+"q": "Viroids differ from viruses in lacking a:",
+"o": [
+"Protein coat",
+"RNA",
+"Genetic material",
+"Infectious nature"
+],
+"a": 1,
+"s": "Viroids consist of naked RNA molecules devoid of any surrounding protein capsid."
+},
+{
+"q": "Abnormally folded protein causing neurological disease Bovine Spongiform Encephalopathy (BSE) in cattle is:",
+"o": [
+"Viroid",
+"Prion",
+"Virus",
+"Lichen"
+],
+"a": 2,
+"s": "Prions are infectious proteinaceous particles responsible for BSE (Mad Cow Disease)."
+},
+{
+"q": "The fungal component of Lichen is called _______ and algal component is called _______.",
+"o": [
+"Phycobiont, Mycobiont",
+"Mycobiont, Phycobiont",
+"Autotroph, Symbiont",
+"Heterotroph, Mycobiont"
+],
+"a": 2,
+"s": "In lichens, the fungal component is mycobiont and the algal component is phycobiont."
+},
+{
+"q": "Which of the following statement is incorrect about lichens?",
+"o": [
+"Algae prepare food for fungi and fungi provide shelter and absorb mineral nutrients and water for its partner.",
+"Lichens are very good pollution indicators.",
+"They do not grow in polluted areas.",
+"Fungi prepare food for algae."
+],
+"a": 4,
+"s": "The algal partner (phycobiont) prepares food via photosynthesis, not the fungus."
+},
+{
+"q": "Who classified plants into trees, shrubs and herbs based on simple morphological characters?",
+"o": [
+"Aristotle",
+"Linnaeus",
+"Whittaker",
+"Bentham and Hooker"
+],
+"a": 1,
+"s": "Aristotle was the earliest scientist to classify plants into trees, shrubs, and herbs."
+},
+{
+"q": "Two Kingdom system of classification was proposed by:",
+"o": [
+"Aristotle",
+"Carolus Linnaeus",
+"R.H. Whittaker",
+"Carl Woese"
+],
+"a": 2,
+"s": "Carolus Linnaeus established the Two Kingdom system (Plantae and Animalia)."
+},
+{
+"q": "R.H. Whittaker proposed Five Kingdom Classification in:",
+"o": [
+"1959",
+"1969",
+"1979",
+"1989"
+],
+"a": 2,
+"s": "R.H. Whittaker proposed the Five Kingdom classification in 1969."
+},
+{
+"q": "Five Kingdom classification is based on:",
+"o": [
+"Cell structure and Thallus organisation",
+"Mode of nutrition and Reproduction",
+"Phylogenetic relationships",
+"All of the above"
+],
+"a": 4,
+"s": "Whittaker used cell structure, thallus organization, mode of nutrition, reproduction, and phylogenetic relationships as main criteria."
+},
+{
+"q": "In Five Kingdom classification, Chlamydomonas and Chlorella are placed under Kingdom:",
+"o": [
+"Algae",
+"Plantae",
+"Protista",
+"Monera"
+],
+"a": 3,
+"s": "In Whittaker's 5-kingdom system, single-celled photosynthetic eukaryotes like Chlamydomonas and Chlorella are moved to Protista."
+},
+{
+"q": "Match the following columns:\n\nColumn-I\nA. Coccus\nB. Bacillus\nC. Spirillum\nD. Vibrium\n\nColumn-II\n(i) Rod-shaped\n(ii) Spherical\n(iii) Comma-shaped\n(iv) Spiral",
+"o": [
+"A-(ii), B-(i), C-(iv), D-(iii)",
+"A-(i), B-(ii), C-(iii), D-(iv)",
+"A-(ii), B-(i), C-(iii), D-(iv)",
+"A-(iv), B-(iii), C-(ii), D-(i)"
+],
+"a": 1,
+"s": "Coccus is spherical, Bacillus is rod-shaped, Spirillum is spiral, and Vibrium is comma-shaped."
+},
+{
+"q": "Bacterial cell wall is composed of:",
+"o": [
+"Cellulose",
+"Chitin",
+"Peptidoglycan (Amino acids + Polysaccharide)",
+"Pectinate"
+],
+"a": 3,
+"s": "Eubacterial cell walls are constructed from peptidoglycan (murein)."
+},
+{
+"q": "Heterocysts found in Nostoc and Anabaena are specialized for:",
+"o": [
+"Photosynthesis",
+"Nitrogen fixation",
+"Reproduction",
+"Storage"
+],
+"a": 2,
+"s": "Heterocysts create an anaerobic microenvironment required for nitrogenase activity and N2 fixation."
+},
+{
+"q": "Chrysophytes include:",
+"o": [
+"Diatoms and Golden algae (Desmids)",
+"Euglenoids and Dinoflagellates",
+"Slime moulds and Protozoans",
+"Blue green algae and Archaea"
+],
+"a": 1,
+"s": "Chrysophytes comprise diatoms and desmids (golden algae)."
+},
+{
+"q": "Diatoms float passively in water currents, hence they are referred to as:",
+"o": [
+"Nekton",
+"Benthos",
+"Plankton",
+"Seston"
+],
+"a": 3,
+"s": "Microscopic organisms floating passively in aquatic currents are termed plankton."
+},
+{
+"q": "Dinoflagellates mostly have flagella numbering:",
+"o": [
+"One",
+"Two",
+"Many",
+"None"
+],
+"a": 2,
+"s": "Dinoflagellates typically possess two flagella—one longitudinal and one transverse."
+},
+{
+"q": "Red tides are formed due to rapid multiplication of:",
+"o": [
+"Euglena",
+"Gonyaulax",
+"Trypanosoma",
+"Amoeba"
+],
+"a": 2,
+"s": "Red dinoflagellates like Gonyaulax undergo explosive blooms causing red sea tides."
+},
+{
+"q": "Flexible body of Euglenoids is due to presence of protein layer:",
+"o": [
+"Cellulose",
+"Pellicle",
+"Chitin",
+"Cuticle"
+],
+"a": 2,
+"s": "The pellicle beneath the plasma membrane grants structural flexibility to euglenoids."
+},
+{
+"q": "Slime moulds move along decaying twigs and leaves engulfing organic material. They are:",
+"o": [
+"Photosynthetic protists",
+"Saprophytic protists",
+"Parasitic protists",
+"Autotrophic protists"
+],
+"a": 2,
+"s": "Slime moulds are saprophytic protists feeding on decaying organic matter."
+},
+{
+"q": "False feet (pseudopodia) for capturing prey are present in:",
+"o": [
+"Amoeboid protozoans",
+"Flagellated protozoans",
+"Ciliated protozoans",
+"Sporozoans"
+],
+"a": 1,
+"s": "Amoeboid protozoans move and capture prey using pseudopodia."
+},
+{
+"q": "Entamoeba histolytica is a parasite present in human:",
+"o": [
+"Liver",
+"Intestine",
+"Lungs",
+"Blood"
+],
+"a": 2,
+"s": "Entamoeba histolytica is an intestinal parasite causing amoebic dysentery."
+},
+{
+"q": "Ciliated protozoan having a cavity (gullet) that opens to the outside of the cell surface is:",
+"o": [
+"Amoeba",
+"Paramecium",
+"Trypanosoma",
+"Plasmodium"
+],
+"a": 2,
+"s": "Paramecium is a ciliated protozoan possessing a distinct oral cavity (gullet)."
+},
+{
+"q": "Plasmodium, the malarial parasite, belongs to which group of protozoans?",
+"o": [
+"Amoeboid",
+"Flagellated",
+"Ciliated",
+"Sporozoans"
+],
+"a": 4,
+"s": "Plasmodium is classified under sporozoans due to its infectious spore-like stage."
+},
+{
+"q": "Fungi showing symbiotic association with algae are called _______ and with roots of higher plants called _______.",
+"o": [
+"Mycorrhiza, Lichen",
+"Lichen, Mycorrhiza",
+"VAM, Lichen",
+"Lichen, Rhizobium"
+],
+"a": 2,
+"s": "Fungus + Alga = Lichen; Fungus + Higher plant root = Mycorrhiza."
+},
+{
+"q": "Fungi absorbing nutrients directly from living plants and animals are called:",
+"o": [
+"Saprophytes",
+"Parasites",
+"Symbionts",
+"Decomposers"
+],
+"a": 2,
+"s": "Heterotrophic fungi deriving nutrition from living hosts are parasites."
+},
+{
+"q": "In fungi, fusion of two nuclei is called:",
+"o": [
+"Plasmogamy",
+"Karyogamy",
+"Meiosis",
+"Mitosis"
+],
+"a": 2,
+"s": "Karyogamy specifically refers to the fusion of two haploid nuclei."
+},
+{
+"q": "Phycomycetes are also called:",
+"o": [
+"Sac fungi",
+"Club fungi",
+"Algal fungi",
+"Imperfect fungi"
+],
+"a": 3,
+"s": "Phycomycetes are commonly called algal fungi due to similarities in habitat and coenocytic structure."
+},
+{
+"q": "Bread mould fungus is scientifically known as:",
+"o": [
+"Mucor",
+"Rhizopus",
+"Albugo",
+"Penicillium"
+],
+"a": 2,
+"s": "Rhizopus stolonifer is commonly known as the bread mould fungus."
+},
+{
+"q": "Parasitic fungus found on mustard leaves causing white rust is:",
+"o": [
+"Albugo candida",
+"Rhizopus",
+"Puccinia",
+"Ustilago"
+],
+"a": 1,
+"s": "Albugo candida causes white rust disease on crucifers like mustard."
+},
+{
+"q": "Claviceps purpurea produces ergots and is a member of:",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 2,
+"s": "Claviceps belongs to Ascomycetes and produces ergot alkaloids."
+},
+{
+"q": "Aspergillus and Penicillium belong to class:",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 2,
+"s": "Aspergillus and Penicillium are filamentous sac fungi (Ascomycetes)."
+},
+{
+"q": "Neurospora is often called the Drosophila of plant kingdom and belongs to:",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 2,
+"s": "Neurospora belongs to Ascomycetes and serves as a classic genetic research organism."
+},
+{
+"q": "Basidium produces how many basidiospores after meiosis?",
+"o": [
+"Two",
+"Four",
+"Eight",
+"Many"
+],
+"a": 2,
+"s": "Karyogamy and meiosis inside a basidium result in four haploid basidiospores."
+},
+{
+"q": "Common edible mushroom is:",
+"o": [
+"Agaricus bisporus",
+"Puccinia",
+"Ustilago",
+"Albugo"
+],
+"a": 1,
+"s": "Agaricus bisporus is the widely cultivated button mushroom."
+},
+{
+"q": "Alternaria, Colletotrichum and Trichoderma belong to:",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 4,
+"s": "Alternaria, Colletotrichum, and Trichoderma are deuteromycete fungi."
+},
+{
+"q": "Plant kingdom includes organisms that are:",
+"o": [
+"Eukaryotic, chlorophyll-containing organisms",
+"Prokaryotic autotrophs",
+"Unicellular heterotrophs",
+"Multicellular saprophytes"
+],
+"a": 1,
+"s": "Kingdom Plantae includes eukaryotic, multicellular, photosynthetic (chlorophyll-containing) organisms."
+},
+{
+"q": "Which of the following is an insectivorous plant?",
+"o": [
+"Bladderwort",
+"Venus flytrap",
+"Pitcher plant",
+"All of the above"
+],
+"a": 4,
+"s": "Bladderwort, Venus flytrap, and Pitcher plant are all insectivorous plants."
+},
+{
+"q": "Animal kingdom is characterized by organisms that are:",
+"o": [
+"Multicellular, eukaryotic, heterotrophic, lacking cell wall",
+"Unicellular, eukaryotic, autotrophic",
+"Multicellular, prokaryotic, with cell wall",
+"Multicellular, eukaryotic, with cellulosic cell wall"
+],
+"a": 1,
+"s": "Animals are multicellular, heterotrophic eukaryotes lacking cell walls."
+},
+{
+"q": "Mode of nutrition in Kingdom Animalia is predominantly:",
+"o": [
+"Holozoic (ingestion of food)",
+"Saprophytic",
+"Parasitic",
+"Holophytic"
+],
+"a": 1,
+"s": "Animals ingest solid organic food, exhibiting holozoic nutrition."
+},
+{
+"q": "TMV stands for:",
+"o": [
+"Tobacco Mosaic Virus",
+"Tobacco Mutant Virus",
+"Tropical Mosaic Virus",
+"Tobacco Microbial Virus"
+],
+"a": 1,
+"s": "TMV stands for Tobacco Mosaic Virus."
+},
+{
+"q": "Genetic material in TMV is:",
+"o": [
+"Single stranded RNA",
+"Double stranded DNA",
+"Double stranded RNA",
+"Single stranded DNA"
+],
+"a": 1,
+"s": "Tobacco Mosaic Virus contains single-stranded RNA."
+},
+{
+"q": "Viruses are obligate intracellular parasites. This means:",
+"o": [
+"They can replicate independently outside host cells",
+"They require a living host cell to replicate",
+"They are non-infectious outside hosts",
+"Both (2) and (3)"
+],
+"a": 2,
+"s": "Obligate intracellular parasites rely entirely on living host cells for metabolic machinery and replication."
+},
+{
+"q": "Smallest infectious agents consisting only of nucleic acid without protein coat are:",
+"o": [
+"Viruses",
+"Viroids",
+"Prions",
+"Bacteria"
+],
+"a": 2,
+"s": "Viroids are naked RNA particles lacking a protective protein capsid."
+},
+{
+"q": "Prions cause which fatal neurological disease in sheep?",
+"o": [
+"Scrapie",
+"BSE",
+"CJD",
+"PSTD"
+],
+"a": 1,
+"s": "Scrapie is a neurodegenerative prion disease occurring in sheep and goats."
+},
+{
+"q": "In lichens, fungal component provides to the partner:",
+"o": [
+"Food",
+"Shelter, absorption of minerals and water",
+"Oxygen",
+"Carbohydrates"
+],
+"a": 2,
+"s": "The fungal partner provides anchor, structural shelter, and absorbs moisture and nutrients."
+},
+{
+"q": "Which of the following organism was earlier placed in Kingdom Plantae due to presence of cell wall, but now in Monera?",
+"o": [
+"Bacteria and Cyanobacteria",
+"Amoeba",
+"Yeast",
+"Euglena"
+],
+"a": 1,
+"s": "Bacteria and cyanobacteria were historically grouped in Plantae because of cell walls, but are now in Monera."
+},
+{
+"q": "The main basis of 3-domain classification system proposed by Carl Woese is sequence of:",
+"o": [
+"16S rRNA gene",
+"Messenger RNA",
+"Transfer RNA",
+"Proteins"
+],
+"a": 1,
+"s": "Carl Woese established the 3-domain system based on 16S ribosomal RNA gene sequencing."
+},
+{
+"q": "Bacterial flagellum is composed of three parts:",
+"o": [
+"Filament, Hook, Basal body",
+"Head, Neck, Tail",
+"Capsid, Core, Sheath",
+"Cilia, Flagella, Pseudopodia"
+],
+"a": 1,
+"s": "A bacterial flagellum consists of a filament, hook, and basal body."
+},
+{
+"q": "Pili and Fimbriae in bacteria are surface structures primarily used for:",
+"o": [
+"Locomotion",
+"Attachment and conjugation",
+"Photosynthesis",
+"Respiration"
+],
+"a": 2,
+"s": "Fimbriae facilitate surface adherence, and pili assist in bacterial conjugation."
+},
+{
+"q": "During unfavourable conditions, bacteria reproduce mainly by forming:",
+"o": [
+"Spores",
+"Gametes",
+"Zygotes",
+"Conidia"
+],
+"a": 1,
+"s": "Under adverse conditions, bacteria produce endospores for survival."
+},
+{
+"q": "Sexual reproduction in bacteria involves a primitive type of DNA transfer called:",
+"o": [
+"Conjugation",
+"Transformation",
+"Transduction",
+"All of these"
+],
+"a": 4,
+"s": "Genetic recombination in bacteria occurs via conjugation, transformation, and transduction."
+},
+{
+"q": "Methanogens produce methane gas from:",
+"o": [
+"Dung of ruminant animals",
+"Sugar solution",
+"Petroleum",
+"Plastics"
+],
+"a": 1,
+"s": "Methanogenic archaebacteria process animal dung in anaerobic digesters to yield methane."
+},
+{
+"q": "Cyanobacteria possess chlorophyll-a similar to green plants and are:",
+"o": [
+"Photoautotrophs",
+"Chemoautotrophs",
+"Heterotrophs",
+"Saprophytes"
+],
+"a": 1,
+"s": "Cyanobacteria possess chlorophyll-a and perform oxygenic photoautotrophic synthesis."
+},
+{
+"q": "The site of nitrogen fixation in Nostoc is:",
+"o": [
+"Akinete",
+"Heterocyst",
+"Trichome",
+"Gelatinous coat"
+],
+"a": 2,
+"s": "Heterocysts are specialized nitrogen-fixing cells in Nostoc filaments."
+},
+{
+"q": "Overlapping shells of diatoms are made embedded with:",
+"o": [
+"Silica",
+"Calcium carbonate",
+"Chitin",
+"Cellulose"
+],
+"a": 1,
+"s": "Diatom wall frustules are heavily impregnated with indestructible silica."
+},
+{
+"q": "The deposit of diatom cell walls over millions of years is called:",
+"o": [
+"Diatomaceous earth",
+"Coral reef",
+"Limestone",
+"Peat"
+],
+"a": 1,
+"s": "Accumulated siliceous shells of diatoms form diatomaceous earth (kieselguhr)."
+},
+{
+"q": "Yellow, green, brown, blue or red appearance of dinoflagellates is due to:",
+"o": [
+"Main pigments present in their cells",
+"Cell wall composition",
+"Water color",
+"Flagella"
+],
+"a": 1,
+"s": "Dinoflagellate colors vary depending on their specific intracellular photosynthetic pigments."
+},
+{
+"q": "Toxins released by large numbers of multiplying dinoflagellates (e.g. Gonyaulax) may kill:",
+"o": [
+"Marine animals such as fishes",
+"Land plants",
+"Birds only",
+"Bacteria only"
+],
+"a": 1,
+"s": "Saxitoxins produced during dinoflagellate red tides cause mass fish kills."
+},
+{
+"q": "Euglenoids have how many flagella?",
+"o": [
+"Two (one long and one short)",
+"One long only",
+"Four equal",
+"Numerous cilia"
+],
+"a": 1,
+"s": "Euglenoids feature two heterokont flagella—a long emergent flagellum and a short internal flagellum."
+},
+{
+"q": "Photosynthetic pigments of Euglenoids are identical to those of:",
+"o": [
+"Higher plants",
+"Cyanobacteria",
+"Brown algae",
+"Red algae"
+],
+"a": 1,
+"s": "Euglenoids contain chlorophyll-a and b, matching the pigment complement of higher plants."
+},
+{
+"q": "An aggregation of slime mould formed under suitable conditions is:",
+"o": [
+"Plasmodium",
+"Pseudopodium",
+"Sporangium",
+"Protonema"
+],
+"a": 1,
+"s": "In favorable conditions, acellular slime moulds aggregate into a multinucleate plasmodium."
+},
+{
+"q": "Spores of slime moulds are dispersed by:",
+"o": [
+"Air currents",
+"Water currents",
+"Insects",
+"Animals"
+],
+"a": 1,
+"s": "Slime mould spores produced in aerial fruiting bodies are dispersed by air currents."
+},
+{
+"q": "Amoeboid protozoans move and capture prey using:",
+"o": [
+"Pseudopodia",
+"Flagella",
+"Cilia",
+"Tentacles"
+],
+"a": 1,
+"s": "Pseudopodia ('false feet') are temporary cytoplasmic extensions used for movement and phagocytosis."
+},
+{
+"q": "Marine amoeboid forms have _______ shells on their surface.",
+"o": [
+"Silica",
+"Calcium carbonate",
+"Chitinous",
+"Cellulosic"
+],
+"a": 1,
+"s": "Marine amoeboids (e.g., Radiolarians) often possess siliceous outer shells."
+},
+{
+"q": "Flagellated protozoan causing sleeping sickness is:",
+"o": [
+"Trypanosoma gambiense",
+"Leishmania donovani",
+"Plasmodium vivax",
+"Entamoeba histolytica"
+],
+"a": 1,
+"s": "Trypanosoma gambiense is a flagellated parasite transmitted by the tsetse fly causing sleeping sickness."
+},
+{
+"q": "Most notorious sporozoan which causes malaria in human beings is:",
+"o": [
+"Plasmodium",
+"Trypanosoma",
+"Paramecium",
+"Leishmania"
+],
+"a": 1,
+"s": "Plasmodium species are sporozoans responsible for human malaria."
+},
+{
+"q": "The body of a fungus consists of long, slender thread-like structures called:",
+"o": [
+"Hyphae",
+"Mycelium",
+"Stolon",
+"Rhizoid"
+],
+"a": 1,
+"s": "Individual fungal filaments are termed hyphae."
+},
+{
+"q": "A network of hyphae is termed:",
+"o": [
+"Mycelium",
+"Thallus",
+"Tissue",
+"Organ"
+],
+"a": 1,
+"s": "A collection or mass of hyphae forms the mycelium."
+},
+{
+"q": "Continuous hyphae filled with multinucleated cytoplasm are called:",
+"o": [
+"Coenocytic hyphae",
+"Septate hyphae",
+"Unicellular hyphae",
+"Parenchymatous hyphae"
+],
+"a": 1,
+"s": "Non-septate, multinucleate hyphae are called coenocytic."
+},
+{
+"q": "Fungal cell wall contains:",
+"o": [
+"Chitin and polysaccharides",
+"Cellulose and lignin",
+"Peptidoglycan",
+"Suberin"
+],
+"a": 1,
+"s": "Fungal cell walls consist primarily of chitin and complex glucans."
+},
+{
+"q": "Fungi that live on dead organic matter are called:",
+"o": [
+"Saprophytes",
+"Parasites",
+"Symbionts",
+"Autotrophs"
+],
+"a": 1,
+"s": "Organisms deriving nutrients from dead decaying organic substance are saprophytes."
+},
+{
+"q": "Asexual reproduction in fungi takes place by spores such as:",
+"o": [
+"Conidia, Zoospores, Aplanospores",
+"Ascospores, Basidiospores, Oospores",
+"Zygospores only",
+"Gametes only"
+],
+"a": 1,
+"s": "Conidia, zoospores, and aplanospores are asexual fungal spores."
+},
+{
+"q": "Sexual reproduction in fungi takes place by:",
+"o": [
+"Oospores, Ascospores, Basidiospores",
+"Conidia, Zoospores",
+"Sporangiospores",
+"Fragmentation"
+],
+"a": 1,
+"s": "Oospores, ascospores, and basidiospores are products of sexual reproduction."
+},
+{
+"q": "Stage in fungi where two nuclei per cell exist (n+n) is called:",
+"o": [
+"Dikaryophase",
+"Monokaryophase",
+"Diploid phase",
+"Triploid phase"
+],
+"a": 1,
+"s": "The binucleate condition (n+n) prior to nuclear fusion is the dikaryophase."
+},
+{
+"q": "Which fungal class has coenocytic and aseptate mycelium?",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 1,
+"s": "Phycomycetes possess aseptate, coenocytic hyphae."
+},
+{
+"q": "Endogenously produced asexual spores in Phycomycetes are formed inside:",
+"o": [
+"Sporangium",
+"Conidiophore",
+"Ascus",
+"Basidium"
+],
+"a": 1,
+"s": "Phycomycetes produce asexual sporangiospores inside a sac-like sporangium."
+},
+{
+"q": "A zygospore is formed by fusion of two:",
+"o": [
+"Gametes",
+"Conidia",
+"Ascospores",
+"Basidiospores"
+],
+"a": 1,
+"s": "Gametanigial fusion in Phycomycetes yields a thick-walled zygospore."
+},
+{
+"q": "Rhizopus is commonly known as:",
+"o": [
+"Bread mould",
+"Mushroom",
+"Smut",
+"Rust"
+],
+"a": 1,
+"s": "Rhizopus is the common bread mould fungus."
+},
+{
+"q": "Ascomycetes mycelium is:",
+"o": [
+"Branched and septate",
+"Unbranched and aseptate",
+"Coenocytic",
+"Absent"
+],
+"a": 1,
+"s": "Ascomycetes have a septate, branched mycelial structure."
+},
+{
+"q": "Conidia on germination produce:",
+"o": [
+"Mycelium",
+"Ascus",
+"Basidium",
+"Zygote"
+],
+"a": 1,
+"s": "Conidial spore germination gives rise to new fungal mycelium."
+},
+{
+"q": "Fruiting bodies of Ascomycetes containing asci are called:",
+"o": [
+"Ascocarps",
+"Basidiocarps",
+"Sporocarps",
+"Soredia"
+],
+"a": 1,
+"s": "Asci are borne within specialized fruiting structures termed ascocarps."
+},
+{
+"q": "Neurospora, Aspergillus, Claviceps belong to class:",
+"o": [
+"Ascomycetes",
+"Phycomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 1,
+"s": "Neurospora, Aspergillus, and Claviceps belong to Ascomycetes."
+},
+{
+"q": "Claviceps produces ergots, and from it which drug/hallucinogen is derived?",
+"o": [
+"LSD (Lysergic acid diethylamide)",
+"Morphine",
+"Penicillin",
+"Quinine"
+],
+"a": 1,
+"s": "LSD is synthesized from lysergic acid extracted from ergot sclerotia of Claviceps purpurea."
+},
+{
+"q": "Basidiomycetes grow in soil, on logs and tree stumps, and in living plant bodies as parasites like:",
+"o": [
+"Rusts and Smuts",
+"Blights and Mildews",
+"Witts and Cankers",
+"Rots and Molds"
+],
+"a": 1,
+"s": "Basidiomycete plant pathogens prominently include rusts and smuts."
+},
+{
+"q": "Asexual spores are generally not found in which class of fungi?",
+"o": [
+"Basidiomycetes",
+"Ascomycetes",
+"Phycomycetes",
+"Deuteromycetes"
+],
+"a": 1,
+"s": "Specialized asexual spores are usually absent in Basidiomycetes."
+},
+{
+"q": "Plasmogamy in Basidiomycetes results in formation of a structure which ultimately gives rise to:",
+"o": [
+"Basidium",
+"Ascus",
+"Sporangium",
+"Conidiophore"
+],
+"a": 1,
+"s": "Plasmogamy generates a dikaryotic mycelium that develops basidia."
+},
+{
+"q": "Karyogamy and meiosis take place in the basidium producing how many basidiospores?",
+"o": [
+"Four",
+"Two",
+"Eight",
+"Six"
+],
+"a": 1,
+"s": "Meiosis inside the basidium produces 4 haploid basidiospores exogenously."
+},
+{
+"q": "Basidia are arranged in fruiting bodies called:",
+"o": [
+"Basidiocarps",
+"Ascocarps",
+"Pycnidia",
+"Acervuli"
+],
+"a": 1,
+"s": "Fruiting structures of club fungi are called basidiocarps (e.g., mushroom caps)."
+},
+{
+"q": "Agaricus (mushroom), Ustilago (smut), Puccinia (rust) belong to:",
+"o": [
+"Basidiomycetes",
+"Ascomycetes",
+"Phycomycetes",
+"Deuteromycetes"
+],
+"a": 1,
+"s": "Agaricus, Ustilago, and Puccinia are representative Basidiomycetes."
+},
+{
+"q": "Deuteromycetes are commonly known as imperfect fungi because:",
+"o": [
+"Only asexual/vegetative phases are known",
+"They lack cell walls",
+"They do not form mycelium",
+"They are non-functional"
+],
+"a": 1,
+"s": "Deuteromycetes lack an identified sexual cycle."
+},
+{
+"q": "Large number of Deuteromycetes are decomposers of litter and help in:",
+"o": [
+"Mineral cycling",
+"Photosynthesis",
+"Nitrogen fixation",
+"Fermentation"
+],
+"a": 1,
+"s": "Deuteromycete decomposers breakdown organic litter, driving soil mineral cycling."
+},
+{
+"q": "Alternaria causes which disease in potato?",
+"o": [
+"Early blight of potato",
+"Late blight of potato",
+"Potato spindle tuber",
+"Black rot"
+],
+"a": 1,
+"s": "Alternaria solani causes early blight of potato."
+},
+{
+"q": "Life cycle of plants shows alternation of generation between:",
+"o": [
+"Diploid sporophyte and Haploid gametophyte",
+"Haploid sporophyte and Diploid gametophyte",
+"Triploid endosperm and Diploid embryo",
+"Unicellular and Multicellular gametes"
+],
+"a": 1,
+"s": "Plant life cycles alternate between 2n sporophytic and n gametophytic phases."
+},
+{
+"q": "Cuscuta is a complete stem parasite that lacks:",
+"o": [
+"Chlorophyll",
+"Roots",
+"Leaves",
+"All of the above"
+],
+"a": 4,
+"s": "Cuscuta is a leafless, rootless, non-photosynthetic parasitic angiosperm."
+},
+{
+"q": "Who demonstrated that viruses are smaller than bacteria because they passed through bacteria-proof filters?",
+"o": [
+"D.J. Ivanowsky (1892)",
+"M.W. Beijerinek (1898)",
+"W.M. Stanley (1935)",
+"Pasteur"
+],
+"a": 1,
+"s": "D.J. Ivanowsky (1892) recognized TMV passed through bacterial filters."
+},
+{
+"q": "In proportion, viruses contain:",
+"o": [
+"Protein coat and Nucleic acid (either RNA or DNA)",
+"Both RNA and DNA together in same virus",
+"Protein only without nucleic acid",
+"Lipids and Carbohydrates only"
+],
+"a": 1,
+"s": "Viruses consist of a nucleic acid genome (either DNA or RNA, never both) enclosed in a protein capsid."
+},
+{
+"q": "No virus contains both:",
+"o": [
+"RNA and DNA",
+"Protein and Nucleic acid",
+"Capsomeres and Capsid",
+"Single and Double strands"
+],
+"a": 1,
+"s": "A given virus contains either RNA or DNA as its genetic material, never both."
+},
+{
+"q": "Animal viruses may contain genetic material as:",
+"o": [
+"Single or double stranded RNA or double stranded DNA",
+"Single stranded RNA only",
+"Double stranded DNA only",
+"Single stranded DNA only"
+],
+"a": 1,
+"s": "Animal viruses feature varied genomic formats: ssRNA, dsRNA, or dsDNA."
+},
+{
+"q": "Capsomeres in capsid are arranged in:",
+"o": [
+"Helical or Polyhedral geometric forms",
+"Linear chains only",
+"Irregular amorphous blobs",
+"Concentric spheres only"
+],
+"a": 1,
+"s": "Capsomeres organize symmetrically into helical or polyhedral geometric architectures."
+},
+{
+"q": "Diseases like mumps, small pox, herpes and influenza in humans are caused by:",
+"o": [
+"Viruses",
+"Bacteria",
+"Fungi",
+"Protozoans"
+],
+"a": 1,
+"s": "Mumps, smallpox, herpes, and influenza are human viral infections."
+},
+{
+"q": "AIDS in humans is caused by:",
+"o": [
+"HIV (a retrovirus with single stranded RNA)",
+"Bacterium",
+"Viroid",
+"Prion"
+],
+"a": 1,
+"s": "AIDS is caused by Human Immunodeficiency Virus (HIV), an ssRNA retrovirus."
+},
+{
+"q": "In plants, symptoms of viral infection can include:",
+"o": [
+"Mosaic formation, leaf rolling and curling",
+"Yellowing and vein clearing",
+"Dwarfing and stunted growth",
+"All of the above"
+],
+"a": 4,
+"s": "Viral infections in plants manifest as mosaic patterning, leaf rolling/curling, chlorosis, and stunting."
+},
+{
+"q": "RNA of viroid was of _______ molecular weight.",
+"o": [
+"Low",
+"High",
+"Medium",
+"Variable"
+],
+"a": 1,
+"s": "Viroids contain single-stranded, low molecular weight RNA."
+},
+{
+"q": "Prions are similar in size to:",
+"o": [
+"Viruses",
+"Bacteria",
+"Viroids",
+"Fungi"
+],
+"a": 1,
+"s": "Prions are protein particles similar in dimensions to small viruses."
+},
+{
+"q": "Most notable diseases caused by prions are Bovine Spongiform Encephalopathy (BSE) commonly called:",
+"o": [
+"Mad cow disease",
+"Foot and mouth disease",
+"Rinderpest",
+"Cowpox"
+],
+"a": 1,
+"s": "BSE in cattle is commonly known as Mad Cow Disease."
+},
+{
+"q": "Analogous variant of BSE in humans is:",
+"o": [
+"Cr-Jacob disease (CJD)",
+"Alzheimer's disease",
+"Parkinson's disease",
+"Huntington's disease"
+],
+"a": 1,
+"s": "Creutzfeldt-Jakob Disease (CJD) is the human counterpart of BSE."
+},
+{
+"q": "In lichens, phycobiont is _______ and mycobiont is _______.",
+"o": [
+"Autotrophic, Heterotrophic",
+"Heterotrophic, Autotrophic",
+"Parasitic, Saprophytic",
+"Saprophytic, Parasitic"
+],
+"a": 1,
+"s": "The phycobiont (algae/cyanobacteria) is autotrophic; the mycobiont (fungus) is heterotrophic."
+},
+{
+"q": "Lichens do not grow in:",
+"o": [
+"Polluted areas",
+"Freshwater",
+"Mountains",
+"Forests"
+],
+"a": 1,
+"s": "Lichens are sensitive to atmospheric pollutants (SO2) and fail to grow in polluted urban areas."
+},
+{
+"q": "Methanogens are placed under:",
+"o": [
+"Archaebacteria",
+"Eubacteria",
+"Cyanobacteria",
+"Mycoplasma"
+],
+"a": 1,
+"s": "Methanogens belong to domain Archaea (Archaebacteria)."
+},
+{
+"q": "Five kingdom classification was proposed by R.H. Whittaker in:",
+"o": [
+"1969",
+"1959",
+"1979",
+"1989"
+],
+"a": 1,
+"s": "R.H. Whittaker established the 5-kingdom model in 1969."
+},
+{
+"q": "Organisms living in hot springs are called:",
+"o": [
+"Thermoacidophiles",
+"Halophiles",
+"Methanogens",
+"Cyanobacteria"
+],
+"a": 1,
+"s": "Thermoacidophilic archaebacteria inhabit acidic hot springs."
+},
+{
+"q": "Extreme saline conditions are inhabited by:",
+"o": [
+"Halophiles",
+"Thermoacidophiles",
+"Methanogens",
+"Eubacteria"
+],
+"a": 1,
+"s": "Halophiles thrive in high-salt hyper-saline environments."
+},
+{
+"q": "Cell wall of Archaebacteria differs from Eubacteria in lacking:",
+"o": [
+"Peptidoglycan",
+"Proteins",
+"Lipids",
+"Polysaccharides"
+],
+"a": 1,
+"s": "Archaebacterial cell walls lack true peptidoglycan (murein)."
+},
+{
+"q": "Production of biogas (methane) from dung is carried out by:",
+"o": [
+"Methanogens",
+"Halophiles",
+"Thermoacidophiles",
+"Cyanobacteria"
+],
+"a": 1,
+"s": "Methanogenic archaebacteria produce methane during anaerobic digestion of animal dung."
+},
+{
+"q": "Blue green algae have chlorophyll-a similar to:",
+"o": [
+"Green plants",
+"Red algae",
+"Fungi",
+"Bacteria"
+],
+"a": 1,
+"s": "Cyanobacteria possess chlorophyll-a, identical to photosynthetic green plants."
+},
+{
+"q": "Nostoc and Anabaena fix atmospheric nitrogen in specialized cells termed:",
+"o": [
+"Heterocysts",
+"Akinetes",
+"Hormogonia",
+"Spores"
+],
+"a": 1,
+"s": "Nitrogenase enzyme activity is localized in specialized heterocysts."
+},
+{
+"q": "Chemosynthetic autotrophs derive energy for ATP production from oxidation of:",
+"o": [
+"Inorganic substances (nitrates, nitrites, ammonia)",
+"Organic compounds (glucose)",
+"Sunlight",
+"Water"
+],
+"a": 1,
+"s": "Chemosynthetic bacteria oxidize reduced inorganic substrates to drive ATP synthesis."
+},
+{
+"q": "Majority of heterotrophic bacteria act as:",
+"o": [
+"Decomposers",
+"Producers",
+"Parasites",
+"Pathogens only"
+],
+"a": 1,
+"s": "The majority of heterotrophic eubacteria function as saprophytic decomposers."
+},
+{
+"q": "Lactobacillus bacteria are useful in:",
+"o": [
+"Making curd from milk",
+"Fixing nitrogen in legumes",
+"Producing biogas",
+"Causing disease"
+],
+"a": 1,
+"s": "Lactobacillus converts lactose into lactic acid to produce curd."
+},
+{
+"q": "Bacterial diseases in human beings include:",
+"o": [
+"Cholera, Typhoid, Tetanus",
+"Mumps, Smallpox, AIDS",
+"Malaria, Sleeping sickness",
+"Ringworm, Athlete's foot"
+],
+"a": 1,
+"s": "Cholera, typhoid, and tetanus are bacterial infections."
+},
+{
+"q": "Citrus canker is a plant disease caused by a:",
+"o": [
+"Bacterium (Xanthomonas citri)",
+"Virus",
+"Fungus",
+"Viroid"
+],
+"a": 1,
+"s": "Citrus canker is caused by the bacterium Xanthomonas citri."
+},
+{
+"q": "Mycoplasma are completely devoid of:",
+"o": [
+"Cell wall",
+"Cell membrane",
+"Ribosomes",
+"DNA"
+],
+"a": 1,
+"s": "Mycoplasmas lack a rigid cell wall, making them pleiomorphic."
+},
+{
+"q": "Golden algae are also known as:",
+"o": [
+"Desmids",
+"Diatoms",
+"Dinoflagellates",
+"Euglenoids"
+],
+"a": 1,
+"s": "Desmids are unicellular green/golden algae classified within chrysophytes."
+},
+{
+"q": "Siliceous wall frustules of diatoms make them resistant to:",
+"o": [
+"Destruction / Decomposition",
+"Photosynthesis",
+"Flotation",
+"Reproduction"
+],
+"a": 1,
+"s": "Silica incorporation renders diatom cell walls virtually indestructible over geological time."
+},
+{
+"q": "Gonyaulax is a:",
+"o": [
+"Red dinoflagellate",
+"Chrysophyte",
+"Euglenoid",
+"Slime mould"
+],
+"a": 1,
+"s": "Gonyaulax is a red-pigmented dinoflagellate causing harmful algal blooms."
+},
+{
+"q": "Protein rich layer pellicle in Euglena provides:",
+"o": [
+"Flexibility to the body",
+"Rigidity to the body",
+"Impermeability to water",
+"Protection against sunlight"
+],
+"a": 1,
+"s": "The elastic protein pellicle gives euglenoid cells flexible motility."
+},
+{
+"q": "Euglena shows mixotrophic nutrition because it is:",
+"o": [
+"Photosynthetic in light and heterotrophic in dark",
+"Always parasitic",
+"Saprophytic in light and autotrophic in dark",
+"Chemosynthetic"
+],
+"a": 1,
+"s": "Euglena produces food photosynthetically in sunlight but predates on micro-organisms in darkness."
+},
+{
+"q": "Aggregation formed by slime moulds under favorable conditions is:",
+"o": [
+"Plasmodium",
+"Fruiting body",
+"Pseudopodium",
+"Spore"
+],
+"a": 1,
+"s": "Slime moulds form a multinucleate amoeboid mass termed plasmodium."
+},
+{
+"q": "Under unfavorable conditions, slime mould plasmodium differentiates into:",
+"o": [
+"Fruiting bodies bearing spores",
+"Gametes",
+"Zygotes",
+"Flaggellated cells"
+],
+"a": 1,
+"s": "Adverse conditions trigger plasmodial differentiation into spore-producing fruiting structures."
+},
+{
+"q": "Spores of slime moulds are resistant to harsh environments because of:",
+"o": [
+"True cellulosic cell walls",
+"Thick protein coat",
+"Silica covering",
+"Wax layer"
+],
+"a": 1,
+"s": "Slime mould spores possess tough, true cell walls that resist desiccation."
+},
+{
+"q": "Entamoeba and Amoeba capture food using:",
+"o": [
+"Pseudopodia",
+"Cilia",
+"Flagella",
+"Gullet"
+],
+"a": 1,
+"s": "Amoeboid protozoans extend pseudopodia to engulf food items."
+},
+{
+"q": "Flagellated protozoans cause diseases like:",
+"o": [
+"Sleeping sickness (Trypanosoma)",
+"Malaria (Plasmodium)",
+"Amoebic dysentery (Entamoeba)",
+"Polio"
+],
+"a": 1,
+"s": "Trypanosoma is a flagellated protozoan causing African sleeping sickness."
+},
+{
+"q": "Paramecium moves water containing food into its gullet using coordinated movement of thousands of:",
+"o": [
+"Cilia",
+"Flagella",
+"Pseudopodia",
+"Tentacles"
+],
+"a": 1,
+"s": "Synchronized ciliary beating directs food-laden water into the oral gullet."
+},
+{
+"q": "Plasmodium falciparum causes:",
+"o": [
+"Malignant malaria",
+"Sleeping sickness",
+"Amoebic dysentery",
+"Kala-azar"
+],
+"a": 1,
+"s": "Plasmodium falciparum causes severe malignant tertian malaria."
+},
+{
+"q": "Fungal body consists of long thread-like structures called _______ and their network is called _______.",
+"o": [
+"Hyphae, Mycelium",
+"Mycelium, Hyphae",
+"Stolon, Rhizoid",
+"Thallus, Sorus"
+],
+"a": 1,
+"s": "Individual threads are hyphae; the interconnected network is a mycelium."
+},
+{
+"q": "Which of the following fungi is unicellular?",
+"o": [
+"Yeast (Saccharomyces)",
+"Penicillium",
+"Rhizopus",
+"Agaricus"
+],
+"a": 1,
+"s": "Yeast is a single-celled ascomycete."
+},
+{
+"q": "Cell wall of fungi is composed of chitin and:",
+"o": [
+"Polysaccharides",
+"Cellulose",
+"Lignin",
+"Pectin"
+],
+"a": 1,
+"s": "Chitin and complex polysaccharides make up fungal cell walls."
+},
+{
+"q": "Symbiotic association of fungi with roots of higher plants is called:",
+"o": [
+"Mycorrhiza",
+"Lichen",
+"Coralloid root",
+"Root nodule"
+],
+"a": 1,
+"s": "Mycorrhizae are mutualistic fungal-root associations."
+},
+{
+"q": "Symbiotic association of fungi with algae is called:",
+"o": [
+"Lichen",
+"Mycorrhiza",
+"Helotism",
+"Biofilm"
+],
+"a": 1,
+"s": "Lichens are dual organisms comprising a fungal partner and an algal/cyanobacterial partner."
+},
+{
+"q": "Step in fungal sexual cycle involving fusion of cytoplasm is:",
+"o": [
+"Plasmogamy",
+"Karyogamy",
+"Meiosis",
+"Mitosis"
+],
+"a": 1,
+"s": "Plasmogamy represents cytosolic fusion of compatible gametes/hyphae."
+},
+{
+"q": "Step in fungal sexual cycle involving fusion of two nuclei is:",
+"o": [
+"Karyogamy",
+"Plasmogamy",
+"Meiosis",
+"Cytokinesis"
+],
+"a": 1,
+"s": "Karyogamy is the fusion of haploid nuclei to form a diploid nucleus."
+},
+{
+"q": "Fungal class having coenocytic aseptate mycelium:",
+"o": [
+"Phycomycetes",
+"Ascomycetes",
+"Basidiomycetes",
+"Deuteromycetes"
+],
+"a": 1,
+"s": "Phycomycetes (lower fungi) possess coenocytic, non-septate hyphae."
+},
+{
+"q": "Asexual motile spores in Phycomycetes are called _______ and non-motile spores are called _______.",
+"o": [
+"Zoospores, Aplanospores",
+"Aplanospores, Zoospores",
+"Conidia, Ascospores",
+"Basidiospores, Conidia"
+],
+"a": 1,
+"s": "Motile flagellated spores = zoospores; non-motile spores = aplanospores."
+},
+{
+"q": "Albugo is a parasitic fungus found on:",
+"o": [
+"Mustard",
+"Wheat",
+"Rice",
+"Potato"
+],
+"a": 1,
+"s": "Albugo candida infects cruciferous plants like mustard."
+},
+{
+"q": "Ascomycetes produce asexual spores called conidia exogenously on:",
+"o": [
+"Conidiophores",
+"Sporangiophores",
+"Ascocarps",
+"Basidiocarps"
+],
+"a": 1,
+"s": "Conidia arise externally on specialized hyphal branches called conidiophores."
+},
+{
+"q": "Ascospores are sexual spores produced endogenously inside sac-like structures called:",
+"o": [
+"Asci",
+"Basidia",
+"Sporangia",
+"Conidia"
+],
+"a": 1,
+"s": "Ascospores mature inside sac-like cells called asci."
+},
+{
+"q": "Edible delicacies Morels and Truffles belong to class:",
+"o": [
+"Ascomycetes",
+"Basidiomycetes",
+"Phycomycetes",
+"Deuteromycetes"
+],
+"a": 1,
+"s": "Morels (Morchella) and truffles (Tuber) are prized edible Ascomycetes."
+},
+{
+"q": "Fungus extensively used in biochemical and genetic work is:",
+"o": [
+"Neurospora crassa",
+"Rhizopus stolonifer",
+"Agaricus bisporus",
+"Albugo candida"
+],
+"a": 1,
+"s": "Neurospora crassa is a primary model system for genetic research."
+},
+{
+"q": "Mushrooms, bracket fungi and puffballs belong to class:",
+"o": [
+"Basidiomycetes",
+"Ascomycetes",
+"Phycomycetes",
+"Deuteromycetes"
+],
+"a": 1,
+"s": "Club fungi, mushrooms, brackets, and puffballs are Basidiomycetes."
+},
+{
+"q": "Puccinia causes which disease in wheat?",
+"o": [
+"Rust disease",
+"Smut disease",
+"Blight disease",
+"Powdery mildew"
+],
+"a": 1,
+"s": "Puccinia graminis causes black stem rust in wheat."
+},
+{
+"q": "Ustilago causes which disease in corn/cereals?",
+"o": [
+"Smut disease",
+"Rust disease",
+"Ergot disease",
+"Late blight"
+],
+"a": 1,
+"s": "Ustilago species cause loose/covered smut in cereal crops."
+},
+{
+"q": "Deuteromycetes reproduce only by asexual spores called:",
+"o": [
+"Conidia",
+"Zoospores",
+"Aplanospores",
+"Basidiospores"
+],
+"a": 1,
+"s": "Conidia are the exclusive asexual reproductive units in Deuteromycetes."
+},
+{
+"q": "Trichoderma and Colletotrichum belong to class:",
+"o": [
+"Deuteromycetes",
+"Basidiomycetes",
+"Ascomycetes",
+"Phycomycetes"
+],
+"a": 1,
+"s": "Trichoderma and Colletotrichum are classified under Deuteromycetes."
+},
+{
+"q": "Bladderwort and Venus flytrap are partially heterotrophic because they are:",
+"o": [
+"Insectivorous plants",
+"Parasitic plants",
+"Saprophytic plants",
+"Symbiotic plants"
+],
+"a": 1,
+"s": "Insectivorous plants trap insects to supplement nitrogen nutrition while photosynthesizing."
+},
+{
+"q": "Cuscuta gets its nourishment from host plant using specialized absorbing roots called:",
+"o": [
+"Haustoria",
+"Rhizoids",
+"Mycorrhizae",
+"Root hairs"
+],
+"a": 1,
+"s": "Cuscuta inserts parasitic haustoria into host vascular tissues."
+},
+{
+"q": "Life cycle of plants shows alternation of haploid phase called _______ and diploid phase called _______.",
+"o": [
+"Gametophyte, Sporophyte",
+"Sporophyte, Gametophyte",
+"Zygote, Spore",
+"Embryo, Seed"
+],
+"a": 1,
+"s": "Haploid phase = gametophyte; Diploid phase = sporophyte."
+},
+{
+"q": "Virus particle outside a living host cell is:",
+"o": [
+"Inert / Non-living crystalline structure",
+"Active and multiplying",
+"Living cell",
+"Bacterium"
+],
+"a": 1,
+"s": "Viruses exist as inert crystalline virions outside host cells."
+},
+{
+"q": "Infectious living fluid concept (Contagium vivum fluidum) was proposed by Beijerinck in:",
+"o": [
+"1898",
+"1892",
+"1935",
+"1971"
+],
+"a": 1,
+"s": "M.W. Beijerinck proposed Contagium vivum fluidum in 1898."
+},
+{
+"q": "W.M. Stanley crystallized Tobacco Mosaic Virus in:",
+"o": [
+"1935",
+"1898",
+"1892",
+"1971"
+],
+"a": 1,
+"s": "W.M. Stanley successfully crystallized TMV in 1935."
+},
+{
+"q": "Genetic material in viruses is:",
+"o": [
+"Either RNA or DNA",
+"Both RNA and DNA together",
+"Protein only",
+"Carbohydrates"
+],
+"a": 1,
+"s": "Viruses contain either DNA or RNA as genetic material, never both."
+},
+{
+"q": "Viruses that infect plants typically contain:",
+"o": [
+"Single stranded RNA",
+"Double stranded DNA",
+"Double stranded RNA",
+"Single stranded DNA"
+],
+"a": 1,
+"s": "Plant viruses predominantly carry single-stranded RNA genomes."
+},
+{
+"q": "Viruses that infect bacteria (bacteriophages) usually have:",
+"o": [
+"Double stranded DNA",
+"Single stranded RNA",
+"Double stranded RNA",
+"Single stranded DNA"
+],
+"a": 1,
+"s": "Bacteriophages typically possess double-stranded DNA genomes."
+},
+{
+"q": "Subunits of viral protein coat capsid are called:",
+"o": [
+"Capsomeres",
+"Peptidoglycans",
+"Amino acids",
+"Nucleotides"
+],
+"a": 1,
+"s": "Capsids are assembled from individual protein subunits called capsomeres."
+},
+{
+"q": "Potato spindle tuber disease is caused by:",
+"o": [
+"Viroid",
+"Virus",
+"Prion",
+"Bacterium"
+],
+"a": 1,
+"s": "PSTD is a classic plant disease caused by a viroid."
+},
+{
+"q": "Viroids differ from viruses because they lack:",
+"o": [
+"Protein coat (capsid)",
+"RNA",
+"Infectivity",
+"Nucleic acid"
+],
+"a": 1,
+"s": "Viroids are naked RNA strands lacking any protective protein capsid."
+},
+{
+"q": "Prions consist of abnormally folded:",
+"o": [
+"Proteins",
+"RNAs",
+"DNAs",
+"Lipids"
+],
+"a": 1,
+"s": "Prions are misfolded, infectious proteinaceous agents."
+},
+{
+"q": "Bovine Spongiform Encephalopathy (BSE) affects which farm animals?",
+"o": [
+"Cattle",
+"Sheep",
+"Pigs",
+"Horses"
+],
+"a": 1,
+"s": "BSE (Mad Cow Disease) is a neurodegenerative disorder affecting cattle."
+},
+{
+"q": "In lichens, the autotrophic component is called _______ and heterotrophic component is called _______.",
+"o": [
+"Phycobiont, Mycobiont",
+"Mycobiont, Phycobiont",
+"Symbiont, Host",
+"Fungus, Alga"
+],
+"a": 1,
+"s": "Phycobiont (algae) is autotrophic; Mycobiont (fungus) is heterotrophic."
+},
+{
+"q": "Lichens serve as excellent bioindicators for:",
+"o": [
+"SO2 air pollution",
+"Water pollution",
+"Soil contamination",
+"Noise pollution"
+],
+"a": 1,
+"s": "Lichens are sensitive to sulfur dioxide (SO_2) levels in ambient air."
+}
+]
+}
 "a": 3,
 "s": "Diatoms, Cyanobacteria, Nostoc, Anabaena, Archaea, and Eubacteria lack a cellulosic cell wall."
 },
