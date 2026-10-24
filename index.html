@@ -45,6 +45,22 @@
       color: var(--text-primary);
       transition: background-color 0.2s ease, color 0.2s ease;
     }
+    body.dark {
+      --paper: #0f172a;
+      --bg: #020817;
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #1e293b;
+      --card-bg: #111827;
+      --bio-bg: rgba(16,185,129,0.12);
+      --bio-text: #6ee7b7;
+      --chem-bg: rgba(139,92,246,0.12);
+      --chem-text: #c4b5fd;
+      --phy-bg: rgba(20,184,166,0.12);
+      --phy-text: #5eead4;
+      --line: #1f2937;
+      --muted: #94a3b8;
+    }
     button, input, select { font: inherit; }
     button { border: none; cursor: pointer; }
 
@@ -64,6 +80,7 @@
       flex-direction: column;
       gap: 18px;
     }
+    body.dark .sidebar { background: rgba(15,23,42,0.74); }
     .brand { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .brand-inner { display: flex; align-items: center; gap: 12px; }
     .logo {
@@ -104,6 +121,7 @@
       backdrop-filter: blur(16px); display: flex; align-items: center; justify-content: space-between;
       padding: 0 24px;
     }
+    body.dark .topbar { background: rgba(2,8,23,0.78); }
     .date { color: var(--muted); font-size: 11px; font-weight: 700; }
     .topbar h1 { font-size: 18px; margin: 3px 0 0; font-weight: 800; }
     .main { max-width: 1400px; margin: 0 auto; padding: 24px; }
@@ -123,9 +141,7 @@
     .chem { background: var(--chem-bg); color: var(--chem-text); }
     .phy { background: var(--phy-bg); color: var(--phy-text); }
 
-    .chapter-grid {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
+    .chapter-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     .chapter {
       background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 18px; padding: 18px;
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; display: flex; flex-direction: column; justify-content: space-between;
@@ -148,28 +164,32 @@
       border: 1px solid rgba(15,23,42,0.08); box-shadow: 0 32px 80px rgba(15,23,42,0.18); border-radius: 28px; overflow: hidden;
       display: flex; flex-direction: column;
     }
+    body.dark .modal-box { background: rgba(15,23,42,0.94); border-color: rgba(148,163,184,0.2); }
     .quiz-header {
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
       border-bottom: 1px solid var(--border-color); background: rgba(240,253,250,0.8); padding: 18px 22px;
     }
+    body.dark .quiz-header { background: rgba(17,24,39,0.9); }
     .quiz-header .left { display: flex; align-items: center; gap: 12px; }
     .back-btn {
       width: 40px; height: 40px; border-radius: 12px; background: white; border: 1px solid var(--border-color);
       color: var(--ink); display: grid; place-items: center;
     }
+    body.dark .back-btn { background: #0f172a; color: #e2e8f0; border-color: var(--border-color); }
     .quiz-header h2 { margin: 0; font-size: 1.06rem; font-weight: 800; }
     .quiz-header p { margin: 4px 0 0; color: var(--muted); font-size: 11px; }
     .score-pill {
       background: rgba(255,255,255,0.9); border: 1px solid var(--border-color); border-radius: 999px;
       color: var(--ink); font-size: 12px; font-weight: 800; padding: 9px 12px;
     }
+    body.dark .score-pill { background: rgba(15,23,42,0.9); color: #f8fafc; }
     .quiz-content {
       flex: 1; overflow: auto; padding: 18px 22px 20px;
       background: linear-gradient(180deg, rgba(248,250,252,0.75), rgba(255,255,255,0.98));
     }
+    body.dark .quiz-content { background: linear-gradient(180deg, rgba(2,6,23,0.8), rgba(15,23,42,0.96)); }
     .palette {
-      display: flex; gap: 8px; align-items: center; overflow-x: auto; padding-bottom: 10px;
-      margin-bottom: 14px;
+      display: flex; gap: 8px; align-items: center; overflow-x: auto; padding-bottom: 10px; margin-bottom: 14px;
     }
     .palette .dot {
       min-width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; font-size: 11px; font-weight: 800;
@@ -181,8 +201,9 @@
     .palette .dot.skipped { background: var(--warning); color: white; border-color: transparent; }
     .question-shell {
       background: white; border: 1px solid var(--border-color); border-radius: 22px; padding: 22px; box-shadow: 0 8px 22px rgba(15,23,42,0.04);
-      animation: fadeSlide 0.28s ease;
     }
+    body.dark .question-shell { background: rgba(15,23,42,0.9); border-color: var(--border-color); }
+    .animate-next { animation: fadeSlide 0.28s ease; }
     @keyframes fadeSlide {
       from { opacity: 0; transform: translateX(16px) scale(0.995); }
       to { opacity: 1; transform: translateX(0) scale(1); }
@@ -197,11 +218,13 @@
       background: #f8fafc; color: var(--text-primary); font-size: 0.97rem; font-weight: 600; display: flex; align-items: center; gap: 12px;
       transition: all 0.2s ease;
     }
+    body.dark .option { background: rgba(15,23,42,0.9); }
     .option:hover { border-color: rgba(13,148,136,0.5); background: rgba(13,148,136,0.03); }
     .option .index {
       width: 28px; height: 28px; border-radius: 50%; background: white; border: 1px solid var(--border-color); display: grid; place-items: center;
       font-size: 10px; font-weight: 900; color: var(--ink);
     }
+    body.dark .option .index { background: #0f172a; border-color: var(--border-color); color: #e2e8f0; }
     .option.correct { background: var(--success-soft); border-color: rgba(22,163,74,0.45); color: #166534; }
     .option.correct .index { background: var(--success); color: white; border-color: transparent; }
     .option.wrong { background: var(--danger-soft); border-color: rgba(220,38,38,0.42); color: #991b1b; }
@@ -225,11 +248,13 @@
       border-radius: 12px; padding: 11px 16px; font-weight: 800; font-size: 12px; letter-spacing: 0.02em;
     }
     .plain-btn { background: #eef2f7; color: var(--ink); }
+    body.dark .plain-btn { background: #1e293b; color: #e2e8f0; }
     .primary-btn { background: linear-gradient(135deg, var(--teal), #14b8a6); color: white; }
     .primary-btn:hover { filter: brightness(0.98); }
     .primary-btn.ghost { background: #fbbf24; color: #2f1f00; }
     .primary-btn.warn { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: #2f1f00; }
     .primary-btn.secondary { background: #e2e8f0; color: var(--ink); }
+    body.dark .primary-btn.secondary { background: #1e293b; color: #e2e8f0; }
 
     .result-box {
       display: grid; place-items: center; min-height: 100%; padding: 26px;
@@ -238,12 +263,12 @@
       width: min(560px, 100%); background: white; border: 1px solid var(--border-color); border-radius: 24px;
       padding: 28px 18px; text-align: center; box-shadow: 0 16px 42px rgba(15,23,42,0.08);
     }
+    body.dark .result-card { background: #0f172a; border-color: var(--border-color); }
     .result-card .tag { margin-bottom: 10px; display: inline-block; }
     .result-score { font-size: clamp(2.2rem, 4vw, 4rem); font-weight: 900; margin: 12px 0 8px; }
     .result-card p { color: var(--muted); line-height: 1.6; margin-top: 10px; }
     .result-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
 
-    .hidden { display: none !important; }
     @media (max-width: 640px) {
       .topbar { padding: 0 14px; }
       .main { padding: 18px 14px; }
@@ -340,8 +365,7 @@
         questions: [],
         currentIndex: 0,
         answers: {},
-        score: 0,
-        paletteOpen: false
+        score: 0
       }
     };
 
@@ -350,15 +374,14 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/\"/g, '&quot;')
+        .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
     }
 
     function updateSidebarProgress() {
-      const keys = Object.keys(state.progress);
-      const completed = keys.filter((k) => state.progress[k]?.completed).length;
-      const total = Object.keys(data).reduce((sum, sub) => sum + data[sub].length, 0);
-      const pct = Math.min(100, Math.round((completed / total) * 100));
+      const totalChapters = Object.values(data).reduce((sum, arr) => sum + arr.length, 0);
+      const completed = Object.values(state.progress).filter(item => item && item.completed).length;
+      const pct = Math.min(100, Math.round((completed / totalChapters) * 100));
       const bar = document.getElementById('sidebar-progress-bar');
       const text = document.getElementById('sidebar-progress-text');
       if (bar) bar.style.width = pct + '%';
@@ -371,8 +394,7 @@
     }
 
     function renderSubjectButtons() {
-      const subjects = Object.keys(data);
-      return subjects.map((subject) => `
+      return Object.keys(data).map((subject) => `
         <button class="subject ${state.subject === subject ? 'selected' : ''}" onclick="state.subject='${subject}'; renderView();">
           <div>
             <b>${subject}</b>
@@ -410,12 +432,8 @@
     function renderView() {
       const container = document.getElementById('main-container');
       container.innerHTML = `
-        <div class="subject-grid">
-          ${renderSubjectButtons()}
-        </div>
-        <div class="chapter-grid">
-          ${renderChapterCards()}
-        </div>
+        <div class="subject-grid">${renderSubjectButtons()}</div>
+        <div class="chapter-grid">${renderChapterCards()}</div>
       `;
       updateSidebarProgress();
     }
@@ -430,6 +448,7 @@
     function closeModal() {
       const modal = document.getElementById('appModal');
       modal.classList.remove('open');
+      renderView();
     }
 
     function handleChapterClick(chapterName) {
@@ -460,7 +479,6 @@
       const selected = state.quiz.answers[index];
       const answered = selected !== undefined;
       const currentQuestionNumber = index + 1;
-      const progress = ((currentQuestionNumber / state.quiz.questions.length) * 100);
 
       const optionsMarkup = question.options.map((option, optionIndex) => {
         const isSelected = normalizeChoice(option) === normalizeChoice(selected);
@@ -473,7 +491,7 @@
         ].join(' ');
 
         return `
-          <button class="${classes}" type="button" data-index="${optionIndex}" ${answered ? 'disabled' : ''} onclick="answerQuestion(${index}, '${escapeHtml(option)}')">
+          <button class="${classes}" type="button" ${answered ? 'disabled' : ''} onclick="answerQuestion(${index}, '${escapeHtml(option)}')">
             <span class="index">${String.fromCharCode(65 + optionIndex)}</span>
             <span>${escapeHtml(option)}</span>
           </button>
@@ -494,15 +512,10 @@
 
       const paletteButtons = state.quiz.questions.map((_, qIndex) => {
         const answer = state.quiz.answers[qIndex];
-        const isCurrent = qIndex === index;
-        const isSkipped = answer === undefined && qIndex !== index && false;
         let cls = 'dot';
         if (typeof answer !== 'undefined') {
           cls += normalizeChoice(answer) === normalizeChoice(state.quiz.questions[qIndex].answer) ? ' correct' : ' wrong';
-        } else if (isCurrent) {
-          cls += ' current';
-        }
-        if (isCurrent && typeof answer === 'undefined') {
+        } else if (qIndex === index) {
           cls += ' current';
         }
         return `<button class="${cls}" type="button" onclick="jumpToQuestion(${qIndex})">${qIndex + 1}</button>`;
@@ -523,7 +536,7 @@
         <div class="quiz-content">
           <div class="palette">${paletteButtons}</div>
 
-          <div class="question-shell">
+          <div class="question-shell animate-next">
             <div class="q-tag">Question ${currentQuestionNumber} of ${state.quiz.questions.length}</div>
             <div class="question-text">${escapeHtml(question.question)}</div>
             <div class="options">${optionsMarkup}</div>
@@ -546,14 +559,23 @@
     function renderQuiz() {
       const activeQuestion = state.quiz.questions[state.quiz.currentIndex];
       if (!activeQuestion) return;
-      openModal(buildQuestionCard(activeQuestion, state.quiz.currentIndex));
+      const modalContent = document.getElementById('modalContent');
+      modalContent.innerHTML = buildQuestionCard(activeQuestion, state.quiz.currentIndex);
+      const shell = modalContent.querySelector('.question-shell');
+      if (shell) {
+        shell.classList.remove('animate-next');
+        void shell.offsetWidth;
+        shell.classList.add('animate-next');
+      }
+      document.getElementById('appModal').classList.add('open');
     }
 
     function answerQuestion(index, value) {
       if (state.quiz.answers[index] !== undefined) return;
-      state.quiz.answers[index] = value.replace(/^[A-Z]\.?\s/, '');
+      const rawValue = value.replace(/^[A-Z]\.?\s*/, '');
+      state.quiz.answers[index] = rawValue;
       const currentQuestion = state.quiz.questions[index];
-      if (normalizeChoice(state.quiz.answers[index]) === normalizeChoice(currentQuestion.answer)) {
+      if (normalizeChoice(rawValue) === normalizeChoice(currentQuestion.answer)) {
         state.quiz.score += 1;
       }
       renderQuiz();
@@ -572,10 +594,10 @@
       }
       if (state.quiz.currentIndex < state.quiz.questions.length - 1) {
         state.quiz.currentIndex += 1;
+        renderQuiz();
       } else {
         finishQuiz();
       }
-      renderQuiz();
     }
 
     function jumpToQuestion(index) {
@@ -615,7 +637,7 @@
             <p>${pct >= 70 ? 'Excellent work. You are well prepared for the chapter.' : pct >= 50 ? 'Good effort. Review the explanations and try one more pass.' : 'Keep revising the chapter explanations and retake the set.'}</p>
             <div class="result-actions">
               <button class="primary-btn" onclick="retakeQuiz()">Retake</button>
-              <button class="plain-btn" onclick="closeModal(); renderView();">Close</button>
+              <button class="plain-btn" onclick="closeModal()">Close</button>
             </div>
           </div>
         </div>
@@ -632,6 +654,7 @@
     async function loadLivingWorldQuestions() {
       try {
         const response = await fetch('Data/living_world_mcqs.json');
+        if (!response.ok) throw new Error('Could not load Data/living_world_mcqs.json');
         const json = await response.json();
         const mapped = (json.qs || []).map((item, idx) => ({
           id: idx + 1,
