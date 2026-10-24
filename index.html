@@ -1,455 +1,687 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EduPulse — The Living World</title>
-    <style>
-      :root {
-        --bg: #f3f7f5;
-        --panel: #ffffff;
-        --panel-alt: #edf9f5;
-        --text: #12212a;
-        --muted: #5a6d7a;
-        --primary: #0f766e;
-        --primary-strong: #0b5d5a;
-        --primary-soft: #dffaf4;
-        --correct: #15803d;
-        --correct-soft: #dcfce7;
-        --wrong: #be123c;
-        --wrong-soft: #ffe4e6;
-        --border: #dfe7ea;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>EduPulse PRO — NEET Preparation Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --ink: #12202c;
+      --muted: #64748b;
+      --line: #dfe8e7;
+      --paper: #ffffff;
+      --bg: #f8fafc;
+      --teal: #0d9488;
+      --deep: #123c42;
+      --lime: #bef264;
+      --card-bg: #ffffff;
+      --text-primary: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --bio-bg: #ecfdf5;
+      --bio-text: #047857;
+      --chem-bg: #f5f3ff;
+      --chem-text: #6d28d9;
+      --phy-bg: #f0fdfa;
+      --phy-text: #0f766e;
+      --success: #16a34a;
+      --success-soft: #dcfce7;
+      --danger: #dc2626;
+      --danger-soft: #fee2e2;
+      --warning: #f59e0b;
+      --warning-soft: #fef3c7;
+    }
 
-      * { box-sizing: border-box; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    button, input, select { font: inherit; }
+    button { border: none; cursor: pointer; }
 
-      body {
-        margin: 0;
-        font-family: Inter, Arial, sans-serif;
-        background: linear-gradient(135deg, #edfdf7, #f4f9ff 60%, #f8fafc);
-        color: var(--text);
-      }
+    .app-layout { display: flex; flex-direction: column; min-height: 100vh; }
+    @media (min-width: 1024px) {
+      .app-layout { flex-direction: row; }
+      .sidebar { position: fixed; inset: 0 auto 0 0; width: 260px; height: 100vh; overflow-y: auto; }
+      .content { margin-left: 260px; flex: 1; width: calc(100% - 260px); }
+    }
 
-      .wrap {
-        max-width: 980px;
-        margin: 40px auto;
-        padding: 24px;
-      }
+    .sidebar {
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(18px);
+      border-right: 1px solid var(--border-color);
+      padding: 24px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .brand { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand-inner { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 38px; height: 38px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--deep), var(--teal));
+      color: var(--lime); font-weight: 900; display: grid; place-items: center;
+      box-shadow: 0 8px 20px rgba(13,148,136,.25);
+    }
+    .brand b { font-size: 1.02rem; }
+    .brand b span { color: var(--teal); }
+    .eyebrow {
+      margin: 4px 0 0; color: var(--muted); font-size: 10px; font-weight: 800;
+      letter-spacing: 0.16em; text-transform: uppercase;
+    }
+    .nav { display: flex; flex-direction: column; gap: 6px; }
+    .nav button {
+      width: 100%; border-radius: 12px; background: transparent; color: var(--muted);
+      padding: 11px 12px; text-align: left; display: flex; align-items: center; gap: 10px;
+      font-weight: 700; transition: all 0.2s ease;
+    }
+    .nav button:hover { background: rgba(13,148,136,0.06); color: var(--teal); }
+    .nav button.active {
+      background: rgba(13,148,136,0.15); color: var(--teal); box-shadow: inset 0 0 0 1px rgba(13,148,136,0.06);
+    }
+    .goal {
+      margin-top: auto; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.22);
+      border-radius: 16px; padding: 14px;
+    }
+    .goal small { color: var(--teal); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 800; font-size: 10px; }
+    .goal strong { display: block; margin-top: 4px; font-size: 13px; }
+    .bar { height: 6px; background: rgba(0,0,0,0.08); border-radius: 999px; margin-top: 8px; overflow: hidden; }
+    .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), #2dd4bf); }
+    .goal p { font-size: 11px; color: var(--muted); margin-top: 6px; }
 
-      .header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 22px;
-      }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      height: 72px; border-bottom: 1px solid var(--border-color); background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(16px); display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+    }
+    .date { color: var(--muted); font-size: 11px; font-weight: 700; }
+    .topbar h1 { font-size: 18px; margin: 3px 0 0; font-weight: 800; }
+    .main { max-width: 1400px; margin: 0 auto; padding: 24px; }
+    .tag { color: var(--teal); font-weight: 800; text-transform: uppercase; letter-spacing: 0.17em; font-size: 11px; }
 
-      .title {
-        font-size: clamp(1.6rem, 2vw, 2.5rem);
-        margin: 0;
-      }
+    .subject-grid, .chapter-grid { display: grid; gap: 18px; }
+    .subject-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 18px; }
+    .subject {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--border-color);
+      background: var(--card-bg); border-radius: 18px; padding: 14px 16px; transition: all 0.2s ease;
+    }
+    .subject.selected { border-color: rgba(13,148,136,0.42); background: rgba(13,148,136,0.06); }
+    .subject b { display: block; font-size: 14px; }
+    .subject small { display: block; color: var(--muted); margin-top: 2px; font-size: 12px; }
+    .chip { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-size: 9px; font-weight: 900; }
+    .bio { background: var(--bio-bg); color: var(--bio-text); }
+    .chem { background: var(--chem-bg); color: var(--chem-text); }
+    .phy { background: var(--phy-bg); color: var(--phy-text); }
 
-      .tag {
-        display: inline-flex;
-        align-items: center;
-        padding: 6px 10px;
-        border-radius: 999px;
-        background: var(--primary-soft);
-        color: var(--primary-strong);
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
+    .chapter-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .chapter {
+      background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 18px; padding: 18px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; display: flex; flex-direction: column; justify-content: space-between;
+      min-height: 180px;
+    }
+    .chapter:hover { transform: translateY(-2px); box-shadow: 0 12px 22px rgba(15,23,42,0.06); border-color: rgba(13,148,136,0.3); }
+    .chapter-title { margin-top: 12px; font-weight: 800; font-size: 14px; line-height: 1.4; }
+    .meta { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; margin-top: 12px; }
+    .progress-bar-soft { height: 6px; background: rgba(0,0,0,0.06); border-radius: 999px; margin-top: 8px; overflow: hidden; }
+    .progress-bar-soft i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), #2dd4bf); }
+    .practice { margin-top: 14px; color: var(--teal); font-weight: 800; display: inline-flex; align-items: center; gap: 4px; font-size: 13px; }
 
-      .card {
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        box-shadow: 0 18px 40px rgba(15, 118, 110, 0.08);
-        overflow: hidden;
-      }
+    .custom-modal {
+      position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(6px);
+      display: grid; place-items: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+    }
+    .custom-modal.open { opacity: 1; pointer-events: auto; }
+    .modal-box {
+      width: min(1200px, calc(100vw - 20px)); height: min(92vh, 900px); background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(15,23,42,0.08); box-shadow: 0 32px 80px rgba(15,23,42,0.18); border-radius: 28px; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .quiz-header {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      border-bottom: 1px solid var(--border-color); background: rgba(240,253,250,0.8); padding: 18px 22px;
+    }
+    .quiz-header .left { display: flex; align-items: center; gap: 12px; }
+    .back-btn {
+      width: 40px; height: 40px; border-radius: 12px; background: white; border: 1px solid var(--border-color);
+      color: var(--ink); display: grid; place-items: center;
+    }
+    .quiz-header h2 { margin: 0; font-size: 1.06rem; font-weight: 800; }
+    .quiz-header p { margin: 4px 0 0; color: var(--muted); font-size: 11px; }
+    .score-pill {
+      background: rgba(255,255,255,0.9); border: 1px solid var(--border-color); border-radius: 999px;
+      color: var(--ink); font-size: 12px; font-weight: 800; padding: 9px 12px;
+    }
+    .quiz-content {
+      flex: 1; overflow: auto; padding: 18px 22px 20px;
+      background: linear-gradient(180deg, rgba(248,250,252,0.75), rgba(255,255,255,0.98));
+    }
+    .palette {
+      display: flex; gap: 8px; align-items: center; overflow-x: auto; padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+    .palette .dot {
+      min-width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; font-size: 11px; font-weight: 800;
+      border: 1px solid rgba(13,148,136,0.6); background: rgba(255,255,255,0.8); color: var(--teal);
+    }
+    .palette .dot.current { box-shadow: 0 0 0 2px rgba(13,148,136,0.18); transform: scale(1.04); }
+    .palette .dot.correct { background: var(--success); color: white; border-color: transparent; }
+    .palette .dot.wrong { background: var(--danger); color: white; border-color: transparent; }
+    .palette .dot.skipped { background: var(--warning); color: white; border-color: transparent; }
+    .question-shell {
+      background: white; border: 1px solid var(--border-color); border-radius: 22px; padding: 22px; box-shadow: 0 8px 22px rgba(15,23,42,0.04);
+      animation: fadeSlide 0.28s ease;
+    }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(16px) scale(0.995); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+    .q-tag { font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
+    .question-text {
+      font-size: clamp(1.06rem, 2vw, 1.5rem); line-height: 1.55; font-weight: 800; margin-top: 12px;
+    }
+    .options { margin-top: 20px; display: grid; gap: 12px; }
+    .option {
+      width: 100%; text-align: left; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--border-color);
+      background: #f8fafc; color: var(--text-primary); font-size: 0.97rem; font-weight: 600; display: flex; align-items: center; gap: 12px;
+      transition: all 0.2s ease;
+    }
+    .option:hover { border-color: rgba(13,148,136,0.5); background: rgba(13,148,136,0.03); }
+    .option .index {
+      width: 28px; height: 28px; border-radius: 50%; background: white; border: 1px solid var(--border-color); display: grid; place-items: center;
+      font-size: 10px; font-weight: 900; color: var(--ink);
+    }
+    .option.correct { background: var(--success-soft); border-color: rgba(22,163,74,0.45); color: #166534; }
+    .option.correct .index { background: var(--success); color: white; border-color: transparent; }
+    .option.wrong { background: var(--danger-soft); border-color: rgba(220,38,38,0.42); color: #991b1b; }
+    .option.wrong .index { background: var(--danger); color: white; border-color: transparent; }
+    .option.disabled { cursor: default; }
 
-      .statusbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 18px 22px;
-        border-bottom: 1px solid var(--border);
-        background: var(--panel-alt);
-      }
+    .feedback {
+      margin-top: 18px; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--border-color);
+      font-size: 0.95rem; line-height: 1.6;
+    }
+    .feedback.correct { background: var(--success-soft); border-color: rgba(22,163,74,0.24); color: #166534; }
+    .feedback.wrong { background: var(--danger-soft); border-color: rgba(220,38,38,0.24); color: #991b1b; }
+    .feedback strong { display: block; margin-bottom: 5px; }
 
-      .status-stats {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
+    .quiz-footer {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 20px; padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+    }
+    .nav-group { display: flex; gap: 10px; }
+    .plain-btn, .primary-btn {
+      border-radius: 12px; padding: 11px 16px; font-weight: 800; font-size: 12px; letter-spacing: 0.02em;
+    }
+    .plain-btn { background: #eef2f7; color: var(--ink); }
+    .primary-btn { background: linear-gradient(135deg, var(--teal), #14b8a6); color: white; }
+    .primary-btn:hover { filter: brightness(0.98); }
+    .primary-btn.ghost { background: #fbbf24; color: #2f1f00; }
+    .primary-btn.warn { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: #2f1f00; }
+    .primary-btn.secondary { background: #e2e8f0; color: var(--ink); }
 
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        padding: 8px 12px;
-        border-radius: 999px;
-        background: #fff;
-        border: 1px solid var(--border);
-        font-size: 13px;
-        font-weight: 700;
-      }
+    .result-box {
+      display: grid; place-items: center; min-height: 100%; padding: 26px;
+    }
+    .result-card {
+      width: min(560px, 100%); background: white; border: 1px solid var(--border-color); border-radius: 24px;
+      padding: 28px 18px; text-align: center; box-shadow: 0 16px 42px rgba(15,23,42,0.08);
+    }
+    .result-card .tag { margin-bottom: 10px; display: inline-block; }
+    .result-score { font-size: clamp(2.2rem, 4vw, 4rem); font-weight: 900; margin: 12px 0 8px; }
+    .result-card p { color: var(--muted); line-height: 1.6; margin-top: 10px; }
+    .result-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
 
-      .content {
-        padding: 28px 22px 18px;
-      }
-
-      .progress {
-        position: relative;
-        width: 100%;
-        height: 12px;
-        border-radius: 999px;
-        background: #e7f0ed;
-        overflow: hidden;
-        margin: 8px 0 18px;
-      }
-
-      .progress-bar {
-        position: absolute;
-        inset: 0 auto 0 0;
-        width: 0%;
-        background: linear-gradient(90deg, var(--primary), #34d399);
-        border-radius: inherit;
-        transition: width 0.25s ease;
-      }
-
-      .question {
-        font-size: clamp(1.05rem, 2vw, 1.45rem);
-        line-height: 1.6;
-        margin: 12px 0 20px;
-        font-weight: 800;
-      }
-
-      .options {
-        display: grid;
-        gap: 12px;
-      }
-
-      .option {
-        width: 100%;
-        text-align: left;
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        background: #fff;
-        padding: 14px 16px;
-        font-size: 1rem;
-        color: var(--text);
-        cursor: pointer;
-        transition: 0.2s ease;
-      }
-
-      .option:hover {
-        border-color: rgba(15, 118, 110, 0.5);
-        transform: translateY(-1px);
-      }
-
-      .option.correct {
-        background: var(--correct-soft);
-        border-color: var(--correct);
-        color: var(--correct);
-        font-weight: 800;
-      }
-
-      .option.wrong {
-        background: var(--wrong-soft);
-        border-color: var(--wrong);
-        color: var(--wrong);
-        font-weight: 800;
-      }
-
-      .option.disabled {
-        opacity: 0.7;
-        cursor: default;
-      }
-
-      .feedback {
-        margin-top: 22px;
-        border-radius: 16px;
-        padding: 14px 16px;
-        border: 1px solid var(--border);
-        background: #f8fafc;
-      }
-
-      .feedback.correct {
-        background: var(--correct-soft);
-        border-color: rgba(21, 128, 61, 0.25);
-        color: #166534;
-      }
-
-      .feedback.wrong {
-        background: var(--wrong-soft);
-        border-color: rgba(190, 18, 60, 0.28);
-        color: #9f1239;
-      }
-
-      .feedback strong {
-        display: block;
-        margin-bottom: 8px;
-        font-size: 0.95rem;
-      }
-
-      .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        margin-top: 22px;
-        padding-top: 12px;
-        border-top: 1px solid var(--border);
-      }
-
-      .btn {
-        border: none;
-        border-radius: 12px;
-        padding: 12px 18px;
-        font-size: 0.95rem;
-        font-weight: 800;
-        cursor: pointer;
-      }
-
-      .btn.primary {
-        background: var(--primary);
-        color: white;
-      }
-
-      .btn.primary:hover { background: var(--primary-strong); }
-
-      .btn.secondary {
-        background: #eef2f7;
-        color: var(--text);
-      }
-
-      .btn:disabled {
-        opacity: 0.45;
-        cursor: not-allowed;
-      }
-
-      .loader {
-        text-align: center;
-        padding: 40px 20px;
-        color: var(--muted);
-        font-weight: 700;
-      }
-
-      .result {
-        padding: 28px 20px 20px;
-        text-align: center;
-      }
-
-      .score {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        font-weight: 900;
-        margin: 12px 0 8px;
-      }
-
-      @media (max-width: 640px) {
-        .wrap { padding: 14px; }
-        .statusbar { flex-direction: column; align-items: flex-start; }
-        .nav { flex-direction: column-reverse; }
-        .btn { width: 100%; }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="header">
-        <div>
-          <div class="tag">EduPulse</div>
-          <h1 class="title">The Living World</h1>
+    .hidden { display: none !important; }
+    @media (max-width: 640px) {
+      .topbar { padding: 0 14px; }
+      .main { padding: 18px 14px; }
+      .chapter-grid { grid-template-columns: 1fr; }
+      .quiz-header { padding: 16px; }
+      .quiz-content { padding: 12px 12px 18px; }
+      .question-shell { padding: 16px; }
+      .quiz-footer { flex-direction: column-reverse; align-items: stretch; }
+      .nav-group { width: 100%; }
+      .nav-group button { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebarDrawer">
+      <div class="brand">
+        <div class="brand-inner">
+          <div class="logo">✦</div>
+          <div>
+            <b>Edu<span>Pulse</span></b>
+            <p class="eyebrow">NEET Ecosystem</p>
+          </div>
         </div>
       </div>
 
-      <div class="card" id="app"></div>
+      <nav class="nav">
+        <button class="active"><i class="fa-solid fa-house"></i> Home</button>
+        <button><i class="fa-solid fa-list-check"></i> Practice</button>
+        <button><i class="fa-solid fa-book-bookmark"></i> Resource Directory</button>
+        <button><i class="fa-solid fa-chalkboard-user"></i> Faculty Hub</button>
+        <button><i class="fa-solid fa-stopwatch"></i> Focus & Planner</button>
+      </nav>
+
+      <div class="goal">
+        <small>Syllabus Goal</small>
+        <strong>Finish every chapter</strong>
+        <div class="bar"><i id="sidebar-progress-bar" style="width: 0%"></i></div>
+        <p id="sidebar-progress-text">0% syllabus covered</p>
+      </div>
+    </aside>
+
+    <section class="content">
+      <header class="topbar">
+        <div>
+          <div class="date" id="current-date"></div>
+          <h1>Welcome, Aspirant<span style="color:#0d9488">.</span></h1>
+        </div>
+        <button class="primary-btn secondary" onclick="toggleTheme()" style="padding:9px 12px; border-radius:12px;"><i class="fa-solid fa-moon"></i></button>
+      </header>
+
+      <main class="main" id="main-container"></main>
+    </section>
+  </div>
+
+  <div class="custom-modal" id="appModal">
+    <div class="modal-box">
+      <div id="modalContent"></div>
     </div>
+  </div>
 
-    <script>
-      const app = document.getElementById('app');
-      let questions = [];
-      let currentIndex = 0;
-      let selected = {};
-      let showExplanation = {};
+  <script>
+    const data = {
+      Biology: [
+        'The Living World','Biological Classification','Plant Kingdom','Animal Kingdom','Morphology and Anatomy of Flowering Plants',
+        'Structural Organisation in Animals','Cell: The Unit of Life','Biomolecules','Cell Cycle and Cell Division','Photosynthesis in Plants',
+        'Respiration in Plants','Plant Growth and Development','Breathing and Exchange of Gases','Body Fluids and Circulation',
+        'Excretory Products and their Elimination','Locomotion and Movement','Neural Control and Coordination',
+        'Chemical Coordination and Integration','Sexual Reproduction in Flowering Plants','Human Reproduction','Reproductive Health',
+        'Principles of Inheritance and Variation','Molecular Basis of Inheritance','Evolution','Human Health and Disease',
+        'Microbes in Human Welfare','Biotechnology: Principles and Processes','Biotechnology and its Applications',
+        'Organisms and Populations','Ecosystem','Biodiversity and Conservation'
+      ],
+      Chemistry: [
+        'Some Basic Concepts of Chemistry','Structure of Atom','Chemical Thermodynamics','Chemical and Ionic Equilibrium','Solutions',
+        'Electrochemistry and Redox Reactions','Chemical Kinetics','Classification of Elements and Periodicity','Chemical Bonding',
+        'p-Block Elements','d- and f-Block Elements','Coordination Compounds','Purification and Characterisation','General Organic Chemistry',
+        'Hydrocarbons','Haloalkanes and Haloarenes','Oxygen-Containing Compounds','Nitrogen-Containing Compounds','Biomolecules',
+        'Principles Related to Practical Chemistry'
+      ],
+      Physics: [
+        'Units and Measurements','Motion in a Straight Line','Motion in a Plane','Laws of Motion','Work, Energy and Power','Rotational Motion',
+        'Gravitation','Mechanical Properties of Solids','Mechanical Properties of Fluids','Thermal Properties of Matter','Thermodynamics',
+        'Kinetic Theory of Gases','Oscillations','Waves','Electric Charges and Fields','Electrostatic Potential and Capacitance','Current Electricity',
+        'Moving Charges and Magnetism','Magnetism and Matter','Electromagnetic Induction','Alternating Current','Electromagnetic Waves',
+        'Ray Optics and Optical Instruments','Wave Optics','Dual Nature of Radiation and Matter','Atoms','Nuclei','Semiconductor Electronics'
+      ]
+    };
 
-      function normalizeAnswer(value) {
-        return String(value).trim();
+    const state = {
+      subject: 'Biology',
+      progress: JSON.parse(localStorage.getItem('edupulse_progress') || '{}'),
+      quiz: {
+        questions: [],
+        currentIndex: 0,
+        answers: {},
+        score: 0,
+        paletteOpen: false
+      }
+    };
+
+    function escapeHtml(value = '') {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function updateSidebarProgress() {
+      const keys = Object.keys(state.progress);
+      const completed = keys.filter((k) => state.progress[k]?.completed).length;
+      const total = Object.keys(data).reduce((sum, sub) => sum + data[sub].length, 0);
+      const pct = Math.min(100, Math.round((completed / total) * 100));
+      const bar = document.getElementById('sidebar-progress-bar');
+      const text = document.getElementById('sidebar-progress-text');
+      if (bar) bar.style.width = pct + '%';
+      if (text) text.textContent = pct + '% syllabus covered';
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      document.documentElement.classList.toggle('dark');
+    }
+
+    function renderSubjectButtons() {
+      const subjects = Object.keys(data);
+      return subjects.map((subject) => `
+        <button class="subject ${state.subject === subject ? 'selected' : ''}" onclick="state.subject='${subject}'; renderView();">
+          <div>
+            <b>${subject}</b>
+            <small>${data[subject].length} chapters</small>
+          </div>
+          <span class="chip ${subject === 'Biology' ? 'bio' : subject === 'Chemistry' ? 'chem' : 'phy'}">${subject.slice(0, 2).toUpperCase()}</span>
+        </button>
+      `).join('');
+    }
+
+    function renderChapterCards() {
+      return data[state.subject].map((chapter, index) => {
+        const done = state.progress[chapter]?.completed;
+        const pct = state.progress[chapter]?.pct || 0;
+        const isLivingWorld = chapter === 'The Living World';
+        return `
+          <div class="chapter" onclick="handleChapterClick('${chapter}')">
+            <div>
+              <span class="tag">${state.subject}</span>
+              <div class="chapter-title">${chapter}</div>
+            </div>
+            <div>
+              <div class="meta">
+                <span>${isLivingWorld ? '180 MCQs' : 'Chapter'}</span>
+                <span>${done ? 'Done' : 'Open'}</span>
+              </div>
+              <div class="progress-bar-soft"><i style="width:${done ? 100 : pct}%"></i></div>
+              <div class="practice"><i class="fa-solid fa-arrow-right"></i> ${isLivingWorld ? 'Start practice' : 'Coming soon'}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderView() {
+      const container = document.getElementById('main-container');
+      container.innerHTML = `
+        <div class="subject-grid">
+          ${renderSubjectButtons()}
+        </div>
+        <div class="chapter-grid">
+          ${renderChapterCards()}
+        </div>
+      `;
+      updateSidebarProgress();
+    }
+
+    function openModal(content) {
+      const modal = document.getElementById('appModal');
+      const target = document.getElementById('modalContent');
+      target.innerHTML = content;
+      modal.classList.add('open');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('appModal');
+      modal.classList.remove('open');
+    }
+
+    function handleChapterClick(chapterName) {
+      if (chapterName === 'The Living World') {
+        startLivingWorldQuiz();
+        return;
       }
 
-      function mapQuestion(item, index) {
-        const correctIndex = Number(item.a);
-        const correctValue = item.o[correctIndex - 1];
-        return {
-          id: index + 1,
+      openModal(`
+        <div class="result-box">
+          <div class="result-card">
+            <div class="tag">Coming Soon</div>
+            <h3 style="font-size: 1.5rem; font-weight: 900; margin: 8px 0 0;">${escapeHtml(chapterName)}</h3>
+            <p>This chapter is locked while the rest of the EduPulse library is being expanded.</p>
+            <div class="result-actions">
+              <button class="primary-btn" onclick="closeModal()">Got it</button>
+            </div>
+          </div>
+        </div>
+      `);
+    }
+
+    function normalizeChoice(value) {
+      return String(value).trim();
+    }
+
+    function buildQuestionCard(question, index) {
+      const selected = state.quiz.answers[index];
+      const answered = selected !== undefined;
+      const currentQuestionNumber = index + 1;
+      const progress = ((currentQuestionNumber / state.quiz.questions.length) * 100);
+
+      const optionsMarkup = question.options.map((option, optionIndex) => {
+        const isSelected = normalizeChoice(option) === normalizeChoice(selected);
+        const isCorrect = normalizeChoice(option) === normalizeChoice(question.answer);
+        const classes = [
+          'option',
+          answered && isCorrect ? 'correct' : '',
+          answered && isSelected && !isCorrect ? 'wrong' : '',
+          answered ? 'disabled' : ''
+        ].join(' ');
+
+        return `
+          <button class="${classes}" type="button" data-index="${optionIndex}" ${answered ? 'disabled' : ''} onclick="answerQuestion(${index}, '${escapeHtml(option)}')">
+            <span class="index">${String.fromCharCode(65 + optionIndex)}</span>
+            <span>${escapeHtml(option)}</span>
+          </button>
+        `;
+      }).join('');
+
+      let feedbackMarkup = '';
+      if (answered) {
+        const correct = normalizeChoice(selected) === normalizeChoice(question.answer);
+        feedbackMarkup = `
+          <div class="feedback ${correct ? 'correct' : 'wrong'}">
+            <strong>${correct ? 'Correct answer' : 'Wrong answer'}</strong>
+            ${correct ? 'Nice work.' : `Correct answer: <strong>${escapeHtml(question.answer)}</strong>`}<br>
+            ${escapeHtml(question.explanation)}
+          </div>
+        `;
+      }
+
+      const paletteButtons = state.quiz.questions.map((_, qIndex) => {
+        const answer = state.quiz.answers[qIndex];
+        const isCurrent = qIndex === index;
+        const isSkipped = answer === undefined && qIndex !== index && false;
+        let cls = 'dot';
+        if (typeof answer !== 'undefined') {
+          cls += normalizeChoice(answer) === normalizeChoice(state.quiz.questions[qIndex].answer) ? ' correct' : ' wrong';
+        } else if (isCurrent) {
+          cls += ' current';
+        }
+        if (isCurrent && typeof answer === 'undefined') {
+          cls += ' current';
+        }
+        return `<button class="${cls}" type="button" onclick="jumpToQuestion(${qIndex})">${qIndex + 1}</button>`;
+      }).join('');
+
+      return `
+        <div class="quiz-header">
+          <div class="left">
+            <button class="back-btn" onclick="closeModal()"><i class="fa-solid fa-arrow-left"></i></button>
+            <div>
+              <h2>Biology — The Living World</h2>
+              <p>Recommended MCQs • NCERT Pattern</p>
+            </div>
+          </div>
+          <div class="score-pill">Score: ${state.quiz.score}/${state.quiz.questions.length}</div>
+        </div>
+
+        <div class="quiz-content">
+          <div class="palette">${paletteButtons}</div>
+
+          <div class="question-shell">
+            <div class="q-tag">Question ${currentQuestionNumber} of ${state.quiz.questions.length}</div>
+            <div class="question-text">${escapeHtml(question.question)}</div>
+            <div class="options">${optionsMarkup}</div>
+            ${feedbackMarkup}
+
+            <div class="quiz-footer">
+              <div class="nav-group">
+                <button class="plain-btn" type="button" ${index === 0 ? 'disabled' : ''} onclick="prevQuestion()">Previous</button>
+              </div>
+              <div class="nav-group">
+                <button class="primary-btn warn" type="button" onclick="skipQuestion()" ${answered ? 'style="display:none"' : ''}>Skip</button>
+                <button class="primary-btn" type="button" onclick="advanceQuestion()">${index === state.quiz.questions.length - 1 ? 'Finish' : 'Next Question'}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderQuiz() {
+      const activeQuestion = state.quiz.questions[state.quiz.currentIndex];
+      if (!activeQuestion) return;
+      openModal(buildQuestionCard(activeQuestion, state.quiz.currentIndex));
+    }
+
+    function answerQuestion(index, value) {
+      if (state.quiz.answers[index] !== undefined) return;
+      state.quiz.answers[index] = value.replace(/^[A-Z]\.?\s/, '');
+      const currentQuestion = state.quiz.questions[index];
+      if (normalizeChoice(state.quiz.answers[index]) === normalizeChoice(currentQuestion.answer)) {
+        state.quiz.score += 1;
+      }
+      renderQuiz();
+    }
+
+    function prevQuestion() {
+      if (state.quiz.currentIndex > 0) {
+        state.quiz.currentIndex -= 1;
+        renderQuiz();
+      }
+    }
+
+    function skipQuestion() {
+      if (state.quiz.answers[state.quiz.currentIndex] === undefined) {
+        state.quiz.answers[state.quiz.currentIndex] = 'SKIPPED';
+      }
+      if (state.quiz.currentIndex < state.quiz.questions.length - 1) {
+        state.quiz.currentIndex += 1;
+      } else {
+        finishQuiz();
+      }
+      renderQuiz();
+    }
+
+    function jumpToQuestion(index) {
+      if (index >= 0 && index < state.quiz.questions.length) {
+        state.quiz.currentIndex = index;
+        renderQuiz();
+      }
+    }
+
+    function advanceQuestion() {
+      if (state.quiz.currentIndex < state.quiz.questions.length - 1) {
+        state.quiz.currentIndex += 1;
+        renderQuiz();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      const total = state.quiz.questions.length;
+      const correct = Object.keys(state.quiz.answers).reduce((count, index) => {
+        const answer = state.quiz.answers[index];
+        const q = state.quiz.questions[Number(index)];
+        return count + (answer !== 'SKIPPED' && normalizeChoice(answer) === normalizeChoice(q.answer) ? 1 : 0);
+      }, 0);
+      const pct = Math.round((correct / total) * 100);
+      state.progress['The Living World'] = { completed: pct >= 60, pct: pct };
+      localStorage.setItem('edupulse_progress', JSON.stringify(state.progress));
+      renderView();
+
+      openModal(`
+        <div class="result-box">
+          <div class="result-card">
+            <div class="tag">Practice Complete</div>
+            <div class="result-score">${correct}/${total}</div>
+            <div style="font-weight:800; color: var(--muted);">Accuracy: ${pct}%</div>
+            <p>${pct >= 70 ? 'Excellent work. You are well prepared for the chapter.' : pct >= 50 ? 'Good effort. Review the explanations and try one more pass.' : 'Keep revising the chapter explanations and retake the set.'}</p>
+            <div class="result-actions">
+              <button class="primary-btn" onclick="retakeQuiz()">Retake</button>
+              <button class="plain-btn" onclick="closeModal(); renderView();">Close</button>
+            </div>
+          </div>
+        </div>
+      `);
+    }
+
+    function retakeQuiz() {
+      state.quiz.currentIndex = 0;
+      state.quiz.answers = {};
+      state.quiz.score = 0;
+      renderQuiz();
+    }
+
+    async function loadLivingWorldQuestions() {
+      try {
+        const response = await fetch('Data/living_world_mcqs.json');
+        const json = await response.json();
+        const mapped = (json.qs || []).map((item, idx) => ({
+          id: idx + 1,
           question: item.q,
           options: item.o,
-          answer: correctValue,
+          answer: item.o[item.a - 1],
           explanation: item.s || 'No explanation provided.'
-        };
-      }
-
-      function renderLoading() {
-        app.innerHTML = '<div class="loader">Loading questions...</div>';
-      }
-
-      function renderQuiz() {
-        if (!questions.length) return;
-
-        const q = questions[currentIndex];
-        const answered = selected[currentIndex] !== undefined;
-        const chosen = selected[currentIndex];
-
-        const progress = ((currentIndex + 1) / questions.length) * 100;
-
-        const optionsHtml = q.options.map((option, idx) => {
-          const isCorrect = normalizeAnswer(option) === normalizeAnswer(q.answer);
-          const isChosen = normalizeAnswer(option) === normalizeAnswer(chosen);
-          const classes = [
-            'option',
-            answered && isCorrect ? 'correct' : '',
-            answered && isChosen && !isCorrect ? 'wrong' : '',
-            answered ? 'disabled' : ''
-          ].join(' ');
-
-          return `
-            <button class="${classes}" type="button" ${answered ? 'disabled' : ''} data-option="${escapeHtml(option)}" aria-label="Choose answer ${idx + 1}">
-              ${idx + 1}. ${escapeHtml(option)}
-            </button>
-          `;
-        }).join('');
-
-        let feedbackHtml = '';
-        if (answered) {
-          const isCorrect = normalizeAnswer(chosen) === normalizeAnswer(q.answer);
-          feedbackHtml = `
-            <div class="feedback ${isCorrect ? 'correct' : 'wrong'}">
-              <strong>${isCorrect ? 'Correct answer' : 'Wrong answer'}</strong>
-              ${isCorrect ? 'Well done!' : `Correct answer: <strong>${escapeHtml(q.answer)}</strong><br>`}
-              ${escapeHtml(q.explanation)}
-            </div>
-          `;
-        }
-
-        app.innerHTML = `
-          <div class="statusbar">
-            <div class="status-stats">
-              <span class="pill">Question ${currentIndex + 1}/${questions.length}</span>
-              <span class="pill">Score: ${Object.values(selected).filter((value) => value && normalizeAnswer(value) === normalizeAnswer(questions[Object.keys(selected).find((key) => normalizeAnswer(questions[Number(key)].answer) === normalizeAnswer(value))]?.answer)).length || 0}</span>
-            </div>
-            <span class="pill">NCERT Biology</span>
-          </div>
-
-          <div class="content">
-            <div class="progress">
-              <div class="progress-bar" style="width: ${progress}%"></div>
-            </div>
-
-            <div class="question">${escapeHtml(q.question)}</div>
-
-            <div class="options">
-              ${optionsHtml}
-            </div>
-
-            ${feedbackHtml}
-
-            <div class="nav">
-              <button class="btn secondary" type="button" ${currentIndex === 0 ? 'disabled' : ''} id="prevBtn">Previous</button>
-              <button class="btn primary" type="button" id="nextBtn">${currentIndex === questions.length - 1 ? 'Finish' : 'Next'}</button>
+        }));
+        if (!mapped.length) throw new Error('No questions found');
+        state.quiz.questions = mapped;
+        state.quiz.currentIndex = 0;
+        state.quiz.answers = {};
+        state.quiz.score = 0;
+        renderQuiz();
+      } catch (error) {
+        openModal(`
+          <div class="result-box">
+            <div class="result-card">
+              <div class="tag">Error</div>
+              <h3 style="font-size: 1.5rem; font-weight: 900; margin: 8px 0 0;">Quiz failed to load</h3>
+              <p>${escapeHtml(error.message || 'Unknown error')}</p>
+              <div class="result-actions">
+                <button class="primary-btn" onclick="closeModal()">Close</button>
+              </div>
             </div>
           </div>
-        `;
-
-        app.querySelectorAll('.option').forEach((button) => {
-          button.addEventListener('click', () => {
-            if (selected[currentIndex] !== undefined) return;
-            const value = button.textContent.replace(/^\d+\.\s*/, '').trim();
-            selected[currentIndex] = value;
-            showExplanation[currentIndex] = true;
-            renderQuiz();
-          });
-        });
-
-        document.getElementById('prevBtn').addEventListener('click', () => {
-          if (currentIndex > 0) {
-            currentIndex -= 1;
-            renderQuiz();
-          }
-        });
-
-        document.getElementById('nextBtn').addEventListener('click', () => {
-          if (currentIndex < questions.length - 1) {
-            currentIndex += 1;
-            renderQuiz();
-            return;
-          }
-          renderResult();
-        });
+        `);
       }
+    }
 
-      function renderResult() {
-        const total = questions.length;
-        const correct = questions.reduce((count, question, index) => {
-          const chosen = selected[index];
-          return count + (chosen && normalizeAnswer(chosen) === normalizeAnswer(question.answer) ? 1 : 0);
-        }, 0);
-
-        const percent = Math.round((correct / total) * 100);
-
-        app.innerHTML = `
-          <div class="result">
-            <div class="tag">Practice Complete</div>
-            <div class="score">${correct}/${total}</div>
-            <div style="font-size: 1.1rem; font-weight: 700; color: var(--muted);">Accuracy: ${percent}%</div>
-            <p style="margin-top: 18px; color: var(--muted); line-height: 1.7;">
-              ${percent >= 70 ? 'Excellent work! You have a strong grasp of the chapter.' : percent >= 50 ? 'Good job—review the explanations for the missed questions.' : 'Keep practicing. Revise the chapter explanations and try again.'}
-            </p>
-            <div class="nav" style="justify-content: center; margin-top: 24px;">
-              <button class="btn primary" type="button" id="restartBtn">Restart Quiz</button>
-            </div>
-          </div>
-        `;
-
-        document.getElementById('restartBtn').addEventListener('click', () => {
-          currentIndex = 0;
-          selected = {};
-          showExplanation = {};
-          renderQuiz();
-        });
+    function startLivingWorldQuiz() {
+      if (!state.quiz.questions.length) {
+        loadLivingWorldQuestions();
+      } else {
+        state.quiz.currentIndex = 0;
+        state.quiz.answers = {};
+        state.quiz.score = 0;
+        renderQuiz();
       }
+    }
 
-      function escapeHtml(value) {
-        return String(value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#039;');
+    function setCurrentDate() {
+      const dateElement = document.getElementById('current-date');
+      if (dateElement) {
+        dateElement.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
       }
+    }
 
-      async function loadQuestions() {
-        renderLoading();
-        try {
-          const response = await fetch('Data/living_world_mcqs.json');
-          if (!response.ok) throw new Error('Could not load Data/living_world_mcqs.json');
-          const payload = await response.json();
-          questions = (payload.qs || []).map(mapQuestion);
-          if (!questions.length) throw new Error('No quiz data found in the JSON file.');
-          renderQuiz();
-        } catch (error) {
-          app.innerHTML = `
-            <div class="result">
-              <div class="tag" style="background: #ffe4e6; color: #9f1239;">Error</div>
-              <h2 style="margin-top: 16px;">Unable to load quiz data</h2>
-              <p style="color: var(--muted); margin: 12px 0 0;">${escapeHtml(error.message)}</p>
-            </div>
-          `;
-        }
-      }
-
-      loadQuestions();
-    </script>
-  </body>
+    setCurrentDate();
+    renderView();
+  </script>
+</body>
 </html>
