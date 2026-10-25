@@ -23,7 +23,7 @@ body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Inter'
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0}
 .app-layout{display:flex;flex-direction:column;min-height:100vh}
-.sidebar{position:fixed;top:0;bottom:0;left:0;width:260px;height:100vh;overflow-y:auto;z-index:40;display:flex;flex-direction:column;justify-between:space-between;padding:20px 16px;transition:transform .3s ease-in-out;background:var(--paper);border-right:1px solid var(--border-color)}
+.sidebar{position:fixed;top:0;bottom:0;left:0;width:260px;height:100vh;overflow-y:auto;z-index:40;display:flex;flex-direction:column;justify-content:space-between;padding:20px 16px;transition:transform .3s ease-in-out;background:var(--paper);border-right:1px solid var(--border-color)}
 @media (max-width:1023px){.sidebar{transform:translateX(-100%)}.sidebar.mobile-open{transform:translateX(0)}.content{margin-left:0;width:100%}}
 @media (min-width:1024px){.content{margin-left:260px;flex:1;width:calc(100% - 260px)}}
 .brand{display:flex;gap:12px;align-items:center}
@@ -41,7 +41,7 @@ button{cursor:pointer;border:0}
 body.dark .bar{background:rgba(255,255,255,.15)}
 .bar i{display:block;height:100%;background:var(--teal);transition:width .5s ease}
 .goal p{font-size:11px;color:var(--text-muted);margin-top:6px}
-.topbar{height:70px;border-bottom:1px solid var(--border-color);background:var(--paper);display:flex;align-items:center;justify-space-between;padding:0 24px;position:sticky;top:0;z-index:30}
+.topbar{height:70px;border-bottom:1px solid var(--border-color);background:var(--paper);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:30}
 .date{color:var(--text-muted);font-size:11px;font-weight:600}
 .topbar h1{font-size:18px;margin:2px 0 0;color:var(--text-primary);font-weight:800}
 .main{max-width:1400px;margin:auto;padding:24px}
@@ -78,7 +78,7 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 .no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
 </style>
 </head>
-​<body>
+<body>
 <div class="app-layout">
 <div class="mobile-nav-overlay" id="navOverlay" onclick="toggleMobileNav(false)"></div>
 <aside class="sidebar" id="sidebarDrawer">
@@ -303,7 +303,7 @@ let timerMode = 'work';
 let timerInterval = null;
 ​// Quiz Session State
 const quizState = {
-mode: 'practice', // 'practice' | 'test' | 'mock'
+mode: 'practice',
 chapter: '',
 subject: '',
 title: '',
@@ -424,7 +424,7 @@ showToast('New version available - Refresh to update', 'warning');
 };
 }).catch(err => console.error('SW registration failed:', err));
 }
-​// ===== Chapter Availability Checks (Lazy, max 4 parallel) =====
+​// ===== Chapter Availability Checks =====
 let activeAvailabilityFetches = 0;
 const availabilityQueue = [];
 ​function checkChapterAvailability(chapterName, callback) {
@@ -503,7 +503,7 @@ lastDate = new Date(lastAttempt.finishedAt).toLocaleDateString();
 }
 const acc = attemptCount > 0 ? Math.round((attemptsArr.reduce((s,a) => s + (a.accuracy || 0), 0) / attemptCount)) : 0;
 const badgeColor = acc >= 70 ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : acc >= 40 ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300' : 'bg-rose-100 text-rose-700 dark:bg-rose-950/50 dark:text-rose-300';
-​return <div class="card chapter" id="chapter-card-${slugify(ch)}" onclick="openModePicker('${jsArg(subject)}', '${jsArg(ch)}')"> <div> <div class="flex items-center justify-between"> <span class="chip ${cls}">${short}</span> <div class="flex items-center gap-1.5"> <span id="avail-badge-${slugify(ch)}" class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">Checking...</span> <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${done ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400'}">${done ? 'Completed ✓' : 'Pending'}</span> </div> </div> <h3 class="chapter-title">${escapeHtml(ch)}</h3> <div class="mt-2 text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-3"> <span>Attempts: <strong class="text-slate-700 dark:text-slate-200">${attemptCount}</strong></span> <span>Best: <strong class="text-slate-700 dark:text-slate-200">${bestScore}</strong></span> ${attemptCount > 0 ?<span class="px-1.5 py-0.5 rounded font-bold ${badgeColor}">Acc: ${acc}%</span> : ''} </div> </div> <div> <div class="progress"><i style="width:${done ? '100%' : '0%'}"></i></div> <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"> <span class="text-[10px] text-slate-400">Last: ${lastDate}</span> <span class="practice">Start Quiz <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i></span> </div> </div> </div>;
+​return <div class="card chapter" id="chapter-card-${slugify(ch)}" onclick="openModePicker('${jsArg(subject)}', '${jsArg(ch)}')"> <div> <div class="flex items-center justify-between"> <span class="chip ${cls}">${short}</span> <div class="flex items-center gap-1.5"> <span id="avail-badge-${slugify(ch)}" class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">Checking...</span> <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${done ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400'}">${done ? 'Completed ✓' : 'Pending'}</span> </div> </div> <h3 class="chapter-title">${escapeHtml(ch)}</h3> <div class="mt-2 text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-3"> <span>Attempts: <strong class="text-slate-700 dark:text-slate-200">${attemptCount}</strong></span> <span>Best: <strong class="text-slate-700 dark:text-slate-200">${bestScore}</strong></span> ${attemptCount > 0 ? <span class="px-1.5 py-0.5 rounded font-bold ${badgeColor}">Acc: ${acc}%</span> : ''} </div> </div> <div> <div class="progress"><i style="width:${done ? '100%' : '0%'}"></i></div> <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"> <span class="text-[10px] text-slate-400">Last: ${lastDate}</span> <span class="practice">Start Quiz <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i></span> </div> </div> </div>;
 }).join('');
 ​filtered.forEach(ch => {
 checkChapterAvailability(ch, (isAvailable) => {
@@ -530,6 +530,32 @@ document.getElementById('modalContentSlot').innerHTML = html;
 document.getElementById('modalActions').innerHTML = actions;
 openModal();
 }
+​function openHelpModal() {
+setModal('Keyboard Shortcuts & Navigation', 'Accelerate your practice with key shortcuts:',  <div class="space-y-3 py-2 text-xs"> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Option A, B, C, D</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">1, 2, 3, 4</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Next Question</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">ArrowRight / Space</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Previous Question</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">ArrowLeft</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Toggle Bookmark / Flag</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">B or F</kbd></div> </div>, <button onclick="closeModal()" class="px-4 py-2 bg-teal-600 text-white rounded-xl font-bold text-xs">Got it</button>);
+}
+​// Global keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+const isModalOpen = document.getElementById('appModal')?.classList.contains('open');
+if (!isModalOpen) return;
+​if (e.key === 'Escape') {
+confirmExitQuiz();
+return;
+}
+if (['1', '2', '3', '4'].includes(e.key)) {
+const optIdx = parseInt(e.key, 10) - 1;
+if (quizState.mode === 'practice') selectPracticeOption(optIdx);
+else if (quizState.mode === 'test') selectTestOption(optIdx);
+} else if (e.key === 'ArrowRight' || e.key === ' ') {
+if (quizState.mode === 'practice') goToNextPracticeQuestion();
+else if (quizState.mode === 'test') jumpToTestQuestion(quizState.currentIndex + 1);
+} else if (e.key === 'ArrowLeft') {
+if (quizState.mode === 'practice') jumpToPracticeQuestion(quizState.currentIndex - 1);
+else if (quizState.mode === 'test') jumpToTestQuestion(quizState.currentIndex - 1);
+} else if (e.key === 'b' || e.key === 'B' || e.key === 'f' || e.key === 'F') {
+if (quizState.mode === 'practice') toggleBookmarkCurrent();
+else if (quizState.mode === 'test') toggleMarkTestCurrent();
+}
+});
 ​// ===== Mode Picker Modal =====
 function openModePicker(subj, chapterName) {
 subject = subj;
@@ -538,7 +564,7 @@ if (!isAvailable) {
 showComingSoon(chapterName);
 return;
 }
-setModal('Select Quiz Mode', chapterName,  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-2"> <button onclick="setupQuizMode('practice', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"> <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid fa-graduation-cap text-lg"></i></div> <h4 class="font-black text-base text-slate-900 dark:text-slate-100">Practice Mode</h4> <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Instant feedback after each question, detailed explanations, stopwatch learning.</p> </button> <button onclick="setupQuizMode('test', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"> <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid fa-clock text-lg"></i></div> <h4 class="font-black text-base text-slate-900 dark:text-slate-100">Test Mode</h4> <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">NEET exam simulation with countdown timer, negative marking, review flags, and deferred results.</p> </button> </div> <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between"> <span class="text-xs font-bold text-slate-500">Quick options:</span> <button onclick="toggleChapterProgress('${jsArg(chapterName)}')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">Toggle Completion Status</button> </div>,
+setModal('Select Quiz Mode', chapterName, <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-2"> <button onclick="setupQuizMode('practice', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"> <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid fa-graduation-cap text-lg"></i></div> <h4 class="font-black text-base text-slate-900 dark:text-slate-100">Practice Mode</h4> <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Instant feedback after each question, detailed explanations, stopwatch learning.</p> </button> <button onclick="setupQuizMode('test', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"> <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid fa-clock text-lg"></i></div> <h4 class="font-black text-base text-slate-900 dark:text-slate-100">Test Mode</h4> <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">NEET exam simulation with countdown timer, negative marking, review flags, and deferred results.</p> </button> </div> <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between"> <span class="text-xs font-bold text-slate-500">Quick options:</span> <button onclick="toggleChapterProgress('${jsArg(chapterName)}')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">Toggle Completion Status</button> </div>,
 <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 text-xs">Cancel</button>
 );
 });
@@ -546,7 +572,7 @@ setModal('Select Quiz Mode', chapterName,  <div class="grid grid-cols-1 sm:grid-
 ​function showComingSoon(chapterName) {
 const done = userProgress[chapterName] && userProgress[chapterName].completed;
 const n = escapeHtml(chapterName);
-setModal('', '',  <div class="flex flex-col items-center justify-center text-center py-6 px-2"> <div class="relative mb-5"> <div class="w-20 h-20 rounded-3xl bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-500 animate-pulse-glow animate-lock-bounce shadow-xl"><i class="fa-solid fa-lock text-3xl sm:text-4xl"></i></div> <div class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] flex items-center justify-center">✦</div> </div> <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-extrabold text-[11px] uppercase tracking-wider mb-2 border border-amber-500/20">Coming Soon 🔒</span> <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100">${n}</h3> <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm max-w-md mt-2.5 leading-relaxed">Practice MCQs for <span class="font-bold text-slate-700 dark:text-slate-200">${n}</span> are being prepared. Check back soon.</p> <div class="mt-6 flex flex-wrap items-center justify-center gap-3 w-full"> <button onclick="toggleChapterProgress('${jsArg(chapterName)}')" class="px-4 py-2.5 rounded-xl ${done ? 'bg-amber-500 hover:bg-amber-600 text-slate-950' : 'bg-emerald-600 hover:bg-emerald-700 text-white'} font-bold text-xs transition shadow-sm">${done ? 'Mark as Pending' : 'Mark as Completed ✓'}</button> <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs transition">Got it</button> </div> </div>);
+setModal('', '', <div class="flex flex-col items-center justify-center text-center py-6 px-2"> <div class="relative mb-5"> <div class="w-20 h-20 rounded-3xl bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-500 animate-pulse-glow animate-lock-bounce shadow-xl"><i class="fa-solid fa-lock text-3xl sm:text-4xl"></i></div> <div class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] flex items-center justify-center">✦</div> </div> <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-extrabold text-[11px] uppercase tracking-wider mb-2 border border-amber-500/20">Coming Soon 🔒</span> <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100">${n}</h3> <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm max-w-md mt-2.5 leading-relaxed">Practice MCQs for <span class="font-bold text-slate-700 dark:text-slate-200">${n}</span> are being prepared. Check back soon.</p> <div class="mt-6 flex flex-wrap items-center justify-center gap-3 w-full"> <button onclick="toggleChapterProgress('${jsArg(chapterName)}')" class="px-4 py-2.5 rounded-xl ${done ? 'bg-amber-500 hover:bg-amber-600 text-slate-950' : 'bg-emerald-600 hover:bg-emerald-700 text-white'} font-bold text-xs transition shadow-sm">${done ? 'Mark as Pending' : 'Mark as Completed ✓'}</button> <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs transition">Got it</button> </div> </div>);
 }
 ​function toggleChapterProgress(chapterName) {
 const curr = userProgress[chapterName] && userProgress[chapterName].completed;
@@ -561,7 +587,7 @@ renderView();
 async function setupQuizMode(mode, subj, chapterName, customQuestions = null) {
 subject = subj;
 toggleFullScreenMode(false);
-setModal('', '',  <div class="flex flex-col items-center justify-center py-10"> <i class="fa-solid fa-spinner fa-spin text-4xl text-teal-600 mb-4"></i> <p class="text-sm font-bold text-slate-700 dark:text-slate-200">Preparing ${mode === 'practice' ? 'Practice' : 'Test'} session...</p> </div>);
+setModal('', '', <div class="flex flex-col items-center justify-center py-10"> <i class="fa-solid fa-spinner fa-spin text-4xl text-teal-600 mb-4"></i> <p class="text-sm font-bold text-slate-700 dark:text-slate-200">Preparing ${mode === 'practice' ? 'Practice' : 'Test'} session...</p> </div>);
 ​try {
 let rawQuestions = customQuestions;
 let chapterTitle = chapterName;
@@ -591,14 +617,14 @@ sourceChapter: chapterName
 });
 }
 ​if (mode === 'practice') {
-setModal('Practice Settings', chapterName,  <div class="space-y-4 py-2"> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Question Count</label> <select id="pracCount" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> <option value="all">All (${rawQuestions.length})</option> <option value="10">10 Questions</option> <option value="20">20 Questions</option> <option value="50">50 Questions</option> </select> </div> <div class="space-y-2"> <label class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300"><input type="checkbox" id="pracShuffleQ" class="w-4 h-4 rounded text-teal-600"> Shuffle Questions</label> <label class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300"><input type="checkbox" id="pracShuffleO" class="w-4 h-4 rounded text-teal-600"> Shuffle Options</label> <label class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300"><input type="checkbox" id="pracOnlyWrong" class="w-4 h-4 rounded text-teal-600"> Only Wrong / Bookmarked Questions</label> </div> </div>,
+setModal('Practice Settings', chapterName, <div class="space-y-4 py-2"> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Question Count</label> <select id="pracCount" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> <option value="all">All (${rawQuestions.length})</option> <option value="10">10 Questions</option> <option value="20">20 Questions</option> <option value="50">50 Questions</option> </select> </div> <div class="space-y-2"> <label class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300"><input type="checkbox" id="pracShuffleQ" class="w-4 h-4 rounded text-teal-600"> Shuffle Questions</label> <label class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300"><input type="checkbox" id="pracShuffleO" class="w-4 h-4 rounded text-teal-600"> Shuffle Options</label> <label class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300"><input type="checkbox" id="pracOnlyWrong" class="w-4 h-4 rounded text-teal-600"> Only Wrong / Bookmarked Questions</label> </div> </div>,
 <button id="startPracBtn" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs">Start Practice</button>
 );
 document.getElementById('startPracBtn').onclick = () => launchPracticeSession(subj, chapterName, rawQuestions);
 } else {
 const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
 const defaultMinutes = rawQuestions.length * settings.minutesPerQuestion;
-setModal('Test Mode Simulation', chapterName,  <div class="space-y-4 py-2"> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Duration (Minutes)</label> <select id="testDuration" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> <option value="${defaultMinutes}">Standard (${defaultMinutes} min for ${rawQuestions.length} qs)</option> <option value="15">15 Minutes</option> <option value="30">30 Minutes</option> <option value="60">60 Minutes</option> <option value="180">180 Minutes (Full NEET)</option> </select> </div> <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-700 dark:text-amber-300 font-medium"> <i class="fa-solid fa-triangle-exclamation mr-1"></i> Exam Simulation: Continuous countdown timer, negative marking (+4 / -1), review flags, and deferred results. </div> </div>,
+setModal('Test Mode Simulation', chapterName, <div class="space-y-4 py-2"> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Duration (Minutes)</label> <select id="testDuration" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> <option value="${defaultMinutes}">Standard (${defaultMinutes} min for ${rawQuestions.length} qs)</option> <option value="15">15 Minutes</option> <option value="30">30 Minutes</option> <option value="60">60 Minutes</option> <option value="180">180 Minutes (Full NEET)</option> </select> </div> <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-700 dark:text-amber-300 font-medium"> <i class="fa-solid fa-triangle-exclamation mr-1"></i> Exam Simulation: Continuous countdown timer, negative marking (+4 / -1), review flags, and deferred results. </div> </div>,
 <button id="startTestBtn" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs">Start Test</button>
 );
 document.getElementById('startTestBtn').onclick = () => launchTestSession(subj, chapterName, rawQuestions);
@@ -725,9 +751,9 @@ c += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 hover:bg
 return <button type="button" class="${c}" ${answered ? 'disabled' : onclick="selectPracticeOption(${i})"}> <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>;
 }).join('');
 ​const imageHtml = q.img ? <div class="my-4"><img src="${DATA_BASE}img/${escapeHtml(q.img)}" alt="${escapeHtml(q.alt || 'Question diagram')}" class="max-h-60 rounded-xl border border-slate-200 dark:border-slate-700 object-contain mx-auto" onerror="this.onerror=null;this.parentElement.style.display='none';"></div> : '';
-​const result = answered ? <div class="mt-4 rounded-xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} px-4 py-3 text-sm font-semibold"> ${isRight ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'} Correct option: <span class="font-black">${String.fromCharCode(65 + q.correct)}. ${escapeHtml(q.options[q.correct])}</span> ${q.explanation ?<div class="mt-2 text-xs font-medium opacity-80">${escapeHtml(q.explanation)}</div> : ''} </div> : '';
+​const result = answered ? <div class="mt-4 rounded-xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} px-4 py-3 text-sm font-semibold"> ${isRight ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'} Correct option: <span class="font-black">${String.fromCharCode(65 + q.correct)}. ${escapeHtml(q.options[q.correct])}</span> ${q.explanation ? <div class="mt-2 text-xs font-medium opacity-80">${escapeHtml(q.explanation)}</div> : ''} </div> : '';
 ​const last = idx === total - 1;
-const html = <div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative"> <div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3"> <div class="flex items-center gap-3"> <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> <div> <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2> <p class="text-xs text-slate-500 dark:text-slate-400">Practice Mode (Instant Feedback)</p> </div> </div> <div class="flex items-center gap-2"> <button type="button" onclick="toggleBookmarkCurrent()" class="px-3 py-1.5 rounded-xl border ${isBookmarked ? 'border-amber-500 bg-amber-500/10 text-amber-600' : 'border-slate-200 dark:border-slate-700 text-slate-500'} text-xs font-bold transition flex items-center gap-1.5"><i class="fa-solid fa-star"></i> ${isBookmarked ? 'Bookmarked' : 'Bookmark'}</button> <div class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Q: ${idx + 1}/${total}</div> </div> </div> <div class="flex items-center gap-2 mb-3 px-1 py-1"> <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth flex-1">${palette}</div> </div> <div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between"> <div> <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span> <p class="mt-3 text-base sm:text-lg font-bold leading-relaxed text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> ${imageHtml} <div class="mt-5 space-y-3">${options}</div> ${result} </div> <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2"> <button type="button" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 disabled:opacity-40">← Previous</button> <div class="flex items-center gap-2"> ${!answered && !last ?<button type="button" onclick="skipPracticeQuestion()" class="rounded-xl bg-amber-500 hover:bg-amber-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition"><i class="fa-solid fa-forward-step mr-1"></i> Skip</button> : ''} <button type="button" onclick="${last ? 'finishPracticeQuiz()' : 'goToNextPracticeQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white hover:bg-teal-700 transition">${last ? 'Finish Quiz' : 'Next →'}</button> </div> </div> </div> </div>;
+const html = <div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative"> <div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3"> <div class="flex items-center gap-3"> <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> <div> <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2> <p class="text-xs text-slate-500 dark:text-slate-400">Practice Mode (Instant Feedback)</p> </div> </div> <div class="flex items-center gap-2"> <button type="button" onclick="toggleBookmarkCurrent()" class="px-3 py-1.5 rounded-xl border ${isBookmarked ? 'border-amber-500 bg-amber-500/10 text-amber-600' : 'border-slate-200 dark:border-slate-700 text-slate-500'} text-xs font-bold transition flex items-center gap-1.5"><i class="fa-solid fa-star"></i> ${isBookmarked ? 'Bookmarked' : 'Bookmark'}</button> <div class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Q: ${idx + 1}/${total}</div> </div> </div> <div class="flex items-center gap-2 mb-3 px-1 py-1"> <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth flex-1">${palette}</div> </div> <div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between"> <div> <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span> <p class="mt-3 text-base sm:text-lg font-bold leading-relaxed text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> ${imageHtml} <div class="mt-5 space-y-3">${options}</div> ${result} </div> <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2"> <button type="button" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 disabled:opacity-40">← Previous</button> <div class="flex items-center gap-2"> ${!answered && !last ? <button type="button" onclick="skipPracticeQuestion()" class="rounded-xl bg-amber-500 hover:bg-amber-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition"><i class="fa-solid fa-forward-step mr-1"></i> Skip</button> : ''} <button type="button" onclick="${last ? 'finishPracticeQuiz()' : 'goToNextPracticeQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white hover:bg-teal-700 transition">${last ? 'Finish Quiz' : 'Next →'}</button> </div> </div> </div> </div>;
 setModal('', '', html);
 }
 ​function selectPracticeOption(optionIndex) {
@@ -874,7 +900,7 @@ else c += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 dar
 return <button type="button" class="${c}" onclick="selectTestOption(${i})"> <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>;
 }).join('');
 ​const imageHtml = q.img ? <div class="my-4"><img src="${DATA_BASE}img/${escapeHtml(q.img)}" alt="${escapeHtml(q.alt || 'Question diagram')}" class="max-h-60 rounded-xl border border-slate-200 dark:border-slate-700 object-contain mx-auto" onerror="this.onerror=null;this.parentElement.style.display='none';"></div> : '';
-​const html = <div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative"> <div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3"> <div class="flex items-center gap-3"> <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> <div> <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2> <p class="text-xs text-slate-500 dark:text-slate-400">Test Simulation Mode</p> </div> </div> <div class="flex items-center gap-3"> <div id="test-timer-display" class="text-xs font-black px-3 py-1.5 rounded-xl bg-teal-600 text-white">--:--</div> <button onclick="confirmSubmitTest()" class="px-4 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition">Submit Test</button> </div> </div> <div class="flex items-center gap-2 mb-3 px-1 py-1"> <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth flex-1">${palette}</div> </div> <div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between"> <div> <div class="flex items-center justify-between"> <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total} ${q.sourceChapter ?(${escapeHtml(q.sourceChapter)}): ''}</span> <button type="button" onclick="toggleMarkTestCurrent()" class="px-3 py-1 rounded-lg border ${isMarked ? 'border-amber-500 bg-amber-500/10 text-amber-600' : 'border-slate-200 dark:border-slate-700 text-slate-500'} text-xs font-bold transition"><i class="fa-solid fa-flag mr-1"></i> ${isMarked ? 'Marked for Review' : 'Mark for Review'}</button> </div> <p class="mt-3 text-base sm:text-lg font-bold leading-relaxed text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> ${imageHtml} <div class="mt-5 space-y-3">${options}</div> </div> <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2"> <button type="button" onclick="jumpToTestQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 disabled:opacity-40">← Previous</button> <div class="flex items-center gap-2"> ${answered ?<button type="button" onclick="clearTestResponse()" class="rounded-xl bg-slate-200 dark:bg-slate-800 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300">Clear Response</button> : ''} <button type="button" onclick="jumpToTestQuestion(${Math.min(total - 1, idx + 1)})" class="rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white hover:bg-teal-700 transition">Next →</button> </div> </div> </div> </div>;
+​const html = <div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative"> <div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3"> <div class="flex items-center gap-3"> <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> <div> <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2> <p class="text-xs text-slate-500 dark:text-slate-400">Test Simulation Mode</p> </div> </div> <div class="flex items-center gap-3"> <div id="test-timer-display" class="text-xs font-black px-3 py-1.5 rounded-xl bg-teal-600 text-white">--:--</div> <button onclick="confirmSubmitTest()" class="px-4 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition">Submit Test</button> </div> </div> <div class="flex items-center gap-2 mb-3 px-1 py-1"> <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth flex-1">${palette}</div> </div> <div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between"> <div> <div class="flex items-center justify-between"> <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total} ${q.sourceChapter ? (${escapeHtml(q.sourceChapter)}): ''}</span> <button type="button" onclick="toggleMarkTestCurrent()" class="px-3 py-1 rounded-lg border ${isMarked ? 'border-amber-500 bg-amber-500/10 text-amber-600' : 'border-slate-200 dark:border-slate-700 text-slate-500'} text-xs font-bold transition"><i class="fa-solid fa-flag mr-1"></i> ${isMarked ? 'Marked for Review' : 'Mark for Review'}</button> </div> <p class="mt-3 text-base sm:text-lg font-bold leading-relaxed text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> ${imageHtml} <div class="mt-5 space-y-3">${options}</div> </div> <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2"> <button type="button" onclick="jumpToTestQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 disabled:opacity-40">← Previous</button> <div class="flex items-center gap-2"> ${answered ?<button type="button" onclick="clearTestResponse()" class="rounded-xl bg-slate-200 dark:bg-slate-800 px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300">Clear Response</button> : ''} <button type="button" onclick="jumpToTestQuestion(${Math.min(total - 1, idx + 1)})" class="rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white hover:bg-teal-700 transition">Next →</button> </div> </div> </div> </div>;
 setModal('', '', html);
 }
 ​function selectTestOption(i) {
@@ -903,7 +929,7 @@ let marked = Object.values(quizState.marked).filter(Boolean).length;
 let notAnswered = total - answered;
 let timeLeftSec = Math.max(0, Math.floor((quizState.testEndTimestamp - Date.now()) / 1000));
 const mm = Math.floor(timeLeftSec / 60), ss = timeLeftSec % 60;
-​setModal('Confirm Test Submission', 'Review your status before submitting.',  <div class="space-y-4 py-2"> <div class="grid grid-cols-3 gap-3 text-center"> <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20"><span class="block text-2xl font-black text-emerald-600">${answered}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Answered</span></div> <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20"><span class="block text-2xl font-black text-amber-600">${marked}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Marked</span></div> <div class="p-3 rounded-xl bg-slate-500/10 border border-slate-500/20"><span class="block text-2xl font-black text-slate-600 dark:text-slate-300">${notAnswered}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Unanswered</span></div> </div> <p class="text-xs text-slate-500 dark:text-slate-400 text-center font-medium">Time Remaining: <strong class="text-slate-800 dark:text-slate-100">${mm}m ${ss}s</strong></p> </div>,
+​setModal('Confirm Test Submission', 'Review your status before submitting.', <div class="space-y-4 py-2"> <div class="grid grid-cols-3 gap-3 text-center"> <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20"><span class="block text-2xl font-black text-emerald-600">${answered}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Answered</span></div> <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20"><span class="block text-2xl font-black text-amber-600">${marked}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Marked</span></div> <div class="p-3 rounded-xl bg-slate-500/10 border border-slate-500/20"><span class="block text-2xl font-black text-slate-600 dark:text-slate-300">${notAnswered}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Unanswered</span></div> </div> <p class="text-xs text-slate-500 dark:text-slate-400 text-center font-medium">Time Remaining: <strong class="text-slate-800 dark:text-slate-100">${mm}m ${ss}s</strong></p> </div>,
 <div class="flex gap-2"> <button onclick="closeModal(); renderTestQuiz();" class="px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs">Resume Test</button> <button onclick="submitTestQuiz(false)" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs hover:bg-teal-700">Yes, Submit</button> </div>
 );
 }
@@ -968,19 +994,7 @@ const mm = Math.floor(durationSec / 60), ss = durationSec % 60;
 ​const radius = 40, circ = 2 * Math.PI * radius;
 const correctPct = total > 0 ? (correct / total) * circ : 0;
 const wrongPct = total > 0 ? (wrong / total) * circ : 0;
-​setModal('Quiz Performance & Review', attempt.chapter, <div class="space-y-6 py-2"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800"> <div class="flex justify-center"> <svg class="w-32 h-32 transform -rotate-90"> <circle cx="64" cy="64" r="${radius}" stroke="currentColor" stroke-width="14" class="text-slate-200 dark:text-slate-800 fill-none"></circle> <circle cx="64" cy="64" r="${radius}" stroke="#10b981" stroke-width="14" stroke-dasharray="${circ}" stroke-dashoffset="${circ - correctPct}" class="fill-none transition-all duration-1000"></circle> <circle cx="64" cy="64" r="${radius}" stroke="#f43f5e" stroke-width="14" stroke-dasharray="${circ}" stroke-dashoffset="${circ - (correctPct + wrongPct)}" class="fill-none transition-all duration-1000"></circle> </svg> </div> <div class="sm:col-span-2 space-y-2"> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Score</span><span class="text-2xl font-black text-slate-900 dark:text-slate-100">${score} / ${maxScore}</span></div> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Accuracy</span><span class="text-lg font-black text-teal-600">${accuracy}%</span></div> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Time Taken</span><span class="text-sm font-bold text-slate-700 dark:text-slate-300">${mm}m ${ss}s (${avgTimeSec}s / q)</span></div> ${tabSwitches > 0 ?<div class="flex items-baseline justify-between text-rose-500"><span class="text-xs font-bold uppercase">Tab Switches</span><span class="text-sm font-black">${tabSwitches}</span></div>` : ''}
-</div>
-</div>
-​<div class="grid grid-cols-4 gap-3 text-center">
-<div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20"><span class="block text-xl font-black text-emerald-600">{correct}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Correct</span></div>
-<div class="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20"><span class="block text-xl font-black text-rose-600">{wrong}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Wrong</span></div>
-<div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20"><span class="block text-xl font-black text-amber-600">{skipped}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Skipped</span></div>
-<div class="p-3 rounded-xl bg-teal-500/10 border border-teal-500/20"><span class="block text-xl font-black text-teal-600">{attempted}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Attempted</span></div>
-</div>
-​<div class="flex flex-wrap gap-2 pt-2">
-<button onclick="setupQuizMode('${mode}', '${jsArg(attempt.subject)}', '${jsArg(attempt.chapter)}')" class="flex-1 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm"><i class="fa-solid fa-rotate-right mr-1"></i> Retake</button>
-</div>
-</div>, <button onclick="closeModal(); renderView();" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-bold text-xs">Back to Chapters</button>`
+​setModal('Quiz Performance & Review', attempt.chapter, <div class="space-y-6 py-2"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800"> <div class="flex justify-center"> <svg class="w-32 h-32 transform -rotate-90"> <circle cx="64" cy="64" r="${radius}" stroke="currentColor" stroke-width="14" class="text-slate-200 dark:text-slate-800 fill-none"></circle> <circle cx="64" cy="64" r="${radius}" stroke="#10b981" stroke-width="14" stroke-dasharray="${circ}" stroke-dashoffset="${circ - correctPct}" class="fill-none transition-all duration-1000"></circle> <circle cx="64" cy="64" r="${radius}" stroke="#f43f5e" stroke-width="14" stroke-dasharray="${circ}" stroke-dashoffset="${circ - (correctPct + wrongPct)}" class="fill-none transition-all duration-1000"></circle> </svg> </div> <div class="sm:col-span-2 space-y-2"> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Score</span><span class="text-2xl font-black text-slate-900 dark:text-slate-100">${score} / ${maxScore}</span></div> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Accuracy</span><span class="text-lg font-black text-teal-600">${accuracy}%</span></div> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Time Taken</span><span class="text-sm font-bold text-slate-700 dark:text-slate-300">${mm}m ${ss}s (${avgTimeSec}s / q)</span></div> ${tabSwitches > 0 ? <div class="flex items-baseline justify-between text-rose-500"><span class="text-xs font-bold uppercase">Tab Switches</span><span class="text-sm font-black">${tabSwitches}</span></div> : ''} </div> </div> <div class="grid grid-cols-4 gap-3 text-center"> <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20"><span class="block text-xl font-black text-emerald-600">${correct}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Correct</span></div> <div class="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20"><span class="block text-xl font-black text-rose-600">${wrong}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Wrong</span></div> <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20"><span class="block text-xl font-black text-amber-600">${skipped}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Skipped</span></div> <div class="p-3 rounded-xl bg-teal-500/10 border border-teal-500/20"><span class="block text-xl font-black text-teal-600">${attempted}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Attempted</span></div> </div> <div class="flex flex-wrap gap-2 pt-2"> <button onclick="setupQuizMode('${mode}', '${jsArg(attempt.subject)}', '${jsArg(attempt.chapter)}')" class="flex-1 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm"><i class="fa-solid fa-rotate-right mr-1"></i> Retake</button> </div> </div>, <button onclick="closeModal(); renderView();" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-bold text-xs">Back to Chapters</button>
 );
 }
 ​// ===== Tabs & Main Views =====
@@ -1099,53 +1113,97 @@ function renderProgressStats() {
 const main = document.getElementById('main-container');
 const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
 const streak = StorageModule.get(STORAGE_KEYS.streak, { current: 0, best: 0, dailyCounts: {} });
-​main.innerHTML = <div class="space-y-6"> <div> <div class="tag">✦ Analytics & Progress</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Performance Dashboard</h2> </div> <div class="grid grid-cols-1 sm:grid-cols-3 gap-4"> <div class="card p-5"> <span class="text-xs font-bold text-slate-400 uppercase">Total Tests Taken</span> <span class="block text-3xl font-black mt-1">${attempts.length}</span> </div> <div class="card p-5"> <span class="text-xs font-bold text-slate-400 uppercase">Streak Best</span> <span class="block text-3xl font-black mt-1 text-amber-500">${streak.best} Days</span> </div> <div class="card p-5"> <span class="text-xs font-bold text-slate-400 uppercase">Focus Sessions</span> <span class="block text-3xl font-black mt-1 text-indigo-500">${timerSessionCount}</span> </div> </div> <div class="card p-6"> <h3 class="font-extrabold text-base mb-4">Recent Quiz History</h3> ${!attempts.length ? '<p class="text-xs text-slate-400">No quizzes attempted yet.</p>' :
-<div class="space-y-3 max-h-96 overflow-y-auto pr-1">
-${attempts.map(a =>  <div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30"> <div> <h4 class="font-bold text-xs text-slate-900 dark:text-slate-100">${escapeHtml(a.chapter)}</h4> <span class="text-[10px] text-slate-400">${new Date(a.finishedAt).toLocaleDateString()} • ${a.mode} mode</span> </div> <div class="text-right"> <span class="block text-sm font-black text-teal-600">${a.score} pts</span> <span class="text-[10px] font-bold text-slate-500">${a.accuracy}% acc</span> </div> </div>).join('')}
-</div>} </div> </div>;
+​main.innerHTML = <div class="space-y-6"> <div> <div class="tag">✦ Analytics & Progress</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Performance Dashboard</h2> </div> <div class="grid grid-cols-1 sm:grid-cols-3 gap-4"> <div class="card p-5"> <span class="text-xs font-bold text-slate-400 uppercase">Total Tests Taken</span> <span class="block text-3xl font-black mt-1">${attempts.length}</span> </div> <div class="card p-5"> <span class="text-xs font-bold text-slate-400 uppercase">Streak Best</span> <span class="block text-3xl font-black mt-1 text-amber-500">${streak.best} Days</span> </div> <div class="card p-5"> <span class="text-xs font-bold text-slate-400 uppercase">Focus Sessions</span> <span class="block text-3xl font-black mt-1 text-indigo-500">${timerSessionCount}</span> </div> </div> <div class="card p-6"> <h3 class="font-extrabold text-base mb-4">Recent Quiz History</h3> ${!attempts.length ? '<p class="text-xs text-slate-400">No quizzes attempted yet.</p>' : <div class="space-y-3 max-h-96 overflow-y-auto pr-1"> ${attempts.map(a => <div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30"> <div> <h4 class="font-bold text-xs text-slate-900 dark:text-slate-100">${escapeHtml(a.chapter)}</h4> <span class="text-[10px] text-slate-400">${new Date(a.finishedAt).toLocaleDateString()} • ${a.mode} mode</span> </div> <div class="text-right"> <span class="block text-sm font-black text-teal-600">${a.score} pts</span> <span class="text-[10px] font-bold text-slate-500">${a.accuracy}% acc</span> </div> </div>).join('')} </div>} </div> </div>;
 }
 ​function renderMockBuilder() {
 const container = document.getElementById('main-container');
-container.innerHTML = <div> <div class="tag">✦ NEET Exam Simulation</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Mock Test Builder</h2> <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Select chapters across subjects to generate a custom multi-chapter NEET mock paper.</p> </div> <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6"> <div class="card p-6 lg:col-span-1 space-y-4"> <h3 class="font-bold text-base text-slate-900 dark:text-slate-100">Test Parameters</h3> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Total Questions</label> <select id="mockCount" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> <option value="45">45 Questions (Section)</option> <option value="90" selected>90 Questions (Half NEET)</option> <option value="180">180 Questions (Full NEET)</option> </select> </div> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Duration (Minutes)</label> <input type="number" id="mockDuration" value="90" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> </div> <button onclick="generateMockTestPaper()" class="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs shadow-md transition"><i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> Generate Mock Paper</button> </div> <div class="card p-6 lg:col-span-2"> <h3 class="font-bold text-base text-slate-900 dark:text-slate-100 mb-4">Select Included Chapters</h3> <div class="space-y-4 max-h-[500px] overflow-y-auto pr-2"> ${Object.entries(data).map(([subj, chList]) =>
-<div>
-<h4 class="font-bold text-xs uppercase tracking-wider text-teal-600 dark:text-teal-400 mb-2">${subj}</h4>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-${chList.map(ch =>  <label class="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-300 p-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer"> <input type="checkbox" name="mockChapter" value="${subj}:${ch}" checked class="w-4 h-4 rounded text-teal-600"> <span class="truncate">${escapeHtml(ch)}</span> </label>).join('')}
-</div>
-</div>).join('')} </div> </div> </div>;
+container.innerHTML = <div> <div class="tag">✦ NEET Exam Simulation</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Mock Test Builder</h2> <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Select chapters across subjects to generate a custom multi-chapter NEET mock paper.</p> </div> <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6"> <div class="card p-6 lg:col-span-1 space-y-4"> <h3 class="font-bold text-base text-slate-900 dark:text-slate-100">Test Parameters</h3> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Total Questions</label> <select id="mockCount" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> <option value="45">45 Questions (Section)</option> <option value="90" selected>90 Questions (Half NEET)</option> <option value="180">180 Questions (Full NEET)</option> </select> </div> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Duration (Minutes)</label> <input type="number" id="mockDuration" value="90" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> </div> <button onclick="generateMockTestPaper()" class="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs shadow-md transition"><i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> Generate Mock Paper</button> </div> <div class="card p-6 lg:col-span-2"> <h3 class="font-bold text-base text-slate-900 dark:text-slate-100 mb-4">Select Included Chapters</h3> <div class="space-y-4 max-h-[500px] overflow-y-auto pr-2"> ${Object.entries(data).map(([subj, chList]) => <div> <h4 class="font-bold text-xs uppercase tracking-wider text-teal-600 dark:text-teal-400 mb-2">${subj}</h4> <div class="grid grid-cols-1 sm:grid-cols-2 gap-2"> ${chList.map(ch => <label class="flex items-center gap-2 p-2 rounded-lg border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs cursor-pointer"><input type="checkbox" class="mock-ch-cb rounded text-teal-600" data-subj="${subj}" data-ch="${ch}"> <span class="truncate">${escapeHtml(ch)}</span></label>).join('')} </div> </div>).join('')} </div> </div> </div>;
+}
+​async function generateMockTestPaper() {
+const selectedCbs = Array.from(document.querySelectorAll('.mock-ch-cb:checked'));
+if (!selectedCbs.length) {
+showToast('Select at least one chapter to build a test!', 'warning');
+return;
+}
+​const targetCount = parseInt(document.getElementById('mockCount').value || '45', 10);
+const durationMins = parseInt(document.getElementById('mockDuration').value || '45', 10);
+​showToast('Fetching and assembling questions...', 'info');
+​let combinedQuestions = [];
+for (const cb of selectedCbs) {
+const subj = cb.getAttribute('data-subj');
+const ch = cb.getAttribute('data-ch');
+try {
+const res = await fetch(quizUrl(ch));
+if (res.ok) {
+const raw = await res.json();
+const list = Array.isArray(raw) ? raw : raw.qs;
+if (Array.isArray(list)) {
+const parsed = list.map((q, i) => {
+const options = (q.o || q.options || q.opts || []).map(String);
+const a = q.a ?? q.answer ?? q.ans;
+let correct = typeof a === 'number' ? a - 1 : options.findIndex(o => o.trim() === String(a).trim());
+if (correct < 0 || correct >= options.length) correct = 0;
+return {
+qKey: slugify(ch) + '#' + simpleHash(q.q || q.question || String(i)),
+question: q.q || q.question || Question ${i + 1},
+options,
+correct,
+explanation: q.s || '',
+img: q.img || '',
+alt: q.alt || '',
+sourceChapter: ch
+};
+});
+combinedQuestions.push(...parsed);
+}
+}
+} catch (e) {
+console.warn('Skipping chapter in mock:', ch);
+}
+}
+​if (!combinedQuestions.length) {
+showToast('No valid questions found in selected available chapters.', 'error');
+return;
+}
+​for (let i = combinedQuestions.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[combinedQuestions[i], combinedQuestions[j]] = [combinedQuestions[j], combinedQuestions[i]];
+}
+​combinedQuestions = combinedQuestions.slice(0, targetCount);
+​Object.assign(quizState, {
+mode: 'test',
+chapter: 'Full Mock Test',
+subject: 'Combined Subjects',
+title: Custom NEET Mock (${combinedQuestions.length} Qs),
+questions: combinedQuestions,
+currentIndex: 0,
+userAnswers: {},
+marked: {},
+bookmarked: {},
+skippedQuestions: {},
+questionTimes: {},
+questionStartTimer: Date.now(),
+testEndTimestamp: Date.now() + durationMins * 60 * 1000,
+tabSwitches: 0,
+paletteExpanded: false
+});
+​renderTestQuiz();
 }
 ​function renderResourceDirectory() {
-const main = document.getElementById('main-container');
-main.innerHTML = <div class="space-y-6"> <div> <div class="tag">✦ Curated Hub</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Resource Directory</h2> </div> <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"> ${INITIAL_RESOURCES.map(r =>
-<a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer" class="card p-5 hover:border-teal-500 transition block">
-<span class="px-2 py-0.5 rounded-md text-[9px] font-black uppercase bg-teal-500/10 text-teal-600 dark:text-teal-400">{escapeHtml(r.badge)}</span>
-<h4 class="font-extrabold text-base mt-2 text-slate-900 dark:text-slate-100">{escapeHtml(r.title)}</h4>
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(r.category)} • ${escapeHtml(r.subtag)}</p>
-</a>).join('')} </div> </div>;
+const container = document.getElementById('main-container');
+container.innerHTML = <div> <div class="tag">✦ Curated Links & Books</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Resource Directory</h2> <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Direct access to free study portals, shadow libraries, and test resources.</p> </div> <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6"> ${INITIAL_RESOURCES.map(r => <a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer" class="card p-5 hover:border-teal-500 transition flex flex-col justify-between"> <div> <div class="flex items-center justify-between mb-2"><span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">{escapeHtml(r.badge)}</span><i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400"></i></div> <h3 class="font-extrabold text-base text-slate-900 dark:text-slate-100">{escapeHtml(r.title)}</h3> <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(r.category)} • ${escapeHtml(r.subtag)}</p> </div> <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-bold text-teal-600 dark:text-teal-400 flex items-center gap-1">Open Link <i class="fa-solid fa-chevron-right text-[10px]"></i></div> </a>).join('')} </div>;
 }
 ​function renderFacultyHub() {
-const main = document.getElementById('main-container');
-main.innerHTML = <div class="space-y-6"> <div> <div class="tag">✦ Expert Mentors</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Faculty Hub</h2> </div> <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"> ${TEACHERS_DATA.map(t =>
-<a href="${escapeHtml(t.playlistUrl)}" target="_blank" rel="noopener noreferrer" class="card p-4 text-center hover:border-teal-500 transition block">
-<img src="${escapeHtml(t.img)}" alt="${escapeHtml(t.name)}" class="w-20 h-20 rounded-full object-cover mx-auto mb-3 border-2 border-teal-500/30">
-<h4 class="font-extrabold text-sm text-slate-900 dark:text-slate-100">${escapeHtml(t.name)}</h4>
-<span class="text-[10px] font-bold text-teal-600 dark:text-teal-400 mt-1 block"><i class="fa-brands fa-youtube"></i> Playlist</span>
-</a>).join('')} </div> </div>;
+const container = document.getElementById('main-container');
+container.innerHTML = <div> <div class="tag">✦ Recommended YouTube Teachers</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Faculty Hub</h2> <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Direct playlists for top NEET educators.</p> </div> <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6"> ${TEACHERS_DATA.map(t => <div class="card p-4 text-center flex flex-col items-center justify-between"> <img src="${escapeHtml(t.img)}" alt="${escapeHtml(t.name)}" class="w-20 h-20 rounded-2xl object-cover mb-3 shadow-md border border-slate-200 dark:border-slate-700" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=0d9488&color=fff';"> <h3 class="font-extrabold text-sm text-slate-900 dark:text-slate-100">${escapeHtml(t.name)}</h3> <a href="${escapeHtml(t.playlistUrl)}" target="_blank" rel="noopener noreferrer" class="mt-4 w-full py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm transition inline-flex items-center justify-center gap-1.5"><i class="fa-brands fa-youtube"></i> Watch Playlist</a> </div>).join('')} </div>;
 }
 ​function renderFocusPlanner() {
-const main = document.getElementById('main-container');
+const container = document.getElementById('main-container');
 const mm = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
 const ss = String(timerSeconds % 60).padStart(2, '0');
-​main.innerHTML = <div class="space-y-6"> <div> <div class="tag">✦ Focus & Planning</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Focus Timer & To-Do List</h2> </div> <div class="grid grid-cols-1 lg:grid-cols-2 gap-6"> <div class="card p-6 text-center flex flex-col items-center justify-center"> <span class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-2">${timerMode === 'work' ? 'Pomodoro Focus' : 'Short Break'}</span> <div id="pomodoroDisplay" class="text-5xl font-black my-4 text-slate-900 dark:text-slate-100 tracking-wider">${mm}:${ss}</div> <div class="flex gap-3"> <button onclick="togglePomodoroTimer()" class="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition">${timerInterval ? 'Pause' : 'Start'}</button> <button onclick="resetPomodoroTimer()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-xs">Reset</button> </div> </div> <div class="card p-6 space-y-4"> <h3 class="font-bold text-base text-slate-900 dark:text-slate-100">Today's Study Plan</h3> <div class="flex gap-2"> <input type="text" id="todoInput" placeholder="Add study task..." class="flex-1 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> <button onclick="addTodoTask()" class="px-4 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs">Add</button> </div> <div class="space-y-2 max-h-60 overflow-y-auto"> ${todos.map((td, i) =>
-<div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
-<label class="flex items-center gap-2.5 text-xs font-semibold cursor-pointer">
-<input type="checkbox" {td.completed ? 'checked' : ''} onchange="toggleTodoTask({i})" class="w-4 h-4 rounded text-teal-600">
-<span class="${td.completed ? 'line-through text-slate-400' : 'text-slate-800 dark:text-slate-200'}">${escapeHtml(td.title)}</span>
-</label>
-<button onclick="deleteTodoTask(${i})" class="text-slate-400 hover:text-rose-500 text-xs p-1"><i class="fa-solid fa-trash"></i></button>
-</div>).join('')} </div> </div> </div> </div>;
+​container.innerHTML = <div> <div class="tag">✦ Focus & Planning</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Focus & Planner</h2> </div> <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6"> <div class="card p-6 lg:col-span-1 text-center space-y-4"> <h3 class="font-bold text-base text-slate-900 dark:text-slate-100">Pomodoro Timer</h3> <div class="text-5xl font-black text-slate-900 dark:text-slate-100 my-4 tracking-wider" id="timerDisplay">${mm}:${ss}</div> <div class="flex items-center justify-center gap-3"> <button id="timerToggleBtn" onclick="toggleTimer()" class="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition">${timerInterval ? 'Pause' : 'Start'}</button> <button onclick="resetTimer()" class="px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs transition">Reset</button> </div> <div class="flex justify-center gap-2 pt-2"> <button onclick="setTimerPreset(1500)" class="px-3 py-1 rounded-lg border text-xs font-bold border-slate-200 dark:border-slate-700">25m</button> <button onclick="setTimerPreset(3000)" class="px-3 py-1 rounded-lg border text-xs font-bold border-slate-200 dark:border-slate-700">50m</button> </div> </div> <div class="card p-6 lg:col-span-2 space-y-4"> <div class="flex items-center justify-between"><h3 class="font-bold text-base text-slate-900 dark:text-slate-100">Task Checklist</h3> <button onclick="addNewTodoModal()" class="px-3 py-1.5 rounded-xl bg-teal-600 text-white font-bold text-xs">+ Add Task</button></div> <div class="space-y-2 max-h-80 overflow-y-auto"> ${todos.map(t => <div class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30"> <label class="flex items-center gap-3 cursor-pointer"> <input type="checkbox" {t.completed ? 'checked' : ''} onchange="toggleTodo('{t.id}')" class="w-4 h-4 rounded text-teal-600"> <span class="${t.completed ? 'line-through text-slate-400' : 'font-semibold text-slate-700 dark:text-slate-200'} text-xs">${escapeHtml(t.title)}</span> </label> <button onclick="deleteTodo('${t.id}')" class="text-rose-500 hover:text-rose-700 text-xs p-1"><i class="fa-solid fa-trash"></i></button> </div>).join('')} </div> </div> </div>;
 }
-​function togglePomodoroTimer() {
+​function toggleTimer() {
 if (timerInterval) {
 clearInterval(timerInterval);
 timerInterval = null;
@@ -1155,61 +1213,79 @@ if (timerSeconds > 0) {
 timerSeconds--;
 const mm = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
 const ss = String(timerSeconds % 60).padStart(2, '0');
-const el = document.getElementById('pomodoroDisplay');
+const el = document.getElementById('timerDisplay');
 if (el) el.textContent = ${mm}:${ss};
 } else {
 clearInterval(timerInterval);
 timerInterval = null;
-if (timerMode === 'work') {
 timerSessionCount++;
 saveToLocalStorage();
-showToast('Focus session complete! Take a break.', 'success');
-}
+showToast('Focus session completed!', 'success');
+resetTimer();
 }
 }, 1000);
 }
 renderFocusPlanner();
 }
-​function resetPomodoroTimer() {
-if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+​function resetTimer() {
+if (timerInterval) clearInterval(timerInterval);
+timerInterval = null;
 timerSeconds = timerInitialSeconds;
+const el = document.getElementById('timerDisplay');
+if (el) {
+const mm = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+const ss = String(timerSeconds % 60).padStart(2, '0');
+el.textContent = ${mm}:${ss};
+}
 renderFocusPlanner();
 }
-​function addTodoTask() {
-const inp = document.getElementById('todoInput');
-if (!inp || !inp.value.trim()) return;
-todos.unshift({ id: 'td_' + Date.now(), title: inp.value.trim(), subject: 'General', priority: 'medium', completed: false, createdAt: Date.now() });
+​function setTimerPreset(sec) {
+timerInitialSeconds = sec;
+saveToLocalStorage();
+resetTimer();
+}
+​function addNewTodoModal() {
+setModal('New Study Task', 'Add a task to your checklist', <input type="text" id="newTodoInput" placeholder="Task title..." class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">,
+<button onclick="confirmAddTodo()" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs">Save Task</button>
+);
+}
+​function confirmAddTodo() {
+const title = document.getElementById('newTodoInput')?.value.trim();
+if (!title) return;
+todos.unshift({ id: 'td_' + Date.now(), title, subject: 'General', priority: 'medium', completed: false, createdAt: Date.now() });
+saveToLocalStorage();
+closeModal();
+renderFocusPlanner();
+}
+​function toggleTodo(id) {
+const t = todos.find(x => x.id === id);
+if (t) t.completed = !t.completed;
 saveToLocalStorage();
 renderFocusPlanner();
 }
-​function toggleTodoTask(i) {
-if (todos[i]) {
-todos[i].completed = !todos[i].completed;
-saveToLocalStorage();
-renderFocusPlanner();
-}
-}
-​function deleteTodoTask(i) {
-todos.splice(i, 1);
+​function deleteTodo(id) {
+todos = todos.filter(x => x.id !== id);
 saveToLocalStorage();
 renderFocusPlanner();
 }
 ​function renderSettingsView() {
-const main = document.getElementById('main-container');
+const container = document.getElementById('main-container');
 const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
-​main.innerHTML =  <div class="space-y-6 max-w-2xl"> <div> <div class="tag">✦ System Configuration</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Settings</h2> </div> <div class="card p-6 space-y-4"> <h3 class="font-bold text-base text-slate-900 dark:text-slate-100">Quiz Defaults</h3> <div class="grid grid-cols-2 gap-4"> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Marks for Correct</label> <input type="number" id="settingCorrect" value="${settings.marksCorrect}" class="w-full mt-1 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-bold"> </div> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Marks for Wrong</label> <input type="number" id="settingWrong" value="${settings.marksWrong}" class="w-full mt-1 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-bold"> </div> </div> <button onclick="saveAppSettings()" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md">Save Settings</button> </div> </div>;
+​container.innerHTML = <div> <div class="tag">✦ Application Settings</div> <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Settings & Data Management</h2> </div> <div class="card p-6 max-w-xl mt-6 space-y-4"> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Daily Goal (Questions)</label> <input type="number" id="settingDailyGoal" value="${settings.dailyGoalQuestions}" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> </div> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Marks for Correct Answer</label> <input type="number" id="settingMarksCorrect" value="${settings.marksCorrect}" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> </div> <div> <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Marks for Wrong Answer (Negative)</label> <input type="number" id="settingMarksWrong" value="${settings.marksWrong}" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold"> </div> <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between gap-3"> <button onclick="saveUserSettings()" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs shadow-sm">Save Settings</button> <button onclick="resetAllData()" class="px-4 py-2.5 rounded-xl bg-rose-500/10 text-rose-600 font-bold text-xs">Reset All Data</button> </div> </div>;
 }
-​function saveAppSettings() {
+​function saveUserSettings() {
 const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
-settings.marksCorrect = parseInt(document.getElementById('settingCorrect')?.value || '4', 10);
-settings.marksWrong = parseInt(document.getElementById('settingWrong')?.value || '-1', 10);
+settings.dailyGoalQuestions = parseInt(document.getElementById('settingDailyGoal').value || '30', 10);
+settings.marksCorrect = parseInt(document.getElementById('settingMarksCorrect').value || '4', 10);
+settings.marksWrong = parseInt(document.getElementById('settingMarksWrong').value || '-1', 10);
 StorageModule.set(STORAGE_KEYS.settings, settings);
 showToast('Settings saved successfully!');
 }
-​function openHelpModal() {
-setModal('Shortcuts & Help', '',  <div class="space-y-3 text-xs text-slate-600 dark:text-slate-300"> <p><strong>Practice Mode:</strong> Select options to check instant answer explanations.</p> <p><strong>Test Mode:</strong> NEET exam simulation with timed countdown and review flags.</p> </div>,
-<button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-xs">Close</button>
-);
+​function resetAllData() {
+if (confirm('Are you sure you want to reset all user progress, stats, and tasks?')) {
+localStorage.clear();
+location.reload();
+}
 }
 ​// Initial View Render
 renderView();
