@@ -80,6 +80,239 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 .no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
 </style>
 </head>
+  <!-- ===== EduPulse Lectures module: paste this whole block right before </body> ===== -->
+<script>
+(function(){
+'use strict';
+const K={v:'edupulse_lect_videos_v1',s:'edupulse_lect_state_v1'};
+const SRC={allen:{n:'ALLEN Aagaaz',c:'#0d9488'},pw:{n:'Physics Wallah',c:'#d97706'},una:{n:'Unacademy',c:'#2563eb'}};
+const srcOf=v=>SRC[v.src]||{n:v.src||'Other',c:'#64748b'};
+const SEED=[
+{s:'Physics',src:'allen',id:'01CQR6uDEEU',t:'Aagaaz NEET 2026 – First Class (Physics)',th:'Aman Mathur Sir'},
+{s:'Physics',src:'allen',id:'j_9WmuiSurE',t:'Modern Physics Part-2 – One Shot',th:'Aman Mathur Sir'},
+{s:'Physics',src:'allen',id:'3GqnvdMPzOg',t:'Dual Nature of Radiation and Matter – One Shot',th:'Aman Mathur Sir'},
+{s:'Physics',src:'allen',id:'MgYmoP1pmw4',t:'Moving Charges & Magnetism – NEET One Shot',th:'Rahul Jain Sir'},
+{s:'Physics',src:'allen',id:'1FNm3M_QcO4',t:'Magnetism & Matter – One Shot',th:'Rahul Jain Sir'}
+];
+let vids=StorageModule.get(K.v,null);
+if(!Array.isArray(vids)){vids=SEED.slice();StorageModule.set(K.v,vids);}
+let st=Object.assign({watched:{},bm:{},notes:{},time:{},last:null},StorageModule.get(K.s,{}));
+const save=()=>StorageModule.set(K.s,st);
+const saveV=()=>StorageModule.set(K.v,vids);
+const L={subj:'Physics',src:'all',q:'',f:'all'};
+let cur=null,player=null,tm=null,ytQ=[];
+
+const norm=s=>String(s||'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').trim();
+function chapOf(v){
+  if(v.c)return v.c;
+  const n=norm(v.t);let best='';
+  (data[v.s]||[]).forEach(ch=>{const m=norm(ch);if(n.includes(m)&&m.length>best.length)best=ch;});
+  return best;
+}
+function ordered(){
+  const q=norm(L.q);
+  const idx=v=>{const c=chapOf(v);return c?(data[v.s]||[]).indexOf(c):9999;};
+  return vids.filter(v=>v.s===L.subj&&(L.src==='all'||v.src===L.src)
+    &&(!q||norm(v.t+' '+(v.th||'')+' '+chapOf(v)).includes(q))
+    &&(L.f==='all'||(L.f==='watched'?st.watched[v.id]:L.f==='todo'?!st.watched[v.id]:st.bm[v.id])))
+    .sort((a,b)=>idx(a)-idx(b));
+}
+
+// ---- sidebar button + view hook ----
+const nav=document.querySelector('.nav');
+if(nav&&!document.getElementById('nav-lectures')){
+  const b=document.createElement('button');
+  b.id='nav-lectures';b.onclick=()=>switchTab('lectures');
+  b.innerHTML='<i class="fa-solid fa-circle-play w-5"></i> Lectures <small style="margin-left:auto;background:#c6f36b;color:#30521e;border-radius:999px;padding:2px 6px;font-size:9px;" id="lect-count">'+vids.length+'</small>';
+  nav.insertBefore(b,document.getElementById('nav-progress'));
+}
+const origRender=renderView;
+renderView=function(){
+  if(currentTab==='lectures'){updateGlobalProgress();renderLect();}
+  else origRender();
+};
+
+// ---- main view ----
+function card(v){
+  const s=srcOf(v),w=st.watched[v.id],b=st.bm[v.id];
+  return `<div class="card p-3 flex gap-3 cursor-pointer" onclick="lectOpen('${v.id}')">
+<div class="relative w-32 shrink-0"><img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" class="rounded-lg w-full object-cover bg-slate-200 dark:bg-slate-700" style="aspect-ratio:16/9">
+${w?'<span class="absolute top-1 right-1 bg-emerald-600 text-white rounded-full grid place-items-center" style="width:20px;height:20px;font-size:10px"><i class="fa-solid fa-check"></i></span>':''}</div>
+<div class="min-w-0 flex-1"><span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full text-white" style="background:${s.c}">${escapeHtml(s.n)}</span>
+<h4 class="text-xs font-bold mt-1.5 text-slate-900 dark:text-slate-100 line-clamp-2">${escapeHtml(v.t)}</h4>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(v.th||'')}</p></div>
+<button onclick="event.stopPropagation();lectBm('${v.id}')" class="self-start p-1.5 ${b?'text-amber-500':'text-slate-300 dark:text-slate-600'}" title="Bookmark"><i class="fa-solid fa-star"></i></button></div>`;
+}
+function lectList(){
+  const el=document.getElementById('lect-list');if(!el)return;
+  const items=ordered();
+  if(!items.length){el.innerHTML='<div class="py-12 text-center text-slate-400"><i class="fa-solid fa-film text-3xl mb-2"></i><p class="text-sm font-semibold">No lectures here yet. Use “Add lectures” below to import a playlist.</p></div>';return;}
+  let html='',last=null;
+  items.forEach(v=>{
+    const ch=chapOf(v)||'Other lectures';
+    if(ch!==last){
+      if(last!==null)html+='</div>';
+      const n=items.filter(x=>(chapOf(x)||'Other lectures')===ch).length;
+      html+=`<h3 class="text-sm font-black mt-6 mb-3 text-slate-900 dark:text-slate-100">${escapeHtml(ch)} <span class="text-[11px] font-bold text-slate-400">· ${n} video${n>1?'s':''}</span></h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-3">`;
+      last=ch;
+    }
+    html+=card(v);
+  });
+  el.innerHTML=html+'</div>';
+}
+function renderLect(){
+  const m=document.getElementById('main-container');if(!m)return;
+  const sv=vids.filter(v=>v.s===L.subj),w=sv.filter(v=>st.watched[v.id]).length;
+  const pct=sv.length?Math.round(w/sv.length*100):0;
+  const lastV=vids.find(v=>v.id===st.last);
+  const chips=[['all','All sources',sv.length,'#64748b']].concat(Object.keys(SRC).map(k=>[k,SRC[k].n,sv.filter(v=>v.src===k).length,SRC[k].c]));
+  const cnt=document.getElementById('lect-count');if(cnt)cnt.textContent=vids.length;
+  m.innerHTML=`<div class="space-y-5">
+<div><div class="tag">✦ Video Lectures</div>
+<h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Lecture Library</h2>
+<p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Chapter-wise one-shots from ALLEN, Physics Wallah and Unacademy, embedded from YouTube. Progress, bookmarks, notes and resume are saved on this device.</p></div>
+${lastV?`<div class="card p-4 flex items-center justify-between gap-3 cursor-pointer" onclick="lectOpen('${lastV.id}')"><div class="min-w-0"><div class="text-[10px] font-extrabold uppercase text-teal-600">Continue watching</div><div class="text-sm font-bold truncate text-slate-900 dark:text-slate-100">${escapeHtml(lastV.t)}</div>${st.time[lastV.id]?`<div class="text-[11px] text-slate-500">Resume at ${Math.floor(st.time[lastV.id]/60)}m ${Math.floor(st.time[lastV.id]%60)}s</div>`:''}</div><i class="fa-solid fa-circle-play text-2xl text-teal-600"></i></div>`:''}
+<div class="flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2">${['Biology','Chemistry','Physics'].map(s=>`<button onclick="lectSet('subj','${s}')" class="subject ${L.subj===s?'selected':''}"><b>${s}</b></button>`).join('')}</div>
+<div class="controls flex items-center gap-3 w-full sm:w-auto"><input type="text" value="${escapeHtml(L.q)}" oninput="lectQ(this.value)" placeholder="Search lectures or teachers..." class="w-full sm:w-64">
+<select onchange="lectF(this.value)">${[['all','All'],['todo','Not watched'],['watched','Watched'],['bm','Bookmarked']].map(o=>`<option value="${o[0]}" ${L.f===o[0]?'selected':''}>${o[1]}</option>`).join('')}</select></div></div>
+<div class="flex flex-wrap gap-2">${chips.map(c=>`<button onclick="lectSet('src','${c[0]}')" class="px-3 py-1.5 rounded-full text-xs font-bold border" style="${L.src===c[0]?`background:${c[3]};color:#fff;border-color:${c[3]}`:'border-color:var(--border-color);color:var(--text-muted)'}">${escapeHtml(c[1])} · ${c[2]}</button>`).join('')}</div>
+<div class="text-xs font-bold text-slate-500">${L.subj}: ${w}/${sv.length} watched (${pct}%)</div>
+<div id="lect-list"></div>
+<details class="card p-4"><summary class="cursor-pointer text-sm font-extrabold text-slate-900 dark:text-slate-100">+ Add lectures / backup</summary>
+<div class="mt-3 space-y-3 text-xs">
+<p class="text-slate-500 dark:text-slate-400">Open a YouTube playlist, scroll to the bottom, run the console snippet, then paste the JSON here. Entries need a <code>videoId</code> (or a YouTube <code>url</code>) and a <code>title</code>.</p>
+<div class="flex flex-wrap gap-2 controls"><select id="lect-isubj">${['Biology','Chemistry','Physics'].map(s=>`<option ${s===L.subj?'selected':''}>${s}</option>`).join('')}</select>
+<select id="lect-isrc">${Object.keys(SRC).map(k=>`<option value="${k}">${SRC[k].n}</option>`).join('')}</select></div>
+<textarea id="lect-ijson" rows="5" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono" placeholder='[{"title":"...","videoId":"..."}]'></textarea>
+<div class="flex flex-wrap gap-2"><button onclick="lectImport()" class="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold">Import</button>
+<button onclick="lectExport()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-200">Export backup</button>
+<button onclick="lectReset()" class="px-4 py-2 rounded-xl bg-rose-100 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-bold">Reset library</button></div></div></details>
+<p class="text-[11px] text-slate-400">Videos belong to their respective creators (ALLEN, Physics Wallah, Unacademy) and are embedded from YouTube. This is an unofficial study tool.</p>
+</div>`;
+  lectList();
+}
+
+// ---- player overlay ----
+function ov(){
+  let o=document.getElementById('lectOverlay');
+  if(!o){
+    o=document.createElement('div');o.id='lectOverlay';
+    o.style.cssText='position:fixed;inset:0;z-index:110;display:none;background:rgba(2,6,23,.85);backdrop-filter:blur(4px);overflow-y:auto;padding:16px';
+    o.innerHTML='<style>#lectOverlay iframe{width:100%;height:100%;border:0}</style><div id="lectBox" style="max-width:900px;margin:0 auto"></div>';
+    document.body.appendChild(o);
+  }
+  return o;
+}
+function ytLoad(cb){
+  if(window.YT&&window.YT.Player){cb();return;}
+  ytQ.push(cb);
+  if(document.getElementById('yt-api'))return;
+  const s=document.createElement('script');s.id='yt-api';s.src='https://www.youtube.com/iframe_api';
+  s.onerror=()=>ytQ.splice(0).forEach(f=>f(true));
+  window.onYouTubeIframeAPIReady=()=>ytQ.splice(0).forEach(f=>f());
+  document.head.appendChild(s);
+}
+function stopPlayer(){
+  clearInterval(tm);tm=null;
+  try{if(player){const t=player.getCurrentTime();if(t>5&&cur){st.time[cur]=t;save();}player.destroy();}}catch(e){}
+  player=null;
+}
+function updBtns(id){
+  const w=document.getElementById('lect-w'),b=document.getElementById('lect-b');
+  if(w)w.innerHTML=st.watched[id]?'<i class="fa-solid fa-check mr-1"></i> Watched':'Mark as watched';
+  if(b)b.className='px-3 py-2 rounded-xl text-xs font-bold '+(st.bm[id]?'bg-amber-500/15 text-amber-600':'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300');
+}
+function show(id){
+  const v=vids.find(x=>x.id===id);if(!v)return;
+  stopPlayer();cur=id;st.last=id;save();
+  const o=ov();o.style.display='block';
+  const list=ordered(),i=list.findIndex(x=>x.id===id),ch=chapOf(v),s=srcOf(v);
+  const alts=ch?vids.filter(x=>x.id!==id&&x.s===v.s&&chapOf(x)===ch):[];
+  const btn='px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 disabled:opacity-40';
+  document.getElementById('lectBox').innerHTML=`<div class="card p-4 sm:p-5 space-y-4">
+<div class="flex items-start justify-between gap-3"><div class="min-w-0"><span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full text-white" style="background:${s.c}">${escapeHtml(s.n)}</span>
+<h3 class="font-black text-base mt-2 text-slate-900 dark:text-slate-100">${escapeHtml(v.t)}</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">${escapeHtml(v.th||'')}${ch?' · '+escapeHtml(ch):''}</p></div>
+<button onclick="lectClose()" class="p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-xmark text-lg"></i></button></div>
+<div style="aspect-ratio:16/9" class="rounded-xl overflow-hidden bg-black"><div id="lect-player" style="width:100%;height:100%"></div></div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<button onclick="lectStep(-1)" class="${btn}" ${i<=0?'disabled':''}>← Prev</button>
+<div class="flex gap-2"><button id="lect-w" onclick="lectWatch('${id}')" class="px-3 py-2 rounded-xl text-xs font-bold bg-teal-600 text-white"></button>
+<button id="lect-b" onclick="lectBm('${id}',1)"><i class="fa-solid fa-star"></i></button></div>
+<button onclick="lectStep(1)" class="${btn}" ${i<0||i>=list.length-1?'disabled':''}>Next →</button></div>
+${alts.length?`<div><p class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">Other versions of this chapter</p><div class="flex flex-wrap gap-2">${alts.map(a=>`<button onclick="lectOpen('${a.id}')" class="px-3 py-1.5 rounded-full text-[11px] font-bold text-white" style="background:${srcOf(a).c}">${escapeHtml(srcOf(a).n)}${a.th?' · '+escapeHtml(a.th):''}</button>`).join('')}</div></div>`:''}
+<div><label class="text-xs font-bold text-slate-700 dark:text-slate-300">My notes</label>
+<textarea oninput="lectNote('${id}',this.value)" rows="3" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs" placeholder="Write key points...">${escapeHtml(st.notes[id]||'')}</textarea></div>
+<p class="text-[10px] text-slate-400">Shortcuts: N next · P previous · W watched · Esc close</p></div>`;
+  updBtns(id);
+  ytLoad(fail=>{
+    const host=document.getElementById('lect-player');if(!host||cur!==id)return;
+    if(fail===true||!(window.YT&&window.YT.Player)){
+      host.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>`;return;
+    }
+    player=new YT.Player('lect-player',{videoId:id,width:'100%',height:'100%',
+      playerVars:{rel:0,modestbranding:1,start:Math.floor(st.time[id]||0)},
+      events:{onStateChange:e=>{if(e.data===0){st.watched[id]=true;st.time[id]=0;save();updBtns(id);showToast('Marked as watched');}}}});
+    tm=setInterval(()=>{try{const t=player.getCurrentTime();if(t>5){st.time[id]=t;save();}}catch(e){}},5000);
+  });
+}
+function close(){
+  stopPlayer();
+  const o=document.getElementById('lectOverlay');
+  if(o){o.style.display='none';document.getElementById('lectBox').innerHTML='';}
+  cur=null;
+  if(currentTab==='lectures')renderLect();
+}
+
+// ---- handlers exposed to inline onclick ----
+window.lectOpen=show;
+window.lectClose=close;
+window.lectSet=(k,v)=>{L[k]=v;renderLect();};
+window.lectQ=v=>{L.q=v;lectList();};
+window.lectF=v=>{L.f=v;lectList();};
+window.lectStep=d=>{const l=ordered(),i=l.findIndex(x=>x.id===cur);if(l[i+d])show(l[i+d].id);};
+window.lectWatch=id=>{st.watched[id]=!st.watched[id];save();updBtns(id);};
+window.lectBm=(id,inPlayer)=>{st.bm[id]=!st.bm[id];save();showToast(st.bm[id]?'Lecture bookmarked':'Bookmark removed');if(inPlayer)updBtns(id);else lectList();};
+window.lectNote=(id,v)=>{st.notes[id]=v;save();};
+window.lectExport=()=>{
+  const b=new Blob([JSON.stringify({videos:vids,state:st},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='edupulse-lectures-backup.json';a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+};
+window.lectReset=()=>{
+  if(!confirm('Reset the lecture library to defaults? Your watched marks and notes are kept.'))return;
+  vids=SEED.slice();saveV();renderLect();showToast('Lecture library reset');
+};
+window.lectImport=()=>{
+  const parseId=x=>{x=String(x||'');const m=x.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);return m?m[1]:(/^[\w-]{11}$/.test(x)?x:'');};
+  let arr;
+  try{arr=JSON.parse(document.getElementById('lect-ijson').value);}catch(e){showToast('Invalid JSON','error');return;}
+  if(!Array.isArray(arr))arr=Array.isArray(arr&&arr.videos)?arr.videos:[];
+  const subj=document.getElementById('lect-isubj').value,src=document.getElementById('lect-isrc').value;
+  let added=0;
+  arr.forEach(o=>{
+    if(!o)return;
+    const id=parseId(o.videoId||o.id||o.url);
+    if(!id||vids.some(x=>x.id===id))return;
+    const s=data[o.s]?o.s:subj;
+    vids.push({s,src:o.src||src,id,t:String(o.title||o.t||'Untitled').slice(0,200),th:String(o.teacher||o.th||'').slice(0,60),c:typeof o.chapter==='string'?o.chapter:(o.c||'')});
+    added++;
+  });
+  saveV();
+  showToast(added?`${added} lecture${added>1?'s':''} added`:'No new videos found',added?'success':'warning');
+  if(added){L.subj=subj;renderLect();}
+};
+document.addEventListener('keydown',e=>{
+  const o=document.getElementById('lectOverlay');
+  if(!o||o.style.display!=='block')return;
+  const k=e.key.toLowerCase();
+  if(k==='escape'){close();return;}
+  if(['TEXTAREA','INPUT'].includes(e.target.tagName))return;
+  if(k==='n')lectStep(1);else if(k==='p')lectStep(-1);else if(k==='w')lectWatch(cur);
+});
+})();
+            </script>
 <body>
 <div class="app-layout">
 <div class="mobile-nav-overlay" id="navOverlay" onclick="toggleMobileNav(false)"></div>
