@@ -1,0 +1,380 @@
+{
+  "id": "animal-kingdom-ex2",
+  "no": 4,
+  "name": "Animal Kingdom - Exercise II (Previous Year Questions)",
+  "storageKey": "medzenith_quiz_v1_animal_kingdom_ex2",
+  "Subject": "Biology",
+  "qs": [
+    {
+      "q": "Which one of the following living organisms completely lacks a cell wall?",
+      "o": ["Cyanobacteria", "Sea - fan (Gorgonia)", "Saccharomyces", "Blue-green algae"],
+      "a": 2,
+      "s": "Sea-fan (Gorgonia) is an animal (Cnidaria) and lacks a cell wall completely.",
+      "year": "AIPMT 2014"
+    },
+    {
+      "q": "Select the Taxon mentioned that represents both marine and fresh water species:",
+      "o": ["Echinoderms", "Ctenophora", "Cephalochordata", "Cnidaria"],
+      "a": 4,
+      "s": "Phylum Cnidaria contains both marine species (e.g., Physalia, Aurelia) and freshwater species (e.g., Hydra).",
+      "year": "AIPMT 2014"
+    },
+    {
+      "q": "Planaria possess high capacity of:",
+      "o": ["Metamorphosis", "Regeneration", "Alternation of generation", "Bioluminescence"],
+      "a": 2,
+      "s": "Planaria (Platyhelminthes) shows a remarkable high power of regeneration.",
+      "year": "AIPMT 2014"
+    },
+    {
+      "q": "A marine cartilaginous fish that can produce electric current is:",
+      "o": ["Pristis", "Torpedo", "Trygon", "Scoliodon"],
+      "a": 2,
+      "s": "Torpedo is an electric ray fish capable of generating electric discharge from modified muscles.",
+      "year": "AIPMT 2014"
+    },
+    {
+      "q": "Which of the following animals is not viviparous?",
+      "o": ["Elephant", "Platypus", "Whale", "Flying fox (Bat)"],
+      "a": 2,
+      "s": "Platypus (Ornithorhynchus) is an oviparous (egg-laying) mammal.",
+      "year": "AIPMT 2014"
+    },
+    {
+      "q": "Which of the following represents the correct combination without any exception?\n(1) Chondrichthyes - Mouth ventral, gills without operculum; skin with placoid scales; persistent notochord\n(2) Cyclostomata - Sucking and circular mouth; jaws absent, integument without scales; paired appendages\n(3) Aves - Body covered with feathers; skin moist and glandular; fore-limbs form wings; lungs with air sacs\n(4) Mammalia - Mammary gland; hair on body; pinnae; two pairs of Limbs",
+      "o": ["(1)", "(2)", "(3)", "(4)"],
+      "a": 1,
+      "s": "All Chondrichthyes consistently possess a ventral mouth, gills without opercula, placoid scales, and persistent notochord.",
+      "year": "AIPMT 2014"
+    },
+    {
+      "q": "Metagenesis refers to :",
+      "o": ["Presence of a segmented body and parthenogenetic mode of reproduction", "Presence of different morphic forms", "Alternation of generation between asexual and sexual phases of an organism", "Occurrence of a drastic change in form during post-embryonic development"],
+      "a": 3,
+      "s": "Metagenesis is the alternation of generations between asexual polypoid and sexual medusoid phases in coelenterates like Obelia.",
+      "year": "Re-AIPMT 2015"
+    },
+    {
+      "q": "Which one of the following animals has two separate circulatory pathways ?",
+      "o": ["Shark", "Frog", "Lizard", "Whale"],
+      "a": 4,
+      "s": "Whale is a mammal possessing a 4-chambered heart with complete separation of oxygenated and deoxygenated double circulation pathways.",
+      "year": "AIPMT 2015"
+    },
+    {
+      "q": "Body having meshwork of cells, internal cavities lined with food filtering flagellated cells and indirect development are the characteristics of phylum:",
+      "o": ["Protozoa", "Coelenterata", "Porifera", "Mollusca"],
+      "a": 3,
+      "s": "Porifera show a cellular meshwork structure with internal cavities lined by choanocytes (flagellated collar cells).",
+      "year": "AIPMT 2015"
+    },
+    {
+      "q": "A jawless fish, which lays eggs in fresh water and whose ammocoetes larvae after metamorphosis return to the ocean is:",
+      "o": ["Petromyzon", "Eptatretus", "Myxine", "Neomyxine"],
+      "a": 1,
+      "s": "Petromyzon (lamprey) is an anadromous jawless cyclostome whose larvae undergo metamorphosis and return to the ocean.",
+      "year": "AIPMT 2015"
+    },
+    {
+      "q": "Which of the following characteristic features always holds true for the corresponding group of animals?",
+      "o": ["Cartilaginous endoskeleton - Chondrichthyes", "Viviparous - Mammalia", "Possess a mouth with an upper and a lower jaw - Chordata", "3 chambered heart with one incompletely divided ventricle - Reptilia"],
+      "a": 1,
+      "s": "All members of Chondrichthyes exclusively feature a cartilaginous endoskeleton without exception.",
+      "year": "NEET-I 2016"
+    },
+    {
+      "q": "Which one of the following characteristics is not shared by birds and mammals ?",
+      "o": ["Ossified endoskeleton", "Breathing using lungs", "Viviparity", "Warm blooded nature"],
+      "a": 3,
+      "s": "Birds are uniformly oviparous, whereas mammals are mostly viviparous, so viviparity is not shared.",
+      "year": "NEET-I 2016"
+    },
+    {
+      "q": "Choose the correct statement.",
+      "o": ["All reptiles have a three-chambered heart.", "All pisces have gills covered by an operculum.", "All mammals are viviparous.", "All cyclostomes do not possess jaws and paired fins."],
+      "a": 4,
+      "s": "Cyclostomes are characterized by being jawless (Agnatha) and lacking paired fins.",
+      "year": "NEET-II 2016"
+    },
+    {
+      "q": "An important characteristic that Hemichordates share with Chordates is:",
+      "o": ["Ventral tubular nerve cord", "Pharynx with gill slits", "Pharynx without gill slits", "Absence of notochord"],
+      "a": 2,
+      "s": "Hemichordates share pharyngeal gill slits with chordates for respiration.",
+      "year": "NEET (UG) 2017"
+    },
+    {
+      "q": "Which among these is the correct combination of aquatic mammals ?",
+      "o": ["Dolphins, Seals, Trygon", "Whales, Dolphins, Seals", "Trygon, Whales, Seals", "Seals, Dolphins, Sharks"],
+      "a": 2,
+      "s": "Whales, dolphins, and seals are all air-breathing aquatic mammals.",
+      "year": "NEET (UG) 2017"
+    },
+    {
+      "q": "In case of poriferans, the spongocoel is lined with flagellated cells called:",
+      "o": ["oscula", "choanocytes", "mesenchymal cells", "ostia"],
+      "a": 2,
+      "s": "Spongocoel and canals of poriferans are lined by special flagellated cells called choanocytes.",
+      "year": "NEET (UG) 2017"
+    },
+    {
+      "q": "Which of the following animals does not undergo metamorphosis ?",
+      "o": ["Earthworm", "Tunicate", "Moth", "Starfish"],
+      "a": 1,
+      "s": "Earthworm exhibits direct development without larval stages or metamorphosis.",
+      "year": "NEET (UG) 2018"
+    },
+    {
+      "q": "Identify the vertebrate group of animals characterized by crop and gizzard in its digestive sytstem.",
+      "o": ["Amphibia", "Reptilia", "Aves", "Osteichthyes"],
+      "a": 3,
+      "s": "The digestive tract of Aves (birds) includes specialized additional chambers named crop and gizzard.",
+      "year": "NEET (UG) 2018"
+    },
+    {
+      "q": "Which one of these animals is not a homeotherm?",
+      "o": ["Macropus", "Chelone", "Camelus", "Psittacula"],
+      "a": 2,
+      "s": "Chelone (turtle) is a reptile and therefore poikilothermic (cold-blooded).",
+      "year": "NEET (UG) 2018"
+    },
+    {
+      "q": "Match the following organisms with their respective characteristics :\n(a) Pila - (iii) Radula\n(b) Bombyx - (iv) Malpighian tubules\n(c) Pleurobrachia - (ii) Comb plates\n(d) Taenia - (i) Flame cells\nSelect the correct option from the following:",
+      "o": ["(a)-(iii), (b)-(iv), (c)-(ii), (d)-(i)", "(a)-(iii), (b)-(ii), (c)-(iv), (d)-(i)", "(a)-(iv), (b)-(iii), (c)-(i), (d)-(ii)", "(a)-(i), (b)-(iiii), (c)-(ii), (d)-(iv)"],
+      "a": 1,
+      "s": "Pila has radula, Bombyx excretes via Malpighian tubules, Pleurobrachia has comb plates, and Taenia excretes using flame cells.",
+      "year": "NEET (UG) 2019"
+    },
+    {
+      "q": "Consider following features:\n(a) Organ system level of organisation\n(b) Bilateral symmetry\n(c) True coelomates with segmentation of body\nSelect the correct option of animal groups which possess all the above characteristics.",
+      "o": ["Annelida, Arthropoda and Chordata", "Annelida, Arthropoda and Mollusca", "Arthropoda, Mollusca and Chordata", "Annelida, Mollusca and Chordata"],
+      "a": 1,
+      "s": "Annelida, Arthropoda, and Chordata display organ-system organization, bilateral symmetry, true coelom, and metameric body segmentation.",
+      "year": "NEET (UG) 2019"
+    },
+    {
+      "q": "Match the following genera with their respective phylum:\n(a) Ophiura - (iii) Echinodermata\n(b) Physalia - (iv) Coelenterata\n(c) Pinctada - (i) Mollusca\n(d) Planaria - (ii) Platyhelminthes\nSelect the correct option:",
+      "o": ["a-(iv), b-(i), c-(iii), d-(ii)", "a-(iii), b-(iv), c-(i), d-(ii)", "a-(i), b-(iii), c-(iv), d-(ii)", "a-(iii), b-(iv), c-(ii), d-(i)"],
+      "a": 2,
+      "s": "Ophiura belongs to Echinodermata, Physalia to Coelenterata, Pinctada to Mollusca, and Planaria to Platyhelminthes.",
+      "year": "NEET (UG) 2019 (Odisha)"
+    },
+    {
+      "q": "Which of the following animals are true coelomates with bilateral symmetry?",
+      "o": ["Adult Echinoderms", "Aschelminthes", "Platyhelminthes", "Annelids"],
+      "a": 4,
+      "s": "Annelids are true coelomate, bilaterally symmetrical animals. Adult echinoderms exhibit radial symmetry.",
+      "year": "NEET (UG) 2019 (Odisha)"
+    },
+    {
+      "q": "Match the following columns and select the correct option.\nColumn-I:\n(a) 6-15 pairs of gill slits\n(b) Heterocercal caudal fin\n(c) Air Bladder\n(d) Poison sting\nColumn-II:\n(i) Trygon\n(ii) Cyclostomes\n(iii) Chondrichthyes\n(iv) Osteichthyes",
+      "o": ["(a)-(i), (b)-(iv), (c)-(iii), (d)-(ii)", "(a)-(ii), (b)-(iii), (c)-(iv), (d)-(i)", "(a)-(iii), (b)-(iv), (c)-(i), (d)-(ii)", "(a)-(iv), (b)-(ii), (c)-(iii), (d)-(i)"],
+      "a": 2,
+      "s": "Cyclostomes have 6-15 pairs of gill slits, Chondrichthyes have heterocercal tail, Osteichthyes have air bladders, and Trygon possesses a poison sting.",
+      "year": "NEET (UG) - 2020"
+    },
+    {
+      "q": "Which of the following statements are true for the phylum-Chordata ?\n(a) In Urochordata notochord extends from head to tail and it is present throughout their life.\n(b) In Vertebrata notochord is present during the embryonic period only.\n(c) Central nervous system is dorsal and hollow.\n(d) Chordata is divided into 3 subphyla : Hemichordata, Tunicata and Cephalochordata.",
+      "o": ["(b) and (c)", "(d) and (c)", "(c) and (a)", "(a) and (b)"],
+      "a": 1,
+      "s": "In Vertebrata, the notochord is present only during embryonic stages, and chordates possess a dorsal hollow CNS.",
+      "year": "NEET (UG) - 2020"
+    },
+    {
+      "q": "Match the following columns and select the correct option.\nColumn-I:\n(a) Gregarious, polyphagous pest\n(b) Adult with radial symmetry and larva with bilateral symmetry\n(c) Book lungs\n(d) Bioluminescence\nColumn-II:\n(i) Asterias\n(ii) Scorpion\n(iii) Ctenoplana\n(iv) Locusta",
+      "o": ["a-(ii), b-(i), c-(iii), d-(iv)", "a-(i), b-(iii), c-(ii), d-(iv)", "a-(iv), b-(i), c-(ii), d-(iii)", "a-(iii), b-(ii), c-(i), d-(iv)"],
+      "a": 3,
+      "s": "Locusta is a gregarious pest, Asterias adults are radially symmetrical with bilateral larvae, Scorpion respires via book lungs, and Ctenoplana exhibits bioluminescence.",
+      "year": "NEET (UG) - 2020"
+    },
+    {
+      "q": "Bilaterally symmetrical and acoelomate animals are exemplified by:",
+      "o": ["Annelida", "Ctenophora", "Platyhelminthes", "Aschelminthes"],
+      "a": 3,
+      "s": "Platyhelminthes are bilaterally symmetrical and acoelomate flatworms.",
+      "year": "NEET (UG) - 2020"
+    },
+    {
+      "q": "Which of the following options does correctly represent the characteristic features of phylum Annelida ?",
+      "o": ["Triploblastic, unsegmented body and bilaterally symmetrical.", "Triploblastic, segmented body and bilaterally symmetrical.", "Triploblastic, flattened body and acoelomate condition.", "Diploblastic, mostly marine and radially symmetrical."],
+      "a": 2,
+      "s": "Annelids are triploblastic, bilaterally symmetrical, and possess a metamerically segmented body.",
+      "year": "NEET (UG) - 2020 (COVID-19)"
+    },
+    {
+      "q": "Match the following group of organisms with their respective distinctive characteristics and select the correct option\nOrganisms:\n(a) Platyhelminthes\n(b) Echinoderms\n(c) Hemichordates\n(d) Aves\nCharacteristics:\n(i) Cylindrical body with no segmentation\n(ii) Warm blooded animals with direct development\n(iii) Bilateral symmetry with incomplete digestive system\n(iv) Radial symmetry with Indirect development",
+      "o": ["a-(iii), b-(iv), c-(i), d-(ii)", "a-(ii), b-(iii), c-(iv), d-(i)", "a-(iv), b-(i), c-(ii), d-(iii)", "a-(i), b-(ii), c-(iii), d-(iv)"],
+      "a": 1,
+      "s": "Platyhelminthes show incomplete digestion, adult echinoderms show radial symmetry with indirect larvae, hemichordates have unsegmented cylindrical body, and aves are warm-blooded.",
+      "year": "NEET (UG) - 2020 (COVID-19)"
+    },
+    {
+      "q": "All vertebrates are chordates but all chordates are not vertebrates, why?",
+      "o": ["Notochord is replaced by vertebral column in adult of some chordates.", "Ventral hollow nerve cord remains throughout life in some chordates.", "All chordates possess vertebral column.", "All chordates possess notochord throughout their life."],
+      "a": 1,
+      "s": "In vertebrates, the embryonic notochord is replaced by a bony or cartilaginous vertebral column in adults.",
+      "year": "NEET (UG) - 2020 (COVID-19)"
+    },
+    {
+      "q": "Match the following columns and select the correct option:\nColumn-I:\n(a) Aptenodytes\n(b) Pteropus\n(c) Pterophyllum\n(d) Petromyzon\nColumn-II:\n(i) Flying fox\n(ii) Angel fish\n(iii) Lamprey\n(iv) Penguin",
+      "o": ["(a)-(iii), (b)-(iv), (c)-(ii), (d)-(i)", "(a)-(iii), (b)-(iv), (c)-(i), (d)-(ii)", "(a)-(iv), (b)-(i), (c)-(ii), (d)-(iii)", "(a)-(ii), (b)-(i), (c)-(iv), (d)-(iii)"],
+      "a": 3,
+      "s": "Aptenodytes is penguin, Pteropus is flying fox, Pterophyllum is angel fish, and Petromyzon is lamprey.",
+      "year": "NEET (UG) - 2020 (COVID-19)"
+    },
+    {
+      "q": "Read the following statements.\n(a) Metagenesis is observed in Helminths.\n(b) Echinoderms are triploblastic and coelomate animals.\n(c) Round worms have organ-system level of body organization.\n(d) Comb plates present in ctenophores help in digestion.\n(e) Water vascular system is characteristic of echinoderms.\nChoose the correct answer from the options given below.",
+      "o": ["(c), (d) and (e) are correct", "(a), (b) and (c) are correct", "(a), (d) and (e) are correct", "(b), (c) and (e) are correct"],
+      "a": 4,
+      "s": "Statements (b), (c), and (e) are correct; metagenesis occurs in cnidarians (not helminths) and comb plates function in locomotion (not digestion).",
+      "year": "NEET (UG) - 2021"
+    },
+    {
+      "q": "Match List - I with List - II.\nList-I:\n(a) Metamerism\n(b) Canal system\n(c) Comb plates\n(d) Cnidoblasts\nList-II:\n(i) Coelenterata\n(ii) Ctenophora\n(iii) Annelida\n(iv) Porifera",
+      "o": ["(a)-(iv), (b)-(iii), (c)-(ii), (d)-(i)", "(a)-(iii), (b)-(iv), (c)-(i), (d)-(ii)", "(a)-(iii), (b)-(iv), (c)-(ii), (d)-(i)", "(a)-(iv), (b)-(i), (c)-(iii), (d)-(ii)"],
+      "a": 3,
+      "s": "Metamerism occurs in Annelida, canal system in Porifera, comb plates in Ctenophora, and cnidoblasts in Coelenterata.",
+      "year": "NEET (UG) - 2021"
+    },
+    {
+      "q": "Match the following:\nList-I:\n(a) Physalia\n(b) Limulus\n(c) Ancylostoma\n(d) Pinctada\nList-II:\n(i) Pearl oyster\n(ii) Portuguese Man of War\n(iii) Living fossil\n(iv) Hookworm",
+      "o": ["(a)-(ii), (b)-(iii), (c)-(i), (d)-(iv)", "(a)-(iv), (b)-(i), (c)-(iii), (d)-(ii)", "(a)-(ii), (b)-(iii), (c)-(iv), (d)-(i)", "(a)-(i), (b)-(iv), (c)-(iii), (d)-(ii)"],
+      "a": 3,
+      "s": "Physalia is Portuguese Man of War, Limulus is a living fossil, Ancylostoma is hookworm, and Pinctada is pearl oyster.",
+      "year": "NEET (UG) - 2021"
+    },
+    {
+      "q": "Which one of the following organisms bears hollow and pneumatic long bones?",
+      "o": ["Neophron", "Hemidactylus", "Macropus", "Ornithorhynchus"],
+      "a": 1,
+      "s": "Neophron (vulture) is a bird possessing pneumatic hollow long bones adapted for flight.",
+      "year": "Re-NEET (UG) - 2022"
+    },
+    {
+      "q": "Nitrogenous waste is excreted in the form of pellet or paste by:",
+      "o": ["Salamandra", "Hippocampus", "Pavo", "Ornithorhynchus"],
+      "a": 3,
+      "s": "Pavo (peacock) is a bird and excretes uricotelic waste as a dry paste or pellet.",
+      "year": "Re-NEET (UG) - 2022"
+    },
+    {
+      "q": "Assertion (A): All vertebrates are chordates but all chordates are not vertebrates.\nReason (R): Notochord is replaced by vertebral column in the adult vertebrates.\nIn the light of the above statements, choose the most appropriate answer from the options given below:",
+      "o": ["Both (A) and (R) are correct but (R) is not the correct explanation of (A)", "(A) is correct but (R) is not correct", "(A) is not correct but (R) is correct", "Both (A) and (R) are correct and (R) is the correct explanation of (A)"],
+      "a": 4,
+      "s": "All vertebrates are chordates because they retain chordate features, but embryonic notochord gets replaced by a vertebral column in adults.",
+      "year": "Re-NEET (UG) - 2022"
+    },
+    {
+      "q": "In which of the following animals, digestive tract has additional chambers like crop and gizzard ?",
+      "o": ["Bufo, Balaenoptera, Bangarus", "Catla, Columba, Crocodilus", "Pavo, Psittacula, Corvus", "Corvus, Columba, Chameleon"],
+      "a": 3,
+      "s": "Pavo, Psittacula, and Corvus are all birds whose digestive systems include both crop and gizzard.",
+      "year": "Re-NEET (UG) - 2022"
+    },
+    {
+      "q": "Select the incorrect statements with respect to cyclostomes:\n(a) They lack scales and paired fins.\n(b) They have circular mouth with jaws.\n(c) They bear 6-15 pairs of gills\n(d) They migrate to deep sea for spawning.",
+      "o": ["(a) and (b) only", "(b) and (c) only", "(b) and (d) only", "(a) and (d) only"],
+      "a": 3,
+      "s": "Cyclostomes are jawless (sucking circular mouth without jaws) and migrate to fresh water for spawning, making statements (b) and (d) incorrect.",
+      "year": "Re-NEET (UG) - 2022"
+    },
+    {
+      "q": "Which of the following animals has three chambered heart?",
+      "o": ["Scoliodon", "Hippocampus", "Chelone", "Pteropus"],
+      "a": 3,
+      "s": "Chelone (turtle) is a reptile possessing a 3-chambered heart with an incompletely divided ventricle.",
+      "year": "NEET (UG) - 2022"
+    },
+    {
+      "q": "Radial symmetry is NOT found in adults of phylum",
+      "o": ["Hemichordata", "Coelenterata", "Echinodermata", "Ctenophora"],
+      "a": 1,
+      "s": "Hemichordates are bilaterally symmetrical throughout their lifecycle.",
+      "year": "NEET (UG) - 2023"
+    },
+    {
+      "q": "Select the correct statements with reference to chordates.\nA. Presence of mid-dorsal, solid and double nerve cord.\nB. Presence of closed circulatory system\nC. Presence of paired pharyngeal gill slits\nD. Presence of dorsal heart\nE. Triploblastic pseudocoelomate animals",
+      "o": ["B and C only", "B, D and E only", "C, D and E only", "A, C and D only"],
+      "a": 1,
+      "s": "Chordates are coelomate animals featuring a closed circulatory system and paired pharyngeal gill slits.",
+      "year": "NEET (UG) - 2023"
+    },
+    {
+      "q": "The unique mammalian characteristics are:",
+      "o": ["hairs, pinna and mammary glands", "hairs, pinna and indirect development", "pinna, monocondylic skull and mammary glands", "hairs, tympanic membrane and mammary glands"],
+      "a": 1,
+      "s": "Presence of hair, external ears (pinnae), and milk-producing mammary glands are unique diagnostic features of mammals.",
+      "year": "NEET (UG) - 2023"
+    },
+    {
+      "q": "Match List-I with List-II.\nList-I:\n(A) Contractile vacuole\n(B) Water vascular system\n(C) Canal system\n(D) Flame cells\nList-II:\n(I) Asterias\n(II) Amoeba\n(III) Spongilla\n(IV) Taenia",
+      "o": ["(A)-(IV), (B)-(II), (C)-(I), (D)-(III)", "(A)-(I), (B)-(III), (C)-(II), (D)-(IV)", "(A)-(III), (B)-(II), (C)-(I), (D)-(IV)", "(A)-(II), (B)-(I), (C)-(III), (D)-(IV)"],
+      "a": 4,
+      "s": "Contractile vacuole is present in Amoeba, water vascular system in Asterias, canal system in Spongilla, and flame cells in Taenia.",
+      "year": "NEET (UG) (Manipur) - 2023"
+    },
+    {
+      "q": "Select the correct statements:\n(A) Platyhelminthes are triploblastic pseudocoelomate and bilaterally symmetrical organisms.\n(B) Ctenophores reproduce only sexually and fertilization is external.\n(C) In tapeworm, fertilization is internal but sexes are not separate.\n(D) Ctenophores are exclusively marine, diploblastic and bioluminescent organisms.\n(E) In sponges, fertilization is external and development is direct.",
+      "o": ["(A), (C) and (D) only", "(B), (C) and (D) only", "(A) and (E) only", "(B) and (D) only"],
+      "a": 2,
+      "s": "Statements (B), (C), and (D) are correct; Platyhelminthes are acoelomate, and sponges show internal fertilization and indirect development.",
+      "year": "NEET (UG) (Manipur) - 2023"
+    },
+    {
+      "q": "Match List I with List II.\nList I:\nA. Pleurobrachia\nB. Radula\nC. Stomochord\nD. Air bladder\nList II:\nI. Mollusca\nII. Ctenophora\nIII. Osteichthyes\nIV. Hemichordata",
+      "o": ["A-IV, B-II, C-III, D-I", "A-II, B-I, C-IV, D-III", "A-II, B-IV, C-I, D-III", "A-IV, B-III, C-II, D-I"],
+      "a": 2,
+      "s": "Pleurobrachia is a Ctenophore, Radula is found in Mollusca, Stomochord in Hemichordata, and Air bladder in Osteichthyes.",
+      "year": "NEET (UG) 2024"
+    },
+    {
+      "q": "Consider the following statements :-\nA. Annelids are true coelomates\nB. Poriferans are pseudocoelomates\nC. Aschelminthes are acoelomates\nD. Platyhelminthes are pseudocoelomates\nChoose the correct answer from the options given below :-",
+      "o": ["B only", "A only", "C only", "D only"],
+      "a": 2,
+      "s": "Statement A is correct because annelids are true coelomates. Poriferans are acoelomate/cellular, Aschelminthes are pseudocoelomate, and Platyhelminthes are acoelomate.",
+      "year": "NEET (UG) 2024"
+    },
+    {
+      "q": "Match List I with List II.\nList-I:\nA. Pterophyllum\nB. Myxine\nC. Pristis\nD. Exocoetus\nList-II:\nI. Hag fish\nII. Saw fish\nIII. Angel fish\nIV. Flying fish",
+      "o": ["A-II, B-I, C-III, D-IV", "A-III, B-I, C-II, D-IV", "A-IV, B-I, C-II, D-III", "A-III, B-II, C-I, D-IV"],
+      "a": 2,
+      "s": "Pterophyllum is Angel fish, Myxine is Hag fish, Pristis is Saw fish, and Exocoetus is Flying fish.",
+      "year": "NEET (UG) 2024"
+    },
+    {
+      "q": "The following are the statements about non-chordates :-\nA. Pharynx is perforated by gill slits.\nB. Notochord is absent.\nC. Central nervous system is dorsal.\nD. Heart is dorsal if present.\nE. Post anal tail is absent.",
+      "o": ["A & C only", "A, B & D only", "B, D & E only", "B, C & D only"],
+      "a": 3,
+      "s": "Non-chordates lack a notochord, have a ventral CNS, possess a dorsal heart when present, and lack a post-anal tail.",
+      "year": "NEET (UG) 2024"
+    },
+    {
+      "q": "Match List-I with List-II.\nList-I:\nA. Chondrichthyes\nB. Cyclostomata\nC. Osteichthyes\nD. Amphibia\nList-II:\nI. Clarias\nII. Carcharodon\nIII. Myxine\nIV. Ichthyophis",
+      "o": ["A-II, B-IV, C-I, D-III", "A-I, B-III, C-II, D-IV", "A-II, B-III, C-I, D-IV", "A-I, B-II, C-III, D-IV"],
+      "a": 3,
+      "s": "Chondrichthyes includes Carcharodon, Cyclostomata includes Myxine, Osteichthyes includes Clarias, and Amphibia includes Ichthyophis.",
+      "year": "RE-NEET (UG) 2024"
+    },
+    {
+      "q": "Open Circulatory system is present in:",
+      "o": ["Palaemon, Nereis, Balanoglossus", "Hirudinaria, Bombyx, Salpa", "Anopheles, Limax, Limulus", "Pheretima, Musca, Pila"],
+      "a": 3,
+      "s": "Anopheles, Limax (mollusc), and Limulus (arthropod) possess open circulatory systems.",
+      "year": "RE-NEET (UG) 2024"
+    },
+    {
+      "q": "Which of the following pairs is an incorrect match ?",
+      "o": ["Annelids and arthropods Bilateral symmetry", "Sponges - Acoelomates", "Coelenterates and Ctenophores - Radial symmetry", "Platyhelminthes - Diploblastic organisation"],
+      "a": 4,
+      "s": "Platyhelminthes are triploblastic animals, not diploblastic.",
+      "year": "RE-NEET (UG) 2024"
+    },
+    {
+      "q": "One is labelled as are Assertion A and the other is labelled as Reason R.\nAssertion (A): Members of subphylum vertebrate possess notochord during the embryonic period. The notochord is replaced by a cartiliaginous or bony vertebral column in the adult.\nReason (R): Thus all chordates are vertebrates but not all vertebrates are chordates.\nIn the light of the above statements, choose the correct answer from the options given below :-",
+      "o": ["A is true but R is false", "A is false but R is true", "Both A and R are true and R is the correct explanation of A.", "Both A and R are true but R is NOT the correct explanation of A."],
+      "a": 1,
+      "s": "Assertion A is true, but Reason R is false because 'all vertebrates are chordates, but not all chordates are vertebrates'.",
+      "year": "RE-NEET (UG) 2024"
+    }
+  ]
+}
