@@ -1479,21 +1479,29 @@ Return ONLY a raw JSON array matching format: [{"q":"Question text","o":["Option
 
       const prompt = `Generate a NEET mock test paper with exactly ${qCount} multiple choice questions distributed across subjects [${selectedSubs.join(', ')}] covering topics: ${selectedChaps.slice(0, 20).join(', ')}. Target difficulty definition: "${diff}". Ensure strictly valid JSON output matching the required format.`;
       
-      const rawJson = await callGeminiApi(prompt, systemInstruction);
-      const cleanJson = rawJson.replace(/```json/g, '').replace(/```/g, '').trim();
-      const parsed = JSON.parse(cleanJson);
-      
-      rawQuestions = parsed.map((q, i) => ({
-        qKey: 'ai_mock_' + Date.now() + '_' + i,
-        question: q.q || q.question,
-        options: q.o || q.options,
-        correct: (q.a || 1) - 1,
-        explanation: q.s || 'NCERT Line-by-Line concept.',
-        sourceChapter: selectedChaps[i % selectedChaps.length] || selectedSubs[i % selectedSubs.length]
-      }));
+      try {
+        const rawJson = await callGeminiApi(prompt, systemInstruction);
+        // Robust extraction of JSON content from markdown code blocks or raw response text
+        const match = rawJson.match(/\[\s*\{[\s\S]*\}\s*\]/);
+        const jsonStr = match ? match[0] : rawJson.replace(/```json/gi, '').replace(/```/g, '').trim();
+        const parsed = JSON.parse(jsonStr);
+        
+        if (Array.isArray(parsed)) {
+          rawQuestions = parsed.map((q, i) => ({
+            qKey: 'ai_mock_' + Date.now() + '_' + i,
+            question: q.q || q.question || `Question ${i + 1}`,
+            options: (q.o || q.options || []).map(String),
+            correct: typeof q.a === 'number' ? q.a - 1 : 0,
+            explanation: q.s || q.explanation || 'NCERT Line-by-Line concept.',
+            sourceChapter: selectedChaps[i % selectedChaps.length] || selectedSubs[i % selectedSubs.length]
+          }));
+        }
+      } catch (aiErr) {
+        console.warn("AI generation parsing failed, falling back to database synthesizer:", aiErr);
+      }
     }
     
-    // Fallback or fill remaining questions up to target count (especially for 180 Qs)
+    // Fallback or fill remaining questions up to target count using local dataset
     if (rawQuestions.length < qCount) {
       const existingCount = rawQuestions.length;
       for (let i = existingCount; i < qCount; i++) {
@@ -1503,17 +1511,23 @@ Return ONLY a raw JSON array matching format: [{"q":"Question text","o":["Option
           const res = await fetch(quizUrl(sub, ch), { cache: 'no-cache' });
           if (res.ok) {
             const raw = await res.json();
-            const list = Array.isArray(raw) ? raw : raw.qs;
-            const item = list[i % list.length];
-            if (item) {
-              rawQuestions.push({
-                qKey: 'mock_' + i + '_' + Date.now(),
-                question: item.q || item.question,
-                options: item.o || item.options,
-                correct: (item.a || 1) - 1,
-                explanation: item.s || 'Standard syllabus question.',
-                sourceChapter: ch
-              });
+            const list = Array.isArray(raw) ? raw : (raw.qs || []);
+            if (list.length > 0) {
+              const item = list[i % list.length];
+              if (item) {
+                const opts = (item.o || item.options || []).map(String);
+                const a = item.a ?? item.answer;
+                let cIdx = typeof a === 'number' ? a - 1 : 0;
+                if (cIdx < 0 || cIdx >= opts.length) cIdx = 0;
+                rawQuestions.push({
+                  qKey: 'mock_' + i + '_' + Date.now(),
+                  question: item.q || item.question || `Question ${i + 1}`,
+                  options: opts,
+                  correct: cIdx,
+                  explanation: item.s || item.explanation || 'Standard syllabus question.',
+                  sourceChapter: ch
+                });
+              }
             }
           }
         } catch (err) {}
@@ -1521,7 +1535,7 @@ Return ONLY a raw JSON array matching format: [{"q":"Question text","o":["Option
     }
 
     if (!rawQuestions || rawQuestions.length === 0) {
-      throw new Error("Could not synthesize questions for selected topics.");
+      throw new Error("Could not synthesize questions for selected topics. Please check your network or try another chapter selection.");
     }
 
     launchTestSession(selectedSubs.join(' & '), `${mockWizardState.title} (${diff})`, rawQuestions);
