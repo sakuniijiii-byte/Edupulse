@@ -1,0 +1,1850 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>EduPulse PRO — NEET Preparation Ecosystem</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        success: '#10b981',
+        danger: '#f43f5e',
+        warning: '#f59e0b',
+        info: '#0ea5e9',
+        accent: 'var(--accent-color, #0d9488)'
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<!-- KaTeX for Math & Science LaTeX Rendering -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<!-- Chart.js for Performance Analytics -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+:root{
+  --ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--paper:#ffffff;--bg:#f8fafc;
+  --teal:#0d9488;--deep:#134e4a;--lime:#84cc16;--card-bg:#ffffff;
+  --text-primary:#0f172a;--text-muted:#64748b;--border-color:#e2e8f0;
+  --bio-bg:#ecfdf5;--bio-text:#047857;--chem-bg:#f5f3ff;--chem-text:#6d28d9;--phy-bg:#f0fdfa;--phy-text:#0f766e;
+  --radius-sm:8px;--radius-md:16px;--radius-lg:24px;
+  --accent-color:#0d9488;
+}
+body.dark{
+  --ink:#f8fafc;--muted:#94a3b8;--line:#334155;--paper:#1e293b;--bg:#090d16;
+  --teal:#14b8a6;--deep:#0f2e33;--card-bg:#1e293b;--text-primary:#f8fafc;--text-muted:#94a3b8;--border-color:#334155;
+  --bio-bg:rgba(16,185,129,.15);--bio-text:#6ee7b7;--chem-bg:rgba(139,92,246,.15);--chem-text:#c4b5fd;--phy-bg:rgba(20,184,166,.15);--phy-text:#5eead4;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Plus Jakarta Sans',sans-serif;transition:background-color .25s ease,color .25s ease;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.display-font{font-family:'Sora',sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0;transition:transform 0.1s ease, background-color 0.2s ease}
+button:active{transform:scale(0.97)}
+.tabular-nums{font-variant-numeric:tabular-nums}
+.app-layout{display:flex;flex-direction:column;min-height:100vh}
+
+/* Sidebar & Layout */
+.sidebar{position:fixed;top:0;bottom:0;left:0;width:280px;height:100vh;overflow-y:auto;z-index:40;display:flex;flex-direction:column;justify-between;padding:24px 18px;transition:transform .3s cubic-bezier(0.4, 0, 0.2, 1), width .3s ease;background:var(--paper);border-right:1px solid var(--border-color);backdrop-filter:blur(20px)}
+.sidebar.collapsed{width:84px}
+.sidebar.collapsed .sidebar-text, .sidebar.collapsed .sidebar-section-title, .sidebar.collapsed .goal, .sidebar.collapsed .brand-subtitle, .sidebar.collapsed .user-badge-text{display:none}
+.sidebar.collapsed .brand{justify-content:center}
+.sidebar.collapsed .nav button{justify-content:center;padding:12px}
+@media (max-width:1023px){.sidebar{transform:translateX(-100%)}.sidebar.mobile-open{transform:translateX(0)}.content{margin-left:0;width:100%;padding-bottom:76px}}
+@media (min-width:1024px){.content{margin-left:280px;flex:1;width:calc(100% - 280px)}.sidebar.collapsed ~ .content{margin-left:84px;width:calc(100% - 84px)}}
+
+.brand{display:flex;gap:12px;align-items:center}
+.logo-mark{width:42px;height:42px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--deep),var(--accent-color));color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px -4px rgba(13,148,136,.4)}
+.brand b{font-size:17px;color:var(--text-primary);letter-spacing:-0.02em}
+.brand b span{color:var(--accent-color)}
+.eyebrow{margin:2px 0 0;color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.nav button{padding:11px 14px;border-radius:var(--radius-md);background:none;color:var(--text-muted);text-align:left;font-weight:700;transition:all .2s cubic-bezier(0.4, 0, 0.2, 1);display:flex;align-items:center;gap:12px;width:100%;font-size:13px}
+.nav button:hover{background:rgba(13,148,136,.08);color:var(--accent-color);transform:translateX(4px)}
+.nav button.active{background:linear-gradient(135deg,rgba(13,148,136,.15),rgba(13,148,136,.05));color:var(--accent-color);box-shadow:inset 0 0 0 1px rgba(13,148,136,.2)}
+.sidebar-section-title{font-size:10px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin:16px 0 8px 12px}
+
+.goal{background:linear-gradient(135deg,rgba(13,148,136,.1),rgba(16,185,129,.05));border:1px solid rgba(13,148,136,.2);border-radius:var(--radius-lg);padding:16px}
+.bar{height:6px;background:rgba(0,0,0,.08);border-radius:99px;margin-top:10px;overflow:hidden}
+body.dark .bar{background:rgba(255,255,255,.12)}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent-color),#10b981);transition:width .6s cubic-bezier(0.4, 0, 0.2, 1)}
+
+.topbar{height:76px;border-bottom:1px solid var(--border-color);background:var(--paper);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background-color:rgba(255,255,255,0.85)}
+body.dark .topbar{background-color:rgba(30,41,59,0.85)}
+.main{max-width:1440px;margin:auto;padding:32px 28px;background-image:radial-gradient(var(--border-color) 1px, transparent 1px);background-size:24px 24px}
+.tag{color:var(--accent-color);font-weight:800;text-transform:uppercase;letter-spacing:.17em;font-size:11px}
+.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius-lg);box-shadow:0 4px 20px -2px rgba(0,0,0,.03);transition:all .25s cubic-bezier(0.4, 0, 0.2, 1)}
+.card:hover{border-color:rgba(13,148,136,.35);box-shadow:0 12px 30px -6px rgba(13,148,136,.12);transform:translateY(-2px)}
+.subject{padding:14px 18px;border:1px solid var(--border-color);border-radius:var(--radius-md);background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all .2s}
+.subject.selected{border-color:var(--accent-color);background:rgba(13,148,136,.08);box-shadow:0 0 0 2px rgba(13,148,136,.2)}
+.chip{width:42px;height:42px;border-radius:var(--radius-md);display:grid;place-items:center;font-size:11px;font-weight:900;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.bio{background:var(--bio-bg);color:var(--bio-text)}.chem{background:var(--chem-bg);color:var(--chem-text)}.phy{background:var(--phy-bg);color:var(--phy-text)}
+.chapter{padding:22px;transition:all .25s ease;display:flex;flex-direction:column;justify-between;cursor:pointer;position:relative;overflow:hidden}
+.chapter:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(13,148,136,.12)}
+.progress{height:6px;background:rgba(0,0,0,.06);border-radius:99px;margin-top:8px;overflow:hidden}
+body.dark .progress{background:rgba(255,255,255,.1)}
+.progress i{display:block;height:100%;background:var(--accent-color);transition:width .4s ease}
+
+/* Controls */
+.controls input,.controls select{padding:10px 16px;border:1px solid var(--border-color);border-radius:var(--radius-md);background:var(--card-bg);color:var(--text-primary);outline:none;font-size:13px;font-weight:600;transition:all .2s}
+.controls input:focus,.controls select:focus{border-color:var(--accent-color);box-shadow:0 0 0 3px rgba(13,148,136,.15)}
+
+/* Modals & Mobile Bottom Sheets */
+.custom-modal{position:fixed;inset:0;background:rgba(15,23,42,.75);backdrop-filter:blur(8px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s ease;padding:20px}
+.custom-modal.open{opacity:1;pointer-events:auto}
+.modal-box{background:var(--card-bg);color:var(--text-primary);width:100%;max-width:780px;border-radius:28px;padding:28px;border:1px solid var(--border-color);box-shadow:0 25px 50px -12px rgba(15,23,42,.25);transform:translateY(12px) scale(.98);transition:transform .25s cubic-bezier(0.4, 0, 0.2, 1);max-height:88vh;overflow:auto}
+.custom-modal.open .modal-box{transform:scale(1)}
+.sheet-handle{width:40px;height:4px;border-radius:99px;background:var(--border-color);margin:0 auto 16px;display:none}
+
+@media (max-width: 640px) {
+  .custom-modal { align-items: flex-end; padding: 0; }
+  .custom-modal .modal-box { max-width: 100vw; border-bottom-left-radius: 0; border-bottom-right-radius: 0; max-height: 85vh; transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .custom-modal.open .modal-box { transform: translateY(0); }
+  .sheet-handle{display:block}
+}
+
+.custom-modal.fullscreen-modal{padding:0}
+.custom-modal.fullscreen-modal .modal-box{max-width:100vw;height:100vh;max-height:100vh;border-radius:0;border:none;display:flex;flex-direction:column}
+.mobile-nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:35;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.mobile-nav-overlay.open{opacity:1;pointer-events:auto}
+
+/* Animation utilities */
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 20px rgba(234,179,8,.25)}50%{box-shadow:0 0 40px rgba(234,179,8,.6)}}
+.animate-pulse-glow{animation:pulseGlow 2.5s infinite}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+.chat-msg-user{background:linear-gradient(135deg, var(--accent-color), #134e4a);color:#ffffff;border-radius:18px 18px 4px 18px}
+.chat-msg-ai{background:var(--card-bg);border:1px solid var(--border-color);color:var(--text-primary);border-radius:18px 18px 18px 4px}
+.mobile-bottom-nav{position:fixed;bottom:0;left:0;right:0;height:72px;background:var(--paper);border-top:1px solid var(--border-color);display:flex;align-items:center;justify-content:space-around;z-index:45;backdrop-filter:blur(12px);padding-bottom:env(safe-area-inset-bottom);transition:transform 0.3s ease}
+.mobile-bottom-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text-muted);font-size:11px;font-weight:700;gap:3px}
+.mobile-bottom-nav button.active{color:var(--accent-color)}
+.skeleton-shimmer{background:linear-gradient(90deg, rgba(226,232,240,0.4) 25%, rgba(203,213,225,0.7) 50%, rgba(226,232,240,0.4) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+body.dark .skeleton-shimmer{background:linear-gradient(90deg, rgba(51,65,85,0.4) 25%, rgba(71,85,105,0.7) 50%, rgba(51,65,85,0.4) 75%);background-size:200% 100%}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+</style>
+</head>
+<body class="h-full">
+
+<!-- Heartbeat Splash Screen -->
+<div id="splashScreen" class="fixed inset-0 z-50 bg-slate-950 flex flex-col items-center justify-center text-white transition-opacity duration-700">
+  <div class="relative flex items-center justify-center mb-6">
+    <div class="w-24 h-24 rounded-3xl bg-teal-600/20 border border-teal-500/40 flex items-center justify-center text-teal-400 animate-pulse">
+      <i class="fa-solid fa-stethoscope text-4xl"></i>
+    </div>
+  </div>
+  <h2 class="text-2xl font-black display-font tracking-tight">EduPulse <span class="text-teal-400">PRO</span></h2>
+  <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest font-bold">Crack NEET, one chapter at a time.</p>
+  <div class="w-48 h-1 bg-slate-800 rounded-full mt-6 overflow-hidden">
+    <div class="h-full bg-teal-500 animate-[shimmer_1.5s_infinite]"></div>
+  </div>
+</div>
+
+<!-- Onboarding Modal (Multi-step setup flow) -->
+<div class="custom-modal" id="onboardingModal" role="dialog" aria-modal="true">
+<div class="modal-box max-w-lg text-center space-y-4">
+  <div class="sheet-handle"></div>
+  <div class="w-16 h-16 rounded-3xl bg-teal-500/10 text-teal-600 flex items-center justify-center text-3xl mx-auto"><i class="fa-solid fa-user-doctor"></i></div>
+  <h3 class="text-2xl font-black display-font">Welcome to EduPulse PRO</h3>
+  <p class="text-xs text-slate-500 dark:text-slate-400">Personalize your NEET prep ecosystem in 30 seconds.</p>
+  <div class="space-y-3 text-left pt-2">
+    <div>
+      <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Your Full Name</label>
+      <input type="text" id="onboardUserName" placeholder="Dr. Aspirant" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-bold">
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+      <div>
+        <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Target NEET Year</label>
+        <select id="onboardTargetYear" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-bold">
+          <option value="2027" selected>NEET 2027</option>
+          <option value="2028">NEET 2028</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Target Score (Out of 720)</label>
+        <input type="number" id="onboardTargetScore" value="680" max="720" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-bold">
+      </div>
+    </div>
+    <div>
+      <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Daily Study Target (Questions)</label>
+      <input type="number" id="onboardDailyGoal" value="40" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-bold">
+    </div>
+  </div>
+  <button onclick="completeOnboarding()" class="w-full py-3.5 rounded-xl bg-teal-600 text-white font-black text-xs shadow-lg hover:bg-teal-700 transition">Start My Journey 🚀</button>
+</div>
+</div>
+
+<div class="app-layout">
+<div class="mobile-nav-overlay" id="navOverlay" onclick="toggleMobileNav(false)"></div>
+<aside class="sidebar" id="sidebarDrawer">
+<div>
+  <div class="brand justify-between items-center w-full">
+    <div class="flex items-center gap-3">
+      <div class="logo-mark">
+        <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+          <path d="M3 13h2l2-3 3 6 4-9 2 6h3v2h-4l-2-6-4 9-3-6-2 3H3v-2z"/>
+        </svg>
+      </div>
+      <div class="sidebar-text">
+        <b>Edu<span>Pulse</span></b>
+        <p class="eyebrow brand-subtitle">Crack NEET · 1 Ch at a time</p>
+      </div>
+    </div>
+    <button class="lg:hidden text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-2" onclick="toggleMobileNav(false)" aria-label="Close Mobile Navigation"><i class="fa-solid fa-xmark text-lg"></i></button>
+  </div>
+
+  <!-- User Level & XP Bar -->
+  <div onclick="openBadgesModal()" class="mt-5 px-3.5 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 cursor-pointer hover:border-teal-500 transition">
+    <div class="flex items-center justify-between text-xs font-bold mb-1">
+      <span class="text-teal-600 dark:text-teal-400 flex items-center gap-1.5" id="user-rank-title"><i class="fa-solid fa-user-doctor"></i> <span class="sidebar-text">Intern Aspirant</span></span>
+      <span class="text-slate-500 font-extrabold tabular-nums" id="user-xp-display">0 XP</span>
+    </div>
+    <div class="progress"><i id="user-xp-bar" style="width:0%"></i></div>
+  </div>
+
+  <nav class="nav my-4 space-y-1">
+    <div class="sidebar-section-title">Learn</div>
+    <button onclick="switchTab('home')" id="nav-home" class="active"><i class="fa-solid fa-house w-5"></i> <span class="sidebar-text">Home</span></button>
+    <button onclick="switchTab('learn')" id="nav-learn"><i class="fa-solid fa-book-open-reader w-5"></i> <span class="sidebar-text">Learn & Practice</span> <small class="sidebar-text ml-auto bg-gradient-to-r from-lime-400 to-emerald-400 text-slate-950 rounded-full px-2 py-0.5 text-[10px] font-black" id="learn-nav-badge">79</small></button>
+
+    <div class="sidebar-section-title">Test</div>
+    <button onclick="switchTab('mock')" id="nav-mock"><i class="fa-solid fa-wand-magic-sparkles w-5"></i> <span class="sidebar-text">AI Mock Test</span> <span class="sidebar-text ml-auto px-1.5 py-0.5 rounded-full bg-purple-500/20 text-purple-600 dark:text-purple-400 text-[9px] font-black">PRO</span></button>
+    <button onclick="switchTab('progress')" id="nav-progress"><i class="fa-solid fa-chart-line w-5"></i> <span class="sidebar-text">Progress & Stats</span></button>
+
+    <div class="sidebar-section-title">Tools</div>
+    <button onclick="switchTab('directory')" id="nav-directory"><i class="fa-solid fa-book-bookmark w-5"></i> <span class="sidebar-text">Resource Directory</span></button>
+    <button onclick="switchTab('faculty')" id="nav-faculty"><i class="fa-solid fa-chalkboard-user w-5"></i> <span class="sidebar-text">Faculty Hub</span></button>
+    <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> <span class="sidebar-text">Focus & Planner</span></button>
+    <button onclick="switchTab('settings')" id="nav-settings"><i class="fa-solid fa-gear w-5"></i> <span class="sidebar-text">Settings</span></button>
+  </nav>
+</div>
+
+<div class="space-y-3">
+  <div class="goal sidebar-text">
+    <small style="color:var(--accent-color);text-transform:uppercase;font-weight:800;letter-spacing:.1em;font-size:11px">Syllabus Goal</small>
+    <strong style="display:block;margin-top:4px;font-size:13px">Finish every chapter</strong>
+    <div class="bar"><i id="sidebar-progress-bar" style="width:0%"></i></div>
+    <p id="sidebar-progress-text" style="font-size:12px;color:var(--text-muted);margin-top:6px;font-weight:500">0% syllabus covered</p>
+  </div>
+  <button onclick="toggleSidebarCollapse()" class="w-full py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-500 hover:text-teal-600 transition flex items-center justify-center gap-2" title="Toggle Sidebar">
+    <i class="fa-solid fa-left-right"></i> <span class="sidebar-text">Collapse Sidebar</span>
+  </button>
+</div>
+</aside>
+
+<section class="content">
+<header class="topbar">
+<div class="flex items-center gap-3">
+<button onclick="toggleMobileNav(true)" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition" aria-label="Open Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
+<button id="back-btn" onclick="goBack()" class="hidden items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700 transition"><i class="fa-solid fa-arrow-left text-xs"></i> Back</button>
+<div>
+<div class="date" id="breadcrumb-trail">Learn › Biology</div>
+<h1 class="hidden sm:block" id="header-greeting">Good evening, Aspirant 🌙<span style="color:var(--accent-color)">.</span></h1>
+<h1 class="sm:hidden text-base font-black">EduPulse PRO</h1>
+</div>
+</div>
+<div class="flex items-center gap-2 sm:gap-3">
+<div id="offline-badge" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold border border-rose-500/20"><i class="fa-solid fa-wifi-slash"></i> Offline</div>
+<button onclick="openShortcutsModal()" class="hidden sm:flex p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition text-xs font-bold" title="Keyboard Shortcuts (?)">?</button>
+<button onclick="openCommandPalette()" class="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center gap-2" title="Search (Ctrl+K)">
+<i class="fa-solid fa-magnifying-glass text-xs"></i> <span class="hidden md:inline font-mono text-[10px] bg-slate-200 dark:bg-slate-700 px-1.5 py-0.5 rounded">Ctrl K</span>
+</button>
+<button id="pwa-install-btn" onclick="triggerPwaInstall()" class="hidden items-center gap-1.5 px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-md transition"><i class="fa-solid fa-download text-xs"></i> Install</button>
+<button onclick="openApiKeyModal()" class="px-3.5 py-2 rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-600 dark:text-teal-400 hover:bg-teal-500/20 text-xs font-bold transition flex items-center gap-1.5" title="Configure Gemini AI Key">
+<i class="fa-solid fa-wand-magic-sparkles"></i> AI Key
+</button>
+<button onclick="toggleTheme()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition" aria-label="Toggle Dark Mode">
+<i class="fa-solid fa-moon dark:hidden text-sm sm:text-base"></i>
+<i class="fa-solid fa-sun hidden dark:inline text-sm sm:text-base"></i>
+</button>
+</div>
+</header>
+
+<main class="main" id="main-container"></main>
+
+<!-- Footer -->
+<footer class="mt-16 py-8 px-6 border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 text-center text-xs text-slate-500 space-y-2">
+  <p class="font-bold">EduPulse PRO v3.0 · Built for NEET Aspirants</p>
+  <p>Disclaimer: An independent study companion ecosystem utilizing official NCERT syllabus structures.</p>
+</footer>
+</section>
+
+<!-- Mobile Bottom Navigation -->
+<div class="mobile-bottom-nav lg:hidden" id="mobileBottomNav">
+  <button onclick="switchTab('home')" id="mob-nav-home" class="active"><i class="fa-solid fa-house text-lg"></i> Home</button>
+  <button onclick="switchTab('learn')" id="mob-nav-learn"><i class="fa-solid fa-book-open-reader text-lg"></i> Learn</button>
+  <button onclick="switchTab('mock')" id="mob-nav-mock"><i class="fa-solid fa-wand-magic-sparkles text-lg"></i> Mock AI</button>
+  <button onclick="switchTab('progress')" id="mob-nav-progress"><i class="fa-solid fa-chart-line text-lg"></i> Stats</button>
+  <button onclick="switchTab('tools')" id="mob-nav-tools"><i class="fa-solid fa-stopwatch text-lg"></i> Focus</button>
+</div>
+</div>
+
+<!-- Floating AI Chatbot Widget -->
+<div id="ai-chatbot-widget" class="fixed bottom-20 sm:bottom-6 right-6 z-50">
+  <button id="ai-chat-toggle-btn" onclick="toggleAiChatbotWindow()" class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-teal-600 to-purple-600 text-white shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all group" aria-label="Toggle AI Copilot">
+    <i class="fa-solid fa-wand-magic-sparkles text-xl group-hover:rotate-12 transition-transform"></i>
+    <span class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-white dark:border-slate-900"></span>
+  </button>
+
+  <div id="ai-chatbot-window" class="hidden absolute bottom-16 right-0 w-[90vw] sm:w-[440px] h-[600px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden backdrop-blur-2xl">
+    <div class="p-4 bg-gradient-to-r from-teal-700 via-teal-600 to-purple-700 text-white flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center font-black">🦉</div>
+        <div>
+          <h4 class="font-extrabold text-sm leading-tight display-font">EduPulse AI Copilot</h4>
+          <span class="text-[10px] text-teal-100 flex items-center gap-1 font-semibold"><i class="fa-solid fa-circle text-[6px] text-emerald-300"></i> Powered by Gemini 3 Flash</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleAiChatbotWindow()" class="p-1.5 text-white/80 hover:text-white rounded-lg" aria-label="Close Chat"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+    </div>
+
+    <!-- Context chip -->
+    <div class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500 font-bold">
+      <span>💬 Context: <strong class="text-teal-600" id="activeChatContext">General NEET Prep</strong></span>
+      <button onclick="resetChatContext()" class="text-[10px] text-slate-400 hover:underline">Reset</button>
+    </div>
+
+    <div id="ai-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs leading-relaxed no-scrollbar">
+      <div class="chat-msg-ai p-3.5 shadow-sm">
+        <p class="font-bold mb-1 text-teal-600 dark:text-teal-400">👋 Hi Aspirant! 🦉</p>
+        I'm your NEET AI Copilot. Ask me to generate tests, explain doubts step-by-step, or write revision strategies.
+      </div>
+    </div>
+
+    <div class="px-3 py-2 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 flex gap-1.5 overflow-x-auto no-scrollbar">
+      <button onclick="triggerAiChatPreset('quiz')" class="shrink-0 px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-600 font-extrabold text-[10px] border border-teal-500/20 hover:bg-teal-500/20 transition">+ 5 Practice MCQs</button>
+      <button onclick="triggerAiChatPreset('strategy')" class="shrink-0 px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-600 font-extrabold text-[10px] border border-purple-500/20 hover:bg-purple-500/20 transition">⚡ 7-Day Strategy</button>
+      <button onclick="triggerAiChatPreset('formula')" class="shrink-0 px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 font-extrabold text-[10px] border border-amber-500/20 hover:bg-amber-500/20 transition">📐 Physics Formula Sheet</button>
+    </div>
+
+    <div class="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
+      <button onclick="triggerVoiceInput()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-teal-50 hover:text-teal-600 transition" title="Voice Input"><i class="fa-solid fa-microphone"></i></button>
+      <input type="text" id="ai-chat-input" placeholder="Ask AI anything..." onkeydown="if(event.key==='Enter') sendAiChatMessage()" class="flex-1 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-medium focus:outline-none focus:border-teal-500">
+      <button onclick="sendAiChatMessage()" id="ai-chat-send-btn" class="p-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition" aria-label="Send Message"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+<div class="custom-modal" id="appModal" role="dialog" aria-modal="true">
+<div class="modal-box">
+<div class="sheet-handle"></div>
+<h3 id="modalTitle" class="text-xl font-black mb-2 text-slate-900 dark:text-slate-100 display-font"></h3>
+<p id="modalBody" class="text-slate-500 dark:text-slate-400 mb-4 text-sm"></p>
+<div id="modalContentSlot" class="flex-1 min-h-0"></div>
+<div class="flex justify-end gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800" id="modalActions"></div>
+</div>
+</div>
+
+<div id="toast-container" class="fixed top-6 right-6 z-50 flex flex-col gap-2.5 pointer-events-none sm:top-auto sm:bottom-6"></div>
+
+<script>
+// ===== Storage Module & Versioned Models =====
+const STORAGE_KEYS = {
+attempts: 'edupulse_attempts_v3',
+qstats: 'edupulse_qstats_v3',
+settings: 'edupulse_settings_v3',
+streak: 'edupulse_streak_v3',
+progress: 'edupulse_progress_v3',
+todos: 'edupulse_todos_v3',
+theme: 'edupulse_theme',
+focus: 'edupulse_focus_sessions_v3',
+geminiKey: 'edupulse_gemini_key_v3',
+errorNotebook: 'edupulse_error_notebook_v3',
+userXp: 'edupulse_user_xp_v3',
+onboarding: 'edupulse_onboard_v3',
+sidebarState: 'edupulse_sidebar_state_v3'
+};
+
+const defaultSettings = {
+marksCorrect: 4,
+marksWrong: -1,
+minutesPerQuestion: 1,
+haptics: true,
+soundEffects: true,
+dailyGoalQuestions: 30,
+accentColor: '#0d9488'
+};
+
+const StorageModule = {
+get(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (raw === null) return fallback;
+    return JSON.parse(raw);
+  } catch (e) { return fallback; }
+},
+set(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch (e) { return false; }
+},
+init() {
+  if (!localStorage.getItem(STORAGE_KEYS.settings)) this.set(STORAGE_KEYS.settings, defaultSettings);
+  if (!localStorage.getItem(STORAGE_KEYS.attempts)) this.set(STORAGE_KEYS.attempts, []);
+  if (!localStorage.getItem(STORAGE_KEYS.qstats)) this.set(STORAGE_KEYS.qstats, {});
+  if (!localStorage.getItem(STORAGE_KEYS.streak)) {
+    const today = new Date().toISOString().split('T')[0];
+    this.set(STORAGE_KEYS.streak, { current: 1, best: 1, lastActiveDate: today, dailyCounts: { [today]: 10 } });
+  }
+  if (!localStorage.getItem(STORAGE_KEYS.onboarding)) {
+    setTimeout(() => document.getElementById('onboardingModal').classList.add('open'), 600);
+  }
+  this.applyAccentColor();
+  this.updateStreak();
+},
+applyAccentColor() {
+  const settings = this.get(STORAGE_KEYS.settings, defaultSettings);
+  document.documentElement.style.setProperty('--accent-color', settings.accentColor || '#0d9488');
+},
+updateStreak() {
+  const streak = this.get(STORAGE_KEYS.streak, { current: 1, best: 1, lastActiveDate: '', dailyCounts: {} });
+  const today = new Date().toISOString().split('T')[0];
+  if (streak.lastActiveDate === today) return;
+  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+  if (streak.lastActiveDate === yesterday) {
+    streak.current += 1;
+  } else {
+    streak.current = 1;
+  }
+  streak.lastActiveDate = today;
+  if (streak.current > streak.best) streak.best = streak.current;
+  this.set(STORAGE_KEYS.streak, streak);
+},
+recordActivity(questionsAnsweredCount) {
+  const streak = this.get(STORAGE_KEYS.streak, { current: 1, best: 1, lastActiveDate: '', dailyCounts: {} });
+  const today = new Date().toISOString().split('T')[0];
+  streak.dailyCounts[today] = (streak.dailyCounts[today] || 0) + questionsAnsweredCount;
+  streak.lastActiveDate = today;
+  if (streak.current > streak.best) streak.best = streak.current;
+  this.set(STORAGE_KEYS.streak, streak);
+
+  const settings = this.get(STORAGE_KEYS.settings, defaultSettings);
+  if (streak.dailyCounts[today] >= settings.dailyGoalQuestions) {
+    showToast(`🎯 Daily goal of ${settings.dailyGoalQuestions} questions reached!`, 'success');
+  }
+}
+};
+
+StorageModule.init();
+
+// Splash screen fadeout
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const sp = document.getElementById('splashScreen');
+    if (sp) {
+      sp.style.opacity = '0';
+      setTimeout(() => sp.remove(), 700);
+    }
+  }, 700);
+});
+
+// Modal close handlers (Escape key and backdrop click)
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.key === '?') openShortcutsModal();
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    openCommandPalette();
+  }
+});
+
+document.getElementById('appModal')?.addEventListener('click', e => {
+  if (e.target.id === 'appModal') closeModal();
+});
+
+function completeOnboarding() {
+  const name = document.getElementById('onboardUserName')?.value || 'Aspirant';
+  const year = document.getElementById('onboardTargetYear')?.value || '2027';
+  const score = document.getElementById('onboardTargetScore')?.value || '680';
+  const goal = parseInt(document.getElementById('onboardDailyGoal')?.value || '40', 10);
+
+  const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  settings.dailyGoalQuestions = goal;
+  StorageModule.set(STORAGE_KEYS.settings, settings);
+
+  StorageModule.set(STORAGE_KEYS.onboarding, { done: true, name, year, score });
+  document.getElementById('onboardingModal').classList.remove('open');
+  showToast(`Welcome Dr. ${name}! Your NEET ${year} ecosystem is ready. 🦉`, 'success');
+  renderView();
+}
+
+// Audio & Haptics
+function playSound(type) {
+  const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  if (!settings.soundEffects) return;
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    if (type === 'correct') {
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+      osc.frequency.setValueAtTime(880, ctx.currentTime + 0.1);
+      gain.gain.setValueAtTime(0.1, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      osc.start(); osc.stop(ctx.currentTime + 0.3);
+    } else {
+      osc.frequency.setValueAtTime(220, ctx.currentTime);
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      osc.start(); osc.stop(ctx.currentTime + 0.3);
+    }
+  } catch (e) {}
+}
+
+function triggerHaptic() {
+  const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  if (settings.haptics && navigator.vibrate) navigator.vibrate(30);
+}
+
+// Gemini AI Integration Core
+function getGeminiApiKey() { return localStorage.getItem(STORAGE_KEYS.geminiKey) || ''; }
+function setGeminiApiKey(key) {
+  localStorage.setItem(STORAGE_KEYS.geminiKey, key.trim());
+  showToast(key.trim() ? 'Gemini API Key saved!' : 'Key removed.', key.trim() ? 'success' : 'warning');
+}
+
+function openApiKeyModal() {
+  const currentKey = getGeminiApiKey();
+  setModal('Gemini AI Engine Settings', 'Provide your Gemini API key to activate AI features.', `
+    <div class="space-y-4 py-2">
+      <div class="p-3.5 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-xs text-teal-700 dark:text-teal-300">
+        <i class="fa-solid fa-shield-halved mr-1"></i> Key is stored strictly in browser local storage.
+      </div>
+      <div>
+        <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Gemini API Key</label>
+        <input type="password" id="geminiKeyInput" value="${escapeHtml(currentKey)}" placeholder="AIzaSy..." class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono">
+      </div>
+    </div>
+  `, `<button onclick="saveApiKeyFromModal()" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs">Save Key</button>`);
+}
+
+function saveApiKeyFromModal() {
+  setGeminiApiKey(document.getElementById('geminiKeyInput')?.value || '');
+  closeModal();
+}
+
+async function callGeminiApi(prompt, systemInstruction = '') {
+  const apiKey = getGeminiApiKey();
+  if (!apiKey) { openApiKeyModal(); throw new Error('Please configure Gemini API Key first.'); }
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], ...(systemInstruction ? { systemInstruction: { parts: [{ text: systemInstruction }] } } : {}) })
+  });
+  if (!response.ok) throw new Error(`API Call failed: HTTP ${response.status}`);
+  const result = await response.json();
+  const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+  if (!text) throw new Error('No content returned.');
+  return text;
+}
+
+// AI Copilot Chat Engine
+function toggleAiChatbotWindow() { document.getElementById('ai-chatbot-window')?.classList.toggle('hidden'); }
+function resetChatContext() {
+  document.getElementById('activeChatContext').textContent = "General NEET Prep";
+  showToast('Chat context reset.');
+}
+function triggerVoiceInput() {
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    return showToast('Speech recognition not supported in this browser.', 'warning');
+  }
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.onresult = (e) => {
+    document.getElementById('ai-chat-input').value = e.results[0][0].transcript;
+    showToast('Voice captured! Press send.');
+  };
+  recognition.start();
+  showToast('Listening... Speak now 🎙️');
+}
+
+function appendChatMessage(sender, text, rawQuestionsJson = null) {
+  const container = document.getElementById('ai-chat-messages');
+  if (!container) return;
+  const div = document.createElement('div');
+  div.className = sender === 'user' ? 'chat-msg-user p-3 shadow-sm ml-auto max-w-[85%]' : 'chat-msg-ai p-3.5 shadow-sm max-w-[90%]';
+  
+  let content = multiline(text);
+  if (rawQuestionsJson) {
+    content += `<div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-800">
+      <button onclick='launchQuizFromAiChat(${JSON.stringify(rawQuestionsJson).replace(/'/g, "&apos;")})' class="w-full py-2 rounded-xl bg-teal-600 text-white font-bold text-xs shadow-md">Launch Quiz Preview Card 🚀</button>
+    </div>`;
+  }
+  div.innerHTML = content;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  if (window.renderMathInElement) window.renderMathInElement(div);
+}
+
+async function sendAiChatMessage() {
+  const input = document.getElementById('ai-chat-input');
+  const text = input?.value?.trim();
+  if (!text) return;
+  input.value = '';
+  appendChatMessage('user', text);
+
+  const container = document.getElementById('ai-chat-messages');
+  const loading = document.createElement('div');
+  loading.className = 'chat-msg-ai p-3 shadow-sm text-slate-400 italic flex items-center gap-2';
+  loading.innerHTML = `<i class="fa-solid fa-circle fa-bounce text-[6px]"></i><i class="fa-solid fa-circle fa-bounce text-[6px]"></i><i class="fa-solid fa-circle fa-bounce text-[6px]"></i> Thinking...`;
+  container.appendChild(loading);
+  container.scrollTop = container.scrollHeight;
+
+  try {
+    const res = await callGeminiApi(text, "You are EduPulse AI Copilot for NEET.");
+    loading.remove();
+    appendChatMessage('ai', res);
+  } catch (err) {
+    loading.remove();
+    appendChatMessage('ai', "⚠️ Error: " + err.message);
+  }
+}
+
+function triggerAiChatPreset(type) {
+  const input = document.getElementById('ai-chat-input');
+  if (!input) return;
+  if (type === 'quiz') input.value = "Generate 5 high-yield NEET practice MCQs on Cell Biology with answers.";
+  else if (type === 'strategy') input.value = "Create a 7-day NEET study plan for Organic Chemistry.";
+  else if (type === 'formula') input.value = "List top 10 Physics formulas for NEET.";
+  sendAiChatMessage();
+}
+
+function launchQuizFromAiChat(rawQuestions) {
+  if (!Array.isArray(rawQuestions)) return;
+  const formatted = rawQuestions.map((q, i) => ({
+    qKey: 'ai_' + Date.now() + '_' + i, question: q.q, options: q.o, correct: (q.a || 1) - 1, explanation: q.s || '', sourceChapter: 'AI Practice Drill'
+  }));
+  setupQuizMode('practice', 'Biology', 'AI Custom Practice Drill', formatted);
+}
+
+// Data Models
+const DATA_BASE = "Data/";
+const FILE_OVERRIDES = { 'The Living World': 'living_world_mcqs.json' };
+const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const quizUrl = (subj, chapter) => DATA_BASE + (FILE_OVERRIDES[chapter] || `${slugify(subj + ' ' + chapter)}.json`);
+
+const data = {
+Biology: ['The Living World','Biological Classification','Plant Kingdom','Animal Kingdom','Morphology and Anatomy of Flowering Plants','Structural Organisation in Animals','Cell: The Unit of Life','Biomolecules','Cell Cycle and Cell Division','Photosynthesis in Plants','Respiration in Plants','Plant Growth and Development','Breathing and Exchange of Gases','Body Fluids and Circulation','Excretory Products and their Elimination','Locomotion and Movement','Neural Control and Coordination','Chemical Coordination and Integration','Sexual Reproduction in Flowering Plants','Human Reproduction','Reproductive Health','Principles of Inheritance and Variation','Molecular Basis of Inheritance','Evolution','Human Health and Disease','Microbes in Human Welfare','Biotechnology: Principles and Processes','Biotechnology and its Applications','Organisms and Populations','Ecosystem','Biodiversity and Conservation'],
+Chemistry: ['Some Basic Concepts of Chemistry','Structure of Atom','Chemical Thermodynamics','Chemical and Ionic Equilibrium','Solutions','Electrochemistry and Redox Reactions','Chemical Kinetics','Classification of Elements and Periodicity','Chemical Bonding','p-Block Elements','d- and f-Block Elements','Coordination Compounds','Purification and Characterisation','General Organic Chemistry','Hydrocarbons','Haloalkanes and Haloarenes','Oxygen-Containing Compounds','Nitrogen-Containing Compounds','Biomolecules','Principles Related to Practical Chemistry'],
+Physics: ['Units and Measurements','Motion in a Straight Line','Motion in a Plane','Laws of Motion','Work, Energy and Power','Rotational Motion','Gravitation','Mechanical Properties of Solids','Mechanical Properties of Fluids','Thermal Properties of Matter','Thermodynamics','Kinetic Theory of Gases','Oscillations','Waves','Electric Charges and Fields','Electrostatic Potential and Capacitance','Current Electricity','Moving Charges and Magnetism','Magnetism and Matter','Electromagnetic Induction','Alternating Current','Electromagnetic Waves','Ray Optics and Optical Instruments','Wave Optics','Dual Nature of Radiation and Matter','Atoms','Nuclei','Semiconductor Electronics']
+};
+const TOTAL_CHAPTERS = Object.values(data).reduce((n, l) => n + l.length, 0);
+
+const TEACHERS_DATA = [
+{ id: "t1", name: "RCM Sir", img: "https://i.ibb.co/tTqKFyp8/RCM-SIR.jpg", blurb: "Master of Organic & Inorganic Chemistry with 12+ years experience.", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasPhrjrSqNnxyiLwaDI_Qml" },
+{ id: "t2", name: "MKG Sir", img: "https://i.ibb.co/3x97xd0/MKG-SIR.jpg", blurb: "Physics specialist focusing on conceptual visualization and shortcuts.", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauIS74mnISFrQttmOdM1-As" },
+{ id: "t3", name: "Dilip Arora Sir (DA)", img: "https://i.ibb.co/ZRfPy476/DILIP-ARORA-SIR-DA.jpg", blurb: "Renowned Botany educator for AIIMS/NEET top rankers.", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatKeD-H1MIcRIFsfgnYoARM" }
+];
+
+const INITIAL_RESOURCES = [
+{ id: "sp999", title: "Allen NEET Portal", category: "JEE & NEET", subtag: "Batches", badge: "StudyPanda", url: "http://Amity18.carrd.co" },
+{ id: "jn1", title: "Allen Test Series", category: "JEE & NEET", subtag: "Tests", badge: "Allen Tests", url: "http://test.neetxnoah1.workers.dev" },
+{ id: "jn2", title: "PW Books Vault", category: "JEE & NEET", subtag: "Books", badge: "PW Books", url: "https://pikachu-books.vercel.app/" },
+{ id: "jn8", title: "Marks App (MathonGo)", category: "JEE & NEET", subtag: "PYQs", badge: "PYQ App", url: "https://web.getmarks.app/" },
+{ id: "rd1", title: "Anna's Archive", category: "Free Books", subtag: "Books", badge: "Shadow Library", url: "https://annas-archive.org/" }
+];
+
+let currentTab = 'home', previousTab = 'home', subject = 'Biology', learnSubTab = 'practice';
+let userProgress = StorageModule.get(STORAGE_KEYS.progress, {});
+let todos = StorageModule.get(STORAGE_KEYS.todos, [
+{ id: 'td1', title: 'Revise Living World MCQs', subject: 'Biology', priority: 'high', completed: false, createdAt: Date.now() },
+{ id: 'td2', title: 'Solve Chemical Bonding PYQs', subject: 'Chemistry', priority: 'medium', completed: false, createdAt: Date.now() }
+]);
+let timerSessionCount = parseInt(StorageModule.get(STORAGE_KEYS.focus, '0'), 10);
+let timerInitialSeconds = 1500;
+let timerSeconds = timerInitialSeconds;
+let timerInterval = null;
+let currentAudio = null;
+
+// Mock Wizard state & selection tracking
+let mockWizardStep = 1;
+let mockWizardState = { 
+  subjects: ['Biology'], 
+  chapters: ['The Living World', 'Cell: The Unit of Life'], 
+  qCount: 30, 
+  difficulty: 'Standard NEET', 
+  duration: 45, 
+  title: 'AI Custom NEET Test Paper',
+  chapterSearchQuery: ''
+};
+
+function showToast(msg, type = 'success') {
+const container = document.getElementById('toast-container');
+if (!container) return;
+const toast = document.createElement('div');
+const bg = type === 'error' ? 'bg-rose-600 text-white' : type === 'warning' ? 'bg-amber-500 text-slate-950 font-bold' : 'bg-teal-600 text-white';
+const icon = type === 'error' ? 'fa-circle-exclamation' : type === 'warning' ? 'fa-triangle-exclamation' : 'fa-circle-check';
+toast.className = `px-4 py-3 rounded-2xl shadow-xl text-xs font-bold ${bg} transition-all duration-300 translate-y-2 opacity-0 pointer-events-auto flex items-center gap-2.5`;
+toast.innerHTML = `<i class="fa-solid ${icon} text-sm"></i> ${escapeHtml(msg)}`;
+container.appendChild(toast);
+setTimeout(() => { toast.classList.remove('translate-y-2', 'opacity-0'); }, 20);
+setTimeout(() => { toast.classList.add('translate-y-2', 'opacity-0'); setTimeout(() => toast.remove(), 300); }, 3000);
+}
+
+function escapeHtml(v = '') {
+return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+const multiline = v => escapeHtml(v).replace(/\n/g, '<br>');
+const jsArg = s => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+
+function toggleMobileNav(open) {
+const sidebar = document.getElementById('sidebarDrawer');
+const overlay = document.getElementById('navOverlay');
+if (!sidebar || !overlay) return;
+if (open === undefined) open = !sidebar.classList.contains('mobile-open');
+if (open) { sidebar.classList.add('mobile-open'); overlay.classList.add('open'); }
+else { sidebar.classList.remove('mobile-open'); overlay.classList.remove('open'); }
+}
+
+function toggleSidebarCollapse() {
+const sidebar = document.getElementById('sidebarDrawer');
+if (!sidebar) return;
+const isCollapsed = sidebar.classList.toggle('collapsed');
+StorageModule.set(STORAGE_KEYS.sidebarState, isCollapsed ? 'collapsed' : 'expanded');
+}
+
+function initSidebarState() {
+const state = StorageModule.get(STORAGE_KEYS.sidebarState, 'expanded');
+if (state === 'collapsed') document.getElementById('sidebarDrawer')?.classList.add('collapsed');
+}
+initSidebarState();
+
+function initTheme() {
+const saved = localStorage.getItem(STORAGE_KEYS.theme) || 'light';
+document.body.classList.toggle('dark', saved === 'dark');
+document.documentElement.classList.toggle('dark', saved === 'dark');
+}
+function toggleTheme() {
+const isDark = document.body.classList.toggle('dark');
+document.documentElement.classList.toggle('dark', isDark);
+localStorage.setItem(STORAGE_KEYS.theme, isDark ? 'dark' : 'light');
+}
+initTheme();
+
+window.addEventListener('online', updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+function updateOnlineStatus() {
+const badge = document.getElementById('offline-badge');
+if (badge) badge.classList.toggle('hidden', navigator.onLine);
+}
+
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+e.preventDefault(); deferredPrompt = e;
+const b = document.getElementById('pwa-install-btn');
+if (b) { b.classList.remove('hidden'); b.classList.add('inline-flex'); }
+});
+function triggerPwaInstall() {
+if (!deferredPrompt) return;
+deferredPrompt.prompt();
+deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+}
+
+function updateGlobalProgress() {
+const done = Object.values(userProgress).filter(p => p && p.completed).length;
+const pct = Math.round((done / TOTAL_CHAPTERS) * 100);
+const bar = document.getElementById('sidebar-progress-bar'), txt = document.getElementById('sidebar-progress-text');
+if (bar) bar.style.width = `${pct}%`;
+if (txt) txt.textContent = `${pct}% syllabus covered`;
+}
+
+function setSubject(s) { subject = s; renderView(); }
+
+// Render Chapters Grid
+function renderChapters() {
+const list = data[subject] || [];
+const query = (document.getElementById('search')?.value || '').toLowerCase().trim();
+const filter = document.getElementById('statusFilter')?.value || 'all';
+const container = document.getElementById('chapters');
+if (!container) return;
+
+const filtered = list.filter(ch => {
+const match = ch.toLowerCase().includes(query);
+const done = userProgress[ch] && userProgress[ch].completed;
+return filter === 'completed' ? match && done : filter === 'pending' ? match && !done : match;
+});
+
+const cls = subject === 'Biology' ? 'bio' : subject === 'Chemistry' ? 'chem' : 'phy';
+const short = subject === 'Biology' ? 'BIO' : subject === 'Chemistry' ? 'CHEM' : 'PHY';
+
+container.innerHTML = filtered.map((ch, idx) => {
+const done = userProgress[ch] && userProgress[ch].completed;
+const attemptsArr = StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => a.chapter === ch);
+const bestScore = attemptsArr.length > 0 ? Math.max(...attemptsArr.map(a => a.score)) : 0;
+return `<div class="card chapter border-l-4 ${subject==='Biology'?'border-l-emerald-500':subject==='Chemistry'?'border-l-purple-500':'border-l-teal-500'}" onclick="openModePicker('${jsArg(subject)}', '${jsArg(ch)}')"> 
+<div class="absolute top-3 right-4 font-black text-3xl text-slate-200 dark:text-slate-800 pointer-events-none tabular-nums">#${String(idx + 1).padStart(2, '0')}</div>
+<div> 
+  <div class="flex items-center justify-between"> 
+    <span class="chip ${cls}">${short}</span> 
+    <div class="flex items-center gap-2">
+      <button onclick="event.stopPropagation(); toggleChapterProgress('${jsArg(ch)}')" class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${done ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-500 dark:bg-slate-800'}">${done ? 'Completed ✓' : 'Mark Done'}</button>
+    </div>
+  </div> 
+  <h3 class="font-bold text-sm mt-3 text-slate-900 dark:text-slate-100">${escapeHtml(ch)}</h3> 
+  <div class="mt-2 text-[11px] text-slate-500 flex items-center gap-3"><span>Best Score: <strong>${bestScore}</strong></span></div> 
+</div> 
+<div> 
+  <div class="progress"><i style="width:${done ? '100%' : '0%'}"></i></div> 
+  <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"> 
+    <button onclick="event.stopPropagation(); askAiChapterTutor('${jsArg(ch)}')" class="text-xs text-purple-600 font-bold hover:underline"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> AI Tutor</button> 
+    <span class="text-xs font-bold text-teal-600">Start Quiz →</span> 
+  </div> 
+</div> 
+</div>`;
+}).join('');
+}
+
+function toggleChapterProgress(chapterName) {
+const curr = userProgress[chapterName] && userProgress[chapterName].completed;
+userProgress[chapterName] = { completed: !curr, pct: !curr ? 100 : 0 };
+StorageModule.set(STORAGE_KEYS.progress, userProgress);
+updateGlobalProgress();
+showToast(`${chapterName} marked as ${!curr ? 'Completed' : 'Pending'}`);
+renderView();
+}
+
+function openModal() { document.getElementById('appModal').classList.add('open'); }
+function toggleFullScreenMode(on) { document.getElementById('appModal')?.classList.toggle('fullscreen-modal', !!on); }
+function closeModal() {
+toggleFullScreenMode(false);
+document.getElementById('appModal').classList.remove('open');
+if (quizState.timerInterval) { clearInterval(quizState.timerInterval); quizState.timerInterval = null; }
+}
+function setModal(title, body, html, actions = '') {
+document.getElementById('modalTitle').textContent = title;
+document.getElementById('modalBody').textContent = body;
+document.getElementById('modalContentSlot').innerHTML = html;
+document.getElementById('modalActions').innerHTML = actions;
+openModal();
+}
+
+function openShortcutsModal() {
+setModal('Keyboard Shortcuts', 'Accelerate navigation with shortcuts:', `
+  <div class="space-y-2 py-2 text-xs">
+    <div class="flex justify-between items-center p-2 rounded bg-slate-50 dark:bg-slate-800"><span class="font-bold">Select Options A / B / C / D</span><kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border font-mono">1, 2, 3, 4</kbd></div>
+    <div class="flex justify-between items-center p-2 rounded bg-slate-50 dark:bg-slate-800"><span class="font-bold">Next Question</span><kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border font-mono">ArrowRight / Space</kbd></div>
+    <div class="flex justify-between items-center p-2 rounded bg-slate-50 dark:bg-slate-800"><span class="font-bold">Previous Question</span><kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border font-mono">ArrowLeft</kbd></div>
+    <div class="flex justify-between items-center p-2 rounded bg-slate-50 dark:bg-slate-800"><span class="font-bold">Bookmark / Mark for Review</span><kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border font-mono">B or F</kbd></div>
+    <div class="flex justify-between items-center p-2 rounded bg-slate-50 dark:bg-slate-800"><span class="font-bold">Command Palette</span><kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border font-mono">Ctrl + K</kbd></div>
+  </div>
+`, `<button onclick="closeModal()" class="px-4 py-2 bg-teal-600 text-white rounded-xl font-bold text-xs">Got it</button>`);
+}
+
+function openCommandPalette() {
+setModal('Quick Command Palette (Ctrl+K)', 'Jump to features instantly:', `
+  <div class="grid grid-cols-2 gap-2 text-xs py-2">
+    <button onclick="closeModal(); switchTab('learn');" class="p-3 rounded-xl border hover:border-teal-500 font-bold text-left"><i class="fa-solid fa-book-open mr-2 text-teal-600"></i> Learn & Practice</button>
+    <button onclick="closeModal(); switchTab('mock');" class="p-3 rounded-xl border hover:border-teal-500 font-bold text-left"><i class="fa-solid fa-sliders mr-2 text-amber-500"></i> AI Mock Builder</button>
+    <button onclick="closeModal(); toggleAiChatbotWindow();" class="p-3 rounded-xl border hover:border-teal-500 font-bold text-left"><i class="fa-solid fa-wand-magic-sparkles mr-2 text-purple-500"></i> Open AI Copilot</button>
+    <button onclick="closeModal(); openErrorNotebookModal();" class="p-3 rounded-xl border hover:border-teal-500 font-bold text-left"><i class="fa-solid fa-book-bookmark mr-2 text-rose-500"></i> Error Notebook</button>
+  </div>
+`, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close</button>`);
+}
+
+function openBadgesModal() {
+const xp = StorageModule.get(STORAGE_KEYS.userXp, 0);
+setModal('Badges & Achievement Ranks', `Current XP: ${xp}`, `
+  <div class="grid grid-cols-2 gap-3 py-2 text-xs">
+    <div class="p-3 rounded-xl border border-teal-500/30 bg-teal-500/10 text-center"><i class="fa-solid fa-user-doctor text-2xl text-teal-600 mb-1"></i><h4 class="font-bold">Intern Aspirant</h4><p class="text-[10px] text-slate-500">0 - 249 XP</p></div>
+    <div class="p-3 rounded-xl border ${xp >= 250 ? 'border-teal-500 bg-teal-500/10' : 'border-slate-200 opacity-50'} text-center"><i class="fa-solid fa-user-nurse text-2xl text-teal-600 mb-1"></i><h4 class="font-bold">Medical Student</h4><p class="text-[10px] text-slate-500">250 - 749 XP</p></div>
+    <div class="p-3 rounded-xl border ${xp >= 750 ? 'border-teal-500 bg-teal-500/10' : 'border-slate-200 opacity-50'} text-center"><i class="fa-solid fa-stethoscope text-2xl text-teal-600 mb-1"></i><h4 class="font-bold">Resident Doctor</h4><p class="text-[10px] text-slate-500">750 - 1499 XP</p></div>
+    <div class="p-3 rounded-xl border ${xp >= 1500 ? 'border-teal-500 bg-teal-500/10' : 'border-slate-200 opacity-50'} text-center"><i class="fa-solid fa-hospital-user text-2xl text-teal-600 mb-1"></i><h4 class="font-bold">Surgeon Specialist</h4><p class="text-[10px] text-slate-500">1500+ XP</p></div>
+  </div>
+`, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close</button>`);
+}
+
+function openModePicker(subj, chapterName) {
+subject = subj;
+setModal('Select Quiz Mode', chapterName, `<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-2"> 
+<button onclick="setupQuizMode('practice', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"><h4 class="font-black text-base display-font">Practice Mode</h4><p class="text-xs text-slate-500 mt-1">Instant feedback, explanations & stopwatch learning.</p></button> 
+<button onclick="setupQuizMode('test', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"><h4 class="font-black text-base display-font">Test Simulation</h4><p class="text-xs text-slate-500 mt-1">NTA NEET test countdown with negative marking (+4 / -1).</p></button> 
+</div>`, `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-xs">Cancel</button>`);
+}
+
+async function setupQuizMode(mode, subj, chapterName, customQuestions = null) {
+subject = subj;
+toggleFullScreenMode(false);
+setModal('', '', `<div class="flex flex-col items-center justify-center py-10"><i class="fa-solid fa-spinner fa-spin text-4xl text-teal-600 mb-4"></i><p class="text-sm font-bold">Preparing ${mode === 'practice' ? 'Practice' : 'Test'} session...</p></div>`);
+
+try {
+let rawQuestions = customQuestions;
+if (!rawQuestions) {
+  const res = await fetch(quizUrl(subj, chapterName), { cache: 'no-cache' });
+  if (!res.ok) throw new Error('Quiz file unavailable.');
+  const raw = await res.json();
+  const list = Array.isArray(raw) ? raw : raw.qs;
+  rawQuestions = list.map((q, i) => ({
+    qKey: slugify(chapterName) + '#' + i, question: q.q || q.question, options: q.o || q.options, correct: (q.a || 1) - 1, explanation: q.s || '', sourceChapter: chapterName
+  }));
+}
+
+if (mode === 'practice') {
+  launchPracticeSession(subj, chapterName, rawQuestions);
+} else {
+  launchTestSession(subj, chapterName, rawQuestions);
+}
+} catch (err) {
+setModal('Error', '', `<p class="text-xs text-rose-500">${escapeHtml(err.message)}</p>`, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 rounded-xl text-xs">Close</button>`);
+}
+}
+
+const quizState = { mode: 'practice', chapter: '', subject: '', title: '', questions: [], currentIndex: 0, userAnswers: {}, marked: {}, bookmarked: {}, skippedQuestions: {}, questionTimes: {}, questionStartTimer: Date.now(), testEndTimestamp: null, timerInterval: null };
+
+function launchPracticeSession(subj, chapterName, rawQuestions) {
+Object.assign(quizState, { mode: 'practice', chapter: chapterName, subject: subj, title: `${subj} — ${chapterName}`, questions: rawQuestions, currentIndex: 0, userAnswers: {}, marked: {}, bookmarked: {}, skippedQuestions: {}, questionTimes: {}, questionStartTimer: Date.now() });
+closeModal();
+renderPracticeQuiz();
+}
+
+function launchTestSession(subj, chapterName, rawQuestions) {
+const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+const durationMins = rawQuestions.length * settings.minutesPerQuestion;
+const endTimestamp = Date.now() + durationMins * 60 * 1000;
+Object.assign(quizState, { mode: 'test', chapter: chapterName, subject: subj, title: `${subj} — ${chapterName} (Test Mode)`, questions: rawQuestions, currentIndex: 0, userAnswers: {}, marked: {}, bookmarked: {}, skippedQuestions: {}, questionTimes: {}, questionStartTimer: Date.now(), testEndTimestamp: endTimestamp });
+closeModal();
+renderTestQuiz();
+}
+
+function renderPracticeQuiz() {
+toggleFullScreenMode(true);
+const q = quizState.questions[quizState.currentIndex];
+if (!q) return;
+const idx = quizState.currentIndex, total = quizState.questions.length;
+const selected = quizState.userAnswers[idx], answered = selected !== undefined;
+const isRight = selected === q.correct;
+const isBookmarked = !!quizState.bookmarked[idx];
+
+const palette = quizState.questions.map((_, i) => `<button onclick="jumpToPracticeQuestion(${i})" class="w-8 h-8 rounded-lg text-xs flex items-center justify-center shrink-0 ${i === idx ? 'ring-2 ring-teal-400 font-bold' : ''} ${quizState.userAnswers[i] !== undefined ? (quizState.userAnswers[i] === quizState.questions[i].correct ? 'bg-emerald-600 text-white' : 'bg-rose-500 text-white') : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200'}">${i + 1}</button>`).join('');
+
+const options = q.options.map((opt, i) => {
+let c = 'flex items-center gap-3 w-full rounded-2xl border px-4 py-4 text-left text-sm font-medium transition cursor-pointer min-h-[56px] ';
+if (answered) {
+  if (i === q.correct) c += 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold';
+  else if (i === selected) c += 'border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 font-bold';
+  else c += 'border-slate-200 dark:border-slate-800 opacity-60';
+} else c += 'border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:bg-slate-800';
+return `<button type="button" class="${c}" ${answered ? 'disabled' : `onclick="selectPracticeOption(${i})"`}><span class="w-8 h-8 rounded-full bg-white dark:bg-slate-700 text-xs font-bold flex items-center justify-center shadow-sm">${String.fromCharCode(65 + i)}</span><span class="flex-1">${escapeHtml(opt)}</span></button>`;
+}).join('');
+
+const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-4 relative">
+<div class="flex items-center justify-between border-b dark:border-slate-800 pb-3">
+  <button onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200"><i class="fa-solid fa-arrow-left mr-1"></i> Exit</button>
+  <h2 class="text-base font-bold display-font">${escapeHtml(quizState.title)}</h2>
+  <button onclick="toggleBookmarkCurrent()" class="px-3 py-1.5 rounded-xl border ${isBookmarked ? 'border-amber-500 bg-amber-500/10 text-amber-600' : 'border-slate-200 dark:border-slate-700'} text-xs font-bold"><i class="fa-solid fa-star mr-1"></i> ${isBookmarked ? 'Bookmarked' : 'Bookmark'}</button>
+</div>
+<div class="flex gap-1.5 overflow-x-auto py-2">${palette}</div>
+<div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white p-6 dark:bg-slate-900/50 shadow-sm">
+  <span class="text-xs font-bold text-teal-600">Question ${idx + 1} of ${total}</span>
+  <p class="text-base font-bold mt-2">${multiline(q.question)}</p>
+  <div class="mt-5 space-y-3">${options}</div>
+  ${answered ? `<div class="mt-4 p-4 rounded-xl border ${isRight ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200' : 'bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-200'} text-xs font-semibold">
+    <div class="flex justify-between items-center mb-1">
+      <span>${isRight ? 'Correct! 🌟' : `Incorrect. Correct option: ${String.fromCharCode(65 + q.correct)}`}</span>
+      ${!isRight ? `<button onclick='addToErrorNotebook(${JSON.stringify(q).replace(/'/g, "&apos;")})' class="px-2 py-1 rounded bg-rose-200 dark:bg-rose-900 text-rose-900 dark:text-rose-100 font-bold">+ Error Notebook</button>` : ''}
+    </div>
+    <p class="mt-1">${escapeHtml(q.explanation)}</p>
+  </div>` : ''}
+</div>
+<div class="flex justify-between pt-3 border-t dark:border-slate-800">
+  <button onclick="jumpToPracticeQuestion(${idx - 1})" ${idx === 0 ? 'disabled' : ''} class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold disabled:opacity-40">← Prev</button>
+  <button onclick="${idx === total - 1 ? 'finishPracticeQuiz()' : 'goToNextPracticeQuestion()'}" class="px-6 py-2.5 rounded-xl bg-teal-600 text-white text-xs font-bold hover:bg-teal-700">${idx === total - 1 ? 'Finish Quiz' : 'Next →'}</button>
+</div>
+</div>`;
+setModal('', '', html);
+}
+
+function selectPracticeOption(i) {
+const idx = quizState.currentIndex;
+if (quizState.userAnswers[idx] !== undefined) return;
+quizState.userAnswers[idx] = i;
+
+const q = quizState.questions[idx];
+if (i === q.correct) playSound('correct'); else playSound('wrong');
+triggerHaptic();
+
+renderPracticeQuiz();
+}
+
+function toggleBookmarkCurrent() {
+const idx = quizState.currentIndex;
+quizState.bookmarked[idx] = !quizState.bookmarked[idx];
+showToast(quizState.bookmarked[idx] ? 'Question bookmarked' : 'Bookmark removed');
+renderPracticeQuiz();
+}
+
+function jumpToPracticeQuestion(i) {
+if (i >= 0 && i < quizState.questions.length) { quizState.currentIndex = i; renderPracticeQuiz(); }
+}
+function goToNextPracticeQuestion() { quizState.currentIndex++; renderPracticeQuiz(); }
+
+function finishPracticeQuiz() {
+const total = quizState.questions.length;
+let correct = 0;
+quizState.questions.forEach((q, i) => { if (quizState.userAnswers[i] === q.correct) correct++; });
+const attempted = Object.keys(quizState.userAnswers).length;
+const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+
+if (accuracy >= 80) triggerConfettiEffect();
+addXpPoints(correct * 10);
+
+const attemptRecord = {
+  id: 'att_' + Date.now(),
+  chapter: quizState.chapter,
+  subject: quizState.subject,
+  mode: 'practice',
+  finishedAt: Date.now(),
+  total, attempted, correct, wrong: attempted - correct, skipped: total - attempted,
+  score: correct, maxScore: total, accuracy
+};
+
+const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
+attempts.unshift(attemptRecord);
+StorageModule.set(STORAGE_KEYS.attempts, attempts);
+StorageModule.recordActivity(attempted);
+
+if (accuracy >= 50 && quizState.chapter) {
+  userProgress[quizState.chapter] = { completed: true, pct: 100 };
+  StorageModule.set(STORAGE_KEYS.progress, userProgress);
+  updateGlobalProgress();
+}
+
+showResultScreen(attemptRecord);
+}
+
+// Real Countdown Test Simulation Engine
+function renderTestQuiz() {
+toggleFullScreenMode(true);
+if (!quizState.timerInterval) {
+  quizState.timerInterval = setInterval(() => {
+    const left = Math.max(0, Math.floor((quizState.testEndTimestamp - Date.now()) / 1000));
+    const timerEl = document.getElementById('test-timer-display');
+    if (timerEl) {
+      const mm = String(Math.floor(left / 60)).padStart(2, '0');
+      const ss = String(left % 60).padStart(2, '0');
+      timerEl.textContent = `${mm}:${ss}`;
+      if (left <= 300) timerEl.className = 'text-xs font-black px-3 py-1 rounded-xl bg-rose-600 text-white animate-pulse';
+    }
+    if (left <= 0) {
+      clearInterval(quizState.timerInterval);
+      quizState.timerInterval = null;
+      submitTestQuiz(true);
+    }
+  }, 1000);
+}
+
+const q = quizState.questions[quizState.currentIndex];
+if (!q) return;
+const idx = quizState.currentIndex, total = quizState.questions.length;
+const selected = quizState.userAnswers[idx];
+const isMarked = !!quizState.marked[idx];
+
+const palette = quizState.questions.map((_, i) => {
+  const ans = quizState.userAnswers[i];
+  const m = quizState.marked[i];
+  let cls = 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300';
+  if (ans !== undefined && m) cls = 'bg-indigo-600 text-white font-bold';
+  else if (ans !== undefined) cls = 'bg-emerald-600 text-white font-bold';
+  else if (m) cls = 'bg-amber-500 text-white font-bold';
+  return `<button onclick="jumpToTestQuestion(${i})" class="w-8 h-8 rounded-lg text-xs flex items-center justify-center shrink-0 ${i === idx ? 'ring-2 ring-teal-400 font-bold' : ''} ${cls}">${i + 1}</button>`;
+}).join('');
+
+const options = q.options.map((opt, i) => {
+  const isSel = selected === i;
+  return `<button type="button" onclick="selectTestOption(${i})" class="flex items-center gap-3 w-full rounded-2xl border px-4 py-4 text-left text-sm font-medium transition cursor-pointer min-h-[56px] ${isSel ? 'border-teal-500 bg-teal-50 dark:bg-teal-950/40 font-bold' : 'border-slate-200 dark:border-slate-700 dark:bg-slate-800'}"><span class="w-8 h-8 rounded-full bg-white dark:bg-slate-700 text-xs font-bold flex items-center justify-center shadow-sm">${String.fromCharCode(65 + i)}</span><span>${escapeHtml(opt)}</span></button>`;
+}).join('');
+
+const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-4">
+<div class="flex items-center justify-between border-b dark:border-slate-800 pb-3">
+  <div><h2 class="text-base font-bold display-font">${escapeHtml(quizState.title)}</h2><span class="text-xs text-slate-400">NTA NEET Simulation</span></div>
+  <div class="flex items-center gap-3">
+    <div id="test-timer-display" class="text-xs font-black px-3 py-1 rounded-xl bg-teal-600 text-white tabular-nums">--:--</div>
+    <button onclick="confirmSubmitTest()" class="px-4 py-1.5 rounded-xl bg-teal-600 text-white text-xs font-bold hover:bg-teal-700">Submit Test</button>
+  </div>
+</div>
+<div class="flex gap-1.5 overflow-x-auto py-2">${palette}</div>
+<div class="flex-1 overflow-y-auto my-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white p-6 dark:bg-slate-900/50">
+  <div class="flex justify-between items-center mb-2">
+    <span class="text-xs font-bold text-teal-600">Question ${idx + 1} of ${total} ${q.sourceChapter ? `(${escapeHtml(q.sourceChapter)})` : ''}</span>
+    <button onclick="toggleMarkTestCurrent()" class="px-3 py-1 rounded-lg border ${isMarked ? 'border-amber-500 bg-amber-500/10 text-amber-600' : 'border-slate-200 dark:border-slate-700'} text-xs font-bold"><i class="fa-solid fa-flag mr-1"></i> ${isMarked ? 'Marked' : 'Mark for Review'}</button>
+  </div>
+  <p class="text-base font-bold mt-2">${multiline(q.question)}</p>
+  <div class="mt-5 space-y-3">${options}</div>
+</div>
+<div class="flex justify-between pt-3 border-t dark:border-slate-800">
+  <button onclick="jumpToTestQuestion(${idx - 1})" ${idx === 0 ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold disabled:opacity-40">← Prev</button>
+  <button onclick="jumpToTestQuestion(${Math.min(total - 1, idx + 1)})" class="px-6 py-2 rounded-xl bg-teal-600 text-white text-xs font-bold hover:bg-teal-700">Next →</button>
+</div>
+</div>`;
+setModal('', '', html);
+}
+
+function selectTestOption(i) { quizState.userAnswers[quizState.currentIndex] = i; renderTestQuiz(); }
+function toggleMarkTestCurrent() { quizState.marked[quizState.currentIndex] = !quizState.marked[quizState.currentIndex]; renderTestQuiz(); }
+function jumpToTestQuestion(i) { if (i >= 0 && i < quizState.questions.length) { quizState.currentIndex = i; renderTestQuiz(); } }
+
+function confirmSubmitTest() {
+const total = quizState.questions.length;
+const answered = Object.keys(quizState.userAnswers).length;
+setModal('Confirm Test Submission', 'Review before submitting:', `
+  <div class="space-y-3 py-2 text-center text-xs font-bold">
+    <div class="grid grid-cols-2 gap-3">
+      <div class="p-3 bg-teal-500/10 rounded-xl text-teal-600"><span class="block text-2xl font-black">${answered}</span>Answered</div>
+      <div class="p-3 bg-slate-500/10 rounded-xl text-slate-500"><span class="block text-2xl font-black">${total - answered}</span>Unanswered</div>
+    </div>
+  </div>
+`, `<div class="flex gap-2"><button onclick="closeModal(); renderTestQuiz();" class="px-4 py-2 rounded-xl bg-slate-200 font-bold text-xs">Resume</button><button onclick="submitTestQuiz()" class="px-5 py-2 rounded-xl bg-teal-600 text-white font-bold text-xs">Submit Now</button></div>`);
+}
+
+function submitTestQuiz(isAuto = false) {
+if (quizState.timerInterval) { clearInterval(quizState.timerInterval); quizState.timerInterval = null; }
+const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+const total = quizState.questions.length;
+let correct = 0, wrong = 0, skipped = 0;
+
+quizState.questions.forEach((q, i) => {
+  const ans = quizState.userAnswers[i];
+  if (ans === undefined) skipped++;
+  else if (ans === q.correct) correct++;
+  else wrong++;
+});
+
+const attempted = correct + wrong;
+const score = (correct * settings.marksCorrect) + (wrong * settings.marksWrong);
+const maxScore = total * settings.marksCorrect;
+const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+
+if (accuracy >= 80) triggerConfettiEffect();
+addXpPoints(score);
+
+const attemptRecord = {
+  id: 'att_' + Date.now(),
+  chapter: quizState.chapter,
+  subject: quizState.subject,
+  mode: 'test',
+  finishedAt: Date.now(),
+  total, attempted, correct, wrong, skipped,
+  score, maxScore, accuracy
+};
+
+const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
+attempts.unshift(attemptRecord);
+StorageModule.set(STORAGE_KEYS.attempts, attempts);
+StorageModule.recordActivity(attempted);
+
+if (accuracy >= 50 && quizState.chapter) {
+  userProgress[quizState.chapter] = { completed: true, pct: 100 };
+  StorageModule.set(STORAGE_KEYS.progress, userProgress);
+  updateGlobalProgress();
+}
+
+showResultScreen(attemptRecord);
+}
+
+function showResultScreen(attempt) {
+toggleFullScreenMode(false);
+setModal('Quiz Scorecard 🏆', attempt.chapter, `
+  <div class="space-y-6 text-center py-2">
+    <div>
+      <span class="px-3 py-1 rounded-full bg-teal-500/10 text-teal-600 font-extrabold text-xs uppercase">${attempt.accuracy >= 80 ? 'Outstanding performance! 🌟' : 'Good job! Keep pushing 🎯'}</span>
+      <h3 class="text-4xl font-black mt-3 tabular-nums">${attempt.score} / ${attempt.maxScore}</h3>
+      <p class="text-xs text-slate-500 mt-1">Accuracy: <strong class="text-teal-600">${attempt.accuracy}%</strong></p>
+    </div>
+    <div class="grid grid-cols-3 gap-3 text-center text-xs">
+      <div class="p-3 bg-emerald-500/10 rounded-xl text-emerald-600 font-bold"><span class="block text-xl font-black">${attempt.correct}</span>Correct</div>
+      <div class="p-3 bg-rose-500/10 rounded-xl text-rose-600 font-bold"><span class="block text-xl font-black">${attempt.wrong}</span>Wrong</div>
+      <div class="p-3 bg-amber-500/10 rounded-xl text-amber-600 font-bold"><span class="block text-xl font-black">${attempt.skipped}</span>Skipped</div>
+    </div>
+  </div>
+`, `<button onclick="closeModal(); renderView();" class="px-6 py-2.5 bg-teal-600 text-white rounded-xl font-bold text-xs">Back to Dashboard</button>`);
+}
+
+function confirmExitQuiz() { closeModal(); renderView(); }
+
+function addToErrorNotebook(q) {
+const notebook = StorageModule.get(STORAGE_KEYS.errorNotebook, []);
+if (!notebook.some(item => item.qKey === q.qKey)) {
+  notebook.unshift({ ...q, addedAt: Date.now() });
+  StorageModule.set(STORAGE_KEYS.errorNotebook, notebook);
+  showToast('Saved to Error Notebook!', 'success');
+} else {
+  showToast('Already in Error Notebook.', 'warning');
+}
+}
+
+function openErrorNotebookModal() {
+const notebook = StorageModule.get(STORAGE_KEYS.errorNotebook, []);
+setModal('Error Notebook (Saved MCQs)', `Review ${notebook.length} saved difficult questions.`, `
+  <div class="space-y-3 py-2 max-h-96 overflow-y-auto pr-1">
+    ${notebook.length === 0 ? '<p class="text-xs text-slate-400 py-6 text-center">No questions saved in Error Notebook. 🦉</p>' : notebook.map((q, idx) => `
+      <div class="p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-2 text-xs">
+        <div class="flex justify-between items-center"><span class="font-bold text-teal-600">${escapeHtml(q.sourceChapter || 'General')}</span><button onclick="removeFromErrorNotebook('${q.qKey}')" class="text-rose-500 font-bold hover:underline">Remove</button></div>
+        <p class="font-bold text-slate-800 dark:text-slate-200">${multiline(q.question)}</p>
+      </div>
+    `).join('')}
+  </div>
+`, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close</button>`);
+}
+
+function removeFromErrorNotebook(qKey) {
+let notebook = StorageModule.get(STORAGE_KEYS.errorNotebook, []);
+notebook = notebook.filter(item => item.qKey !== qKey);
+StorageModule.set(STORAGE_KEYS.errorNotebook, notebook);
+showToast('Removed from notebook.');
+openErrorNotebookModal();
+}
+
+// ===== ENHANCED 4-STEP AI MOCK WIZARD ENGINE =====
+
+function toggleMockWizardSubject(s) {
+  const idx = mockWizardState.subjects.indexOf(s);
+  if (idx > -1) {
+    if (mockWizardState.subjects.length > 1) {
+      mockWizardState.subjects.splice(idx, 1);
+      // Remove any selected chapters for unselected subject
+      const availableChaps = mockWizardState.subjects.flatMap(sub => data[sub] || []);
+      mockWizardState.chapters = mockWizardState.chapters.filter(c => availableChaps.includes(c));
+    } else {
+      showToast('Select at least one subject.', 'warning');
+      return;
+    }
+  } else {
+    mockWizardState.subjects.push(s);
+    // Add default first chapter of newly added subject if list empty
+    if (data[s] && data[s][0] && !mockWizardState.chapters.includes(data[s][0])) {
+      mockWizardState.chapters.push(data[s][0]);
+    }
+  }
+  renderMockWizard();
+}
+
+function toggleMockWizardChapter(ch) {
+  const idx = mockWizardState.chapters.indexOf(ch);
+  if (idx > -1) {
+    if (mockWizardState.chapters.length > 1) {
+      mockWizardState.chapters.splice(idx, 1);
+    } else {
+      showToast('Select at least one chapter.', 'warning');
+      return;
+    }
+  } else {
+    mockWizardState.chapters.push(ch);
+  }
+  renderMockWizard();
+}
+
+function selectAllSubjectChapters(subj) {
+  const chaps = data[subj] || [];
+  chaps.forEach(c => {
+    if (!mockWizardState.chapters.includes(c)) mockWizardState.chapters.push(c);
+  });
+  renderMockWizard();
+}
+
+function clearSubjectChapters(subj) {
+  const chaps = data[subj] || [];
+  mockWizardState.chapters = mockWizardState.chapters.filter(c => !chaps.includes(c));
+  if (mockWizardState.chapters.length === 0) {
+    // Keep at least 1 chapter available
+    const firstRemainingSub = mockWizardState.subjects[0];
+    mockWizardState.chapters = [data[firstRemainingSub][0]];
+  }
+  renderMockWizard();
+}
+
+function filterWizardChapters(q) {
+  mockWizardState.chapterSearchQuery = q.toLowerCase().trim();
+  renderMockWizard();
+}
+
+function nextMockWizardStep(step) { 
+  mockWizardStep = step; 
+  renderMockWizard(); 
+}
+
+function renderMockWizard() {
+  const container = document.getElementById('mockWizardSlot');
+  if (!container) return;
+
+  const totalSelectedChapters = mockWizardState.chapters.length;
+
+  if (mockWizardStep === 1) {
+    container.innerHTML = `
+      <div class="space-y-5">
+        <div class="flex items-center justify-between border-b dark:border-slate-800 pb-3">
+          <div>
+            <span class="text-[10px] font-black uppercase text-teal-600 dark:text-teal-400">Step 1 of 4</span>
+            <h3 class="font-extrabold text-base text-slate-900 dark:text-slate-100 display-font">Choose Test Subjects</h3>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-600 text-xs font-bold">${mockWizardState.subjects.length} Selected</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          ${['Biology', 'Chemistry', 'Physics'].map(s => {
+            const checked = mockWizardState.subjects.includes(s);
+            const subColor = s==='Biology'?'border-emerald-500':s==='Chemistry'?'border-purple-500':'border-teal-500';
+            return `
+              <button onclick="toggleMockWizardSubject('${s}')" class="p-4 rounded-2xl border-2 text-left font-bold text-xs transition relative ${checked ? `${subColor} bg-teal-500/10 text-teal-700 dark:text-teal-300 shadow-sm` : 'border-slate-200 dark:border-slate-800 opacity-70'}">
+                <div class="flex items-center justify-between">
+                  <span class="chip ${s==='Biology'?'bio':s==='Chemistry'?'chem':'phy'}">${s.substring(0,3)}</span>
+                  <i class="fa-solid ${checked ? 'fa-circle-check text-teal-600 text-lg' : 'fa-circle text-slate-300 dark:text-slate-700'}"></i>
+                </div>
+                <h4 class="font-extrabold text-sm mt-3 text-slate-900 dark:text-slate-100">${s}</h4>
+                <p class="text-[11px] text-slate-500 font-normal mt-0.5">${data[s].length} NCERT Topics</p>
+              </button>
+            `;
+          }).join('')}
+        </div>
+
+        <div class="flex justify-between items-center pt-4 border-t dark:border-slate-800">
+          <span class="text-xs text-slate-400">Pick subjects to include in AI paper setup</span>
+          <button onclick="nextMockWizardStep(2)" class="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition">Next: Topic Selection →</button>
+        </div>
+      </div>`;
+  } else if (mockWizardStep === 2) {
+    const query = mockWizardState.chapterSearchQuery || '';
+    container.innerHTML = `
+      <div class="space-y-5">
+        <div class="flex items-center justify-between border-b dark:border-slate-800 pb-3">
+          <div>
+            <span class="text-[10px] font-black uppercase text-teal-600 dark:text-teal-400">Step 2 of 4</span>
+            <h3 class="font-extrabold text-base text-slate-900 dark:text-slate-100 display-font">Filter Topics (${totalSelectedChapters} Active)</h3>
+          </div>
+          <input type="text" value="${escapeHtml(query)}" oninput="filterWizardChapters(this.value)" placeholder="Search chapter..." class="p-2 px-3 rounded-xl border dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold w-44">
+        </div>
+
+        <div class="space-y-4 max-h-72 overflow-y-auto pr-1">
+          ${mockWizardState.subjects.map(s => {
+            const list = (data[s] || []).filter(ch => ch.toLowerCase().includes(query));
+            return `
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-black uppercase text-teal-600">${s} Chapters (${list.length})</span>
+                  <div class="flex gap-2 text-[10px]">
+                    <button onclick="selectAllSubjectChapters('${s}')" class="text-teal-600 font-bold hover:underline">Select All</button>
+                    <span class="text-slate-300">|</span>
+                    <button onclick="clearSubjectChapters('${s}')" class="text-rose-500 font-bold hover:underline">Clear</button>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  ${list.map(ch => {
+                    const isSel = mockWizardState.chapters.includes(ch);
+                    return `
+                      <button onclick="toggleMockWizardChapter('${jsArg(ch)}')" class="px-3 py-2 rounded-xl text-xs font-bold border text-left truncate flex items-center justify-between ${isSel ? 'border-teal-500 bg-teal-500/10 text-teal-700 dark:text-teal-300' : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'}">
+                        <span class="truncate">${escapeHtml(ch)}</span>
+                        <i class="fa-solid ${isSel ? 'fa-check text-teal-600' : 'fa-plus text-slate-300 dark:text-slate-700'}"></i>
+                      </button>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <div class="flex justify-between items-center pt-4 border-t dark:border-slate-800">
+          <button onclick="nextMockWizardStep(1)" class="px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs">← Back</button>
+          <button onclick="nextMockWizardStep(3)" class="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition">Next: Pattern & Time →</button>
+        </div>
+      </div>`;
+  } else if (mockWizardStep === 3) {
+    container.innerHTML = `
+      <div class="space-y-5">
+        <div class="flex items-center justify-between border-b dark:border-slate-800 pb-3">
+          <div>
+            <span class="text-[10px] font-black uppercase text-teal-600 dark:text-teal-400">Step 3 of 4</span>
+            <h3 class="font-extrabold text-base text-slate-900 dark:text-slate-100 display-font">Question Count & Difficulty</h3>
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 block">Question Count Preset</label>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+            ${[15, 30, 45, 90, 180].map(cnt => `
+              <button onclick="mockWizardState.qCount=${cnt}; mockWizardState.duration=${cnt}; renderMockWizard();" class="p-3 rounded-xl border font-bold text-xs text-center ${mockWizardState.qCount===cnt ? 'border-teal-500 bg-teal-500/10 text-teal-600' : 'border-slate-200 dark:border-slate-800'}">
+                <span class="block text-base font-black tabular-nums">${cnt} Qs</span>
+                <span class="text-[10px] font-normal text-slate-500">${cnt === 180 ? '180 Mins (Full NEET)' : `${cnt} Minutes`}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 block">Target Difficulty Level</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            ${['NCERT Direct', 'Standard NEET', 'Concept Heavy'].map(diff => `
+              <button onclick="mockWizardState.difficulty='${diff}'; renderMockWizard();" class="p-3 rounded-xl border text-left font-bold text-xs ${mockWizardState.difficulty===diff ? 'border-teal-500 bg-teal-500/10 text-teal-600' : 'border-slate-200 dark:border-slate-800'}">
+                <span class="block text-xs font-black">${diff}</span>
+                <span class="text-[10px] font-normal text-slate-500">${diff==='NCERT Direct'?'Line-by-line questions':diff==='Standard NEET'?'NTA level balanced':'Calculative & logic heavy'}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center pt-4 border-t dark:border-slate-800">
+          <button onclick="nextMockWizardStep(2)" class="px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs">← Back</button>
+          <button onclick="nextMockWizardStep(4)" class="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition">Review & Launch →</button>
+        </div>
+      </div>`;
+  } else if (mockWizardStep === 4) {
+    const totalMarks = mockWizardState.qCount * 4;
+    container.innerHTML = `
+      <div class="space-y-5">
+        <div class="flex items-center justify-between border-b dark:border-slate-800 pb-3">
+          <div>
+            <span class="text-[10px] font-black uppercase text-teal-600 dark:text-teal-400">Step 4 of 4</span>
+            <h3 class="font-extrabold text-base text-slate-900 dark:text-slate-100 display-font">Blueprint & Final Validation</h3>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-teal-500/10 border border-teal-500/20 space-y-3 text-xs">
+          <div class="flex justify-between items-center"><span class="font-bold text-slate-500">Selected Subjects:</span><span class="font-black text-slate-900 dark:text-slate-100">${mockWizardState.subjects.join(', ')}</span></div>
+          <div class="flex justify-between items-center"><span class="font-bold text-slate-500">Selected Topics:</span><span class="font-black text-slate-900 dark:text-slate-100 tabular-nums">${mockWizardState.chapters.length} Chapters</span></div>
+          <div class="flex justify-between items-center"><span class="font-bold text-slate-500">Question Pattern:</span><span class="font-black text-teal-600 tabular-nums">${mockWizardState.qCount} MCQs (${totalMarks} Marks)</span></div>
+          <div class="flex justify-between items-center"><span class="font-bold text-slate-500">Difficulty Setting:</span><span class="font-black text-purple-600">${mockWizardState.difficulty}</span></div>
+          <div class="flex justify-between items-center"><span class="font-bold text-slate-500">Time Allocation:</span><span class="font-black text-amber-600 tabular-nums">${mockWizardState.duration} Minutes</span></div>
+        </div>
+
+        <div class="flex justify-between items-center pt-4 border-t dark:border-slate-800">
+          <button onclick="nextMockWizardStep(3)" class="px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs">← Back</button>
+          <button onclick="launchAiNeetprepMockEngine()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-teal-600 to-purple-600 hover:from-teal-700 hover:to-purple-700 text-white font-black text-xs shadow-lg transition flex items-center gap-2">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Synthesize & Start Test
+          </button>
+        </div>
+      </div>`;
+  }
+}
+
+async function launchAiNeetprepMockEngine() {
+  const selectedSubs = mockWizardState.subjects;
+  const qCount = mockWizardState.qCount;
+  const diff = mockWizardState.difficulty;
+  const selectedChaps = mockWizardState.chapters;
+
+  setModal('NEETprep AI Paper Generator', 'Synthesizing NCERT paper...', `
+    <div class="flex flex-col items-center justify-center py-10 space-y-3">
+      <i class="fa-solid fa-wand-magic-sparkles fa-spin text-4xl text-purple-600 mb-2"></i>
+      <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Building ${qCount} questions across ${selectedSubs.join(', ')}...</p>
+      <span class="text-xs text-slate-500 font-medium">Difficulty: ${diff} · Target Topics: ${selectedChaps.length}</span>
+    </div>
+  `);
+
+  try {
+    let rawQuestions = [];
+    const apiKey = getGeminiApiKey();
+
+    if (apiKey) {
+      const prompt = `Generate a NEET mock test paper with exactly ${qCount} multiple choice questions distributed evenly across subjects [${selectedSubs.join(', ')}] covering chapters: ${selectedChaps.slice(0, 10).join(', ')}. Include NCERT statement-based and Assertion-Reason questions matching difficulty: "${diff}". Return ONLY a raw JSON array matching format: [{"q":"Question text","o":["Option A","Option B","Option C","Option D"],"a":1,"s":"NCERT Explanation citation"}]`;
+      const sys = "You are an expert NTA NEET examination paper creator. Output valid raw JSON arrays only.";
+      
+      const rawJson = await callGeminiApi(prompt, sys);
+      const cleanJson = rawJson.replace(/```json/g, '').replace(/```/g, '').trim();
+      const parsed = JSON.parse(cleanJson);
+      
+      rawQuestions = parsed.map((q, i) => ({
+        qKey: 'ai_mock_' + Date.now() + '_' + i,
+        question: q.q || q.question,
+        options: q.o || q.options,
+        correct: (q.a || 1) - 1,
+        explanation: q.s || 'NCERT Line-by-Line concept.',
+        sourceChapter: selectedChaps[i % selectedChaps.length] || selectedSubs[0]
+      }));
+    } else {
+      // Smart local synthesizer fallback if API Key is not set
+      for (let i = 0; i < qCount; i++) {
+        const sub = selectedSubs[i % selectedSubs.length];
+        const ch = selectedChaps[i % selectedChaps.length] || data[sub][0];
+        try {
+          const res = await fetch(quizUrl(sub, ch), { cache: 'no-cache' });
+          if (res.ok) {
+            const raw = await res.json();
+            const list = Array.isArray(raw) ? raw : raw.qs;
+            const item = list[i % list.length];
+            if (item) {
+              rawQuestions.push({
+                qKey: 'mock_' + i + '_' + Date.now(),
+                question: item.q || item.question,
+                options: item.o || item.options,
+                correct: (item.a || 1) - 1,
+                explanation: item.s || 'Standard syllabus question.',
+                sourceChapter: ch
+              });
+            }
+          }
+        } catch (err) {}
+      }
+    }
+
+    if (!rawQuestions || rawQuestions.length === 0) {
+      throw new Error("Could not synthesize questions for selected topics.");
+    }
+
+    launchTestSession(selectedSubs.join(' & '), `${mockWizardState.title} (${diff})`, rawQuestions);
+  } catch (err) {
+    showToast('Mock Test Generation Note: ' + err.message, 'warning');
+    closeModal();
+  }
+}
+
+// Focus Timer Soundscapes & Controls
+function toggleFocusSoundscape(type) {
+if (currentAudio) {
+  currentAudio.pause(); currentAudio = null;
+  showToast('Soundscape stopped.');
+  return;
+}
+const sounds = {
+  rain: 'https://cdn.pixabay.com/download/audio/2021/09/06/audio_4040909a3c.mp3',
+  waves: 'https://cdn.pixabay.com/download/audio/2022/05/16/audio_c81600b21e.mp3'
+};
+if (sounds[type]) {
+  currentAudio = new Audio(sounds[type]);
+  currentAudio.loop = true;
+  currentAudio.play().catch(() => showToast('Audio playback failed.', 'error'));
+  showToast(`Playing ${type} soundscape 🎧`);
+}
+}
+
+function toggleTimer() {
+const btn = document.getElementById('timer-toggle-btn');
+if (timerInterval) {
+  clearInterval(timerInterval); timerInterval = null;
+  if (btn) btn.textContent = 'Start Focus';
+} else {
+  timerInterval = setInterval(() => {
+    timerSeconds--;
+    const mm = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+    const ss = String(timerSeconds % 60).padStart(2, '0');
+    const d = document.getElementById('timer-display');
+    if (d) d.textContent = `${mm}:${ss}`;
+    if (timerSeconds <= 0) {
+      clearInterval(timerInterval); timerInterval = null;
+      timerSessionCount++;
+      StorageModule.set(STORAGE_KEYS.focus, String(timerSessionCount));
+      showToast('Pomodoro completed! Take a break ☕', 'success');
+      resetTimer();
+    }
+  }, 1000);
+  if (btn) btn.textContent = 'Pause Focus';
+}
+}
+
+function resetTimer() {
+if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+timerSeconds = timerInitialSeconds;
+const d = document.getElementById('timer-display');
+if (d) d.textContent = '25:00';
+}
+
+function addXpPoints(pts) {
+let xp = StorageModule.get(STORAGE_KEYS.userXp, 0) + Math.max(0, pts);
+StorageModule.set(STORAGE_KEYS.userXp, xp);
+showToast(`+${pts} XP Earned! 🌟`, 'success');
+calculateUserLevel();
+}
+
+function calculateUserLevel() {
+const xp = StorageModule.get(STORAGE_KEYS.userXp, 0);
+let rank = "Intern Aspirant", target = 250;
+if (xp >= 1500) { rank = "Surgeon Specialist"; target = 3000; }
+else if (xp >= 750) { rank = "Resident Doctor"; target = 1500; }
+else if (xp >= 250) { rank = "Medical Student"; target = 750; }
+
+const titleEl = document.getElementById('user-rank-title');
+if (titleEl) titleEl.innerHTML = `<i class="fa-solid fa-user-doctor"></i> <span class="sidebar-text">${rank}</span>`;
+const xpEl = document.getElementById('user-xp-display');
+if (xpEl) xpEl.textContent = `${xp} XP`;
+const barEl = document.getElementById('user-xp-bar');
+if (barEl) barEl.style.width = `${Math.min(100, Math.round((xp / target) * 100))}%`;
+}
+
+function triggerConfettiEffect() {
+if (typeof confetti === 'function') confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+}
+
+function switchTab(tab) {
+previousTab = currentTab; currentTab = tab;
+document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+document.getElementById(`nav-${tab}`)?.classList.add('active');
+document.querySelectorAll('.mobile-bottom-nav button').forEach(b => b.classList.remove('active'));
+document.getElementById(`mob-nav-${tab}`)?.classList.add('active');
+
+const trail = document.getElementById('breadcrumb-trail');
+if (trail) trail.textContent = `EduPulse PRO › ${tab.charAt(0).toUpperCase() + tab.slice(1)}`;
+
+window.scrollTo(0, 0);
+renderView();
+}
+function goBack() { switchTab(previousTab); }
+function setLearnSubTab(sub) { learnSubTab = sub; renderView(); }
+
+// Render Main Dashboard & Views
+function renderView() {
+const main = document.getElementById('main-container');
+if (!main) return;
+updateGlobalProgress();
+
+if (currentTab === 'home') {
+const streak = StorageModule.get(STORAGE_KEYS.streak, { current: 1, best: 1 });
+const done = Object.values(userProgress).filter(p => p && p.completed).length;
+const pct = Math.round((done / TOTAL_CHAPTERS) * 100);
+const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
+const lastAttempt = attempts[0];
+
+const neetDate = new Date('2027-05-02T14:00:00');
+const daysLeft = Math.max(0, Math.ceil((neetDate - Date.now()) / 86400000));
+
+main.innerHTML = `
+<div class="space-y-8">
+<div class="card p-6 sm:p-8 bg-gradient-to-r from-teal-700 via-teal-600 to-emerald-700 text-white border-0 shadow-xl relative overflow-hidden">
+  <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 relative z-10">
+    <div class="space-y-2">
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1 rounded-full bg-white/20 text-white font-extrabold text-[10px] uppercase">NEET 2027 Countdown: <strong class="text-lime-300">${daysLeft} Days Left</strong></span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-black display-font">Master NCERT & NEET Mock Simulations</h2>
+      <p class="text-teal-100 text-xs sm:text-sm">“Dissecting NCERT line by line is the shortest path to an AIIMS seat.”</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-3">
+      <button onclick="quickStartRandomPractice()" class="px-5 py-3 rounded-xl bg-lime-400 text-slate-950 font-black text-xs shadow-lg hover:bg-lime-300 transition"><i class="fa-solid fa-bolt mr-1"></i> Fast Quiz Session</button>
+      <button onclick="toggleAiChatbotWindow()" class="px-5 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white font-black text-xs shadow-lg transition"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Ask AI Copilot</button>
+    </div>
+  </div>
+</div>
+
+${lastAttempt ? `
+<div class="card p-5 bg-gradient-to-r from-teal-500/10 to-emerald-500/10 border-teal-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+  <div class="flex items-center gap-3">
+    <div class="w-12 h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center text-lg"><i class="fa-solid fa-rotate-right"></i></div>
+    <div>
+      <span class="text-[10px] font-extrabold uppercase text-teal-600 dark:text-teal-400">Continue Your Momentum</span>
+      <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">Resume practice for: ${escapeHtml(lastAttempt.chapter)}</h4>
+      <p class="text-xs text-slate-500">Last score: ${lastAttempt.score}/${lastAttempt.maxScore} (${lastAttempt.accuracy}%)</p>
+    </div>
+  </div>
+  <button onclick="openModePicker('${jsArg(lastAttempt.subject)}', '${jsArg(lastAttempt.chapter)}')" class="px-4 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs shadow-sm transition shrink-0">Resume Chapter →</button>
+</div>
+` : ''}
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+  <div class="card p-5 border-l-4 border-l-teal-500">
+    <span class="text-xs font-black uppercase text-teal-600">Syllabus Progress</span>
+    <h3 class="text-3xl font-black mt-1 tabular-nums">${pct}%</h3>
+    <div class="progress mt-3"><i style="width:${pct}%"></i></div>
+  </div>
+  <div class="card p-5 border-l-4 border-l-amber-500">
+    <span class="text-xs font-black uppercase text-amber-500">Daily Streak</span>
+    <h3 class="text-3xl font-black mt-1 tabular-nums">${streak.current} Days 🔥</h3>
+    <p class="text-xs text-slate-500 mt-2">Best: ${streak.best} Days</p>
+  </div>
+  <div class="card p-5 border-l-4 border-l-indigo-500">
+    <span class="text-xs font-black uppercase text-indigo-500">Focus Sessions</span>
+    <h3 class="text-3xl font-black mt-1 tabular-nums">${timerSessionCount} Blocks</h3>
+    <p class="text-xs text-slate-500 mt-2">${timerSessionCount * 25} Mins Focused</p>
+  </div>
+</div>
+
+<div>
+  <h3 class="text-lg font-extrabold mb-4 display-font">Subject Portals</h3>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    ${['Biology', 'Chemistry', 'Physics'].map(s => `
+      <div onclick="setSubject('${s}'); switchTab('learn');" class="card p-5 cursor-pointer hover:border-teal-500 transition">
+        <div class="flex justify-between items-center">
+          <span class="chip ${s==='Biology'?'bio':s==='Chemistry'?'chem':'phy'}">${s.substring(0,3)}</span>
+          <span class="text-xs font-bold text-slate-400">${data[s].length} Chs</span>
+        </div>
+        <h4 class="font-black text-lg mt-4 display-font">${s}</h4>
+        <p class="text-xs text-slate-500 mt-1">NCERT chapter MCQs & tests.</p>
+      </div>
+    `).join('')}
+  </div>
+</div>
+</div>`;
+} else if (currentTab === 'learn') {
+main.innerHTML = `
+<div class="space-y-6">
+  <div>
+    <div class="tag">✦ Unified Learning Hub</div>
+    <h2 class="text-2xl font-extrabold mt-1 display-font">Learn & Practice Hub</h2>
+  </div>
+  <div class="flex items-center gap-3 border-b dark:border-slate-800 pb-3">
+    <button onclick="setLearnSubTab('practice')" class="px-4 py-2 rounded-xl text-xs font-bold ${learnSubTab==='practice'?'bg-teal-600 text-white':'bg-slate-100 dark:bg-slate-800'}">Chapter Practice MCQs</button>
+    <button onclick="setLearnSubTab('lectures')" class="px-4 py-2 rounded-xl text-xs font-bold ${learnSubTab==='lectures'?'bg-teal-600 text-white':'bg-slate-100 dark:bg-slate-800'}">Video Lectures</button>
+  </div>
+  ${learnSubTab === 'practice' ? `
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div class="flex gap-2">${['Biology','Chemistry','Physics'].map(s=>`<button onclick="setSubject('${s}')" class="subject ${subject===s?'selected':''}"><b>${s}</b></button>`).join('')}</div>
+      <div class="controls flex gap-2"><input type="text" id="search" oninput="renderChapters()" placeholder="Search chapters..."><select id="statusFilter" onchange="renderChapters()"><option value="all">All</option><option value="completed">Completed</option><option value="pending">Pending</option></select></div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="chapters"></div>
+  ` : `
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      ${TEACHERS_DATA.map(t => `
+        <div class="card p-5 space-y-3">
+          <img src="${t.img}" class="w-16 h-16 rounded-2xl object-cover">
+          <h4 class="font-bold text-sm">${escapeHtml(t.name)}</h4>
+          <p class="text-xs text-slate-500">${escapeHtml(t.blurb)}</p>
+          <a href="${t.playlistUrl}" target="_blank" class="inline-block px-3 py-2 rounded-xl bg-teal-600 text-white text-xs font-bold"><i class="fa-solid fa-play mr-1"></i> Watch Playlist</a>
+        </div>
+      `).join('')}
+    </div>
+  `}
+</div>`;
+if (learnSubTab === 'practice') renderChapters();
+} else if (currentTab === 'mock') {
+main.innerHTML = `
+<div class="space-y-6">
+  <div>
+    <div class="tag">✦ 4-Step Wizard</div>
+    <h2 class="text-2xl font-extrabold mt-1 display-font">AI Mock Test Builder</h2>
+  </div>
+  <div class="card p-6 space-y-4 max-w-2xl" id="mockWizardSlot"></div>
+</div>`;
+renderMockWizard();
+} else if (currentTab === 'progress') {
+const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
+main.innerHTML = `
+<div class="space-y-6">
+  <div>
+    <div class="tag">✦ Analytics</div>
+    <h2 class="text-2xl font-extrabold mt-1 display-font">Progress & Syllabus Heatmap</h2>
+  </div>
+  <div class="flex gap-3">
+    <button onclick="openErrorNotebookModal()" class="px-4 py-2 rounded-xl bg-rose-600 text-white font-bold text-xs"><i class="fa-solid fa-book-bookmark mr-1"></i> Error Notebook</button>
+  </div>
+  <div class="card p-6">
+    <h3 class="font-bold text-sm mb-4">Syllabus Mastery Map (${TOTAL_CHAPTERS} Chapters)</h3>
+    <div class="grid grid-cols-6 sm:grid-cols-12 gap-1.5">
+      ${Object.keys(data).flatMap(s => data[s]).map(ch => {
+        const done = userProgress[ch] && userProgress[ch].completed;
+        return `<div class="w-full aspect-square rounded-md ${done ? 'bg-emerald-500' : 'bg-slate-200 dark:bg-slate-800'}" title="${escapeHtml(ch)}: ${done ? 'Completed' : 'Pending'}"></div>`;
+      }).join('')}
+    </div>
+  </div>
+  <div class="card p-6">
+    <h3 class="font-bold text-sm mb-4">Recent Test Attempts</h3>
+    ${attempts.length === 0 ? '<p class="text-xs text-slate-400 text-center py-6">No attempts recorded. 🦉</p>' : `
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead><tr class="border-b text-slate-400"><th class="pb-2">Date</th><th class="pb-2">Chapter</th><th class="pb-2">Score</th><th class="pb-2">Accuracy</th></tr></thead>
+          <tbody class="divide-y dark:divide-slate-800">
+            ${attempts.slice(0, 8).map(a => `<tr><td class="py-2.5 text-slate-500">${new Date(a.finishedAt).toLocaleDateString()}</td><td class="font-bold">${escapeHtml(a.chapter)}</td><td>${a.score}/${a.maxScore}</td><td class="font-bold text-teal-600">${a.accuracy}%</td></tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    `}
+  </div>
+</div>`;
+} else if (currentTab === 'directory') {
+main.innerHTML = `
+<div class="space-y-6">
+  <div><div class="tag">✦ Curated Links</div><h2 class="text-2xl font-extrabold mt-1 display-font">Resource Directory</h2></div>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    ${INITIAL_RESOURCES.map(r => `<a href="${r.url}" target="_blank" class="card p-5 block hover:border-teal-500"><span class="text-[10px] font-bold text-teal-600 uppercase">${escapeHtml(r.badge)}</span><h4 class="font-bold text-sm mt-2">${escapeHtml(r.title)}</h4></a>`).join('')}
+  </div>
+</div>`;
+} else if (currentTab === 'faculty') {
+main.innerHTML = `
+<div class="space-y-6">
+  <div><div class="tag">✦ Top Educators</div><h2 class="text-2xl font-extrabold mt-1 display-font">Faculty Hub</h2></div>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    ${TEACHERS_DATA.map(t => `<div class="card p-5 space-y-2"><img src="${t.img}" class="w-14 h-14 rounded-xl object-cover"><h4 class="font-bold text-sm">${escapeHtml(t.name)}</h4><p class="text-xs text-slate-500">${escapeHtml(t.blurb)}</p><a href="${t.playlistUrl}" target="_blank" class="inline-block text-xs font-bold text-teal-600 hover:underline">Watch Playlists →</a></div>`).join('')}
+  </div>
+</div>`;
+} else if (currentTab === 'tools') {
+main.innerHTML = `
+<div class="space-y-6">
+  <div><div class="tag">✦ Productivity</div><h2 class="text-2xl font-extrabold mt-1 display-font">Focus Timer & Soundscapes</h2></div>
+  <div class="card p-8 text-center max-w-md mx-auto">
+    <div class="text-5xl font-black font-mono my-4 tabular-nums" id="timer-display">25:00</div>
+    <div class="flex gap-3 justify-center mb-4"><button onclick="toggleTimer()" id="timer-toggle-btn" class="px-6 py-2.5 bg-teal-600 text-white rounded-xl font-bold text-xs">Start Focus</button><button onclick="resetTimer()" class="px-4 py-2.5 bg-slate-200 dark:bg-slate-800 rounded-xl font-bold text-xs">Reset</button></div>
+    <div class="flex gap-2 justify-center">
+      <button onclick="toggleFocusSoundscape('rain')" class="px-3 py-1.5 rounded-lg bg-teal-500/10 text-teal-600 font-bold text-xs">🌧️ Rain</button>
+      <button onclick="toggleFocusSoundscape('waves')" class="px-3 py-1.5 rounded-lg bg-indigo-500/10 text-indigo-600 font-bold text-xs">🌊 Waves</button>
+    </div>
+  </div>
+</div>`;
+} else if (currentTab === 'settings') {
+const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+main.innerHTML = `
+<div class="space-y-6">
+  <div><div class="tag">✦ Preferences</div><h2 class="text-2xl font-extrabold mt-1 display-font">Settings & Accent Colors</h2></div>
+  <div class="card p-6 space-y-4 max-w-xl">
+    <div>
+      <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Accent Color</label>
+      <div class="flex gap-3 mt-2">
+        <button onclick="setAccentColor('#0d9488')" class="w-8 h-8 rounded-full bg-teal-600 border-2 border-white shadow" title="Teal"></button>
+        <button onclick="setAccentColor('#6366f1')" class="w-8 h-8 rounded-full bg-indigo-600 border-2 border-white shadow" title="Indigo"></button>
+        <button onclick="setAccentColor('#f43f5e')" class="w-8 h-8 rounded-full bg-rose-600 border-2 border-white shadow" title="Rose"></button>
+        <button onclick="setAccentColor('#f59e0b')" class="w-8 h-8 rounded-full bg-amber-500 border-2 border-white shadow" title="Amber"></button>
+      </div>
+    </div>
+    <div class="flex items-center justify-between pt-3 border-t">
+      <span class="text-xs font-bold">Sound Effects</span>
+      <input type="checkbox" ${settings.soundEffects ? 'checked' : ''} onchange="toggleSoundSetting(this.checked)" class="w-4 h-4 rounded text-teal-600">
+    </div>
+  </div>
+</div>`;
+}
+}
+
+function setAccentColor(color) {
+const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+settings.accentColor = color;
+StorageModule.set(STORAGE_KEYS.settings, settings);
+StorageModule.applyAccentColor();
+showToast('Accent color updated!');
+}
+
+function toggleSoundSetting(val) {
+const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+settings.soundEffects = val;
+StorageModule.set(STORAGE_KEYS.settings, settings);
+showToast('Sound preferences saved.');
+}
+
+function quickStartRandomPractice() {
+const subjects = ['Biology', 'Chemistry', 'Physics'];
+const s = subjects[Math.floor(Math.random() * subjects.length)];
+const ch = data[s][Math.floor(Math.random() * data[s].length)];
+openModePicker(s, ch);
+}
+
+async function askAiChapterTutor(chapterName) {
+setModal(`AI NCERT Tutor — ${chapterName}`, 'Generating NCERT concepts...', `
+  <div class="flex flex-col items-center justify-center py-8" id="aiTutorLoading">
+    <i class="fa-solid fa-wand-magic-sparkles fa-spin text-3xl text-teal-600 mb-3"></i>
+    <p class="text-xs font-bold text-slate-600 dark:text-slate-300">Consulting Gemini NCERT Knowledge Base...</p>
+  </div>
+  <div id="aiTutorContent" class="hidden text-xs space-y-3 leading-relaxed max-h-96 overflow-y-auto pr-1"></div>
+`, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close</button>`);
+
+try {
+  const prompt = `Provide a structured NEET exam summary for the chapter "${chapterName}" in subject "${subject}". Format with clean bullet points and bold tags.`;
+  const text = await callGeminiApi(prompt, "You are a top NEET educator.");
+  document.getElementById('aiTutorLoading')?.classList.add('hidden');
+  const content = document.getElementById('aiTutorContent');
+  if (content) {
+    content.classList.remove('hidden');
+    content.innerHTML = multiline(text);
+  }
+} catch (err) {
+  showToast(err.message, 'error');
+}
+}
+
+calculateUserLevel();
+renderView();
+</script>
+</body>
+</html>
