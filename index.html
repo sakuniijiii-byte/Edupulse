@@ -7,7 +7,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config = { darkMode: 'class' }</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -16,68 +16,73 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
-:root{--ink:#12202c;--muted:#64748b;--line:#dfe8e7;--paper:#ffffff;--bg:#f8fafc;--teal:#0d9488;--deep:#123c42;--lime:#bef264;--card-bg:#ffffff;--text-primary:#0f172a;--text-muted:#64748b;--border-color:#e2e8f0;--bio-bg:#ecfdf5;--bio-text:#047857;--chem-bg:#f5f3ff;--chem-text:#6d28d9;--phy-bg:#f0fdfa;--phy-text:#0f766e}
-body.dark{--ink:#f8fafc;--muted:#94a3b8;--line:#334155;--paper:#1e293b;--bg:#0f172a;--teal:#14b8a6;--deep:#0f2e33;--card-bg:#1e293b;--text-primary:#f8fafc;--text-muted:#94a3b8;--border-color:#334155;--bio-bg:rgba(16,185,129,.15);--bio-text:#6ee7b7;--chem-bg:rgba(139,92,246,.15);--chem-text:#c4b5fd;--phy-bg:rgba(20,184,166,.15);--phy-text:#5eead4}
+:root{--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--paper:#ffffff;--bg:#f8fafc;--teal:#0d9488;--deep:#134e4a;--lime:#84cc16;--card-bg:#ffffff;--text-primary:#0f172a;--text-muted:#64748b;--border-color:#e2e8f0;--bio-bg:#ecfdf5;--bio-text:#047857;--chem-bg:#f5f3ff;--chem-text:#6d28d9;--phy-bg:#f0fdfa;--phy-text:#0f766e}
+body.dark{--ink:#f8fafc;--muted:#94a3b8;--line:#334155;--paper:#1e293b;--bg:#090d16;--teal:#14b8a6;--deep:#0f2e33;--card-bg:#1e293b;--text-primary:#f8fafc;--text-muted:#94a3b8;--border-color:#334155;--bio-bg:rgba(16,185,129,.15);--bio-text:#6ee7b7;--chem-bg:rgba(139,92,246,.15);--chem-text:#c4b5fd;--phy-bg:rgba(20,184,166,.15);--phy-text:#5eead4}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;transition:background-color .2s,color .2s;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Plus Jakarta Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;transition:background-color .25s ease,color .25s ease;-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0}
 .app-layout{display:flex;flex-direction:column;min-height:100vh}
-.sidebar{position:fixed;top:0;bottom:0;left:0;width:260px;height:100vh;overflow-y:auto;z-index:40;display:flex;flex-direction:column;justify-content:space-between;padding:20px 16px;transition:transform .3s ease-in-out;background:var(--paper);border-right:1px solid var(--border-color)}
+.sidebar{position:fixed;top:0;bottom:0;left:0;width:280px;height:100vh;overflow-y:auto;z-index:40;display:flex;flex-direction:column;justify-content:space-between;padding:24px 18px;transition:transform .3s cubic-bezier(0.4, 0, 0.2, 1);background:var(--paper);border-right:1px solid var(--border-color);backdrop-filter:blur(20px)}
 @media (max-width:1023px){.sidebar{transform:translateX(-100%)}.sidebar.mobile-open{transform:translateX(0)}.content{margin-left:0;width:100%}}
-@media (min-width:1024px){.content{margin-left:260px;flex:1;width:calc(100% - 260px)}}
+@media (min-width:1024px){.content{margin-left:280px;flex:1;width:calc(100% - 280px)}}
 .brand{display:flex;gap:12px;align-items:center}
-.logo{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:var(--deep);color:var(--lime);font-weight:900}
-.brand b{font-size:16px;color:var(--text-primary)}
+.logo{display:grid;place-items:center;width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--deep),var(--teal));color:#fff;font-weight:900;box-shadow:0 8px 20px -4px rgba(13,148,136,.3)}
+.brand b{font-size:17px;color:var(--text-primary);letter-spacing:-0.02em}
 .brand b span{color:var(--teal)}
 .eyebrow{margin:2px 0 0;color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-.nav button{padding:10px 12px;border-radius:12px;background:none;color:var(--text-muted);text-align:left;font-weight:700;transition:all .2s;display:flex;align-items:center;gap:10px;width:100%}
-.nav button:hover{background:rgba(16,155,141,.08);color:var(--teal)}
-.nav button.active{background:rgba(16,155,141,.18);color:var(--teal)}
-.goal{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);border-radius:16px;padding:14px}
+.nav button{padding:11px 14px;border-radius:14px;background:none;color:var(--text-muted);text-align:left;font-weight:700;transition:all .2s cubic-bezier(0.4, 0, 0.2, 1);display:flex;align-items:center;gap:12px;width:100%;font-size:13px}
+.nav button:hover{background:rgba(13,148,136,.08);color:var(--teal);transform:translateX(4px)}
+.nav button.active{background:linear-gradient(135deg,rgba(13,148,136,.15),rgba(13,148,136,.05));color:var(--teal);box-shadow:inset 0 0 0 1px rgba(13,148,136,.2)}
+.goal{background:linear-gradient(135deg,rgba(13,148,136,.1),rgba(16,185,129,.05));border:1px solid rgba(13,148,136,.2);border-radius:18px;padding:16px}
 .goal small{color:var(--teal);text-transform:uppercase;font-weight:800;letter-spacing:.1em;font-size:10px}
 .goal strong{display:block;margin-top:4px;font-size:13px;color:var(--text-primary)}
-.bar{height:6px;background:rgba(0,0,0,.1);border-radius:99px;margin-top:8px;overflow:hidden}
-body.dark .bar{background:rgba(255,255,255,.15)}
-.bar i{display:block;height:100%;background:var(--teal);transition:width .5s ease}
-.goal p{font-size:11px;color:var(--text-muted);margin-top:6px}
-.topbar{height:70px;border-bottom:1px solid var(--border-color);background:var(--paper);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:30}
-.date{color:var(--text-muted);font-size:11px;font-weight:600}
-.topbar h1{font-size:18px;margin:2px 0 0;color:var(--text-primary);font-weight:800}
-.main{max-width:1400px;margin:auto;padding:24px}
+.bar{height:6px;background:rgba(0,0,0,.08);border-radius:99px;margin-top:10px;overflow:hidden}
+body.dark .bar{background:rgba(255,255,255,.12)}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#10b981);transition:width .6s cubic-bezier(0.4, 0, 0.2, 1)}
+.goal p{font-size:11px;color:var(--text-muted);margin-top:6px;font-weight:500}
+.topbar{height:76px;border-bottom:1px solid var(--border-color);background:var(--paper);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background-color:rgba(255,255,255,0.85)}
+body.dark .topbar{background-color:rgba(30,41,59,0.85)}
+.date{color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:0.02em}
+.topbar h1{font-size:18px;margin:2px 0 0;color:var(--text-primary);font-weight:800;letter-spacing:-0.02em}
+.main{max-width:1440px;margin:auto;padding:32px 28px}
 .tag{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.17em;font-size:11px}
-.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:18px;box-shadow:0 2px 8px rgba(0,0,0,.03);transition:all .2s ease-in-out}
-.card:hover{border-color:rgba(13,148,136,.3);box-shadow:0 6px 16px rgba(0,0,0,.05)}
-.subject{padding:14px 16px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all .2s}
-.subject.selected{border-color:var(--teal);background:rgba(16,155,141,.08)}
+.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:22px;box-shadow:0 4px 20px -2px rgba(0,0,0,.03);transition:all .25s cubic-bezier(0.4, 0, 0.2, 1)}
+.card:hover{border-color:rgba(13,148,136,.35);box-shadow:0 12px 30px -6px rgba(13,148,136,.12);transform:translateY(-2px)}
+.subject{padding:14px 18px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all .2s}
+.subject.selected{border-color:var(--teal);background:rgba(13,148,136,.08);box-shadow:0 0 0 2px rgba(13,148,136,.2)}
 .subject b{display:block;color:var(--text-primary);font-size:14px}
 .subject small{display:block;color:var(--text-muted);margin-top:2px;font-size:12px}
-.chip{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:10px;font-weight:900;flex-shrink:0}
+.chip{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:11px;font-weight:900;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.05)}
 .bio{background:var(--bio-bg);color:var(--bio-text)}.chem{background:var(--chem-bg);color:var(--chem-text)}.phy{background:var(--phy-bg);color:var(--phy-text)}
-.chapter{padding:18px;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer}
-.chapter:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.06)}
-.chapter-title{font-weight:800;font-size:14px;margin-top:14px;color:var(--text-primary);line-height:1.4}
-.progress{height:6px;background:rgba(0,0,0,.06);border-radius:99px;margin-top:6px;overflow:hidden}
+.chapter{padding:20px;transition:all .25s ease;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer}
+.chapter:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(13,148,136,.12)}
+.chapter-title{font-weight:800;font-size:15px;margin-top:14px;color:var(--text-primary);line-height:1.4}
+.progress{height:6px;background:rgba(0,0,0,.06);border-radius:99px;margin-top:8px;overflow:hidden}
 body.dark .progress{background:rgba(255,255,255,.1)}
 .progress i{display:block;height:100%;background:var(--teal);transition:width .4s ease}
-.practice{margin-top:14px;color:var(--teal);font-weight:800;background:none;padding:0;display:inline-flex;align-items:center;gap:4px;font-size:13px}
-.controls input,.controls select{padding:8px 12px;border:1px solid var(--border-color);border-radius:12px;background:var(--card-bg);color:var(--text-primary);outline:none;font-size:13px}
-.controls input:focus,.controls select:focus{border-color:var(--teal)}
-.custom-modal{position:fixed;inset:0;background:rgba(18,32,44,.6);backdrop-filter:blur(6px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity .2s ease;padding:16px}
+.practice{margin-top:14px;color:var(--teal);font-weight:800;background:none;padding:0;display:inline-flex;align-items:center;gap:6px;font-size:13px}
+.controls input,.controls select{padding:10px 16px;border:1px solid var(--border-color);border-radius:14px;background:var(--card-bg);color:var(--text-primary);outline:none;font-size:13px;font-weight:600;transition:all .2s}
+.controls input:focus,.controls select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,.15)}
+.custom-modal{position:fixed;inset:0;background:rgba(15,23,42,.75);backdrop-filter:blur(8px);display:grid;place-items:center;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s ease;padding:20px}
 .custom-modal.open{opacity:1;pointer-events:auto}
-.modal-box{background:var(--card-bg);color:var(--text-primary);width:100%;max-width:750px;border-radius:24px;padding:24px;border:1px solid var(--border-color);box-shadow:0 20px 40px rgba(15,23,42,.18);transform:translateY(10px) scale(.98);transition:transform .2s ease;max-height:88vh;overflow:auto}
+.modal-box{background:var(--card-bg);color:var(--text-primary);width:100%;max-width:780px;border-radius:28px;padding:28px;border:1px solid var(--border-color);box-shadow:0 25px 50px -12px rgba(15,23,42,.25);transform:translateY(12px) scale(.98);transition:transform .25s cubic-bezier(0.4, 0, 0.2, 1);max-height:88vh;overflow:auto}
 .custom-modal.open .modal-box{transform:scale(1)}
 .custom-modal.fullscreen-modal{padding:0}
 .custom-modal.fullscreen-modal .modal-box{max-width:100vw;height:100vh;max-height:100vh;border-radius:0;border:none;display:flex;flex-direction:column}
-.mobile-nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(2px);z-index:35;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.mobile-nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:35;opacity:0;pointer-events:none;transition:opacity .25s ease}
 .mobile-nav-overlay.open{opacity:1;pointer-events:auto}
 .quick-action-card{transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1)}
-.quick-action-card:hover{transform:translateY(-4px);box-shadow:0 12px 24px -8px rgba(13, 148, 136, 0.2)}
+.quick-action-card:hover{transform:translateY(-4px);box-shadow:0 14px 28px -8px rgba(13, 148, 136, 0.25)}
 @keyframes lockBounce{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.05)}}
-@keyframes pulseGlow{0%,100%{box-shadow:0 0 15px rgba(234,179,8,.2)}50%{box-shadow:0 0 35px rgba(234,179,8,.5)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 20px rgba(234,179,8,.25)}50%{box-shadow:0 0 40px rgba(234,179,8,.6)}}
 .animate-lock-bounce{animation:lockBounce 2s ease-in-out infinite}
 .animate-pulse-glow{animation:pulseGlow 2.5s infinite}
 .no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+/* Floating AI Chatbot Overlay */
+#ai-chatbot-window{transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);}
+.chat-msg-user{background:linear-gradient(135deg, #0d9488, #134e4a);color:#ffffff;border-radius:18px 18px 4px 18px;}
+.chat-msg-ai{background:var(--card-bg);border:1px solid var(--border-color);color:var(--text-primary);border-radius:18px 18px 18px 4px;}
 </style>
 </head>
 <body>
@@ -86,16 +91,16 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 <aside class="sidebar" id="sidebarDrawer">
 <div class="brand justify-between items-center w-full">
 <div class="flex items-center gap-3">
-<div class="logo">✦</div>
-<div><b>Edu<span>Pulse</span></b><p class="eyebrow">NEET Ecosystem</p></div>
+<div class="logo"><i class="fa-solid fa-graduation-cap"></i></div>
+<div><b>Edu<span>Pulse</span></b><p class="eyebrow">NEET Ecosystem PRO</p></div>
 </div>
-<button class="lg:hidden text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1" onclick="toggleMobileNav(false)"><i class="fa-solid fa-xmark text-lg"></i></button>
+<button class="lg:hidden text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-2" onclick="toggleMobileNav(false)"><i class="fa-solid fa-xmark text-lg"></i></button>
 </div>
-<nav class="nav my-6 space-y-1">
+<nav class="nav my-6 space-y-1.5">
 <button onclick="switchTab('home')" id="nav-home" class="active"><i class="fa-solid fa-house w-5"></i> Home</button>
-<button onclick="switchTab('practice')" id="nav-practice"><i class="fa-solid fa-list-check w-5"></i> Practice <small style="margin-left:auto;background:#c6f36b;color:#30521e;border-radius:999px;padding:2px 6px;font-size:9px;">79</small></button>
+<button onclick="switchTab('learn')" id="nav-learn"><i class="fa-solid fa-book-open-reader w-5"></i> Learn & Practice <small style="margin-left:auto;background:linear-gradient(135deg, #a3e635 0%, #84cc16 100%);color:#1a3a04;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:900" id="learn-nav-badge">79</small></button>
 <button onclick="switchTab('progress')" id="nav-progress"><i class="fa-solid fa-chart-line w-5"></i> Progress & Stats</button>
-<button onclick="switchTab('mock')" id="nav-mock"><i class="fa-solid fa-clipboard-question w-5"></i> Mock Test Builder</button>
+<button onclick="switchTab('mock')" id="nav-mock"><i class="fa-solid fa-wand-magic-sparkles w-5"></i> AI Mock Test Generator <small style="margin-left:auto;background:linear-gradient(135deg,#c084fc,#9333ea);color:#ffffff;border-radius:999px;padding:2px 7px;font-size:9px;font-weight:900">NEETprep AI</small></button>
 <button onclick="switchTab('directory')" id="nav-directory"><i class="fa-solid fa-book-bookmark w-5"></i> Resource Directory</button>
 <button onclick="switchTab('faculty')" id="nav-faculty"><i class="fa-solid fa-chalkboard-user w-5"></i> Faculty Hub</button>
 <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Focus & Planner</button>
@@ -111,20 +116,23 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 
 <section class="content">
 <header class="topbar">
-<div class="flex items-center gap-2 sm:gap-3">
+<div class="flex items-center gap-3">
 <button onclick="toggleMobileNav(true)" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition"><i class="fa-solid fa-bars text-lg"></i></button>
-<button id="back-btn" onclick="goBack()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700"><i class="fa-solid fa-arrow-left text-xs"></i> Back</button>
+<button id="back-btn" onclick="goBack()" class="hidden items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700 transition"><i class="fa-solid fa-arrow-left text-xs"></i> Back</button>
 <div>
 <div class="date" id="current-date">NEET Prep Ecosystem</div>
 <h1 class="hidden sm:block">Welcome, Aspirant<span style="color:#0d9488">.</span></h1>
-<h1 class="sm:hidden text-base">EduPulse PRO</h1>
+<h1 class="sm:hidden text-base font-black">EduPulse PRO</h1>
 </div>
 </div>
 <div class="flex items-center gap-2 sm:gap-3">
-<div id="offline-badge" class="hidden items-center gap-1 px-2.5 py-1 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-[10px] font-bold border border-rose-500/20"><i class="fa-solid fa-wifi-slash"></i> Offline</div>
-<button id="pwa-install-btn" onclick="triggerPwaInstall()" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition"><i class="fa-solid fa-download text-xs"></i> Install App</button>
-<button onclick="openHelpModal()" class="p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Keyboard Shortcuts (?)"><i class="fa-solid fa-keyboard text-sm"></i></button>
-<button onclick="toggleTheme()" class="p-2 sm:p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+<div id="offline-badge" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold border border-rose-500/20"><i class="fa-solid fa-wifi-slash"></i> Offline</div>
+<button id="pwa-install-btn" onclick="triggerPwaInstall()" class="hidden items-center gap-1.5 px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-md shadow-teal-600/20 transition"><i class="fa-solid fa-download text-xs"></i> Install</button>
+<button onclick="openHelpModal()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Keyboard Shortcuts (?)"><i class="fa-solid fa-keyboard text-sm"></i></button>
+<button onclick="openApiKeyModal()" class="px-3 py-2 rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-600 dark:text-teal-400 hover:bg-teal-500/20 text-xs font-bold transition flex items-center gap-1.5" title="Configure Gemini AI Key">
+<i class="fa-solid fa-wand-magic-sparkles"></i> AI Key
+</button>
+<button onclick="toggleTheme()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
 <i class="fa-solid fa-moon dark:hidden text-sm sm:text-base"></i>
 <i class="fa-solid fa-sun hidden dark:inline text-sm sm:text-base"></i>
 </button>
@@ -134,16 +142,61 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 </section>
 </div>
 
+<!-- Floating AI Chatbot Widget -->
+<div id="ai-chatbot-widget" class="fixed bottom-6 right-6 z-50">
+  <button id="ai-chat-toggle-btn" onclick="toggleAiChatbotWindow()" class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-teal-600 to-purple-600 text-white shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all group">
+    <i class="fa-solid fa-wand-magic-sparkles text-xl group-hover:rotate-12 transition-transform"></i>
+    <span class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-white dark:border-slate-900"></span>
+  </button>
+
+  <div id="ai-chatbot-window" class="hidden absolute bottom-16 right-0 w-[90vw] sm:w-[420px] h-[560px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden backdrop-blur-2xl">
+    <div class="p-4 bg-gradient-to-r from-teal-700 via-teal-600 to-purple-700 text-white flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center font-black">✦</div>
+        <div>
+          <h4 class="font-extrabold text-sm leading-tight">EduPulse AI Copilot</h4>
+          <span class="text-[10px] text-teal-100 flex items-center gap-1 font-semibold"><i class="fa-solid fa-circle text-[6px] text-emerald-300"></i> Powered by Gemini Flash</span>
+        </div>
+      </div>
+      <button onclick="toggleAiChatbotWindow()" class="p-1.5 text-white/80 hover:text-white rounded-lg"><i class="fa-solid fa-xmark text-lg"></i></button>
+    </div>
+
+    <div id="ai-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs leading-relaxed no-scrollbar">
+      <div class="chat-msg-ai p-3.5 shadow-sm">
+        <p class="font-bold mb-1 text-teal-600 dark:text-teal-400">👋 Hi Aspirant!</p>
+        I'm your NEET AI Copilot. Ask me to:
+        <ul class="list-disc pl-4 mt-1.5 space-y-1 text-[11px] opacity-90">
+          <li><strong>Generate custom quizzes or tests</strong> on any chapter</li>
+          <li><strong>Formulate study strategies & revision plans</strong></li>
+          <li><strong>Summarize NCERT line-by-line concepts</strong></li>
+          <li><strong>Solve tricky doubts step-by-step</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="px-3 py-2 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 flex gap-1.5 overflow-x-auto no-scrollbar">
+      <button onclick="triggerAiChatPreset('quiz')" class="shrink-0 px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 font-extrabold text-[10px] border border-teal-500/20 hover:bg-teal-500/20 transition">+ Generate 5 MCQs</button>
+      <button onclick="triggerAiChatPreset('strategy')" class="shrink-0 px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 font-extrabold text-[10px] border border-purple-500/20 hover:bg-purple-500/20 transition">⚡ 7-Day Study Strategy</button>
+      <button onclick="triggerAiChatPreset('formula')" class="shrink-0 px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-extrabold text-[10px] border border-amber-500/20 hover:bg-amber-500/20 transition">📐 Physics Formula Sheet</button>
+    </div>
+
+    <div class="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
+      <input type="text" id="ai-chat-input" placeholder="Ask AI to generate test, strategy, or explain doubt..." onkeydown="if(event.key==='Enter') sendAiChatMessage()" class="flex-1 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-medium focus:outline-none focus:border-teal-500">
+      <button onclick="sendAiChatMessage()" id="ai-chat-send-btn" class="p-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
 <div class="custom-modal" id="appModal">
 <div class="modal-box">
-<h3 id="modalTitle" class="text-xl font-bold mb-2 text-slate-900 dark:text-slate-100"></h3>
+<h3 id="modalTitle" class="text-xl font-black mb-2 text-slate-900 dark:text-slate-100"></h3>
 <p id="modalBody" class="text-slate-500 dark:text-slate-400 mb-4 text-sm"></p>
 <div id="modalContentSlot" class="flex-1 min-h-0"></div>
-<div class="flex justify-end gap-3 mt-4" id="modalActions"></div>
+<div class="flex justify-end gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800" id="modalActions"></div>
 </div>
 </div>
 
-<div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+<div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2.5 pointer-events-none"></div>
 
 <script>
 // ===== Storage Module & Versioned Models =====
@@ -157,7 +210,10 @@ progress: 'edupulse_progress',
 todos: 'edupulse_todos',
 theme: 'edupulse_theme',
 focus: 'edupulse_focus_sessions',
-timerPreset: 'edupulse_timer_preset'
+timerPreset: 'edupulse_timer_preset',
+savedMockPresets: 'edupulse_mock_presets_v1',
+geminiKey: 'edupulse_gemini_key_v1',
+errorNotebook: 'edupulse_error_notebook_v1'
 };
 
 const defaultSettings = {
@@ -255,6 +311,387 @@ showToast(`🎯 Daily goal of ${settings.dailyGoalQuestions} questions reached!`
 
 StorageModule.init();
 
+// ===== Gemini AI Integration Core =====
+function getGeminiApiKey() {
+  return localStorage.getItem(STORAGE_KEYS.geminiKey) || '';
+}
+
+function setGeminiApiKey(key) {
+  localStorage.setItem(STORAGE_KEYS.geminiKey, key.trim());
+  showToast(key.trim() ? 'Gemini API Key saved successfully!' : 'API Key removed.', key.trim() ? 'success' : 'warning');
+}
+
+function openApiKeyModal() {
+  const currentKey = getGeminiApiKey();
+  setModal('Gemini AI Engine Settings', 'Provide your Gemini API key to activate AI chatbot, explanations, tutoring, and mock generators.', `
+    <div class="space-y-4 py-2">
+      <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-xs text-teal-700 dark:text-teal-300">
+        <i class="fa-solid fa-circle-info mr-1.5"></i> EduPulse uses standard <strong>gemini-3-flash-preview</strong> calls for AI generation. Your key remains stored locally in your browser.
+      </div>
+      <div>
+        <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Gemini API Key</label>
+        <input type="password" id="geminiKeyInput" value="${escapeHtml(currentKey)}" placeholder="AIzaSy..." class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono">
+      </div>
+    </div>
+  `, `
+    <button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Cancel</button>
+    <button onclick="saveApiKeyFromModal()" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-md">Save API Key</button>
+  `);
+}
+
+function saveApiKeyFromModal() {
+  const val = document.getElementById('geminiKeyInput')?.value || '';
+  setGeminiApiKey(val);
+  closeModal();
+}
+
+async function callGeminiApi(prompt, systemInstruction = '') {
+  const apiKey = getGeminiApiKey();
+  if (!apiKey) {
+    openApiKeyModal();
+    throw new Error('Please configure your Gemini API Key first.');
+  }
+
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+  const payload = {
+    contents: [{ parts: [{ text: prompt }] }],
+    ...(systemInstruction ? { systemInstruction: { parts: [{ text: systemInstruction }] } } : {})
+  };
+
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error?.message || `API Call failed: HTTP ${response.status}`);
+  }
+
+  const result = await response.json();
+  const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+  if (!text) throw new Error('No content returned from AI model.');
+  return text;
+}
+
+// ===== AI Chatbot Engine =====
+function toggleAiChatbotWindow() {
+  const win = document.getElementById('ai-chatbot-window');
+  if (win) win.classList.toggle('hidden');
+}
+
+function appendChatMessage(sender, text, rawQuestionsJson = null) {
+  const container = document.getElementById('ai-chat-messages');
+  if (!container) return;
+  const div = document.createElement('div');
+  const isUser = sender === 'user';
+  div.className = isUser ? 'chat-msg-user p-3 shadow-sm ml-auto max-w-[85%]' : 'chat-msg-ai p-3.5 shadow-sm max-w-[90%]';
+  
+  let content = multiline(text);
+  if (rawQuestionsJson) {
+    content += `<div class="mt-3 pt-2 border-t border-slate-200 dark:border-slate-800">
+      <button onclick='launchQuizFromAiChat(${JSON.stringify(rawQuestionsJson).replace(/'/g, "&apos;")})' class="w-full py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5">
+        <i class="fa-solid fa-play text-[10px]"></i> Launch Generated Quiz Now
+      </button>
+    </div>`;
+  }
+  div.innerHTML = content;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+async function sendAiChatMessage() {
+  const input = document.getElementById('ai-chat-input');
+  const text = input?.value?.trim();
+  if (!text) return;
+  input.value = '';
+
+  appendChatMessage('user', text);
+  
+  const container = document.getElementById('ai-chat-messages');
+  const loadingDiv = document.createElement('div');
+  loadingDiv.className = 'chat-msg-ai p-3 shadow-sm text-slate-400 italic';
+  loadingDiv.id = 'ai-chat-loading';
+  loadingDiv.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles fa-spin mr-1.5 text-teal-600"></i> Thinking & generating...';
+  container.appendChild(loadingDiv);
+  container.scrollTop = container.scrollHeight;
+
+  try {
+    const sysPrompt = "You are EduPulse Copilot, an AI mentor for NEET entrance exam aspirants. Help generate study strategies, NCERT summaries, key formulas, or questions. If asked to generate a test/quiz, generate high-yield MCQs AND include a clean raw JSON array block ```json [...] ``` containing objects with: q (question text), o (array of 4 options), a (1-based correct option index), s (explanation).";
+    const responseText = await callGeminiApi(text, sysPrompt);
+    document.getElementById('ai-chat-loading')?.remove();
+
+    let jsonMatch = responseText.match(/```json\s*([\s\S]*?)\s*```/);
+    let parsedQuestions = null;
+    if (jsonMatch) {
+      try {
+        parsedQuestions = JSON.parse(jsonMatch[1]);
+      } catch (e) {
+        console.warn("Could not parse AI JSON block", e);
+      }
+    }
+
+    appendChatMessage('ai', responseText.replace(/```json[\s\S]*?```/g, '').trim() || "Here are your generated questions:", parsedQuestions);
+  } catch (err) {
+    document.getElementById('ai-chat-loading')?.remove();
+    appendChatMessage('ai', "⚠️ Error: " + err.message);
+  }
+}
+
+function triggerAiChatPreset(type) {
+  const input = document.getElementById('ai-chat-input');
+  if (!input) return;
+  if (type === 'quiz') input.value = "Generate a 5-question high-yield NEET practice quiz on Plant Physiology with answers and explanations.";
+  else if (type === 'strategy') input.value = "Create a 7-day NEET study & revision schedule focusing on organic chemistry and physics numericals.";
+  else if (type === 'formula') input.value = "List top 10 high-yield Physics formulas for NEET along with key variable definitions.";
+  sendAiChatMessage();
+}
+
+function launchQuizFromAiChat(rawQuestions) {
+  if (!Array.isArray(rawQuestions) || !rawQuestions.length) return showToast('Invalid question payload.', 'error');
+  const formatted = rawQuestions.map((q, i) => ({
+    qKey: 'ai_chat_' + Date.now() + '_' + i,
+    question: q.q,
+    options: q.o,
+    correct: (q.a || 1) - 1,
+    explanation: q.s || 'AI generated explanation',
+    sourceChapter: 'AI Custom Drill'
+  }));
+
+  setupQuizMode('practice', 'Biology', 'AI Custom Practice Drill', formatted);
+}
+
+// ===== AI Features & Power Tools =====
+async function askAiChapterTutor(chapterName) {
+  setModal(`AI NCERT Tutor — ${chapterName}`, 'Generating core concepts & high-yield points...', `
+    <div class="flex flex-col items-center justify-center py-8" id="aiTutorLoading">
+      <i class="fa-solid fa-wand-magic-sparkles fa-spin text-3xl text-teal-600 mb-3"></i>
+      <p class="text-xs font-bold text-slate-600 dark:text-slate-300">Consulting Gemini NCERT Knowledge Base...</p>
+    </div>
+    <div id="aiTutorContent" class="hidden text-xs space-y-3 leading-relaxed max-h-96 overflow-y-auto pr-1"></div>
+  `, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close</button>`);
+
+  try {
+    const prompt = `Provide a structured NEET exam summary for the chapter "${chapterName}" in subject "${subject}". Include: 1. Core High-Yield NCERT Points 2. Common Trap Concepts 3. Top 3 Formulas/Key Definitions. Format with clean bullet points and bold tags.`;
+    const sys = "You are a top-tier NEET Entrance Exam Educator specializing in NCERT Biology, Physics, and Chemistry.";
+    const text = await callGeminiApi(prompt, sys);
+    
+    document.getElementById('aiTutorLoading')?.classList.add('hidden');
+    const content = document.getElementById('aiTutorContent');
+    if (content) {
+      content.classList.remove('hidden');
+      content.innerHTML = multiline(text);
+    }
+  } catch (err) {
+    showToast(err.message, 'error');
+  }
+}
+
+function addToErrorNotebook(q) {
+  const notebook = StorageModule.get(STORAGE_KEYS.errorNotebook, []);
+  if (!notebook.some(item => item.qKey === q.qKey)) {
+    notebook.unshift({ ...q, addedAt: Date.now() });
+    StorageModule.set(STORAGE_KEYS.errorNotebook, notebook);
+    showToast('Question saved to Error Notebook!', 'success');
+  } else {
+    showToast('Question already in Error Notebook.', 'warning');
+  }
+}
+
+function openErrorNotebookModal() {
+  const notebook = StorageModule.get(STORAGE_KEYS.errorNotebook, []);
+  setModal('Error Notebook (Missed MCQs Bank)', `Review ${notebook.length} saved difficult questions.`, `
+    <div class="space-y-3 py-2 max-h-96 overflow-y-auto pr-1">
+      ${notebook.length === 0 ? '<p class="text-xs text-slate-400 py-6 text-center">No questions in your error notebook yet!</p>' : notebook.map((q, idx) => `
+        <div class="p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-2 text-xs">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-teal-600">${escapeHtml(q.sourceChapter || 'General')}</span>
+            <button onclick="removeFromErrorNotebook('${q.qKey}')" class="text-rose-500 font-bold hover:underline">Remove</button>
+          </div>
+          <p class="font-bold text-slate-800 dark:text-slate-200">${multiline(q.question)}</p>
+        </div>
+      `).join('')}
+    </div>
+  `, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close</button>`);
+}
+
+function removeFromErrorNotebook(qKey) {
+  let notebook = StorageModule.get(STORAGE_KEYS.errorNotebook, []);
+  notebook = notebook.filter(item => item.qKey !== qKey);
+  StorageModule.set(STORAGE_KEYS.errorNotebook, notebook);
+  showToast('Removed from notebook.');
+  openErrorNotebookModal();
+}
+
+let currentAudio = null;
+function toggleFocusSoundscape(type) {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+    showToast('Soundscape stopped.');
+    return;
+  }
+  const sounds = {
+    rain: 'https://cdn.pixabay.com/download/audio/2021/09/06/audio_4040909a3c.mp3',
+    waves: 'https://cdn.pixabay.com/download/audio/2022/05/16/audio_c81600b21e.mp3'
+  };
+  if (sounds[type]) {
+    currentAudio = new Audio(sounds[type]);
+    currentAudio.loop = true;
+    currentAudio.play().catch(() => showToast('Audio playback failed.', 'error'));
+    showToast(`Playing ${type} soundscape 🎧`);
+  }
+}
+
+async function generateAiPerformanceCoaching() {
+  const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
+  if (attempts.length === 0) return showToast('Complete at least one quiz to generate AI coaching!', 'warning');
+  
+  setModal('AI NEET Strategy Coach', 'Analyzing overall score trends and accuracy ratios...', `
+    <div class="flex flex-col items-center justify-center py-8" id="aiCoachLoading">
+      <i class="fa-solid fa-chart-line fa-spin text-3xl text-teal-600 mb-3"></i>
+      <p class="text-xs font-bold text-slate-600 dark:text-slate-300">Synthesizing personalized study plan...</p>
+    </div>
+    <div id="aiCoachContent" class="hidden text-xs space-y-3 leading-relaxed max-h-96 overflow-y-auto pr-1"></div>
+  `, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close</button>`);
+
+  try {
+    const summary = attempts.slice(0, 5).map(a => `${a.chapter} (${a.subject}): ${a.accuracy}% Acc, Score ${a.score}/${a.maxScore}`).join('\n');
+    const prompt = `Analyze these recent NEET practice results:\n${summary}\nProvide a concise 3-step action plan to improve weak areas and boost speed.`;
+    const sys = "You are a top NEET Rank Producer Mentor.";
+    const text = await callGeminiApi(prompt, sys);
+    
+    document.getElementById('aiCoachLoading')?.classList.add('hidden');
+    const content = document.getElementById('aiCoachContent');
+    if (content) {
+      content.classList.remove('hidden');
+      content.innerHTML = multiline(text);
+    }
+  } catch (err) {
+    showToast(err.message, 'error');
+  }
+}
+
+async function generateAiMockQuestions(subj, chapterName) {
+  showToast('Generating AI High-Yield Questions via Gemini...', 'success');
+  try {
+    const prompt = `Generate 5 high-quality NEET multiple choice questions for subject "${subj}", chapter "${chapterName}". Return strictly valid JSON array matching this format: [{"q":"question text","o":["opt1","opt2","opt3","opt4"],"a":1,"s":"explanation"}]`;
+    const sys = "You output only valid raw JSON arrays for NEET question banks.";
+    const rawJson = await callGeminiApi(prompt, sys);
+    const cleanJson = rawJson.replace(/```json/g, '').replace(/```/g, '').trim();
+    const parsed = JSON.parse(cleanJson);
+    
+    const formatted = parsed.map((q, i) => ({
+      qKey: slugify(chapterName) + '#ai_' + Date.now() + '_' + i,
+      question: q.q,
+      options: q.o,
+      correct: (q.a || 1) - 1,
+      explanation: q.s || 'AI generated explanation',
+      sourceChapter: chapterName
+    }));
+
+    setupQuizMode('practice', subj, chapterName, formatted);
+  } catch (err) {
+    showToast('Failed to generate AI questions: ' + err.message, 'error');
+  }
+}
+
+function openFormulaFlashcardsModal() {
+  const cards = [
+    { title: "Nernst Equation", text: "E = E° - (RT/nF) ln Q", subject: "Chemistry" },
+    { title: "Beer-Lambert Law", text: "A = ε c l", subject: "Chemistry" },
+    { title: "De Broglie Wavelength", text: "λ = h / p = h / (mv)", subject: "Physics" },
+    { title: "Photosynthesis Net Reaction", text: "6CO2 + 12H2O -> C6H12O6 + 6H2O + 6O2", subject: "Biology" }
+  ];
+  setModal('High-Yield Formula & Flashcard Deck', 'Click card to flip and view formula.', `
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 py-2">
+      ${cards.map(c => `
+        <div onclick="this.querySelector('.card-back').classList.toggle('hidden')" class="card p-4 text-center cursor-pointer hover:border-teal-500 transition select-none">
+          <span class="text-[9px] font-black uppercase px-2 py-0.5 rounded bg-teal-100 text-teal-700 dark:bg-teal-950 dark:text-teal-300">${c.subject}</span>
+          <h4 class="font-bold text-xs mt-2 text-slate-800 dark:text-slate-100">${escapeHtml(c.title)}</h4>
+          <p class="card-back hidden mt-3 pt-3 border-t border-slate-200 dark:border-slate-800 font-mono text-xs font-bold text-teal-600">${escapeHtml(c.text)}</p>
+        </div>
+      `).join('')}
+    </div>
+  `, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close Deck</button>`);
+}
+
+function openRankPredictorModal() {
+  setModal('NEET Rank & Percentile Estimator', 'Estimate your All India Rank based on target score.', `
+    <div class="space-y-4 py-2">
+      <div>
+        <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Expected Score (Out of 720)</label>
+        <input type="number" id="targetRankScore" max="720" value="650" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-bold">
+      </div>
+      <div id="rankResultBox" class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-center">
+        <span class="text-xs font-bold uppercase text-slate-500">Estimated AIR Rank</span>
+        <h3 class="text-3xl font-black text-teal-600 mt-1" id="airRankDisplay">~ 4,500 - 6,000</h3>
+        <p class="text-[11px] text-slate-500 mt-1">Sufficient for top Govt Medical Colleges (MBBS)</p>
+      </div>
+    </div>
+  `, `
+    <button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Close</button>
+    <button onclick="calculateRank()" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white text-xs font-bold">Calculate Rank</button>
+  `);
+}
+
+function calculateRank() {
+  const score = parseInt(document.getElementById('targetRankScore')?.value || '650', 10);
+  const disp = document.getElementById('airRankDisplay');
+  if (!disp) return;
+  if (score >= 700) disp.textContent = "AIR 1 - 200 (AIIMS New Delhi Zone)";
+  else if (score >= 650) disp.textContent = "~ AIR 1,500 - 6,500";
+  else if (score >= 600) disp.textContent = "~ AIR 15,000 - 25,000";
+  else if (score >= 500) disp.textContent = "~ AIR 60,000 - 90,000";
+  else disp.textContent = "> AIR 150,000 (Requires Intensive Revision)";
+}
+
+async function summarizeLectureNotes(lectTitle) {
+  setModal(`AI Lecture Summarizer`, lectTitle, `
+    <div class="flex flex-col items-center justify-center py-8" id="aiLectLoading">
+      <i class="fa-solid fa-sparkles fa-spin text-3xl text-teal-600 mb-3"></i>
+      <p class="text-xs font-bold text-slate-600 dark:text-slate-300">Extracting high-yield lecture points...</p>
+    </div>
+    <div id="aiLectContent" class="hidden text-xs space-y-3 leading-relaxed max-h-96 overflow-y-auto pr-1"></div>
+  `, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close</button>`);
+
+  try {
+    const prompt = `Provide concise bullet-point study notes for NEET students preparing the topic "${lectTitle}".`;
+    const text = await callGeminiApi(prompt, "You are a concise medical study notes generator.");
+    document.getElementById('aiLectLoading')?.classList.add('hidden');
+    const content = document.getElementById('aiLectContent');
+    if (content) {
+      content.classList.remove('hidden');
+      content.innerHTML = multiline(text);
+    }
+  } catch (err) {
+    showToast(err.message, 'error');
+  }
+}
+
+window.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    openCommandPalette();
+  }
+});
+
+function openCommandPalette() {
+  setModal('Quick Command Palette (Ctrl+K)', 'Jump to any view or trigger AI utilities.', `
+    <div class="space-y-3 py-2">
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <button onclick="closeModal(); switchTab('learn');" class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-teal-500 font-bold text-left"><i class="fa-solid fa-book-open mr-2 text-teal-600"></i> Learn & Practice</button>
+        <button onclick="closeModal(); switchTab('mock');" class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-teal-500 font-bold text-left"><i class="fa-solid fa-sliders mr-2 text-amber-500"></i> Mock Test Builder</button>
+        <button onclick="closeModal(); toggleAiChatbotWindow();" class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-teal-500 font-bold text-left"><i class="fa-solid fa-wand-magic-sparkles mr-2 text-purple-500"></i> Open AI Copilot Chat</button>
+        <button onclick="closeModal(); openErrorNotebookModal();" class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-teal-500 font-bold text-left"><i class="fa-solid fa-book-bookmark mr-2 text-rose-500"></i> Error Notebook</button>
+        <button onclick="closeModal(); openFormulaFlashcardsModal();" class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-teal-500 font-bold text-left"><i class="fa-solid fa-bolt mr-2 text-yellow-500"></i> Formula Decks</button>
+        <button onclick="closeModal(); openRankPredictorModal();" class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-teal-500 font-bold text-left"><i class="fa-solid fa-trophy mr-2 text-emerald-500"></i> Rank Predictor</button>
+      </div>
+    </div>
+  `, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close Palette</button>`);
+}
+
 // ===== Quiz Data Location & Utilities =====
 const DATA_BASE = "Data/";
 const FILE_OVERRIDES = { 'The Living World': 'living_world_mcqs.json' };
@@ -305,8 +742,7 @@ const INITIAL_RESOURCES = [
 { id: "fun1", title: "Wotaku Wiki", category: "Fun & Media", subtag: "Fun", badge: "Wotaku", url: "https://wotaku.wiki/" }
 ];
 
-// App State
-let currentTab = 'home', previousTab = 'home', subject = 'Biology';
+let currentTab = 'home', previousTab = 'home', subject = 'Biology', learnSubTab = 'practice';
 let userProgress = StorageModule.get(STORAGE_KEYS.progress, {});
 let todos = StorageModule.get(STORAGE_KEYS.todos, [
 { id: 'td1', title: 'Revise Living World MCQs', subject: 'Biology', priority: 'high', completed: false, createdAt: Date.now() },
@@ -318,7 +754,102 @@ let timerSeconds = timerInitialSeconds;
 let timerMode = 'work';
 let timerInterval = null;
 
-// Quiz Session State
+const defaultMockPresets = [
+  { id: 'p1', name: 'Full NEET Simulation (720M)', pattern: 'NEET 720M', mins: 180, subs: ['Biology', 'Chemistry', 'Physics'], qCount: 180 },
+  { id: 'p2', name: 'Biology Sprint (360M)', pattern: 'Bio Drill', mins: 60, subs: ['Biology'], qCount: 90 },
+  { id: 'p3', name: 'Physics Numericals (180M)', pattern: 'Physics Speed', mins: 45, subs: ['Physics'], qCount: 45 },
+  { id: 'p4', name: 'Chemistry Rapid Fire (180M)', pattern: 'Chem Focus', mins: 45, subs: ['Chemistry'], qCount: 45 }
+];
+
+function getSavedMockPresets() {
+  return StorageModule.get(STORAGE_KEYS.savedMockPresets, defaultMockPresets);
+}
+
+let customMockConfig = {
+  title: 'AI Targeted NEET Test (NEETprep Pattern)',
+  targetGoal: 'neet_720',
+  subjects: ['Biology', 'Chemistry', 'Physics'],
+  selectedChapters: { Biology: ['The Living World'], Chemistry: ['Some Basic Concepts of Chemistry'], Physics: ['Units and Measurements'] },
+  questionTypes: { ncertLine: true, assertionReason: true, pyqPattern: true },
+  difficulty: 'Standard NEET',
+  marksCorrect: 4,
+  marksWrong: -1,
+  durationMins: 180,
+  qCount: 180
+};
+
+function toggleMockChapterSelection(subj, ch) {
+  if (!customMockConfig.selectedChapters[subj]) customMockConfig.selectedChapters[subj] = [];
+  const idx = customMockConfig.selectedChapters[subj].indexOf(ch);
+  if (idx > -1) {
+    customMockConfig.selectedChapters[subj].splice(idx, 1);
+  } else {
+    customMockConfig.selectedChapters[subj].push(ch);
+  }
+  const btn = document.getElementById(`mock-ch-btn-${slugify(subj + '-' + ch)}`);
+  if (btn) {
+    const isSel = customMockConfig.selectedChapters[subj].includes(ch);
+    btn.className = `px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-between border ${isSel ? 'border-teal-500 bg-teal-500/10 text-teal-700 dark:text-teal-300' : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'}`;
+    btn.querySelector('i').className = `fa-solid ${isSel ? 'fa-square-check text-teal-600' : 'fa-square text-slate-300 dark:text-slate-700'}`;
+  }
+}
+
+async function launchAiNeetprepMockEngine() {
+  const title = document.getElementById('mockCustomTitle')?.value || 'AI NEET Test Paper';
+  const duration = parseInt(document.getElementById('mockDuration')?.value || '180', 10);
+  const diff = document.getElementById('mockDifficulty')?.value || 'Standard NEET';
+  const qCount = parseInt(document.getElementById('mockQCount')?.value || '30', 10);
+  const targetSub = document.getElementById('mockTargetSubject')?.value || 'Biology';
+
+  const selectedChs = customMockConfig.selectedChapters[targetSub] || [data[targetSub][0]];
+
+  setModal('NEETprep AI Paper Generator', 'Building customized NCERT paper...', `
+    <div class="flex flex-col items-center justify-center py-10 space-y-3">
+      <i class="fa-solid fa-wand-magic-sparkles fa-spin text-4xl text-purple-600 mb-2"></i>
+      <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Synthesizing ${qCount} NCERT Line-by-Line & Assertion-Reasoning MCQs...</p>
+      <span class="text-xs text-slate-500">Topics: ${selectedChs.slice(0, 3).join(', ')}${selectedChs.length > 3 ? '...' : ''}</span>
+    </div>
+  `);
+
+  try {
+    const prompt = `Generate a NEET test paper with ${qCount} multiple choice questions for subject "${targetSub}" covering chapters: ${selectedChs.join(', ')}. Include Assertion-Reason and NCERT line-by-line questions. Level: ${diff}. Return strictly valid JSON array format: [{"q":"Question text","o":["Opt A","Opt B","Opt C","Opt D"],"a":1,"s":"NCERT Explanation and Citation"}]`;
+    const sys = "You are an expert NEETprep examination paper generator producing accurate NCERT questions.";
+    
+    let rawQuestions;
+    try {
+      const rawJson = await callGeminiApi(prompt, sys);
+      const cleanJson = rawJson.replace(/```json/g, '').replace(/```/g, '').trim();
+      const parsed = JSON.parse(cleanJson);
+      rawQuestions = parsed.map((q, i) => ({
+        qKey: 'ai_mock_' + Date.now() + '_' + i,
+        question: q.q,
+        options: q.o,
+        correct: (q.a || 1) - 1,
+        explanation: q.s || 'NCERT Line-by-Line concept.',
+        sourceChapter: selectedChs[i % selectedChs.length] || targetSub
+      }));
+    } catch (e) {
+      console.warn("AI generation fallback to chapter parser:", e);
+      const res = await fetch(quizUrl(selectedChs[0]), { cache: 'no-cache' });
+      const raw = await res.json();
+      const list = Array.isArray(raw) ? raw : raw.qs;
+      rawQuestions = list.slice(0, qCount).map((q, i) => ({
+        qKey: 'mock_' + i,
+        question: q.q,
+        options: q.o,
+        correct: (q.a || 1) - 1,
+        explanation: q.s || '',
+        sourceChapter: selectedChs[0]
+      }));
+    }
+
+    launchTestSession(targetSub, `${title} (${diff})`, rawQuestions);
+  } catch (err) {
+    showToast('Failed to build test paper: ' + err.message, 'error');
+    closeModal();
+  }
+}
+
 const quizState = {
 mode: 'practice',
 chapter: '',
@@ -338,7 +869,6 @@ paletteExpanded: false,
 timerInterval: null
 };
 
-// Chapter availability cache
 const chapterAvailability = {};
 
 function saveToLocalStorage() {
@@ -392,7 +922,6 @@ overlay.classList.remove('open');
 }
 }
 
-// ===== Theme Handling =====
 function initTheme() {
 const saved = localStorage.getItem(STORAGE_KEYS.theme) || 'light';
 if (saved === 'dark') {
@@ -410,7 +939,6 @@ localStorage.setItem(STORAGE_KEYS.theme, isDark ? 'dark' : 'light');
 }
 initTheme();
 
-// ===== Network status / Offline badge =====
 window.addEventListener('online', updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
 function updateOnlineStatus() {
@@ -419,7 +947,6 @@ if (badge) badge.classList.toggle('hidden', navigator.onLine);
 }
 setTimeout(updateOnlineStatus, 500);
 
-// ===== PWA & SW Update =====
 let deferredPrompt = null;
 window.addEventListener('beforeinstallprompt', e => {
 e.preventDefault();
@@ -451,7 +978,6 @@ showToast('New version available - Refresh to update', 'warning');
 }).catch(err => console.error('SW registration failed:', err));
 }
 
-// ===== Chapter Availability Checks =====
 let activeAvailabilityFetches = 0;
 const availabilityQueue = [];
 
@@ -493,7 +1019,6 @@ processAvailabilityQueue();
 });
 }
 
-// ===== Progress / chapters render =====
 function updateGlobalProgress() {
 const done = Object.values(userProgress).filter(p => p && p.completed).length;
 const pct = Math.round((done / TOTAL_CHAPTERS) * 100);
@@ -540,7 +1065,7 @@ lastDate = new Date(lastAttempt.finishedAt).toLocaleDateString();
 const acc = attemptCount > 0 ? Math.round((attemptsArr.reduce((s,a) => s + (a.accuracy || 0), 0) / attemptCount)) : 0;
 const badgeColor = acc >= 70 ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : acc >= 40 ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300' : 'bg-rose-100 text-rose-700 dark:bg-rose-950/50 dark:text-rose-300';
 
-return `<div class="card chapter" id="chapter-card-${slugify(ch)}" onclick="openModePicker('${jsArg(subject)}', '${jsArg(ch)}')"> <div> <div class="flex items-center justify-between"> <span class="chip ${cls}">${short}</span> <div class="flex items-center gap-1.5"> <span id="avail-badge-${slugify(ch)}" class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">Checking...</span> <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${done ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400'}">${done ? 'Completed ✓' : 'Pending'}</span> </div> </div> <h3 class="chapter-title">${escapeHtml(ch)}</h3> <div class="mt-2 text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-3"> <span>Attempts: <strong class="text-slate-700 dark:text-slate-200">${attemptCount}</strong></span> <span>Best: <strong class="text-slate-700 dark:text-slate-200">${bestScore}</strong></span> ${attemptCount > 0 ? `<span class="px-1.5 py-0.5 rounded font-bold ${badgeColor}">Acc: ${acc}%</span>` : ''} </div> </div> <div> <div class="progress"><i style="width:${done ? '100%' : '0%'}"></i></div> <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"> <span class="text-[10px] text-slate-400">Last: ${lastDate}</span> <span class="practice">Start Quiz <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i></span> </div> </div> </div>`;
+return `<div class="card chapter" id="chapter-card-${slugify(ch)}" onclick="openModePicker('${jsArg(subject)}', '${jsArg(ch)}')"> <div> <div class="flex items-center justify-between"> <span class="chip ${cls}">${short}</span> <div class="flex items-center gap-1.5"> <span id="avail-badge-${slugify(ch)}" class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">Checking...</span> <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${done ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400'}">${done ? 'Completed ✓' : 'Pending'}</span> </div> </div> <h3 class="chapter-title">${escapeHtml(ch)}</h3> <div class="mt-2 text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-3"> <span>Attempts: <strong class="text-slate-700 dark:text-slate-200">${attemptCount}</strong></span> <span>Best: <strong class="text-slate-700 dark:text-slate-200">${bestScore}</strong></span> ${attemptCount > 0 ? `<span class="px-1.5 py-0.5 rounded font-bold ${badgeColor}">Acc: ${acc}%</span>` : ''} </div> </div> <div> <div class="progress"><i style="width:${done ? '100%' : '0%'}"></i></div> <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"> <span class="text-[10px] text-slate-400">Last: ${lastDate}</span> <div class="flex items-center gap-2"> <button onclick="event.stopPropagation(); askAiChapterTutor('${jsArg(ch)}')" class="text-xs text-purple-600 font-bold hover:underline"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> AI Tutor</button> <span class="practice">Start Quiz <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i></span> </div> </div> </div> </div>`;
 }).join('');
 
 filtered.forEach(ch => {
@@ -554,7 +1079,6 @@ el.className = isAvailable ? 'px-2 py-0.5 rounded-full text-[9px] font-extrabold
 });
 }
 
-// ===== Modal Helpers =====
 function openModal() { document.getElementById('appModal').classList.add('open'); }
 function toggleFullScreenMode(on) { document.getElementById('appModal')?.classList.toggle('fullscreen-modal', !!on); }
 function closeModal() {
@@ -571,10 +1095,9 @@ openModal();
 }
 
 function openHelpModal() {
-setModal('Keyboard Shortcuts & Navigation', 'Accelerate your practice with key shortcuts:',  `<div class="space-y-3 py-2 text-xs"> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Option A, B, C, D</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">1, 2, 3, 4</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Next Question</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">ArrowRight / Space</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Previous Question</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">ArrowLeft</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Toggle Bookmark / Flag</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">B or F</kbd></div> </div>`, `<button onclick="closeModal()" class="px-4 py-2 bg-teal-600 text-white rounded-xl font-bold text-xs">Got it</button>`);
+setModal('Keyboard Shortcuts & Navigation', 'Accelerate your practice with key shortcuts:',  `<div class="space-y-3 py-2 text-xs"> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Option A, B, C, D</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">1, 2, 3, 4</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Next Question</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">ArrowRight / Space</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Previous Question</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">ArrowLeft</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Command Palette</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">Ctrl + K</kbd></div> </div>`, `<button onclick="closeModal()" class="px-4 py-2 bg-teal-600 text-white rounded-xl font-bold text-xs">Got it</button>`);
 }
 
-// Global keyboard shortcuts
 document.addEventListener('keydown', (e) => {
 const isModalOpen = document.getElementById('appModal')?.classList.contains('open');
 if (!isModalOpen) return;
@@ -599,7 +1122,6 @@ else if (quizState.mode === 'test') toggleMarkTestCurrent();
 }
 });
 
-// ===== Mode Picker Modal =====
 function openModePicker(subj, chapterName) {
 subject = subj;
 checkChapterAvailability(chapterName, (isAvailable) => {
@@ -607,7 +1129,7 @@ if (!isAvailable) {
 showComingSoon(chapterName);
 return;
 }
-setModal('Select Quiz Mode', chapterName, `<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-2"> <button onclick="setupQuizMode('practice', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"> <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid fa-graduation-cap text-lg"></i></div> <h4 class="font-black text-base text-slate-900 dark:text-slate-100">Practice Mode</h4> <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Instant feedback after each question, detailed explanations, stopwatch learning.</p> </button> <button onclick="setupQuizMode('test', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"> <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid fa-clock text-lg"></i></div> <h4 class="font-black text-base text-slate-900 dark:text-slate-100">Test Mode</h4> <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">NEET exam simulation with countdown timer, negative marking, review flags, and deferred results.</p> </button> </div> <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between"> <span class="text-xs font-bold text-slate-500">Quick options:</span> <button onclick="toggleChapterProgress('${jsArg(chapterName)}')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">Toggle Completion Status</button> </div>`,
+setModal('Select Quiz Mode', chapterName, `<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-2"> <button onclick="setupQuizMode('practice', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"> <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid fa-graduation-cap text-lg"></i></div> <h4 class="font-black text-base text-slate-900 dark:text-slate-100">Practice Mode</h4> <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Instant feedback after each question, detailed explanations, stopwatch learning.</p> </button> <button onclick="setupQuizMode('test', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"> <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid fa-clock text-lg"></i></div> <h4 class="font-black text-base text-slate-900 dark:text-slate-100">Test Mode</h4> <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">NEET exam simulation with countdown timer, negative marking, review flags, and deferred results.</p> </button> </div> <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between"> <button onclick="generateAiMockQuestions('${jsArg(subj)}', '${jsArg(chapterName)}')" class="text-xs font-bold text-purple-600 dark:text-purple-400 flex items-center gap-1.5"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate AI Question Drill</button> <button onclick="toggleChapterProgress('${jsArg(chapterName)}')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">Toggle Completion Status</button> </div>`,
 `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 text-xs">Cancel</button>`
 );
 });
@@ -629,7 +1151,6 @@ closeModal();
 renderView();
 }
 
-// ===== Quiz Setup & Options Config =====
 async function setupQuizMode(mode, subj, chapterName, customQuestions = null) {
 subject = subj;
 toggleFullScreenMode(false);
@@ -776,7 +1297,6 @@ closeModal();
 renderTestQuiz();
 }
 
-// ===== Practice Quiz Engine & UI =====
 function renderPracticeQuiz() {
 toggleFullScreenMode(true);
 if (quizState.timerInterval) { clearInterval(quizState.timerInterval); quizState.timerInterval = null; }
@@ -816,7 +1336,13 @@ return `<button type="button" class="${c}" ${answered ? 'disabled' : `onclick="s
 
 const imageHtml = q.img ? `<div class="my-4"><img src="${DATA_BASE}img/${escapeHtml(q.img)}" alt="${escapeHtml(q.alt || 'Question diagram')}" class="max-h-60 rounded-xl border border-slate-200 dark:border-slate-700 object-contain mx-auto" onerror="this.onerror=null;this.parentElement.style.display='none';"></div>` : '';
 
-const result = answered ? `<div class="mt-4 rounded-xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} px-4 py-3 text-sm font-semibold"> ${isRight ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'} Correct option: <span class="font-black">${String.fromCharCode(65 + q.correct)}. ${escapeHtml(q.options[q.correct])}</span> ${q.explanation ? `<div class="mt-2 text-xs font-medium opacity-80">${escapeHtml(q.explanation)}</div>` : ''} </div>` : '';
+const result = answered ? `<div class="mt-4 rounded-xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} px-4 py-3 text-sm font-semibold"> 
+<div class="flex items-center justify-between">
+<span>${isRight ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'} Correct option: <span class="font-black">${String.fromCharCode(65 + q.correct)}. ${escapeHtml(q.options[q.correct])}</span></span>
+${!isRight ? `<button onclick='addToErrorNotebook(${JSON.stringify(q).replace(/'/g, "&apos;")})' class="text-xs bg-rose-200 dark:bg-rose-900 px-2.5 py-1 rounded-lg text-rose-800 dark:text-rose-200 font-bold">+ Error Notebook</button>` : ''}
+</div>
+${q.explanation ? `<div class="mt-2 text-xs font-medium opacity-80">${escapeHtml(q.explanation)}</div>` : ''} 
+</div>` : '';
 
 const last = idx === total - 1;
 const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative"> <div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3"> <div class="flex items-center gap-3"> <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> <div> <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2> <p class="text-xs text-slate-500 dark:text-slate-400">Practice Mode (Instant Feedback)</p> </div> </div> <div class="flex items-center gap-2"> <button type="button" onclick="toggleBookmarkCurrent()" class="px-3 py-1.5 rounded-xl border ${isBookmarked ? 'border-amber-500 bg-amber-500/10 text-amber-600' : 'border-slate-200 dark:border-slate-700 text-slate-500'} text-xs font-bold transition flex items-center gap-1.5"><i class="fa-solid fa-star"></i> ${isBookmarked ? 'Bookmarked' : 'Bookmark'}</button> <div class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Q: ${idx + 1}/${total}</div> </div> </div> <div class="flex items-center gap-2 mb-3 px-1 py-1"> <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth flex-1">${palette}</div> </div> <div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between"> <div> <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span> <p class="mt-3 text-base sm:text-lg font-bold leading-relaxed text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> ${imageHtml} <div class="mt-5 space-y-3">${options}</div> ${result} </div> <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2"> <button type="button" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 disabled:opacity-40">← Previous</button> <div class="flex items-center gap-2"> ${!answered && !last ? `<button type="button" onclick="skipPracticeQuestion()" class="rounded-xl bg-amber-500 hover:bg-amber-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition"><i class="fa-solid fa-forward-step mr-1"></i> Skip</button>` : ''} <button type="button" onclick="${last ? 'finishPracticeQuiz()' : 'goToNextPracticeQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white hover:bg-teal-700 transition">${last ? 'Finish Quiz' : 'Next →'}</button> </div> </div> </div> </div>`;
@@ -936,7 +1462,6 @@ updateGlobalProgress();
 showResultScreen(attemptRecord);
 }
 
-// ===== Test Mode UI =====
 function renderTestQuiz() {
 toggleFullScreenMode(true);
 if (!quizState.timerInterval) {
@@ -1085,7 +1610,6 @@ setModal('Exit Quiz?', 'Your current session progress will be lost if you exit.'
 );
 }
 
-// ===== Result Screen =====
 function showResultScreen(attempt) {
 toggleFullScreenMode(false);
 const { total, attempted, correct, wrong, skipped, score, maxScore, accuracy, durationSec, tabSwitches, mode } = attempt;
@@ -1096,11 +1620,10 @@ const radius = 40, circ = 2 * Math.PI * radius;
 const correctPct = total > 0 ? (correct / total) * circ : 0;
 const wrongPct = total > 0 ? (wrong / total) * circ : 0;
 
-setModal('Quiz Performance & Review', attempt.chapter, `<div class="space-y-6 py-2"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800"> <div class="flex justify-center"> <svg class="w-32 h-32 transform -rotate-90"> <circle cx="64" cy="64" r="${radius}" stroke="currentColor" stroke-width="14" class="text-slate-200 dark:text-slate-800 fill-none"></circle> <circle cx="64" cy="64" r="${radius}" stroke="#10b981" stroke-width="14" stroke-dasharray="${circ}" stroke-dashoffset="${circ - correctPct}" class="fill-none transition-all duration-1000"></circle> <circle cx="64" cy="64" r="${radius}" stroke="#f43f5e" stroke-width="14" stroke-dasharray="${circ}" stroke-dashoffset="${circ - (correctPct + wrongPct)}" class="fill-none transition-all duration-1000"></circle> </svg> </div> <div class="sm:col-span-2 space-y-2"> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Score</span><span class="text-2xl font-black text-slate-900 dark:text-slate-100">${score} / ${maxScore}</span></div> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Accuracy</span><span class="text-lg font-black text-teal-600">${accuracy}%</span></div> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Time Taken</span><span class="text-sm font-bold text-slate-700 dark:text-slate-300">${mm}m ${ss}s (${avgTimeSec}s / q)</span></div> ${tabSwitches > 0 ? `<div class="flex items-baseline justify-between text-rose-500"><span class="text-xs font-bold uppercase">Tab Switches</span><span class="text-sm font-black">${tabSwitches}</span></div>` : ''} </div> </div> <div class="grid grid-cols-4 gap-3 text-center"> <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20"><span class="block text-xl font-black text-emerald-600">${correct}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Correct</span></div> <div class="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20"><span class="block text-xl font-black text-rose-600">${wrong}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Wrong</span></div> <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20"><span class="block text-xl font-black text-amber-600">${skipped}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Skipped</span></div> <div class="p-3 rounded-xl bg-teal-500/10 border border-teal-500/20"><span class="block text-xl font-black text-teal-600">${attempted}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Attempted</span></div> </div> <div class="flex flex-wrap gap-2 pt-2"> <button onclick="setupQuizMode('${mode}', '${jsArg(attempt.subject)}', '${jsArg(attempt.chapter)}')" class="flex-1 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm"><i class="fa-solid fa-rotate-right mr-1"></i> Retake</button> </div> </div>`, `<button onclick="closeModal(); renderView();" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-bold text-xs">Back to Chapters</button>`
+setModal('Quiz Performance & Review', attempt.chapter, `<div class="space-y-6 py-2"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800"> <div class="flex justify-center"> <svg class="w-32 h-32 transform -rotate-90"> <circle cx="64" cy="64" r="${radius}" stroke="currentColor" stroke-width="14" class="text-slate-200 dark:text-slate-800 fill-none"></circle> <circle cx="64" cy="64" r="${radius}" stroke="#10b981" stroke-width="14" stroke-dasharray="${circ}" stroke-dashoffset="${circ - correctPct}" class="fill-none transition-all duration-1000"></circle> <circle cx="64" cy="64" r="${radius}" stroke="#f43f5e" stroke-width="14" stroke-dasharray="${circ}" stroke-dashoffset="${circ - (correctPct + wrongPct)}" class="fill-none transition-all duration-1000"></circle> </svg> </div> <div class="sm:col-span-2 space-y-2"> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Score</span><span class="text-2xl font-black text-slate-900 dark:text-slate-100">${score} / ${maxScore}</span></div> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Accuracy</span><span class="text-lg font-black text-teal-600">${accuracy}%</span></div> <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Time Taken</span><span class="text-sm font-bold text-slate-700 dark:text-slate-300">${mm}m ${ss}s (${avgTimeSec}s / q)</span></div> ${tabSwitches > 0 ? `<div class="flex items-baseline justify-between text-rose-500"><span class="text-xs font-bold uppercase">Tab Switches</span><span class="text-sm font-black">${tabSwitches}</span></div>` : ''} </div> </div> <div class="grid grid-cols-4 gap-3 text-center"> <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20"><span class="block text-xl font-black text-emerald-600">${correct}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Correct</span></div> <div class="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20"><span class="block text-xl font-black text-rose-600">${wrong}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Wrong</span></div> <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20"><span class="block text-xl font-black text-amber-600">${skipped}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Skipped</span></div> <div class="p-3 rounded-xl bg-teal-500/10 border border-teal-500/20"><span class="block text-xl font-black text-teal-600">${attempted}</span><span class="text-[10px] font-bold text-slate-500 uppercase">Attempted</span></div> </div> <div class="flex flex-wrap gap-2 pt-2"> <button onclick="setupQuizMode('${mode}', '${jsArg(attempt.subject)}', '${jsArg(attempt.chapter)}')" class="flex-1 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm"><i class="fa-solid fa-rotate-right mr-1"></i> Retake</button> </div> </div>`, `<button onclick="closeModal(); renderView();" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-bold text-xs">Back to Hub</button>`
 );
 }
 
-// ===== Quick Action Launchers =====
 function quickStartRandomPractice() {
 const subjects = ['Biology', 'Chemistry', 'Physics'];
 const randSub = subjects[Math.floor(Math.random() * subjects.length)];
@@ -1133,7 +1656,6 @@ saveToLocalStorage();
 renderView();
 }
 
-// ===== Tabs & Main Views =====
 function switchTab(tab) {
 previousTab = currentTab;
 currentTab = tab;
@@ -1155,6 +1677,11 @@ function goBack() {
 switchTab(previousTab);
 }
 
+function setLearnSubTab(subTab) {
+learnSubTab = subTab;
+renderView();
+}
+
 function renderView() {
 const main = document.getElementById('main-container');
 if (!main) return;
@@ -1169,10 +1696,9 @@ const totalAttempted = attemptsArr.reduce((acc, curr) => acc + (curr.attempted |
 
 main.innerHTML = `
 <div class="space-y-8">
-<!-- Hero Banner -->
 <div class="card p-6 sm:p-8 bg-gradient-to-r from-teal-700 via-teal-600 to-emerald-700 text-white border-0 shadow-xl relative overflow-hidden">
 <div class="absolute -right-10 -bottom-10 opacity-10 text-white pointer-events-none">
-<i class="fa-solid fa-[#0d9488] fa-stethoscope text-[200px]"></i>
+<i class="fa-solid fa-stethoscope text-[200px]"></i>
 </div>
 <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 relative z-10">
 <div class="space-y-2">
@@ -1187,14 +1713,13 @@ main.innerHTML = `
 <button onclick="quickStartRandomPractice()" class="px-5 py-3 rounded-xl bg-lime-400 hover:bg-lime-300 text-slate-950 font-black text-xs shadow-lg transition flex items-center gap-2">
 <i class="fa-solid fa-bolt"></i> Fast Quiz Session
 </button>
-<button onclick="switchTab('mock')" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-extrabold text-xs backdrop-blur-sm transition flex items-center gap-2">
-<i class="fa-solid fa-sliders"></i> Create Mock Test
+<button onclick="toggleAiChatbotWindow()" class="px-5 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white font-black text-xs shadow-lg transition flex items-center gap-2">
+<i class="fa-solid fa-wand-magic-sparkles"></i> Ask AI Copilot
 </button>
 </div>
 </div>
 </div>
 
-<!-- Core Quick Action Feature Hub -->
 <div>
 <div class="flex items-center justify-between mb-4">
 <div>
@@ -1204,17 +1729,17 @@ main.innerHTML = `
 <span class="text-xs font-semibold text-slate-500">Shortcut access to all platform modules</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4">
-<div onclick="switchTab('practice')" class="card p-4 text-center cursor-pointer hover:border-teal-500 quick-action-card group flex flex-col items-center justify-center">
+<div onclick="switchTab('learn')" class="card p-4 text-center cursor-pointer hover:border-teal-500 quick-action-card group flex flex-col items-center justify-center">
 <div class="w-12 h-12 rounded-2xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-teal-600 group-hover:text-white transition-all">
-<i class="fa-solid fa-list-check text-lg"></i>
+<i class="fa-solid fa-book-open-reader text-lg"></i>
 </div>
-<h4 class="font-extrabold text-xs text-slate-900 dark:text-slate-100">Practice Hub</h4>
-<p class="text-[10px] text-slate-400 mt-1">79 Chapters</p>
+<h4 class="font-extrabold text-xs text-slate-900 dark:text-slate-100">Learn & Practice</h4>
+<p class="text-[10px] text-slate-400 mt-1">MCQs & Lectures</p>
 </div>
 
 <div onclick="switchTab('mock')" class="card p-4 text-center cursor-pointer hover:border-amber-500 quick-action-card group flex flex-col items-center justify-center">
 <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
-<i class="fa-solid fa-clipboard-question text-lg"></i>
+<i class="fa-solid fa-sliders text-lg"></i>
 </div>
 <h4 class="font-extrabold text-xs text-slate-900 dark:text-slate-100">Mock Builder</h4>
 <p class="text-[10px] text-slate-400 mt-1">Custom Tests</p>
@@ -1262,7 +1787,6 @@ main.innerHTML = `
 </div>
 </div>
 
-<!-- Key Performance Metric Cards -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 <div class="card p-5 border-l-4 border-l-teal-500">
 <div class="flex items-center justify-between text-teal-600 dark:text-teal-400 mb-2">
@@ -1313,15 +1837,14 @@ main.innerHTML = `
 </div>
 </div>
 
-<!-- Subjects Quick Selector -->
 <div>
 <div class="flex items-center justify-between mb-4">
 <h3 class="text-lg font-extrabold text-slate-900 dark:text-slate-100">Subject Portals</h3>
-<button onclick="switchTab('practice')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">View All Chapters →</button>
+<button onclick="switchTab('learn')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">View All Chapters →</button>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 ${['Biology', 'Chemistry', 'Physics'].map(s => `
-<div onclick="setSubject('${s}'); switchTab('practice');" class="card p-5 text-left hover:border-teal-500 transition cursor-pointer group">
+<div onclick="setSubject('${s}'); switchTab('learn');" class="card p-5 text-left hover:border-teal-500 transition cursor-pointer group">
 <div class="flex items-center justify-between">
 <span class="chip ${s === 'Biology' ? 'bio' : s === 'Chemistry' ? 'chem' : 'phy'}">${s.substring(0,3).toUpperCase()}</span>
 <span class="text-xs font-extrabold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">${data[s].length} Chapters</span>
@@ -1335,9 +1858,7 @@ Explore Subject <i class="fa-solid fa-arrow-right text-[10px] ml-1.5 transition-
 </div>
 </div>
 
-<!-- Bottom Row Grid: Todo Quick Tasks & Ecosystem Features -->
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-<!-- Fast Task Launcher Widget -->
 <div class="card p-5 lg:col-span-1 flex flex-col justify-between">
 <div>
 <div class="flex items-center justify-between mb-3">
@@ -1363,7 +1884,6 @@ Open Planner & Timer Hub →
 </button>
 </div>
 
-<!-- Highlighted Feature Shortcuts -->
 <div class="card p-5 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div class="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20 flex flex-col justify-between">
 <div>
@@ -1395,15 +1915,26 @@ Explore Faculty <i class="fa-solid fa-arrow-right text-[10px]"></i>
 </div>
 </div>
 </div>`;
-} else if (currentTab === 'practice') {
+} else if (currentTab === 'learn') {
 main.innerHTML = `
 <div class="space-y-6">
 <div>
-<div class="tag">✦ NEET Practice Portal</div>
-<h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100" id="subject-title">${subject} Chapters</h2>
-<p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Click any chapter card to open instant Practice or timed Test mode.</p>
+<div class="tag">✦ Unified Learning Hub</div>
+<h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Learn & Practice Hub</h2>
+<p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Line-by-line NCERT chapter MCQs and curated video lectures combined in one workspace.</p>
 </div>
 
+<div class="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
+<button onclick="setLearnSubTab('practice')" class="px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${learnSubTab === 'practice' ? 'bg-teal-600 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}">
+<i class="fa-solid fa-list-check"></i> Chapter Practice MCQs
+</button>
+<button onclick="setLearnSubTab('lectures')" class="px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${learnSubTab === 'lectures' ? 'bg-teal-600 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}">
+<i class="fa-solid fa-circle-play"></i> Video Lecture Library
+</button>
+</div>
+
+${learnSubTab === 'practice' ? `
+<div class="space-y-6">
 <div class="flex flex-wrap items-center justify-between gap-4">
 <div class="flex items-center gap-2">
 ${['Biology', 'Chemistry', 'Physics'].map(s => `
@@ -1424,8 +1955,17 @@ ${['Biology', 'Chemistry', 'Physics'].map(s => `
 
 <div class="text-xs font-bold text-slate-500" id="count">Showing chapters...</div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="chapters"></div>
+</div>
+` : `
+<div id="lectures-container"></div>
+`}
 </div>`;
+
+if (learnSubTab === 'practice') {
 renderChapters();
+} else if (typeof renderLect === 'function') {
+renderLect();
+}
 } else if (currentTab === 'progress') {
 const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
 const qstats = StorageModule.get(STORAGE_KEYS.qstats, {});
@@ -1461,6 +2001,12 @@ main.innerHTML = `
 </div>
 </div>
 
+<div class="flex flex-wrap gap-3">
+<button onclick="generateAiPerformanceCoaching()" class="px-4 py-2.5 rounded-xl bg-purple-600 text-white font-bold text-xs shadow-sm flex items-center gap-2"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Performance Coach</button>
+<button onclick="openErrorNotebookModal()" class="px-4 py-2.5 rounded-xl bg-rose-600 text-white font-bold text-xs shadow-sm flex items-center gap-2"><i class="fa-solid fa-book-bookmark"></i> Error Notebook</button>
+<button onclick="openRankPredictorModal()" class="px-4 py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-sm flex items-center gap-2"><i class="fa-solid fa-trophy"></i> Rank Estimator</button>
+</div>
+
 <div class="card p-6">
 <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">Recent Attempts Log</h3>
 ${attempts.length === 0 ? '<p class="text-xs text-slate-400 py-6 text-center">No quiz attempts recorded yet.</p>' : `
@@ -1492,42 +2038,167 @@ ${attempts.slice(0, 10).map(a => `
 </div>
 </div>`;
 } else if (currentTab === 'mock') {
+const presets = getSavedMockPresets();
+const activeSub = subject || 'Biology';
 main.innerHTML = `
 <div class="space-y-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 <div>
-<div class="tag">✦ NEET Test Simulator</div>
-<h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Custom Mock Builder</h2>
-<p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Combine questions across multiple chapters into a custom test.</p>
+<div class="tag">✦ NEETprep AI Test Engine</div>
+<h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">AI Mock Test Builder</h2>
+<p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Design customized NCERT line-by-line, Assertion-Reason, and Full-Length NEET papers powered by Gemini AI.</p>
+</div>
+<button onclick="openApiKeyModal()" class="px-4 py-2 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 text-xs font-bold flex items-center gap-2 self-start">
+<i class="fa-solid fa-wand-magic-sparkles"></i> AI Engine Config
+</button>
 </div>
 
-<div class="card p-6 space-y-4 max-w-2xl">
+<!-- Target Switcher Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div onclick="customMockConfig.targetGoal='neet_720'; renderView();" class="card p-4 cursor-pointer hover:border-teal-500 transition border-2 ${customMockConfig.targetGoal==='neet_720' ? 'border-teal-500 bg-teal-500/5' : 'border-slate-200 dark:border-slate-800'}">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-black uppercase text-teal-600">Full NEET 720M</span>
+<i class="fa-solid fa-trophy text-amber-500"></i>
+</div>
+<h4 class="font-extrabold text-sm text-slate-900 dark:text-slate-100">Full Syllabus Mock</h4>
+<p class="text-[11px] text-slate-500 mt-1">180 Questions across Bio, Chem & Physics (180 mins).</p>
+</div>
+
+<div onclick="customMockConfig.targetGoal='ncert_bio'; renderView();" class="card p-4 cursor-pointer hover:border-emerald-500 transition border-2 ${customMockConfig.targetGoal==='ncert_bio' ? 'border-emerald-500 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800'}">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-black uppercase text-emerald-600">Bio NCERT Drill</span>
+<i class="fa-solid fa-dna text-emerald-500"></i>
+</div>
+<h4 class="font-extrabold text-sm text-slate-900 dark:text-slate-100">Biology Line-by-Line</h4>
+<p class="text-[11px] text-slate-500 mt-1">90 High-yield Botany & Zoology statements.</p>
+</div>
+
+<div onclick="customMockConfig.targetGoal='ar_special'; renderView();" class="card p-4 cursor-pointer hover:border-purple-500 transition border-2 ${customMockConfig.targetGoal==='ar_special' ? 'border-purple-500 bg-purple-500/5' : 'border-slate-200 dark:border-slate-800'}">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-black uppercase text-purple-600">Assertion-Reason</span>
+<i class="fa-solid fa-puzzle-piece text-purple-500"></i>
+</div>
+<h4 class="font-extrabold text-sm text-slate-900 dark:text-slate-100">A/R & Statement Booster</h4>
+<p class="text-[11px] text-slate-500 mt-1">Targets tricky logic and dual-statement questions.</p>
+</div>
+
+<div onclick="customMockConfig.targetGoal='weakness_fix'; renderView();" class="card p-4 cursor-pointer hover:border-rose-500 transition border-2 ${customMockConfig.targetGoal==='weakness_fix' ? 'border-rose-500 bg-rose-500/5' : 'border-slate-200 dark:border-slate-800'}">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-black uppercase text-rose-600">Weakness Target</span>
+<i class="fa-solid fa-crosshair text-rose-500"></i>
+</div>
+<h4 class="font-extrabold text-sm text-slate-900 dark:text-slate-100">Custom Chapter Mix</h4>
+<p class="text-[11px] text-slate-500 mt-1">Combine specific low-accuracy chapters.</p>
+</div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Advanced NEETprep AI Test Configurator -->
+<div class="card p-6 space-y-5 lg:col-span-2">
+<div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+<h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+<i class="fa-solid fa-sliders text-teal-600"></i> AI Test Paper Builder Setup
+</h3>
+<span class="text-xs font-bold text-purple-600 dark:text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20"><i class="fa-solid fa-bolt mr-1"></i> Gemini Flash Engine</span>
+</div>
+
 <div>
-<label class="text-xs font-bold text-slate-700 dark:text-slate-300">Select Subject</label>
-<select id="mockSubject" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
-<option value="Biology">Biology</option>
-<option value="Chemistry">Chemistry</option>
-<option value="Physics">Physics</option>
+<label class="text-xs font-bold text-slate-700 dark:text-slate-300">Test Paper Name</label>
+<input type="text" id="mockCustomTitle" value="${escapeHtml(customMockConfig.title)}" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div>
+<label class="text-xs font-bold text-slate-700 dark:text-slate-300">Subject Focus</label>
+<select id="mockTargetSubject" onchange="setSubject(this.value)" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
+<option value="Biology" ${activeSub==='Biology'?'selected':''}>Biology (Botany & Zoology)</option>
+<option value="Chemistry" ${activeSub==='Chemistry'?'selected':''}>Chemistry</option>
+<option value="Physics" ${activeSub==='Physics'?'selected':''}>Physics</option>
 </select>
 </div>
+
 <div>
-<label class="text-xs font-bold text-slate-700 dark:text-slate-300">Target Chapter</label>
-<select id="mockChapter" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
-${data.Biology.map(ch => `<option value="${escapeHtml(ch)}">${escapeHtml(ch)}</option>`).join('')}
+<label class="text-xs font-bold text-slate-700 dark:text-slate-300">Question Count</label>
+<select id="mockQCount" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
+<option value="30">30 Questions (Quick Test)</option>
+<option value="45">45 Questions (Standard Chapter)</option>
+<option value="90">90 Questions (Subject Major)</option>
+<option value="180">180 Questions (Full Mock)</option>
 </select>
 </div>
-<button onclick="const s = document.getElementById('mockSubject').value, c = document.getElementById('mockChapter').value; openModePicker(s, c);" class="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm transition">
-Launch Timed Simulation
+
+<div>
+<label class="text-xs font-bold text-slate-700 dark:text-slate-300">Difficulty Level</label>
+<select id="mockDifficulty" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
+<option value="NCERT Direct">NCERT Direct (Easy)</option>
+<option value="Standard NEET" selected>Standard NEET Pattern (Moderate)</option>
+<option value="Concept Heavy">Concept Heavy (Challenging)</option>
+</select>
+</div>
+</div>
+
+<div>
+<label class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 block">Select Chapters for Mix (${activeSub})</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto pr-1">
+${data[activeSub].map(ch => {
+  const isSel = (customMockConfig.selectedChapters[activeSub] || []).includes(ch);
+  return `
+    <button type="button" id="mock-ch-btn-${slugify(activeSub + '-' + ch)}" onclick="toggleMockChapterSelection('${activeSub}', '${jsArg(ch)}')" class="px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between border ${isSel ? 'border-teal-500 bg-teal-500/10 text-teal-700 dark:text-teal-300' : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'}">
+      <span class="truncate">${escapeHtml(ch)}</span>
+      <i class="fa-solid ${isSel ? 'fa-square-check text-teal-600' : 'fa-square text-slate-300 dark:text-slate-700'}"></i>
+    </button>
+  `;
+}).join('')}
+</div>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+<div>
+<label class="text-xs font-bold text-slate-700 dark:text-slate-300">Test Duration (Minutes)</label>
+<input type="number" id="mockDuration" value="${customMockConfig.durationMins}" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-bold">
+</div>
+<div class="flex items-end">
+<button onclick="launchAiNeetprepMockEngine()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-teal-600 to-purple-600 hover:from-teal-700 hover:to-purple-700 text-white font-black text-xs shadow-lg transition flex items-center justify-center gap-2">
+<i class="fa-solid fa-wand-magic-sparkles"></i> Build & Start AI Test
 </button>
+</div>
+</div>
+</div>
+
+<!-- Presets & History Sidebar -->
+<div class="space-y-6">
+<div class="card p-6 space-y-4">
+<h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+<i class="fa-solid fa-bolt text-amber-500"></i> Recommended NEETprep Presets
+</h3>
+<div class="space-y-3">
+${presets.map(p => `
+<div onclick="openModePicker('${p.subs[0]}', '${data[p.subs[0]][0]}')" class="p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 hover:border-teal-500 cursor-pointer transition group">
+<div class="flex items-center justify-between">
+<span class="font-bold text-xs text-slate-900 dark:text-slate-100 group-hover:text-teal-600">${escapeHtml(p.name)}</span>
+<span class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-teal-100 text-teal-700 dark:bg-teal-950 dark:text-teal-300">${p.mins}m</span>
+</div>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5">${p.qCount} Questions · NTA Standard</p>
+</div>
+`).join('')}
+</div>
+</div>
+
+<div class="card p-5 bg-gradient-to-br from-purple-900/20 to-teal-900/20 border-purple-500/30">
+<h4 class="font-bold text-xs text-purple-700 dark:text-purple-300 flex items-center gap-1.5">
+<i class="fa-solid fa-circle-question"></i> Need Extra Practice?
+</h4>
+<p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">Use the <strong>AI Copilot Chat</strong> or explore saved items in your <strong>Error Notebook</strong> for re-testing missed questions.</p>
+<button onclick="toggleAiChatbotWindow()" class="mt-3 w-full py-2 rounded-xl bg-purple-600 text-white font-bold text-xs">Ask AI Copilot →</button>
+</div>
+</div>
 </div>
 </div>`;
 
-const subSelect = document.getElementById('mockSubject');
+const subSelect = document.getElementById('mockTargetSubject');
 if (subSelect) {
 subSelect.onchange = (e) => {
-const chSelect = document.getElementById('mockChapter');
-if (chSelect) {
-chSelect.innerHTML = data[e.target.value].map(ch => `<option value="${escapeHtml(ch)}">${escapeHtml(ch)}</option>`).join('');
-}
+setSubject(e.target.value);
 };
 }
 } else if (currentTab === 'directory') {
@@ -1594,9 +2265,10 @@ main.innerHTML = `
 <div class="card p-6 flex flex-col items-center justify-center text-center">
 <span class="text-xs font-black uppercase tracking-wider text-teal-600 mb-2">Pomodoro Focus Timer</span>
 <div class="text-5xl font-black text-slate-900 dark:text-slate-100 font-mono my-4" id="timer-display">25:00</div>
-<div class="flex gap-3">
+<div class="flex flex-wrap justify-center gap-3">
 <button onclick="toggleTimer()" id="timer-toggle-btn" class="px-6 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs">Start Focus</button>
 <button onclick="resetTimer()" class="px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs">Reset</button>
+<button onclick="toggleFocusSoundscape('rain')" class="px-3 py-2.5 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 font-bold text-xs">🌧️ Rain Sound</button>
 </div>
 <p class="text-xs text-slate-500 mt-4">Sessions Completed: <strong class="text-slate-900 dark:text-slate-100">${timerSessionCount}</strong></p>
 </div>
@@ -1645,12 +2317,21 @@ main.innerHTML = `
 </div>
 <input type="number" id="settingWrong" value="${settings.marksWrong}" class="w-20 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-bold text-center">
 </div>
+<button onclick="openApiKeyModal()" class="w-full py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-sm transition">
+Configure Gemini AI API Key
+</button>
 <button onclick="saveSettings()" class="w-full py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm transition">
 Save Preferences
 </button>
 </div>
 </div>`;
 }
+}
+
+function launchCustomMockEngine() {
+const s = document.getElementById('mockSubject')?.value || 'Biology';
+const c = document.getElementById('mockChapter')?.value || data[s][0];
+openModePicker(s, c);
 }
 
 function saveSettings() {
@@ -1698,10 +2379,10 @@ const btn = document.getElementById('timer-toggle-btn');
 if (btn) btn.textContent = 'Start Focus';
 }
 
-// Initial Render
 renderView();
 </script>
-<!-- ===== EduPulse Lectures module: paste this whole block right before </body> ===== -->
+
+<!-- ===== Video Lectures Module ===== -->
 <script>
 (function(){
 'use strict';
@@ -1739,21 +2420,6 @@ function ordered(){
     .sort((a,b)=>idx(a)-idx(b));
 }
 
-// ---- sidebar button + view hook ----
-const nav=document.querySelector('.nav');
-if(nav&&!document.getElementById('nav-lectures')){
-  const b=document.createElement('button');
-  b.id='nav-lectures';b.onclick=()=>switchTab('lectures');
-  b.innerHTML='<i class="fa-solid fa-circle-play w-5"></i> Lectures <small style="margin-left:auto;background:#c6f36b;color:#30521e;border-radius:999px;padding:2px 6px;font-size:9px;" id="lect-count">'+vids.length+'</small>';
-  nav.insertBefore(b,document.getElementById('nav-progress'));
-}
-const origRender=renderView;
-renderView=function(){
-  if(currentTab==='lectures'){updateGlobalProgress();renderLect();}
-  else origRender();
-};
-
-// ---- main view ----
 function card(v){
   const s=srcOf(v),w=st.watched[v.id],b=st.bm[v.id];
   return `<div class="card p-3 flex gap-3 cursor-pointer" onclick="lectOpen('${v.id}')">
@@ -1762,12 +2428,17 @@ ${w?'<span class="absolute top-1 right-1 bg-emerald-600 text-white rounded-full 
 <div class="min-w-0 flex-1"><span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full text-white" style="background:${s.c}">${escapeHtml(s.n)}</span>
 <h4 class="text-xs font-bold mt-1.5 text-slate-900 dark:text-slate-100 line-clamp-2">${escapeHtml(v.t)}</h4>
 <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(v.th||'')}</p></div>
-<button onclick="event.stopPropagation();lectBm('${v.id}')" class="self-start p-1.5 ${b?'text-amber-500':'text-slate-300 dark:text-slate-600'}" title="Bookmark"><i class="fa-solid fa-star"></i></button></div>`;
+<div class="flex flex-col gap-1.5 justify-start">
+<button onclick="event.stopPropagation();lectBm('${v.id}')" class="p-1.5 ${b?'text-amber-500':'text-slate-300 dark:text-slate-600'}" title="Bookmark"><i class="fa-solid fa-star"></i></button>
+<button onclick="event.stopPropagation(); summarizeLectureNotes('${jsArg(v.t)}')" class="p-1.5 text-purple-600 dark:text-purple-400" title="AI Summarize"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+</div>
+</div>`;
 }
+
 function lectList(){
   const el=document.getElementById('lect-list');if(!el)return;
   const items=ordered();
-  if(!items.length){el.innerHTML='<div class="py-12 text-center text-slate-400"><i class="fa-solid fa-film text-3xl mb-2"></i><p class="text-sm font-semibold">No lectures here yet. Use “Add lectures” below to import a playlist.</p></div>';return;}
+  if(!items.length){el.innerHTML='<div class="py-12 text-center text-slate-400"><i class="fa-solid fa-film text-3xl mb-2"></i><p class="text-sm font-semibold">No lectures found.</p></div>';return;}
   let html='',last=null;
   items.forEach(v=>{
     const ch=chapOf(v)||'Other lectures';
@@ -1781,40 +2452,25 @@ function lectList(){
   });
   el.innerHTML=html+'</div>';
 }
-function renderLect(){
-  const m=document.getElementById('main-container');if(!m)return;
+
+window.renderLect = function(){
+  const m = document.getElementById('lectures-container'); if(!m)return;
   const sv=vids.filter(v=>v.s===L.subj),w=sv.filter(v=>st.watched[v.id]).length;
   const pct=sv.length?Math.round(w/sv.length*100):0;
   const lastV=vids.find(v=>v.id===st.last);
   const chips=[['all','All sources',sv.length,'#64748b']].concat(Object.keys(SRC).map(k=>[k,SRC[k].n,sv.filter(v=>v.src===k).length,SRC[k].c]));
-  const cnt=document.getElementById('lect-count');if(cnt)cnt.textContent=vids.length;
+  
   m.innerHTML=`<div class="space-y-5">
-<div><div class="tag">✦ Video Lectures</div>
-<h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Lecture Library</h2>
-<p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Chapter-wise one-shots from ALLEN, Physics Wallah and Unacademy, embedded from YouTube. Progress, bookmarks, notes and resume are saved on this device.</p></div>
-${lastV?`<div class="card p-4 flex items-center justify-between gap-3 cursor-pointer" onclick="lectOpen('${lastV.id}')"><div class="min-w-0"><div class="text-[10px] font-extrabold uppercase text-teal-600">Continue watching</div><div class="text-sm font-bold truncate text-slate-900 dark:text-slate-100">${escapeHtml(lastV.t)}</div>${st.time[lastV.id]?`<div class="text-[11px] text-slate-500">Resume at ${Math.floor(st.time[lastV.id]/60)}m ${Math.floor(st.time[lastV.id]%60)}s</div>`:''}</div><i class="fa-solid fa-circle-play text-2xl text-teal-600"></i></div>`:''}
+${lastV?`<div class="card p-4 flex items-center justify-between gap-3 cursor-pointer" onclick="lectOpen('${lastV.id}')"><div class="min-w-0"><div class="text-[10px] font-extrabold uppercase text-teal-600">Continue watching</div><div class="text-sm font-bold truncate text-slate-900 dark:text-slate-100">${escapeHtml(lastV.t)}</div></div><i class="fa-solid fa-circle-play text-2xl text-teal-600"></i></div>`:''}
 <div class="flex flex-wrap items-center justify-between gap-3">
 <div class="flex items-center gap-2">${['Biology','Chemistry','Physics'].map(s=>`<button onclick="lectSet('subj','${s}')" class="subject ${L.subj===s?'selected':''}"><b>${s}</b></button>`).join('')}</div>
-<div class="controls flex items-center gap-3 w-full sm:w-auto"><input type="text" value="${escapeHtml(L.q)}" oninput="lectQ(this.value)" placeholder="Search lectures or teachers..." class="w-full sm:w-64">
-<select onchange="lectF(this.value)">${[['all','All'],['todo','Not watched'],['watched','Watched'],['bm','Bookmarked']].map(o=>`<option value="${o[0]}" ${L.f===o[0]?'selected':''}>${o[1]}</option>`).join('')}</select></div></div>
+<div class="controls flex items-center gap-3 w-full sm:w-auto"><input type="text" value="${escapeHtml(L.q)}" oninput="lectQ(this.value)" placeholder="Search lectures..." class="w-full sm:w-64"></div></div>
 <div class="flex flex-wrap gap-2">${chips.map(c=>`<button onclick="lectSet('src','${c[0]}')" class="px-3 py-1.5 rounded-full text-xs font-bold border" style="${L.src===c[0]?`background:${c[3]};color:#fff;border-color:${c[3]}`:'border-color:var(--border-color);color:var(--text-muted)'}">${escapeHtml(c[1])} · ${c[2]}</button>`).join('')}</div>
-<div class="text-xs font-bold text-slate-500">${L.subj}: ${w}/${sv.length} watched (${pct}%)</div>
 <div id="lect-list"></div>
-<details class="card p-4"><summary class="cursor-pointer text-sm font-extrabold text-slate-900 dark:text-slate-100">+ Add lectures / backup</summary>
-<div class="mt-3 space-y-3 text-xs">
-<p class="text-slate-500 dark:text-slate-400">Open a YouTube playlist, scroll to the bottom, run the console snippet, then paste the JSON here. Entries need a <code>videoId</code> (or a YouTube <code>url</code>) and a <code>title</code>.</p>
-<div class="flex flex-wrap gap-2 controls"><select id="lect-isubj">${['Biology','Chemistry','Physics'].map(s=>`<option ${s===L.subj?'selected':''}>${s}</option>`).join('')}</select>
-<select id="lect-isrc">${Object.keys(SRC).map(k=>`<option value="${k}">${SRC[k].n}</option>`).join('')}</select></div>
-<textarea id="lect-ijson" rows="5" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono" placeholder='[{"title":"...","videoId":"..."}]'></textarea>
-<div class="flex flex-wrap gap-2"><button onclick="lectImport()" class="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold">Import</button>
-<button onclick="lectExport()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-200">Export backup</button>
-<button onclick="lectReset()" class="px-4 py-2 rounded-xl bg-rose-100 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-bold">Reset library</button></div></div></details>
-<p class="text-[11px] text-slate-400">Videos belong to their respective creators (ALLEN, Physics Wallah, Unacademy) and are embedded from YouTube. This is an unofficial study tool.</p>
 </div>`;
   lectList();
 }
 
-// ---- player overlay ----
 function ov(){
   let o=document.getElementById('lectOverlay');
   if(!o){
@@ -1849,23 +2505,16 @@ function show(id){
   stopPlayer();cur=id;st.last=id;save();
   const o=ov();o.style.display='block';
   const list=ordered(),i=list.findIndex(x=>x.id===id),ch=chapOf(v),s=srcOf(v);
-  const alts=ch?vids.filter(x=>x.id!==id&&x.s===v.s&&chapOf(x)===ch):[];
   const btn='px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 disabled:opacity-40';
   document.getElementById('lectBox').innerHTML=`<div class="card p-4 sm:p-5 space-y-4">
 <div class="flex items-start justify-between gap-3"><div class="min-w-0"><span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full text-white" style="background:${s.c}">${escapeHtml(s.n)}</span>
-<h3 class="font-black text-base mt-2 text-slate-900 dark:text-slate-100">${escapeHtml(v.t)}</h3>
-<p class="text-xs text-slate-500 dark:text-slate-400">${escapeHtml(v.th||'')}${ch?' · '+escapeHtml(ch):''}</p></div>
+<h3 class="font-black text-base mt-2 text-slate-900 dark:text-slate-100">${escapeHtml(v.t)}</h3></div>
 <button onclick="lectClose()" class="p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"><i class="fa-solid fa-xmark text-lg"></i></button></div>
 <div style="aspect-ratio:16/9" class="rounded-xl overflow-hidden bg-black"><div id="lect-player" style="width:100%;height:100%"></div></div>
 <div class="flex flex-wrap items-center justify-between gap-2">
 <button onclick="lectStep(-1)" class="${btn}" ${i<=0?'disabled':''}>← Prev</button>
-<div class="flex gap-2"><button id="lect-w" onclick="lectWatch('${id}')" class="px-3 py-2 rounded-xl text-xs font-bold bg-teal-600 text-white"></button>
-<button id="lect-b" onclick="lectBm('${id}',1)"><i class="fa-solid fa-star"></i></button></div>
-<button onclick="lectStep(1)" class="${btn}" ${i<0||i>=list.length-1?'disabled':''}>Next →</button></div>
-${alts.length?`<div><p class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">Other versions of this chapter</p><div class="flex flex-wrap gap-2">${alts.map(a=>`<button onclick="lectOpen('${a.id}')" class="px-3 py-1.5 rounded-full text-[11px] font-bold text-white" style="background:${srcOf(a).c}">${escapeHtml(srcOf(a).n)}${a.th?' · '+escapeHtml(a.th):''}</button>`).join('')}</div></div>`:''}
-<div><label class="text-xs font-bold text-slate-700 dark:text-slate-300">My notes</label>
-<textarea oninput="lectNote('${id}',this.value)" rows="3" class="w-full mt-1.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs" placeholder="Write key points...">${escapeHtml(st.notes[id]||'')}</textarea></div>
-<p class="text-[10px] text-slate-400">Shortcuts: N next · P previous · W watched · Esc close</p></div>`;
+<div class="flex gap-2"><button id="lect-w" onclick="lectWatch('${id}')" class="px-3 py-2 rounded-xl text-xs font-bold bg-teal-600 text-white"></button></div>
+<button onclick="lectStep(1)" class="${btn}" ${i<0||i>=list.length-1?'disabled':''}>Next →</button></div></div>`;
   updBtns(id);
   ytLoad(fail=>{
     const host=document.getElementById('lect-player');if(!host||cur!==id)return;
@@ -1875,7 +2524,6 @@ ${alts.length?`<div><p class="text-xs font-bold text-slate-700 dark:text-slate-3
     player=new YT.Player('lect-player',{videoId:id,width:'100%',height:'100%',
       playerVars:{rel:0,modestbranding:1,start:Math.floor(st.time[id]||0)},
       events:{onStateChange:e=>{if(e.data===0){st.watched[id]=true;st.time[id]=0;save();updBtns(id);showToast('Marked as watched');}}}});
-    tm=setInterval(()=>{try{const t=player.getCurrentTime();if(t>5){st.time[id]=t;save();}}catch(e){}},5000);
   });
 }
 function close(){
@@ -1883,57 +2531,16 @@ function close(){
   const o=document.getElementById('lectOverlay');
   if(o){o.style.display='none';document.getElementById('lectBox').innerHTML='';}
   cur=null;
-  if(currentTab==='lectures')renderLect();
 }
 
-// ---- handlers exposed to inline onclick ----
 window.lectOpen=show;
 window.lectClose=close;
 window.lectSet=(k,v)=>{L[k]=v;renderLect();};
 window.lectQ=v=>{L.q=v;lectList();};
-window.lectF=v=>{L.f=v;lectList();};
 window.lectStep=d=>{const l=ordered(),i=l.findIndex(x=>x.id===cur);if(l[i+d])show(l[i+d].id);};
 window.lectWatch=id=>{st.watched[id]=!st.watched[id];save();updBtns(id);};
-window.lectBm=(id,inPlayer)=>{st.bm[id]=!st.bm[id];save();showToast(st.bm[id]?'Lecture bookmarked':'Bookmark removed');if(inPlayer)updBtns(id);else lectList();};
-window.lectNote=(id,v)=>{st.notes[id]=v;save();};
-window.lectExport=()=>{
-  const b=new Blob([JSON.stringify({videos:vids,state:st},null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='edupulse-lectures-backup.json';a.click();
-  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-};
-window.lectReset=()=>{
-  if(!confirm('Reset the lecture library to defaults? Your watched marks and notes are kept.'))return;
-  vids=SEED.slice();saveV();renderLect();showToast('Lecture library reset');
-};
-window.lectImport=()=>{
-  const parseId=x=>{x=String(x||'');const m=x.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);return m?m[1]:(/^[\w-]{11}$/.test(x)?x:'');};
-  let arr;
-  try{arr=JSON.parse(document.getElementById('lect-ijson').value);}catch(e){showToast('Invalid JSON','error');return;}
-  if(!Array.isArray(arr))arr=Array.isArray(arr&&arr.videos)?arr.videos:[];
-  const subj=document.getElementById('lect-isubj').value,src=document.getElementById('lect-isrc').value;
-  let added=0;
-  arr.forEach(o=>{
-    if(!o)return;
-    const id=parseId(o.videoId||o.id||o.url);
-    if(!id||vids.some(x=>x.id===id))return;
-    const s=data[o.s]?o.s:subj;
-    vids.push({s,src:o.src||src,id,t:String(o.title||o.t||'Untitled').slice(0,200),th:String(o.teacher||o.th||'').slice(0,60),c:typeof o.chapter==='string'?o.chapter:(o.c||'')});
-    added++;
-  });
-  saveV();
-  showToast(added?`${added} lecture${added>1?'s':''} added`:'No new videos found',added?'success':'warning');
-  if(added){L.subj=subj;renderLect();}
-};
-document.addEventListener('keydown',e=>{
-  const o=document.getElementById('lectOverlay');
-  if(!o||o.style.display!=='block')return;
-  const k=e.key.toLowerCase();
-  if(k==='escape'){close();return;}
-  if(['TEXTAREA','INPUT'].includes(e.target.tagName))return;
-  if(k==='n')lectStep(1);else if(k==='p')lectStep(-1);else if(k==='w')lectWatch(cur);
-});
 })();
 </script>
 
 </body>
-  </html>
+</html>
