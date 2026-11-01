@@ -1371,9 +1371,9 @@ function renderMockWizard() {
           <label class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 block">Question Count Preset</label>
           <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
             ${[15, 30, 45, 90, 180].map(cnt => `
-              <button onclick="mockWizardState.qCount=${cnt}; mockWizardState.duration=${cnt}; renderMockWizard();" class="p-3 rounded-xl border font-bold text-xs text-center ${mockWizardState.qCount===cnt ? 'border-teal-500 bg-teal-500/10 text-teal-600' : 'border-slate-200 dark:border-slate-800'}">
+              <button onclick="mockWizardState.qCount=${cnt}; mockWizardState.duration=${cnt}; renderMockWizard();" class="p-3 rounded-xl border font-bold text-xs text-center ${mockWizardState.qCount===cnt ? 'border-teal-500 bg-teal-500/10 text-teal-600 ring-2 ring-teal-500/30' : 'border-slate-200 dark:border-slate-800'}">
                 <span class="block text-base font-black tabular-nums">${cnt} Qs</span>
-                <span class="text-[10px] font-normal text-slate-500">${cnt === 180 ? '180 Mins (Full NEET)' : `${cnt} Minutes`}</span>
+                <span class="text-[10px] font-normal text-slate-500">${cnt===180 ? 'Full NEET (180m)' : `${cnt} Mins`}</span>
               </button>
             `).join('')}
           </div>
@@ -1405,6 +1405,7 @@ function renderMockWizard() {
             <span class="text-[10px] font-black uppercase text-teal-600 dark:text-teal-400">Step 4 of 4</span>
             <h3 class="font-extrabold text-base text-slate-900 dark:text-slate-100 display-font">Blueprint & Final Validation</h3>
           </div>
+          ${mockWizardState.qCount === 180 ? '<span class="px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-600 text-[10px] font-black uppercase border border-amber-500/30">🔥 Full 720M Mock</span>' : ''}
         </div>
 
         <div class="p-5 rounded-2xl bg-teal-500/10 border border-teal-500/20 space-y-3 text-xs">
@@ -1444,10 +1445,41 @@ async function launchAiNeetprepMockEngine() {
     const apiKey = getGeminiApiKey();
 
     if (apiKey) {
-      const prompt = `Generate a NEET mock test paper with exactly ${qCount} multiple choice questions distributed evenly across subjects [${selectedSubs.join(', ')}] covering chapters: ${selectedChaps.slice(0, 10).join(', ')}. Include NCERT statement-based and Assertion-Reason questions matching difficulty: "${diff}". Return ONLY a raw JSON array matching format: [{"q":"Question text","o":["Option A","Option B","Option C","Option D"],"a":1,"s":"NCERT Explanation citation"}]`;
-      const sys = "You are an expert NTA NEET examination paper creator. Output valid raw JSON arrays only.";
+      // Enhanced prompt utilizing the EduPulse Examiner System Instructions & NTA Question-Type Mix
+      const systemInstruction = `You are EduPulse Examiner, a senior NEET-UG paper setter with 15+ years of experience writing questions for NTA-pattern exams and top coaching institutes.
+
+YOUR JOB:
+Generate original, exam-grade multiple-choice questions strictly from the NCERT Class 11 and 12 syllabus (NEET-UG scope).
+
+NON-NEGOTIABLE RULES:
+1. Every question has exactly 4 options and exactly ONE correct answer.
+2. Questions must be factually accurate and NCERT-aligned. Never invent facts, values, reactions, names or data.
+3. Distractors must be plausible: common misconceptions, near-values, similar terms, wrong units. Never use "All of the above" or "None of the above".
+4. Randomise the position of the correct answer across the set. No position may exceed 35% of the questions.
+5. No two questions may test the same fact, and no question may give away another's answer.
+6. Numericals must be solvable in under 90 seconds. Use SI units and verify arithmetic.
+7. Use plain text with Unicode for symbols (H₂O, Ca²⁺, ΔG°, √, ×, →, θ, μ) and no raw HTML or unformatted code.
+8. The explanation must state why the correct option is right with NCERT concept references, and briefly explain why wrong options fail (under 70 words).
+9. If generating a 180-question full NEET test, maintain standard paper balance: 90 Biology, 45 Physics, 45 Chemistry.
+
+QUESTION-TYPE MIX:
+- 40% direct conceptual / NCERT-line based
+- 20% statement-based ("Statement I / Statement II" or "Which of the following statements are correct?")
+- 15% assertion-reason (Assertion A / Reason R, with standard options)
+- 15% application / numerical / data-based
+- 10% match-the-following or sequence/arrangement questions
+
+DIFFICULTY DEFINITIONS:
+- Easy: single-step recall from NCERT
+- Standard NEET: 1-2 step reasoning, typical NEET paper level
+- Hard: multi-concept, tricky distractors, exception-based
+- Mixed: 30% easy, 50% standard, 20% hard
+
+Return ONLY a raw JSON array matching format: [{"q":"Question text","o":["Option A","Option B","Option C","Option D"],"a":1,"s":"NCERT Explanation citation"}]`;
+
+      const prompt = `Generate a NEET mock test paper with exactly ${qCount} multiple choice questions distributed across subjects [${selectedSubs.join(', ')}] covering topics: ${selectedChaps.slice(0, 20).join(', ')}. Target difficulty definition: "${diff}". Ensure strictly valid JSON output matching the required format.`;
       
-      const rawJson = await callGeminiApi(prompt, sys);
+      const rawJson = await callGeminiApi(prompt, systemInstruction);
       const cleanJson = rawJson.replace(/```json/g, '').replace(/```/g, '').trim();
       const parsed = JSON.parse(cleanJson);
       
@@ -1457,11 +1489,14 @@ async function launchAiNeetprepMockEngine() {
         options: q.o || q.options,
         correct: (q.a || 1) - 1,
         explanation: q.s || 'NCERT Line-by-Line concept.',
-        sourceChapter: selectedChaps[i % selectedChaps.length] || selectedSubs[0]
+        sourceChapter: selectedChaps[i % selectedChaps.length] || selectedSubs[i % selectedSubs.length]
       }));
-    } else {
-      // Smart local synthesizer fallback if API Key is not set
-      for (let i = 0; i < qCount; i++) {
+    }
+    
+    // Fallback or fill remaining questions up to target count (especially for 180 Qs)
+    if (rawQuestions.length < qCount) {
+      const existingCount = rawQuestions.length;
+      for (let i = existingCount; i < qCount; i++) {
         const sub = selectedSubs[i % selectedSubs.length];
         const ch = selectedChaps[i % selectedChaps.length] || data[sub][0];
         try {
