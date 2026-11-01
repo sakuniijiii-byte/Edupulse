@@ -768,7 +768,7 @@ function getSavedMockPresets() {
 let customMockConfig = {
   title: 'AI Targeted NEET Test (NEETprep Pattern)',
   targetGoal: 'neet_720',
-  subjects: ['Biology', 'Chemistry', 'Physics'],
+  selectedSubjects: ['Biology'],
   selectedChapters: { Biology: ['The Living World'], Chemistry: ['Some Basic Concepts of Chemistry'], Physics: ['Units and Measurements'] },
   questionTypes: { ncertLine: true, assertionReason: true, pyqPattern: true },
   difficulty: 'Standard NEET',
@@ -777,6 +777,20 @@ let customMockConfig = {
   durationMins: 180,
   qCount: 180
 };
+
+function toggleMockSubjectSelection(subj) {
+  const idx = customMockConfig.selectedSubjects.indexOf(subj);
+  if (idx > -1) {
+    if (customMockConfig.selectedSubjects.length === 1) {
+      showToast('At least one subject must be selected.', 'warning');
+      return;
+    }
+    customMockConfig.selectedSubjects.splice(idx, 1);
+  } else {
+    customMockConfig.selectedSubjects.push(subj);
+  }
+  renderView();
+}
 
 function toggleMockChapterSelection(subj, ch) {
   if (!customMockConfig.selectedChapters[subj]) customMockConfig.selectedChapters[subj] = [];
@@ -799,20 +813,24 @@ async function launchAiNeetprepMockEngine() {
   const duration = parseInt(document.getElementById('mockDuration')?.value || '180', 10);
   const diff = document.getElementById('mockDifficulty')?.value || 'Standard NEET';
   const qCount = parseInt(document.getElementById('mockQCount')?.value || '30', 10);
-  const targetSub = document.getElementById('mockTargetSubject')?.value || 'Biology';
+  const selectedSubs = customMockConfig.selectedSubjects;
 
-  const selectedChs = customMockConfig.selectedChapters[targetSub] || [data[targetSub][0]];
+  let allChapters = [];
+  selectedSubs.forEach(s => {
+    const chs = customMockConfig.selectedChapters[s] || [data[s][0]];
+    allChapters.push(...chs.map(c => `${s}: ${c}`));
+  });
 
   setModal('NEETprep AI Paper Generator', 'Building customized NCERT paper...', `
     <div class="flex flex-col items-center justify-center py-10 space-y-3">
       <i class="fa-solid fa-wand-magic-sparkles fa-spin text-4xl text-purple-600 mb-2"></i>
-      <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Synthesizing ${qCount} NCERT Line-by-Line & Assertion-Reasoning MCQs...</p>
-      <span class="text-xs text-slate-500">Topics: ${selectedChs.slice(0, 3).join(', ')}${selectedChs.length > 3 ? '...' : ''}</span>
+      <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Synthesizing ${qCount} NCERT MCQs across ${selectedSubs.join(', ')}...</p>
+      <span class="text-xs text-slate-500">Chapters: ${allChapters.slice(0, 3).join(', ')}${allChapters.length > 3 ? '...' : ''}</span>
     </div>
   `);
 
   try {
-    const prompt = `Generate a NEET test paper with ${qCount} multiple choice questions for subject "${targetSub}" covering chapters: ${selectedChs.join(', ')}. Include Assertion-Reason and NCERT line-by-line questions. Level: ${diff}. Return strictly valid JSON array format: [{"q":"Question text","o":["Opt A","Opt B","Opt C","Opt D"],"a":1,"s":"NCERT Explanation and Citation"}]`;
+    const prompt = `Generate a NEET test paper with ${qCount} multiple choice questions across subjects [${selectedSubs.join(', ')}] covering topics: ${allChapters.join(', ')}. Include Assertion-Reason and NCERT line-by-line questions evenly distributed across the selected subjects. Difficulty: ${diff}. Return strictly valid JSON array format: [{"q":"Question text","o":["Opt A","Opt B","Opt C","Opt D"],"a":1,"s":"NCERT Explanation and Citation"}]`;
     const sys = "You are an expert NEETprep examination paper generator producing accurate NCERT questions.";
     
     let rawQuestions;
@@ -826,11 +844,13 @@ async function launchAiNeetprepMockEngine() {
         options: q.o,
         correct: (q.a || 1) - 1,
         explanation: q.s || 'NCERT Line-by-Line concept.',
-        sourceChapter: selectedChs[i % selectedChs.length] || targetSub
+        sourceChapter: allChapters[i % allChapters.length] || selectedSubs[0]
       }));
     } catch (e) {
       console.warn("AI generation fallback to chapter parser:", e);
-      const res = await fetch(quizUrl(selectedChs[0]), { cache: 'no-cache' });
+      const firstSub = selectedSubs[0];
+      const firstCh = (customMockConfig.selectedChapters[firstSub] || [])[0] || data[firstSub][0];
+      const res = await fetch(quizUrl(firstCh), { cache: 'no-cache' });
       const raw = await res.json();
       const list = Array.isArray(raw) ? raw : raw.qs;
       rawQuestions = list.slice(0, qCount).map((q, i) => ({
@@ -839,11 +859,11 @@ async function launchAiNeetprepMockEngine() {
         options: q.o,
         correct: (q.a || 1) - 1,
         explanation: q.s || '',
-        sourceChapter: selectedChs[0]
+        sourceChapter: firstCh
       }));
     }
 
-    launchTestSession(targetSub, `${title} (${diff})`, rawQuestions);
+    launchTestSession(selectedSubs.join(' & '), `${title} (${diff})`, rawQuestions);
   } catch (err) {
     showToast('Failed to build test paper: ' + err.message, 'error');
     closeModal();
@@ -2039,14 +2059,13 @@ ${attempts.slice(0, 10).map(a => `
 </div>`;
 } else if (currentTab === 'mock') {
 const presets = getSavedMockPresets();
-const activeSub = subject || 'Biology';
 main.innerHTML = `
 <div class="space-y-6">
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 <div>
 <div class="tag">✦ NEETprep AI Test Engine</div>
 <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">AI Mock Test Builder</h2>
-<p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Design customized NCERT line-by-line, Assertion-Reason, and Full-Length NEET papers powered by Gemini AI.</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Design customized NCERT line-by-line, Assertion-Reason, and Multi-Subject NEET papers powered by Gemini AI.</p>
 </div>
 <button onclick="openApiKeyModal()" class="px-4 py-2 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 text-xs font-bold flex items-center gap-2 self-start">
 <i class="fa-solid fa-wand-magic-sparkles"></i> AI Engine Config
@@ -2055,7 +2074,7 @@ main.innerHTML = `
 
 <!-- Target Switcher Cards -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-<div onclick="customMockConfig.targetGoal='neet_720'; renderView();" class="card p-4 cursor-pointer hover:border-teal-500 transition border-2 ${customMockConfig.targetGoal==='neet_720' ? 'border-teal-500 bg-teal-500/5' : 'border-slate-200 dark:border-slate-800'}">
+<div onclick="customMockConfig.targetGoal='neet_720'; customMockConfig.selectedSubjects=['Biology','Chemistry','Physics']; renderView();" class="card p-4 cursor-pointer hover:border-teal-500 transition border-2 ${customMockConfig.targetGoal==='neet_720' ? 'border-teal-500 bg-teal-500/5' : 'border-slate-200 dark:border-slate-800'}">
 <div class="flex items-center justify-between mb-2">
 <span class="text-xs font-black uppercase text-teal-600">Full NEET 720M</span>
 <i class="fa-solid fa-trophy text-amber-500"></i>
@@ -2064,7 +2083,7 @@ main.innerHTML = `
 <p class="text-[11px] text-slate-500 mt-1">180 Questions across Bio, Chem & Physics (180 mins).</p>
 </div>
 
-<div onclick="customMockConfig.targetGoal='ncert_bio'; renderView();" class="card p-4 cursor-pointer hover:border-emerald-500 transition border-2 ${customMockConfig.targetGoal==='ncert_bio' ? 'border-emerald-500 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800'}">
+<div onclick="customMockConfig.targetGoal='ncert_bio'; customMockConfig.selectedSubjects=['Biology']; renderView();" class="card p-4 cursor-pointer hover:border-emerald-500 transition border-2 ${customMockConfig.targetGoal==='ncert_bio' ? 'border-emerald-500 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800'}">
 <div class="flex items-center justify-between mb-2">
 <span class="text-xs font-black uppercase text-emerald-600">Bio NCERT Drill</span>
 <i class="fa-solid fa-dna text-emerald-500"></i>
@@ -2107,16 +2126,22 @@ main.innerHTML = `
 <input type="text" id="mockCustomTitle" value="${escapeHtml(customMockConfig.title)}" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
 </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 <div>
-<label class="text-xs font-bold text-slate-700 dark:text-slate-300">Subject Focus</label>
-<select id="mockTargetSubject" onchange="setSubject(this.value)" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
-<option value="Biology" ${activeSub==='Biology'?'selected':''}>Biology (Botany & Zoology)</option>
-<option value="Chemistry" ${activeSub==='Chemistry'?'selected':''}>Chemistry</option>
-<option value="Physics" ${activeSub==='Physics'?'selected':''}>Physics</option>
-</select>
+<label class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 block">Select Subjects to Include (Check multiple)</label>
+<div class="flex flex-wrap gap-3">
+${['Biology', 'Chemistry', 'Physics'].map(s => {
+  const isChecked = customMockConfig.selectedSubjects.includes(s);
+  return `
+    <button type="button" onclick="toggleMockSubjectSelection('${s}')" class="px-4 py-2.5 rounded-xl text-xs font-bold border transition flex items-center gap-2 ${isChecked ? 'border-teal-500 bg-teal-500/10 text-teal-700 dark:text-teal-300 shadow-sm' : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'}">
+      <i class="fa-solid ${isChecked ? 'fa-square-check text-teal-600' : 'fa-square text-slate-300 dark:text-slate-700'}"></i>
+      <span>${s}</span>
+    </button>
+  `;
+}).join('')}
+</div>
 </div>
 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
 <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Question Count</label>
 <select id="mockQCount" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
@@ -2137,19 +2162,24 @@ main.innerHTML = `
 </div>
 </div>
 
-<div>
-<label class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 block">Select Chapters for Mix (${activeSub})</label>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto pr-1">
-${data[activeSub].map(ch => {
-  const isSel = (customMockConfig.selectedChapters[activeSub] || []).includes(ch);
-  return `
-    <button type="button" id="mock-ch-btn-${slugify(activeSub + '-' + ch)}" onclick="toggleMockChapterSelection('${activeSub}', '${jsArg(ch)}')" class="px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between border ${isSel ? 'border-teal-500 bg-teal-500/10 text-teal-700 dark:text-teal-300' : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'}">
-      <span class="truncate">${escapeHtml(ch)}</span>
-      <i class="fa-solid ${isSel ? 'fa-square-check text-teal-600' : 'fa-square text-slate-300 dark:text-slate-700'}"></i>
-    </button>
-  `;
-}).join('')}
-</div>
+<div class="space-y-3">
+<label class="text-xs font-bold text-slate-700 dark:text-slate-300 block">Select Chapters for Mix (${customMockConfig.selectedSubjects.join(', ')})</label>
+${customMockConfig.selectedSubjects.map(sub => `
+  <div class="space-y-1.5">
+    <span class="text-[11px] font-black uppercase text-teal-600 dark:text-teal-400">${sub} Chapters:</span>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-36 overflow-y-auto pr-1">
+    ${data[sub].map(ch => {
+      const isSel = (customMockConfig.selectedChapters[sub] || []).includes(ch);
+      return `
+        <button type="button" id="mock-ch-btn-${slugify(sub + '-' + ch)}" onclick="toggleMockChapterSelection('${sub}', '${jsArg(ch)}')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-between border ${isSel ? 'border-teal-500 bg-teal-500/10 text-teal-700 dark:text-teal-300' : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'}">
+          <span class="truncate">${escapeHtml(ch)}</span>
+          <i class="fa-solid ${isSel ? 'fa-square-check text-teal-600' : 'fa-square text-slate-300 dark:text-slate-700'}"></i>
+        </button>
+      `;
+    }).join('')}
+    </div>
+  </div>
+`).join('')}
 </div>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
