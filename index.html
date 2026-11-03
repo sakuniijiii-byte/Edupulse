@@ -34,7 +34,7 @@ body.dark{
   --phy-bg:linear-gradient(135deg, rgba(14,165,233,0.2), rgba(3,105,161,0.08));--phy-text:#7dd3fc;--phy-border:rgba(56,189,248,0.4);
   --glass:rgba(30,41,59,0.85)
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Plus Jakarta Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;transition:background-color .4s cubic-bezier(0.16,1,0.3,1),color .4s cubic-bezier(0.16,1,0.3,1);-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0;transition:all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)}
@@ -104,6 +104,34 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 .stepper-step{transition:all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);}
 .stepper-step.active{border-color:#0d9488;background:rgba(13,148,136,0.12);color:#0d9488;transform:scale(1.03);}
 .stepper-step.done{border-color:#10b981;background:rgba(16,185,129,0.1);color:#10b981;}
+
+/* Touch Interactive Palette Drawer Styles */
+.palette-touch-btn {
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+  user-select: none;
+}
+.palette-drawer {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.palette-drawer.collapsed {
+  transform: translateY(calc(100% - 64px));
+}
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.video-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>
 </head>
 <body>
@@ -210,6 +238,7 @@ body.dark .progress{background:rgba(255,255,255,.1)}
   </div>
 </div>
 
+<!-- Modal Dialog -->
 <div class="custom-modal" id="appModal">
 <div class="modal-box">
 <h3 id="modalTitle" class="text-xl font-black mb-2 text-slate-900 dark:text-slate-100"></h3>
@@ -368,7 +397,7 @@ function saveApiKeyFromModal() {
   closeModal();
 }
 
-async function callGeminiApi(prompt, systemInstruction = '') {
+async function callGeminiApi(prompt, systemInstruction = '', enableGrounding = false) {
   const apiKey = getGeminiApiKey();
   if (!apiKey) {
     openApiKeyModal();
@@ -378,7 +407,8 @@ async function callGeminiApi(prompt, systemInstruction = '') {
   const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
   const payload = {
     contents: [{ parts: [{ text: prompt }] }],
-    ...(systemInstruction ? { systemInstruction: { parts: [{ text: systemInstruction }] } } : {})
+    ...(systemInstruction ? { systemInstruction: { parts: [{ text: systemInstruction }] } } : {}),
+    ...(enableGrounding ? { tools: [{ "google_search": {} }] } : {})
   };
 
   const response = await fetch(apiUrl, {
@@ -396,6 +426,129 @@ async function callGeminiApi(prompt, systemInstruction = '') {
   const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
   if (!text) throw new Error('No content returned from AI model.');
   return text;
+}
+
+// ===== YouTube Search & Embed Helper =====
+function generateYouTubeEmbedHtml(query, titleText = "Video Lecture & Solution") {
+  const cleanQuery = encodeURIComponent(query);
+  const searchUrl = `https://www.youtube.com/results?search_query=${cleanQuery}`;
+  
+  // Generating responsive YouTube search embed using duckduckgo or native search iframe, with direct watch links
+  return `
+    <div class="p-4 rounded-2xl bg-gradient-to-br from-rose-500/10 via-red-500/5 to-transparent border border-rose-500/20 space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-brands fa-youtube text-red-600 text-xl"></i>
+          <span class="text-xs font-extrabold text-slate-800 dark:text-slate-100">${escapeHtml(titleText)}</span>
+        </div>
+        <a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-full bg-red-600 hover:bg-red-700 text-white text-[11px] font-bold transition flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i> Search on YouTube
+        </a>
+      </div>
+
+      <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+        Recommended topic query: <strong class="text-slate-700 dark:text-slate-200">"${escapeHtml(query)}"</strong>
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+        <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(query + ' NEET detailed explanation solution')}" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-rose-500 text-slate-800 dark:text-slate-200 font-bold flex items-center justify-between transition group">
+          <span><i class="fa-solid fa-play-circle text-red-500 mr-2 group-hover:scale-110 transition-transform"></i> Question Video Solution</span>
+          <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+        </a>
+        <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(query + ' NEET full theory lecture One Shot')}" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-purple-500 text-slate-800 dark:text-slate-200 font-bold flex items-center justify-between transition group">
+          <span><i class="fa-solid fa-book-open-reader text-purple-500 mr-2 group-hover:scale-110 transition-transform"></i> Topic Theory Lecture</span>
+          <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+        </a>
+      </div>
+    </div>
+  `;
+}
+
+// ===== AI Question Explanation Modal & Fetcher =====
+async function showAiQuestionExplanation(qIndex) {
+  const q = quizState.questions[qIndex];
+  if (!q) return;
+
+  const modalSlotId = 'ai-explanation-content-container';
+  setModal('✦ AI Question Deep-Dive & Lecture Embed', `${quizState.subject || 'NEET'} — ${q.sourceChapter || quizState.chapter || 'Concept Solution'}`, `
+    <div id="${modalSlotId}" class="space-y-4 py-2 text-xs">
+      <div class="flex items-center gap-3 p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-800 dark:text-teal-300">
+        <i class="fa-solid fa-wand-magic-sparkles fa-spin text-lg"></i>
+        <div>
+          <span class="font-black text-xs">Analyzing Question with Gemini AI...</span>
+          <p class="text-[11px] opacity-80">Fetching line-by-line NCERT breakdown & searching video explanations.</p>
+        </div>
+      </div>
+    </div>
+  `, `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300">Close</button>`);
+
+  try {
+    const prompt = `Provide a comprehensive NEET level step-by-step explanation for the following MCQ:
+Question: ${q.question}
+Options:
+${q.options.map((o, i) => `${String.fromCharCode(65 + i)}. ${o}`).join('\n')}
+Correct Option: ${String.fromCharCode(65 + q.correct)}. ${q.options[q.correct]}
+
+Please break down your response in clear markdown format with sections:
+1. **Core NCERT Concept**
+2. **Step-by-Step Logic & Derivation**
+3. **Why Other Options are Incorrect**
+4. **Key NEET Formula / Trick to Remember**`;
+
+    const sysInstruction = "You are a master NEET Physics, Chemistry & Biology tutor. Provide structured, accurate, and easy to understand markdown explanations for entrance exam aspirants.";
+    
+    const explanationText = await callGeminiApi(prompt, sysInstruction);
+
+    // YouTube Search queries for both Question solution & Theory Lecture
+    const chapterTopic = q.sourceChapter || quizState.chapter || quizState.subject;
+    const videoQuery = `${chapterTopic} ${q.question.substring(0, 45)}`;
+    const theoryQuery = `${chapterTopic} NEET One Shot full chapter lecture`;
+
+    const videoSectionHtml = generateYouTubeEmbedHtml(videoQuery, `Video Solution: ${chapterTopic}`);
+    const theorySectionHtml = generateYouTubeEmbedHtml(theoryQuery, `Full Theory Lecture: ${chapterTopic}`);
+
+    const slot = document.getElementById(modalSlotId);
+    if (slot) {
+      slot.innerHTML = `
+        <div class="space-y-4">
+          <!-- Question Review Card -->
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <span class="text-[10px] font-black uppercase text-teal-600">Question ${qIndex + 1} Review</span>
+            <p class="font-bold text-sm text-slate-900 dark:text-slate-100 mt-1">${multiline(q.question)}</p>
+            <div class="mt-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              <i class="fa-solid fa-circle-check mr-1"></i> Correct Answer: ${String.fromCharCode(65 + q.correct)}. ${escapeHtml(q.options[q.correct])}
+            </div>
+          </div>
+
+          <!-- AI Markdown Breakdown -->
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 leading-relaxed text-slate-800 dark:text-slate-200 text-xs space-y-2">
+            <div class="flex items-center gap-2 mb-2 pb-2 border-b border-slate-100 dark:border-slate-700 font-extrabold text-teal-600 dark:text-teal-400">
+              <i class="fa-solid fa-brain text-sm"></i>
+              <span>Gemini Step-by-Step Explanation</span>
+            </div>
+            ${multiline(explanationText)}
+          </div>
+
+          <!-- Embedded YouTube Video & Theory Search Section -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-400">Video & Theory Resources</h4>
+            ${videoSectionHtml}
+            ${theorySectionHtml}
+          </div>
+        </div>
+      `;
+    }
+  } catch (err) {
+    const slot = document.getElementById(modalSlotId);
+    if (slot) {
+      slot.innerHTML = `
+        <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-semibold">
+          <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Could not generate AI explanation: ${escapeHtml(err.message)}
+        </div>
+        ${generateYouTubeEmbedHtml(`${quizState.chapter || quizState.subject} NEET lecture`, 'Manual YouTube Video Search')}
+      `;
+    }
+  }
 }
 
 // ===== AI Chatbot Engine =====
@@ -727,6 +880,12 @@ paletteExpanded: false,
 timerInterval: null
 };
 
+function togglePaletteDrawer() {
+  quizState.paletteExpanded = !quizState.paletteExpanded;
+  if (quizState.mode === 'practice') renderPracticeQuiz();
+  else renderTestQuiz();
+}
+
 const chapterAvailability = {};
 
 function saveToLocalStorage() {
@@ -1014,7 +1173,8 @@ bookmarked: {},
 skippedQuestions: {},
 questionTimes: {},
 questionStartTimer: Date.now(),
-testEndTimestamp: null
+testEndTimestamp: null,
+paletteExpanded: false
 });
 closeModal();
 renderPracticeQuiz();
@@ -1037,10 +1197,104 @@ bookmarked: {},
 skippedQuestions: {},
 questionTimes: {},
 questionStartTimer: Date.now(),
-testEndTimestamp: endTimestamp
+testEndTimestamp: endTimestamp,
+paletteExpanded: false
 });
 closeModal();
 renderTestQuiz();
+}
+
+// ===== Interactive Touch Palette Builder =====
+function buildInteractiveQuestionPalette(isPractice = false) {
+  const total = quizState.questions.length;
+  const current = quizState.currentIndex;
+
+  let answeredCount = 0, markedCount = 0, unvisitedCount = 0;
+
+  const buttonsHtml = quizState.questions.map((_, i) => {
+    const ans = quizState.userAnswers[i];
+    const m = quizState.marked[i];
+    const isCurrent = i === current;
+
+    let bgClass = 'bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700';
+
+    if (isPractice) {
+      if (ans !== undefined) {
+        if (ans === quizState.questions[i].correct) {
+          bgClass = 'bg-emerald-600 text-white font-bold border-transparent';
+          answeredCount++;
+        } else {
+          bgClass = 'bg-rose-500 text-white font-bold border-transparent';
+          answeredCount++;
+        }
+      } else {
+        unvisitedCount++;
+      }
+    } else { // Test mode palette styling
+      if (ans !== undefined && m) {
+        bgClass = 'bg-indigo-600 text-white font-bold border-transparent';
+        answeredCount++;
+        markedCount++;
+      } else if (ans !== undefined) {
+        bgClass = 'bg-emerald-600 text-white font-bold border-transparent';
+        answeredCount++;
+      } else if (m) {
+        bgClass = 'bg-amber-500 text-white font-bold border-transparent';
+        markedCount++;
+      } else {
+        unvisitedCount++;
+      }
+    }
+
+    const ring = isCurrent ? 'ring-2 ring-teal-500 ring-offset-2 dark:ring-offset-slate-900 scale-105 z-10 shadow-md' : '';
+
+    return `<button onclick="${isPractice ? `jumpToPracticeQuestion(${i})` : `jumpToTestQuestion(${i})`}" class="palette-touch-btn rounded-xl text-xs flex items-center justify-center shrink-0 border transition-all active:scale-90 ${bgClass} ${ring}">${i + 1}</button>`;
+  }).join('');
+
+  const isExpanded = quizState.paletteExpanded;
+
+  return `
+    <div class="palette-drawer w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-2xl overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-[480px]' : 'max-h-[76px]'}">
+      <!-- Handle Bar & Touch Header -->
+      <div onclick="togglePaletteDrawer()" class="px-4 py-3 cursor-pointer flex items-center justify-between bg-slate-50 dark:bg-slate-800/60 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-1 bg-slate-300 dark:bg-slate-700 rounded-full mx-auto sm:hidden"></div>
+          <span class="text-xs font-black uppercase text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+            <i class="fa-solid fa-grid-2 text-teal-600"></i> Palette Navigator
+            <span class="px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-600 text-[10px]">${current + 1}/${total}</span>
+          </span>
+        </div>
+
+        <div class="flex items-center gap-3 text-[11px] font-bold">
+          <span class="text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px]"></i> ${answeredCount} Done</span>
+          ${!isPractice ? `<span class="text-indigo-600 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px]"></i> ${markedCount} Marked</span>` : ''}
+          <button class="p-1 rounded-lg text-slate-500 hover:text-teal-600">
+            <i class="fa-solid ${isExpanded ? 'fa-chevron-down' : 'fa-chevron-up'} text-xs"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Scroll Horizontal Bar (When collapsed) -->
+      <div class="px-3 py-2 flex items-center gap-2 overflow-x-auto no-scrollbar">
+        ${buttonsHtml}
+      </div>
+
+      <!-- Detailed Grid View (When Expanded) -->
+      ${isExpanded ? `
+        <div class="p-4 space-y-3 bg-slate-50/50 dark:bg-slate-900/50">
+          <div class="flex flex-wrap gap-2 text-[10px] font-bold border-b border-slate-200 dark:border-slate-800 pb-2">
+            <span class="px-2 py-1 rounded-lg bg-emerald-600 text-white">Answered</span>
+            <span class="px-2 py-1 rounded-lg bg-amber-500 text-white">Review Flag</span>
+            <span class="px-2 py-1 rounded-lg bg-indigo-600 text-white">Answered & Marked</span>
+            <span class="px-2 py-1 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Unvisited</span>
+          </div>
+          <div class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2 max-h-64 overflow-y-auto pr-1">
+            ${buttonsHtml}
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `;
 }
 
 function renderPracticeQuiz() {
@@ -1051,19 +1305,10 @@ const idx = quizState.currentIndex, total = quizState.questions.length;
 const selected = quizState.userAnswers[idx], answered = selected !== undefined;
 const isRight = selected === q.correct;
 
-const palette = quizState.questions.map((_, i) => {
-const base = 'bg-white text-emerald-700 border border-emerald-500 font-medium dark:bg-slate-800 dark:text-emerald-400';
-const ring = i === idx ? 'ring-2 ring-teal-400 ring-offset-2 dark:ring-offset-slate-900 scale-105 z-10' : '';
-const ans = quizState.userAnswers[i];
-let stateClass = base;
-if (ans !== undefined) {
-stateClass = ans === quizState.questions[i].correct ? 'bg-emerald-600 text-white font-bold border-transparent' : 'bg-rose-500 text-white font-bold border-transparent';
-}
-return `<button onclick="jumpToPracticeQuestion(${i})" class="w-8 h-8 rounded-lg text-xs flex items-center justify-center shrink-0 transition-all ${stateClass} ${ring}">${i + 1}</button>`;
-}).join('');
+const paletteHtml = buildInteractiveQuestionPalette(true);
 
 const options = q.options.map((opt, i) => {
-let c = 'flex items-center gap-3 w-full rounded-xl border px-4 py-3 text-left text-sm font-medium transition cursor-pointer ';
+let c = 'flex items-center gap-3 w-full rounded-2xl border px-4 py-3.5 text-left text-sm font-medium transition cursor-pointer active:scale-98 ';
 if (answered) {
 if (i === q.correct) c += 'border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200 font-bold';
 else if (i === selected) c += 'border-rose-500 bg-rose-100 text-rose-900 dark:bg-rose-950/30 dark:text-rose-200 font-bold';
@@ -1071,18 +1316,54 @@ else c += 'border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-700 dar
 } else {
 c += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200';
 }
-return `<button type="button" class="${c}" ${answered ? 'disabled' : `onclick="selectPracticeOption(${i})"`}> <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>`;
+return `<button type="button" class="${c}" ${answered ? 'disabled' : `onclick="selectPracticeOption(${i})"`}> <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>`;
 }).join('');
 
-const result = answered ? `<div class="mt-4 rounded-xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} px-4 py-3 text-sm font-semibold"> 
+const result = answered ? `<div class="mt-4 rounded-2xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} p-4 text-sm font-semibold space-y-3"> 
 <div class="flex items-center justify-between">
 <span>${isRight ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'} Correct option: <span class="font-black">${String.fromCharCode(65 + q.correct)}. ${escapeHtml(q.options[q.correct])}</span></span>
 </div>
-${q.explanation ? `<div class="mt-2 text-xs font-medium opacity-80">${escapeHtml(q.explanation)}</div>` : ''} 
+${q.explanation ? `<div class="text-xs font-medium opacity-80">${escapeHtml(q.explanation)}</div>` : ''} 
+
+<!-- AI Explanation & YouTube Video Trigger Button -->
+<div class="pt-2 border-t border-slate-200/50 dark:border-slate-700/50 flex justify-end">
+  <button onclick="showAiQuestionExplanation(${idx})" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
+    <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> AI Explain & YouTube Video
+  </button>
+</div>
 </div>` : '';
 
 const last = idx === total - 1;
-const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative"> <div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3"> <div class="flex items-center gap-3"> <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> <div> <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2> <p class="text-xs text-slate-500 dark:text-slate-400">Practice Mode</p> </div> </div> </div> <div class="flex items-center gap-2 mb-3 px-1 py-1"> <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-2 px-1 flex-1">${palette}</div> </div> <div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between"> <div> <span class="text-xs font-bold uppercase text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span> <p class="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> <div class="mt-5 space-y-3">${options}</div> ${result} </div> <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"> <button type="button" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button> <button type="button" onclick="${last ? 'finishPracticeQuiz()' : 'goToNextPracticeQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white hover:bg-teal-700 transition">${last ? 'Finish Quiz' : 'Next →'}</button> </div> </div> </div>`;
+const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative overflow-hidden"> 
+<div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3"> 
+<div class="flex items-center gap-3"> 
+<button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> 
+<div> 
+<h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2> 
+<p class="text-xs text-slate-500 dark:text-slate-400">Practice Mode</p> 
+</div> 
+</div> 
+<button onclick="showAiQuestionExplanation(${idx})" class="px-3 py-1.5 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 font-bold text-xs transition flex items-center gap-1.5">
+<i class="fa-solid fa-brain"></i> AI Explanation
+</button>
+</div> 
+
+<div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between"> 
+<div> 
+<span class="text-xs font-bold uppercase text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span> 
+<p class="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> 
+<div class="mt-5 space-y-3">${options}</div> 
+${result} 
+</div> 
+
+<div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"> 
+<button type="button" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button> 
+<button type="button" onclick="${last ? 'finishPracticeQuiz()' : 'goToNextPracticeQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition">${last ? 'Finish Quiz' : 'Next →'}</button> 
+</div> 
+</div> 
+
+${paletteHtml}
+</div>`;
 setModal('', '', html);
 }
 
@@ -1112,26 +1393,55 @@ const idx = quizState.currentIndex, total = quizState.questions.length;
 const selected = quizState.userAnswers[idx];
 const isMarked = !!quizState.marked[idx];
 
-const palette = quizState.questions.map((_, i) => {
-const ans = quizState.userAnswers[i];
-const m = quizState.marked[i];
-let cls = 'bg-slate-100 text-slate-700 border border-slate-300 dark:bg-slate-800 dark:text-slate-300';
-if (ans !== undefined && m) cls = 'bg-indigo-600 text-white font-bold border-transparent';
-else if (ans !== undefined) cls = 'bg-emerald-600 text-white font-bold border-transparent';
-else if (m) cls = 'bg-amber-500 text-white font-bold border-transparent';
-const ring = i === idx ? 'ring-2 ring-teal-400 ring-offset-2 dark:ring-offset-slate-900 scale-105 z-10' : '';
-return `<button onclick="jumpToTestQuestion(${i})" class="w-8 h-8 rounded-lg text-xs flex items-center justify-center shrink-0 transition-all ${cls} ${ring}">${i + 1}</button>`;
-}).join('');
+const paletteHtml = buildInteractiveQuestionPalette(false);
 
 const options = q.options.map((opt, i) => {
 const isSel = selected === i;
-let c = 'flex items-center gap-3 w-full rounded-xl border px-4 py-3 text-left text-sm font-medium transition cursor-pointer ';
+let c = 'flex items-center gap-3 w-full rounded-2xl border px-4 py-3.5 text-left text-sm font-medium transition cursor-pointer active:scale-98 ';
 if (isSel) c += 'border-teal-500 bg-teal-50 dark:bg-teal-950/40 text-teal-900 dark:text-teal-200 font-bold';
 else c += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200';
-return `<button type="button" class="${c}" onclick="selectTestOption(${i})"> <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[10px] font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>`;
+return `<button type="button" class="${c}" onclick="selectTestOption(${i})"> <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>`;
 }).join('');
 
-const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative"> <div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3"> <div class="flex items-center gap-3"> <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> <div> <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2> <p class="text-xs text-slate-500 dark:text-slate-400">Test Simulation Mode</p> </div> </div> <div class="flex items-center gap-3"> <div id="test-timer-display" class="text-xs font-black px-3 py-1.5 rounded-xl bg-teal-600 text-white">--:--</div> <button onclick="confirmSubmitTest()" class="px-4 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition">Submit Test</button> </div> </div> <div class="flex items-center gap-2 mb-3 px-1 py-1"> <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-2 px-1 flex-1">${palette}</div> </div> <div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between"> <div> <div class="flex items-center justify-between"> <span class="text-xs font-bold uppercase text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span> <button type="button" onclick="toggleMarkTestCurrent()" class="px-3 py-1 rounded-lg border ${isMarked ? 'border-amber-500 bg-amber-500/10 text-amber-600' : 'border-slate-200 dark:border-slate-700 text-slate-500'} text-xs font-bold transition"><i class="fa-solid fa-flag mr-1"></i> ${isMarked ? 'Marked' : 'Mark'}</button> </div> <p class="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> <div class="mt-5 space-y-3">${options}</div> </div> <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"> <button type="button" onclick="jumpToTestQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button> <button type="button" onclick="jumpToTestQuestion(${Math.min(total - 1, idx + 1)})" class="rounded-xl bg-teal-600 px-5 py-2 text-xs font-bold text-white hover:bg-teal-700 transition">Next →</button> </div> </div> </div>`;
+const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative overflow-hidden"> 
+<div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3"> 
+<div class="flex items-center gap-3"> 
+<button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> 
+<div> 
+<h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2> 
+<p class="text-xs text-slate-500 dark:text-slate-400">Test Simulation Mode</p> 
+</div> 
+</div> 
+<div class="flex items-center gap-3"> 
+<button onclick="showAiQuestionExplanation(${idx})" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 font-bold text-xs transition">
+<i class="fa-solid fa-wand-magic-sparkles"></i> AI Explain
+</button>
+<div id="test-timer-display" class="text-xs font-black px-3 py-1.5 rounded-xl bg-teal-600 text-white">--:--</div> 
+<button onclick="confirmSubmitTest()" class="px-4 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition">Submit Test</button> 
+</div> 
+</div> 
+
+<div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between"> 
+<div> 
+<div class="flex items-center justify-between"> 
+<span class="text-xs font-bold uppercase text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span> 
+<div class="flex gap-2">
+<button type="button" onclick="showAiQuestionExplanation(${idx})" class="sm:hidden px-3 py-1 rounded-lg border border-purple-500/30 bg-purple-500/10 text-purple-600 text-xs font-bold"><i class="fa-solid fa-wand-magic-sparkles"></i> AI</button>
+<button type="button" onclick="toggleMarkTestCurrent()" class="px-3 py-1 rounded-lg border ${isMarked ? 'border-amber-500 bg-amber-500/10 text-amber-600' : 'border-slate-200 dark:border-slate-700 text-slate-500'} text-xs font-bold transition"><i class="fa-solid fa-flag mr-1"></i> ${isMarked ? 'Marked' : 'Mark'}</button> 
+</div>
+</div> 
+<p class="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> 
+<div class="mt-5 space-y-3">${options}</div> 
+</div> 
+
+<div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"> 
+<button type="button" onclick="jumpToTestQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button> 
+<button type="button" onclick="jumpToTestQuestion(${Math.min(total - 1, idx + 1)})" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition">Next →</button> 
+</div> 
+</div> 
+
+${paletteHtml}
+</div>`;
 setModal('', '', html);
 }
 
