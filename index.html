@@ -40,7 +40,7 @@ button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0;transition:all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)}
 button:active{transform:scale(0.95)}
 .app-layout{display:flex;flex-direction:column;min-height:100vh}
-.sidebar{position:fixed;top:0;bottom:0;left:0;width:280px;height:100vh;overflow-y:auto;z-index:40;display:flex;flex-direction:column;justify-content:space-between;padding:24px 18px;transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1);background:var(--paper);border-right:1px solid var(--border-color);backdrop-filter:blur(20px)}
+.sidebar{position:fixed;top:0;bottom:0;left:0;width:280px;height:100vh;overflow-y:auto;z-index:40;display:flex;flex-direction:column;justify-space:between;padding:24px 18px;transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1);background:var(--paper);border-right:1px solid var(--border-color);backdrop-filter:blur(20px)}
 @media (max-width:1023px){.sidebar{transform:translateX(-100%)}.sidebar.mobile-open{transform:translateX(0)}.content{margin-left:0;width:100%}}
 @media (min-width:1024px){.content{margin-left:280px;flex:1;width:calc(100% - 280px)}}
 .brand{display:flex;gap:12px;align-items:center}
@@ -60,7 +60,7 @@ button:active{transform:scale(0.95)}
 body.dark .bar{background:rgba(255,255,255,.12)}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#6366f1);transition:width .8s cubic-bezier(0.34, 1.56, 0.64, 1)}
 .goal p{font-size:11px;color:var(--text-muted);margin-top:6px;font-weight:500}
-.topbar{height:76px;border-bottom:1px solid var(--border-color);background:var(--glass);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:30;backdrop-filter:blur(16px);transition:all 0.3s ease}
+.topbar{height:76px;border-bottom:1px solid var(--border-color);background:var(--glass);display:flex;align-items:center;justify-between;padding:0 28px;position:sticky;top:0;z-index:30;backdrop-filter:blur(16px);transition:all 0.3s ease}
 .date{color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:0.02em}
 .topbar h1{font-size:18px;margin:2px 0 0;color:var(--text-primary);font-weight:800;letter-spacing:-0.02em}
 .main{max-width:1440px;margin:auto;padding:32px 28px;animation:fadeInSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1)}
@@ -102,7 +102,7 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 .chat-msg-user{background:linear-gradient(135deg, #0d9488, #134e4a);color:#ffffff;border-radius:18px 18px 4px 18px;}
 .chat-msg-ai{background:var(--card-bg);border:1px solid var(--border-color);color:var(--text-primary);border-radius:18px 18px 18px 4px;}
 .stepper-step{transition:all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);}
-.stepper-step.active{border-color:#0d9488;background:rgba(13,148,136,0.12);color:#0d9488;transform:scale(1.03);}
+.stepper-step.active{border-color:#0d9488;background:rgba(13,148,136,0.12);color:#0d9488;transform:scale(1.02);}
 .stepper-step.done{border-color:#10b981;background:rgba(16,185,129,0.1);color:#10b981;}
 
 /* Touch Interactive Top Palette Drawer Styles */
@@ -125,7 +125,7 @@ body.dark .progress{background:rgba(255,255,255,.1)}
   transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Beautiful AI Explanation Styled Elements */
+/* AI Explanation Styled Elements */
 .ai-section-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
@@ -145,6 +145,25 @@ body.dark .progress{background:rgba(255,255,255,.1)}
   padding-bottom: 6px;
   border-bottom: 1px dashed var(--border-color);
 }
+
+/* Test Hub Polish Additions */
+.test-hub-tab-active {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 20px -4px rgba(13,148,136,0.5);
+}
+.test-hub-filter-btn {
+  padding: 7px 16px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  transition: all 0.25s ease;
+}
+.test-hub-filter-btn.active {
+  background: #0d9488;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(13,148,136,0.3);
+}
 </style>
 </head>
 <body>
@@ -161,11 +180,10 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 
 <nav class="nav my-6 space-y-1.5">
 <button onclick="switchTab('dashboard')" id="nav-dashboard" class="active"><i class="fa-solid fa-chart-pie w-5"></i> Dashboard</button>
-<button onclick="switchTab('mock')" id="nav-mock"><i class="fa-solid fa-wand-magic-sparkles w-5"></i> Test Generator <small style="margin-left:auto;background:linear-gradient(135deg,#c084fc,#9333ea);color:#ffffff;border-radius:999px;padding:2px 7px;font-size:9px;font-weight:900">180Q NTA</small></button>
+<button onclick="switchTab('mock')" id="nav-mock"><i class="fa-solid fa-wand-magic-sparkles w-5"></i> Test Hub <small style="margin-left:auto;background:linear-gradient(135deg,#0d9488,#0f766e);color:#ffffff;border-radius:999px;padding:2px 7px;font-size:9px;font-weight:900">180Q CBT</small></button>
 <button onclick="switchTab('learn')" id="nav-learn"><i class="fa-solid fa-book-open-reader w-5"></i> Learn & Practice <small style="margin-left:auto;background:linear-gradient(135deg, #a3e635 0%, #84cc16 100%);color:#1a3a04;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:900" id="learn-nav-badge">79</small></button>
 <button onclick="switchTab('progress')" id="nav-progress"><i class="fa-solid fa-chart-line w-5"></i> Performance Stats</button>
 <button onclick="switchTab('directory')" id="nav-directory"><i class="fa-solid fa-book-bookmark w-5"></i> Resource Vault</button>
-<button onclick="switchTab('faculty')" id="nav-faculty"><i class="fa-solid fa-chalkboard-user w-5"></i> Faculty Hub</button>
 <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Focus & Planner</button>
 <button onclick="switchTab('settings')" id="nav-settings"><i class="fa-solid fa-gear w-5"></i> Settings</button>
 </nav>
@@ -477,11 +495,7 @@ function renderFormattedMarkdown(text = '') {
       const bulletText = trimmed.replace(/^[*|-]\s*/, '');
       outputHtml += `<div class="flex items-start gap-2 my-1.5 pl-2"><i class="fa-solid fa-angle-right text-[10px] text-teal-500 mt-1 shrink-0"></i><span class="leading-relaxed text-xs text-slate-700 dark:text-slate-200">${bulletText}</span></div>`;
     } else {
-      if (outputHtml.endsWith('</div>\n') || outputHtml.endsWith('</div>')) {
-        outputHtml += `<p class="my-2 leading-relaxed text-xs text-slate-700 dark:text-slate-200">${trimmed}</p>`;
-      } else {
-        outputHtml += `<p class="my-2 leading-relaxed text-xs text-slate-700 dark:text-slate-200">${trimmed}</p>`;
-      }
+      outputHtml += `<p class="my-2 leading-relaxed text-xs text-slate-700 dark:text-slate-200">${trimmed}</p>`;
     }
   });
 
@@ -661,7 +675,7 @@ Provide a high-yield diagnostic evaluation in markdown:
             ${renderFormattedMarkdown(feedbackText)}
           </div>
 
-          ${generateYouTubeEmbedHtml(`${attempt.chapter || attempt.subject} NEET revision strategy strategy guidance`, 'Recommended Strategy & Revision Lectures')}
+          ${generateYouTubeEmbedHtml(`${attempt.chapter || attempt.subject} NEET revision strategy guidance`, 'Recommended Strategy & Revision Lectures')}
         </div>
       `;
     }
@@ -777,41 +791,29 @@ Physics: ['Units and Measurements','Motion in a Straight Line','Motion in a Plan
 };
 const TOTAL_CHAPTERS = Object.values(data).reduce((n, l) => n + l.length, 0);
 
-const TEACHERS_DATA = [
-{ id: "t1", name: "RCM Sir", img: "https://i.ibb.co/tTqKFyp8/RCM-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasPhrjrSqNnxyiLwaDI_Qml" },
-{ id: "t2", name: "MKG Sir", img: "https://i.ibb.co/3x97xd0/MKG-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauIS74mnISFrQttmOdM1-As" },
-{ id: "t3", name: "Dilip Arora Sir (DA)", img: "https://i.ibb.co/ZRfPy476/DILIP-ARORA-SIR-DA.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatKeD-H1MIcRIFsfgnYoARM" },
-{ id: "t4", name: "MJ Star", img: "https://i.ibb.co/4gdKvtxD/MJ-STAR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatxrU7mofuhm4EIqjJTOGsx" },
-{ id: "t5", name: "INSAF ALI 25+26", img: "https://i.ibb.co/PGjy3M49/INSAF-ALI-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauRxuhd51FjB4E9fx1VZHa2" },
-{ id: "t6", name: "Radhe Shyam Khandelwar (RSK)", img: "https://i.ibb.co/Ldf3j5gY/RADHE-SHYAM-KHANDELWAR-RSK.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUat-QWU0bF7vGZMp3GWzeLrZ" },
-{ id: "t7", name: "Acid Sir MP1", img: "https://i.ibb.co/7x2rg9Hh/ACID-SIR-MP1.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUauNwiUN6JfPzzn-oBmohWTp" },
-{ id: "t8", name: "RAVI DUBEY 26", img: "https://i.ibb.co/C3rtKPnn/RAVI-DUBEY-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasEpc2FqiGD9YSLb7wlhawG" },
-{ id: "t9", name: "TNM CONQUER 1", img: "https://i.ibb.co/Y7bCYBGG/TNM-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUavDapnfWF1vAYozb6J5-WpT" },
-{ id: "t10", name: "YSY CONQUER 26", img: "https://i.ibb.co/XZPd2d3J/YSY-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasNSyhAj5uTe3xZFNZEo-XT" },
-{ id: "t11", name: "ASHISH GUPTA SARVAN 26", img: "https://i.ibb.co/1HqPrL6/ASHISH-GUPTA-SIR.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUasViC2fWpvWwdSkcjSbO5tE" },
-{ id: "t12", name: "Mahesh Patidar", img: "https://i.ibb.co/RTGnxShs/Smart-Select-20260609-170750-Google.jpg", playlistUrl: "https://www.youtube.com/playlist?list=PLbAqb4DLfUatUhVc-yyM09k1idZ5ZUsdZ" }
-];
-
-const INITIAL_RESOURCES = [
-{ id: "sp999", title: "Allen neet", category: "JEE & NEET", subtag: "Batches", badge: "StudyPanda", url: "http://Amity18.carrd.co" },
-{ id: "sp99", title: "allen jee", category: "JEE", subtag: "Batches", badge: "jee", url: "https://dusra-aur.github.io/alien-jaddu//" },
-{ id: "sp0", title: "Unacademy", category: "JEE & NEET", subtag: "Batches", badge: "Unacademy", url: "http://studyuk.online" },
-{ id: "sp1", title: "StudyPanda Live", category: "JEE & NEET", subtag: "Batches", badge: "StudyPanda", url: "https://studypanda.live/" },
-{ id: "jn1", title: "Allen Test Series", category: "JEE & NEET", subtag: "Tests", badge: "Allen Tests", url: "http://test.neetxnoah1.workers.dev" },
-{ id: "jn2", title: "Pikachu PW Books", category: "JEE & NEET", subtag: "Books", badge: "PW Books", url: "https://pikachu-books.vercel.app/" },
-{ id: "jn3", title: "PW Thor", category: "JEE & NEET", subtag: "Batches", badge: "PW Batches", url: "https://pwthor.live" },
-{ id: "jn5", title: "Pikachu CBT Tests", category: "JEE & NEET", subtag: "Tests", badge: "CBT Portal", url: "https://pikachuxcbt.vercel.app/" },
-{ id: "jn6", title: "PDF to CBT Converter", category: "JEE & NEET", subtag: "Tests", badge: "CBT Converter", url: "http://newtcbt.vercel.app" },
-{ id: "jn7", title: "Pikachu JEE CBT (PYQs)", category: "JEE & NEET", subtag: "PYQs", badge: "JEE PYQs", url: "https://pikachu-jee-cbt.vercel.app/" },
-{ id: "jn8", title: "Marks App (MathonGo)", category: "JEE & NEET", subtag: "PYQs", badge: "PYQ App", url: "https://web.getmarks.app/" },
-{ id: "jn10", title: "Delta Study", category: "JEE & NEET", subtag: "Batches", badge: "Reddit Pick", url: "https://deltastudy.site" },
-{ id: "jn11", title: "Ved Study", category: "JEE & NEET", subtag: "Batches", badge: "Free Batches", url: "https://vedstudy.site" },
-{ id: "jn13", title: "PW4Free Portal", category: "JEE & NEET", subtag: "Batches", badge: "Keyless Player", url: "https://pw4free.com" },
-{ id: "rd1", title: "Anna's Archive", category: "Free Books", subtag: "Books", badge: "Shadow Library", url: "https://annas-archive.org/" },
-{ id: "rd2", title: "FMHY Educational Megathread", category: "Productivity", subtag: "Books", badge: "Megathread", url: "https://fmhy.net/edupiracy" },
-{ id: "26", title: "Perplexity AI", category: "AI & Study", subtag: "AI", badge: "Free Tier", url: "https://www.perplexity.ai" },
-{ id: "cd3", title: "GitHub", category: "Coding & Tech", subtag: "Books", badge: "Version Control", url: "https://github.com/" },
-{ id: "fun1", title: "Wotaku Wiki", category: "Fun & Media", subtag: "Fun", badge: "Wotaku", url: "https://wotaku.wiki/" }
+// Structured Vault Resources Array
+const RESOURCE_VAULT_ITEMS = [
+  { id: "sp999", title: "Allen NEET Portal", category: "JEE & NEET", subtag: "Batches", badge: "StudyPanda", url: "http://Amity18.carrd.co" },
+  { id: "sp99", title: "Allen JEE Hub", category: "JEE", subtag: "Batches", badge: "JEE", url: "https://dusra-aur.github.io/alien-jaddu//" },
+  { id: "sp0", title: "Unacademy Portal", category: "JEE & NEET", subtag: "Batches", badge: "Unacademy", url: "http://studyuk.online" },
+  { id: "sp1", title: "StudyPanda Live", category: "JEE & NEET", subtag: "Batches", badge: "StudyPanda", url: "https://studypanda.live/" },
+  { id: "jn1", title: "Allen Test Series", category: "JEE & NEET", subtag: "Tests", badge: "Allen Tests", url: "http://test.neetxnoah1.workers.dev" },
+  { id: "jn2", title: "Pikachu PW Books", category: "JEE & NEET", subtag: "Books", badge: "PW Books", url: "https://pikachu-books.vercel.app/" },
+  { id: "jn3", title: "PW Thor Engine", category: "JEE & NEET", subtag: "Batches", badge: "PW Batches", url: "https://pwthor.live" },
+  { id: "jn5", title: "Pikachu CBT Tests", category: "JEE & NEET", subtag: "Tests", badge: "CBT Portal", url: "https://pikachuxcbt.vercel.app/" },
+  { id: "jn6", title: "PDF to CBT Converter", category: "JEE & NEET", subtag: "Tests", badge: "CBT Converter", url: "http://newtcbt.vercel.app" },
+  { id: "jn7", title: "Pikachu JEE CBT (PYQs)", category: "JEE & NEET", subtag: "PYQs", badge: "JEE PYQs", url: "https://pikachu-jee-cbt.vercel.app/" },
+  { id: "jn8", title: "Marks App (MathonGo)", category: "JEE & NEET", subtag: "PYQs", badge: "PYQ App", url: "https://web.getmarks.app/" },
+  { id: "jn10", title: "Delta Study Portal", category: "JEE & NEET", subtag: "Batches", badge: "Reddit Pick", url: "https://deltastudy.site" },
+  { id: "jn11", title: "Ved Study Hub", category: "JEE & NEET", subtag: "Batches", badge: "Free Batches", url: "https://vedstudy.site" },
+  { id: "jn13", title: "PW4Free Portal", category: "JEE & NEET", subtag: "Batches", badge: "Keyless Player", url: "https://pw4free.com" },
+  { id: "pwe1", title: "PW Eduvibe CC Portal", category: "JEE & NEET", subtag: "Batches", badge: "Eduvibe", url: "https://pw.eduvibe.cc.cd/" },
+  { id: "ev1", title: "Eduvibe Hub", category: "JEE & NEET", subtag: "Batches", badge: "Eduvibe", url: "https://eduvibe.cc.cd/" },
+  { id: "rd1", title: "Anna's Archive Library", category: "Free Books", subtag: "Books", badge: "Shadow Library", url: "https://annas-archive.org/" },
+  { id: "rd2", title: "FMHY Educational Megathread", category: "Productivity", subtag: "Books", badge: "Megathread", url: "https://fmhy.net/edupiracy" },
+  { id: "26", title: "Perplexity AI Copilot", category: "AI & Study", subtag: "AI", badge: "Free Tier", url: "https://www.perplexity.ai" },
+  { id: "cd3", title: "GitHub Developer Ecosystem", category: "Coding & Tech", subtag: "Books", badge: "Version Control", url: "https://github.com/" },
+  { id: "fun1", title: "Wotaku Wiki Hub", category: "Fun & Media", subtag: "Fun", badge: "Wotaku", url: "https://wotaku.wiki/" }
 ];
 
 let currentTab = 'dashboard', previousTab = 'dashboard', subject = 'Biology', learnSubTab = 'practice';
@@ -820,15 +822,166 @@ let todos = StorageModule.get(STORAGE_KEYS.todos, [
 { id: 'td1', title: 'Revise Living World MCQs', subject: 'Biology', priority: 'high', completed: false, createdAt: Date.now() },
 { id: 'td2', title: 'Solve Chemical Bonding PYQs', subject: 'Chemistry', priority: 'medium', completed: false, createdAt: Date.now() }
 ]);
-let timerSessionCount = parseInt(localStorage.getItem(STORAGE_KEYS.focus) || '0', 10);
-let timerInitialSeconds = parseInt(localStorage.getItem(STORAGE_KEYS.timerPreset) || '1500', 10);
-let timerSeconds = timerInitialSeconds;
-let timerInterval = null;
+
+// Focus timer state
+let focusTimeRemaining = 25 * 60;
+let focusTimerRunning = false;
+let focusTimerInterval = null;
+
+// ===== Batch Test Hub State =====
+let mockSubTab = 'batch'; 
+let batchCategoryFilter = 'All'; 
+let selectedBatchSeries = null;
+let selectedBatchSubject = 'Physics';
+let batchTestsDatabase = [];
+
+const DEFAULT_BATCH_SERIES = [
+  {
+    id: "c11_nbt",
+    title: "CLASS 11TH CHAPTERWISE | NBT",
+    category: "Chapterwise",
+    startDate: "10 Jul 2026",
+    endDate: "4 Feb 2027",
+    totalTests: 49,
+    description: "Chapter-by-chapter CBT tests in the real NEET pattern, built to strengthen your Class 11th concepts.",
+    bannerBg: "linear-gradient(135deg, #0f766e 0%, #115e59 100%)",
+    tests: [
+      { id: "c11_p1", title: "Basic Maths & Calculus", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "10 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/physics-units-and-measurements.json", syllabus: ["Differentiation & Integration", "Vectors basics", "Trigonometric Graphs"] },
+      { id: "c11_p2", title: "Vectors & Kinematics", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "18 Jul 2026 | 2:00 pm", status: "locked", dataFile: "Data/physics-motion-in-a-straight-line.json", syllabus: ["Vector Addition", "Dot & Cross Product", "Projective Motion"] },
+      { id: "c11_c1", title: "Some Basic Concepts of Chemistry", subject: "Chemistry", questions: 45, marks: 180, timeMins: 45, schedule: "12 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/chemistry-some-basic-concepts-of-chemistry.json", syllabus: ["Mole Concept", "Stoichiometry", "Concentration Terms"] },
+      { id: "c11_b1", title: "The Living World & Taxonomy", subject: "Botany", questions: 50, marks: 200, timeMins: 50, schedule: "15 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/living_world_mcqs.json", syllabus: ["Taxonomic Hierarchy", "Herbarium & Museums", "Binomial Nomenclature"] }
+    ]
+  },
+  {
+    id: "ykn_dropper",
+    title: "YKN NEET 2.0 | DROPPER TEST SERIES",
+    category: "Part Syllabus",
+    startDate: "19 Jul 2026",
+    endDate: "28 Apr 2027",
+    totalTests: 30,
+    description: "Structured CBT Test Series for NEET Droppers — Part Syllabus Phase Drills.",
+    bannerBg: "linear-gradient(135deg, #0d9488 0%, #0369a1 100%)",
+    tests: [
+      { id: "pt_01", title: "Practice Test 01", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "19 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/living_world_mcqs.json", syllabus: ["Class 11 Bio Ch 1-4", "Phy Vectors & Kinematics", "Chem Mole Concept & Thermodynamics"] },
+      { id: "pt_02", title: "Practice Test 02", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "2 Aug 2026 | 2:00 pm", status: "locked", dataFile: "Data/living_world_mcqs.json", syllabus: ["Plant Physiology", "Chemical Bonding", "Laws of Motion"] }
+    ]
+  },
+  {
+    id: "neet_air_2027",
+    title: "NEET AIR 2027 Full Syllabus Test",
+    category: "Full Syllabus",
+    startDate: "13 Aug 2026",
+    endDate: "4 Mar 2027",
+    totalTests: 30,
+    description: "NEET AIR 2027 Full Syllabus Test Series — Test + Discussion every Thursday, Full Syllabus as per NTA.",
+    bannerBg: "linear-gradient(135deg, #1e1b4b 0%, #0f766e 100%)",
+    tests: [
+      { id: "fst_01", title: "Full Syllabus Test 1", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "13 Aug 2026", status: "available", dataFile: "Data/living_world_mcqs.json", syllabus: ["Complete NTA NEET Syllabus (Physics, Chemistry, Botany, Zoology)"] }
+    ]
+  }
+];
+
+async function loadBatchTestsDatabase() {
+  try {
+    const res = await fetch('test/index.json', { cache: 'no-cache' });
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        batchTestsDatabase = data;
+        return;
+      }
+    }
+  } catch (e) {
+    console.warn("Using default embedded batch test series:", e);
+  }
+  batchTestsDatabase = DEFAULT_BATCH_SERIES;
+}
+loadBatchTestsDatabase();
+
+function setMockSubTab(sub) {
+  mockSubTab = sub;
+  renderView();
+}
+
+function openBatchSeriesDetail(seriesId) {
+  selectedBatchSeries = batchTestsDatabase.find(s => s.id === seriesId) || batchTestsDatabase[0];
+  selectedBatchSubject = 'Physics';
+  renderView();
+}
+
+function closeBatchSeriesDetail() {
+  selectedBatchSeries = null;
+  renderView();
+}
+
+function openBatchSyllabusModal(testTitle, syllabusList = []) {
+  setModal(`Syllabus — ${testTitle}`, 'Target topics covered in this CBT test:', `
+    <div class="space-y-3 py-2 text-xs">
+      <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-800 dark:text-teal-300 font-bold flex items-center gap-2">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Target Syllabus Breakdown</span>
+      </div>
+      <ul class="space-y-2">
+        ${(syllabusList.length ? syllabusList : ['Complete Chapter Concepts', 'NCERT Exemplar Numericals', 'PYQ Statement Variations']).map(s => `
+          <li class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 font-semibold text-slate-800 dark:text-slate-200">
+            <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i>
+            <span>${escapeHtml(s)}</span>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+  `, `<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-xs">Close</button>`);
+}
+
+async function startBatchTestAttempt(testObj, seriesTitle) {
+  setModal('Preparing CBT Test Paper', testObj.title, `
+    <div class="flex flex-col items-center justify-center py-10 space-y-4">
+      <i class="fa-solid fa-spinner fa-spin text-4xl text-teal-600 mb-2"></i>
+      <p class="text-sm font-black text-slate-800 dark:text-slate-100">Loading ${testObj.questions} Questions for ${escapeHtml(testObj.title)}...</p>
+      <span class="text-xs text-slate-500 font-bold">${seriesTitle}</span>
+    </div>
+  `);
+
+  try {
+    let rawQuestions = null;
+    const fetchPath = testObj.dataFile || `test/${testObj.id}.json`;
+
+    try {
+      const res = await fetch(fetchPath, { cache: 'no-cache' });
+      if (res.ok) {
+        const raw = await res.json();
+        const list = Array.isArray(raw) ? raw : (raw.qs || raw.questions || []);
+        if (list.length > 0) {
+          rawQuestions = list.map((q, i) => ({
+            qKey: `batch_${testObj.id}_${i}`,
+            question: q.q || q.question,
+            options: (q.o || q.options || ["A","B","C","D"]).map(String),
+            correct: (q.a ?? q.answer ?? 1) - 1,
+            explanation: q.s || q.explanation || 'NCERT Line-by-Line concept.',
+            sourceChapter: testObj.title
+          }));
+        }
+      }
+    } catch (e) {
+      console.warn("Could not fetch test path, using fallback generator:", e);
+    }
+
+    if (!rawQuestions || !rawQuestions.length) {
+      rawQuestions = generateFallbackQuestions(testObj.subject || 'Physics', testObj.title);
+    }
+
+    wizardState.durationMins = testObj.timeMins || 180;
+    launchTestSession(testObj.subject || 'NEET CBT', `${seriesTitle} — ${testObj.title}`, rawQuestions);
+  } catch (err) {
+    showToast('Failed to start test: ' + err.message, 'error');
+    closeModal();
+  }
+}
 
 // ===== Multi-Step Structured Generator State =====
 let wizardState = {
-  step: 1, // 1: Format, 2: Subjects, 3: Chapters, 4: Generate
-  format: 'full_180', // 'full_180', 'subject_major', 'chapter_sprint', 'ai_drill'
+  step: 1, 
+  format: 'full_180',
   qCount: 180,
   durationMins: 180,
   difficulty: 'Standard NEET',
@@ -889,7 +1042,6 @@ function wizardClearChapters(subj) {
   renderView();
 }
 
-// ===== 180Q Hybrid Local Aggregator Engine =====
 async function buildFull180qMock() {
   const targetSubjCounts = { 'Biology': 90, 'Chemistry': 45, 'Physics': 45 };
   let assembledQuestions = [];
@@ -1045,13 +1197,9 @@ function handleTouchEnd() {
   quizState.touchEndX = 0;
 }
 
-const chapterAvailability = {};
-
 function saveToLocalStorage() {
 StorageModule.set(STORAGE_KEYS.todos, todos);
 StorageModule.set(STORAGE_KEYS.progress, userProgress);
-StorageModule.set(STORAGE_KEYS.focus, String(timerSessionCount));
-StorageModule.set(STORAGE_KEYS.timerPreset, String(timerInitialSeconds));
 }
 
 function showToast(msg, type = 'success') {
@@ -1141,47 +1289,6 @@ deferredPrompt.prompt();
 deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
 }
 
-let activeAvailabilityFetches = 0;
-const availabilityQueue = [];
-
-function checkChapterAvailability(chapterName, callback) {
-if (chapterAvailability[chapterName] !== undefined) {
-callback(chapterAvailability[chapterName]);
-return;
-}
-availabilityQueue.push({ chapterName, callback });
-processAvailabilityQueue();
-}
-
-function processAvailabilityQueue() {
-if (activeAvailabilityFetches >= 4 || availabilityQueue.length === 0) return;
-const item = availabilityQueue.shift();
-activeAvailabilityFetches++;
-
-fetch(quizUrl(item.chapterName), { method: 'HEAD', cache: 'force-cache' })
-.then(res => {
-const available = res.ok;
-chapterAvailability[item.chapterName] = available;
-item.callback(available);
-})
-.catch(() => {
-fetch(quizUrl(item.chapterName), { cache: 'force-cache' })
-.then(res => {
-const available = res.ok;
-chapterAvailability[item.chapterName] = available;
-item.callback(available);
-})
-.catch(() => {
-chapterAvailability[item.chapterName] = false;
-item.callback(false);
-});
-})
-.finally(() => {
-activeAvailabilityFetches--;
-processAvailabilityQueue();
-});
-}
-
 function updateGlobalProgress() {
 const done = Object.values(userProgress).filter(p => p && p.completed).length;
 const pct = Math.round((done / TOTAL_CHAPTERS) * 100);
@@ -1191,55 +1298,6 @@ if (txt) txt.textContent = `${pct}% syllabus covered`;
 }
 
 function setSubject(s) { subject = s; renderView(); }
-
-function renderChapters() {
-const list = data[subject] || [];
-const query = (document.getElementById('search')?.value || '').toLowerCase().trim();
-const filter = document.getElementById('statusFilter')?.value || 'all';
-const countEl = document.getElementById('count');
-
-const filtered = list.filter(ch => {
-const match = ch.toLowerCase().includes(query);
-const done = userProgress[ch] && userProgress[ch].completed;
-return filter === 'completed' ? match && done : filter === 'pending' ? match && !done : match;
-});
-if (countEl) countEl.textContent = `${filtered.length} of ${list.length} chapters displayed`;
-
-const container = document.getElementById('chapters');
-if (!container) return;
-if (!filtered.length) {
-container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-400"><i class="fa-solid fa-magnifying-glass text-3xl mb-2"></i><p class="text-sm font-semibold">No chapters match your search or filter</p></div>`;
-return;
-}
-const cls = subject === 'Biology' ? 'bio' : subject === 'Chemistry' ? 'chem' : 'phy';
-const short = subject === 'Biology' ? 'BIO' : subject === 'Chemistry' ? 'CHEM' : 'PHY';
-
-container.innerHTML = filtered.map(ch => {
-const done = userProgress[ch] && userProgress[ch].completed;
-const attemptsArr = StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => a.chapter === ch);
-const attemptCount = attemptsArr.length;
-let bestScore = 0, lastDate = 'Never';
-if (attemptCount > 0) {
-bestScore = Math.max(...attemptsArr.map(a => a.score));
-const lastAttempt = attemptsArr[0];
-lastDate = new Date(lastAttempt.finishedAt).toLocaleDateString();
-}
-const acc = attemptCount > 0 ? Math.round((attemptsArr.reduce((s,a) => s + (a.accuracy || 0), 0) / attemptCount)) : 0;
-const badgeColor = acc >= 70 ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : acc >= 40 ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300' : 'bg-rose-100 text-rose-700 dark:bg-rose-950/50 dark:text-rose-300';
-
-return `<div class="card chapter" id="chapter-card-${slugify(ch)}" onclick="openModePicker('${jsArg(subject)}', '${jsArg(ch)}')"> <div> <div class="flex items-center justify-between"> <span class="chip ${cls}">${short}</span> <div class="flex items-center gap-1.5"> <span id="avail-badge-${slugify(ch)}" class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">Checking...</span> <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${done ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400'}">${done ? 'Completed ✓' : 'Pending'}</span> </div> </div> <h3 class="chapter-title">${escapeHtml(ch)}</h3> <div class="mt-2 text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-3"> <span>Attempts: <strong class="text-slate-700 dark:text-slate-200">${attemptCount}</strong></span> <span>Best: <strong class="text-slate-700 dark:text-slate-200">${bestScore}</strong></span> ${attemptCount > 0 ? `<span class="px-1.5 py-0.5 rounded font-bold ${badgeColor}">Acc: ${acc}%</span>` : ''} </div> </div> <div> <div class="progress"><i style="width:${done ? '100%' : '0%'}"></i></div> <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"> <span class="text-[10px] text-slate-400">Last: ${lastDate}</span> <div class="flex items-center gap-2"> <button onclick="event.stopPropagation(); askAiChapterTutor('${jsArg(ch)}')" class="text-xs text-purple-600 font-bold hover:underline"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> AI Tutor</button> <span class="practice">Start Quiz <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i></span> </div> </div> </div> </div>`;
-}).join('');
-
-filtered.forEach(ch => {
-checkChapterAvailability(ch, (isAvailable) => {
-const el = document.getElementById(`avail-badge-${slugify(ch)}`);
-if (el) {
-el.textContent = isAvailable ? 'Available' : 'Coming Soon';
-el.className = isAvailable ? 'px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-teal-100 text-teal-700 dark:bg-teal-950/50 dark:text-teal-300' : 'px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300';
-}
-});
-});
-}
 
 function openModal() { document.getElementById('appModal').classList.add('open'); }
 function toggleFullScreenMode(on) { document.getElementById('appModal')?.classList.toggle('fullscreen-modal', !!on); }
@@ -1257,29 +1315,7 @@ openModal();
 }
 
 function openHelpModal() {
-setModal('Keyboard Shortcuts & Navigation', 'Accelerate your practice with key shortcuts:',  `<div class="space-y-3 py-2 text-xs"> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Option A, B, C, D</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">1, 2, 3, 4</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Next Question</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">ArrowRight / Space</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Previous Question</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">ArrowLeft</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Command Palette</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">Ctrl + K</kbd></div> </div>`, `<button onclick="closeModal()" class="px-4 py-2 bg-teal-600 text-white rounded-xl font-bold text-xs">Got it</button>`);
-}
-
-function openModePicker(subj, chapterName) {
-subject = subj;
-setModal('Select Quiz Mode', chapterName, `<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-2"> 
-<button onclick="setupQuizMode('practice', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"> 
-<div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid fa-graduation-cap text-lg"></i></div> 
-<h4 class="font-black text-base text-slate-900 dark:text-slate-100">Practice Mode</h4> 
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Instant feedback after each question, detailed explanations.</p> 
-</button> 
-<button onclick="setupQuizMode('test', '${jsArg(subj)}', '${jsArg(chapterName)}')" class="card p-5 text-left hover:border-teal-500 transition group"> 
-<div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform"><i class="fa-solid fa-clock text-lg"></i></div> 
-<h4 class="font-black text-base text-slate-900 dark:text-slate-100">Test Mode</h4> 
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">NEET exam simulation with countdown timer and negative marking.</p> 
-</button> 
-</div>`,
-`<button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 text-xs">Cancel</button>`
-);
-}
-
-function showComingSoon(chapterName) {
-setModal('Coming Soon 🔒', chapterName, `<p class="text-xs text-slate-500 py-4">Practice questions for this chapter are currently being indexed.</p>`, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close</button>`);
+setModal('Keyboard Shortcuts & Navigation', 'Accelerate your practice with key shortcuts:',  `<div class="space-y-3 py-2 text-xs"> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Option A, B, C, D</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">1, 2, 3, 4</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Next Question</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">ArrowRight / Space</kbd></div> <div class="flex justify-between items-center p-2 rounded-lg bg-slate-50 dark:bg-slate-800"><span class="font-bold">Previous Question</span> <kbd class="px-2 py-1 bg-white dark:bg-slate-700 rounded border shadow-sm font-mono">ArrowLeft</kbd></div> </div>`, `<button onclick="closeModal()" class="px-4 py-2 bg-teal-600 text-white rounded-xl font-bold text-xs">Got it</button>`);
 }
 
 function generateFallbackQuestions(subj, chapterName) {
@@ -1287,8 +1323,7 @@ function generateFallbackQuestions(subj, chapterName) {
     { q: `Which of the following statement(s) best describes the primary characteristic feature of ${chapterName}?`, o: ["It occurs exclusively in eukaryotic cells", "It is an essential process for cell homeostasis and metabolic regulation", "It is completely independent of enzyme catalysis", "It occurs only under strict anaerobic conditions"], a: 1, s: `NCERT Line: ${chapterName} plays a fundamental role in maintaining homeostatic and metabolic equilibrium.` },
     { q: `In the context of ${subj} (${chapterName}), identify the correct pairing:`, o: ["Primary response - Low intensity", "Secondary response - Delayed manifestation", "Active immunity - Slow and long-lasting", "All of the above"], a: 3, s: `Refer to NCERT concepts of ${chapterName}.` },
     { q: `Consider the key principles of ${chapterName}. Which option represents a true statement?`, o: ["Statement I is true, Statement II is false", "Statement I is false, Statement II is true", "Both Statements are correct", "Both Statements are incorrect"], a: 2, s: `Detailed analysis of ${chapterName} confirms both core propositions.` },
-    { q: `What is the significance of regulation in ${chapterName}?`, o: ["Enhances metabolic efficiency", "Prevents cellular damage", "Maintains optimal energy balance", "All of the above"], a: 3, s: `Multifaceted regulation ensures optimal cellular functionality.` },
-    { q: `Which factor acts as the primary limiting variable in ${chapterName}?`, o: ["Substrate concentration", "Temperature and pH", "Enzymatic availability", "All of these"], a: 3, s: `NCERT Overview of ${chapterName}.` }
+    { q: `What is the significance of regulation in ${chapterName}?`, o: ["Enhances metabolic efficiency", "Prevents cellular damage", "Maintains optimal energy balance", "All of the above"], a: 3, s: `Multifaceted regulation ensures optimal cellular functionality.` }
   ];
 
   return sampleTopics.map((item, i) => ({
@@ -1398,7 +1433,6 @@ closeModal();
 setTimeout(() => { renderTestQuiz(); }, 50);
 }
 
-// ===== Interactive Top Touch Palette Builder =====
 function buildTopInteractiveQuestionPalette(isPractice = false) {
   const total = quizState.questions.length;
   const current = quizState.currentIndex;
@@ -1746,6 +1780,99 @@ renderView();
 
 function goBack() { switchTab(previousTab); }
 
+// Helper actions
+function toggleChapterProgress(subjName, chName) {
+  if (!userProgress[chName]) userProgress[chName] = { completed: false, score: 0 };
+  userProgress[chName].completed = !userProgress[chName].completed;
+  saveToLocalStorage();
+  renderView();
+  showToast(userProgress[chName].completed ? `Marked "${chName}" as Completed!` : `Reset progress for "${chName}"`, 'info');
+}
+
+function toggleTodoItem(id) {
+  const item = todos.find(t => t.id === id);
+  if (item) {
+    item.completed = !item.completed;
+    saveToLocalStorage();
+    renderView();
+  }
+}
+
+function addTodoItem() {
+  const titleInput = document.getElementById('new-todo-title');
+  const subjSelect = document.getElementById('new-todo-subject');
+  const prioritySelect = document.getElementById('new-todo-priority');
+  if (!titleInput || !titleInput.value.trim()) return showToast('Please enter a task title.', 'warning');
+
+  todos.unshift({
+    id: 'td_' + Date.now(),
+    title: titleInput.value.trim(),
+    subject: subjSelect ? subjSelect.value : 'Biology',
+    priority: prioritySelect ? prioritySelect.value : 'medium',
+    completed: false,
+    createdAt: Date.now()
+  });
+  saveToLocalStorage();
+  renderView();
+  showToast('Task added to Planner!');
+}
+
+function deleteTodoItem(id) {
+  todos = todos.filter(t => t.id !== id);
+  saveToLocalStorage();
+  renderView();
+}
+
+function toggleFocusTimer() {
+  if (focusTimerRunning) {
+    clearInterval(focusTimerInterval);
+    focusTimerRunning = false;
+  } else {
+    focusTimerRunning = true;
+    focusTimerInterval = setInterval(() => {
+      if (focusTimeRemaining > 0) {
+        focusTimeRemaining--;
+        updateFocusTimerDisplay();
+      } else {
+        clearInterval(focusTimerInterval);
+        focusTimerRunning = false;
+        showToast('⏰ Focus session completed! Take a 5-minute break.', 'success');
+      }
+    }, 1000);
+  }
+  renderView();
+}
+
+function resetFocusTimer(mins = 25) {
+  if (focusTimerInterval) clearInterval(focusTimerInterval);
+  focusTimerRunning = false;
+  focusTimeRemaining = mins * 60;
+  renderView();
+}
+
+function updateFocusTimerDisplay() {
+  const display = document.getElementById('focus-timer-clock');
+  if (display) {
+    const mm = String(Math.floor(focusTimeRemaining / 60)).padStart(2, '0');
+    const ss = String(focusTimeRemaining % 60).padStart(2, '0');
+    display.textContent = `${mm}:${ss}`;
+  }
+}
+
+function updateSettingsFromForm() {
+  const marksCorrect = parseInt(document.getElementById('set-marks-correct')?.value || 4);
+  const marksWrong = parseInt(document.getElementById('set-marks-wrong')?.value || -1);
+  const dailyGoal = parseInt(document.getElementById('set-daily-goal')?.value || 30);
+  
+  const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  settings.marksCorrect = marksCorrect;
+  settings.marksWrong = marksWrong;
+  settings.dailyGoalQuestions = dailyGoal;
+  
+  StorageModule.set(STORAGE_KEYS.settings, settings);
+  showToast('Settings saved successfully!');
+}
+
 function renderView() {
 const main = document.getElementById('main-container');
 if (!main) return;
@@ -1758,356 +1885,713 @@ const pct = Math.round((done / TOTAL_CHAPTERS) * 100);
 const attemptsArr = StorageModule.get(STORAGE_KEYS.attempts, []);
 const totalSolved = attemptsArr.reduce((s, a) => s + (a.attempted || 0), 0);
 const avgAccuracy = attemptsArr.length > 0 ? Math.round(attemptsArr.reduce((s, a) => s + (a.accuracy || 0), 0) / attemptsArr.length) : 0;
-const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
-const today = new Date().toISOString().split('T')[0];
-const todayQuestions = streak.dailyCounts[today] || 0;
-const dailyGoalPct = Math.min(100, Math.round((todayQuestions / settings.dailyGoalQuestions) * 100));
 
 main.innerHTML = `
 <div class="space-y-8 animate-fadeIn max-w-6xl mx-auto">
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-<div class="card p-5 space-y-2 border-l-4 border-l-teal-500 bg-gradient-to-br from-teal-500/5 to-transparent">
-<span class="text-[11px] font-black text-teal-600 dark:text-teal-400 uppercase tracking-wider">Syllabus Covered</span>
-<div class="flex items-baseline justify-between">
-<span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">${pct}%</span>
-<span class="text-xs font-bold text-slate-500">${done}/${TOTAL_CHAPTERS} Chs</span>
-</div>
-<div class="progress"><i style="width:${pct}%"></i></div>
-</div>
+  <!-- Welcome & Hero Banner -->
+  <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-teal-900 via-teal-800 to-indigo-950 p-6 sm:p-8 text-white shadow-2xl border border-teal-700/40">
+    <div class="absolute right-0 top-0 w-80 h-80 rounded-full bg-teal-400/10 blur-3xl pointer-events-none"></div>
+    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="space-y-2">
+        <span class="px-3 py-1 rounded-full bg-teal-400/20 text-teal-200 border border-teal-400/30 font-black text-[10px] tracking-widest uppercase">Target NEET 2026</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">Your Ultimate Preparation Hub</h2>
+        <p class="text-slate-300 text-xs sm:text-sm max-w-xl font-medium leading-relaxed">Master 79 NCERT chapters with CBT mock tests, Gemini AI doubler, and real-time analytics.</p>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="switchTab('mock')" class="px-5 py-3 rounded-2xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-xs shadow-lg transition flex items-center gap-2">
+          <i class="fa-solid fa-play text-xs"></i> Take CBT Test
+        </button>
+        <button onclick="switchTab('learn')" class="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-extrabold text-xs backdrop-blur-md border border-white/20 transition">
+          Practice Chapters
+        </button>
+      </div>
+    </div>
+  </div>
 
-<div class="card p-5 space-y-2 border-l-4 border-l-purple-500 bg-gradient-to-br from-purple-500/5 to-transparent">
-<span class="text-[11px] font-black text-purple-600 dark:text-purple-400 uppercase tracking-wider">Daily Target</span>
-<div class="flex items-baseline justify-between">
-<span class="text-2xl sm:text-3xl font-black text-purple-600 dark:text-purple-400">${todayQuestions}</span>
-<span class="text-xs font-bold text-slate-500">/ ${settings.dailyGoalQuestions} Qs</span>
-</div>
-<div class="progress"><i style="width:${dailyGoalPct}%" class="bg-gradient-to-r from-purple-500 to-indigo-500"></i></div>
-</div>
+  <!-- Metric Quick Stats Grid -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="card p-5 space-y-2 border-l-4 border-l-teal-500 bg-gradient-to-br from-teal-500/5 to-transparent">
+      <span class="text-[11px] font-black text-teal-600 dark:text-teal-400 uppercase tracking-wider">Syllabus Covered</span>
+      <div class="flex items-baseline justify-between">
+        <span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">${pct}%</span>
+        <span class="text-xs font-bold text-slate-500">${done}/${TOTAL_CHAPTERS} Chs</span>
+      </div>
+      <div class="progress"><i style="width:${pct}%"></i></div>
+    </div>
 
-<div class="card p-5 space-y-2 border-l-4 border-l-amber-500 bg-gradient-to-br from-amber-500/5 to-transparent">
-<span class="text-[11px] font-black text-amber-500 uppercase tracking-wider">Active Streak</span>
-<div class="flex items-baseline justify-between">
-<span class="text-2xl sm:text-3xl font-black text-amber-500">${streak.current} <small class="text-xs font-bold">Days</small></span>
-<span class="text-xs font-bold text-slate-500">Best: ${streak.best}d</span>
-</div>
-<p class="text-[11px] text-slate-400 font-semibold">Daily practice active 🔥</p>
-</div>
+    <div class="card p-5 space-y-2 border-l-4 border-l-amber-500 bg-gradient-to-br from-amber-500/5 to-transparent">
+      <span class="text-[11px] font-black text-amber-500 uppercase tracking-wider">Active Streak</span>
+      <div class="flex items-baseline justify-between">
+        <span class="text-2xl sm:text-3xl font-black text-amber-500">${streak.current} <small class="text-xs font-bold">Days</small></span>
+        <span class="text-xs font-bold text-slate-500">Best: ${streak.best}d</span>
+      </div>
+      <p class="text-[11px] text-slate-400 font-semibold">Daily practice active 🔥</p>
+    </div>
 
-<div class="card p-5 space-y-2 border-l-4 border-l-emerald-500 bg-gradient-to-br from-emerald-500/5 to-transparent">
-<span class="text-[11px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Accuracy</span>
-<div class="flex items-baseline justify-between">
-<span class="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">${avgAccuracy}%</span>
-<span class="text-xs font-bold text-slate-500">${totalSolved} Solved</span>
-</div>
-<p class="text-[11px] text-slate-400 font-semibold">Across ${attemptsArr.length} sessions 🎯</p>
-</div>
-</div>
+    <div class="card p-5 space-y-2 border-l-4 border-l-emerald-500 bg-gradient-to-br from-emerald-500/5 to-transparent">
+      <span class="text-[11px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Accuracy</span>
+      <div class="flex items-baseline justify-between">
+        <span class="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">${avgAccuracy}%</span>
+        <span class="text-xs font-bold text-slate-500">${totalSolved} Solved</span>
+      </div>
+      <p class="text-[11px] text-slate-400 font-semibold">Across ${attemptsArr.length} sessions 🎯</p>
+    </div>
 
-<div>
-<div class="flex items-center justify-between mb-3">
-<h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Quick Launcher</h3>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-<div onclick="switchTab('learn')" class="card p-4 cursor-pointer border-l-4 border-l-emerald-500 hover:border-emerald-500 transition flex items-center gap-3 bg-gradient-to-r from-emerald-500/10 to-transparent">
-<div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-base shrink-0"><i class="fa-solid fa-book-open"></i></div>
-<div>
-<h4 class="font-bold text-xs text-slate-900 dark:text-slate-100">Practice Hub</h4>
-<p class="text-[10px] text-slate-500 font-medium">79 NCERT Chs</p>
-</div>
-</div>
+    <div class="card p-5 space-y-2 border-l-4 border-l-purple-500 bg-gradient-to-br from-purple-500/5 to-transparent">
+      <span class="text-[11px] font-black text-purple-600 uppercase tracking-wider">Test Portal</span>
+      <div class="flex items-baseline justify-between">
+        <span class="text-2xl sm:text-3xl font-black text-purple-600">CBT Hub</span>
+        <button onclick="switchTab('mock')" class="text-xs font-bold text-teal-600 hover:underline">Open →</button>
+      </div>
+      <p class="text-[11px] text-slate-400 font-semibold">180Q NTA Mocks & Series</p>
+    </div>
+  </div>
 
-<div onclick="switchTab('mock')" class="card p-4 cursor-pointer border-l-4 border-l-purple-500 hover:border-purple-500 transition flex items-center gap-3 bg-gradient-to-r from-purple-500/10 to-transparent">
-<div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-base shrink-0"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-<div>
-<h4 class="font-bold text-xs text-slate-900 dark:text-slate-100">Test Generator</h4>
-<p class="text-[10px] text-slate-500 font-medium">180Q NTA Mocks</p>
-</div>
-</div>
+  <!-- Subject Breakdown Cards -->
+  <div class="space-y-4">
+    <div class="flex items-center justify-between">
+      <h3 class="text-base font-black text-slate-900 dark:text-slate-100">NCERT Subjects Overview</h3>
+      <button onclick="switchTab('learn')" class="text-xs font-extrabold text-teal-600 dark:text-teal-400 hover:underline">View All Chapters →</button>
+    </div>
 
-<div onclick="switchTab('progress')" class="card p-4 cursor-pointer border-l-4 border-l-sky-500 hover:border-sky-500 transition flex items-center gap-3 bg-gradient-to-r from-sky-500/10 to-transparent">
-<div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold text-base shrink-0"><i class="fa-solid fa-chart-line"></i></div>
-<div>
-<h4 class="font-bold text-xs text-slate-900 dark:text-slate-100">Stats & Analytics</h4>
-<p class="text-[10px] text-slate-500 font-medium">Test History</p>
-</div>
-</div>
-
-<div onclick="switchTab('tools')" class="card p-4 cursor-pointer border-l-4 border-l-amber-500 hover:border-amber-500 transition flex items-center gap-3 bg-gradient-to-r from-amber-500/10 to-transparent">
-<div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-base shrink-0"><i class="fa-solid fa-stopwatch"></i></div>
-<div>
-<h4 class="font-bold text-xs text-slate-900 dark:text-slate-100">Focus Timer</h4>
-<p class="text-[10px] text-slate-500 font-medium">Pomodoro Blocks</p>
-</div>
-</div>
-</div>
-</div>
-
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-<div class="lg:col-span-2 space-y-3">
-<div class="flex items-center justify-between">
-<h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Subjects</h3>
-<button onclick="switchTab('learn')" class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">Explore All →</button>
-</div>
-
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-${['Biology', 'Chemistry', 'Physics'].map(s => `
-<div onclick="setSubject('${s}'); switchTab('learn');" class="card p-5 cursor-pointer hover:border-teal-500 transition flex flex-col justify-between ${s === 'Biology' ? 'bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent border-emerald-500/30' : s === 'Chemistry' ? 'bg-gradient-to-br from-purple-500/10 via-indigo-500/5 to-transparent border-purple-500/30' : 'bg-gradient-to-br from-sky-500/10 via-blue-500/5 to-transparent border-sky-500/30'}">
-<div class="flex items-center justify-between">
-<span class="chip ${s === 'Biology' ? 'bio' : s === 'Chemistry' ? 'chem' : 'phy'}">${s.substring(0,3).toUpperCase()}</span>
-<span class="text-xs font-extrabold px-2 py-0.5 rounded-full ${s === 'Biology' ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300' : s === 'Chemistry' ? 'bg-purple-500/20 text-purple-700 dark:text-purple-300' : 'bg-sky-500/20 text-sky-700 dark:text-sky-300'}">${data[s].length} Chs</span>
-</div>
-<h4 class="font-extrabold text-base mt-4 text-slate-900 dark:text-slate-100">${s}</h4>
-<p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Line-by-line NCERT MCQs</p>
-</div>`).join('')}
-</div>
-</div>
-
-<div class="card p-5 space-y-3 border-l-4 border-l-indigo-500">
-<div class="flex items-center justify-between">
-<h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Study Tasks</h3>
-<button onclick="quickAddTodoPrompt()" class="text-xs font-bold text-teal-600 hover:underline">+ Add Task</button>
-</div>
-
-<div class="space-y-2 max-h-48 overflow-y-auto no-scrollbar">
-${todos.length === 0 ? '<p class="text-xs text-slate-400 py-4 text-center">No active study tasks.</p>' : todos.slice(0, 3).map(t => `
-<div class="flex items-center justify-between p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 text-xs bg-slate-50/50 dark:bg-slate-800/40">
-<label class="flex items-center gap-2 cursor-pointer flex-1 min-w-0">
-<input type="checkbox" ${t.completed ? 'checked' : ''} onchange="quickToggleTodoHome('${t.id}')" class="rounded text-teal-600 w-3.5 h-3.5">
-<span class="truncate ${t.completed ? 'line-through text-slate-400' : 'font-medium text-slate-800 dark:text-slate-200'}">${escapeHtml(t.title)}</span>
-</label>
-</div>
-`).join('')}
-</div>
-</div>
-</div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      ${Object.keys(data).map(s => {
+        const total = data[s].length;
+        const subDone = data[s].filter(c => userProgress[c]?.completed).length;
+        const subPct = Math.round((subDone / total) * 100);
+        const colorClass = s === 'Biology' ? 'bio' : s === 'Chemistry' ? 'chem' : 'phy';
+        return `
+          <div onclick="setSubject('${s}'); switchTab('learn');" class="card p-6 cursor-pointer hover:border-teal-500 transition-all space-y-4 group">
+            <div class="flex items-center justify-between">
+              <div class="chip ${colorClass}">${s.substring(0,3).toUpperCase()}</div>
+              <span class="text-xs font-black text-slate-400 group-hover:text-teal-600 transition">${subDone}/${total} Done</span>
+            </div>
+            <div>
+              <h4 class="font-extrabold text-lg text-slate-900 dark:text-slate-100">${s}</h4>
+              <p class="text-xs text-slate-500 mt-0.5">NCERT Class 11 & 12 Syllabus</p>
+            </div>
+            <div class="space-y-1">
+              <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                <span>Progress</span>
+                <span>${subPct}%</span>
+              </div>
+              <div class="progress"><i style="width:${subPct}%"></i></div>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  </div>
 </div>`;
 } else if (currentTab === 'mock') {
+if (!batchTestsDatabase.length) batchTestsDatabase = DEFAULT_BATCH_SERIES;
+
 main.innerHTML = `
-<div class="space-y-6">
-<div>
-<div class="tag">✦ Structured NEET Generator</div>
-<h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 text-slate-900 dark:text-slate-100">Interactive Test Builder</h2>
-<p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">Design customized NTA-standard papers step by step.</p>
-</div>
+<div class="space-y-6 animate-fadeIn max-w-6xl mx-auto">
+  <!-- Modernized Hero Banner -->
+  <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 p-6 sm:p-8 text-white shadow-2xl border border-slate-800">
+    <div class="absolute right-0 top-0 w-96 h-96 rounded-full bg-teal-500/10 blur-3xl pointer-events-none"></div>
 
-<div class="grid grid-cols-4 gap-2 sm:gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
-<div onclick="wizardSetStep(1)" class="stepper-step p-3 rounded-2xl border flex items-center gap-3 cursor-pointer ${wizardState.step === 1 ? 'active font-black' : wizardState.step > 1 ? 'done font-bold' : 'border-slate-200 dark:border-slate-800 text-slate-400'}">
-<div class="w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black shrink-0 ${wizardState.step === 1 ? 'bg-teal-600 text-white' : wizardState.step > 1 ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-800'}">1</div>
-<div class="hidden sm:block text-xs">
-<span class="block text-[10px] uppercase opacity-70">Step 1</span>
-Format
-</div>
-</div>
-
-<div onclick="if(wizardState.step>=2) wizardSetStep(2)" class="stepper-step p-3 rounded-2xl border flex items-center gap-3 cursor-pointer ${wizardState.step === 2 ? 'active font-black' : wizardState.step > 2 ? 'done font-bold' : 'border-slate-200 dark:border-slate-800 text-slate-400'}">
-<div class="w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black shrink-0 ${wizardState.step === 2 ? 'bg-teal-600 text-white' : wizardState.step > 2 ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-800'}">2</div>
-<div class="hidden sm:block text-xs">
-<span class="block text-[10px] uppercase opacity-70">Step 2</span>
-Subjects
-</div>
-</div>
-
-<div onclick="if(wizardState.step>=3) wizardSetStep(3)" class="stepper-step p-3 rounded-2xl border flex items-center gap-3 cursor-pointer ${wizardState.step === 3 ? 'active font-black' : wizardState.step > 3 ? 'done font-bold' : 'border-slate-200 dark:border-slate-800 text-slate-400'}">
-<div class="w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black shrink-0 ${wizardState.step === 3 ? 'bg-teal-600 text-white' : wizardState.step > 3 ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-800'}">3</div>
-<div class="hidden sm:block text-xs">
-<span class="block text-[10px] uppercase opacity-70">Step 3</span>
-Chapters
-</div>
-</div>
-
-<div onclick="if(wizardState.step>=4) wizardSetStep(4)" class="stepper-step p-3 rounded-2xl border flex items-center gap-3 cursor-pointer ${wizardState.step === 4 ? 'active font-black' : 'border-slate-200 dark:border-slate-800 text-slate-400'}">
-<div class="w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black shrink-0 ${wizardState.step === 4 ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-slate-800'}">4</div>
-<div class="hidden sm:block text-xs">
-<span class="block text-[10px] uppercase opacity-70">Step 4</span>
-Generate
-</div>
-</div>
-</div>
-
-${wizardState.step === 1 ? `
-<div class="space-y-4 animate-fadeIn">
-<h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100">Choose Test Pattern & Format</h3>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-<div onclick="wizardSelectFormat('full_180', 180, 180)" class="card p-5 cursor-pointer hover:border-teal-500 transition border-2 bg-gradient-to-br from-teal-500/10 via-emerald-500/5 to-transparent ${wizardState.format === 'full_180' ? 'border-teal-500 shadow-lg scale-102' : 'border-teal-500/30'}">
-<div class="flex items-center justify-between mb-3">
-<span class="px-2.5 py-1 rounded-full bg-teal-500/20 text-teal-700 dark:text-teal-300 font-extrabold text-[10px]">180 Questions</span>
-<i class="fa-solid fa-trophy text-amber-500 text-lg"></i>
-</div>
-<h4 class="font-extrabold text-base text-slate-900 dark:text-slate-100">Full NEET Simulation</h4>
-<p class="text-xs text-slate-500 mt-1">90 Bio, 45 Chem, 45 Physics (180 mins).</p>
-</div>
-
-<div onclick="wizardSelectFormat('subject_major', 90, 90)" class="card p-5 cursor-pointer hover:border-emerald-500 transition border-2 bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent ${wizardState.format === 'subject_major' ? 'border-emerald-500 shadow-lg scale-102' : 'border-emerald-500/30'}">
-<div class="flex items-center justify-between mb-3">
-<span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-extrabold text-[10px]">90 Questions</span>
-<i class="fa-solid fa-layer-group text-emerald-500 text-lg"></i>
-</div>
-<h4 class="font-extrabold text-base text-slate-900 dark:text-slate-100">Subject Major Test</h4>
-<p class="text-xs text-slate-500 mt-1">Intensive focus test on major syllabus blocks.</p>
-</div>
-
-<div onclick="wizardSelectFormat('chapter_sprint', 45, 45)" class="card p-5 cursor-pointer hover:border-purple-500 transition border-2 bg-gradient-to-br from-purple-500/10 via-indigo-500/5 to-transparent ${wizardState.format === 'chapter_sprint' ? 'border-purple-500 shadow-lg scale-102' : 'border-purple-500/30'}">
-<div class="flex items-center justify-between mb-3">
-<span class="px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-700 dark:text-purple-300 font-extrabold text-[10px]">45 Questions</span>
-<i class="fa-solid fa-bolt text-purple-500 text-lg"></i>
-</div>
-<h4 class="font-extrabold text-base text-slate-900 dark:text-slate-100">Chapter Speed Drill</h4>
-<p class="text-xs text-slate-500 mt-1">Rapid fire questions for target chapters.</p>
-</div>
-
-<div onclick="wizardSelectFormat('ai_drill', 30, 30)" class="card p-5 cursor-pointer hover:border-amber-500 transition border-2 bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-transparent ${wizardState.format === 'ai_drill' ? 'border-amber-500 shadow-lg scale-102' : 'border-amber-500/30'}">
-<div class="flex items-center justify-between mb-3">
-<span class="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 font-extrabold text-[10px]">30 Questions</span>
-<i class="fa-solid fa-wand-magic-sparkles text-amber-500 text-lg"></i>
-</div>
-<h4 class="font-extrabold text-base text-slate-900 dark:text-slate-100">Gemini AI Special</h4>
-<p class="text-xs text-slate-500 mt-1">Live statement & assertion questions via Gemini.</p>
-</div>
-</div>
-</div>
-` : ''}
-
-${wizardState.step === 2 ? `
-<div class="space-y-4 animate-fadeIn">
-<div class="flex items-center justify-between">
-<h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100">Select Subjects to Include</h3>
-<button onclick="wizardSetStep(3)" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs shadow-md">Next: Select Chapters →</button>
-</div>
-
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-${['Biology', 'Chemistry', 'Physics'].map(s => {
-  const isChecked = wizardState.selectedSubjects.includes(s);
-  return `
-    <div onclick="wizardToggleSubject('${s}')" class="card p-5 cursor-pointer transition border-2 ${isChecked ? 'border-teal-500 bg-teal-500/5' : 'border-slate-200 dark:border-slate-800'}">
-      <div class="flex items-center justify-between">
-        <span class="chip ${s === 'Biology' ? 'bio' : s === 'Chemistry' ? 'chem' : 'phy'}">${s.substring(0,3).toUpperCase()}</span>
-        <i class="fa-solid ${isChecked ? 'fa-square-check text-teal-600 text-xl' : 'fa-square text-slate-300 dark:text-slate-700 text-xl'}"></i>
+    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="space-y-2 max-w-xl">
+        <div class="flex items-center gap-2">
+          <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 font-black text-[10px] tracking-widest uppercase flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span> CBT Online Hub
+          </span>
+          <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-black text-[10px] tracking-widest uppercase">
+            NEET NTA Pattern
+          </span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-white">Test Hub & CBT Simulation</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-medium">
+          Access scheduled Batch Test Papers or configure tailored 180-Question custom mocks generated live.
+        </p>
       </div>
-      <h4 class="font-extrabold text-base mt-4 text-slate-900 dark:text-slate-100">${s}</h4>
-      <p class="text-xs text-slate-500 mt-1">${data[s].length} NCERT Chapters</p>
-    </div>
-  `;
-}).join('')}
-</div>
-</div>
-` : ''}
 
-${wizardState.step === 3 ? `
-<div class="space-y-6 animate-fadeIn">
-<div class="flex items-center justify-between">
-<h3 class="text-base font-extrabold text-slate-900 dark:text-slate-100">Select Target Chapters (${wizardState.selectedSubjects.join(', ')})</h3>
-<button onclick="wizardSetStep(4)" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white font-bold text-xs shadow-md">Next: Review & Generate →</button>
-</div>
-
-${wizardState.selectedSubjects.map(sub => `
-  <div class="card p-5 space-y-3">
-    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
-      <span class="text-xs font-black uppercase tracking-wider text-teal-600">${sub} Chapters</span>
-      <div class="flex gap-2">
-        <button onclick="wizardSelectAllChapters('${sub}')" class="text-xs font-bold text-teal-600 hover:underline">Select All</button>
-        <button onclick="wizardClearChapters('${sub}')" class="text-xs font-bold text-rose-500 hover:underline">Clear</button>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-60 overflow-y-auto pr-1">
-    ${data[sub].map(ch => {
-      const isSel = (wizardState.selectedChapters[sub] || []).includes(ch);
-      return `
-        <button type="button" onclick="wizardToggleChapter('${sub}', '${jsArg(ch)}')" class="px-3 py-2 rounded-xl text-xs font-bold text-left transition flex items-center justify-between border ${isSel ? 'border-teal-500 bg-teal-500/10 text-teal-700 dark:text-teal-300' : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'}">
-          <span class="truncate mr-2">${escapeHtml(ch)}</span>
-          <i class="fa-solid ${isSel ? 'fa-square-check text-teal-600' : 'fa-square text-slate-300 dark:text-slate-700'}"></i>
+      <!-- Modern Sub-Tab Nav Box -->
+      <div class="p-1.5 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 flex items-center gap-2 shrink-0 self-start md:self-auto">
+        <button onclick="setMockSubTab('batch')" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition-all flex items-center gap-2 ${mockSubTab === 'batch' ? 'test-hub-tab-active scale-102' : 'text-slate-300 hover:text-white hover:bg-white/5'}">
+          <i class="fa-solid fa-layer-group text-xs"></i>
+          <span>Batch Series</span>
+          <span class="px-2 py-0.5 rounded-full ${mockSubTab === 'batch' ? 'bg-white/20 text-white' : 'bg-slate-800/60 text-slate-400'} text-[10px]">${batchTestsDatabase.length}</span>
         </button>
-      `;
-    }).join('')}
+        <button onclick="setMockSubTab('generate')" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition-all flex items-center gap-2 ${mockSubTab === 'generate' ? 'test-hub-tab-active scale-102' : 'text-slate-300 hover:text-white hover:bg-white/5'}">
+          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          <span>Custom Generator</span>
+          <span class="px-2 py-0.5 rounded-full bg-teal-500/30 text-teal-200 text-[9px] uppercase font-black">180Q</span>
+        </button>
+      </div>
     </div>
   </div>
-`).join('')}
-</div>
-` : ''}
 
-${wizardState.step === 4 ? `
-<div class="card p-6 space-y-6 animate-fadeIn">
-<div class="border-b border-slate-100 dark:border-slate-800 pb-3">
-<h3 class="text-lg font-black text-slate-900 dark:text-slate-100">Review & Launch Test Engine</h3>
-<p class="text-xs text-slate-500">Confirm test configuration before starting your timed attempt.</p>
-</div>
+  ${mockSubTab === 'batch' ? `
+    ${selectedBatchSeries ? `
+      <!-- BATCH SERIES DETAIL & TEST LIST INTERFACE -->
+      <div class="space-y-6 animate-fadeIn">
+        <div class="flex items-center justify-between">
+          <button onclick="closeBatchSeriesDetail()" class="px-4 py-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-extrabold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center gap-2 border border-slate-200 dark:border-slate-700">
+            <i class="fa-solid fa-arrow-left text-xs"></i> Back to Series Directory
+          </button>
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20 font-black text-xs flex items-center gap-1.5"><i class="fa-solid fa-desktop"></i> CBT Online Practice</span>
+        </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-<div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20">
-<span class="text-[10px] font-black uppercase text-teal-600">Question Count</span>
-<h4 class="text-2xl font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.qCount} Questions</h4>
-</div>
-<div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20">
-<span class="text-[10px] font-black uppercase text-amber-600">Duration</span>
-<h4 class="text-2xl font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.durationMins} Minutes</h4>
-</div>
-<div class="p-4 rounded-2xl bg-purple-500/10 border border-purple-500/20">
-<span class="text-[10px] font-black uppercase text-purple-600">Selected Subjects</span>
-<h4 class="text-base font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.selectedSubjects.join(', ')}</h4>
-</div>
-</div>
+        <div class="card p-6 border-l-4 border-l-teal-500 space-y-3 bg-gradient-to-r from-teal-500/5 via-transparent to-transparent">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-black text-[11px] uppercase tracking-wider">${selectedBatchSeries.category}</span>
+            <span class="text-xs font-bold text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-calendar-check text-teal-500"></i> ${selectedBatchSeries.startDate} — ${selectedBatchSeries.endDate}</span>
+          </div>
+          <h3 class="text-2xl font-black text-slate-900 dark:text-slate-100">${escapeHtml(selectedBatchSeries.title)}</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-3xl">${escapeHtml(selectedBatchSeries.description)}</p>
+        </div>
 
-<div class="flex justify-between items-center pt-4">
-<button onclick="wizardSetStep(3)" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">← Back to Chapters</button>
-<button onclick="executeWizardTestGeneration()" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-black text-xs shadow-xl transition flex items-center gap-2">
-<i class="fa-solid fa-play"></i> Generate & Start Test Paper
-</button>
-</div>
-</div>
-` : ''}
+        ${selectedBatchSeries.category === 'Chapterwise' ? `
+          <div class="flex gap-2 overflow-x-auto no-scrollbar p-1.5 bg-slate-100 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-700/60">
+            ${['Physics', 'Chemistry', 'Botany', 'Zoology'].map(sub => `
+              <button onclick="selectedBatchSubject='${sub}'; renderView();" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition ${selectedBatchSubject === sub ? 'bg-teal-600 text-white shadow-md' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-700/50'}">
+                ${sub}
+              </button>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        <!-- Test Paper Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          ${selectedBatchSeries.tests
+            .filter(t => selectedBatchSeries.category !== 'Chapterwise' || t.subject === selectedBatchSubject || t.subject === 'All')
+            .map(t => `
+              <div class="card p-5 space-y-4 transition hover:border-teal-500 hover:shadow-lg flex flex-col justify-between">
+                <div>
+                  <div class="flex items-start justify-between gap-3 mb-2">
+                    <h4 class="font-black text-base text-slate-900 dark:text-slate-100 leading-snug">${escapeHtml(t.title)}</h4>
+                    ${t.status === 'available' ? `
+                      <span class="shrink-0 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-black text-[10px] flex items-center gap-1"><i class="fa-solid fa-circle text-[6px]"></i> Available</span>
+                    ` : `
+                      <span class="shrink-0 px-2.5 py-1 rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 font-black text-[10px] flex items-center gap-1 border border-slate-200 dark:border-slate-700"><i class="fa-solid fa-lock text-[9px]"></i> Scheduled</span>
+                    `}
+                  </div>
+                  <p class="text-[11px] text-slate-400 font-medium">Subject Focus: <strong class="text-slate-700 dark:text-slate-300">${t.subject}</strong></p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 text-center py-2.5 px-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+                  <div>
+                    <span class="block text-base font-black text-teal-600 dark:text-teal-400">${t.questions}</span>
+                    <span class="text-[9px] font-black uppercase tracking-wider text-slate-400">Questions</span>
+                  </div>
+                  <div class="border-x border-slate-200 dark:border-slate-700/60">
+                    <span class="block text-base font-black text-slate-800 dark:text-slate-200">${t.marks}</span>
+                    <span class="text-[9px] font-black uppercase tracking-wider text-slate-400">Marks</span>
+                  </div>
+                  <div>
+                    <span class="block text-base font-black text-slate-800 dark:text-slate-200">${t.timeMins}m</span>
+                    <span class="text-[9px] font-black uppercase tracking-wider text-slate-400">Time</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between gap-3 pt-1 border-t border-slate-100 dark:border-slate-800/80">
+                  <span class="text-[11px] text-slate-400 font-semibold"><i class="fa-regular fa-clock text-teal-500 mr-1"></i> ${t.schedule}</span>
+                  <div class="flex items-center gap-2">
+                    <button onclick="openBatchSyllabusModal('${jsArg(t.title)}', ${JSON.stringify(t.syllabus || []).replace(/"/g, '&quot;')})" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition">Syllabus</button>
+                    ${t.status === 'available' ? `
+                      <button onclick="startBatchTestAttempt(${JSON.stringify(t).replace(/"/g, '&quot;')}, '${jsArg(selectedBatchSeries.title)}')" class="px-4 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs shadow-md shadow-teal-600/20 transition flex items-center gap-1.5">
+                        <span>Attempt</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                      </button>
+                    ` : `
+                      <button onclick="showToast('This test is scheduled for ${t.schedule}', 'warning')" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold text-xs border border-slate-200 dark:border-slate-700 cursor-not-allowed">
+                        <i class="fa-solid fa-lock text-[10px] mr-1"></i> Locked
+                      </button>
+                    `}
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+        </div>
+      </div>
+    ` : `
+      <!-- BATCH TEST SERIES CATALOGUE -->
+      <div class="space-y-6 animate-fadeIn">
+        <div class="card p-5 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 class="text-base font-black text-slate-900 dark:text-slate-100">Batch Series Directory</h3>
+              <p class="text-xs text-slate-500">Filter test series by syllabus type or keyword.</p>
+            </div>
+            <!-- Interactive Category Filter Chips -->
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-slate-100 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700/60">
+              ${['All', 'Chapterwise', 'Part Syllabus', 'Full Syllabus'].map(cat => `
+                <button onclick="batchCategoryFilter='${cat}'; renderView();" class="test-hub-filter-btn ${batchCategoryFilter === cat ? 'active' : 'text-slate-600 dark:text-slate-300 hover:text-teal-600'}">
+                  ${cat}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 text-xs"></i>
+            <input type="text" id="batchSeriesSearch" oninput="renderView()" placeholder="Search test series by title, chapter or scope..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-xs font-semibold focus:outline-none focus:border-teal-500 transition">
+          </div>
+        </div>
+
+        <!-- Series Cards Showcase -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          ${batchTestsDatabase
+            .filter(s => {
+              const q = (document.getElementById('batchSeriesSearch')?.value || '').toLowerCase();
+              const matchQ = s.title.toLowerCase().includes(q) || s.description.toLowerCase().includes(q);
+              const matchCat = batchCategoryFilter === 'All' || s.category === batchCategoryFilter;
+              return matchQ && matchCat;
+            })
+            .map(s => `
+              <div class="card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-teal-500 hover:shadow-xl flex flex-col justify-between group">
+                <div>
+                  <div class="h-36 p-5 text-white flex flex-col justify-between relative overflow-hidden" style="background:${s.bannerBg};">
+                    <div class="flex items-center justify-between relative z-10">
+                      <span class="px-3 py-1 rounded-full bg-black/30 backdrop-blur-md text-white font-black text-[10px] border border-white/20 uppercase tracking-wider">${s.category}</span>
+                      <span class="px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-white font-extrabold text-[10px] flex items-center gap-1"><i class="fa-solid fa-file-pen"></i> ${s.totalTests} Papers</span>
+                    </div>
+                    <h3 class="text-lg font-black leading-tight drop-shadow-md relative z-10">${escapeHtml(s.title)}</h3>
+                  </div>
+
+                  <div class="p-5 space-y-3">
+                    <div class="text-xs text-slate-500 space-y-1.5">
+                      <p class="flex items-center gap-2 text-slate-600 dark:text-slate-300 font-semibold"><i class="fa-solid fa-calendar-days text-teal-500 text-xs"></i> ${s.startDate} — ${s.endDate}</p>
+                      <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-[11px] line-clamp-2">${escapeHtml(s.description)}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-5 pt-0 grid grid-cols-2 gap-2">
+                  <button onclick="openBatchSeriesDetail('${s.id}')" class="py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-extrabold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-list-ul text-teal-500"></i> Planner
+                  </button>
+                  <button onclick="openBatchSeriesDetail('${s.id}')" class="py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-xs shadow-md shadow-teal-600/20 transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-play text-[10px]"></i> Open Papers
+                  </button>
+                </div>
+              </div>
+            `).join('')}
+        </div>
+      </div>
+    `}
+  ` : `
+    <!-- CUSTOM 180Q NTA GENERATOR INTERFACE -->
+    <div class="space-y-6 animate-fadeIn">
+      <!-- Stepper Progress Header -->
+      <div class="grid grid-cols-4 gap-2 sm:gap-4 p-2 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
+        <div onclick="wizardSetStep(1)" class="stepper-step p-2.5 sm:p-3 rounded-xl flex items-center gap-2.5 cursor-pointer transition ${wizardState.step === 1 ? 'active font-black' : wizardState.step > 1 ? 'done font-bold' : 'text-slate-400'}">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black shrink-0 ${wizardState.step === 1 ? 'bg-teal-600 text-white shadow-md' : wizardState.step > 1 ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-700'}">1</div>
+          <div class="hidden sm:block text-xs"><span class="block text-[9px] uppercase tracking-wider opacity-70">Step 1</span>Format</div>
+        </div>
+
+        <div onclick="if(wizardState.step>=2) wizardSetStep(2)" class="stepper-step p-2.5 sm:p-3 rounded-xl flex items-center gap-2.5 cursor-pointer transition ${wizardState.step === 2 ? 'active font-black' : wizardState.step > 2 ? 'done font-bold' : 'text-slate-400'}">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black shrink-0 ${wizardState.step === 2 ? 'bg-teal-600 text-white shadow-md' : wizardState.step > 2 ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-700'}">2</div>
+          <div class="hidden sm:block text-xs"><span class="block text-[9px] uppercase tracking-wider opacity-70">Step 2</span>Subjects</div>
+        </div>
+
+        <div onclick="if(wizardState.step>=3) wizardSetStep(3)" class="stepper-step p-2.5 sm:p-3 rounded-xl flex items-center gap-2.5 cursor-pointer transition ${wizardState.step === 3 ? 'active font-black' : wizardState.step > 3 ? 'done font-bold' : 'text-slate-400'}">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black shrink-0 ${wizardState.step === 3 ? 'bg-teal-600 text-white shadow-md' : wizardState.step > 3 ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-700'}">3</div>
+          <div class="hidden sm:block text-xs"><span class="block text-[9px] uppercase tracking-wider opacity-70">Step 3</span>Chapters</div>
+        </div>
+
+        <div onclick="if(wizardState.step>=4) wizardSetStep(4)" class="stepper-step p-2.5 sm:p-3 rounded-xl flex items-center gap-2.5 cursor-pointer transition ${wizardState.step === 4 ? 'active font-black' : 'text-slate-400'}">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black shrink-0 ${wizardState.step === 4 ? 'bg-teal-600 text-white shadow-md' : 'bg-slate-200 dark:bg-slate-700'}">4</div>
+          <div class="hidden sm:block text-xs"><span class="block text-[9px] uppercase tracking-wider opacity-70">Step 4</span>Launch</div>
+        </div>
+      </div>
+
+      ${wizardState.step === 1 ? `
+        <div class="space-y-4 animate-fadeIn">
+          <h3 class="text-base font-black text-slate-900 dark:text-slate-100">Select Test Pattern & Question Format</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div onclick="wizardSelectFormat('full_180', 180, 180)" class="card p-5 cursor-pointer hover:border-teal-500 transition-all border-2 bg-gradient-to-br from-teal-500/10 via-emerald-500/5 to-transparent ${wizardState.format === 'full_180' ? 'border-teal-500 shadow-xl scale-102' : 'border-slate-200 dark:border-slate-800'}">
+              <div class="flex items-center justify-between mb-3"><span class="px-2.5 py-1 rounded-full bg-teal-500/20 text-teal-700 dark:text-teal-300 font-extrabold text-[10px]">180 Questions</span><i class="fa-solid fa-trophy text-amber-500 text-lg"></i></div>
+              <h4 class="font-extrabold text-base text-slate-900 dark:text-slate-100">Full NEET Simulation</h4>
+              <p class="text-xs text-slate-500 mt-1">90 Bio, 45 Chem, 45 Physics (180 mins).</p>
+            </div>
+            <div onclick="wizardSelectFormat('subject_major', 90, 90)" class="card p-5 cursor-pointer hover:border-emerald-500 transition-all border-2 bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent ${wizardState.format === 'subject_major' ? 'border-emerald-500 shadow-xl scale-102' : 'border-slate-200 dark:border-slate-800'}">
+              <div class="flex items-center justify-between mb-3"><span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-extrabold text-[10px]">90 Questions</span><i class="fa-solid fa-layer-group text-emerald-500 text-lg"></i></div>
+              <h4 class="font-extrabold text-base text-slate-900 dark:text-slate-100">Subject Major Test</h4>
+              <p class="text-xs text-slate-500 mt-1">Intensive focus test on major syllabus blocks.</p>
+            </div>
+            <div onclick="wizardSelectFormat('chapter_sprint', 45, 45)" class="card p-5 cursor-pointer hover:border-purple-500 transition-all border-2 bg-gradient-to-br from-purple-500/10 via-indigo-500/5 to-transparent ${wizardState.format === 'chapter_sprint' ? 'border-purple-500 shadow-xl scale-102' : 'border-slate-200 dark:border-slate-800'}">
+              <div class="flex items-center justify-between mb-3"><span class="px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-700 dark:text-purple-300 font-extrabold text-[10px]">45 Questions</span><i class="fa-solid fa-bolt text-purple-500 text-lg"></i></div>
+              <h4 class="font-extrabold text-base text-slate-900 dark:text-slate-100">Chapter Speed Drill</h4>
+              <p class="text-xs text-slate-500 mt-1">Rapid fire questions for target chapters.</p>
+            </div>
+            <div onclick="wizardSelectFormat('ai_drill', 30, 30)" class="card p-5 cursor-pointer hover:border-amber-500 transition-all border-2 bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-transparent ${wizardState.format === 'ai_drill' ? 'border-amber-500 shadow-xl scale-102' : 'border-slate-200 dark:border-slate-800'}">
+              <div class="flex items-center justify-between mb-3"><span class="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 font-extrabold text-[10px]">30 Questions</span><i class="fa-solid fa-wand-magic-sparkles text-amber-500 text-lg"></i></div>
+              <h4 class="font-extrabold text-base text-slate-900 dark:text-slate-100">Gemini AI Special</h4>
+              <p class="text-xs text-slate-500 mt-1">Live statement & assertion questions via Gemini.</p>
+            </div>
+          </div>
+        </div>
+      ` : ''}
+
+      ${wizardState.step === 2 ? `
+        <div class="space-y-4 animate-fadeIn">
+          <div class="flex items-center justify-between">
+            <h3 class="text-base font-black text-slate-900 dark:text-slate-100">Select Included Subjects</h3>
+            <button onclick="wizardSetStep(3)" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs shadow-md transition flex items-center gap-1.5">Next: Chapters <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            ${['Biology', 'Chemistry', 'Physics'].map(s => {
+              const isChecked = wizardState.selectedSubjects.includes(s);
+              return `
+                <div onclick="wizardToggleSubject('${s}')" class="card p-5 cursor-pointer transition-all border-2 ${isChecked ? 'border-teal-500 bg-teal-500/5 shadow-md' : 'border-slate-200 dark:border-slate-800'}">
+                  <div class="flex items-center justify-between">
+                    <span class="chip ${s === 'Biology' ? 'bio' : s === 'Chemistry' ? 'chem' : 'phy'}">${s.substring(0,3).toUpperCase()}</span>
+                    <i class="fa-solid ${isChecked ? 'fa-circle-check text-teal-600 text-xl' : 'fa-circle text-slate-300 dark:text-slate-700 text-xl'}"></i>
+                  </div>
+                  <h4 class="font-extrabold text-base mt-4 text-slate-900 dark:text-slate-100">${s}</h4>
+                  <p class="text-xs text-slate-500 mt-1">${data[s].length} NCERT Chapters</p>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      ${wizardState.step === 3 ? `
+        <div class="space-y-6 animate-fadeIn">
+          <div class="flex items-center justify-between">
+            <h3 class="text-base font-black text-slate-900 dark:text-slate-100">Select Chapters (${wizardState.selectedSubjects.join(', ')})</h3>
+            <button onclick="wizardSetStep(4)" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs shadow-md transition flex items-center gap-1.5">Next: Review <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+          </div>
+          ${wizardState.selectedSubjects.map(sub => `
+            <div class="card p-5 space-y-3">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+                <span class="text-xs font-black uppercase tracking-wider text-teal-600">${sub} Chapters</span>
+                <div class="flex gap-3">
+                  <button onclick="wizardSelectAllChapters('${sub}')" class="text-xs font-extrabold text-teal-600 hover:underline">Select All</button>
+                  <button onclick="wizardClearChapters('${sub}')" class="text-xs font-extrabold text-rose-500 hover:underline">Clear</button>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-60 overflow-y-auto pr-1">
+              ${data[sub].map(ch => {
+                const isSel = (wizardState.selectedChapters[sub] || []).includes(ch);
+                return `
+                  <button type="button" onclick="wizardToggleChapter('${sub}', '${jsArg(ch)}')" class="px-3.5 py-2.5 rounded-xl text-xs font-bold text-left transition-all flex items-center justify-between border ${isSel ? 'border-teal-500 bg-teal-500/10 text-teal-700 dark:text-teal-300' : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300'}">
+                    <span class="truncate mr-2">${escapeHtml(ch)}</span>
+                    <i class="fa-solid ${isSel ? 'fa-circle-check text-teal-600' : 'fa-circle text-slate-300 dark:text-slate-700'}"></i>
+                  </button>
+                `;
+              }).join('')}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      ` : ''}
+
+      ${wizardState.step === 4 ? `
+        <div class="card p-6 space-y-6 animate-fadeIn">
+          <div class="border-b border-slate-100 dark:border-slate-800 pb-3">
+            <h3 class="text-lg font-black text-slate-900 dark:text-slate-100">Review Test Summary</h3>
+            <p class="text-xs text-slate-500">Confirm parameters before launching your timed CBT session.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20"><span class="text-[10px] font-black uppercase tracking-wider text-teal-600">Question Count</span><h4 class="text-2xl font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.qCount} Questions</h4></div>
+            <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20"><span class="text-[10px] font-black uppercase tracking-wider text-amber-600">Duration</span><h4 class="text-2xl font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.durationMins} Minutes</h4></div>
+            <div class="p-4 rounded-2xl bg-purple-500/10 border border-purple-500/20"><span class="text-[10px] font-black uppercase tracking-wider text-purple-600">Subjects</span><h4 class="text-base font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.selectedSubjects.join(', ')}</h4></div>
+          </div>
+
+          <div class="flex justify-between items-center pt-2">
+            <button onclick="wizardSetStep(3)" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-xs">← Back</button>
+            <button onclick="executeWizardTestGeneration()" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-black text-xs shadow-xl transition flex items-center gap-2">
+              <i class="fa-solid fa-play"></i> Launch Test Paper
+            </button>
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `}
 </div>`;
 } else if (currentTab === 'learn') {
+const chaptersList = data[subject] || [];
 main.innerHTML = `
-<div class="space-y-6">
-<div class="flex flex-wrap items-center justify-between gap-4">
-<div class="flex items-center gap-2">
-${['Biology', 'Chemistry', 'Physics'].map(s => `
-<button onclick="setSubject('${s}')" class="subject ${subject === s ? 'selected' : ''}">
-<b>${s}</b>
-</button>
-`).join('')}
-</div>
-<div class="controls flex items-center gap-3 w-full sm:w-auto">
-<input type="text" id="search" oninput="renderChapters()" placeholder="Search chapters..." class="w-full sm:w-64">
-</div>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="chapters"></div>
+<div class="space-y-6 animate-fadeIn max-w-6xl mx-auto">
+  <!-- Subject Switcher Bar -->
+  <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 card p-5">
+    <div>
+      <h2 class="text-xl font-black text-slate-900 dark:text-slate-100">Learn & Practice NCERT</h2>
+      <p class="text-xs text-slate-500 mt-0.5">Select a subject and chapter to launch instant practice drills.</p>
+    </div>
+    <div class="flex items-center gap-2 p-1.5 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 w-full sm:w-auto">
+      ${Object.keys(data).map(s => `
+        <button onclick="setSubject('${s}')" class="flex-1 sm:flex-none px-4 py-2 rounded-xl text-xs font-bold transition ${subject === s ? 'bg-teal-600 text-white shadow-md' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-700/60'}">
+          ${s}
+        </button>
+      `).join('')}
+    </div>
+  </div>
+
+  <!-- Search Filter -->
+  <div class="card p-4">
+    <div class="relative">
+      <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 text-xs"></i>
+      <input type="text" id="chapterSearch" oninput="renderView()" placeholder="Search chapter in ${subject}..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-xs font-semibold focus:outline-none focus:border-teal-500 transition">
+    </div>
+  </div>
+
+  <!-- Chapters Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    ${chaptersList.filter(c => {
+      const q = (document.getElementById('chapterSearch')?.value || '').toLowerCase();
+      return c.toLowerCase().includes(q);
+    }).map((ch, idx) => {
+      const isDone = userProgress[ch]?.completed;
+      const oneShotQuery = `${ch} ${subject} NEET One Shot full chapter lecture`;
+      return `
+        <div class="chapter card border-2 ${isDone ? 'border-emerald-500/40 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800'}">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-extrabold text-[10px]">Ch ${idx + 1}</span>
+              <button onclick="event.stopPropagation(); toggleChapterProgress('${subject}', '${jsArg(ch)}')" class="px-2.5 py-1 rounded-full border text-[10px] font-bold transition ${isDone ? 'border-emerald-500 text-emerald-600 bg-emerald-50 dark:bg-emerald-950/40' : 'border-slate-200 dark:border-slate-700 text-slate-400'}">
+                <i class="fa-solid ${isDone ? 'fa-circle-check text-emerald-500' : 'fa-circle'} mr-1"></i> ${isDone ? 'Completed' : 'Mark Done'}
+              </button>
+            </div>
+            <h4 class="chapter-title">${escapeHtml(ch)}</h4>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between gap-1 flex-wrap">
+            <button onclick="setupQuizMode('practice', '${subject}', '${jsArg(ch)}')" class="practice">
+              <span>Start Practice</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+            <div class="flex items-center gap-2">
+              <button onclick="setModal('📺 ${jsArg(ch)} — One Shot Lecture', 'YouTube Video Lectures & Concept Breakdown', generateYouTubeEmbedHtml('${jsArg(oneShotQuery)}', 'NEET ${jsArg(ch)} One-Shot Video Solutions'), '<button onclick=closeModal() class=\\'px-4 py-2 rounded-xl bg-slate-800 text-white font-bold text-xs\\'>Close</button>')" class="text-xs font-extrabold text-rose-500 hover:text-rose-600 transition flex items-center gap-1 bg-rose-500/10 px-2.5 py-1.5 rounded-xl border border-rose-500/20">
+                <i class="fa-brands fa-youtube"></i> One-Shot
+              </button>
+              <button onclick="setupQuizMode('test', '${subject}', '${jsArg(ch)}')" class="text-xs font-extrabold text-slate-500 hover:text-teal-600 transition">
+                <i class="fa-solid fa-stopwatch mr-1"></i> Test
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('')}
+  </div>
 </div>`;
-renderChapters();
 } else if (currentTab === 'progress') {
-const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
+const attemptsArr = StorageModule.get(STORAGE_KEYS.attempts, []);
+const totalTests = attemptsArr.length;
+const totalQuestionsAttempted = attemptsArr.reduce((acc, curr) => acc + (curr.attempted || 0), 0);
+const avgAccuracy = totalTests > 0 ? Math.round(attemptsArr.reduce((acc, curr) => acc + (curr.accuracy || 0), 0) / totalTests) : 0;
+
 main.innerHTML = `
-<div class="space-y-6">
-<h2 class="text-2xl font-black text-slate-900 dark:text-slate-100">Attempt Records</h2>
-<div class="card p-6">
-${attempts.length === 0 ? '<p class="text-xs text-slate-400">No attempts logged yet.</p>' : `
-<div class="space-y-2">
-${attempts.map(a => `<div class="p-3 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs">
-  <div>
-    <span class="font-bold text-slate-800 dark:text-slate-200 block">${escapeHtml(a.chapter || 'Full Mock')}</span>
-    <span class="text-[10px] text-slate-400">${new Date(a.finishedAt).toLocaleDateString()}</span>
+<div class="space-y-6 animate-fadeIn max-w-6xl mx-auto">
+  <div class="card p-6 border-l-4 border-l-teal-500">
+    <h2 class="text-xl font-black text-slate-900 dark:text-slate-100">Performance Analytics & Stats</h2>
+    <p class="text-xs text-slate-500 mt-1">Review test attempt history, score distributions, and accuracy trends.</p>
   </div>
-  <div class="flex items-center gap-3">
-    <strong class="text-teal-600">${a.score} / ${a.maxScore} (${a.accuracy}%)</strong>
-    <button onclick="generateAiTestPerformanceFeedback(${JSON.stringify(a).replace(/"/g, '&quot;')})" class="px-2.5 py-1 rounded-lg bg-purple-500/10 text-purple-600 border border-purple-500/20 font-bold text-[10px] hover:bg-purple-500/20 transition">
-      <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> AI Analysis
-    </button>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="card p-5 space-y-1">
+      <span class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Total Tests Taken</span>
+      <h3 class="text-2xl font-black text-teal-600">${totalTests}</h3>
+    </div>
+    <div class="card p-5 space-y-1">
+      <span class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Questions Solved</span>
+      <h3 class="text-2xl font-black text-indigo-600">${totalQuestionsAttempted}</h3>
+    </div>
+    <div class="card p-5 space-y-1">
+      <span class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Average Accuracy</span>
+      <h3 class="text-2xl font-black text-emerald-600">${avgAccuracy}%</h3>
+    </div>
   </div>
-</div>`).join('')}
-</div>
-`}
-</div>
+
+  <div class="card p-6 space-y-4">
+    <h3 class="text-base font-black text-slate-900 dark:text-slate-100">Test Attempt History</h3>
+    ${attemptsArr.length === 0 ? `
+      <div class="text-center py-8 text-slate-400 text-xs font-semibold">No test attempts recorded yet. Take a test from the Test Hub!</div>
+    ` : `
+      <div class="space-y-3 max-h-96 overflow-y-auto pr-1">
+        ${attemptsArr.map(att => `
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 flex items-center justify-between gap-4">
+            <div>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-slate-100">${escapeHtml(att.chapter)}</h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">${att.subject} • ${new Date(att.finishedAt).toLocaleDateString()} at ${new Date(att.finishedAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+            </div>
+            <div class="flex items-center gap-3 text-right shrink-0">
+              <div>
+                <span class="block font-black text-sm text-teal-600">${att.score}/${att.maxScore}</span>
+                <span class="text-[10px] font-bold text-emerald-600">${att.accuracy}% acc</span>
+              </div>
+              <button onclick="generateAiTestPerformanceFeedback(${JSON.stringify(att).replace(/"/g, '&quot;')})" class="p-2.5 rounded-xl bg-purple-500/10 text-purple-600 hover:bg-purple-500/20 transition text-xs font-bold" title="AI Feedback">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `}
+  </div>
 </div>`;
 } else if (currentTab === 'directory') {
-main.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">${INITIAL_RESOURCES.map(r => `<a href="${r.url}" target="_blank" class="card p-4 text-xs font-bold flex justify-between"><span>${escapeHtml(r.title)}</span><i class="fa-solid fa-arrow-up-right-from-square text-teal-600"></i></a>`).join('')}</div>`;
-} else if (currentTab === 'faculty') {
-main.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">${TEACHERS_DATA.map(t => `<div class="card p-4 text-xs font-bold flex items-center gap-3"><img src="${t.img}" class="w-10 h-10 rounded-xl object-cover"><span>${escapeHtml(t.name)}</span></div>`).join('')}</div>`;
+let vaultSearch = '';
+let vaultFilterCategory = 'All';
+
+main.innerHTML = `
+<div class="space-y-6 animate-fadeIn max-w-6xl mx-auto">
+  <div class="card p-6 border-l-4 border-l-teal-500">
+    <h2 class="text-xl font-black text-slate-900 dark:text-slate-100">NEET Resource Vault</h2>
+    <p class="text-xs text-slate-500 mt-1">Direct single-click access to curated study portals, mock hubs, batches, shadow libraries, and AI tools.</p>
+  </div>
+
+  <div class="card p-5 space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div class="relative flex-1">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 text-xs"></i>
+        <input type="text" id="vaultSearchInput" oninput="renderVaultList()" placeholder="Search resources by title, badge, or tag..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-xs font-semibold focus:outline-none focus:border-teal-500 transition">
+      </div>
+      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-slate-100 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700/60 shrink-0">
+        ${['All', 'Batches', 'Tests', 'Books', 'PYQs', 'AI'].map(cat => `
+          <button onclick="window.currentVaultCat='${cat}'; renderVaultList();" class="test-hub-filter-btn ${ (window.currentVaultCat || 'All') === cat ? 'active' : 'text-slate-600 dark:text-slate-300 hover:text-teal-600'}">
+            ${cat}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  </div>
+
+  <div id="vaultGridContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <!-- Rendered dynamically -->
+  </div>
+</div>`;
+
+window.renderVaultList = function() {
+  const query = (document.getElementById('vaultSearchInput')?.value || '').toLowerCase();
+  const cat = window.currentVaultCat || 'All';
+  const container = document.getElementById('vaultGridContainer');
+  if (!container) return;
+
+  const filtered = RESOURCE_VAULT_ITEMS.filter(item => {
+    const qMatch = item.title.toLowerCase().includes(query) || item.badge.toLowerCase().includes(query) || item.category.toLowerCase().includes(query);
+    const cMatch = cat === 'All' || item.subtag === cat || item.category.includes(cat);
+    return qMatch && cMatch;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-xs font-bold">No resources match your search criteria.</div>`;
+    return;
+  }
+
+  container.innerHTML = filtered.map(item => `
+    <div class="card p-5 space-y-4 hover:border-teal-500 hover:shadow-lg transition flex flex-col justify-between group">
+      <div class="space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20 font-black text-[10px] uppercase tracking-wider">${escapeHtml(item.subtag)}</span>
+          <span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold">${escapeHtml(item.badge)}</span>
+        </div>
+        <h4 class="font-extrabold text-base text-slate-900 dark:text-slate-100 leading-snug group-hover:text-teal-600 transition">${escapeHtml(item.title)}</h4>
+        <p class="text-[11px] text-slate-400 font-mono truncate">${escapeHtml(item.url)}</p>
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2">
+        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs transition text-center shadow-md shadow-teal-600/20 flex items-center justify-center gap-1.5">
+          <span>Open Resource</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+        <button onclick="navigator.clipboard.writeText('${item.url}'); showToast('Link copied to clipboard!');" class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition" title="Copy Link">
+          <i class="fa-solid fa-copy text-xs"></i>
+        </button>
+      </div>
+    </div>
+  `).join('');
+};
+
+renderVaultList();
 } else if (currentTab === 'tools') {
-main.innerHTML = `<div class="card p-6 text-center"><h3 class="font-black text-xl mb-4">Pomodoro Focus Timer</h3><div class="text-4xl font-mono font-black text-teal-600">25:00</div></div>`;
+main.innerHTML = `
+<div class="space-y-6 animate-fadeIn max-w-6xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Pomodoro Timer Card -->
+    <div class="card p-6 space-y-6 text-center border-l-4 border-l-teal-500">
+      <div class="space-y-1">
+        <h3 class="text-lg font-black text-slate-900 dark:text-slate-100">Focus Pomodoro Clock</h3>
+        <p class="text-xs text-slate-500">Maintain distraction-free study intervals.</p>
+      </div>
+
+      <div id="focus-timer-clock" class="text-5xl font-black text-teal-600 dark:text-teal-400 font-mono tracking-wider py-4">
+        ${String(Math.floor(focusTimeRemaining / 60)).padStart(2, '0')}:${String(focusTimeRemaining % 60).padStart(2, '0')}
+      </div>
+
+      <div class="flex items-center justify-center gap-3">
+        <button onclick="toggleFocusTimer()" class="px-6 py-3 rounded-2xl ${focusTimerRunning ? 'bg-amber-500 text-slate-950' : 'bg-teal-600 text-white'} font-black text-xs shadow-lg transition flex items-center gap-2">
+          <i class="fa-solid ${focusTimerRunning ? 'fa-pause' : 'fa-play'}"></i>
+          <span>${focusTimerRunning ? 'Pause' : 'Start Focus'}</span>
+        </button>
+        <button onclick="resetFocusTimer(25)" class="px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs hover:bg-slate-200 transition">
+          Reset (25m)
+        </button>
+      </div>
+    </div>
+
+    <!-- Daily Study Planner / Todo -->
+    <div class="card p-6 space-y-4">
+      <h3 class="text-lg font-black text-slate-900 dark:text-slate-100">Daily Study Planner</h3>
+      <div class="space-y-2">
+        <input type="text" id="new-todo-title" placeholder="Add study goal (e.g. Solve 30 Optics MCQs)..." onkeydown="if(event.key==='Enter') addTodoItem()" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold focus:outline-none focus:border-teal-500">
+        <div class="flex gap-2">
+          <select id="new-todo-subject" class="flex-1 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
+            <option value="Biology">Biology</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Physics">Physics</option>
+          </select>
+          <button onclick="addTodoItem()" class="px-5 py-2 rounded-xl bg-teal-600 text-white font-black text-xs shadow-md">Add Task</button>
+        </div>
+      </div>
+
+      <div class="space-y-2 max-h-60 overflow-y-auto pr-1 pt-2">
+        ${todos.map(t => `
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5 flex-1 min-w-0">
+              <input type="checkbox" ${t.completed ? 'checked' : ''} onchange="toggleTodoItem('${t.id}')" class="w-4 h-4 rounded text-teal-600">
+              <span class="text-xs font-semibold truncate ${t.completed ? 'line-through text-slate-400' : 'text-slate-800 dark:text-slate-200'}">${escapeHtml(t.title)}</span>
+            </div>
+            <button onclick="deleteTodoItem('${t.id}')" class="text-slate-400 hover:text-rose-500 p-1 text-xs"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  </div>
+</div>`;
 } else if (currentTab === 'settings') {
-main.innerHTML = `<div class="card p-6"><button onclick="openApiKeyModal()" class="px-4 py-2 bg-purple-600 text-white rounded-xl text-xs font-bold">Configure Gemini AI Key</button></div>`;
+const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+main.innerHTML = `
+<div class="space-y-6 animate-fadeIn max-w-3xl mx-auto">
+  <div class="card p-6 border-l-4 border-l-teal-500 space-y-6">
+    <div>
+      <h2 class="text-xl font-black text-slate-900 dark:text-slate-100">App & Marking Settings</h2>
+      <p class="text-xs text-slate-500 mt-1">Customize test scoring rules and daily question targets.</p>
+    </div>
+
+    <div class="space-y-4 text-xs font-semibold">
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Marks per Correct Answer</label>
+          <input type="number" id="set-marks-correct" value="${settings.marksCorrect}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+        </div>
+        <div>
+          <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Negative Marks per Wrong Answer</label>
+          <input type="number" id="set-marks-wrong" value="${settings.marksWrong}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Daily Question Goal</label>
+        <input type="number" id="set-daily-goal" value="${settings.dailyGoalQuestions}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+        <button onclick="updateSettingsFromForm()" class="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs shadow-md">
+          Save Settings
+        </button>
+      </div>
+    </div>
+  </div>
+</div>`;
 }
 }
 
+// Initial view mount
 renderView();
 </script>
 </body>
