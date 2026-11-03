@@ -416,12 +416,31 @@ function setGeminiApiKey(key) {
 function openApiKeyModal() {
   const currentKey = getGeminiApiKey();
   setModal('Gemini AI Engine Settings', 'Provide your Gemini API key to activate AI chatbot, explanations, tutoring, and adaptive generators.', `
-    <div class="space-y-4 py-2">
-      <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-xs text-teal-700 dark:text-teal-300">
+    <div class="space-y-4 py-2 text-xs">
+      <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-700 dark:text-teal-300">
         <i class="fa-solid fa-circle-info mr-1.5"></i> EduPulse uses standard <strong>gemini-3-flash-preview</strong> calls for live generation. Your key remains stored locally in your browser.
       </div>
+
+      <!-- YouTube API Key Tutorial Embed Integration -->
+      <div class="space-y-2">
+        <label class="block font-bold text-slate-700 dark:text-slate-300">Video Guide: How to Get a Free Gemini API Key</label>
+        <div class="relative w-full overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-black aspect-video flex items-center justify-center">
+          <iframe 
+            src="https://www.youtube.com/embed/7_HFmLrfZHg" 
+            title="Gemini API Key Tutorial" 
+            class="w-full h-full border-0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="text-[10px] text-slate-400 flex items-center justify-between">
+          <span>Need help generating a key? Watch the quick tutorial above.</span>
+          <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="text-teal-600 dark:text-teal-400 font-extrabold hover:underline">Get Key on Google AI Studio ↗</a>
+        </p>
+      </div>
+
       <div>
-        <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Gemini API Key</label>
+        <label class="block font-bold text-slate-700 dark:text-slate-300 mt-2">Gemini API Key</label>
         <input type="password" id="geminiKeyInput" value="${escapeHtml(currentKey)}" placeholder="AIzaSy..." class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono">
       </div>
     </div>
@@ -554,9 +573,9 @@ function openAdaptiveAiConfigModal(preselectedSubject = 'Biology') {
     <div class="space-y-4 py-2 text-xs">
       <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-800 dark:text-teal-300 font-semibold space-y-1">
         <div class="flex items-center gap-1.5 font-extrabold text-sm text-teal-600 dark:text-teal-400">
-          <i class="fa-solid fa-infinity"></i> Continuous Infinite Adaptive Engine
+          <i class="fa-solid fa-infinity"></i> Continuous Batch Adaptive Engine
         </div>
-        <p class="text-[11px] opacity-90 leading-relaxed">Questions will keep generating dynamically as you answer! Higher accuracy increases question difficulty and introduces multi-concept / assertion questions automatically.</p>
+        <p class="text-[11px] opacity-90 leading-relaxed">Generates questions in batches of 5–10 MCQs per API call and automatically prefetches the next batch seamlessly in the background while you solve current questions!</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -589,7 +608,7 @@ function openAdaptiveAiConfigModal(preselectedSubject = 'Biology') {
         <div>
           <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Generation Mode</label>
           <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
-            <i class="fa-solid fa-infinity text-teal-500"></i> Infinite Stream (Auto-generates batches)
+            <i class="fa-solid fa-infinity text-teal-500"></i> Batch Streaming (5-10 MCQs + Prefetch)
           </div>
         </div>
       </div>
@@ -609,7 +628,7 @@ function updateAdaptiveChapterDropdown(selectedSubj) {
   select.innerHTML = `<option value="All Chapters">Entire Subject Syllabus</option>` + chapters.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
 }
 
-// ===== PATCH A: Infinite Adaptive Core State & Fetching Engine =====
+// ===== PATCH A: Infinite Adaptive Core State & Fetching Engine (5-10 MCQs / Batch & Prefetching) =====
 
 const INF_LEVELS = [
   null,
@@ -620,38 +639,38 @@ const INF_LEVELS = [
   { name: 'Elite',      color: 'text-rose-500',    desc: 'toughest NEET level: assertion-reason, multi-step reasoning, exception-based and application questions' }
 ];
 
-async function fetchInfiniteBatch(count = 3) {
+async function fetchInfiniteBatch(count = 7) {
   const st = quizState.infinite;
   const level = st.level;
   const lv = INF_LEVELS[level];
   const h = st.history;
   const recent = h.slice(-8);
   const correctRecent = recent.filter(x => x.correct).length;
-  const missed = h.filter(x => !x.correct).slice(-3).map(x => x.stem);
-  const asked = quizState.questions.slice(-25).map(q => (q.question || '').slice(0, 90));
+  const missed = h.filter(x => !x.correct).slice(-5).map(x => x.stem);
+  const asked = quizState.questions.slice(-30).map(q => (q.question || '').slice(0, 90));
 
-  const prompt = `Generate ${count} NEET multiple choice questions.
+  const prompt = `Generate exactly ${count} distinct NEET multiple choice questions as a single JSON array.
 Subject: ${st.subject}
-Chapter scope: ${st.chapter === 'All Chapters' ? 'any chapter of the subject (vary the chapters)' : st.chapter}
+Chapter scope: ${st.chapter === 'All Chapters' ? 'any chapter of the subject (vary the chapters across the array)' : st.chapter}
 Target difficulty: Level ${level} of 5 (${lv.name}) - ${lv.desc}.
 Student performance: ${h.length} answered so far, ${correctRecent}/${recent.length} correct in the last ${recent.length}.
 ${missed.length ? `The student recently got these wrong, so probe related concepts from a different angle (do not repeat them):\n- ${missed.join('\n- ')}` : ''}
 ${asked.length ? `Do NOT repeat or closely paraphrase any of these earlier questions:\n- ${asked.join('\n- ')}` : ''}
 
-Return ONLY a raw JSON array, no markdown:
+Return ONLY a raw JSON array of length ${count}, no markdown:
 [{"q":"question text","o":["A","B","C","D"],"a":1,"s":"short NCERT-based explanation"}]
 "a" is the 1-based index of the correct option. Exactly 4 options per question.`;
 
   const sys = 'You are an expert NEET question setter. Output ONLY a valid JSON array of MCQs. Questions must be factually accurate and based on NCERT.';
   const text = await callGeminiApi(prompt, sys);
   const m = text.match(/\[[\s\S]*\]/);
-  if (!m) throw new Error('AI returned no question data.');
+  if (!m) throw new Error('AI returned no question batch data.');
   const parsed = JSON.parse(m[0]);
 
   const out = parsed
     .filter(q => q && q.q && Array.isArray(q.o) && q.o.length === 4 && Number.isInteger(q.a) && q.a >= 1 && q.a <= 4)
     .map((q, i) => ({
-      qKey: 'ai_inf_' + Date.now() + '_' + i,
+      qKey: 'ai_inf_' + Date.now() + '_' + i + '_' + Math.random().toString(36).substring(2,7),
       question: String(q.q),
       options: q.o.map(String),
       correct: q.a - 1,
@@ -663,7 +682,7 @@ Return ONLY a raw JSON array, no markdown:
   return out;
 }
 
-function requestInfiniteBatch(count = 3) {
+function requestInfiniteBatch(count = 7) {
   const st = quizState.infinite;
   if (!st) return Promise.resolve();
   if (st.fetching) return st.fetchPromise;
@@ -672,11 +691,13 @@ function requestInfiniteBatch(count = 3) {
   st.error = null;
   st.fetchPromise = fetchInfiniteBatch(count)
     .then(batch => {
-      // discard if session changed or the difficulty level shifted while generating
-      if (quizState.infinite === st && st.gen === gen) quizState.questions.push(...batch);
+      // discard if session changed or difficulty shifted while generating
+      if (quizState.infinite === st && st.gen === gen) {
+        quizState.questions.push(...batch);
+      }
     })
     .catch(e => {
-      console.warn('Infinite batch error:', e);
+      console.warn('Infinite batch prefetch error:', e);
       if (st.gen === gen) st.error = e.message;
     })
     .finally(() => {
@@ -685,7 +706,17 @@ function requestInfiniteBatch(count = 3) {
   return st.fetchPromise;
 }
 
-// Called after every answer: moves the difficulty up/down and keeps the stream topped up
+// Check and trigger prefetch when remaining un-answered queue falls below threshold
+function checkAndTriggerPrefetch() {
+  const st = quizState.infinite;
+  if (!st || st.fetching) return;
+  const remainingInQueue = quizState.questions.length - 1 - quizState.currentIndex;
+  if (remainingInQueue <= 4) {
+    requestInfiniteBatch(7);
+  }
+}
+
+// Called after every answer: moves difficulty up/down and maintains prefetched batches
 function adaptInfinite(isCorrect, q) {
   const st = quizState.infinite;
   if (!st) return;
@@ -703,13 +734,13 @@ function adaptInfinite(isCorrect, q) {
   st.shift = st.level > before ? 'up' : st.level < before ? 'down' : null;
 
   if (st.level !== before) {
-    // difficulty changed: throw away the stale pre-generated questions and fetch fresh ones at the new level
+    // difficulty changed: prune upcoming unvisited queue and prefetch fresh batch at new level
     quizState.questions.length = quizState.currentIndex + 1;
     st.gen++;
     st.fetching = false;
-    requestInfiniteBatch(3);
-  } else if (quizState.questions.length - 1 - quizState.currentIndex < 2) {
-    requestInfiniteBatch(2);
+    requestInfiniteBatch(7);
+  } else {
+    checkAndTriggerPrefetch();
   }
 }
 
@@ -719,10 +750,10 @@ async function launchAiAdaptiveSessionFromModal() {
   const initialDiff = document.getElementById('adaptiveDifficulty')?.value || 'Standard NEET Level';
   const startLevel = initialDiff.startsWith('Easy') ? 1 : initialDiff.startsWith('Challenging') ? 4 : 3;
 
-  setModal('Initializing Infinite Adaptive Engine', `${subj} — ${chapter}`, `
+  setModal('Initializing Infinite Adaptive Batch Engine', `${subj} — ${chapter}`, `
     <div class="flex flex-col items-center justify-center py-10 space-y-4">
       <i class="fa-solid fa-infinity fa-spin text-4xl text-teal-600 mb-2"></i>
-      <p class="text-sm font-black text-slate-800 dark:text-slate-100">Generating your first questions...</p>
+      <p class="text-sm font-black text-slate-800 dark:text-slate-100">Generating initial 5–10 MCQ batch...</p>
       <span class="text-xs text-slate-500 font-bold">Starting level: ${INF_LEVELS[startLevel].name} (${subj})</span>
     </div>
   `);
@@ -736,8 +767,10 @@ async function launchAiAdaptiveSessionFromModal() {
   try {
     quizState.infinite = st;
     quizState.questions = [];
-    const first = await fetchInfiniteBatch(3);
-    launchPracticeSession(subj, `Infinite Practice: ${chapter}`, first, st);
+    const firstBatch = await fetchInfiniteBatch(7);
+    launchPracticeSession(subj, `Infinite Practice: ${chapter}`, firstBatch, st);
+    // Prefetch next batch immediately so student experiences zero lag
+    checkAndTriggerPrefetch();
   } catch (err) {
     quizState.infinite = null;
     showToast('Infinite Adaptive Generator Error: ' + err.message, 'error');
@@ -1598,7 +1631,7 @@ if (mode === 'practice') {
 }
 }
 
-// ===== PATCH B: launchPracticeSession =====
+// ===== launchPracticeSession =====
 function launchPracticeSession(subj, chapterName, rawQuestions, infiniteState = null) {
   Object.assign(quizState, {
     mode: 'practice',
@@ -1735,7 +1768,7 @@ function buildTopInteractiveQuestionPalette(isPractice = false) {
   `;
 }
 
-// ===== PATCH C: Practice Quiz UI & Handlers =====
+// ===== Practice Quiz UI & Handlers =====
 
 function buildInfiniteStatsStrip() {
   const st = quizState.infinite;
@@ -1756,6 +1789,10 @@ function buildInfiniteStatsStrip() {
     ? `<span class="px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-600 text-[10px] font-black"><i class="fa-solid fa-arrow-trend-down mr-1"></i>Easing off</span>`
     : '';
 
+  const prefetchIndicator = st.fetching
+    ? `<span class="text-[10px] text-teal-600 dark:text-teal-400 font-bold animate-pulse flex items-center gap-1"><i class="fa-solid fa-cloud-arrow-down"></i> Prefetching Batch...</span>`
+    : '';
+
   return `
   <div class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm px-4 py-3 mb-3 flex flex-wrap items-center justify-between gap-3">
     <div class="flex items-center gap-3">
@@ -1764,6 +1801,7 @@ function buildInfiniteStatsStrip() {
       ${shift}
     </div>
     <div class="flex items-center gap-4 text-[11px] font-bold text-slate-500 dark:text-slate-400">
+      ${prefetchIndicator}
       <span><i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i>${c}/${n}</span>
       <span><i class="fa-solid fa-bullseye text-teal-500 mr-1"></i>${acc}%</span>
       <span><i class="fa-solid fa-fire text-amber-500 mr-1"></i>${run} streak</span>
@@ -1821,7 +1859,7 @@ ${q.explanation ? `<div class="text-xs font-medium opacity-80">${escapeHtml(q.ex
 <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button>
 <div>
 <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2>
-<p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">${inf ? '<i class="fa-solid fa-infinity text-teal-500"></i> Infinite Adaptive Practice — runs until you stop' : 'Practice Mode'}</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">${inf ? '<i class="fa-solid fa-infinity text-teal-500"></i> Infinite Batch Practice — 5-10 MCQs Prefetched' : 'Practice Mode'}</p>
 </div>
 </div>
 <div class="flex items-center gap-2">
@@ -1881,16 +1919,16 @@ async function goToNextPracticeQuestion() {
     return;
   }
 
-  // infinite mode: never ends, waits for the next question if it isn't ready yet
+  // infinite mode: check if we need more questions
   if (st.waiting) return;
   if (quizState.currentIndex + 1 >= quizState.questions.length) {
     st.waiting = true;
     const btn = document.getElementById('infinite-next-btn');
-    if (btn) { btn.disabled = true; btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-xs"></i> <span>Generating next question...</span>`; }
-    if (!st.fetching) requestInfiniteBatch(3);
+    if (btn) { btn.disabled = true; btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-xs"></i> <span>Prefetching batch...</span>`; }
+    if (!st.fetching) requestInfiniteBatch(7);
     await st.fetchPromise;
     st.waiting = false;
-    if (quizState.infinite !== st) return;           // session ended while waiting
+    if (quizState.infinite !== st) return;
 
     if (quizState.currentIndex + 1 >= quizState.questions.length) {
       const b = document.getElementById('infinite-next-btn');
@@ -1903,8 +1941,8 @@ async function goToNextPracticeQuestion() {
   quizState.currentIndex++;
   renderPracticeQuiz();
 
-  // keep the buffer topped up even if the student skips questions
-  if (quizState.questions.length - 1 - quizState.currentIndex < 1) requestInfiniteBatch(2);
+  // Trigger continuous prefetch as queue moves forward
+  checkAndTriggerPrefetch();
 }
 
 function finishInfiniteSession() {
@@ -1918,7 +1956,7 @@ function finishInfiniteSession() {
   });
   const attempted = correct + wrong;
 
-  st.gen++;                    // discard any in-flight generation
+  st.gen++;
   quizState.infinite = null;
 
   if (!attempted) {
