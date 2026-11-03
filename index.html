@@ -447,19 +447,12 @@ function renderFormattedMarkdown(text = '') {
   
   let formatted = escapeHtml(text);
 
-  // Convert Bold **text** -> <strong>text</strong> with badge highlights
   formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong class="font-extrabold text-teal-700 dark:text-teal-300 bg-teal-500/10 px-1 py-0.5 rounded">$1</strong>');
-  
-  // Convert Italics *text* -> <em>text</em>
   formatted = formatted.replace(/\*(.*?)\*/g, '<em class="italic text-slate-700 dark:text-slate-300">$1</em>');
-
-  // Convert horizontal rules --- into smooth subtle dividers
   formatted = formatted.replace(/---/g, '<hr class="my-4 border-slate-200 dark:border-slate-800">');
 
-  // Convert ### Headings into stylish card blocks
   const lines = formatted.split('\n');
   let outputHtml = '';
-  let inList = false;
 
   lines.forEach(line => {
     const trimmed = line.trim();
@@ -1649,7 +1642,26 @@ function selectTestOption(i) { quizState.userAnswers[quizState.currentIndex] = i
 function toggleMarkTestCurrent() { quizState.marked[quizState.currentIndex] = !quizState.marked[quizState.currentIndex]; renderTestQuiz(); }
 function jumpToTestQuestion(i) { if (i >= 0 && i < quizState.questions.length) { quizState.currentIndex = i; renderTestQuiz(); } }
 function confirmSubmitTest() { submitTestQuiz(false); }
-function confirmExitQuiz() { closeModal(); renderView(); }
+
+function confirmExitQuiz() {
+  const isTestMode = quizState.mode === 'test';
+  const answeredCount = Object.keys(quizState.userAnswers).length;
+  
+  setModal('Leave Practice Session?', 'Are you sure you want to quit this active attempt?', `
+    <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-800 dark:text-amber-300 space-y-2">
+      <div class="flex items-center gap-2 font-black text-sm">
+        <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
+        <span>Unsaved Attempt Warning</span>
+      </div>
+      <p class="leading-relaxed opacity-90">
+        ${isTestMode ? `You have answered <strong>${answeredCount} of ${quizState.questions.length}</strong> questions in this test simulation. Leaving now will cancel this timed attempt.` : `Leaving now will return you to the main dashboard.`}
+      </p>
+    </div>
+  `, `
+    <button onclick="${isTestMode ? 'renderTestQuiz()' : 'renderPracticeQuiz()'}" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-300 text-xs">Continue Attempt</button>
+    <button onclick="closeModal(); renderView();" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-md">Yes, Leave Session</button>
+  `);
+}
 
 function submitTestQuiz(isAuto = false) {
 if (quizState.timerInterval) { clearInterval(quizState.timerInterval); quizState.timerInterval = null; }
