@@ -185,6 +185,7 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 <button onclick="switchTab('progress')" id="nav-progress"><i class="fa-solid fa-chart-line w-5"></i> Performance Stats</button>
 <button onclick="switchTab('directory')" id="nav-directory"><i class="fa-solid fa-book-bookmark w-5"></i> Resource Vault</button>
 <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Focus & Planner</button>
+<button onclick="switchTab('about')" id="nav-about"><i class="fa-solid fa-heart w-5"></i> About</button>
 <button onclick="switchTab('settings')" id="nav-settings"><i class="fa-solid fa-gear w-5"></i> Settings</button>
 </nav>
 
@@ -1895,7 +1896,7 @@ main.innerHTML = `
       <div class="space-y-2">
         <span class="px-3 py-1 rounded-full bg-teal-400/20 text-teal-200 border border-teal-400/30 font-black text-[10px] tracking-widest uppercase">Target NEET 2026</span>
         <h2 class="text-2xl sm:text-3xl font-black text-white">Your Ultimate Preparation Hub</h2>
-        <p class="text-slate-300 text-xs sm:text-sm max-w-xl font-medium leading-relaxed">Master 79 NCERT chapters with CBT mock tests, Gemini AI doubler, and real-time analytics.</p>
+        <p class="text-slate-300 text-xs sm:text-sm max-w-xl font-medium leading-relaxed">Master 79 NCERT chapters with CBT mock tests, Gemini AI copilot, and real-time analytics.</p>
       </div>
       <div class="flex gap-3">
         <button onclick="switchTab('mock')" class="px-5 py-3 rounded-2xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-xs shadow-lg transition flex items-center gap-2">
@@ -1905,6 +1906,60 @@ main.innerHTML = `
           Practice Chapters
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- Quick Access Panel -->
+  <div class="space-y-3">
+    <div class="flex items-center justify-between">
+      <h3 class="text-base font-black text-slate-900 dark:text-slate-100 flex items-center gap-2">
+        <i class="fa-solid fa-bolt text-teal-500"></i> Quick Access Panel
+      </h3>
+      <span class="text-xs font-semibold text-slate-400">One-tap shortcuts</span>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <button onclick="switchTab('mock'); setMockSubTab('batch');" class="card p-4 text-center hover:border-teal-500 transition-all flex flex-col items-center justify-center gap-2 group">
+        <div class="w-10 h-10 rounded-2xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-desktop"></i>
+        </div>
+        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Batch Mocks</span>
+      </button>
+
+      <button onclick="switchTab('mock'); setMockSubTab('generate');" class="card p-4 text-center hover:border-purple-500 transition-all flex flex-col items-center justify-center gap-2 group">
+        <div class="w-10 h-10 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">180Q Generator</span>
+      </button>
+
+      <button onclick="switchTab('learn')" class="card p-4 text-center hover:border-emerald-500 transition-all flex flex-col items-center justify-center gap-2 group">
+        <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-play"></i>
+        </div>
+        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">One-Shots</span>
+      </button>
+
+      <button onclick="switchTab('directory')" class="card p-4 text-center hover:border-amber-500 transition-all flex flex-col items-center justify-center gap-2 group">
+        <div class="w-10 h-10 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-book-bookmark"></i>
+        </div>
+        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Vault Index</span>
+      </button>
+
+      <button onclick="switchTab('tools')" class="card p-4 text-center hover:border-sky-500 transition-all flex flex-col items-center justify-center gap-2 group">
+        <div class="w-10 h-10 rounded-2xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-stopwatch"></i>
+        </div>
+        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Focus Clock</span>
+      </button>
+
+      <button onclick="toggleAiChatbotWindow()" class="card p-4 text-center hover:border-rose-500 transition-all flex flex-col items-center justify-center gap-2 group">
+        <div class="w-10 h-10 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Ask AI Copilot</span>
+      </button>
     </div>
   </div>
 
@@ -1981,6 +2036,66 @@ main.innerHTML = `
         `;
       }).join('')}
     </div>
+  </div>
+</div>`;
+} else if (currentTab === 'about') {
+main.innerHTML = `
+<div class="space-y-6 animate-fadeIn max-w-4xl mx-auto">
+  <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-teal-900 via-slate-900 to-purple-950 p-6 sm:p-8 text-white shadow-2xl border border-teal-700/40 space-y-4">
+    <div class="flex items-center gap-3">
+      <span class="px-3 py-1 rounded-full bg-teal-400/20 text-teal-200 border border-teal-400/30 font-black text-[10px] uppercase tracking-widest">Hobby Project</span>
+      <span class="px-3 py-1 rounded-full bg-purple-400/20 text-purple-200 border border-purple-400/30 font-black text-[10px] uppercase tracking-widest">Vibe Coded with ❤</span>
+    </div>
+
+    <h2 class="text-2xl sm:text-4xl font-black text-white">About EduPulse PRO</h2>
+    <p class="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed max-w-2xl">
+      EduPulse PRO is a passion-driven, lightweight NEET entry preparation ecosystem crafted by a <strong>Vibe Coder</strong>. Built with single-file client-side simplicity, zero backend bloat, and total privacy in mind.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="card p-6 space-y-3 border-l-4 border-l-teal-500">
+      <div class="flex items-center gap-2 text-teal-600 font-extrabold text-sm">
+        <i class="fa-solid fa-code"></i>
+        <span>Vibe Coder Philosophy</span>
+      </div>
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+        Designed for speed, offline usability, and seamless study flows. No intrusive tracking, no paywalls, and no subscription traps — just pure focus for NEET aspirants.
+      </p>
+    </div>
+
+    <div class="card p-6 space-y-3 border-l-4 border-l-purple-500">
+      <div class="flex items-center gap-2 text-purple-600 font-extrabold text-sm">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>Gemini AI Integration</span>
+      </div>
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+        Integrates Gemini 3 Flash to deliver live question explanations, structured 180Q test paper creation, YouTube one-shot lecture embeds, and custom study plans.
+      </p>
+    </div>
+  </div>
+
+  <div class="card p-6 space-y-4">
+    <h3 class="text-base font-black text-slate-900 dark:text-slate-100">Core Feature Highlights</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-semibold">
+      <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-1">
+        <span class="block font-black text-teal-600">🎯 79 NCERT Chapters</span>
+        <p class="text-[11px] text-slate-500">Full Botany, Zoology, Physics & Chemistry coverage.</p>
+      </div>
+      <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-1">
+        <span class="block font-black text-indigo-600">💻 NTA CBT Interface</span>
+        <p class="text-[11px] text-slate-500">Question palette drawer, time tracking & review flags.</p>
+      </div>
+      <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-1">
+        <span class="block font-black text-emerald-600">📚 20+ Vault Portals</span>
+        <p class="text-[11px] text-slate-500">Direct links to Allen, PW, Anna's Archive & Marks App.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center py-4 text-xs font-bold text-slate-400 space-y-1">
+    <p>EduPulse PRO — Built for NEET Aspirants Everywhere 🚀</p>
+    <p class="text-[10px] text-slate-500">Keep vibing, keep practicing!</p>
   </div>
 </div>`;
 } else if (currentTab === 'mock') {
