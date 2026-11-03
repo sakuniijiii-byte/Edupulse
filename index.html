@@ -218,12 +218,6 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 <button onclick="openApiKeyModal()" class="px-3 py-2 rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-600 dark:text-teal-400 hover:bg-teal-500/20 text-xs font-bold transition flex items-center gap-1.5" title="Configure Gemini AI Key">
 <i class="fa-solid fa-wand-magic-sparkles"></i> AI Key
 </button>
-<!-- Google Login / User Profile Widget -->
-<div id="user-auth-widget">
-  <button id="google-login-btn" onclick="handleGoogleSignIn()" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-bold transition flex items-center gap-2 shadow-sm">
-    <i class="fa-brands fa-google text-red-500"></i> Sign In
-  </button>
-</div>
 <button onclick="toggleTheme()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
 <i class="fa-solid fa-moon dark:hidden text-sm sm:text-base"></i>
 <i class="fa-solid fa-sun hidden dark:inline text-sm sm:text-base"></i>
@@ -295,92 +289,6 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 </div>
 
 <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2.5 pointer-events-none"></div>
-
-<!-- Firebase Modular Auth & App Script Injection -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-  import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
-  const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-    apiKey: "AIzaSy_demo_placeholder",
-    authDomain: "edupulse-demo.firebaseapp.com",
-    projectId: "edupulse-demo",
-    storageBucket: "edupulse-demo.appspot.com",
-    messagingSenderId: "1234567890",
-    appId: "1:1234567890:web:demo"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
-
-  window.firebaseAuthInstance = auth;
-
-  window.handleGoogleSignIn = async function() {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      showToast(`Welcome back, ${user.displayName || 'Aspirant'}!`, 'success');
-      updateAuthUiState(user);
-    } catch (error) {
-      console.warn("Google Sign-in note:", error);
-      showToast("Google Sign-in canceled or not configured in this environment.", "warning");
-    }
-  };
-
-  window.handleGoogleSignOut = async function() {
-    try {
-      await signOut(auth);
-      showToast("Signed out successfully.", "info");
-      updateAuthUiState(null);
-    } catch (err) {
-      console.error("Sign-out error:", err);
-    }
-  };
-
-  function updateAuthUiState(user) {
-    const container = document.getElementById('user-auth-widget');
-    if (!container) return;
-
-    if (user) {
-      window.currentUserAuth = {
-        uid: user.uid,
-        name: user.displayName || 'User',
-        email: user.email,
-        photo: user.photoURL
-      };
-      container.innerHTML = `
-        <div class="relative group">
-          <button class="flex items-center gap-2 p-1 pl-2 pr-3 rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-700 dark:text-teal-300 font-bold text-xs">
-            ${user.photoURL ? `<img src="${user.photoURL}" class="w-6 h-6 rounded-full border border-teal-500/50">` : `<i class="fa-solid fa-user-circle text-teal-600"></i>`}
-            <span class="max-w-[100px] truncate">${escapeHtml(user.displayName || 'Logged In')}</span>
-            <i class="fa-solid fa-chevron-down text-[10px] text-teal-500"></i>
-          </button>
-          <div class="absolute right-0 top-full mt-2 w-48 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl hidden group-hover:block z-50">
-            <div class="px-4 py-2 border-b border-slate-100 dark:border-slate-800">
-              <p class="font-extrabold text-xs text-slate-800 dark:text-slate-100 truncate">${escapeHtml(user.displayName || 'Aspirant')}</p>
-              <p class="text-[10px] text-slate-400 truncate">${escapeHtml(user.email || '')}</p>
-            </div>
-            <button onclick="handleGoogleSignOut()" class="w-full text-left px-4 py-2 text-xs font-bold text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition flex items-center gap-2">
-              <i class="fa-solid fa-right-from-bracket"></i> Sign Out
-            </button>
-          </div>
-        </div>
-      `;
-    } else {
-      window.currentUserAuth = null;
-      container.innerHTML = `
-        <button id="google-login-btn" onclick="handleGoogleSignIn()" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-bold transition flex items-center gap-2 shadow-sm">
-          <i class="fa-brands fa-google text-red-500"></i> Sign In
-        </button>
-      `;
-    }
-  }
-
-  onAuthStateChanged(auth, (user) => {
-    updateAuthUiState(user);
-  });
-</script>
 
 <script>
 // ===== Storage Module & Versioned Models =====
@@ -507,31 +415,10 @@ function setGeminiApiKey(key) {
 
 function openApiKeyModal() {
   const currentKey = getGeminiApiKey();
-  const isLoggedIn = !!window.currentUserAuth;
-  const userObj = window.currentUserAuth || {};
-
-  setModal('Gemini AI Engine Settings', 'Configure Google Sign-In or your personal Gemini API Key for AI copilot features.', `
+  setModal('Gemini AI Engine Settings', 'Provide your Gemini API key to activate AI chatbot, explanations, tutoring, and adaptive generators.', `
     <div class="space-y-4 py-2 text-xs">
-      <!-- Account Status Widget -->
-      <div class="p-4 rounded-2xl ${isLoggedIn ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-800 dark:text-emerald-300' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700'} border flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full ${isLoggedIn ? 'bg-emerald-500/20 text-emerald-600' : 'bg-slate-200 dark:bg-slate-700 text-slate-500'} flex items-center justify-center font-bold">
-            ${isLoggedIn && userObj.photo ? `<img src="${userObj.photo}" class="w-full h-full rounded-full">` : `<i class="fa-solid fa-user"></i>`}
-          </div>
-          <div>
-            <h4 class="font-extrabold text-xs text-slate-900 dark:text-slate-100">${isLoggedIn ? escapeHtml(userObj.name) : 'Not Logged In'}</h4>
-            <p class="text-[11px] opacity-80">${isLoggedIn ? escapeHtml(userObj.email) : 'Sign in with your Google Account for cloud sync'}</p>
-          </div>
-        </div>
-        ${isLoggedIn ? `
-          <button onclick="handleGoogleSignOut(); closeModal();" class="px-3 py-1.5 rounded-xl bg-rose-500/10 text-rose-600 border border-rose-500/20 font-bold hover:bg-rose-500/20 transition">Sign Out</button>
-        ` : `
-          <button onclick="handleGoogleSignIn(); closeModal();" class="px-3 py-1.5 rounded-xl bg-teal-600 text-white font-bold hover:bg-teal-700 transition flex items-center gap-1.5"><i class="fa-brands fa-google text-xs"></i> Sign In</button>
-        `}
-      </div>
-
       <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-700 dark:text-teal-300">
-        <i class="fa-solid fa-circle-info mr-1.5"></i> EduPulse uses <strong>gemini-3-flash-preview</strong> calls for AI tutoring. Enter your API key below or use your Google Cloud token.
+        <i class="fa-solid fa-circle-info mr-1.5"></i> EduPulse uses standard <strong>gemini-3-flash-preview</strong> calls for live generation. Your key remains stored locally in your browser.
       </div>
 
       <!-- YouTube API Key Tutorial Embed Integration -->
@@ -559,7 +446,7 @@ function openApiKeyModal() {
     </div>
   `, `
     <button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Cancel</button>
-    <button onclick="saveApiKeyFromModal()" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-md">Save Settings</button>
+    <button onclick="saveApiKeyFromModal()" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-md">Save API Key</button>
   `);
 }
 
