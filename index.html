@@ -105,18 +105,15 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 .stepper-step.active{border-color:#0d9488;background:rgba(13,148,136,0.12);color:#0d9488;transform:scale(1.03);}
 .stepper-step.done{border-color:#10b981;background:rgba(16,185,129,0.1);color:#10b981;}
 
-/* Touch Interactive Palette Drawer Styles */
+/* Touch Interactive Top Palette Drawer Styles */
 .palette-touch-btn {
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 42px;
+  min-height: 42px;
   touch-action: manipulation;
   user-select: none;
 }
-.palette-drawer {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.palette-drawer.collapsed {
-  transform: translateY(calc(100% - 64px));
+.palette-drawer-top {
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .video-responsive {
   position: relative;
@@ -877,13 +874,52 @@ questionStartTimer: Date.now(),
 testEndTimestamp: null,
 tabSwitches: 0,
 paletteExpanded: false,
-timerInterval: null
+timerInterval: null,
+touchStartX: 0,
+touchEndX: 0
 };
 
 function togglePaletteDrawer() {
   quizState.paletteExpanded = !quizState.paletteExpanded;
   if (quizState.mode === 'practice') renderPracticeQuiz();
   else renderTestQuiz();
+}
+
+// Touch Swipe Gesture Handlers
+function handleTouchStart(e) {
+  if (e.touches && e.touches.length > 0) {
+    quizState.touchStartX = e.touches[0].clientX;
+  }
+}
+
+function handleTouchMove(e) {
+  if (e.touches && e.touches.length > 0) {
+    quizState.touchEndX = e.touches[0].clientX;
+  }
+}
+
+function handleTouchEnd() {
+  if (!quizState.touchStartX || !quizState.touchEndX) return;
+  const diffX = quizState.touchStartX - quizState.touchEndX;
+  const minSwipeDistance = 50; // Threshold in px
+
+  if (diffX > minSwipeDistance) {
+    // Swiped left -> Next Question
+    if (quizState.currentIndex < quizState.questions.length - 1) {
+      if (quizState.mode === 'practice') goToNextPracticeQuestion();
+      else jumpToTestQuestion(quizState.currentIndex + 1);
+    }
+  } else if (diffX < -minSwipeDistance) {
+    // Swiped right -> Previous Question
+    if (quizState.currentIndex > 0) {
+      if (quizState.mode === 'practice') jumpToPracticeQuestion(quizState.currentIndex - 1);
+      else jumpToTestQuestion(quizState.currentIndex - 1);
+    }
+  }
+
+  // Reset touch positions
+  quizState.touchStartX = 0;
+  quizState.touchEndX = 0;
 }
 
 const chapterAvailability = {};
@@ -1118,94 +1154,8 @@ function showComingSoon(chapterName) {
 setModal('Coming Soon 🔒', chapterName, `<p class="text-xs text-slate-500 py-4">Practice questions for this chapter are currently being indexed.</p>`, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-800 rounded-xl text-xs font-bold">Close</button>`);
 }
 
-async function setupQuizMode(mode, subj, chapterName, customQuestions = null) {
-subject = subj;
-toggleFullScreenMode(false);
-setModal('', '', `<div class="flex flex-col items-center justify-center py-10"> <i class="fa-solid fa-spinner fa-spin text-4xl text-teal-600 mb-4"></i> <p class="text-sm font-bold text-slate-700 dark:text-slate-200">Preparing ${mode === 'practice' ? 'Practice' : 'Test'} session...</p> </div>`);
-
-try {
-let rawQuestions = customQuestions;
-
-if (!rawQuestions) {
-const res = await fetch(quizUrl(chapterName), { cache: 'no-cache' });
-if (res.status === 404) { showComingSoon(chapterName); return; }
-if (!res.ok) throw new Error(`HTTP ${res.status}`);
-const raw = await res.json();
-const list = Array.isArray(raw) ? raw : raw.qs;
-if (!Array.isArray(list) || !list.length) throw new Error('No questions found in file.');
-rawQuestions = list.map((q, i) => {
-const options = (q.o || q.options || q.opts || []).map(String);
-const a = q.a ?? q.answer ?? q.ans;
-let correct = typeof a === 'number' ? a - 1 : options.findIndex(o => o.trim() === String(a).trim());
-if (correct < 0 || correct >= options.length) correct = 0;
-return {
-qKey: slugify(chapterName) + '#' + simpleHash(q.q || q.question || String(i)),
-question: q.q || q.question || `Question ${i + 1}`,
-options,
-correct,
-explanation: q.s || '',
-sourceChapter: chapterName
-};
-});
-}
-
-if (mode === 'practice') {
-launchPracticeSession(subj, chapterName, rawQuestions);
-} else {
-launchTestSession(subj, chapterName, rawQuestions);
-}
-} catch (err) {
-setModal('Error', '', `<p class="text-xs text-rose-500">${escapeHtml(err.message)}</p>`, `<button onclick="closeModal()" class="px-4 py-2 bg-slate-200 rounded-xl text-xs">Close</button>`);
-}
-}
-
-function launchPracticeSession(subj, chapterName, rawQuestions) {
-Object.assign(quizState, {
-mode: 'practice',
-chapter: chapterName,
-subject: subj,
-title: `${subj} — ${chapterName}`,
-questions: rawQuestions,
-currentIndex: 0,
-userAnswers: {},
-marked: {},
-bookmarked: {},
-skippedQuestions: {},
-questionTimes: {},
-questionStartTimer: Date.now(),
-testEndTimestamp: null,
-paletteExpanded: false
-});
-closeModal();
-renderPracticeQuiz();
-}
-
-function launchTestSession(subj, chapterName, rawQuestions) {
-const durationMins = wizardState.durationMins || 180;
-const endTimestamp = Date.now() + durationMins * 60 * 1000;
-
-Object.assign(quizState, {
-mode: 'test',
-chapter: chapterName,
-subject: subj,
-title: `${subj} — ${chapterName} (${rawQuestions.length} Questions)`,
-questions: rawQuestions,
-currentIndex: 0,
-userAnswers: {},
-marked: {},
-bookmarked: {},
-skippedQuestions: {},
-questionTimes: {},
-questionStartTimer: Date.now(),
-testEndTimestamp: endTimestamp,
-paletteExpanded: false
-});
-closeModal();
-renderTestQuiz();
-}
-
-// ===== Interactive Touch Palette Builder =====
-function buildInteractiveQuestionPalette(isPractice = false) {
+// ===== Interactive Top Touch Palette Builder =====
+function buildTopInteractiveQuestionPalette(isPractice = false) {
   const total = quizState.questions.length;
   const current = quizState.currentIndex;
 
@@ -1254,41 +1204,41 @@ function buildInteractiveQuestionPalette(isPractice = false) {
   const isExpanded = quizState.paletteExpanded;
 
   return `
-    <div class="palette-drawer w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-2xl overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-[480px]' : 'max-h-[76px]'}">
-      <!-- Handle Bar & Touch Header -->
-      <div onclick="togglePaletteDrawer()" class="px-4 py-3 cursor-pointer flex items-center justify-between bg-slate-50 dark:bg-slate-800/60 border-b border-slate-100 dark:border-slate-800">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-1 bg-slate-300 dark:bg-slate-700 rounded-full mx-auto sm:hidden"></div>
+    <div class="palette-drawer-top w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 rounded-b-2xl shadow-md overflow-hidden mb-2 transition-all duration-300 ${isExpanded ? 'max-h-[380px]' : 'max-h-[64px]'}">
+      <!-- Handle Bar & Top Header Controller -->
+      <div onclick="togglePaletteDrawer()" class="px-3 py-2 cursor-pointer flex items-center justify-between bg-slate-50/80 dark:bg-slate-800/60 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2">
           <span class="text-xs font-black uppercase text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
-            <i class="fa-solid fa-grid-2 text-teal-600"></i> Palette Navigator
+            <i class="fa-solid fa-grid-2 text-teal-600"></i> Palette
             <span class="px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-600 text-[10px]">${current + 1}/${total}</span>
           </span>
+          <span class="text-[10px] text-slate-400 font-semibold hidden sm:inline">(Swipe Left/Right to Navigate)</span>
         </div>
 
-        <div class="flex items-center gap-3 text-[11px] font-bold">
-          <span class="text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px]"></i> ${answeredCount} Done</span>
-          ${!isPractice ? `<span class="text-indigo-600 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px]"></i> ${markedCount} Marked</span>` : ''}
+        <div class="flex items-center gap-2.5 text-[11px] font-bold">
+          <span class="text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-circle text-[7px]"></i> ${answeredCount} Done</span>
+          ${!isPractice ? `<span class="text-indigo-600 flex items-center gap-1"><i class="fa-solid fa-circle text-[7px]"></i> ${markedCount} Marked</span>` : ''}
           <button class="p-1 rounded-lg text-slate-500 hover:text-teal-600">
-            <i class="fa-solid ${isExpanded ? 'fa-chevron-down' : 'fa-chevron-up'} text-xs"></i>
+            <i class="fa-solid ${isExpanded ? 'fa-chevron-up' : 'fa-chevron-down'} text-xs"></i>
           </button>
         </div>
       </div>
 
-      <!-- Quick Scroll Horizontal Bar (When collapsed) -->
-      <div class="px-3 py-2 flex items-center gap-2 overflow-x-auto no-scrollbar">
+      <!-- Quick Scroll Horizontal Bar (Top Positioned) -->
+      <div class="px-2 py-1.5 flex items-center gap-2 overflow-x-auto no-scrollbar">
         ${buttonsHtml}
       </div>
 
       <!-- Detailed Grid View (When Expanded) -->
       ${isExpanded ? `
-        <div class="p-4 space-y-3 bg-slate-50/50 dark:bg-slate-900/50">
-          <div class="flex flex-wrap gap-2 text-[10px] font-bold border-b border-slate-200 dark:border-slate-800 pb-2">
-            <span class="px-2 py-1 rounded-lg bg-emerald-600 text-white">Answered</span>
-            <span class="px-2 py-1 rounded-lg bg-amber-500 text-white">Review Flag</span>
-            <span class="px-2 py-1 rounded-lg bg-indigo-600 text-white">Answered & Marked</span>
-            <span class="px-2 py-1 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Unvisited</span>
+        <div class="p-3 space-y-2 bg-slate-50/50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800">
+          <div class="flex flex-wrap gap-1.5 text-[10px] font-bold border-b border-slate-200 dark:border-slate-800 pb-2">
+            <span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white">Answered</span>
+            <span class="px-2 py-0.5 rounded-md bg-amber-500 text-white">Review Flag</span>
+            <span class="px-2 py-0.5 rounded-md bg-indigo-600 text-white">Answered & Marked</span>
+            <span class="px-2 py-0.5 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Unvisited</span>
           </div>
-          <div class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2 max-h-64 overflow-y-auto pr-1">
+          <div class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2 max-h-52 overflow-y-auto pr-1">
             ${buttonsHtml}
           </div>
         </div>
@@ -1305,7 +1255,7 @@ const idx = quizState.currentIndex, total = quizState.questions.length;
 const selected = quizState.userAnswers[idx], answered = selected !== undefined;
 const isRight = selected === q.correct;
 
-const paletteHtml = buildInteractiveQuestionPalette(true);
+const paletteHtml = buildTopInteractiveQuestionPalette(true);
 
 const options = q.options.map((opt, i) => {
 let c = 'flex items-center gap-3 w-full rounded-2xl border px-4 py-3.5 text-left text-sm font-medium transition cursor-pointer active:scale-98 ';
@@ -1335,7 +1285,7 @@ ${q.explanation ? `<div class="text-xs font-medium opacity-80">${escapeHtml(q.ex
 
 const last = idx === total - 1;
 const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative overflow-hidden"> 
-<div class="mb-2 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3"> 
+<div class="mb-1 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2"> 
 <div class="flex items-center gap-3"> 
 <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> 
 <div> 
@@ -1348,9 +1298,16 @@ const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl 
 </button>
 </div> 
 
-<div class="flex-1 overflow-y-auto my-2 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between"> 
+<!-- Top Question Palette Bar -->
+${paletteHtml}
+
+<!-- Swipable Question Card Container -->
+<div ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd()" class="flex-1 overflow-y-auto my-1 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between select-none"> 
 <div> 
-<span class="text-xs font-bold uppercase text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span> 
+<div class="flex items-center justify-between text-xs font-bold text-slate-400 uppercase">
+  <span class="text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span>
+  <span class="text-[10px] text-slate-400 flex items-center gap-1"><i class="fa-solid fa-hand-pointer text-teal-500"></i> Swipe left / right</span>
+</div>
 <p class="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> 
 <div class="mt-5 space-y-3">${options}</div> 
 ${result} 
@@ -1362,7 +1319,87 @@ ${result}
 </div> 
 </div> 
 
+</div>`;
+setModal('', '', html);
+}
+
+function selectPracticeOption(i) { quizState.userAnswers[quizState.currentIndex] = i; renderPracticeQuiz(); }
+function jumpToPracticeQuestion(i) { quizState.currentIndex = i; renderPracticeQuiz(); }
+function goToNextPracticeQuestion() { quizState.currentIndex += 1; renderPracticeQuiz(); }
+function finishPracticeQuiz() { submitTestQuiz(false); }
+
+function renderTestQuiz() {
+toggleFullScreenMode(true);
+if (!quizState.timerInterval) {
+quizState.timerInterval = setInterval(() => {
+const left = Math.max(0, Math.floor((quizState.testEndTimestamp - Date.now()) / 1000));
+const timerEl = document.getElementById('test-timer-display');
+if (timerEl) {
+const mm = String(Math.floor(left / 60)).padStart(2, '0');
+const ss = String(left % 60).padStart(2, '0');
+timerEl.textContent = `${mm}:${ss}`;
+}
+if (left <= 0) { clearInterval(quizState.timerInterval); submitTestQuiz(true); }
+}, 1000);
+}
+
+const q = quizState.questions[quizState.currentIndex];
+if (!q) return;
+const idx = quizState.currentIndex, total = quizState.questions.length;
+const selected = quizState.userAnswers[idx];
+const isMarked = !!quizState.marked[idx];
+
+const paletteHtml = buildTopInteractiveQuestionPalette(false);
+
+const options = q.options.map((opt, i) => {
+const isSel = selected === i;
+let c = 'flex items-center gap-3 w-full rounded-2xl border px-4 py-3.5 text-left text-sm font-medium transition cursor-pointer active:scale-98 ';
+if (isSel) c += 'border-teal-500 bg-teal-50 dark:bg-teal-950/40 text-teal-900 dark:text-teal-200 font-bold';
+else c += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200';
+return `<button type="button" class="${c}" onclick="selectTestOption(${i})"> <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>`;
+}).join('');
+
+const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative overflow-hidden"> 
+<div class="mb-1 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2"> 
+<div class="flex items-center gap-3"> 
+<button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> 
+<div> 
+<h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2> 
+<p class="text-xs text-slate-500 dark:text-slate-400">Test Simulation Mode</p> 
+</div> 
+</div> 
+<div class="flex items-center gap-3"> 
+<button onclick="showAiQuestionExplanation(${idx})" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 font-bold text-xs transition">
+<i class="fa-solid fa-wand-magic-sparkles"></i> AI Explain
+</button>
+<div id="test-timer-display" class="text-xs font-black px-3 py-1.5 rounded-xl bg-teal-600 text-white">--:--</div> 
+<button onclick="confirmSubmitTest()" class="px-4 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition">Submit Test</button> 
+</div> 
+</div> 
+
+<!-- Top Question Palette Bar -->
 ${paletteHtml}
+
+<!-- Swipable Question Card Container -->
+<div ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd()" class="flex-1 overflow-y-auto my-1 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between select-none"> 
+<div> 
+<div class="flex items-center justify-between"> 
+<span class="text-xs font-bold uppercase text-teal-600 dark:text-teal-400">Question ${idx + 1} of ${total}</span> 
+<div class="flex gap-2">
+<button type="button" onclick="showAiQuestionExplanation(${idx})" class="sm:hidden px-3 py-1 rounded-lg border border-purple-500/30 bg-purple-500/10 text-purple-600 text-xs font-bold"><i class="fa-solid fa-wand-magic-sparkles"></i> AI</button>
+<button type="button" onclick="toggleMarkTestCurrent()" class="px-3 py-1 rounded-lg border ${isMarked ? 'border-amber-500 bg-amber-500/10 text-amber-600' : 'border-slate-200 dark:border-slate-700 text-slate-500'} text-xs font-bold transition"><i class="fa-solid fa-flag mr-1"></i> ${isMarked ? 'Marked' : 'Mark'}</button> 
+</div>
+</div> 
+<p class="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> 
+<div class="mt-5 space-y-3">${options}</div> 
+</div> 
+
+<div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"> 
+<button type="button" onclick="jumpToTestQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button> 
+<button type="button" onclick="jumpToTestQuestion(${Math.min(total - 1, idx + 1)})" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition">Next →</button> 
+</div> 
+</div> 
+
 </div>`;
 setModal('', '', html);
 }
