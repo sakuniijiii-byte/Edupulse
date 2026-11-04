@@ -1434,13 +1434,19 @@ function handleTouchStart(e) {
 function handleTouchMove(e) {
   if (e.touches && e.touches.length > 0) {
     quizState.touchEndX = e.touches[0].clientX;
+    quizState.touchEndY = e.touches[0].clientY;
   }
 }
 
 function handleTouchEnd() {
   if (!quizState.touchStartX || !quizState.touchEndX) return;
   const diffX = quizState.touchStartX - quizState.touchEndX;
+  const diffY = quizState.touchStartY - (quizState.touchEndY || quizState.touchStartY);
   const minSwipeDistance = 50;
+  const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  if (!settings.swipeNavigation || Math.abs(diffX) <= Math.abs(diffY) * 2) {
+    quizState.touchStartX = 0; quizState.touchEndX = 0; return;
+  }
 
   if (diffX > minSwipeDistance) {
     if (quizState.currentIndex < quizState.questions.length - 1) {
@@ -1458,6 +1464,38 @@ function handleTouchEnd() {
   quizState.touchEndX = 0;
 }
 
+function saveErrorNotebookEntry(q, selected, reason = 'Not tagged') {
+  if (!q?.qKey) return;
+  const notebook = StorageModule.get(STORAGE_KEYS.errorNotebook, {});
+  const existing = notebook[q.qKey] || { q, attempts: [] };
+  existing.q = q;
+  existing.attempts.unshift({ selected, correct: q.correct, reason, date: new Date().toISOString() });
+  existing.attempts = existing.attempts.slice(0, 10);
+  notebook[q.qKey] = existing;
+  StorageModule.set(STORAGE_KEYS.errorNotebook, notebook);
+}
+function tagWrongReason(reason) {
+  const index = quizState.currentIndex;
+  const q = quizState.questions[index];
+  if (!q || quizState.userAnswers[index] === q.correct) return;
+  quizState.wrongReasons[index] = reason;
+  saveErrorNotebookEntry(q, quizState.userAnswers[index], reason);
+  persistQuizSession();
+  renderPracticeQuiz();
+}
+function toggleEliminatedOption(i) {
+  const index = quizState.currentIndex;
+  quizState.eliminatedOptions[index] = quizState.eliminatedOptions[index] || {};
+  quizState.eliminatedOptions[index][i] = !quizState.eliminatedOptions[index][i];
+  persistQuizSession();
+  renderPracticeQuiz();
+}
+function skipCurrentQuestion() {
+  quizState.skippedQuestions[quizState.currentIndex] = true;
+  persistQuizSession();
+  if (quizState.currentIndex < quizState.questions.length - 1) goToNextPracticeQuestion();
+  else finishPracticeQuiz();
+}
 function saveToLocalStorage() {
 StorageModule.set(STORAGE_KEYS.todos, todos);
 StorageModule.set(STORAGE_KEYS.progress, userProgress);
@@ -1482,6 +1520,7 @@ function escapeHtml(v = '') {
 return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
 const multiline = v => escapeHtml(v).replace(/\n/g, '<br>');
+const formatQuizText = v => escapeHtml(v).replace(/\^([0-9+−-]+)/g, '<sup>$1</sup>').replace(/_([0-9]+)/g, '<sub>$1</sub>').replace(/\n/g, '<br>');
 const jsArg = s => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
 function simpleHash(str) {
@@ -1612,7 +1651,7 @@ function startQuickTen() {
   const pick = ranked.find(x => (questionIndex[slugify(x.subject + ' ' + x.chapter)] || questionIndex[slugify(x.chapter)] || 0) > 0) || ranked[0];
   if (pick) openPracticeSetup(pick.subject, pick.chapter, { length: 10, source: 'all' });
 }
-function resumeSavedSession() { const s = getSavedResume(); if (!s?.questions?.length) return; Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null }); closeModal(); renderPracticeQuiz(); }
+function resumeSavedSession() { const s = getSavedResume(); if (!s?.questions?.length) return; Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null }); closeModal(); renderPracticeQuiz(); }
 
 function fisherYates(list) {
   const a = [...list];
@@ -1699,12 +1738,12 @@ if (mode === 'practice') {
 // ===== launchPracticeSession =====
 function persistQuizSession() {
   if (quizState.mode !== 'practice' || !quizState.questions.length) return;
-  StorageModule.set(STORAGE_KEYS.session, { chapter: quizState.chapter, subject: quizState.subject, title: quizState.title, questions: quizState.questions, currentIndex: quizState.currentIndex, userAnswers: quizState.userAnswers, bookmarked: quizState.bookmarked, skippedQuestions: quizState.skippedQuestions, questionTimes: quizState.questionTimes, savedAt: Date.now() });
+  StorageModule.set(STORAGE_KEYS.session, { chapter: quizState.chapter, subject: quizState.subject, title: quizState.title, questions: quizState.questions, currentIndex: quizState.currentIndex, userAnswers: quizState.userAnswers, bookmarked: quizState.bookmarked, skippedQuestions: quizState.skippedQuestions, questionTimes: quizState.questionTimes, eliminatedOptions: quizState.eliminatedOptions, wrongReasons: quizState.wrongReasons, savedAt: Date.now() });
 }
 function clearQuizSession() { localStorage.removeItem(STORAGE_KEYS.session); }
 function resumeQuizSession() {
   const s = StorageModule.get(STORAGE_KEYS.session, null); if (!s?.questions?.length) return;
-  Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null });
+  Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null });
   closeModal(); renderPracticeQuiz();
 }
 function launchPracticeSession(subj, chapterName, rawQuestions, infiniteState = null) {
@@ -1738,8 +1777,10 @@ function launchPracticeSession(subj, chapterName, rawQuestions, infiniteState = 
     userAnswers: {},
     marked: {},
     bookmarked: {},
-    skippedQuestions: {},
-    questionTimes: {},
+skippedQuestions: {},
+eliminatedOptions: {},
+wrongReasons: {},
+questionTimes: {},
     questionStartTimer: Date.now(),
     testEndTimestamp: null,
     paletteExpanded: false,
@@ -1916,8 +1957,10 @@ function renderPracticeQuiz() {
 
   const topStrip = inf ? buildInfiniteStatsStrip() : buildTopInteractiveQuestionPalette(true);
 
+  const eliminated = quizState.eliminatedOptions[idx] || {};
   const options = q.options.map((opt, i) => {
-    let c = 'flex items-center gap-3 w-full rounded-2xl border px-4 py-3.5 text-left text-sm font-medium transition cursor-pointer active:scale-98 ';
+    let c = 'flex items-center gap-3 w-full rounded-2xl border px-4 py-3.5 text-left text-sm font-medium transition cursor-pointer active:scale-98 touch-manipulation ';
+    if (eliminated[i] && !answered) c += 'opacity-45 line-through border-amber-300 bg-amber-50 dark:bg-amber-950/20 ';
     if (answered) {
       if (i === q.correct) c += 'border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200 font-bold';
       else if (i === selected) c += 'border-rose-500 bg-rose-100 text-rose-900 dark:bg-rose-950/30 dark:text-rose-200 font-bold';
@@ -1925,7 +1968,7 @@ function renderPracticeQuiz() {
     } else {
       c += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200';
     }
-    return `<button type="button" class="${c}" ${answered ? 'disabled' : `onclick="selectPracticeOption(${i})"`}> <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>`;
+    return `<button type="button" role="radio" aria-checked="${selected === i}" aria-label="Option ${String.fromCharCode(65 + i)}${eliminated[i] ? ', eliminated' : ''}" class="${c}" ${answered ? 'disabled' : `onclick="selectPracticeOption(${i})" oncontextmenu="event.preventDefault(); toggleEliminatedOption(${i})"`}> <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${formatQuizText(opt)}</span>${eliminated[i] ? '<i class="fa-solid fa-xmark text-amber-600"></i>' : ''}</button>`;
   }).join('');
 
   const qStats = StorageModule.get(STORAGE_KEYS.qstats, {})[q.qKey] || {};
@@ -1935,6 +1978,7 @@ function renderPracticeQuiz() {
 <span>${isRight ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'} Correct option: <span class="font-black">${String.fromCharCode(65 + q.correct)}. ${escapeHtml(q.options[q.correct])}</span></span>
 </div>
 ${q.explanation && q.explanation !== 'NCERT Concept.' ? `<div class="text-xs font-medium opacity-80 leading-relaxed">${multiline(q.explanation)}</div>` : `<button onclick="showAiQuestionExplanation(${idx})" class="text-xs font-black text-purple-600 hover:underline">Generate explanation</button>`}
+${!isRight ? `<div class="pt-2"><p class="text-[10px] font-black uppercase tracking-wider text-slate-400 mb-2">Why did you miss it?</p><div class="flex flex-wrap gap-2">${['Silly mistake','Didn\'t know','Guessed','Mixed up concepts'].map(reason => `<button onclick="tagWrongReason('${jsArg(reason)}')" class="px-2.5 py-1.5 rounded-lg border text-[10px] font-bold ${quizState.wrongReasons[idx] === reason ? 'border-rose-500 bg-rose-50 text-rose-700' : 'border-slate-200 dark:border-slate-700'}">${reason}</button>`).join('')}</div></div>` : ''}
 <div class="pt-2 border-t border-slate-200/50 dark:border-slate-700/50 flex justify-end">
   <button onclick="showAiQuestionExplanation(${idx})" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
     <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> AI Explain & YouTube Video
@@ -1974,14 +2018,14 @@ ${topStrip}
   <span class="text-[10px] text-slate-400 flex items-center gap-1"><i class="fa-solid fa-hand-pointer text-teal-500"></i> Swipe left / right</span>
 </div>
 <div class="quiz-meta"><span>${escapeHtml(q.sourceChapter || quizState.chapter)}</span><span>${escapeHtml(q.topic || 'NCERT Concepts')}</span><span>${escapeHtml(q.difficulty || 'Medium')}</span>${q.year ? `<span>NEET ${escapeHtml(q.year)}</span>` : ''}<span>${escapeHtml(historyBadge)}</span></div>
-<p class="quiz-stem mt-4 text-base sm:text-lg text-slate-900 dark:text-slate-100">${multiline(q.question)}</p>
+<p class="quiz-stem mt-4 text-base sm:text-lg text-slate-900 dark:text-slate-100">${formatQuizText(q.question)}</p>
 ${q.img ? `<button type="button" onclick="openImageZoom('${jsArg(q.img)}')" class="mt-4 block"><img src="${escapeHtml(q.img)}" alt="Question diagram" loading="lazy" class="max-h-64 rounded-2xl border object-contain"></button>` : ''}
 <div class="mt-5 space-y-3">${options}</div>
 ${result}
 </div>
 
-<div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
-<button type="button" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button>
+<div class="sticky bottom-0 mt-6 pt-4 pb-[calc(env(safe-area-inset-bottom)+0.25rem)] bg-white/95 dark:bg-slate-900/95 backdrop-blur border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2"><button type="button" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button>${!answered ? '<button type="button" onclick="skipCurrentQuestion()" class="rounded-xl border border-amber-300 px-3 py-2.5 text-xs font-bold text-amber-700 dark:text-amber-300">Skip</button>' : ''}</div>
 ${nextBtn}
 </div>
 </div>
@@ -2158,7 +2202,7 @@ ${paletteHtml}
 </div>
 </div> 
 <p class="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> 
-<div class="mt-5 space-y-3">${options}</div> 
+<div class="mt-5 space-y-3" role="radiogroup" aria-label="Answer options">${options}</div>
 </div> 
 
 <div class="quiz-sticky-actions mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
