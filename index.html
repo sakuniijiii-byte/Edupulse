@@ -39,7 +39,20 @@ body.dark{
 body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Plus Jakarta Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;transition:background-color .4s cubic-bezier(0.16,1,0.3,1),color .4s cubic-bezier(0.16,1,0.3,1);-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0;transition:all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)}
-button:active{transform:scale(0.95)}
+button:active{transform:scale(0.98)}
+button,.palette-touch-btn{touch-action:manipulation}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.fullscreen-modal .modal-box{padding:0;min-height:100dvh;height:100dvh}
+.fullscreen-modal #modalHeaderSlot,.fullscreen-modal #modalActions{display:none}
+.quiz-shell{height:100dvh;min-height:0;padding-bottom:env(safe-area-inset-bottom)}
+.quiz-scroll{min-height:0;overscroll-behavior:contain}
+.quiz-sticky-actions{position:sticky;bottom:0;padding:12px max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:linear-gradient(180deg,transparent,var(--card-bg) 28%);z-index:4}
+.quiz-stem{max-width:70ch;font-weight:400;line-height:1.75;user-select:text}.quiz-stem strong{font-weight:700}.quiz-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.quiz-meta span{font-size:10px;font-weight:800;padding:5px 8px;border-radius:999px;background:rgba(13,148,136,.1);color:var(--teal);border:1px solid rgba(13,148,136,.2)}
+.option-btn{transform:none!important}.option-btn:active{transform:scale(.985)!important}
+@media (min-width:1024px){.quiz-question-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.65fr);gap:18px;align-items:start}.quiz-side-panel{display:block!important;position:sticky;top:0}}
+@media (max-height:520px) and (orientation:landscape){.quiz-shell{font-size:12px}.quiz-scroll{padding:12px!important}.quiz-sticky-actions{padding-top:6px}}
+
 .app-layout{display:flex;flex-direction:column;min-height:100vh}
 .sidebar{position:fixed;top:0;bottom:0;left:0;width:280px;height:100vh;overflow-y:auto;z-index:40;display:flex;flex-direction:column;justify-space:between;padding:24px 18px;transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1);background:var(--paper);border-right:1px solid var(--border-color);backdrop-filter:blur(20px)}
 @media (max-width:1023px){.sidebar{transform:translateX(-100%)}.sidebar.mobile-open{transform:translateX(0)}.content{margin-left:0;width:100%}}
@@ -317,6 +330,11 @@ shuffleOptions: false,
 showTimer: true,
 confirmSubmit: true,
 haptics: true,
+sound: false,
+instantAnswer: true,
+autoAdvance: false,
+swipeNavigation: true,
+fontScale: 1,
 dailyGoalQuestions: 30
 };
 
@@ -1396,7 +1414,9 @@ tabSwitches: 0,
 paletteExpanded: false,
 timerInterval: null,
 touchStartX: 0,
+touchStartY: 0,
 touchEndX: 0,
+touchEndY: 0,
 infinite: null
 };
 
@@ -1406,10 +1426,9 @@ function togglePaletteDrawer() {
   else renderTestQuiz();
 }
 
+function openImageZoom(src) { setModal('Question diagram', '', `<img src="${escapeHtml(src)}" alt="Expanded question diagram" class="w-full max-h-[75vh] object-contain rounded-2xl">`, `<button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-white text-xs font-bold">Close</button>`); }
 function handleTouchStart(e) {
-  if (e.touches && e.touches.length > 0) {
-    quizState.touchStartX = e.touches[0].clientX;
-  }
+  if (e.touches && e.touches.length > 0) { quizState.touchStartX = e.touches[0].clientX; quizState.touchStartY = e.touches[0].clientY; }
 }
 
 function handleTouchMove(e) {
@@ -1505,6 +1524,15 @@ localStorage.setItem(STORAGE_KEYS.theme, isDark ? 'dark' : 'light');
 }
 initTheme();
 
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('appModal')?.classList.contains('open') || document.activeElement?.matches('input,textarea,select')) return;
+  if (!quizState.questions.length) return;
+  if (/^[1-4]$/.test(e.key) && quizState.userAnswers[quizState.currentIndex] === undefined) { e.preventDefault(); selectPracticeOption(Number(e.key)-1); }
+  else if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (quizState.userAnswers[quizState.currentIndex] !== undefined) goToNextPracticeQuestion(); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); jumpToPracticeQuestion(quizState.currentIndex - 1); }
+  else if (e.key.toLowerCase() === 'b') { quizState.bookmarked[quizState.currentIndex] = !quizState.bookmarked[quizState.currentIndex]; persistQuizSession(); renderPracticeQuiz(); }
+  else if (e.key.toLowerCase() === 's') { quizState.skippedQuestions[quizState.currentIndex] = true; persistQuizSession(); goToNextPracticeQuestion(); }
+});
 window.addEventListener('online', updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
 function updateOnlineStatus() {
@@ -1565,42 +1593,61 @@ function generateFallbackQuestions(subj, chapterName) {
   return [];
 }
 
-async function setupQuizMode(mode, subj, chapterName, customQuestions = null) {
+const questionCache = new Map();
+let questionIndex = {};
+fetch('Data/index.json').then(r => r.ok ? r.json() : {}).then(v => { questionIndex = v || {}; }).catch(() => {});
+
+function fisherYates(list) {
+  const a = [...list];
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+function hasLockedOption(options) { return options.some(o => /both|all of the above|none of these/i.test(o)); }
+function normalizeQuestions(raw, subj, chapterName) {
+  return raw.map((q, i) => {
+    const options = (q.o || q.options || q.opts || []).map(String);
+    const a = q.a ?? q.answer ?? q.ans;
+    let correct = typeof a === 'number' ? a - 1 : options.findIndex(o => o.trim() === String(a).trim());
+    if (correct < 0 || correct >= options.length) correct = 0;
+    return { qKey: q.qKey || slugify(chapterName) + '#' + simpleHash(q.q || q.question || String(i)), question: q.q || q.question || `Question ${i + 1}`, options: options.length ? options : ['Option A','Option B','Option C','Option D'], correct, explanation: q.s || q.explanation || '', topic: q.topic || q.t || 'NCERT Concepts', difficulty: q.difficulty || q.level || 'Medium', year: q.year || q.pyqYear || '', sourceChapter: q.c || q.chapter || chapterName, img: q.img || q.image, hint: q.h, optionImages: q.optionImages || [] };
+  });
+}
+async function preloadChapter(subj, chapterName) {
+  const key = `${subj}:${chapterName}`;
+  if (questionCache.has(key)) return questionCache.get(key);
+  const promise = fetch(quizUrl(subj, chapterName), { cache: 'force-cache' }).then(async res => {
+    if (!res.ok) return [];
+    const raw = await res.json();
+    const list = Array.isArray(raw) ? raw : (raw.qs || raw.questions || []);
+    return normalizeQuestions(list, subj, chapterName);
+  }).catch(() => []);
+  questionCache.set(key, promise);
+  return promise;
+}
+function openPracticeSetup(subj, chapterName) {
+  const saved = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  setModal('Set up your practice', `${subj} · ${chapterName}`, `<div class="space-y-5 py-2"><div class="grid grid-cols-4 gap-2">${[10,20,30,'all'].map(v => `<button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('ring-2','ring-teal-500'));this.classList.add('ring-2','ring-teal-500');this.dataset.value='${v}'" class="rounded-2xl border border-slate-200 dark:border-slate-700 p-3 text-xs font-black ${saved.practiceLength == v ? 'ring-2 ring-teal-500' : ''}" data-value="${v}">${v === 'all' ? 'All' : v}</button>`).join('')}</div><div class="space-y-2"><label class="text-xs font-black">Question source</label><select id="practice-source" class="w-full rounded-xl border p-3 text-sm bg-transparent"><option>All</option><option>Unseen</option><option>Previously wrong</option><option>Bookmarked</option></select></div><label class="flex items-center justify-between rounded-xl border p-3 text-sm font-bold">Shuffle questions <input id="practice-shuffle" type="checkbox" ${saved.shuffleQuestions ? 'checked' : ''}></label><label class="flex items-center justify-between rounded-xl border p-3 text-sm font-bold">Shuffle options <input id="practice-shuffle-options" type="checkbox" ${saved.shuffleOptions ? 'checked' : ''}></label><p class="text-[11px] text-slate-500">Your last choices are remembered on this device.</p></div>`, `<button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Cancel</button><button onclick="startConfiguredPractice('${jsArg(subj)}','${jsArg(chapterName)}')" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white text-xs font-black">Start practice</button>`);
+}
+async function startConfiguredPractice(subj, chapterName) {
+  const sheet = document.querySelector('#modalContentSlot');
+  const lengthBtn = sheet?.querySelector('[data-value].ring-2');
+  const length = lengthBtn?.dataset.value || '10';
+  const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  settings.practiceLength = length; settings.shuffleQuestions = !!document.getElementById('practice-shuffle')?.checked; settings.shuffleOptions = !!document.getElementById('practice-shuffle-options')?.checked;
+  StorageModule.set(STORAGE_KEYS.settings, settings);
+  await setupQuizMode('practice', subj, chapterName, null, true);
+}
+
+async function setupQuizMode(mode, subj, chapterName, customQuestions = null, configured = false) {
 subject = subj;
+if (mode === 'practice' && !configured && !customQuestions) return openPracticeSetup(subj, chapterName);
 toggleFullScreenMode(false);
-setModal('Loading Quiz', chapterName, `<div class="flex flex-col items-center justify-center py-10"> <i class="fa-solid fa-spinner fa-spin text-4xl text-teal-600 mb-4"></i> <p class="text-sm font-bold text-slate-700 dark:text-slate-200">Preparing ${mode === 'practice' ? 'Practice' : 'Test'} session for ${escapeHtml(chapterName)}...</p> </div>`);
+setModal('Preparing practice', chapterName, `<div class="space-y-4 animate-pulse"><div class="h-4 rounded bg-slate-200 dark:bg-slate-800 w-2/3"></div><div class="h-28 rounded-2xl bg-slate-200 dark:bg-slate-800"></div><div class="h-12 rounded-2xl bg-slate-200 dark:bg-slate-800"></div></div>`);
 
 try {
 let rawQuestions = customQuestions;
 
-if (!rawQuestions) {
-  const fetchUrl = quizUrl(subj, chapterName);
-  try {
-    const res = await fetch(fetchUrl, { cache: 'no-cache' });
-    if (res.ok) {
-      const raw = await res.json();
-      const list = Array.isArray(raw) ? raw : (raw.qs || raw.questions || []);
-      if (Array.isArray(list) && list.length > 0) {
-        rawQuestions = list.map((q, i) => {
-          const options = (q.o || q.options || q.opts || []).map(String);
-          const a = q.a ?? q.answer ?? q.ans;
-          let correct = typeof a === 'number' ? a - 1 : options.findIndex(o => o.trim() === String(a).trim());
-          if (correct < 0 || correct >= options.length) correct = 0;
-          return {
-            qKey: slugify(chapterName) + '#' + simpleHash(q.q || q.question || String(i)),
-            question: q.q || q.question || `Question ${i + 1}`,
-            options: options.length ? options : ["Option A", "Option B", "Option C", "Option D"],
-            correct,
-            explanation: q.s || q.explanation || 'NCERT Concept.',
-            sourceChapter: chapterName
-          };
-        });
-      }
-    }
-  } catch (e) {
-    console.warn(`Local JSON fetch note for ${fetchUrl}:`, e);
-  }
-}
+if (!rawQuestions) rawQuestions = await preloadChapter(subj, chapterName);
 
 if (!rawQuestions || !rawQuestions.length) {
   setModal('Coming Soon 🚀', chapterName, `
@@ -1632,13 +1679,33 @@ if (mode === 'practice') {
 }
 
 // ===== launchPracticeSession =====
+function persistQuizSession() {
+  if (quizState.mode !== 'practice' || !quizState.questions.length) return;
+  StorageModule.set(STORAGE_KEYS.session, { chapter: quizState.chapter, subject: quizState.subject, title: quizState.title, questions: quizState.questions, currentIndex: quizState.currentIndex, userAnswers: quizState.userAnswers, bookmarked: quizState.bookmarked, skippedQuestions: quizState.skippedQuestions, questionTimes: quizState.questionTimes, savedAt: Date.now() });
+}
+function clearQuizSession() { localStorage.removeItem(STORAGE_KEYS.session); }
+function resumeQuizSession() {
+  const s = StorageModule.get(STORAGE_KEYS.session, null); if (!s?.questions?.length) return;
+  Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null });
+  closeModal(); renderPracticeQuiz();
+}
 function launchPracticeSession(subj, chapterName, rawQuestions, infiniteState = null) {
+  const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  let questions = settings.shuffleQuestions ? fisherYates(rawQuestions) : [...rawQuestions];
+  if (settings.shuffleOptions) questions = questions.map(q => {
+    if (hasLockedOption(q.options)) return q;
+    const indexed = q.options.map((option, index) => ({ option, index }));
+    const shuffled = fisherYates(indexed);
+    return { ...q, options: shuffled.map(x => x.option), correct: shuffled.findIndex(x => x.index === q.correct) };
+  });
+  const length = Number(settings.practiceLength || 'all');
+  if (Number.isFinite(length) && length > 0) questions = questions.slice(0, length);
   Object.assign(quizState, {
     mode: 'practice',
     chapter: chapterName,
     subject: subj,
     title: `${subj} — ${chapterName}`,
-    questions: rawQuestions,
+    questions,
     currentIndex: 0,
     userAnswers: {},
     marked: {},
@@ -1833,11 +1900,13 @@ function renderPracticeQuiz() {
     return `<button type="button" class="${c}" ${answered ? 'disabled' : `onclick="selectPracticeOption(${i})"`}> <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>`;
   }).join('');
 
-  const result = answered ? `<div class="mt-4 rounded-2xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} p-4 text-sm font-semibold space-y-3">
+  const qStats = StorageModule.get(STORAGE_KEYS.qstats, {})[q.qKey] || {};
+  const historyBadge = qStats.seen ? (qStats.streak >= 3 ? '3 correct in a row' : `Missed ${qStats.wrong || 0}×`) : 'First time';
+  const result = answered ? `<div id="quiz-result" tabindex="-1" class="mt-4 rounded-2xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} p-4 text-sm font-semibold space-y-3">
 <div class="flex items-center justify-between">
 <span>${isRight ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'} Correct option: <span class="font-black">${String.fromCharCode(65 + q.correct)}. ${escapeHtml(q.options[q.correct])}</span></span>
 </div>
-${q.explanation ? `<div class="text-xs font-medium opacity-80">${escapeHtml(q.explanation)}</div>` : ''}
+${q.explanation && q.explanation !== 'NCERT Concept.' ? `<div class="text-xs font-medium opacity-80 leading-relaxed">${multiline(q.explanation)}</div>` : `<button onclick="showAiQuestionExplanation(${idx})" class="text-xs font-black text-purple-600 hover:underline">Generate explanation</button>`}
 <div class="pt-2 border-t border-slate-200/50 dark:border-slate-700/50 flex justify-end">
   <button onclick="showAiQuestionExplanation(${idx})" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
     <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> AI Explain & YouTube Video
@@ -1863,7 +1932,7 @@ ${q.explanation ? `<div class="text-xs font-medium opacity-80">${escapeHtml(q.ex
 </div>
 </div>
 <div class="flex items-center gap-2">
-${answered ? `<button onclick="showAiQuestionExplanation(${idx})" class="px-3 py-1.5 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 font-bold text-xs transition flex items-center gap-1.5"><i class="fa-solid fa-brain"></i> AI Explanation</button>` : ''}
+
 <button onclick="finishPracticeQuiz()" class="px-3.5 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-extrabold text-xs hover:bg-rose-500 hover:text-white transition">${inf ? 'End Session' : 'Exit'}</button>
 </div>
 </div>
@@ -1876,7 +1945,9 @@ ${topStrip}
   <span class="text-teal-600 dark:text-teal-400">${qLabel}</span>
   <span class="text-[10px] text-slate-400 flex items-center gap-1"><i class="fa-solid fa-hand-pointer text-teal-500"></i> Swipe left / right</span>
 </div>
-<p class="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">${multiline(q.question)}</p>
+<div class="quiz-meta"><span>${escapeHtml(q.sourceChapter || quizState.chapter)}</span><span>${escapeHtml(q.topic || 'NCERT Concepts')}</span><span>${escapeHtml(q.difficulty || 'Medium')}</span>${q.year ? `<span>NEET ${escapeHtml(q.year)}</span>` : ''}<span>${escapeHtml(historyBadge)}</span></div>
+<p class="quiz-stem mt-4 text-base sm:text-lg text-slate-900 dark:text-slate-100">${multiline(q.question)}</p>
+${q.img ? `<button type="button" onclick="openImageZoom('${jsArg(q.img)}')" class="mt-4 block"><img src="${escapeHtml(q.img)}" alt="Question diagram" loading="lazy" class="max-h-64 rounded-2xl border object-contain"></button>` : ''}
 <div class="mt-5 space-y-3">${options}</div>
 ${result}
 </div>
@@ -1895,8 +1966,20 @@ function selectPracticeOption(i) {
   if (quizState.userAnswers[quizState.currentIndex] !== undefined) return;
   quizState.userAnswers[quizState.currentIndex] = i;
   const q = quizState.questions[quizState.currentIndex];
-  if (quizState.infinite && q) adaptInfinite(i === q.correct, q);
+  quizState.questionTimes[quizState.currentIndex] = Math.max(0, Math.round((Date.now() - quizState.questionStartTimer) / 1000));
+  quizState.questionStartTimer = Date.now();
+  const correct = !!q && i === q.correct;
+  const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
+  const key = q?.qKey || `${quizState.chapter}:${quizState.currentIndex}`;
+  stats[key] = stats[key] || { seen: 0, correct: 0, wrong: 0, streak: 0, lastSeen: 0 };
+  stats[key].seen++; stats[key].lastSeen = Date.now();
+  if (correct) { stats[key].correct++; stats[key].streak++; } else { stats[key].wrong++; stats[key].streak = 0; }
+  StorageModule.set(STORAGE_KEYS.qstats, stats);
+  if (navigator.vibrate && StorageModule.get(STORAGE_KEYS.settings, defaultSettings).haptics) navigator.vibrate(correct ? 10 : [10, 40, 10]);
+  persistQuizSession();
+  if (quizState.infinite && q) adaptInfinite(correct, q);
   renderPracticeQuiz();
+  setTimeout(() => document.getElementById('quiz-result')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 40);
 }
 
 function jumpToPracticeQuestion(i) {
@@ -2050,7 +2133,7 @@ ${paletteHtml}
 <div class="mt-5 space-y-3">${options}</div> 
 </div> 
 
-<div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"> 
+<div class="quiz-sticky-actions mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
 <button type="button" onclick="jumpToTestQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button> 
 <button type="button" onclick="jumpToTestQuestion(${Math.min(total - 1, idx + 1)})" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition">Next →</button> 
 </div> 
@@ -2852,9 +2935,12 @@ main.innerHTML = `
       return c.toLowerCase().includes(q);
     }).map((ch, idx) => {
       const isDone = userProgress[ch]?.completed;
+      const bankCount = questionIndex[slugify(subject + ' ' + ch)] || questionIndex[slugify(ch)] || 0;
+      const attemptsForChapter = StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => a.chapter === ch);
+      const chapterAccuracy = attemptsForChapter.length ? Math.round(attemptsForChapter.reduce((s,a)=>s+(a.accuracy||0),0)/attemptsForChapter.length) : null;
       const oneShotQuery = `${ch} ${subject} NEET One Shot full chapter lecture`;
       return `
-        <div onclick="setupQuizMode('practice', '${subject}', '${jsArg(ch)}')" class="chapter card border-2 ${isDone ? 'border-emerald-500/40 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800'} hover:border-teal-500 group cursor-pointer transition-all">
+        <div onpointerenter="preloadChapter('${jsArg(subject)}','${jsArg(ch)}')" ontouchstart="preloadChapter('${jsArg(subject)}','${jsArg(ch)}')" onclick="${bankCount ? `openPracticeSetup('${jsArg(subject)}','${jsArg(ch)}')` : `openAdaptiveAiConfigModal('${jsArg(subject)}')`}" class="chapter card border-2 ${isDone ? 'border-emerald-500/40 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800'} hover:border-teal-500 group cursor-pointer transition-all">
           <div>
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 font-extrabold text-[10px]">Ch ${idx + 1}</span>
@@ -2862,7 +2948,7 @@ main.innerHTML = `
                 <i class="fa-solid ${isDone ? 'fa-circle-check text-emerald-500' : 'fa-circle'} mr-1"></i> ${isDone ? 'Completed' : 'Mark Done'}
               </button>
             </div>
-            <h4 class="chapter-title group-hover:text-teal-600 transition-colors">${escapeHtml(ch)}</h4>
+            <h4 class="chapter-title group-hover:text-teal-600 transition-colors">${escapeHtml(ch)}</h4><div class="mt-2 flex items-center gap-2 text-[10px] font-bold text-slate-500"><span>${bankCount ? `${bankCount} Qs` : 'Soon'}</span>${chapterAccuracy !== null ? `<span>· ${chapterAccuracy}% accuracy</span>` : ''}<span class="ml-auto h-8 w-8 rounded-full border-4 border-teal-500/30 ${chapterAccuracy !== null ? 'border-t-teal-500' : ''} flex items-center justify-center text-[9px]">${chapterAccuracy ?? 0}%</span></div>
           </div>
 
           <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between gap-1 flex-wrap">
