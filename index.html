@@ -24,7 +24,7 @@
   --bio-bg:linear-gradient(135deg, rgba(16,185,129,0.12), rgba(5,150,105,0.05));--bio-text:#047857;--bio-border:rgba(16,185,129,0.3);
   --chem-bg:linear-gradient(135deg, rgba(139,92,246,0.12), rgba(109,40,217,0.05));--chem-text:#6d28d9;--chem-border:rgba(139,92,246,0.3);
   --phy-bg:linear-gradient(135deg, rgba(14,165,233,0.12), rgba(3,105,161,0.05));--phy-text:#0369a1;--phy-border:rgba(14,165,233,0.3);
-  --glass:rgba(255,255,255,0.85)
+  --glass:rgba(255,255,255,0.85);--accent:#22d3ee;--accent-soft:rgba(34,211,238,.12);--signal:#fbbf24
 }
 body.dark{
   --ink:#f8fafc;--muted:#94a3b8;--line:#1e293b;--paper:#0f172a;--bg:#070a12;
@@ -33,7 +33,7 @@ body.dark{
   --bio-bg:linear-gradient(135deg, rgba(16,185,129,0.2), rgba(5,150,105,0.08));--bio-text:#6ee7b7;--bio-border:rgba(52,211,153,0.4);
   --chem-bg:linear-gradient(135deg, rgba(139,92,246,0.2), rgba(109,40,217,0.08));--chem-text:#c4b5fd;--chem-border:rgba(167,139,250,0.4);
   --phy-bg:linear-gradient(135deg, rgba(14,165,233,0.2), rgba(3,105,161,0.08));--phy-text:#7dd3fc;--phy-border:rgba(56,189,248,0.4);
-  --glass:rgba(30,41,59,0.85)
+  --glass:rgba(15,23,42,0.86);--accent:#67e8f9;--accent-soft:rgba(103,232,249,.12);--signal:#fbbf24
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Plus Jakarta Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;transition:background-color .4s cubic-bezier(0.16,1,0.3,1),color .4s cubic-bezier(0.16,1,0.3,1);-webkit-font-smoothing:antialiased}
@@ -81,6 +81,11 @@ body.dark .bar{background:rgba(255,255,255,.12)}
 @keyframes fadeInSlide{from{opacity:0;transform:translateY(12px) scale(0.99)}to{opacity:1;transform:translateY(0) scale(1)}}
 .tag{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.17em;font-size:11px}
 .card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:24px;box-shadow:0 4px 20px -2px rgba(0,0,0,.03);transition:all .35s cubic-bezier(0.34, 1.56, 0.64, 1)}
+.executive-hero{background:radial-gradient(circle at 85% 15%,rgba(34,211,238,.22),transparent 28%),radial-gradient(circle at 10% 90%,rgba(99,102,241,.2),transparent 32%),linear-gradient(135deg,#071c2b 0%,#0b2336 48%,#11143c 100%);border:1px solid rgba(103,232,249,.22);box-shadow:0 24px 70px -30px rgba(34,211,238,.45)}
+.executive-kicker{color:var(--accent);letter-spacing:.2em;font-size:10px;font-weight:900;text-transform:uppercase}
+.metric-card{position:relative;overflow:hidden}.metric-card::after{content:'';position:absolute;right:-28px;bottom:-32px;width:110px;height:110px;border-radius:999px;background:var(--accent-soft);filter:blur(2px)}
+@media (max-width:640px){.main{padding:20px 16px}.topbar{padding:0 16px;height:68px}.executive-hero{border-radius:24px!important}}
+
 .card:hover{border-color:rgba(13,148,136,.4);box-shadow:0 16px 36px -6px rgba(13,148,136,.16);transform:translateY(-4px) scale(1.01)}
 .subject{padding:14px 18px;border:1px solid var(--border-color);border-radius:18px;background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all .3s cubic-bezier(0.34, 1.56, 0.64, 1)}
 .subject.selected{border-color:var(--teal);background:rgba(13,148,136,.08);box-shadow:0 0 0 2px rgba(13,148,136,.25);transform:scale(1.03)}
@@ -1041,7 +1046,8 @@ function launchQuizFromAiChat(rawQuestions) {
 }
 
 // ===== Quiz Data & Chapter Structure =====
-const DATA_BASE = "Data/";
+// Question bank is served from the dedicated /data mount so content can evolve independently from the app shell.
+const DATA_BASE = "/data/";
 const FILE_OVERRIDES = { 'The Living World': 'living_world_mcqs.json' };
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const quizUrl = (subj, chapter) => DATA_BASE + (FILE_OVERRIDES[chapter] || `${slugify(subj + ' ' + chapter)}.json`);
@@ -1108,10 +1114,10 @@ const DEFAULT_BATCH_SERIES = [
     description: "Chapter-by-chapter CBT tests in the real NEET pattern, built to strengthen your Class 11th concepts.",
     bannerBg: "linear-gradient(135deg, #0f766e 0%, #115e59 100%)",
     tests: [
-      { id: "c11_p1", title: "Basic Maths & Calculus", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "10 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/physics-units-and-measurements.json", syllabus: ["Differentiation & Integration", "Vectors basics", "Trigonometric Graphs"] },
-      { id: "c11_p2", title: "Vectors & Kinematics", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "18 Jul 2026 | 2:00 pm", status: "locked", dataFile: "Data/physics-motion-in-a-straight-line.json", syllabus: ["Vector Addition", "Dot & Cross Product", "Projective Motion"] },
-      { id: "c11_c1", title: "Some Basic Concepts of Chemistry", subject: "Chemistry", questions: 45, marks: 180, timeMins: 45, schedule: "12 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/chemistry-some-basic-concepts-of-chemistry.json", syllabus: ["Mole Concept", "Stoichiometry", "Concentration Terms"] },
-      { id: "c11_b1", title: "The Living World & Taxonomy", subject: "Botany", questions: 50, marks: 200, timeMins: 50, schedule: "15 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/living_world_mcqs.json", syllabus: ["Taxonomic Hierarchy", "Herbarium & Museums", "Binomial Nomenclature"] }
+      { id: "c11_p1", title: "Basic Maths & Calculus", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "10 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/physics-units-and-measurements.json", syllabus: ["Differentiation & Integration", "Vectors basics", "Trigonometric Graphs"] },
+      { id: "c11_p2", title: "Vectors & Kinematics", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "18 Jul 2026 | 2:00 pm", status: "locked", dataFile: "/data/physics-motion-in-a-straight-line.json", syllabus: ["Vector Addition", "Dot & Cross Product", "Projective Motion"] },
+      { id: "c11_c1", title: "Some Basic Concepts of Chemistry", subject: "Chemistry", questions: 45, marks: 180, timeMins: 45, schedule: "12 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/chemistry-some-basic-concepts-of-chemistry.json", syllabus: ["Mole Concept", "Stoichiometry", "Concentration Terms"] },
+      { id: "c11_b1", title: "The Living World & Taxonomy", subject: "Botany", questions: 50, marks: 200, timeMins: 50, schedule: "15 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/living_world_mcqs.json", syllabus: ["Taxonomic Hierarchy", "Herbarium & Museums", "Binomial Nomenclature"] }
     ]
   },
   {
@@ -1124,8 +1130,8 @@ const DEFAULT_BATCH_SERIES = [
     description: "Structured CBT Test Series for NEET Droppers — Part Syllabus Phase Drills.",
     bannerBg: "linear-gradient(135deg, #0d9488 0%, #0369a1 100%)",
     tests: [
-      { id: "pt_01", title: "Practice Test 01", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "19 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/living_world_mcqs.json", syllabus: ["Class 11 Bio Ch 1-4", "Phy Vectors & Kinematics", "Chem Mole Concept & Thermodynamics"] },
-      { id: "pt_02", title: "Practice Test 02", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "2 Aug 2026 | 2:00 pm", status: "locked", dataFile: "Data/living_world_mcqs.json", syllabus: ["Plant Physiology", "Chemical Bonding", "Laws of Motion"] }
+      { id: "pt_01", title: "Practice Test 01", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "19 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/living_world_mcqs.json", syllabus: ["Class 11 Bio Ch 1-4", "Phy Vectors & Kinematics", "Chem Mole Concept & Thermodynamics"] },
+      { id: "pt_02", title: "Practice Test 02", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "2 Aug 2026 | 2:00 pm", status: "locked", dataFile: "/data/living_world_mcqs.json", syllabus: ["Plant Physiology", "Chemical Bonding", "Laws of Motion"] }
     ]
   },
   {
@@ -1138,7 +1144,7 @@ const DEFAULT_BATCH_SERIES = [
     description: "NEET AIR 2027 Full Syllabus Test Series — Test + Discussion every Thursday, Full Syllabus as per NTA.",
     bannerBg: "linear-gradient(135deg, #1e1b4b 0%, #0f766e 100%)",
     tests: [
-      { id: "fst_01", title: "Full Syllabus Test 1", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "13 Aug 2026", status: "available", dataFile: "Data/living_world_mcqs.json", syllabus: ["Complete NTA NEET Syllabus (Physics, Chemistry, Botany, Zoology)"] }
+      { id: "fst_01", title: "Full Syllabus Test 1", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "13 Aug 2026", status: "available", dataFile: "/data/living_world_mcqs.json", syllabus: ["Complete NTA NEET Syllabus (Physics, Chemistry, Botany, Zoology)"] }
     ]
   }
 ];
@@ -1637,7 +1643,7 @@ function generateFallbackQuestions(subj, chapterName) {
 
 const questionCache = new Map();
 let questionIndex = {};
- fetch('Data/index.json').then(r => r.ok ? r.json() : {}).then(v => { questionIndex = v || {}; renderView(); }).catch(() => {});
+ fetch('/data/index.json').then(r => r.ok ? r.json() : {}).then(v => { questionIndex = v || {}; renderView(); }).catch(() => {});
 
 function getSavedResume() { return StorageModule.get(STORAGE_KEYS.session, null); }
 function getStudySignals() {
@@ -2461,13 +2467,13 @@ const avgAccuracy = attemptsArr.length > 0 ? Math.round(attemptsArr.reduce((s, a
 main.innerHTML = `
 <div class="space-y-8 animate-fadeIn max-w-6xl mx-auto">
   <!-- Welcome & Hero Banner -->
-  <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-teal-900 via-teal-800 to-indigo-950 p-6 sm:p-8 text-white shadow-2xl border border-teal-700/40">
+  <div class="executive-hero relative overflow-hidden rounded-3xl p-6 sm:p-8 text-white">
     <div class="absolute right-0 top-0 w-80 h-80 rounded-full bg-teal-400/10 blur-3xl pointer-events-none"></div>
     <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
       <div class="space-y-2">
-        <span class="px-3 py-1 rounded-full bg-teal-400/20 text-teal-200 border border-teal-400/30 font-black text-[10px] tracking-widest uppercase">Target NEET 2026</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-white">Instant Practice Ecosystem</h2>
-        <p class="text-slate-300 text-xs sm:text-sm max-w-xl font-medium leading-relaxed">Master 79 NCERT chapters instantly with one-click practice drills, instant AI explanations, and CBT test papers.</p>
+        <span class="executive-kicker">Your NEET command centre · 2026</span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">Turn every session into measurable progress.</h2>
+        <p class="text-slate-300 text-xs sm:text-sm max-w-xl font-medium leading-relaxed">A focused daily system for mastering NCERT, closing weak spots, and building exam-day confidence from one question bank.</p>
       </div>
       <div class="flex flex-wrap gap-3">
         <button onclick="switchTab('learn')" class="px-6 py-3.5 rounded-2xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-xs shadow-lg transition flex items-center gap-2">
@@ -2536,7 +2542,7 @@ main.innerHTML = `
 
   <!-- Metric Quick Stats Grid -->
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-    <div class="card p-5 space-y-2 border-l-4 border-l-teal-500 bg-gradient-to-br from-teal-500/5 to-transparent">
+    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-cyan-400 bg-gradient-to-br from-cyan-500/5 to-transparent">
       <span class="text-[11px] font-black text-teal-600 dark:text-teal-400 uppercase tracking-wider">Syllabus Covered</span>
       <div class="flex items-baseline justify-between">
         <span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">${pct}%</span>
@@ -2545,7 +2551,7 @@ main.innerHTML = `
       <div class="progress"><i style="width:${pct}%"></i></div>
     </div>
 
-    <div class="card p-5 space-y-2 border-l-4 border-l-amber-500 bg-gradient-to-br from-amber-500/5 to-transparent">
+    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-amber-400 bg-gradient-to-br from-amber-500/5 to-transparent">
       <span class="text-[11px] font-black text-amber-500 uppercase tracking-wider">Active Streak</span>
       <div class="flex items-baseline justify-between">
         <span class="text-2xl sm:text-3xl font-black text-amber-500">${streak.current} <small class="text-xs font-bold">Days</small></span>
@@ -2554,7 +2560,7 @@ main.innerHTML = `
       <p class="text-[11px] text-slate-400 font-semibold">Daily practice active 🔥</p>
     </div>
 
-    <div class="card p-5 space-y-2 border-l-4 border-l-emerald-500 bg-gradient-to-br from-emerald-500/5 to-transparent">
+    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-emerald-400 bg-gradient-to-br from-emerald-500/5 to-transparent">
       <span class="text-[11px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Accuracy</span>
       <div class="flex items-baseline justify-between">
         <span class="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">${avgAccuracy}%</span>
@@ -2563,7 +2569,7 @@ main.innerHTML = `
       <p class="text-[11px] text-slate-400 font-semibold">Across ${attemptsArr.length} sessions 🎯</p>
     </div>
 
-    <div class="card p-5 space-y-2 border-l-4 border-l-purple-500 bg-gradient-to-br from-purple-500/5 to-transparent">
+    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-violet-400 bg-gradient-to-br from-purple-500/5 to-transparent">
       <span class="text-[11px] font-black text-purple-600 uppercase tracking-wider">Test Portal</span>
       <div class="flex items-baseline justify-between">
         <span class="text-2xl sm:text-3xl font-black text-purple-600">CBT Hub</span>
