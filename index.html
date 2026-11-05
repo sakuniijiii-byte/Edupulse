@@ -1060,7 +1060,8 @@ function launchQuizFromAiChat(rawQuestions) {
 
 // ===== Quiz Data & Chapter Structure =====
 // Question bank is served from the dedicated /data mount so content can evolve independently from the app shell.
-const FILE_OVERRIDES = { 'The Living World': 'living_world_mcqs.json' };
+const FILE_OVERRIDES = {}; // every chapter now uses: <subject>-<chapter>.json (e.g. biology-the-living-world.json)
+const LEGACY_FILES = { 'biology-the-living-world.json': 'living_world_mcqs.json' }; // used only if the new name is missing
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const quizUrl = (subj, chapter) => DATA_BASE + (FILE_OVERRIDES[chapter] || `${slugify(subj + ' ' + chapter)}.json`);
 const DATA_BASE = "/data/";                 // original (site-root) location
@@ -1074,6 +1075,12 @@ async function fetchDataFile(fileName, opts = {}) {
       if (res.ok) return res;
       lastErr = new Error(`HTTP ${res.status} for ${base + fileName}`);
     } catch (e) { lastErr = e; }
+  }
+  const legacy = LEGACY_FILES[fileName];
+  if (legacy) {
+    for (const base of DATA_BASES) {
+      try { const res = await fetch(base + legacy, opts); if (res.ok) return res; } catch (e) {}
+    }
   }
   console.warn('[EduPulse] Could not load data file:', fileName, lastErr);
   return null;
@@ -1110,7 +1117,6 @@ const RESOURCE_VAULT_ITEMS = [
   { id: "cd3", title: "GitHub Developer Ecosystem", category: "Coding & Tech", subtag: "Books", badge: "Version Control", url: "https://github.com/" },
   { id: "fun1", title: "Wotaku Wiki Hub", category: "Fun & Media", subtag: "Fun", badge: "Wotaku", url: "https://wotaku.wiki/" }
 ];
-
 let currentTab = 'dashboard', previousTab = 'dashboard', subject = 'Biology';
 let userProgress = StorageModule.get(STORAGE_KEYS.progress, {});
 let todos = StorageModule.get(STORAGE_KEYS.todos, [
@@ -1144,7 +1150,7 @@ const DEFAULT_BATCH_SERIES = [
       { id: "c11_p1", title: "Basic Maths & Calculus", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "10 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/physics-units-and-measurements.json", syllabus: ["Differentiation & Integration", "Vectors basics", "Trigonometric Graphs"] },
       { id: "c11_p2", title: "Vectors & Kinematics", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "18 Jul 2026 | 2:00 pm", status: "locked", dataFile: "/data/physics-motion-in-a-straight-line.json", syllabus: ["Vector Addition", "Dot & Cross Product", "Projective Motion"] },
       { id: "c11_c1", title: "Some Basic Concepts of Chemistry", subject: "Chemistry", questions: 45, marks: 180, timeMins: 45, schedule: "12 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/chemistry-some-basic-concepts-of-chemistry.json", syllabus: ["Mole Concept", "Stoichiometry", "Concentration Terms"] },
-      { id: "c11_b1", title: "The Living World & Taxonomy", subject: "Botany", questions: 50, marks: 200, timeMins: 50, schedule: "15 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/living_world_mcqs.json", syllabus: ["Taxonomic Hierarchy", "Herbarium & Museums", "Binomial Nomenclature"] }
+      { id: "c11_b1", title: "The Living World & Taxonomy", subject: "Botany", questions: 50, marks: 200, timeMins: 50, schedule: "15 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/biology-the-living-world.json", syllabus: ["Taxonomic Hierarchy", "Herbarium & Museums", "Binomial Nomenclature"] }
     ]
   },
   {
@@ -1157,8 +1163,8 @@ const DEFAULT_BATCH_SERIES = [
     description: "Structured CBT Test Series for NEET Droppers — Part Syllabus Phase Drills.",
     bannerBg: "linear-gradient(135deg, #0d9488 0%, #0369a1 100%)",
     tests: [
-      { id: "pt_01", title: "Practice Test 01", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "19 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/living_world_mcqs.json", syllabus: ["Class 11 Bio Ch 1-4", "Phy Vectors & Kinematics", "Chem Mole Concept & Thermodynamics"] },
-      { id: "pt_02", title: "Practice Test 02", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "2 Aug 2026 | 2:00 pm", status: "locked", dataFile: "/data/living_world_mcqs.json", syllabus: ["Plant Physiology", "Chemical Bonding", "Laws of Motion"] }
+      { id: "pt_01", title: "Practice Test 01", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "19 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/biology-the-living-world.json", syllabus: ["Class 11 Bio Ch 1-4", "Phy Vectors & Kinematics", "Chem Mole Concept & Thermodynamics"] },
+      { id: "pt_02", title: "Practice Test 02", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "2 Aug 2026 | 2:00 pm", status: "locked", dataFile: "/data/biology-the-living-world.json", syllabus: ["Plant Physiology", "Chemical Bonding", "Laws of Motion"] }
     ]
   },
   {
@@ -1171,7 +1177,7 @@ const DEFAULT_BATCH_SERIES = [
     description: "NEET AIR 2027 Full Syllabus Test Series — Test + Discussion every Thursday, Full Syllabus as per NTA.",
     bannerBg: "linear-gradient(135deg, #1e1b4b 0%, #0f766e 100%)",
     tests: [
-      { id: "fst_01", title: "Full Syllabus Test 1", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "13 Aug 2026", status: "available", dataFile: "/data/living_world_mcqs.json", syllabus: ["Complete NTA NEET Syllabus (Physics, Chemistry, Botany, Zoology)"] }
+      { id: "fst_01", title: "Full Syllabus Test 1", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "13 Aug 2026", status: "available", dataFile: "/data/biology-the-living-world.json", syllabus: ["Complete NTA NEET Syllabus (Physics, Chemistry, Botany, Zoology)"] }
     ]
   }
 ];
