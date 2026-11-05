@@ -24,7 +24,7 @@
   --bio-bg:linear-gradient(135deg, rgba(16,185,129,0.12), rgba(5,150,105,0.05));--bio-text:#047857;--bio-border:rgba(16,185,129,0.3);
   --chem-bg:linear-gradient(135deg, rgba(139,92,246,0.12), rgba(109,40,217,0.05));--chem-text:#6d28d9;--chem-border:rgba(139,92,246,0.3);
   --phy-bg:linear-gradient(135deg, rgba(14,165,233,0.12), rgba(3,105,161,0.05));--phy-text:#0369a1;--phy-border:rgba(14,165,233,0.3);
-  --glass:rgba(255,255,255,0.85)
+  --glass:rgba(255,255,255,0.85);--accent:#22d3ee;--accent-soft:rgba(34,211,238,.12);--signal:#fbbf24
 }
 body.dark{
   --ink:#f8fafc;--muted:#94a3b8;--line:#1e293b;--paper:#0f172a;--bg:#070a12;
@@ -33,13 +33,26 @@ body.dark{
   --bio-bg:linear-gradient(135deg, rgba(16,185,129,0.2), rgba(5,150,105,0.08));--bio-text:#6ee7b7;--bio-border:rgba(52,211,153,0.4);
   --chem-bg:linear-gradient(135deg, rgba(139,92,246,0.2), rgba(109,40,217,0.08));--chem-text:#c4b5fd;--chem-border:rgba(167,139,250,0.4);
   --phy-bg:linear-gradient(135deg, rgba(14,165,233,0.2), rgba(3,105,161,0.08));--phy-text:#7dd3fc;--phy-border:rgba(56,189,248,0.4);
-  --glass:rgba(30,41,59,0.85)
+  --glass:rgba(15,23,42,0.86);--accent:#67e8f9;--accent-soft:rgba(103,232,249,.12);--signal:#fbbf24
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 body{margin:0;background:var(--bg);color:var(--text-primary);font-family:'Plus Jakarta Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;transition:background-color .4s cubic-bezier(0.16,1,0.3,1),color .4s cubic-bezier(0.16,1,0.3,1);-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0;transition:all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)}
-button:active{transform:scale(0.95)}
+button:active{transform:scale(0.98)}
+button,.palette-touch-btn{touch-action:manipulation}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.fullscreen-modal .modal-box{padding:0;min-height:100dvh;height:100dvh}
+.fullscreen-modal #modalHeaderSlot{display:none}.fullscreen-modal #modalActions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.75rem;margin-top:auto;padding:1rem 1.25rem calc(1rem + env(safe-area-inset-bottom));border-top:1px solid rgba(148,163,184,.18);background:inherit;position:sticky;bottom:0;z-index:5}
+.quiz-shell{height:100dvh;min-height:0;padding-bottom:env(safe-area-inset-bottom)}
+.quiz-scroll{min-height:0;overscroll-behavior:contain}
+.quiz-sticky-actions{position:sticky;bottom:0;padding:12px max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:linear-gradient(180deg,transparent,var(--card-bg) 28%);z-index:4}
+.quiz-stem{max-width:70ch;font-weight:400;line-height:1.75;user-select:text}.quiz-stem strong{font-weight:700}.quiz-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.quiz-meta span{font-size:10px;font-weight:800;padding:5px 8px;border-radius:999px;background:rgba(13,148,136,.1);color:var(--teal);border:1px solid rgba(13,148,136,.2)}
+.option-btn{transform:none!important}.option-btn:active{transform:scale(.985)!important}
+@media (min-width:1024px){.quiz-question-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.65fr);gap:18px;align-items:start}.quiz-side-panel{display:block!important;position:sticky;top:0}}
+@media (max-height:520px) and (orientation:landscape){.quiz-shell{font-size:12px}.quiz-scroll{padding:12px!important}.quiz-sticky-actions{padding-top:6px}}
+
 .app-layout{display:flex;flex-direction:column;min-height:100vh}
 .sidebar{position:fixed;top:0;bottom:0;left:0;width:280px;height:100vh;overflow-y:auto;z-index:40;display:flex;flex-direction:column;justify-space:between;padding:24px 18px;transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1);background:var(--paper);border-right:1px solid var(--border-color);backdrop-filter:blur(20px)}
 @media (max-width:1023px){.sidebar{transform:translateX(-100%)}.sidebar.mobile-open{transform:translateX(0)}.content{margin-left:0;width:100%}}
@@ -68,6 +81,11 @@ body.dark .bar{background:rgba(255,255,255,.12)}
 @keyframes fadeInSlide{from{opacity:0;transform:translateY(12px) scale(0.99)}to{opacity:1;transform:translateY(0) scale(1)}}
 .tag{color:var(--teal);font-weight:800;text-transform:uppercase;letter-spacing:.17em;font-size:11px}
 .card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:24px;box-shadow:0 4px 20px -2px rgba(0,0,0,.03);transition:all .35s cubic-bezier(0.34, 1.56, 0.64, 1)}
+.executive-hero{background:radial-gradient(circle at 85% 15%,rgba(34,211,238,.22),transparent 28%),radial-gradient(circle at 10% 90%,rgba(99,102,241,.2),transparent 32%),linear-gradient(135deg,#071c2b 0%,#0b2336 48%,#11143c 100%);border:1px solid rgba(103,232,249,.22);box-shadow:0 24px 70px -30px rgba(34,211,238,.45)}
+.executive-kicker{color:var(--accent);letter-spacing:.2em;font-size:10px;font-weight:900;text-transform:uppercase}
+.metric-card{position:relative;overflow:hidden}.metric-card::after{content:'';position:absolute;right:-28px;bottom:-32px;width:110px;height:110px;border-radius:999px;background:var(--accent-soft);filter:blur(2px)}
+@media (max-width:640px){.main{padding:20px 16px}.topbar{padding:0 16px;height:68px}.executive-hero{border-radius:24px!important}}
+
 .card:hover{border-color:rgba(13,148,136,.4);box-shadow:0 16px 36px -6px rgba(13,148,136,.16);transform:translateY(-4px) scale(1.01)}
 .subject{padding:14px 18px;border:1px solid var(--border-color);border-radius:18px;background:var(--card-bg);display:flex;align-items:center;justify-content:space-between;text-align:left;transition:all .3s cubic-bezier(0.34, 1.56, 0.64, 1)}
 .subject.selected{border-color:var(--teal);background:rgba(13,148,136,.08);box-shadow:0 0 0 2px rgba(13,148,136,.25);transform:scale(1.03)}
@@ -317,6 +335,11 @@ shuffleOptions: false,
 showTimer: true,
 confirmSubmit: true,
 haptics: true,
+sound: false,
+instantAnswer: true,
+autoAdvance: false,
+swipeNavigation: true,
+fontScale: 1,
 dailyGoalQuestions: 30
 };
 
@@ -744,9 +767,9 @@ function adaptInfinite(isCorrect, q) {
   }
 }
 
-async function launchAiAdaptiveSessionFromModal() {
-  const subj = document.getElementById('adaptiveSubjSelect')?.value || 'Biology';
-  const chapter = document.getElementById('adaptiveChapterSelect')?.value || 'All Chapters';
+async function launchAiAdaptiveSessionFromModal(chapterSubject = null, chapterName = null) {
+  const subj = chapterSubject || document.getElementById('adaptiveSubjSelect')?.value || 'Biology';
+  const chapter = chapterName || document.getElementById('adaptiveChapterSelect')?.value || 'All Chapters';
   const initialDiff = document.getElementById('adaptiveDifficulty')?.value || 'Standard NEET Level';
   const startLevel = initialDiff.startsWith('Easy') ? 1 : initialDiff.startsWith('Challenging') ? 4 : 3;
 
@@ -811,7 +834,10 @@ Please break down your response in clear markdown format with sections:
 
     const sysInstruction = "You are a master NEET Physics, Chemistry & Biology tutor. Provide structured, accurate, and easy to understand markdown explanations for entrance exam aspirants.";
     
-    const explanationText = await callGeminiApi(prompt, sysInstruction);
+    const aiCacheKey = `${q.qKey || quizState.chapter + ':' + qIndex}:en`;
+    const aiCache = StorageModule.get('edupulse_ai_explanations_v1', {});
+    const explanationText = aiCache[aiCacheKey] || await callGeminiApi(prompt, sysInstruction);
+    if (!aiCache[aiCacheKey]) { aiCache[aiCacheKey] = explanationText; StorageModule.set('edupulse_ai_explanations_v1', aiCache); }
 
     const chapterTopic = q.sourceChapter || quizState.chapter || quizState.subject;
     const videoQuery = `${chapterTopic} ${q.question.substring(0, 45)}`;
@@ -1020,7 +1046,8 @@ function launchQuizFromAiChat(rawQuestions) {
 }
 
 // ===== Quiz Data & Chapter Structure =====
-const DATA_BASE = "Data/";
+// Question bank is served from the dedicated /data mount so content can evolve independently from the app shell.
+const DATA_BASE = "/data/";
 const FILE_OVERRIDES = { 'The Living World': 'living_world_mcqs.json' };
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const quizUrl = (subj, chapter) => DATA_BASE + (FILE_OVERRIDES[chapter] || `${slugify(subj + ' ' + chapter)}.json`);
@@ -1087,10 +1114,10 @@ const DEFAULT_BATCH_SERIES = [
     description: "Chapter-by-chapter CBT tests in the real NEET pattern, built to strengthen your Class 11th concepts.",
     bannerBg: "linear-gradient(135deg, #0f766e 0%, #115e59 100%)",
     tests: [
-      { id: "c11_p1", title: "Basic Maths & Calculus", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "10 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/physics-units-and-measurements.json", syllabus: ["Differentiation & Integration", "Vectors basics", "Trigonometric Graphs"] },
-      { id: "c11_p2", title: "Vectors & Kinematics", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "18 Jul 2026 | 2:00 pm", status: "locked", dataFile: "Data/physics-motion-in-a-straight-line.json", syllabus: ["Vector Addition", "Dot & Cross Product", "Projective Motion"] },
-      { id: "c11_c1", title: "Some Basic Concepts of Chemistry", subject: "Chemistry", questions: 45, marks: 180, timeMins: 45, schedule: "12 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/chemistry-some-basic-concepts-of-chemistry.json", syllabus: ["Mole Concept", "Stoichiometry", "Concentration Terms"] },
-      { id: "c11_b1", title: "The Living World & Taxonomy", subject: "Botany", questions: 50, marks: 200, timeMins: 50, schedule: "15 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/living_world_mcqs.json", syllabus: ["Taxonomic Hierarchy", "Herbarium & Museums", "Binomial Nomenclature"] }
+      { id: "c11_p1", title: "Basic Maths & Calculus", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "10 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/physics-units-and-measurements.json", syllabus: ["Differentiation & Integration", "Vectors basics", "Trigonometric Graphs"] },
+      { id: "c11_p2", title: "Vectors & Kinematics", subject: "Physics", questions: 40, marks: 160, timeMins: 40, schedule: "18 Jul 2026 | 2:00 pm", status: "locked", dataFile: "/data/physics-motion-in-a-straight-line.json", syllabus: ["Vector Addition", "Dot & Cross Product", "Projective Motion"] },
+      { id: "c11_c1", title: "Some Basic Concepts of Chemistry", subject: "Chemistry", questions: 45, marks: 180, timeMins: 45, schedule: "12 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/chemistry-some-basic-concepts-of-chemistry.json", syllabus: ["Mole Concept", "Stoichiometry", "Concentration Terms"] },
+      { id: "c11_b1", title: "The Living World & Taxonomy", subject: "Botany", questions: 50, marks: 200, timeMins: 50, schedule: "15 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/living_world_mcqs.json", syllabus: ["Taxonomic Hierarchy", "Herbarium & Museums", "Binomial Nomenclature"] }
     ]
   },
   {
@@ -1103,8 +1130,8 @@ const DEFAULT_BATCH_SERIES = [
     description: "Structured CBT Test Series for NEET Droppers — Part Syllabus Phase Drills.",
     bannerBg: "linear-gradient(135deg, #0d9488 0%, #0369a1 100%)",
     tests: [
-      { id: "pt_01", title: "Practice Test 01", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "19 Jul 2026 | 2:00 pm", status: "available", dataFile: "Data/living_world_mcqs.json", syllabus: ["Class 11 Bio Ch 1-4", "Phy Vectors & Kinematics", "Chem Mole Concept & Thermodynamics"] },
-      { id: "pt_02", title: "Practice Test 02", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "2 Aug 2026 | 2:00 pm", status: "locked", dataFile: "Data/living_world_mcqs.json", syllabus: ["Plant Physiology", "Chemical Bonding", "Laws of Motion"] }
+      { id: "pt_01", title: "Practice Test 01", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "19 Jul 2026 | 2:00 pm", status: "available", dataFile: "/data/living_world_mcqs.json", syllabus: ["Class 11 Bio Ch 1-4", "Phy Vectors & Kinematics", "Chem Mole Concept & Thermodynamics"] },
+      { id: "pt_02", title: "Practice Test 02", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "2 Aug 2026 | 2:00 pm", status: "locked", dataFile: "/data/living_world_mcqs.json", syllabus: ["Plant Physiology", "Chemical Bonding", "Laws of Motion"] }
     ]
   },
   {
@@ -1117,7 +1144,7 @@ const DEFAULT_BATCH_SERIES = [
     description: "NEET AIR 2027 Full Syllabus Test Series — Test + Discussion every Thursday, Full Syllabus as per NTA.",
     bannerBg: "linear-gradient(135deg, #1e1b4b 0%, #0f766e 100%)",
     tests: [
-      { id: "fst_01", title: "Full Syllabus Test 1", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "13 Aug 2026", status: "available", dataFile: "Data/living_world_mcqs.json", syllabus: ["Complete NTA NEET Syllabus (Physics, Chemistry, Botany, Zoology)"] }
+      { id: "fst_01", title: "Full Syllabus Test 1", subject: "All", questions: 180, marks: 720, timeMins: 180, schedule: "13 Aug 2026", status: "available", dataFile: "/data/living_world_mcqs.json", syllabus: ["Complete NTA NEET Syllabus (Physics, Chemistry, Botany, Zoology)"] }
     ]
   }
 ];
@@ -1396,7 +1423,9 @@ tabSwitches: 0,
 paletteExpanded: false,
 timerInterval: null,
 touchStartX: 0,
+touchStartY: 0,
 touchEndX: 0,
+touchEndY: 0,
 infinite: null
 };
 
@@ -1406,22 +1435,27 @@ function togglePaletteDrawer() {
   else renderTestQuiz();
 }
 
+function openImageZoom(src) { setModal('Question diagram', '', `<img src="${escapeHtml(src)}" alt="Expanded question diagram" class="w-full max-h-[75vh] object-contain rounded-2xl">`, `<button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-white text-xs font-bold">Close</button>`); }
 function handleTouchStart(e) {
-  if (e.touches && e.touches.length > 0) {
-    quizState.touchStartX = e.touches[0].clientX;
-  }
+  if (e.touches && e.touches.length > 0) { quizState.touchStartX = e.touches[0].clientX; quizState.touchStartY = e.touches[0].clientY; }
 }
 
 function handleTouchMove(e) {
   if (e.touches && e.touches.length > 0) {
     quizState.touchEndX = e.touches[0].clientX;
+    quizState.touchEndY = e.touches[0].clientY;
   }
 }
 
 function handleTouchEnd() {
   if (!quizState.touchStartX || !quizState.touchEndX) return;
   const diffX = quizState.touchStartX - quizState.touchEndX;
+  const diffY = quizState.touchStartY - (quizState.touchEndY || quizState.touchStartY);
   const minSwipeDistance = 50;
+  const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  if (!settings.swipeNavigation || Math.abs(diffX) <= Math.abs(diffY) * 2) {
+    quizState.touchStartX = 0; quizState.touchEndX = 0; return;
+  }
 
   if (diffX > minSwipeDistance) {
     if (quizState.currentIndex < quizState.questions.length - 1) {
@@ -1439,6 +1473,38 @@ function handleTouchEnd() {
   quizState.touchEndX = 0;
 }
 
+function saveErrorNotebookEntry(q, selected, reason = 'Not tagged') {
+  if (!q?.qKey) return;
+  const notebook = StorageModule.get(STORAGE_KEYS.errorNotebook, {});
+  const existing = notebook[q.qKey] || { q, attempts: [] };
+  existing.q = q;
+  existing.attempts.unshift({ selected, correct: q.correct, reason, date: new Date().toISOString() });
+  existing.attempts = existing.attempts.slice(0, 10);
+  notebook[q.qKey] = existing;
+  StorageModule.set(STORAGE_KEYS.errorNotebook, notebook);
+}
+function tagWrongReason(reason) {
+  const index = quizState.currentIndex;
+  const q = quizState.questions[index];
+  if (!q || quizState.userAnswers[index] === q.correct) return;
+  quizState.wrongReasons[index] = reason;
+  saveErrorNotebookEntry(q, quizState.userAnswers[index], reason);
+  persistQuizSession();
+  renderPracticeQuiz();
+}
+function toggleEliminatedOption(i) {
+  const index = quizState.currentIndex;
+  quizState.eliminatedOptions[index] = quizState.eliminatedOptions[index] || {};
+  quizState.eliminatedOptions[index][i] = !quizState.eliminatedOptions[index][i];
+  persistQuizSession();
+  renderPracticeQuiz();
+}
+function skipCurrentQuestion() {
+  quizState.skippedQuestions[quizState.currentIndex] = true;
+  persistQuizSession();
+  if (quizState.currentIndex < quizState.questions.length - 1) goToNextPracticeQuestion();
+  else finishPracticeQuiz();
+}
 function saveToLocalStorage() {
 StorageModule.set(STORAGE_KEYS.todos, todos);
 StorageModule.set(STORAGE_KEYS.progress, userProgress);
@@ -1463,6 +1529,7 @@ function escapeHtml(v = '') {
 return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
 const multiline = v => escapeHtml(v).replace(/\n/g, '<br>');
+const formatQuizText = v => escapeHtml(v).replace(/\^([0-9+−-]+)/g, '<sup>$1</sup>').replace(/_([0-9]+)/g, '<sub>$1</sub>').replace(/\n/g, '<br>');
 const jsArg = s => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
 function simpleHash(str) {
@@ -1505,6 +1572,15 @@ localStorage.setItem(STORAGE_KEYS.theme, isDark ? 'dark' : 'light');
 }
 initTheme();
 
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('appModal')?.classList.contains('open') || document.activeElement?.matches('input,textarea,select')) return;
+  if (!quizState.questions.length) return;
+  if (/^[1-4]$/.test(e.key) && quizState.userAnswers[quizState.currentIndex] === undefined) { e.preventDefault(); selectPracticeOption(Number(e.key)-1); }
+  else if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (quizState.userAnswers[quizState.currentIndex] !== undefined) goToNextPracticeQuestion(); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); jumpToPracticeQuestion(quizState.currentIndex - 1); }
+  else if (e.key.toLowerCase() === 'b') { quizState.bookmarked[quizState.currentIndex] = !quizState.bookmarked[quizState.currentIndex]; persistQuizSession(); renderPracticeQuiz(); }
+  else if (e.key.toLowerCase() === 's') { quizState.skippedQuestions[quizState.currentIndex] = true; persistQuizSession(); goToNextPracticeQuestion(); }
+});
 window.addEventListener('online', updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
 function updateOnlineStatus() {
@@ -1565,42 +1641,82 @@ function generateFallbackQuestions(subj, chapterName) {
   return [];
 }
 
-async function setupQuizMode(mode, subj, chapterName, customQuestions = null) {
+const questionCache = new Map();
+let questionIndex = {};
+ fetch('/data/index.json').then(r => r.ok ? r.json() : {}).then(v => { questionIndex = v || {}; renderView(); }).catch(() => {});
+
+function getSavedResume() { return StorageModule.get(STORAGE_KEYS.session, null); }
+function getStudySignals() {
+  const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
+  const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
+  const byChapter = {};
+  attempts.forEach(a => { if (!a.chapter) return; byChapter[a.chapter] = byChapter[a.chapter] || { accuracy: [], last: 0 }; byChapter[a.chapter].accuracy.push(a.accuracy || 0); byChapter[a.chapter].last = Math.max(byChapter[a.chapter].last, a.date || a.timestamp || 0); });
+  const entries = Object.entries(byChapter).map(([chapter, v]) => ({ chapter, accuracy: Math.round(v.accuracy.reduce((a,b)=>a+b,0)/v.accuracy.length), last: v.last })).sort((a,b)=>a.accuracy-b.accuracy);
+  return { weakest: entries[0], untouched: Object.keys(questionIndex).map(k => k.replace(/-/g, ' ')).find(k => !Object.keys(stats).some(q => q.toLowerCase().includes(k.toLowerCase()))) };
+}
+function startQuickTen() {
+  const available = Object.keys(data).flatMap(subject => (data[subject] || []).map(chapter => ({ subject, chapter })));
+  const ranked = available.sort((a,b) => ((getStudySignals().weakest?.chapter === a.chapter ? -1 : 0) - (getStudySignals().weakest?.chapter === b.chapter ? -1 : 0)));
+  const pick = ranked.find(x => (questionIndex[slugify(x.subject + ' ' + x.chapter)] || questionIndex[slugify(x.chapter)] || 0) > 0) || ranked[0];
+  if (pick) openPracticeSetup(pick.subject, pick.chapter, { length: 10, source: 'all' });
+}
+function resumeSavedSession() { const s = getSavedResume(); if (!s?.questions?.length) return; Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null }); closeModal(); renderPracticeQuiz(); }
+
+function fisherYates(list) {
+  const a = [...list];
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+function hasLockedOption(options) { return options.some(o => /both|all of the above|none of these/i.test(o)); }
+function normalizeQuestions(raw, subj, chapterName) {
+  return raw.map((q, i) => {
+    const options = (q.o || q.options || q.opts || []).map(String);
+    const a = q.a ?? q.answer ?? q.ans;
+    let correct = typeof a === 'number' ? a - 1 : options.findIndex(o => o.trim() === String(a).trim());
+    if (correct < 0 || correct >= options.length) correct = 0;
+    return { qKey: q.qKey || slugify(chapterName) + '#' + simpleHash(q.q || q.question || String(i)), question: q.q || q.question || `Question ${i + 1}`, options: options.length ? options : ['Option A','Option B','Option C','Option D'], correct, explanation: q.s || q.explanation || '', topic: q.topic || q.t || 'NCERT Concepts', difficulty: q.difficulty || q.level || 'Medium', year: q.year || q.pyqYear || '', sourceChapter: q.c || q.chapter || chapterName, img: q.img || q.image, hint: q.h, optionImages: q.optionImages || [] };
+  });
+}
+async function preloadChapter(subj, chapterName) {
+  const key = `${subj}:${chapterName}`;
+  if (questionCache.has(key)) return questionCache.get(key);
+  const promise = fetch(quizUrl(subj, chapterName), { cache: 'force-cache' }).then(async res => {
+    if (!res.ok) return [];
+    const raw = await res.json();
+    const list = Array.isArray(raw) ? raw : (raw.qs || raw.questions || []);
+    return normalizeQuestions(list, subj, chapterName);
+  }).catch(() => []);
+  questionCache.set(key, promise);
+  return promise;
+}
+function openPracticeSetup(subj, chapterName, preset = null) {
+  const saved = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  if (preset) { saved.practiceLength = preset.length; saved.practiceSource = preset.source || 'all'; StorageModule.set(STORAGE_KEYS.settings, saved); }
+  setModal('Set up your practice', `${subj} · ${chapterName}`, `<div class="space-y-5 py-2"><div class="grid grid-cols-4 gap-2">${[10,20,30,'all'].map(v => `<button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('ring-2','ring-teal-500'));this.classList.add('ring-2','ring-teal-500');this.dataset.value='${v}'" class="rounded-2xl border border-slate-200 dark:border-slate-700 p-3 text-xs font-black ${saved.practiceLength == v ? 'ring-2 ring-teal-500' : ''}" data-value="${v}">${v === 'all' ? 'All' : v}</button>`).join('')}</div><div class="space-y-2"><label class="text-xs font-black">Question source</label><select id="practice-source" class="w-full rounded-xl border p-3 text-sm bg-transparent"><option>All</option><option>Unseen</option><option>Previously wrong</option><option>Bookmarked</option></select></div><label class="flex items-center justify-between rounded-xl border p-3 text-sm font-bold">Shuffle questions <input id="practice-shuffle" type="checkbox" ${saved.shuffleQuestions ? 'checked' : ''}></label><label class="flex items-center justify-between rounded-xl border p-3 text-sm font-bold">Shuffle options <input id="practice-shuffle-options" type="checkbox" ${saved.shuffleOptions ? 'checked' : ''}></label><p class="text-[11px] text-slate-500">Your last choices are remembered on this device.</p><button type="button" onclick="startInfiniteFromChapter('${jsArg(subj)}','${jsArg(chapterName)}')" class="w-full rounded-2xl border border-violet-300/60 bg-gradient-to-r from-violet-500/10 to-teal-500/10 p-4 text-left transition hover:border-violet-400 hover:shadow-sm"><span class="flex items-center justify-between"><span><span class="block text-sm font-black text-slate-900 dark:text-slate-100">Infinite adaptive practice</span><span class="mt-1 block text-[11px] font-medium text-slate-500">Keep going while the engine adapts difficulty to you.</span></span><i class="fa-solid fa-infinity text-violet-500"></i></span></button></div>`, `<button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Cancel</button><button onclick="startConfiguredPractice('${jsArg(subj)}','${jsArg(chapterName)}')" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white text-xs font-black">Start practice</button>`);
+  }
+function startInfiniteFromChapter(subj, chapterName) {
+  launchAiAdaptiveSessionFromModal(subj, chapterName);
+}
+async function startConfiguredPractice(subj, chapterName) {
+  const sheet = document.querySelector('#modalContentSlot');
+  const lengthBtn = sheet?.querySelector('[data-value].ring-2');
+  const length = lengthBtn?.dataset.value || '10';
+  const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  settings.practiceLength = length; settings.practiceSource = document.getElementById('practice-source')?.value || settings.practiceSource || 'All'; settings.shuffleQuestions = !!document.getElementById('practice-shuffle')?.checked; settings.shuffleOptions = !!document.getElementById('practice-shuffle-options')?.checked;
+  StorageModule.set(STORAGE_KEYS.settings, settings);
+  await setupQuizMode('practice', subj, chapterName, null, true);
+}
+
+async function setupQuizMode(mode, subj, chapterName, customQuestions = null, configured = false) {
 subject = subj;
+if (mode === 'practice' && !configured && !customQuestions) return openPracticeSetup(subj, chapterName);
 toggleFullScreenMode(false);
-setModal('Loading Quiz', chapterName, `<div class="flex flex-col items-center justify-center py-10"> <i class="fa-solid fa-spinner fa-spin text-4xl text-teal-600 mb-4"></i> <p class="text-sm font-bold text-slate-700 dark:text-slate-200">Preparing ${mode === 'practice' ? 'Practice' : 'Test'} session for ${escapeHtml(chapterName)}...</p> </div>`);
+setModal('Preparing practice', chapterName, `<div class="space-y-4 animate-pulse"><div class="h-4 rounded bg-slate-200 dark:bg-slate-800 w-2/3"></div><div class="h-28 rounded-2xl bg-slate-200 dark:bg-slate-800"></div><div class="h-12 rounded-2xl bg-slate-200 dark:bg-slate-800"></div></div>`);
 
 try {
 let rawQuestions = customQuestions;
 
-if (!rawQuestions) {
-  const fetchUrl = quizUrl(subj, chapterName);
-  try {
-    const res = await fetch(fetchUrl, { cache: 'no-cache' });
-    if (res.ok) {
-      const raw = await res.json();
-      const list = Array.isArray(raw) ? raw : (raw.qs || raw.questions || []);
-      if (Array.isArray(list) && list.length > 0) {
-        rawQuestions = list.map((q, i) => {
-          const options = (q.o || q.options || q.opts || []).map(String);
-          const a = q.a ?? q.answer ?? q.ans;
-          let correct = typeof a === 'number' ? a - 1 : options.findIndex(o => o.trim() === String(a).trim());
-          if (correct < 0 || correct >= options.length) correct = 0;
-          return {
-            qKey: slugify(chapterName) + '#' + simpleHash(q.q || q.question || String(i)),
-            question: q.q || q.question || `Question ${i + 1}`,
-            options: options.length ? options : ["Option A", "Option B", "Option C", "Option D"],
-            correct,
-            explanation: q.s || q.explanation || 'NCERT Concept.',
-            sourceChapter: chapterName
-          };
-        });
-      }
-    }
-  } catch (e) {
-    console.warn(`Local JSON fetch note for ${fetchUrl}:`, e);
-  }
-}
+if (!rawQuestions) rawQuestions = await preloadChapter(subj, chapterName);
 
 if (!rawQuestions || !rawQuestions.length) {
   setModal('Coming Soon 🚀', chapterName, `
@@ -1615,7 +1731,7 @@ if (!rawQuestions || !rawQuestions.length) {
     </div>
   `, `
     <button onclick="closeModal(); openAdaptiveAiConfigModal('${subj}');" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white text-xs font-extrabold shadow-md">Launch AI Adaptive Drill</button>
-    <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300">Close</button>
+<button onclick="renderPracticeQuiz()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300">Back to question</button>
   `);
   return;
 }
@@ -1632,19 +1748,51 @@ if (mode === 'practice') {
 }
 
 // ===== launchPracticeSession =====
+function persistQuizSession() {
+  if (quizState.mode !== 'practice' || !quizState.questions.length) return;
+  StorageModule.set(STORAGE_KEYS.session, { chapter: quizState.chapter, subject: quizState.subject, title: quizState.title, questions: quizState.questions, currentIndex: quizState.currentIndex, userAnswers: quizState.userAnswers, bookmarked: quizState.bookmarked, skippedQuestions: quizState.skippedQuestions, questionTimes: quizState.questionTimes, eliminatedOptions: quizState.eliminatedOptions, wrongReasons: quizState.wrongReasons, savedAt: Date.now() });
+}
+function clearQuizSession() { localStorage.removeItem(STORAGE_KEYS.session); }
+function resumeQuizSession() {
+  const s = StorageModule.get(STORAGE_KEYS.session, null); if (!s?.questions?.length) return;
+  Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null });
+  closeModal(); renderPracticeQuiz();
+}
 function launchPracticeSession(subj, chapterName, rawQuestions, infiniteState = null) {
+  const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
+  const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
+  const source = settings.practiceSource || 'All';
+  let questions = [...rawQuestions].filter(q => {
+    const stat = stats[q.qKey] || {};
+    if (source.toLowerCase() === 'unseen') return !stat.seen;
+    if (source.toLowerCase().includes('wrong')) return (stat.wrong || 0) > 0;
+    if (source.toLowerCase().includes('bookmark')) return !!stat.bookmarked;
+    return true;
+  });
+  if (!questions.length) questions = [...rawQuestions];
+  questions = settings.shuffleQuestions ? fisherYates(questions) : questions;
+  if (settings.shuffleOptions) questions = questions.map(q => {
+    if (hasLockedOption(q.options)) return q;
+    const indexed = q.options.map((option, index) => ({ option, index }));
+    const shuffled = fisherYates(indexed);
+    return { ...q, options: shuffled.map(x => x.option), correct: shuffled.findIndex(x => x.index === q.correct) };
+  });
+  const length = Number(settings.practiceLength || 'all');
+  if (Number.isFinite(length) && length > 0) questions = questions.slice(0, length);
   Object.assign(quizState, {
     mode: 'practice',
     chapter: chapterName,
     subject: subj,
     title: `${subj} — ${chapterName}`,
-    questions: rawQuestions,
+    questions,
     currentIndex: 0,
     userAnswers: {},
     marked: {},
     bookmarked: {},
-    skippedQuestions: {},
-    questionTimes: {},
+skippedQuestions: {},
+eliminatedOptions: {},
+wrongReasons: {},
+questionTimes: {},
     questionStartTimer: Date.now(),
     testEndTimestamp: null,
     paletteExpanded: false,
@@ -1821,8 +1969,10 @@ function renderPracticeQuiz() {
 
   const topStrip = inf ? buildInfiniteStatsStrip() : buildTopInteractiveQuestionPalette(true);
 
+  const eliminated = quizState.eliminatedOptions[idx] || {};
   const options = q.options.map((opt, i) => {
-    let c = 'flex items-center gap-3 w-full rounded-2xl border px-4 py-3.5 text-left text-sm font-medium transition cursor-pointer active:scale-98 ';
+    let c = 'flex items-center gap-3 w-full rounded-2xl border px-4 py-3.5 text-left text-sm font-medium transition cursor-pointer active:scale-98 touch-manipulation ';
+    if (eliminated[i] && !answered) c += 'opacity-45 line-through border-amber-300 bg-amber-50 dark:bg-amber-950/20 ';
     if (answered) {
       if (i === q.correct) c += 'border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200 font-bold';
       else if (i === selected) c += 'border-rose-500 bg-rose-100 text-rose-900 dark:bg-rose-950/30 dark:text-rose-200 font-bold';
@@ -1830,14 +1980,17 @@ function renderPracticeQuiz() {
     } else {
       c += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200';
     }
-    return `<button type="button" class="${c}" ${answered ? 'disabled' : `onclick="selectPracticeOption(${i})"`}> <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>`;
+    return `<button type="button" role="radio" aria-checked="${selected === i}" aria-label="Option ${String.fromCharCode(65 + i)}${eliminated[i] ? ', eliminated' : ''}" class="${c}" ${answered ? 'disabled' : `onclick="selectPracticeOption(${i})" oncontextmenu="event.preventDefault(); toggleEliminatedOption(${i})"`}> <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${formatQuizText(opt)}</span>${eliminated[i] ? '<i class="fa-solid fa-xmark text-amber-600"></i>' : ''}</button>`;
   }).join('');
 
-  const result = answered ? `<div class="mt-4 rounded-2xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} p-4 text-sm font-semibold space-y-3">
+  const qStats = StorageModule.get(STORAGE_KEYS.qstats, {})[q.qKey] || {};
+  const historyBadge = qStats.seen ? (qStats.streak >= 3 ? '3 correct in a row' : `Missed ${qStats.wrong || 0}×`) : 'First time';
+  const result = answered ? `<div id="quiz-result" tabindex="-1" class="mt-4 rounded-2xl border ${isRight ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950/30 dark:text-rose-300'} p-4 text-sm font-semibold space-y-3">
 <div class="flex items-center justify-between">
 <span>${isRight ? '<i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Correct!' : '<i class="fa-solid fa-circle-xmark text-rose-500 mr-2"></i>Incorrect.'} Correct option: <span class="font-black">${String.fromCharCode(65 + q.correct)}. ${escapeHtml(q.options[q.correct])}</span></span>
 </div>
-${q.explanation ? `<div class="text-xs font-medium opacity-80">${escapeHtml(q.explanation)}</div>` : ''}
+${q.explanation && q.explanation !== 'NCERT Concept.' ? `<div class="text-xs font-medium opacity-80 leading-relaxed">${multiline(q.explanation)}</div>` : `<button onclick="showAiQuestionExplanation(${idx})" class="text-xs font-black text-purple-600 hover:underline">Generate explanation</button>`}
+${!isRight ? `<div class="pt-2"><p class="text-[10px] font-black uppercase tracking-wider text-slate-400 mb-2">Why did you miss it?</p><div class="flex flex-wrap gap-2">${['Silly mistake','Didn\'t know','Guessed','Mixed up concepts'].map(reason => `<button onclick="tagWrongReason('${jsArg(reason)}')" class="px-2.5 py-1.5 rounded-lg border text-[10px] font-bold ${quizState.wrongReasons[idx] === reason ? 'border-rose-500 bg-rose-50 text-rose-700' : 'border-slate-200 dark:border-slate-700'}">${reason}</button>`).join('')}</div></div>` : ''}
 <div class="pt-2 border-t border-slate-200/50 dark:border-slate-700/50 flex justify-end">
   <button onclick="showAiQuestionExplanation(${idx})" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
     <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> AI Explain & YouTube Video
@@ -1863,7 +2016,7 @@ ${q.explanation ? `<div class="text-xs font-medium opacity-80">${escapeHtml(q.ex
 </div>
 </div>
 <div class="flex items-center gap-2">
-${answered ? `<button onclick="showAiQuestionExplanation(${idx})" class="px-3 py-1.5 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 font-bold text-xs transition flex items-center gap-1.5"><i class="fa-solid fa-brain"></i> AI Explanation</button>` : ''}
+
 <button onclick="finishPracticeQuiz()" class="px-3.5 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-extrabold text-xs hover:bg-rose-500 hover:text-white transition">${inf ? 'End Session' : 'Exit'}</button>
 </div>
 </div>
@@ -1876,13 +2029,15 @@ ${topStrip}
   <span class="text-teal-600 dark:text-teal-400">${qLabel}</span>
   <span class="text-[10px] text-slate-400 flex items-center gap-1"><i class="fa-solid fa-hand-pointer text-teal-500"></i> Swipe left / right</span>
 </div>
-<p class="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">${multiline(q.question)}</p>
+<div class="quiz-meta"><span>${escapeHtml(q.sourceChapter || quizState.chapter)}</span><span>${escapeHtml(q.topic || 'NCERT Concepts')}</span><span>${escapeHtml(q.difficulty || 'Medium')}</span>${q.year ? `<span>NEET ${escapeHtml(q.year)}</span>` : ''}<span>${escapeHtml(historyBadge)}</span></div>
+<p class="quiz-stem mt-4 text-base sm:text-lg text-slate-900 dark:text-slate-100">${formatQuizText(q.question)}</p>
+${q.img ? `<button type="button" onclick="openImageZoom('${jsArg(q.img)}')" class="mt-4 block"><img src="${escapeHtml(q.img)}" alt="Question diagram" loading="lazy" class="max-h-64 rounded-2xl border object-contain"></button>` : ''}
 <div class="mt-5 space-y-3">${options}</div>
 ${result}
 </div>
 
-<div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
-<button type="button" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button>
+<div class="sticky bottom-0 mt-6 pt-4 pb-[calc(env(safe-area-inset-bottom)+0.25rem)] bg-white/95 dark:bg-slate-900/95 backdrop-blur border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2"><button type="button" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button>${!answered ? '<button type="button" onclick="skipCurrentQuestion()" class="rounded-xl border border-amber-300 px-3 py-2.5 text-xs font-bold text-amber-700 dark:text-amber-300">Skip</button>' : ''}</div>
 ${nextBtn}
 </div>
 </div>
@@ -1895,8 +2050,20 @@ function selectPracticeOption(i) {
   if (quizState.userAnswers[quizState.currentIndex] !== undefined) return;
   quizState.userAnswers[quizState.currentIndex] = i;
   const q = quizState.questions[quizState.currentIndex];
-  if (quizState.infinite && q) adaptInfinite(i === q.correct, q);
+  quizState.questionTimes[quizState.currentIndex] = Math.max(0, Math.round((Date.now() - quizState.questionStartTimer) / 1000));
+  quizState.questionStartTimer = Date.now();
+  const correct = !!q && i === q.correct;
+  const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
+  const key = q?.qKey || `${quizState.chapter}:${quizState.currentIndex}`;
+  stats[key] = stats[key] || { seen: 0, correct: 0, wrong: 0, streak: 0, lastSeen: 0 };
+  stats[key].seen++; stats[key].lastSeen = Date.now();
+  if (correct) { stats[key].correct++; stats[key].streak++; } else { stats[key].wrong++; stats[key].streak = 0; }
+  StorageModule.set(STORAGE_KEYS.qstats, stats);
+  if (navigator.vibrate && StorageModule.get(STORAGE_KEYS.settings, defaultSettings).haptics) navigator.vibrate(correct ? 10 : [10, 40, 10]);
+  persistQuizSession();
+  if (quizState.infinite && q) adaptInfinite(correct, q);
   renderPracticeQuiz();
+  setTimeout(() => document.getElementById('quiz-result')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 40);
 }
 
 function jumpToPracticeQuestion(i) {
@@ -2047,10 +2214,10 @@ ${paletteHtml}
 </div>
 </div> 
 <p class="mt-3 text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">${multiline(q.question)}</p> 
-<div class="mt-5 space-y-3">${options}</div> 
+<div class="mt-5 space-y-3" role="radiogroup" aria-label="Answer options">${options}</div>
 </div> 
 
-<div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2"> 
+<div class="quiz-sticky-actions mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
 <button type="button" onclick="jumpToTestQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button> 
 <button type="button" onclick="jumpToTestQuestion(${Math.min(total - 1, idx + 1)})" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition">Next →</button> 
 </div> 
@@ -2107,7 +2274,7 @@ const attemptRecord = {
 id: 'att_' + Date.now(),
 chapter: quizState.chapter || 'Full NTA Test',
 subject: quizState.subject,
-mode: 'test',
+mode: quizState.mode === 'practice' ? 'practice' : 'test',
 finishedAt: Date.now(),
 total, attempted, correct, wrong, skipped,
 score, maxScore, accuracy
@@ -2118,6 +2285,32 @@ attempts.unshift(attemptRecord);
 StorageModule.set(STORAGE_KEYS.attempts, attempts);
 StorageModule.recordActivity(attempted);
 showResultScreen(attemptRecord);
+}
+
+function retryMistakesFromResult() {
+  const missed = quizState.questions.filter((q, i) => quizState.userAnswers[i] !== undefined && quizState.userAnswers[i] !== q.correct);
+  if (!missed.length) { showToast('No mistakes to retry.', 'info'); return; }
+  closeModal();
+  launchPracticeSession(quizState.subject, quizState.title || quizState.chapter, missed.map(q => ({ ...q })), null);
+}
+
+function practiseAgainFromResult() {
+  const questions = quizState.questions.map(q => ({ ...q, options: [...q.options] }));
+  closeModal();
+  launchPracticeSession(quizState.subject, quizState.title || quizState.chapter, questions, null);
+}
+
+function openErrorNotebook() {
+  const entries = Object.values(StorageModule.get(STORAGE_KEYS.errorNotebook, {}));
+  const content = entries.length ? `<div class="space-y-3">${entries.map((entry, i) => `<article class="rounded-2xl border border-slate-200 dark:border-slate-700 p-4"><div class="flex items-center justify-between gap-3"><span class="text-[10px] font-black uppercase tracking-widest text-rose-600">Mistake ${i + 1}</span><span class="text-[10px] text-slate-400">${entry.attempts?.length || 1} miss${(entry.attempts?.length || 1) === 1 ? '' : 'es'}</span></div><p class="mt-2 text-sm font-bold text-slate-900 dark:text-slate-100">${formatQuizText(entry.q?.question || '')}</p><p class="mt-2 text-xs text-slate-500">Correct: ${escapeHtml(entry.q?.options?.[entry.q?.correct] || '—')}</p><p class="mt-1 text-xs font-bold text-rose-600">${escapeHtml(entry.attempts?.at(-1)?.reason || 'Review this concept')}</p></article>`).join('')}</div>` : `<div class="rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 p-8 text-center text-sm text-slate-500">Your notebook is empty. Missed questions will appear here after you tag them.</div>`;
+  setModal('Error Notebook', 'A private revision queue for the questions you miss.', content, `<button onclick="closeModal(); renderView();" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs">Done</button>`);
+}
+
+function practiceErrorNotebook() {
+  const questions = Object.values(StorageModule.get(STORAGE_KEYS.errorNotebook, {})).map(entry => entry.q).filter(Boolean);
+  if (!questions.length) return showToast('Your error notebook is empty.', 'info');
+  closeModal();
+  launchPracticeSession(quizState.subject || 'Biology', 'Error Notebook', questions.map(q => ({ ...q, options: [...q.options] })), null);
 }
 
 function showResultScreen(attempt) {
@@ -2145,7 +2338,8 @@ setModal('Quiz Performance Summary', attempt.chapter || 'Full Test Simulation', 
   </button>
 </div>
 
-</div>`, `<button onclick="closeModal(); renderView();" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-bold text-xs">Back to Dashboard</button>`
+${accuracy >= 80 ? `<div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm font-bold text-emerald-700 dark:text-emerald-300">Great work. You can mark this chapter complete and keep your momentum.</div>` : ''}
+</div>`, `<div class="flex flex-wrap items-center justify-end gap-2"><button onclick="retryMistakesFromResult()" class="px-4 py-2.5 rounded-xl border border-rose-200 text-rose-700 dark:border-rose-900 dark:text-rose-300 font-bold text-xs">Retry mistakes</button><button onclick="practiseAgainFromResult()" class="px-4 py-2.5 rounded-xl border border-teal-200 text-teal-700 dark:border-teal-900 dark:text-teal-300 font-bold text-xs">Practise again</button><button onclick="closeModal(); renderView();" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-bold text-xs">Back to Dashboard</button></div>`
 );
 }
 
@@ -2276,13 +2470,13 @@ const avgAccuracy = attemptsArr.length > 0 ? Math.round(attemptsArr.reduce((s, a
 main.innerHTML = `
 <div class="space-y-8 animate-fadeIn max-w-6xl mx-auto">
   <!-- Welcome & Hero Banner -->
-  <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-teal-900 via-teal-800 to-indigo-950 p-6 sm:p-8 text-white shadow-2xl border border-teal-700/40">
+  <div class="executive-hero relative overflow-hidden rounded-3xl p-6 sm:p-8 text-white">
     <div class="absolute right-0 top-0 w-80 h-80 rounded-full bg-teal-400/10 blur-3xl pointer-events-none"></div>
     <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
       <div class="space-y-2">
-        <span class="px-3 py-1 rounded-full bg-teal-400/20 text-teal-200 border border-teal-400/30 font-black text-[10px] tracking-widest uppercase">Target NEET 2026</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-white">Instant Practice Ecosystem</h2>
-        <p class="text-slate-300 text-xs sm:text-sm max-w-xl font-medium leading-relaxed">Master 79 NCERT chapters instantly with one-click practice drills, instant AI explanations, and CBT test papers.</p>
+        <span class="executive-kicker">Your NEET command centre · 2026</span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">Turn every session into measurable progress.</h2>
+        <p class="text-slate-300 text-xs sm:text-sm max-w-xl font-medium leading-relaxed">A focused daily system for mastering NCERT, closing weak spots, and building exam-day confidence from one question bank.</p>
       </div>
       <div class="flex flex-wrap gap-3">
         <button onclick="switchTab('learn')" class="px-6 py-3.5 rounded-2xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-xs shadow-lg transition flex items-center gap-2">
@@ -2351,7 +2545,7 @@ main.innerHTML = `
 
   <!-- Metric Quick Stats Grid -->
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-    <div class="card p-5 space-y-2 border-l-4 border-l-teal-500 bg-gradient-to-br from-teal-500/5 to-transparent">
+    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-cyan-400 bg-gradient-to-br from-cyan-500/5 to-transparent">
       <span class="text-[11px] font-black text-teal-600 dark:text-teal-400 uppercase tracking-wider">Syllabus Covered</span>
       <div class="flex items-baseline justify-between">
         <span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">${pct}%</span>
@@ -2360,7 +2554,7 @@ main.innerHTML = `
       <div class="progress"><i style="width:${pct}%"></i></div>
     </div>
 
-    <div class="card p-5 space-y-2 border-l-4 border-l-amber-500 bg-gradient-to-br from-amber-500/5 to-transparent">
+    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-amber-400 bg-gradient-to-br from-amber-500/5 to-transparent">
       <span class="text-[11px] font-black text-amber-500 uppercase tracking-wider">Active Streak</span>
       <div class="flex items-baseline justify-between">
         <span class="text-2xl sm:text-3xl font-black text-amber-500">${streak.current} <small class="text-xs font-bold">Days</small></span>
@@ -2369,7 +2563,7 @@ main.innerHTML = `
       <p class="text-[11px] text-slate-400 font-semibold">Daily practice active 🔥</p>
     </div>
 
-    <div class="card p-5 space-y-2 border-l-4 border-l-emerald-500 bg-gradient-to-br from-emerald-500/5 to-transparent">
+    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-emerald-400 bg-gradient-to-br from-emerald-500/5 to-transparent">
       <span class="text-[11px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Accuracy</span>
       <div class="flex items-baseline justify-between">
         <span class="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">${avgAccuracy}%</span>
@@ -2378,7 +2572,7 @@ main.innerHTML = `
       <p class="text-[11px] text-slate-400 font-semibold">Across ${attemptsArr.length} sessions 🎯</p>
     </div>
 
-    <div class="card p-5 space-y-2 border-l-4 border-l-purple-500 bg-gradient-to-br from-purple-500/5 to-transparent">
+    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-violet-400 bg-gradient-to-br from-purple-500/5 to-transparent">
       <span class="text-[11px] font-black text-purple-600 uppercase tracking-wider">Test Portal</span>
       <div class="flex items-baseline justify-between">
         <span class="text-2xl sm:text-3xl font-black text-purple-600">CBT Hub</span>
@@ -2845,6 +3039,13 @@ main.innerHTML = `
     </div>
   </div>
 
+  ${(() => { const resume = getSavedResume(); const signals = getStudySignals(); return `<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    ${resume?.questions?.length ? `<div class="card p-5 lg:col-span-2 border-l-4 border-l-teal-500 bg-gradient-to-r from-teal-500/10 to-transparent"><div class="flex items-center justify-between gap-4"><div><span class="text-[10px] uppercase tracking-widest font-black text-teal-600 dark:text-teal-400">Continue where you left off</span><h3 class="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">${escapeHtml(resume.title || resume.chapter)}</h3><p class="text-xs text-slate-500 mt-1">Resume · ${Math.min((resume.currentIndex || 0) + 1, resume.questions.length)}/${resume.questions.length}</p></div><div class="flex gap-2"><button onclick="resumeSavedSession()" class="rounded-xl bg-teal-600 px-4 py-3 text-xs font-black text-white shadow-lg hover:bg-teal-700">Resume</button><button onclick="StorageModule.remove(STORAGE_KEYS.session); renderView()" class="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-3 text-xs font-bold text-slate-500">Discard</button></div></div></div>` : `<div class="card p-5 lg:col-span-2 border-l-4 border-l-indigo-500 bg-gradient-to-r from-indigo-500/10 to-transparent"><span class="text-[10px] uppercase tracking-widest font-black text-indigo-600 dark:text-indigo-400">Next up</span><h3 class="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">${signals.weakest ? `Strengthen ${escapeHtml(signals.weakest.chapter)}` : 'Build your first study streak'}</h3><p class="text-xs text-slate-500 mt-1">${signals.weakest ? `${signals.weakest.accuracy}% average accuracy — a focused 10-question drill is ready.` : 'Start with a Quick 10 to discover your baseline.'}</p></div>`}
+    <button onclick="startQuickTen()" class="card p-5 text-left border border-amber-500/30 bg-gradient-to-br from-amber-500/15 to-transparent hover:border-amber-500 transition"><span class="text-[10px] uppercase tracking-widest font-black text-amber-600 dark:text-amber-400">Quick practice</span><h3 class="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">Quick 10</h3><p class="text-xs text-slate-500 mt-1">Mixed questions from your weakest areas.</p><span class="mt-3 inline-flex text-xs font-black text-amber-600">Start now <i class="fa-solid fa-arrow-right ml-2"></i></span></button>
+  </div>`; })()}
+
+  ${(() => { const notebook = Object.values(StorageModule.get(STORAGE_KEYS.errorNotebook, {})); const count = notebook.length; return `<div class="card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-l-4 border-l-rose-500 bg-rose-500/5"><div><span class="text-[10px] uppercase tracking-widest font-black text-rose-600 dark:text-rose-400">Error notebook</span><h3 class="mt-1 text-base font-black text-slate-900 dark:text-slate-100">${count ? `${count} concept${count === 1 ? '' : 's'} to revisit` : 'Build your mistake notebook'}</h3><p class="text-xs text-slate-500 mt-1">Turn missed questions into spaced revision instead of repeating the same errors.</p></div><div class="flex gap-2"><button onclick="openErrorNotebook()" class="rounded-xl border border-rose-200 dark:border-rose-900 px-3 py-2.5 text-xs font-black text-rose-700 dark:text-rose-300">Review notebook</button>${count ? `<button onclick="practiceErrorNotebook()" class="rounded-xl bg-rose-600 px-3 py-2.5 text-xs font-black text-white">Practise mistakes</button>` : ''}</div></div>`; })()}
+
   <!-- Chapters Grid - One Click Practice Cards -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
     ${chaptersList.filter(c => {
@@ -2852,9 +3053,12 @@ main.innerHTML = `
       return c.toLowerCase().includes(q);
     }).map((ch, idx) => {
       const isDone = userProgress[ch]?.completed;
+      const bankCount = questionIndex[slugify(subject + ' ' + ch)] || questionIndex[slugify(ch)] || 0;
+      const attemptsForChapter = StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => a.chapter === ch);
+      const chapterAccuracy = attemptsForChapter.length ? Math.round(attemptsForChapter.reduce((s,a)=>s+(a.accuracy||0),0)/attemptsForChapter.length) : null;
       const oneShotQuery = `${ch} ${subject} NEET One Shot full chapter lecture`;
       return `
-        <div onclick="setupQuizMode('practice', '${subject}', '${jsArg(ch)}')" class="chapter card border-2 ${isDone ? 'border-emerald-500/40 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800'} hover:border-teal-500 group cursor-pointer transition-all">
+        <div onpointerenter="preloadChapter('${jsArg(subject)}','${jsArg(ch)}')" ontouchstart="preloadChapter('${jsArg(subject)}','${jsArg(ch)}')" onclick="${bankCount ? `openPracticeSetup('${jsArg(subject)}','${jsArg(ch)}')` : `openAdaptiveAiConfigModal('${jsArg(subject)}')`}" class="chapter card border-2 ${isDone ? 'border-emerald-500/40 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800'} hover:border-teal-500 group cursor-pointer transition-all">
           <div>
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 font-extrabold text-[10px]">Ch ${idx + 1}</span>
@@ -2862,7 +3066,7 @@ main.innerHTML = `
                 <i class="fa-solid ${isDone ? 'fa-circle-check text-emerald-500' : 'fa-circle'} mr-1"></i> ${isDone ? 'Completed' : 'Mark Done'}
               </button>
             </div>
-            <h4 class="chapter-title group-hover:text-teal-600 transition-colors">${escapeHtml(ch)}</h4>
+            <h4 class="chapter-title group-hover:text-teal-600 transition-colors">${escapeHtml(ch)}</h4><div class="mt-2 flex items-center gap-2 text-[10px] font-bold text-slate-500"><span>${bankCount ? `${bankCount} Qs` : 'Soon'}</span>${chapterAccuracy !== null ? `<span>· ${chapterAccuracy}% accuracy</span>` : ''}<span class="ml-auto h-8 w-8 rounded-full border-4 border-teal-500/30 ${chapterAccuracy !== null ? 'border-t-teal-500' : ''} flex items-center justify-center text-[9px]">${chapterAccuracy ?? 0}%</span></div>
           </div>
 
           <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between gap-1 flex-wrap">
