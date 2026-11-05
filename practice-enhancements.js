@@ -160,9 +160,9 @@
       case 'planner': return switchTab('tools');
       case 'stats': return switchTab('progress');
       case 'vault': return switchTab('directory');
-      case 'biology': subject = 'Biology'; return switchTab('learn');
-      case 'chemistry': subject = 'Chemistry'; return switchTab('learn');
-      case 'physics': subject = 'Physics'; return switchTab('learn');
+      case 'biology': return switchTab('learn');
+      case 'chemistry': return switchTab('learn');
+      case 'physics': return switchTab('learn');
       case 'practice-settings': return switchTab('settings');
       case 'bookmarks': return switchTab('learn');
       case 'resume': return resumeSavedSession();
@@ -179,15 +179,9 @@
   function renderDashboardFeatures() {
     const main = document.getElementById('main-container');
     const hero = main?.querySelector('.executive-hero');
-    if (!main || !hero || main.querySelector('#edupulse-dashboard-features')) return;
-    const section = document.createElement('section');
-    section.id = 'edupulse-dashboard-features';
-    section.className = 'mt-8 space-y-4';
-    section.innerHTML = `
-      <div class="flex flex-wrap items-end justify-between gap-2"><div><p class="text-[10px] font-black uppercase tracking-[.18em] text-teal-600">Your study toolkit</p><h2 class="mt-1 text-xl font-black text-slate-900 dark:text-slate-100">20 ways to keep moving</h2><p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Quick links to practice, review, AI study help, and planning.</p></div><span class="rounded-full bg-teal-500/10 px-3 py-1 text-[10px] font-extrabold text-teal-700 dark:text-teal-300">20 feature cards</span></div>
-      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">${FEATURES.map(([title, description, icon, action], index) => `<button type="button" class="edupulse-feature-card" onclick="runDashboardFeature('${action}')"><span class="flex w-full items-start justify-between gap-2"><span class="edupulse-feature-icon"><i class="fa-solid ${icon}"></i></span><span class="text-[9px] font-black text-slate-400">${String(index + 1).padStart(2, '0')}</span></span><span><strong class="mt-3 block text-xs font-extrabold text-slate-800 dark:text-slate-100">${title}</strong><span class="mt-1 block text-[10px] leading-relaxed text-slate-500 dark:text-slate-400">${description}</span></span></button>`).join('')}</div>
-    `;
-    hero.insertAdjacentElement('afterend', section);
+    const existing = main?.querySelector('#edupulse-dashboard-features');
+    if (existing) existing.remove();
+    if (!main || !hero) return;
   }
 
   function installTestStreakTracking() {
@@ -230,8 +224,6 @@
   const main = document.getElementById('main-container');
   if (main) observer.observe(main, { childList: true, subtree: true });
 
-  // The host app defines its global functions in an inline script. Retry the wrapper in case
-  // this enhancement file is injected by the service worker before those bindings initialize.
   let attempts = 0;
   const retry = setInterval(() => {
     installTestStreakTracking();
