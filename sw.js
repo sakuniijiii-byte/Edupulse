@@ -1,7 +1,7 @@
-const VERSION = 'edupulse-v3';
+const VERSION = 'edupulse-v4';
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
-const SHELL_FILES = ['./', './index.html', './manifest.json'];
+const SHELL_FILES = ['./', './index.html', './manifest.json', './practice-metrics.js'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -42,13 +42,38 @@ async function staleWhileRevalidate(request, cacheName) {
   return cached || network;
 }
 
+async function injectPracticeMetrics(response) {
+  if (!response || !response.headers.get('content-type')?.includes('text/html')) return response;
+
+  const html = await response.text();
+  if (/\bsrc=["'][^"']*practice-metrics\.js(?:[?#][^"']*)?["']/i.test(html)) {
+    return new Response(html, { status: response.status, statusText: response.statusText, headers: response.headers });
+  }
+
+  const script = '<script src="./practice-metrics.js" defer></script>';
+  const updatedHtml = /<\/body>/i.test(html)
+    ? html.replace(/<\/body>/i, `${script}\n</body>`)
+    : `${html}\n${script}`;
+  const headers = new Headers(response.headers);
+  headers.delete('content-length');
+  return new Response(updatedHtml, { status: response.status, statusText: response.statusText, headers });
+}
+
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
 
   if (req.mode === 'navigate') {
-    event.respondWith(networkFirst(req, SHELL).catch(() => caches.match('./index.html')));
+    event.respondWith(
+      networkFirst(req, SHELL)
+        .catch(() => caches.match('./index.html'))
+        .then(injectPracticeMetrics)
+    );
+    return;
+  }
+  if (url.pathname.endsWith('/practice-metrics.js')) {
+    event.respondWith(networkFirst(req, SHELL));
     return;
   }
   if (url.hostname === 'raw.githubusercontent.com') {
