@@ -51,7 +51,13 @@ button,.palette-touch-btn{touch-action:manipulation}
 .quiz-meta span{font-size:10px;font-weight:800;padding:5px 8px;border-radius:999px;background:rgba(13,148,136,.1);color:var(--teal);border:1px solid rgba(13,148,136,.2)}
 .option-btn{transform:none!important}.option-btn:active{transform:scale(.985)!important}
 @media (min-width:1024px){.quiz-question-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.65fr);gap:18px;align-items:start}.quiz-side-panel{display:block!important;position:sticky;top:0}}
-@media (max-height:520px) and (orientation:landscape){.quiz-shell{font-size:12px}.quiz-scroll{padding:12px!important}.quiz-sticky-actions{padding-top:6px}}
+@media (max-height:520px) and (orientation:landscape){.quiz-shell{font-size:12px}.quiz-scroll{padding:12px!important}.quiz-sticky-actions{padding-top:6px}.quiz-sticky-actions button{min-height:42px}}
+@media (orientation:landscape) and (min-width:600px) and (max-width:1023px){
+  .topbar{height:58px;padding:0 22px}.main{padding:18px 24px 28px}.sidebar{width:228px}.sidebar.mobile-open{width:228px}
+  .executive-hero{min-height:190px;padding:24px 28px!important;display:flex;align-items:center;gap:24px}.executive-hero>div:first-child{flex:1}.executive-hero .hero-metrics{display:flex;gap:10px;min-width:310px}.executive-hero .hero-metric{padding:12px 14px}
+  .quiz-question-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(250px,.72fr);gap:14px;align-items:start}.quiz-side-panel{display:block!important;position:sticky;top:0}.quiz-scroll{padding:16px 22px 90px!important}.quiz-sticky-actions{padding-left:22px;padding-right:22px}
+}
+@media (orientation:landscape) and (max-height:520px) and (max-width:899px){.sidebar{width:210px}.main{padding-top:12px}.executive-hero{min-height:150px;padding:18px 22px!important}.executive-hero h1{font-size:1.65rem}.executive-hero .hero-metrics{min-width:270px}.quiz-scroll{padding-top:10px!important}.quiz-question-grid{grid-template-columns:minmax(0,1fr) minmax(220px,.7fr)}}
 
 .app-layout{display:flex;flex-direction:column;min-height:100vh}
 .sidebar{position:fixed;top:0;bottom:0;left:0;width:280px;height:100vh;overflow-y:auto;z-index:40;display:flex;flex-direction:column;justify-space:between;padding:24px 18px;transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1);background:var(--paper);border-right:1px solid var(--border-color);backdrop-filter:blur(20px)}
