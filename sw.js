@@ -1,7 +1,7 @@
-const VERSION = 'edupulse-v4';
+const VERSION = 'edupulse-v5';
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
-const SHELL_FILES = ['./', './index.html', './manifest.json', './practice-metrics.js'];
+const SHELL_FILES = ['./', './index.html', './manifest.json', './practice-metrics.js', './practice-enhancements.js'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -42,18 +42,21 @@ async function staleWhileRevalidate(request, cacheName) {
   return cached || network;
 }
 
-async function injectPracticeMetrics(response) {
+async function injectPracticeScripts(response) {
   if (!response || !response.headers.get('content-type')?.includes('text/html')) return response;
-
   const html = await response.text();
-  if (/\bsrc=["'][^"']*practice-metrics\.js(?:[?#][^"']*)?["']/i.test(html)) {
-    return new Response(html, { status: response.status, statusText: response.statusText, headers: response.headers });
-  }
-
-  const script = '<script src="./practice-metrics.js" defer></script>';
-  const updatedHtml = /<\/body>/i.test(html)
-    ? html.replace(/<\/body>/i, `${script}\n</body>`)
-    : `${html}\n${script}`;
+  const scripts = [
+    ['practice-metrics.js', '<script src="./practice-metrics.js" defer></script>'],
+    ['practice-enhancements.js', '<script src="./practice-enhancements.js" defer></script>']
+  ];
+  let updatedHtml = html;
+  scripts.forEach(([file, tag]) => {
+    const escaped = file.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const loaded = new RegExp(`\\bsrc=["'][^"']*${escaped}(?:[?#][^"']*)?["']`, 'i').test(updatedHtml);
+    if (!loaded) updatedHtml = /<\/body>/i.test(updatedHtml)
+      ? updatedHtml.replace(/<\/body>/i, `${tag}\n</body>`)
+      : `${updatedHtml}\n${tag}`;
+  });
   const headers = new Headers(response.headers);
   headers.delete('content-length');
   return new Response(updatedHtml, { status: response.status, statusText: response.statusText, headers });
@@ -68,11 +71,11 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       networkFirst(req, SHELL)
         .catch(() => caches.match('./index.html'))
-        .then(injectPracticeMetrics)
+        .then(injectPracticeScripts)
     );
     return;
   }
-  if (url.pathname.endsWith('/practice-metrics.js')) {
+  if (url.pathname.endsWith('/practice-metrics.js') || url.pathname.endsWith('/practice-enhancements.js')) {
     event.respondWith(networkFirst(req, SHELL));
     return;
   }
