@@ -1060,10 +1060,24 @@ function launchQuizFromAiChat(rawQuestions) {
 
 // ===== Quiz Data & Chapter Structure =====
 // Question bank is served from the dedicated /data mount so content can evolve independently from the app shell.
-const DATA_BASE = "./data/";
 const FILE_OVERRIDES = { 'The Living World': 'living_world_mcqs.json' };
 const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const quizUrl = (subj, chapter) => DATA_BASE + (FILE_OVERRIDES[chapter] || `${slugify(subj + ' ' + chapter)}.json`);
+const DATA_BASE = "/data/";                 // original (site-root) location
+const DATA_BASES = ["/data/", "./data/", "data/"]; // tried in order if the first one 404s
+const dataFileName = (subj, chapter) => FILE_OVERRIDES[chapter] || `${slugify(subj + ' ' + chapter)}.json`;
+async function fetchDataFile(fileName, opts = {}) {
+  let lastErr = null;
+  for (const base of DATA_BASES) {
+    try {
+      const res = await fetch(base + fileName, opts);
+      if (res.ok) return res;
+      lastErr = new Error(`HTTP ${res.status} for ${base + fileName}`);
+    } catch (e) { lastErr = e; }
+  }
+  console.warn('[EduPulse] Could not load data file:', fileName, lastErr);
+  return null;
+}
 
 const data = {
 Biology: ['The Living World','Biological Classification','Plant Kingdom','Animal Kingdom','Morphology and Anatomy of Flowering Plants','Structural Organisation in Animals','Cell: The Unit of Life','Biomolecules','Cell Cycle and Cell Division','Photosynthesis in Plants','Respiration in Plants','Plant Growth and Development','Breathing and Exchange of Gases','Body Fluids and Circulation','Excretory Products and their Elimination','Locomotion and Movement','Neural Control and Coordination','Chemical Coordination and Integration','Sexual Reproduction in Flowering Plants','Human Reproduction','Reproductive Health','Principles of Inheritance and Variation','Molecular Basis of Inheritance','Evolution','Human Health and Disease','Microbes in Human Welfare','Biotechnology: Principles and Processes','Biotechnology and its Applications','Organisms and Populations','Ecosystem','Biodiversity and Conservation'],
@@ -1228,8 +1242,9 @@ async function startBatchTestAttempt(testObj, seriesTitle) {
     const fetchPath = testObj.dataFile || `test/${testObj.id}.json`;
 
     try {
-      const res = await fetch(fetchPath, { cache: 'no-cache' });
-      if (res.ok) {
+      let res = await fetch(fetchPath, { cache: 'no-cache' }).catch(() => null);
+      if (!res || !res.ok) res = await fetchDataFile(fetchPath.split('/').pop(), { cache: 'no-cache' });
+      if (res && res.ok) {
         const raw = await res.json();
         const list = Array.isArray(raw) ? raw : (raw.qs || raw.questions || []);
         if (list.length > 0) {
@@ -1335,9 +1350,8 @@ async function buildFull180qMock() {
     for (const ch of chosenChapters) {
       if (subQs.length >= required * 2) break;
       try {
-        const url = quizUrl(s, ch);
-        const res = await fetch(url, { cache: 'force-cache' });
-        if (res.ok) {
+        const res = await fetchDataFile(dataFileName(s, ch), { cache: 'no-cache' });
+        if (res) {
           const raw = await res.json();
           const list = Array.isArray(raw) ? raw : (raw.qs || []);
           list.forEach((q, i) => {
@@ -1673,7 +1687,7 @@ function generateFallbackQuestions(subj, chapterName) {
 
 const questionCache = new Map();
 let questionIndex = {};
- fetch('/data/index.json').then(r => r.ok ? r.json() : {}).then(v => { questionIndex = v || {}; renderView(); }).catch(() => {});
+ fetchDataFile('index.json').then(r => r ? r.json() : {}).then(v => { questionIndex = v || {}; renderView(); }).catch(() => {});
 
 function getSavedResume() { return StorageModule.get(STORAGE_KEYS.session, null); }
 function getStudySignals() {
@@ -1710,8 +1724,8 @@ function normalizeQuestions(raw, subj, chapterName) {
 async function preloadChapter(subj, chapterName) {
   const key = `${subj}:${chapterName}`;
   if (questionCache.has(key)) return questionCache.get(key);
-  const promise = fetch(quizUrl(subj, chapterName), { cache: 'force-cache' }).then(async res => {
-    if (!res.ok) return [];
+  const promise = fetchDataFile(dataFileName(subj, chapterName), { cache: 'no-cache' }).then(async res => {
+    if (!res) return [];
     const raw = await res.json();
     const list = Array.isArray(raw) ? raw : (raw.qs || raw.questions || []);
     return normalizeQuestions(list, subj, chapterName);
