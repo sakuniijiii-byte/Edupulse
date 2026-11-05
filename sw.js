@@ -1,7 +1,7 @@
-const VERSION = 'edupulse-v5';
+const VERSION = 'edupulse-v6';
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
-const SHELL_FILES = ['./', './index.html', './manifest.json', './practice-metrics.js', './practice-enhancements.js'];
+const SHELL_FILES = ['./', './index.html', './manifest.json', './practice-metrics.js', './practice-enhancements.js', './study-tools-ui.js'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -44,22 +44,22 @@ async function staleWhileRevalidate(request, cacheName) {
 
 async function injectPracticeScripts(response) {
   if (!response || !response.headers.get('content-type')?.includes('text/html')) return response;
-  const html = await response.text();
+  let html = await response.text();
   const scripts = [
     ['practice-metrics.js', '<script src="./practice-metrics.js" defer></script>'],
-    ['practice-enhancements.js', '<script src="./practice-enhancements.js" defer></script>']
+    ['practice-enhancements.js', '<script src="./practice-enhancements.js" defer></script>'],
+    ['study-tools-ui.js', '<script src="./study-tools-ui.js" defer></script>']
   ];
-  let updatedHtml = html;
   scripts.forEach(([file, tag]) => {
     const escaped = file.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const loaded = new RegExp(`\\bsrc=["'][^"']*${escaped}(?:[?#][^"']*)?["']`, 'i').test(updatedHtml);
-    if (!loaded) updatedHtml = /<\/body>/i.test(updatedHtml)
-      ? updatedHtml.replace(/<\/body>/i, `${tag}\n</body>`)
-      : `${updatedHtml}\n${tag}`;
+    const loaded = new RegExp(`\\bsrc=["'][^"']*${escaped}(?:[?#][^"']*)?["']`, 'i').test(html);
+    if (!loaded) html = /<\/body>/i.test(html)
+      ? html.replace(/<\/body>/i, `${tag}\n</body>`)
+      : `${html}\n${tag}`;
   });
   const headers = new Headers(response.headers);
   headers.delete('content-length');
-  return new Response(updatedHtml, { status: response.status, statusText: response.statusText, headers });
+  return new Response(html, { status: response.status, statusText: response.statusText, headers });
 }
 
 self.addEventListener('fetch', (event) => {
@@ -75,7 +75,7 @@ self.addEventListener('fetch', (event) => {
     );
     return;
   }
-  if (url.pathname.endsWith('/practice-metrics.js') || url.pathname.endsWith('/practice-enhancements.js')) {
+  if (['practice-metrics.js', 'practice-enhancements.js', 'study-tools-ui.js'].some(file => url.pathname.endsWith(`/${file}`))) {
     event.respondWith(networkFirst(req, SHELL));
     return;
   }
