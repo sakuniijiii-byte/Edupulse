@@ -3766,6 +3766,11 @@ function renderPracticeQuiz() {
   const selected = quizState.userAnswers[idx], answered = selected !== undefined;
   const isRight = selected === q.correct;
   const last = idx === total - 1;
+  const pqAns = Object.keys(quizState.userAnswers).length;
+  const pqRight = Object.keys(quizState.userAnswers).filter(k => quizState.questions[k] && quizState.userAnswers[k] === quizState.questions[k].correct).length;
+  const pqWrong = pqAns - pqRight;
+  const pqAuto = (() => { try { return localStorage.getItem('edupulse_autonext') === '1'; } catch (e) { return false; } })();
+  const pqPct = total ? Math.round(pqAns / total * 100) : 0;
 
   const topStrip = inf ? buildInfiniteStatsStrip() : buildTopInteractiveQuestionPalette(true);
 
@@ -3803,8 +3808,8 @@ ${!isRight ? `<div class="pt-2"><p class="text-[10px] font-black uppercase track
     : `Question ${idx + 1} of ${total}`;
 
   const nextBtn = inf
-    ? `<button type="button" id="infinite-next-btn" onclick="goToNextPracticeQuestion()" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition flex items-center gap-1.5 disabled:opacity-60"><span>Next Question</span> <i class="fa-solid fa-arrow-right text-[10px]"></i></button>`
-    : `<button type="button" onclick="${last ? 'finishPracticeQuiz()' : 'goToNextPracticeQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition">${last ? 'Finish Quiz' : 'Next →'}</button>`;
+    ? `<button type="button" id="infinite-next-btn" onclick="goToNextPracticeQuestion()" class="pq-next flex items-center gap-1.5 disabled:opacity-60"><span>Next Question</span> <i class="fa-solid fa-arrow-right text-[10px]"></i></button>`
+    : `<button type="button" onclick="${last ? 'finishPracticeQuiz()' : 'goToNextPracticeQuestion()'}" class="pq-next">${last ? 'Finish Quiz' : 'Next →'}</button>`;
 
   const html = `<div class="quiz-session-layout w-full h-full min-h-0 flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative overflow-hidden">
 <div class="mb-1 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
@@ -3812,13 +3817,15 @@ ${!isRight ? `<div class="pt-2"><p class="text-[10px] font-black uppercase track
 <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button>
 <div>
 <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">${escapeHtml(quizState.title)}</h2>
-<p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">${inf ? '<i class="fa-solid fa-infinity text-teal-500"></i> Infinite Batch Practice — 5-10 MCQs Prefetched' : 'Practice Mode'}</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">${inf ? '<i class="fa-solid fa-infinity text-teal-500"></i> Infinite Batch Practice — 5-10 MCQs Prefetched' : 'Practice · ' + (idx + 1) + ' of ' + total}</p>
 </div>
 </div>
 <div class="flex items-center gap-2">
-
+<span class="pq-chip pq-time" id="pq-timer" title="Time on this question"><i class="fa-regular fa-clock"></i><b>0:00</b></span><span class="pq-chip pq-ok" title="Correct"><i class="fa-solid fa-check"></i>${pqRight}</span><span class="pq-chip pq-no" title="Wrong"><i class="fa-solid fa-xmark"></i>${pqWrong}</span>
+${inf ? '' : `<button type="button" class="pq-auto ${pqAuto ? 'on' : ''}" onclick="togglePqAutoNext()" aria-pressed="${pqAuto}" title="Auto-advance after a correct answer"><i class="fa-solid fa-forward-fast"></i><span>Auto</span></button>`}
 <button onclick="finishPracticeQuiz()" class="px-3.5 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-extrabold text-xs hover:bg-rose-500 hover:text-white transition">${inf ? 'End Session' : 'Exit'}</button>
 </div>
+${inf ? '' : `<div class="pq-progress" aria-hidden="true"><i style="width:${pqPct}%"></i></div>`}
 </div>
 
 ${inf ? '' : `<div class="quiz-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(Object.keys(quizState.userAnswers).length / total * 100)}"><span style="width:${Math.round(Object.keys(quizState.userAnswers).length / total * 100)}%"></span></div>`}
@@ -3837,8 +3844,9 @@ ${q.img ? `<button type="button" onclick="openImageZoom('${jsArg(q.img)}')" clas
 ${result}
 </div>
 
-<div class="sticky bottom-0 mt-6 pt-4 pb-[calc(env(safe-area-inset-bottom)+0.25rem)] bg-white/95 dark:bg-slate-900/95 backdrop-blur border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
-<div class="flex items-center gap-2"><button type="button" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} class="rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold hover:bg-slate-200 disabled:opacity-40">← Previous</button>${!answered ? '<button type="button" onclick="skipCurrentQuestion()" class="rounded-xl border border-amber-300 px-3 py-2.5 text-xs font-bold text-amber-700 dark:text-amber-300">Skip</button>' : ''}</div>
+<div class="pq-foot">
+<button type="button" class="pq-prev" aria-label="Previous question" onclick="jumpToPracticeQuestion(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''}><i class="fa-solid fa-arrow-left"></i></button>
+${!answered ? '<button type="button" class="pq-skip" onclick="skipCurrentQuestion()">Skip</button>' : ''}
 ${nextBtn}
 </div>
 </div>
@@ -6027,5 +6035,174 @@ body .quiz-session-layout .palette-drawer-top:not(.is-expanded) .palette-touch-b
   });
 })();
 </script>
+
+<style id="edupulse-practice-v2">
+/* ===== Practice page v2 ===== */
+body .quiz-session-layout.quiz-session-layout{gap:10px!important;padding:10px 12px!important;max-width:880px!important;margin-inline:auto!important}
+/* header */
+body .quiz-session-layout.quiz-session-layout > .mb-1{position:relative;border-bottom:0!important;padding:2px 0 10px!important}
+body .quiz-session-layout .mb-1 h2{font-size:16px!important;font-weight:800!important;max-width:46vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body .quiz-session-layout .mb-1 p{font-size:11.5px!important;font-weight:600!important}
+.pq-progress{position:absolute;left:0;right:0;bottom:0;height:4px;border-radius:4px;background:rgba(148,163,184,.25);overflow:hidden}
+.pq-progress i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#14b8a6,#10b981);transition:width .45s cubic-bezier(.4,0,.2,1)}
+.pq-chip{display:inline-flex;align-items:center;gap:5px;height:32px;padding:0 10px;border-radius:99px;font-size:12px;font-weight:800}
+.pq-ok{background:rgba(16,185,129,.14);color:#059669}.pq-no{background:rgba(239,68,68,.13);color:#dc2626}
+.pq-auto{display:inline-flex;align-items:center;gap:5px;height:32px;padding:0 10px;border-radius:99px;font-size:11px;font-weight:800;background:rgba(148,163,184,.16);color:var(--text-muted)}
+.pq-auto.on{background:#0d9488;color:#fff}
+@media (max-width:430px){.pq-auto span{display:none}.pq-chip{padding:0 8px}body .quiz-session-layout .mb-1 h2{max-width:34vw}}
+/* question card */
+body .quiz-session-layout.quiz-session-layout > [ontouchstart]{display:flex!important;flex-direction:column!important;justify-content:flex-start!important;padding:clamp(14px,3vw,26px)!important;border-radius:20px!important;box-shadow:0 6px 24px -12px rgba(15,23,42,.18)!important;scroll-padding-bottom:90px}
+.quiz-session-layout .quiz-meta{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin-top:10px}
+.quiz-session-layout .quiz-meta::-webkit-scrollbar{display:none}
+.quiz-session-layout .quiz-meta span{white-space:nowrap;flex-shrink:0}
+body .quiz-session-layout .quiz-stem{font-size:clamp(17px,2.3vw,21px)!important;line-height:1.65!important;font-weight:500!important;margin-top:16px!important;max-width:none}
+/* options */
+body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{display:grid!important;grid-template-columns:1fr!important;gap:10px!important;margin-top:18px!important}
+@media (min-width:720px){body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{grid-template-columns:1fr 1fr!important}}
+body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3 > *{margin:0!important}
+body .quiz-session-layout button[role="radio"]{min-height:58px!important;padding:11px 14px!important;border-width:1.5px!important;border-radius:16px!important;font-size:15px!important;line-height:1.4;box-shadow:none!important;background:var(--card-bg)!important;transition:transform .12s,border-color .2s,background-color .2s!important}
+body .quiz-session-layout button[role="radio"]:not(:disabled):hover{border-color:#14b8a6!important;background:rgba(20,184,166,.06)!important}
+body .quiz-session-layout button[role="radio"]:not(:disabled):active{transform:scale(.985)!important}
+body .quiz-session-layout button[role="radio"] .opt-badge{width:34px;height:34px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800}
+body .quiz-session-layout button[role="radio"][class*="border-emerald-500"]{background:#ecfdf5!important;animation:pq-pop .3s ease}
+body .quiz-session-layout button[role="radio"][class*="border-rose-500"]{background:#fef2f2!important;animation:pq-shake .35s ease}
+body.dark .quiz-session-layout button[role="radio"][class*="border-emerald-500"]{background:rgba(16,185,129,.16)!important}
+body.dark .quiz-session-layout button[role="radio"][class*="border-rose-500"]{background:rgba(239,68,68,.16)!important}
+body .quiz-session-layout button[role="radio"]:disabled{opacity:1}
+body .quiz-session-layout button[role="radio"]:disabled:not([class*="border-emerald-500"]):not([class*="border-rose-500"]){opacity:.55}
+#quiz-result{animation:pq-slide .28s ease both;border-radius:18px!important}
+@keyframes pq-pop{0%{transform:scale(.97)}60%{transform:scale(1.015)}100%{transform:scale(1)}}
+@keyframes pq-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes pq-slide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* footer: pinned to bottom of the card */
+.pq-foot{position:sticky;bottom:-1px;margin-top:auto!important;padding:14px 0 calc(env(safe-area-inset-bottom,0px) + 2px);display:flex;align-items:center;gap:10px;background:linear-gradient(180deg,transparent,var(--card-bg) 30%);z-index:3}
+.pq-prev{width:52px;height:52px;flex:0 0 52px;border-radius:16px;background:rgba(148,163,184,.16);color:var(--text-primary);font-size:16px}
+.pq-prev:disabled{opacity:.35}
+.pq-skip{height:52px;padding:0 18px;border-radius:16px;border:1.5px solid rgba(245,158,11,.5);color:#b45309;font-size:14px;font-weight:800;background:transparent}
+body.dark .pq-skip{color:#fcd34d}
+.pq-next{flex:1;height:52px;min-width:120px;padding:0 20px;border-radius:16px;font-size:15px!important;font-weight:800;color:#fff;background:linear-gradient(135deg,#14b8a6,#0d9488);box-shadow:0 10px 22px -10px rgba(13,148,136,.8);display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.pq-next:disabled{opacity:.6}
+/* tools tray */
+body .quiz-session-layout > #normal-practice-toolkit{border-radius:18px!important;border-color:var(--border-color)!important}
+@media (hover:hover) and (pointer:fine){.pq-foot::after{content:"1–4 answer · ← → move · B bookmark · S skip";order:5;font-size:10.5px;font-weight:600;color:var(--text-muted);white-space:nowrap;margin-left:6px}}
+</style>
+<script>
+(function(){
+  window.togglePqAutoNext=function(){
+    var on=false; try{on=localStorage.getItem('edupulse_autonext')==='1';localStorage.setItem('edupulse_autonext',on?'0':'1');}catch(e){}
+    if(window.showToast) showToast(on?'Auto-advance off':'Auto-advance on: moves on after a correct answer');
+    renderPracticeQuiz();
+  };
+  var orig=window.selectPracticeOption;
+  if(typeof orig==='function'){
+    window.selectPracticeOption=function(i){
+      var idx=quizState.currentIndex, fresh=quizState.userAnswers[idx]===undefined;
+      var r=orig.apply(this,arguments);
+      var auto=false; try{auto=localStorage.getItem('edupulse_autonext')==='1';}catch(e){}
+      var q=quizState.questions[idx];
+      if(fresh&&auto&&!quizState.infinite&&q&&i===q.correct&&idx<quizState.questions.length-1){
+        setTimeout(function(){ if(quizState.currentIndex===idx&&document.getElementById('appModal')?.classList.contains('open')) goToNextPracticeQuestion(); },1200);
+      }
+      return r;
+    };
+  }
+})();
+</script>
+
+<style id="edupulse-polish-v3">
+/* ===== Polish pass ===== */
+:focus-visible{outline:2.5px solid #14b8a6;outline-offset:2px;border-radius:10px}
+.pq-time{background:rgba(148,163,184,.16);color:var(--text-muted)}
+.pq-time b{font-variant-numeric:tabular-nums;color:var(--text-primary)}
+@media (max-width:430px){.pq-time{display:none}}
+/* question change animation */
+.pq-enter{animation:pq-in .28s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pq-in{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+/* options: calmer hover, clearer selection */
+body .quiz-session-layout button[role="radio"]:not(:disabled):hover{transform:none!important;box-shadow:0 6px 16px -10px rgba(13,148,136,.55)!important}
+body .quiz-session-layout button[role="radio"] .opt-badge{background:rgba(148,163,184,.16);color:var(--text-primary);transition:background-color .2s,color .2s}
+body .quiz-session-layout button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#fff}
+body .quiz-session-layout button[role="radio"] .opt-ok{background:#10b981!important;color:#fff!important}
+body .quiz-session-layout button[role="radio"] .opt-bad{background:#ef4444!important;color:#fff!important}
+/* swipe hint only where it makes sense */
+@media (hover:hover) and (pointer:fine){.quiz-session-layout > [ontouchstart] > div > div:first-child > span:last-child{display:none!important}}
+/* feedback card accent */
+#quiz-result[class*="border-emerald"]{border-left:5px solid #10b981!important}
+#quiz-result[class*="border-rose"]{border-left:5px solid #ef4444!important}
+/* palette strip: soft edge fade */
+.palette-drawer-top:not(.is-expanded) > div:nth-child(2){-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 22px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 22px),transparent 100%)}
+.palette-drawer-top > div:first-child{font-size:12px}
+/* tools tray: lighter, flat tinted buttons, one-line stats */
+#normal-practice-toolkit{padding:10px 12px!important;box-shadow:0 4px 16px -10px rgba(15,23,42,.25)!important}
+#normal-practice-toolkit .tk-stats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+#normal-practice-toolkit .tk-stats::-webkit-scrollbar{display:none}
+#normal-practice-toolkit .tk-chip{white-space:nowrap;flex-shrink:0}
+#normal-practice-toolkit .tk-bar{margin-top:.5rem;height:4px}
+.tk-quick{margin-top:.6rem!important;gap:.45rem!important}
+#normal-practice-toolkit button.tk-big{min-height:64px!important;color:var(--text-primary)!important;background:var(--tk-bg)!important;box-shadow:none!important;border:1px solid color-mix(in srgb,var(--tk-fg) 35%,transparent)!important;font-weight:800}
+#normal-practice-toolkit button.tk-big i{color:var(--tk-fg)!important;background:var(--card-bg)!important}
+#normal-practice-toolkit button.tk-big:hover{box-shadow:0 8px 16px -10px var(--tk-fg)!important;border:1px solid var(--tk-fg)!important}
+#normal-practice-toolkit button.tk-big[aria-pressed="true"]{background:rgba(245,158,11,.22)!important;border-color:#f59e0b!important;box-shadow:none!important}
+#normal-practice-toolkit button.tk-big[aria-pressed="true"] i{color:#d97706!important}
+/* dashboard polish */
+.dv2>*{animation:dv2-in .45s cubic-bezier(.2,.8,.2,1) both}
+.dv2>*:nth-child(2){animation-delay:.05s}.dv2>*:nth-child(3){animation-delay:.1s}.dv2>*:nth-child(4){animation-delay:.15s}.dv2>*:nth-child(5){animation-delay:.2s}
+@keyframes dv2-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.dv2-hero::after{content:"";position:absolute;right:-60px;bottom:-80px;width:220px;height:220px;border-radius:50%;border:30px solid rgba(255,255,255,.05);pointer-events:none}
+.dv2-btn{transition:transform .15s,box-shadow .2s,background-color .2s}
+.dv2-btn:hover{transform:translateY(-2px)}
+.dv2-btn-main:hover{box-shadow:0 12px 24px -10px rgba(0,0,0,.45)}
+.dv2-btn-ghost:hover{background:rgba(255,255,255,.22)}
+.dv2-stat,.dv2-act,.dv2-subj,.dv2-card,.dv2-weak,.dv2-saved{transition:transform .2s,border-color .2s,box-shadow .2s}
+.dv2-stat:hover,.dv2-act:hover,.dv2-subj:hover{transform:translateY(-2px);box-shadow:0 12px 26px -16px rgba(13,148,136,.5)}
+.dv2-act:active,.dv2-subj:active,.dv2-saved:active,.dv2-weak:active,.dv2-btn:active{transform:scale(.97)}
+.dv2-ring:hover .dv2-ring-fg{stroke:#fff}
+.dv2-bar>div{position:relative}
+.dv2-bar:hover>div{background:rgba(148,163,184,.25)}
+.dv2-subj-bar i{transition:width .8s cubic-bezier(.4,0,.2,1)}
+@media (prefers-reduced-motion:reduce){.dv2>*,.pq-enter{animation:none!important}}
+</style>
+<script>
+(function(){
+  function fmt(t){t=Math.max(0,Math.min(5999,Math.round(t)));return Math.floor(t/60)+':'+String(t%60).padStart(2,'0');}
+  setInterval(function(){
+    var el=document.querySelector('#pq-timer b'); if(!el||typeof quizState==='undefined'||quizState.mode!=='practice') return;
+    var i=quizState.currentIndex, done=quizState.userAnswers[i]!==undefined;
+    el.textContent=fmt(done?(quizState.questionTimes[i]||0):(Date.now()-quizState.questionStartTimer)/1000);
+  },1000);
+  var lastIdx=-1, lastLen=-1;
+  var orig=window.renderPracticeQuiz;
+  if(typeof orig==='function'){
+    window.renderPracticeQuiz=function(){
+      var r=orig.apply(this,arguments);
+      var i=quizState.currentIndex;
+      if(i!==lastIdx){
+        if(lastIdx!==-1){
+          var card=document.querySelector('.quiz-session-layout > [ontouchstart]');
+          if(card){card.classList.add('pq-enter');card.addEventListener('animationend',function(){card.classList.remove('pq-enter')},{once:true});}
+        }
+        lastIdx=i;
+      }
+      return r;
+    };
+  }
+})();
+</script>
+
+<style id="edupulse-polish-v4">
+/* option badges: beat the legacy !important rule so states show */
+body .quiz-session-layout.quiz-session-layout > [ontouchstart] button[role="radio"] .opt-badge{background:rgba(148,163,184,.18)!important;color:var(--text-primary)!important;box-shadow:none!important;width:34px!important;height:34px!important;min-width:34px!important}
+body .quiz-session-layout.quiz-session-layout > [ontouchstart] button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6!important;color:#fff!important}
+body .quiz-session-layout.quiz-session-layout > [ontouchstart] button[role="radio"] .opt-badge.opt-ok{background:#10b981!important;color:#fff!important}
+body .quiz-session-layout.quiz-session-layout > [ontouchstart] button[role="radio"] .opt-badge.opt-bad{background:#ef4444!important;color:#fff!important}
+/* header: let the title use the free space */
+body .quiz-session-layout.quiz-session-layout > .mb-1 > div:first-child{flex:1 1 auto;min-width:0}
+body .quiz-session-layout.quiz-session-layout > .mb-1 > div:first-child > div{min-width:0}
+body .quiz-session-layout.quiz-session-layout > .mb-1 > div:last-child{flex:0 0 auto}
+body .quiz-session-layout .mb-1 h2{max-width:none!important}
+/* keyboard hint: wide screens only */
+.pq-foot::after{display:none!important}
+@media (min-width:900px) and (hover:hover) and (pointer:fine){.pq-foot::after{display:block!important}}
+</style>
 </body>
   </html>
