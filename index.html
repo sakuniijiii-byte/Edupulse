@@ -916,6 +916,32 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
   .quiz-session-layout > [ontouchstart],.quiz-session-layout > #normal-practice-toolkit,
   .quiz-session-layout > .palette-drawer-top{box-shadow:0 3px 14px rgba(0,0,0,.18)!important}
 }
+
+
+/* Portrait palette disclosure: keep an obvious expand/collapse control visible. */
+@media (orientation:portrait){
+  .quiz-session-layout > .palette-drawer-top{
+    max-height:58px!important;overflow:hidden!important;transition:max-height .28s ease!important;
+  }
+  .quiz-session-layout > .palette-drawer-top > div:first-child{
+    display:flex!important;min-height:42px!important;padding:5px 9px!important;cursor:pointer!important;
+  }
+  .quiz-session-layout .palette-expand-trigger{
+    display:inline-flex!important;flex:0 0 32px!important;width:32px!important;height:32px!important;
+    margin-left:8px!important;pointer-events:auto!important;
+  }
+  .quiz-session-layout > .palette-drawer-top > div:nth-child(2){
+    display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;padding:5px 8px!important;
+  }
+  /* The expanded legend/grid is rendered only while paletteExpanded is true. */
+  .quiz-session-layout > .palette-drawer-top:has(> .p-3.space-y-2){
+    max-height:min(52vh,390px)!important;overflow-y:auto!important;
+  }
+  .quiz-session-layout > .palette-drawer-top:has(> .p-3.space-y-2) > div:nth-child(2){display:none!important}
+  .quiz-session-layout > .palette-drawer-top:has(> .p-3.space-y-2) .p-3.space-y-2{
+    display:block!important;max-height:calc(52vh - 54px)!important;overflow-y:auto!important;
+  }
+}
 </style>
 
 </head>
@@ -3144,7 +3170,7 @@ function buildTopInteractiveQuestionPalette(isPractice = false) {
         <div class="flex items-center gap-2.5 text-[11px] font-bold">
           <span class="text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-circle text-[7px]"></i> ${answeredCount} Done</span>
           ${!isPractice ? `<span class="text-indigo-600 flex items-center gap-1"><i class="fa-solid fa-circle text-[7px]"></i> ${markedCount} Marked</span>` : ''}
-          <button class="p-1 rounded-lg text-slate-500 hover:text-teal-600">
+          <button type="button" aria-label="${isExpanded ? 'Collapse' : 'Expand'} question palette" aria-expanded="${isExpanded}" title="${isExpanded ? 'Collapse question palette' : 'Expand question palette'}" class="palette-expand-trigger w-8 h-8 inline-flex items-center justify-center rounded-full border border-teal-200 dark:border-teal-800 bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 hover:bg-teal-100 dark:hover:bg-teal-900/60 active:scale-95 transition-all shadow-sm">
             <i class="fa-solid ${isExpanded ? 'fa-chevron-up' : 'fa-chevron-down'} text-xs"></i>
           </button>
         </div>
