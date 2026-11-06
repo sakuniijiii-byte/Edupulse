@@ -3898,6 +3898,26 @@ main.innerHTML = `
     const existing = main?.querySelector('#edupulse-dashboard-features');
     if (existing) existing.remove();
     if (!main || !hero) return;
+
+    const section = document.createElement('section');
+    section.id = 'edupulse-dashboard-features';
+    section.className = 'mt-8';
+    section.innerHTML = `
+      <div class="mb-4 flex flex-wrap items-end justify-between gap-3">
+        <div><p class="tag">Your study cockpit</p><h2 class="mt-1 text-xl font-black text-slate-900 dark:text-white">Everything you need, one tap away</h2><p class="mt-1 max-w-2xl text-xs font-medium text-slate-500 dark:text-slate-400">Jump into focused practice, AI coaching, revision, and planning without hunting through menus.</p></div>
+        <button type="button" onclick="switchTab('learn')" class="rounded-xl bg-teal-600 px-4 py-2.5 text-xs font-extrabold text-white shadow-lg shadow-teal-600/20 hover:bg-teal-700">Open practice hub <i class="fa-solid fa-arrow-right ml-1"></i></button>
+      </div>
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        ${FEATURES.map(([title, description, icon, action], index) => `
+          <button type="button" class="edupulse-feature-card group" onclick="runDashboardFeature('${action}')" aria-label="${escapeHtml(title)}: ${escapeHtml(description)}">
+            <span class="flex items-start justify-between gap-3"><span class="edupulse-feature-icon"><i class="fa-solid ${icon}"></i></span><span class="text-[10px] font-black text-slate-300 dark:text-slate-600">${String(index + 1).padStart(2, '0')}</span></span>
+            <span><strong class="block text-left text-sm font-black text-slate-900 dark:text-white">${escapeHtml(title)}</strong><span class="mt-1 block text-left text-[11px] font-medium leading-relaxed text-slate-500 dark:text-slate-400">${escapeHtml(description)}</span></span>
+            <span class="mt-3 flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-teal-600 dark:text-teal-400">Open <i class="fa-solid fa-arrow-up-right-from-square text-[9px] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i></span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+    hero.insertAdjacentElement('afterend', section);
   }
 
   function installTestStreakTracking() {
