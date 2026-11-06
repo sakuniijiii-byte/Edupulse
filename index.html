@@ -4369,6 +4369,53 @@ if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(e => console.warn('SW registration failed:', e)));
 }
 
+// ===== Back button / gesture handling (Android & browser history) =====
+// Keeps one buffer entry above the app's first page so Back is handled in-app instead of closing the site.
+(() => {
+  let armed = false, exitArmedUntil = 0;
+  const modalEl = () => document.getElementById('appModal');
+  const modalOpen = () => modalEl()?.classList.contains('open');
+  function arm() {
+    if (armed) return;
+    armed = true;
+    try { history.pushState({ edu: 'app' }, ''); } catch (e) { armed = false; }
+  }
+  try { history.replaceState({ edu: 'home' }, ''); } catch (e) {}
+  // Browsers ignore history entries added without a user gesture, so add the buffer entry on first interaction.
+  ['pointerdown', 'touchstart', 'keydown', 'click'].forEach(ev => window.addEventListener(ev, arm, { once: true, passive: true, capture: true }));
+
+  function handleBack() {
+    // 1. Quiz screen (fullscreen modal)
+    if (modalOpen() && modalEl().classList.contains('fullscreen-modal')) {
+      const title = document.getElementById('modalTitle')?.textContent || '';
+      if (title === 'Leave Practice Session?') {
+        // Back pressed on the confirmation = "Continue Attempt"
+        if (quizState.mode === 'test') renderTestQuiz(); else renderPracticeQuiz();
+      } else {
+        confirmExitQuiz();
+      }
+      return;
+    }
+    // 2. Any other open dialog
+    if (modalOpen()) { closeModal(); return; }
+    // 3. Mobile menu
+    if (document.getElementById('sidebarDrawer')?.classList.contains('mobile-open')) { toggleMobileNav(false); return; }
+    // 4. Other tabs go back to the dashboard
+    if (currentTab !== 'dashboard') { switchTab('dashboard'); return; }
+    // 5. Dashboard: press back twice to leave
+    if (Date.now() < exitArmedUntil) { exitArmedUntil = 0; return 'exit'; }
+    exitArmedUntil = Date.now() + 2000;
+    showToast('Press back again to exit', 'info');
+  }
+
+  window.addEventListener('popstate', (event) => {
+    if (!armed || event.state?.edu !== 'home') return;
+    const result = handleBack();
+    if (result === 'exit') { history.back(); return; } // leaves the site
+    try { history.pushState({ edu: 'app' }, ''); } catch (e) {}
+  });
+})();
+
 // Initial mount
 renderView();
 </script>
