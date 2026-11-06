@@ -4411,6 +4411,184 @@ function buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccu
   </div>`;
 }
 
+// ===== Practice home =====
+function pcChapterModel(subj) {
+  const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
+  const meta = readChapterMeta();
+  const byCh = {};
+  attempts.forEach(a => {
+    if (!a || !a.chapter) return;
+    const e = byCh[a.chapter] || (byCh[a.chapter] = { accs: [], hist: 0 });
+    e.accs.push(a.accuracy || 0);
+    if (!a.subject || a.subject === subj) e.hist++;
+  });
+  return (data[subj] || []).map((ch, i) => {
+    const session = meta[chapterKey(subj, ch)] || null;
+    const e = byCh[ch] || { accs: [], hist: 0 };
+    const acc = e.accs.length ? Math.round(e.accs.reduce((s, v) => s + v, 0) / e.accs.length) : null;
+    const answered = session ? (session.answered || 0) : 0;
+    const total = session ? (session.total || 0) : 0;
+    return {
+      ch, num: i + 1, acc, answered, total,
+      done: !!userProgress[ch]?.completed,
+      bank: questionIndex[slugify(subj + ' ' + ch)] || questionIndex[slugify(ch)] || 0,
+      inProgress: !!session && answered > 0 && answered < total,
+      finished: !!session && total > 0 && answered >= total,
+      hasHistory: !!session || e.hist > 0,
+      todo: !session && !e.accs.length,
+      weak: acc !== null && acc < 60
+    };
+  });
+}
+
+function clearChapterFilters() { __q.chapterSearch = ''; chapterFilter = 'all'; renderView(); }
+
+function openChapterLecture(subj, ch) {
+  const query = `${ch} ${subj} NEET One Shot full chapter lecture`;
+  setModal(
+    `📺 ${ch} — One Shot Lecture`,
+    'YouTube Video Lectures & Concept Breakdown',
+    generateYouTubeEmbedHtml(query, `NEET ${ch} One-Shot Video Solutions`),
+    `<button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-white font-bold text-xs">Close</button>`
+  );
+}
+
+function buildPracticeHome() {
+  const subjMeta = { Biology: ['bio', 'fa-dna'], Chemistry: ['chem', 'fa-flask'], Physics: ['phy', 'fa-atom'] };
+  const [subjCls] = subjMeta[subject] || ['phy'];
+  const sArg = jsArg(subject);
+
+  // ---- Next step: one primary action that adapts to where the student is ----
+  const resume = getSavedResume();
+  const hasResume = !!resume?.questions?.length;
+  const weakest = getStudySignals().weakest;
+  const aiBtn = `<button type="button" onclick="openAdaptiveAiConfigModal('${sArg}')" class="dv2-btn dv2-btn-ghost"><i class="fa-solid fa-wand-magic-sparkles"></i> AI adaptive drill</button>`;
+  let heading, sub, bar = '', actions, discard = '';
+  if (hasResume) {
+    const total = resume.questions.length;
+    const at = Math.min((resume.currentIndex || 0) + 1, total);
+    const answered = Math.min(Object.keys(resume.userAnswers || {}).length, total);
+    heading = 'Pick up where you left off';
+    sub = `${escapeHtml(resume.title || resume.chapter || 'Practice session')}, question ${at} of ${total}.`;
+    bar = `<div class="pc-next-bar" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${answered}"><i style="width:${Math.round(answered / total * 100)}%"></i></div>`;
+    actions = `<button type="button" onclick="resumeSavedSession()" class="dv2-btn dv2-btn-main"><i class="fa-solid fa-play"></i> Resume</button>
+      <button type="button" onclick="startQuickTen()" class="dv2-btn dv2-btn-ghost"><i class="fa-solid fa-bolt"></i> Quick 10</button>${aiBtn}`;
+    discard = `<button type="button" class="pc-next-x" aria-label="Discard saved session" title="Discard saved session" onclick="if(confirm('Discard this saved session? Your progress in it will be lost.')){StorageModule.remove(STORAGE_KEYS.session);renderView();}"><i class="fa-solid fa-xmark"></i></button>`;
+  } else {
+    if (weakest) {
+      heading = `Strengthen ${escapeHtml(weakest.chapter)}`;
+      sub = `${weakest.accuracy}% average accuracy. A focused 10-question drill is ready.`;
+    } else {
+      heading = 'Start with a Quick 10';
+      sub = 'Ten mixed questions to find your starting point.';
+    }
+    actions = `<button type="button" onclick="startQuickTen()" class="dv2-btn dv2-btn-main"><i class="fa-solid fa-bolt"></i> Start Quick 10</button>${aiBtn}`;
+  }
+  const next = `
+  <section class="pc-next${hasResume ? ' has-resume' : ''}" aria-label="Next step">
+    <div class="pc-next-text"><h2>${heading}</h2><p>${sub}</p>${bar}</div>
+    <div class="pc-next-actions">${actions}</div>
+    ${discard}
+  </section>`;
+
+  // ---- Error notebook: only when there is something to revisit ----
+  const nCount = Object.values(StorageModule.get(STORAGE_KEYS.errorNotebook, {})).length;
+  const notes = nCount ? `
+  <section class="pc-notes" aria-label="Error notebook">
+    <div class="pc-notes-t"><b>${nCount} concept${nCount === 1 ? '' : 's'} to revisit</b><span>Missed questions come back as spaced revision.</span></div>
+    <div class="pc-notes-a">
+      <button type="button" class="pc-btn pc-btn-soft" onclick="openErrorNotebook()">Review notebook</button>
+      <button type="button" class="pc-btn pc-btn-rose" onclick="practiceErrorNotebook()">Practise mistakes</button>
+    </div>
+  </section>` : '';
+
+  // ---- Subject tabs ----
+  const tabs = Object.keys(data).map(s => {
+    const total = data[s].length;
+    const sd = data[s].filter(c => userProgress[c]?.completed).length;
+    const pct = total ? Math.round(sd / total * 100) : 0;
+    const [cls, ic] = subjMeta[s] || ['phy', 'fa-book'];
+    return `<button type="button" role="tab" aria-selected="${s === subject}" onclick="setSubject('${jsArg(s)}')" class="pc-subj pc-s-${cls}">
+      <span class="pc-subj-ic"><i class="fa-solid ${ic}" aria-hidden="true"></i></span>
+      <span class="pc-subj-t"><b>${s}</b><small>${sd}/${total} done</small></span>
+      <span class="pc-subj-bar"><i style="width:${pct}%"></i></span>
+    </button>`;
+  }).join('');
+
+  // ---- Chapters: compute once, then filter / count from the same model ----
+  const model = pcChapterModel(subject);
+  const q = (__q.chapterSearch || '').trim().toLowerCase();
+  const passesFilter = m => chapterFilter === 'all'
+    || (chapterFilter === 'progress' && m.inProgress)
+    || (chapterFilter === 'todo' && m.todo)
+    || (chapterFilter === 'done' && m.done)
+    || (chapterFilter === 'weak' && m.weak);
+  const shown = model.filter(m => (!q || m.ch.toLowerCase().includes(q)) && passesFilter(m));
+  const counts = {
+    all: model.length,
+    progress: model.filter(m => m.inProgress).length,
+    todo: model.filter(m => m.todo).length,
+    weak: model.filter(m => m.weak).length,
+    done: model.filter(m => m.done).length
+  };
+  const chips = [['all', 'All'], ['progress', 'In progress'], ['todo', 'Not started'], ['weak', 'Needs work'], ['done', 'Completed']]
+    .map(([k, l]) => `<button type="button" role="tab" aria-selected="${chapterFilter === k}" onclick="setChapterFilter('${k}')" class="chip-filter${chapterFilter === k ? ' on' : ''}">${l}<span class="pc-chip-n">${counts[k]}</span></button>`).join('');
+  const countText = shown.length === model.length ? `${model.length} chapters` : `Showing ${shown.length} of ${model.length} chapters`;
+
+  const cards = shown.map(m => {
+    const open = m.bank ? `openPracticeSetup('${sArg}','${jsArg(m.ch)}')` : `openAdaptiveAiConfigModal('${sArg}')`;
+    const verb = !m.bank ? 'Generate questions for' : m.inProgress ? 'Resume' : 'Practise';
+    const cta = !m.bank ? 'Generate with AI' : m.inProgress ? `Resume · ${m.answered}/${m.total}` : (m.finished || m.done) ? 'Practise again' : 'Start practice';
+    const ctaIcon = !m.bank ? 'fa-wand-magic-sparkles' : 'fa-play';
+    const badge = m.done
+      ? '<span class="pc-badge pc-badge-done"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Completed</span>'
+      : m.inProgress ? '<span class="pc-badge pc-badge-prog">In progress</span>' : '';
+    const accChip = m.acc !== null ? `<span class="pc-acc ${m.acc >= 75 ? 'good' : m.acc >= 60 ? 'mid' : 'weak'}">${m.acc}% accuracy</span>` : '';
+    const progress = m.total && m.answered
+      ? `<div class="pc-bar" title="${m.answered}/${m.total} answered"><i style="width:${Math.min(100, Math.round(m.answered / m.total * 100))}%"></i></div>` : '';
+    const name = escapeHtml(m.ch);
+    return `
+    <article class="pc-card${m.done ? ' is-done' : ''}" onpointerenter="preloadChapter('${sArg}','${jsArg(m.ch)}')" ontouchstart="preloadChapter('${sArg}','${jsArg(m.ch)}')">
+      <div class="pc-top"><span class="pc-num">Ch ${m.num}</span>${badge}</div>
+      <h4 class="pc-title"><button type="button" class="pc-main" aria-label="${verb} ${name}" onclick="${open}">${name}</button></h4>
+      <div class="pc-meta"><span>${m.bank ? `${m.bank} questions` : 'No question bank yet'}</span>${accChip}</div>
+      ${progress}
+      <div class="pc-foot">
+        <span class="pc-cta" aria-hidden="true"><i class="fa-solid ${ctaIcon}"></i> ${cta}</span>
+        <div class="pc-tools">
+          <button type="button" class="pc-ibtn${m.done ? ' on' : ''}" aria-pressed="${m.done}" aria-label="Mark ${name} as ${m.done ? 'not completed' : 'completed'}" title="${m.done ? 'Completed. Tap to undo' : 'Mark as completed'}" onclick="toggleChapterProgress('${sArg}','${jsArg(m.ch)}')"><i class="fa-${m.done ? 'solid' : 'regular'} fa-circle-check"></i></button>
+          <button type="button" class="pc-ibtn pc-yt" aria-label="Watch one-shot lecture for ${name}" title="One-shot lecture" onclick="openChapterLecture('${sArg}','${jsArg(m.ch)}')"><i class="fa-brands fa-youtube"></i></button>
+          ${m.hasHistory ? `<button type="button" class="pc-ibtn pc-erase" aria-label="Erase history for ${name}" title="Erase chapter history" onclick="confirmEraseChapter('${sArg}','${jsArg(m.ch)}')"><i class="fa-solid fa-eraser"></i></button>` : ''}
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+
+  const empty = `
+    <div class="pc-empty">
+      <b>${q ? `No ${escapeHtml(subject)} chapters match “${escapeHtml(__q.chapterSearch.trim())}”` : 'No chapters in this filter yet'}</b>
+      <span>${q ? 'Check the spelling, or try a shorter search.' : 'Practise a few chapters and they will show up here.'}</span>
+      <button type="button" class="pc-btn pc-btn-soft" onclick="clearChapterFilters()">Show all chapters</button>
+    </div>`;
+
+  return `
+  <div class="pc">
+    ${next}
+    ${notes}
+    <div class="pc-subjects" role="tablist" aria-label="Subject">${tabs}</div>
+    <div class="pc-toolbar">
+      <div class="pc-search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <label for="chapterSearch" class="pc-sr">Search ${escapeHtml(subject)} chapters</label>
+        <input type="search" id="chapterSearch" oninput="onSearchInput(this)" value="${escapeHtml(__q.chapterSearch || '')}" placeholder="Search ${escapeHtml(subject)} chapters" autocomplete="off" enterkeyhint="search">
+      </div>
+      <div class="pc-chips" role="tablist" aria-label="Filter chapters">${chips}</div>
+      <p class="pc-count" role="status">${countText}</p>
+    </div>
+    ${shown.length ? `<div class="pc-grid pc-s-${subjCls}">${cards}</div>` : empty}
+  </div>`;
+}
+
 function renderView() {
 const main = document.getElementById('main-container');
 if (!main) return;
@@ -4808,93 +4986,7 @@ main.innerHTML = `
   `}
 </div>`;
 } else if (currentTab === 'learn') {
-const chaptersList = data[subject] || [];
-main.innerHTML = `
-<div class="space-y-6 animate-fadeIn max-w-6xl mx-auto">
-  <!-- Subject Switcher Bar & Adaptive Hero -->
-  <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 card p-6 bg-gradient-to-br from-teal-900 via-slate-900 to-purple-950 text-white border-teal-500/30">
-    <div class="space-y-1.5 max-w-xl">
-      <div class="flex items-center gap-2">
-        <span class="px-2.5 py-1 rounded-full bg-teal-400/20 text-teal-300 border border-teal-400/30 font-black text-[10px] uppercase tracking-wider flex items-center gap-1">
-          <i class="fa-solid fa-bolt text-amber-400"></i> Instant Practice Ecosystem
-        </span>
-      </div>
-      <h2 class="text-xl sm:text-2xl font-black text-white">Practice NCERT Chapters</h2>
-      <p class="text-xs text-slate-300 font-medium">Select a chapter below or launch an AI Adaptive session scaled to your weak areas.</p>
-    </div>
-    
-    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
-      <button onclick="openAdaptiveAiConfigModal('${subject}')" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-purple-500 hover:from-teal-400 hover:to-purple-400 text-slate-950 font-black text-xs shadow-lg transition flex items-center gap-2">
-        <i class="fa-solid fa-wand-magic-sparkles"></i> Launch AI Adaptive Drill
-      </button>
-
-      <div class="flex items-center gap-1.5 p-1 bg-white/10 backdrop-blur-md rounded-xl border border-white/15">
-        ${Object.keys(data).map(s => `
-          <button onclick="setSubject('${s}')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition ${subject === s ? 'bg-teal-500 text-slate-950 shadow-md font-black' : 'text-slate-200 hover:bg-white/10'}">
-            ${s}
-          </button>
-        `).join('')}
-      </div>
-    </div>
-  </div>
-
-  <!-- Search Filter -->
-  <div class="card p-4">
-    <div class="relative">
-      <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 text-xs"></i>
-      <input type="text" id="chapterSearch" oninput="onSearchInput(this)" value="${escapeHtml(__q.chapterSearch || '')}" placeholder="Search chapter in ${subject}..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-xs font-semibold focus:outline-none focus:border-teal-500 transition">
-    </div>
-    ${buildChapterFilterChips()}
-  </div>
-
-  ${(() => { const resume = getSavedResume(); const signals = getStudySignals(); return `<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-    ${false ? `<div class="card p-5 lg:col-span-2 border-l-4 border-l-teal-500 bg-gradient-to-r from-teal-500/10 to-transparent"><div class="flex items-center justify-between gap-4"><div><span class="text-[10px] uppercase tracking-widest font-black text-teal-600 dark:text-teal-400">Continue where you left off</span><h3 class="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">${escapeHtml(resume.title || resume.chapter)}</h3><p class="text-xs text-slate-500 mt-1">Resume · ${Math.min((resume.currentIndex || 0) + 1, resume.questions.length)}/${resume.questions.length}</p></div><div class="flex gap-2"><button onclick="resumeSavedSession()" class="rounded-xl bg-teal-600 px-4 py-3 text-xs font-black text-white shadow-lg hover:bg-teal-700">Resume</button><button onclick="StorageModule.remove(STORAGE_KEYS.session); renderView()" class="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-3 text-xs font-bold text-slate-500">Discard</button></div></div></div>` : `<div class="card p-5 lg:col-span-2 border-l-4 border-l-indigo-500 bg-gradient-to-r from-indigo-500/10 to-transparent"><span class="text-[10px] uppercase tracking-widest font-black text-indigo-600 dark:text-indigo-400">Next up</span><h3 class="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">${signals.weakest ? `Strengthen ${escapeHtml(signals.weakest.chapter)}` : 'Build your first study streak'}</h3><p class="text-xs text-slate-500 mt-1">${signals.weakest ? `${signals.weakest.accuracy}% average accuracy — a focused 10-question drill is ready.` : 'Start with a Quick 10 to discover your baseline.'}</p></div>`}
-    <button onclick="startQuickTen()" class="card p-5 text-left border border-amber-500/30 bg-gradient-to-br from-amber-500/15 to-transparent hover:border-amber-500 transition"><span class="text-[10px] uppercase tracking-widest font-black text-amber-600 dark:text-amber-400">Quick practice</span><h3 class="mt-1 text-lg font-black text-slate-900 dark:text-slate-100">Quick 10</h3><p class="text-xs text-slate-500 mt-1">Mixed questions from your weakest areas.</p><span class="mt-3 inline-flex text-xs font-black text-amber-600">Start now <i class="fa-solid fa-arrow-right ml-2"></i></span></button>
-  </div>`; })()}
-
-  ${(() => { const notebook = Object.values(StorageModule.get(STORAGE_KEYS.errorNotebook, {})); const count = notebook.length; return `<div class="card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-l-4 border-l-rose-500 bg-rose-500/5"><div><span class="text-[10px] uppercase tracking-widest font-black text-rose-600 dark:text-rose-400">Error notebook</span><h3 class="mt-1 text-base font-black text-slate-900 dark:text-slate-100">${count ? `${count} concept${count === 1 ? '' : 's'} to revisit` : 'Build your mistake notebook'}</h3><p class="text-xs text-slate-500 mt-1">Turn missed questions into spaced revision instead of repeating the same errors.</p></div><div class="flex gap-2"><button onclick="openErrorNotebook()" class="rounded-xl border border-rose-200 dark:border-rose-900 px-3 py-2.5 text-xs font-black text-rose-700 dark:text-rose-300">Review notebook</button>${count ? `<button onclick="practiceErrorNotebook()" class="rounded-xl bg-rose-600 px-3 py-2.5 text-xs font-black text-white">Practise mistakes</button>` : ''}</div></div>`; })()}
-
-  <!-- Chapters Grid - One Click Practice Cards -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-    ${chaptersList.filter(c => {
-      const q = (__q.chapterSearch || '').toLowerCase();
-      return c.toLowerCase().includes(q) && chapterMatchesFilter(subject, c, chapterFilter);
-    }).map((ch, idx) => {
-      const isDone = userProgress[ch]?.completed;
-      const bankCount = questionIndex[slugify(subject + ' ' + ch)] || questionIndex[slugify(ch)] || 0;
-      const attemptsForChapter = StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => a.chapter === ch);
-      const chapterAccuracy = attemptsForChapter.length ? Math.round(attemptsForChapter.reduce((s,a)=>s+(a.accuracy||0),0)/attemptsForChapter.length) : null;
-      const oneShotQuery = `${ch} ${subject} NEET One Shot full chapter lecture`;
-      const hist = chapterHistoryInfo(subject, ch);
-      return `
-        <div onpointerenter="preloadChapter('${jsArg(subject)}','${jsArg(ch)}')" ontouchstart="preloadChapter('${jsArg(subject)}','${jsArg(ch)}')" onclick="${bankCount ? `openPracticeSetup('${jsArg(subject)}','${jsArg(ch)}')` : `openAdaptiveAiConfigModal('${jsArg(subject)}')`}" class="chapter card border-2 ${isDone ? 'border-emerald-500/40 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800'} hover:border-teal-500 group cursor-pointer transition-all">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 font-extrabold text-[10px]">Ch ${idx + 1}</span>
-<span class="flex items-center gap-1.5"><button type="button" onclick="event.stopPropagation(); confirmEraseChapter('${jsArg(subject)}','${jsArg(ch)}')" aria-label="Erase history for ${escapeHtml(ch)}" title="${hist.has ? 'Erase chapter history' : 'No history yet'}" class="h-7 w-7 rounded-full border flex items-center justify-center transition ${hist.has ? 'border-rose-300/60 text-rose-500 hover:bg-rose-500/10 hover:border-rose-500' : 'border-slate-200 dark:border-slate-700 text-slate-300 dark:text-slate-600'}"><i class="fa-solid fa-trash-can text-[10px]"></i></button>
-                            <button onclick="event.stopPropagation(); toggleChapterProgress('${subject}', '${jsArg(ch)}')" class="px-2.5 py-1 rounded-full border text-[10px] font-bold transition ${isDone ? 'border-emerald-500 text-emerald-600 bg-emerald-50 dark:bg-emerald-950/40' : 'border-slate-200 dark:border-slate-700 text-slate-400'}">
-                <i class="fa-solid ${isDone ? 'fa-circle-check text-emerald-500' : 'fa-circle'} mr-1"></i> ${isDone ? 'Completed' : 'Mark Done'}
-              </button></span>
-            </div>
-            <h4 class="chapter-title group-hover:text-teal-600 transition-colors">${escapeHtml(ch)}</h4><div class="mt-2 flex items-center gap-2 text-[10px] font-bold text-slate-500"><span>${bankCount ? `${bankCount} Qs` : 'Soon'}</span>${chapterAccuracy !== null ? `<span>· ${chapterAccuracy}% accuracy</span>` : ''}<span class="ml-auto h-8 w-8 rounded-full border-4 border-teal-500/30 ${chapterAccuracy !== null ? 'border-t-teal-500' : ''} flex items-center justify-center text-[9px]">${chapterAccuracy ?? 0}%</span></div>
-          </div>
-
-          ${hist.session && hist.session.total ? `<div class="progress mt-3" title="${hist.session.answered}/${hist.session.total} answered"><i style="width:${Math.round(hist.session.answered / hist.session.total * 100)}%"></i></div>` : ''}
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between gap-1 flex-wrap">
-            <span class="practice">
-              <span>${hist.session && hist.session.answered ? `Resume · ${hist.session.answered}/${hist.session.total}` : 'Start Practice Now'}</span> <i class="fa-solid fa-bolt text-amber-500 text-[10px]"></i>
-            </span>
-            <div class="flex items-center gap-2">
-              <button onclick="event.stopPropagation(); setModal('📺 ${jsArg(ch)} — One Shot Lecture', 'YouTube Video Lectures & Concept Breakdown', generateYouTubeEmbedHtml('${jsArg(oneShotQuery)}', 'NEET ${jsArg(ch)} One-Shot Video Solutions'), '<button onclick=closeModal() class=\\'px-4 py-2 rounded-xl bg-slate-800 text-white font-bold text-xs\\'>Close</button>')" class="text-xs font-extrabold text-rose-500 hover:text-rose-600 transition flex items-center gap-1 bg-rose-500/10 px-2.5 py-1.5 rounded-xl border border-rose-500/25">
-                <i class="fa-brands fa-youtube"></i> One-Shot
-              </button>
-            </div>
-          </div>
-        </div>
-      `;
-    }).join('')}
-  </div>
-</div>`;
+main.innerHTML = buildPracticeHome();
 } else if (currentTab === 'progress') {
 const attemptsArr = StorageModule.get(STORAGE_KEYS.attempts, []);
 const totalTests = attemptsArr.length;
@@ -6203,6 +6295,124 @@ body .quiz-session-layout .mb-1 h2{max-width:none!important}
 /* keyboard hint: wide screens only */
 .pq-foot::after{display:none!important}
 @media (min-width:900px) and (hover:hover) and (pointer:fine){.pq-foot::after{display:block!important}}
+</style>
+<style id="practice-home-v1">
+/* ===== Practice home ===== */
+.pc{display:flex;flex-direction:column;gap:18px;max-width:1120px;margin:0 auto}
+.pc :focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.pc-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* subject colours: --c for fills, --ci for text that must pass contrast */
+.pc-s-bio{--c:#10b981;--ci:var(--bio-text)}
+.pc-s-chem{--c:#8b5cf6;--ci:var(--chem-text)}
+.pc-s-phy{--c:#0ea5e9;--ci:var(--phy-text)}
+body.dark .pc-s-bio{--c:#34d399}
+body.dark .pc-s-chem{--c:#a78bfa}
+body.dark .pc-s-phy{--c:#38bdf8}
+
+/* next step */
+.pc-next{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;padding:24px 26px;border-radius:26px;color:#fff;background:radial-gradient(circle at 92% 0%,rgba(45,212,191,.32),transparent 48%),linear-gradient(135deg,#0f766e 0%,#115e59 55%,#0c3b4a 100%);box-shadow:0 20px 44px -28px rgba(13,148,136,.75)}
+.pc-next-text{flex:1 1 320px;min-width:0}
+.pc-next.has-resume .pc-next-text{padding-right:34px}
+.pc-next h2{margin:0;font-size:clamp(1.3rem,3.4vw,1.7rem);line-height:1.2;font-weight:900;letter-spacing:-.02em;overflow-wrap:anywhere}
+.pc-next p{margin:8px 0 0;max-width:54ch;font-size:13px;line-height:1.6;font-weight:500;color:#ccfbf1;overflow-wrap:anywhere}
+.pc-next-bar{height:6px;max-width:320px;margin-top:14px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden}
+.pc-next-bar i{display:block;height:100%;border-radius:99px;background:#fde68a}
+.pc-next-actions{display:flex;flex-wrap:wrap;gap:10px}
+.pc-next-x{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:13px;color:#ccfbf1;background:rgba(255,255,255,.12)}
+.pc-next-x:hover{color:#fff;background:rgba(255,255,255,.24)}
+.pc-next :focus-visible{outline-color:#fff}
+
+/* error notebook */
+.pc-notes{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:14px 18px;border-radius:20px;background:color-mix(in srgb,#e11d48 6%,var(--card-bg));border:1px solid color-mix(in srgb,#e11d48 24%,var(--border-color))}
+.pc-notes-t{min-width:0;flex:1 1 240px}
+.pc-notes-t b{display:block;font-size:14px;font-weight:800;color:var(--text-primary)}
+.pc-notes-t span{display:block;margin-top:2px;font-size:12px;font-weight:500;color:var(--text-muted)}
+.pc-notes-a{display:flex;flex-wrap:wrap;gap:8px}
+.pc-btn{min-height:40px;padding:9px 14px;border-radius:12px;font-size:12px;font-weight:800;line-height:1.2}
+.pc-btn-soft{color:var(--text-primary);background:var(--card-bg);border:1px solid var(--border-color)}
+.pc-btn-soft:hover{border-color:var(--teal)}
+.pc-btn-rose{color:#fff;background:#e11d48}
+.pc-btn-rose:hover{background:#be123c}
+
+/* subject tabs */
+.pc-subjects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.pc-subj{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"ic t" "bar bar";align-items:center;gap:8px 12px;padding:12px 14px;border-radius:18px;text-align:left;color:var(--text-primary);background:var(--card-bg);border:1px solid var(--border-color)}
+.pc-subj:hover{border-color:var(--c)}
+.pc-subj[aria-selected="true"]{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c);background:color-mix(in srgb,var(--c) 10%,var(--card-bg))}
+.pc-subj-ic{grid-area:ic;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:14px;color:var(--ci);background:color-mix(in srgb,var(--c) 16%,transparent)}
+.pc-subj-t{grid-area:t;min-width:0}
+.pc-subj-t b{display:block;font-size:14px;font-weight:800;line-height:1.2}
+.pc-subj-t small{display:block;margin-top:1px;font-size:11px;font-weight:600;color:var(--text-muted)}
+.pc-subj-bar{grid-area:bar;height:4px;border-radius:99px;background:rgba(148,163,184,.22);overflow:hidden}
+.pc-subj-bar i{display:block;height:100%;border-radius:99px;background:var(--c)}
+
+/* search, filters */
+.pc-toolbar{display:flex;flex-direction:column;gap:12px}
+.pc-search{position:relative}
+.pc-search>i{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--text-muted);pointer-events:none}
+.pc-search input{width:100%;padding:12px 16px 12px 42px;border-radius:16px;font-size:16px;font-weight:600;color:var(--text-primary);background:var(--card-bg);border:1px solid var(--border-color);-webkit-appearance:none;appearance:none}
+.pc-search input::placeholder{color:var(--text-muted);font-weight:500}
+.pc-search input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,.2)}
+.pc-chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.pc-chips::-webkit-scrollbar{display:none}
+.pc-chip-n{margin-left:7px;font-weight:700;opacity:.7}
+.pc-count{margin:0;font-size:12px;font-weight:600;color:var(--text-muted)}
+@media (min-width:640px){.pc-search input{font-size:14px}}
+
+/* chapter cards */
+.pc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.pc-card{position:relative;display:flex;flex-direction:column;gap:10px;padding:16px 16px 10px;border-radius:20px;background:var(--card-bg);border:1px solid var(--border-color);transition:border-color .2s,box-shadow .2s}
+.pc-card:hover{border-color:color-mix(in srgb,var(--c) 60%,var(--border-color));box-shadow:0 12px 26px -20px var(--c)}
+.pc-card.is-done{background:color-mix(in srgb,#10b981 5%,var(--card-bg))}
+.pc-top{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:24px}
+.pc-num{padding:3px 10px;border-radius:99px;font-size:11px;font-weight:800;color:var(--ci);background:color-mix(in srgb,var(--c) 14%,transparent)}
+.pc-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:800}
+.pc-badge-done{color:#047857;background:rgba(16,185,129,.14)}
+.pc-badge-prog{color:#0f766e;background:rgba(13,148,136,.14)}
+body.dark .pc-badge-done{color:#6ee7b7}
+body.dark .pc-badge-prog{color:#5eead4}
+.pc-title{margin:0;font-size:15px;font-weight:800;line-height:1.4;color:var(--text-primary)}
+/* the title button stretches over the whole card, so the card is one real, keyboard-reachable button */
+.pc-main{display:block;width:100%;padding:0;text-align:left;font:inherit;color:inherit;background:none;cursor:pointer}
+.pc-main::after{content:"";position:absolute;inset:0;z-index:1;border-radius:20px}
+.pc-main:focus-visible{outline:none}
+.pc-main:focus-visible::after{outline:2px solid var(--teal);outline-offset:2px}
+.pc-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:12px;font-weight:600;color:var(--text-muted)}
+.pc-acc{padding:2px 9px;border-radius:99px;font-size:11px;font-weight:800}
+.pc-acc.good{color:#047857;background:rgba(16,185,129,.14)}
+.pc-acc.mid{color:#b45309;background:rgba(245,158,11,.16)}
+.pc-acc.weak{color:#be123c;background:rgba(244,63,94,.13)}
+body.dark .pc-acc.good{color:#6ee7b7}
+body.dark .pc-acc.mid{color:#fcd34d}
+body.dark .pc-acc.weak{color:#fda4af}
+.pc-bar{height:5px;border-radius:99px;background:rgba(148,163,184,.22);overflow:hidden}
+.pc-bar i{display:block;height:100%;border-radius:99px;background:var(--c)}
+.pc-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:8px;border-top:1px solid var(--border-color)}
+.pc-cta{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:800;color:var(--ci)}
+.pc-cta i{font-size:10px}
+.pc-tools{position:relative;z-index:2;display:flex;align-items:center;gap:2px;margin-right:-6px}
+.pc-ibtn{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:15px;color:var(--text-muted);background:none}
+.pc-ibtn:hover{color:var(--text-primary);background:rgba(148,163,184,.18)}
+.pc-ibtn.on{color:#059669}
+body.dark .pc-ibtn.on{color:#34d399}
+.pc-yt:hover{color:#dc2626;background:rgba(220,38,38,.1)}
+.pc-erase:hover{color:#e11d48;background:rgba(244,63,94,.12)}
+
+/* empty result */
+.pc-empty{display:flex;flex-direction:column;align-items:center;gap:6px;padding:40px 20px;text-align:center;border-radius:20px;border:1px dashed var(--border-color);color:var(--text-muted)}
+.pc-empty b{font-size:15px;font-weight:800;color:var(--text-primary);overflow-wrap:anywhere}
+.pc-empty span{font-size:13px}
+.pc-empty .pc-btn{margin-top:10px}
+
+@media (max-width:520px){
+  .pc-next{padding:20px}
+  .pc-next-actions{width:100%}
+  .pc-next-actions .dv2-btn{flex:1 1 auto;justify-content:center}
+  .pc-subjects{gap:8px}
+  .pc-subj{grid-template-columns:minmax(0,1fr);grid-template-areas:"t" "bar";padding:10px 12px;gap:6px}
+  .pc-subj-ic{display:none}
+}
 </style>
 </body>
   </html>
