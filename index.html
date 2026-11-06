@@ -3376,14 +3376,29 @@ function normalizeQuestions(raw, subj, chapterName) {
 async function preloadChapter(subj, chapterName) {
   const key = `${subj}:${chapterName}`;
   if (questionCache.has(key)) return questionCache.get(key);
-  const promise = fetchDataFile(dataFileName(subj, chapterName), { cache: 'no-cache' }).then(async res => {
-    if (!res) return [];
-    const raw = await res.json();
-    const list = Array.isArray(raw) ? raw : (raw.qs || raw.questions || []);
-    return normalizeQuestions(list, subj, chapterName);
-  }).catch(() => []);
+
+  // Keep one in-flight request per chapter, but never cache a failed/empty
+  // response forever. A brief network or hosting hiccup can then recover on
+  // the next click instead of making the chapter appear permanently dead.
+  const promise = (async () => {
+    try {
+      const res = await fetchDataFile(dataFileName(subj, chapterName), { cache: 'no-cache' });
+      if (!res) return [];
+      const raw = await res.json();
+      const list = Array.isArray(raw) ? raw : (raw?.qs || raw?.questions || []);
+      return Array.isArray(list) ? normalizeQuestions(list, subj, chapterName) : [];
+    } catch (error) {
+      console.warn('[EduPulse] Chapter load failed:', subj, chapterName, error);
+      return [];
+    }
+  })();
+
   questionCache.set(key, promise);
-  return promise;
+  const questions = await promise;
+  if (!questions.length && questionCache.get(key) === promise) {
+    questionCache.delete(key);
+  }
+  return questions;
 }
 function openPracticeSetup(subj, chapterName, preset = null, skipResume = false) {
   if (!preset && !skipResume) {
@@ -4536,7 +4551,10 @@ function buildPracticeHome() {
   const countText = shown.length === model.length ? `${model.length} chapters` : `Showing ${shown.length} of ${model.length} chapters`;
 
   const cards = shown.map(m => {
-    const open = m.bank ? `openPracticeSetup('${sArg}','${jsArg(m.ch)}')` : `openAdaptiveAiConfigModal('${sArg}')`;
+    // Always route a chapter click through its own setup flow. The question
+    // index loads asynchronously; using m.bank here caused early clicks to
+    // open a generic AI screen (or the wrong flow) before the index arrived.
+    const open = `openPracticeSetup('${sArg}','${jsArg(m.ch)}')`;
     const verb = !m.bank ? 'Generate questions for' : m.inProgress ? 'Resume' : 'Practise';
     const cta = !m.bank ? 'Generate with AI' : m.inProgress ? `Resume · ${m.answered}/${m.total}` : (m.finished || m.done) ? 'Practise again' : 'Start practice';
     const ctaIcon = !m.bank ? 'fa-wand-magic-sparkles' : 'fa-play';
@@ -6376,6 +6394,8 @@ body.dark .pc-badge-prog{color:#5eead4}
 /* the title button stretches over the whole card, so the card is one real, keyboard-reachable button */
 .pc-main{display:block;width:100%;padding:0;text-align:left;font:inherit;color:inherit;background:none;cursor:pointer}
 .pc-main::after{content:"";position:absolute;inset:0;z-index:1;border-radius:20px}
+.pc-main,.pc-main:active{transform:none!important;transition:none}  /* a transform would shrink the ::after hit area mid-press (global button:active scales) */
+.pc-card:has(.pc-main:active){border-color:var(--c);background:color-mix(in srgb,var(--c) 6%,var(--card-bg))}
 .pc-main:focus-visible{outline:none}
 .pc-main:focus-visible::after{outline:2px solid var(--teal);outline-offset:2px}
 .pc-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:12px;font-weight:600;color:var(--text-muted)}
