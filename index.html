@@ -430,6 +430,9 @@ showToast('Storage quota reached! Oldest history trimmed.', 'error');
 return false;
 }
 },
+remove(key) {
+try { localStorage.removeItem(key); } catch (e) { console.warn('Storage remove error:', e); }
+},
 init() {
 if (!localStorage.getItem(STORAGE_KEYS.settings)) {
 this.set(STORAGE_KEYS.settings, defaultSettings);
@@ -1776,7 +1779,7 @@ function startQuickTen() {
   const pick = ranked.find(x => (questionIndex[slugify(x.subject + ' ' + x.chapter)] || questionIndex[slugify(x.chapter)] || 0) > 0) || ranked[0];
   if (pick) openPracticeSetup(pick.subject, pick.chapter, { length: 10, source: 'all' });
 }
-function resumeSavedSession() { const s = getSavedResume(); if (!s?.questions?.length) return; Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null }); closeModal(); renderPracticeQuiz(); }
+function resumeSavedSession() { const s = getSavedResume(); if (!s?.questions?.length) return; Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, marked:s.marked || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null }); closeModal(); renderPracticeQuiz(); }
 
 // ===== Dashboard quick access: Resume / Bookmarked / Incorrect =====
 function getSavedQuestionKeys(kind) {
@@ -1895,7 +1898,11 @@ async function preloadChapter(subj, chapterName) {
   questionCache.set(key, promise);
   return promise;
 }
-function openPracticeSetup(subj, chapterName, preset = null) {
+function openPracticeSetup(subj, chapterName, preset = null, skipResume = false) {
+  if (!preset && !skipResume) {
+    const m = readChapterMeta()[chapterKey(subj, chapterName)];
+    if (m && m.total && m.answered > 0) return showChapterResumePrompt(subj, chapterName, m);
+  }
   const saved = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
   if (preset) { saved.practiceLength = preset.length; saved.practiceSource = preset.source || 'all'; StorageModule.set(STORAGE_KEYS.settings, saved); }
   setModal('Set up your practice', `${subj} · ${chapterName}`, `<div class="space-y-5 py-2"><div class="grid grid-cols-4 gap-2">${[10,20,30,'all'].map(v => `<button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('ring-2','ring-teal-500'));this.classList.add('ring-2','ring-teal-500');this.dataset.value='${v}'" class="rounded-2xl border border-slate-200 dark:border-slate-700 p-3 text-xs font-black ${saved.practiceLength == v ? 'ring-2 ring-teal-500' : ''}" data-value="${v}">${v === 'all' ? 'All' : v}</button>`).join('')}</div><div class="space-y-2"><label class="text-xs font-black">Question source</label><select id="practice-source" class="w-full rounded-xl border p-3 text-sm bg-transparent"><option>All</option><option>Unseen</option><option>Previously wrong</option><option>Bookmarked</option></select></div><label class="flex items-center justify-between rounded-xl border p-3 text-sm font-bold">Shuffle questions <input id="practice-shuffle" type="checkbox" ${saved.shuffleQuestions ? 'checked' : ''}></label><label class="flex items-center justify-between rounded-xl border p-3 text-sm font-bold">Shuffle options <input id="practice-shuffle-options" type="checkbox" ${saved.shuffleOptions ? 'checked' : ''}></label><p class="text-[11px] text-slate-500">Your last choices are remembered on this device.</p><button type="button" onclick="startInfiniteFromChapter('${jsArg(subj)}','${jsArg(chapterName)}')" class="w-full rounded-2xl border border-violet-300/60 bg-gradient-to-r from-violet-500/10 to-teal-500/10 p-4 text-left transition hover:border-violet-400 hover:shadow-sm"><span class="flex items-center justify-between"><span><span class="block text-sm font-black text-slate-900 dark:text-slate-100">Infinite adaptive practice</span><span class="mt-1 block text-[11px] font-medium text-slate-500">Keep going while the engine adapts difficulty to you.</span></span><i class="fa-solid fa-infinity text-violet-500"></i></span></button></div>`, `<button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Cancel</button><button onclick="startConfiguredPractice('${jsArg(subj)}','${jsArg(chapterName)}')" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white text-xs font-black">Start practice</button>`);
@@ -1954,14 +1961,133 @@ if (mode === 'practice') {
 }
 
 // ===== launchPracticeSession =====
+// ===== Per-chapter saved progress =====
+const CHAPTER_SESSIONS_KEY = 'edupulse_chapter_sessions_v1';      // full snapshots (questions + answers)
+const CHAPTER_META_KEY = 'edupulse_chapter_sessions_meta_v1';     // tiny summary used by the chapter list
+const chapterKey = (subj, ch) => `${subj}|${ch}`;
+function readJsonKey(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch (e) { return fallback; } }
+const readChapterSessions = () => readJsonKey(CHAPTER_SESSIONS_KEY, {});
+const readChapterMeta = () => readJsonKey(CHAPTER_META_KEY, {});
+function writeChapterSessions(map) {
+  // If storage is full, drop the least recently used chapter snapshots until it fits.
+  for (let i = 0; i < 80; i++) {
+    try { localStorage.setItem(CHAPTER_SESSIONS_KEY, JSON.stringify(map)); return true; }
+    catch (e) {
+      const keys = Object.keys(map).sort((x, y) => (map[x].savedAt || 0) - (map[y].savedAt || 0));
+      if (keys.length <= 1) return false;
+      delete map[keys[0]];
+    }
+  }
+  return false;
+}
+function writeChapterMeta(meta) { try { localStorage.setItem(CHAPTER_META_KEY, JSON.stringify(meta)); } catch (e) {} }
+function saveChapterSession(snap) {
+  const k = chapterKey(snap.subject, snap.chapter);
+  const map = readChapterSessions();
+  map[k] = snap;
+  const ok = writeChapterSessions(map);
+  const meta = readChapterMeta();
+  const answered = Object.keys(snap.userAnswers || {}).length;
+  const correct = snap.questions.reduce((n, q, i) => n + (snap.userAnswers?.[i] === q.correct ? 1 : 0), 0);
+  meta[k] = { answered, correct, total: snap.questions.length, bookmarked: Object.values(snap.bookmarked || {}).filter(Boolean).length, savedAt: snap.savedAt };
+  // Keep the summary only for snapshots that actually still exist.
+  Object.keys(meta).forEach(m => { if (m !== k && !map[m]) delete meta[m]; });
+  if (!ok) delete meta[k];
+  writeChapterMeta(meta);
+}
 function persistQuizSession() {
   if (quizState.mode !== 'practice' || !quizState.questions.length) return;
-  StorageModule.set(STORAGE_KEYS.session, { chapter: quizState.chapter, subject: quizState.subject, title: quizState.title, questions: quizState.questions, currentIndex: quizState.currentIndex, userAnswers: quizState.userAnswers, bookmarked: quizState.bookmarked, skippedQuestions: quizState.skippedQuestions, questionTimes: quizState.questionTimes, eliminatedOptions: quizState.eliminatedOptions, wrongReasons: quizState.wrongReasons, savedAt: Date.now() });
+  const snap = { chapter: quizState.chapter, subject: quizState.subject, title: quizState.title, questions: quizState.questions, currentIndex: quizState.currentIndex, userAnswers: quizState.userAnswers, marked: quizState.marked || {}, bookmarked: quizState.bookmarked, skippedQuestions: quizState.skippedQuestions, questionTimes: quizState.questionTimes, eliminatedOptions: quizState.eliminatedOptions, wrongReasons: quizState.wrongReasons, savedAt: Date.now() };
+  StorageModule.set(STORAGE_KEYS.session, snap);
+  // Normal chapter practice (not infinite / mixed / retry sessions) is also kept per chapter.
+  if (!quizState.infinite && data[quizState.subject]?.includes(quizState.chapter)) saveChapterSession(snap);
+}
+function chapterHistoryInfo(subj, ch) {
+  const session = readChapterMeta()[chapterKey(subj, ch)] || null;
+  const attempts = StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => a.chapter === ch && (!a.subject || a.subject === subj));
+  return { session, attempts: attempts.length, has: !!session || attempts.length > 0 };
+}
+function resumeChapterSession(subj, ch) {
+  const snap = readChapterSessions()[chapterKey(subj, ch)];
+  if (!snap) return showToast('Saved progress for this chapter was not found.', 'warning');
+  StorageModule.set(STORAGE_KEYS.session, snap);
+  resumeSavedSession();
+}
+function startFreshChapter(subj, ch) {
+  const map = readChapterSessions(); delete map[chapterKey(subj, ch)]; writeChapterSessions(map);
+  const meta = readChapterMeta(); delete meta[chapterKey(subj, ch)]; writeChapterMeta(meta);
+  const g = StorageModule.get(STORAGE_KEYS.session, null);
+  if (g && g.subject === subj && g.chapter === ch) StorageModule.remove(STORAGE_KEYS.session);
+  openPracticeSetup(subj, ch, null, true);
+}
+function showChapterResumePrompt(subj, ch, m) {
+  const pct = m.total ? Math.round((m.answered / m.total) * 100) : 0;
+  const acc = m.answered ? Math.round((m.correct / m.answered) * 100) : 0;
+  const done = m.answered >= m.total;
+  const when = m.savedAt ? new Date(m.savedAt).toLocaleString([], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '';
+  const stat = (v, l) => `<div class="rounded-2xl border border-slate-200 dark:border-slate-700 p-3 text-center"><div class="text-lg font-black text-slate-900 dark:text-slate-100">${v}</div><div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">${l}</div></div>`;
+  setModal(done ? 'Review your practice' : 'Welcome back', `${subj} · ${ch}`, `
+    <div class="space-y-4 py-2">
+      <div class="rounded-2xl border border-teal-500/30 bg-teal-500/10 p-4">
+        <div class="flex items-center justify-between text-xs font-black text-teal-700 dark:text-teal-300"><span>${done ? 'All questions answered' : 'Saved progress'}</span><span>${m.answered}/${m.total}</span></div>
+        <div class="progress mt-2"><i style="width:${pct}%"></i></div>
+        ${when ? `<p class="mt-2 text-[11px] text-slate-500">Last saved ${escapeHtml(when)}</p>` : ''}
+      </div>
+      <div class="grid grid-cols-3 gap-2">${stat(acc + '%', 'Accuracy')}${stat(m.correct, 'Correct')}${stat(m.bookmarked || 0, 'Bookmarked')}</div>
+      <p class="text-[11px] text-slate-500">Resuming keeps your answers, bookmarks, eliminated options and timings. Starting new replaces this saved progress (your past results stay in Stats).</p>
+    </div>`,
+    `<button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Cancel</button>
+     <button onclick="startFreshChapter('${jsArg(subj)}','${jsArg(ch)}')" class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold">Start new</button>
+     <button onclick="resumeChapterSession('${jsArg(subj)}','${jsArg(ch)}')" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white text-xs font-black shadow-lg shadow-teal-600/20"><i class="fa-solid fa-play mr-1.5 text-[10px]"></i>${done ? 'Review' : 'Resume'}</button>`);
+}
+function confirmEraseChapter(subj, ch) {
+  const info = chapterHistoryInfo(subj, ch);
+  const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
+  const slug = slugify(ch) + '#';
+  const nQ = Object.keys(stats).filter(k => (stats[k].ch === ch && stats[k].sj === subj) || (!stats[k].ch && k.startsWith(slug))).length;
+  if (!info.has && !nQ) return showToast('No saved history for this chapter yet.', 'info');
+  setModal('Erase chapter history?', `${subj} · ${ch}`, `
+    <div class="space-y-3 py-2 text-sm">
+      <div class="rounded-2xl border border-rose-500/30 bg-rose-500/10 p-4 text-xs font-medium text-rose-800 dark:text-rose-200 leading-relaxed">
+        This permanently deletes for <strong>${escapeHtml(ch)}</strong>: saved progress${info.session ? ` (${info.session.answered}/${info.session.total} answered)` : ''}, ${info.attempts} past attempt${info.attempts === 1 ? '' : 's'}, ${nQ} question record${nQ === 1 ? '' : 's'} (bookmarks, mistakes, streaks), and related notes. This can't be undone.
+      </div>
+    </div>`,
+    `<button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Keep it</button>
+     <button onclick="eraseChapterHistory('${jsArg(subj)}','${jsArg(ch)}')" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-black shadow-lg shadow-rose-600/20"><i class="fa-solid fa-trash-can mr-1.5 text-[10px]"></i>Erase history</button>`);
+}
+function eraseChapterHistory(subj, ch) {
+  const k = chapterKey(subj, ch);
+  const removedKeys = new Set();
+  const map = readChapterSessions();
+  (map[k]?.questions || []).forEach(q => q?.qKey && removedKeys.add(q.qKey));
+  delete map[k]; writeChapterSessions(map);
+  const meta = readChapterMeta(); delete meta[k]; writeChapterMeta(meta);
+  const g = StorageModule.get(STORAGE_KEYS.session, null);
+  if (g && g.subject === subj && g.chapter === ch) StorageModule.remove(STORAGE_KEYS.session);
+  StorageModule.set(STORAGE_KEYS.attempts, StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => !(a.chapter === ch && (!a.subject || a.subject === subj))));
+  const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
+  const slug = slugify(ch) + '#';
+  Object.keys(stats).forEach(key => {
+    const m = stats[key] || {};
+    const mine = m.ch ? (m.ch === ch && m.sj === subj) : key.startsWith(slug);
+    if (mine) { removedKeys.add(key); delete stats[key]; }
+  });
+  StorageModule.set(STORAGE_KEYS.qstats, stats);
+  ['edupulse_question_notes_v1', 'edupulse_question_confidence_v1', STORAGE_KEYS.errorNotebook].forEach(storeKey => {
+    const obj = readJsonKey(storeKey, null);
+    if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return;
+    let changed = false;
+    removedKeys.forEach(id => { if (id in obj) { delete obj[id]; changed = true; } });
+    if (changed) { try { localStorage.setItem(storeKey, JSON.stringify(obj)); } catch (e) {} }
+  });
+  closeModal();
+  showToast(`History erased for ${ch}.`, 'success');
+  renderView();
 }
 function clearQuizSession() { localStorage.removeItem(STORAGE_KEYS.session); }
 function resumeQuizSession() {
   const s = StorageModule.get(STORAGE_KEYS.session, null); if (!s?.questions?.length) return;
-  Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null });
+  Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, marked:s.marked || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null });
   closeModal(); renderPracticeQuiz();
 }
 function launchPracticeSession(subj, chapterName, rawQuestions, infiniteState = null) {
@@ -2278,6 +2404,7 @@ function selectPracticeOption(i) {
 function jumpToPracticeQuestion(i) {
   if (i < 0 || i >= quizState.questions.length) return;
   quizState.currentIndex = i;
+  persistQuizSession();
   renderPracticeQuiz();
 }
 
@@ -2288,6 +2415,7 @@ async function goToNextPracticeQuestion() {
   if (!st) {
     if (quizState.currentIndex < quizState.questions.length - 1) {
       quizState.currentIndex++;
+      persistQuizSession();
       renderPracticeQuiz();
     } else {
       finishPracticeQuiz();
@@ -3269,21 +3397,23 @@ main.innerHTML = `
       const attemptsForChapter = StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => a.chapter === ch);
       const chapterAccuracy = attemptsForChapter.length ? Math.round(attemptsForChapter.reduce((s,a)=>s+(a.accuracy||0),0)/attemptsForChapter.length) : null;
       const oneShotQuery = `${ch} ${subject} NEET One Shot full chapter lecture`;
+      const hist = chapterHistoryInfo(subject, ch);
       return `
         <div onpointerenter="preloadChapter('${jsArg(subject)}','${jsArg(ch)}')" ontouchstart="preloadChapter('${jsArg(subject)}','${jsArg(ch)}')" onclick="${bankCount ? `openPracticeSetup('${jsArg(subject)}','${jsArg(ch)}')` : `openAdaptiveAiConfigModal('${jsArg(subject)}')`}" class="chapter card border-2 ${isDone ? 'border-emerald-500/40 bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800'} hover:border-teal-500 group cursor-pointer transition-all">
           <div>
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 font-extrabold text-[10px]">Ch ${idx + 1}</span>
-              <button onclick="event.stopPropagation(); toggleChapterProgress('${subject}', '${jsArg(ch)}')" class="px-2.5 py-1 rounded-full border text-[10px] font-bold transition ${isDone ? 'border-emerald-500 text-emerald-600 bg-emerald-50 dark:bg-emerald-950/40' : 'border-slate-200 dark:border-slate-700 text-slate-400'}">
+<span class="flex items-center gap-1.5"><button type="button" onclick="event.stopPropagation(); confirmEraseChapter('${jsArg(subject)}','${jsArg(ch)}')" aria-label="Erase history for ${escapeHtml(ch)}" title="${hist.has ? 'Erase chapter history' : 'No history yet'}" class="h-7 w-7 rounded-full border flex items-center justify-center transition ${hist.has ? 'border-rose-300/60 text-rose-500 hover:bg-rose-500/10 hover:border-rose-500' : 'border-slate-200 dark:border-slate-700 text-slate-300 dark:text-slate-600'}"><i class="fa-solid fa-trash-can text-[10px]"></i></button>
+                            <button onclick="event.stopPropagation(); toggleChapterProgress('${subject}', '${jsArg(ch)}')" class="px-2.5 py-1 rounded-full border text-[10px] font-bold transition ${isDone ? 'border-emerald-500 text-emerald-600 bg-emerald-50 dark:bg-emerald-950/40' : 'border-slate-200 dark:border-slate-700 text-slate-400'}">
                 <i class="fa-solid ${isDone ? 'fa-circle-check text-emerald-500' : 'fa-circle'} mr-1"></i> ${isDone ? 'Completed' : 'Mark Done'}
-              </button>
+              </button></span>
             </div>
             <h4 class="chapter-title group-hover:text-teal-600 transition-colors">${escapeHtml(ch)}</h4><div class="mt-2 flex items-center gap-2 text-[10px] font-bold text-slate-500"><span>${bankCount ? `${bankCount} Qs` : 'Soon'}</span>${chapterAccuracy !== null ? `<span>· ${chapterAccuracy}% accuracy</span>` : ''}<span class="ml-auto h-8 w-8 rounded-full border-4 border-teal-500/30 ${chapterAccuracy !== null ? 'border-t-teal-500' : ''} flex items-center justify-center text-[9px]">${chapterAccuracy ?? 0}%</span></div>
           </div>
 
           <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between gap-1 flex-wrap">
             <span class="practice">
-              <span>Start Practice Now</span> <i class="fa-solid fa-bolt text-amber-500 text-[10px]"></i>
+              <span>${hist.session && hist.session.answered ? `Resume · ${hist.session.answered}/${hist.session.total}` : 'Start Practice Now'}</span> <i class="fa-solid fa-bolt text-amber-500 text-[10px]"></i>
             </span>
             <div class="flex items-center gap-2">
               <button onclick="event.stopPropagation(); setModal('📺 ${jsArg(ch)} — One Shot Lecture', 'YouTube Video Lectures & Concept Breakdown', generateYouTubeEmbedHtml('${jsArg(oneShotQuery)}', 'NEET ${jsArg(ch)} One-Shot Video Solutions'), '<button onclick=closeModal() class=\\'px-4 py-2 rounded-xl bg-slate-800 text-white font-bold text-xs\\'>Close</button>')" class="text-xs font-extrabold text-rose-500 hover:text-rose-600 transition flex items-center gap-1 bg-rose-500/10 px-2.5 py-1.5 rounded-xl border border-rose-500/25">
@@ -4243,4 +4373,4 @@ if ('serviceWorker' in navigator && location.protocol !== 'file:') {
 renderView();
 </script>
 </body>
-                              </html>
+  </html>
