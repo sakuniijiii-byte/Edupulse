@@ -1134,6 +1134,22 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
 }
 
 </style>
+<style id="palette-toggle-reliability-fix">
+
+/* Reliable palette disclosure: toggle the existing panel without rerendering the quiz. */
+.palette-drawer-top .palette-expanded-content{display:none!important}
+.palette-drawer-top.is-expanded .palette-expanded-content{display:block!important}
+.palette-drawer-top.is-expanded{max-height:min(58dvh,440px)!important;overflow-y:auto!important;overscroll-behavior:contain!important}
+.palette-drawer-top.is-expanded .palette-expanded-content [class*="max-h-"]{max-height:min(34dvh,260px)!important;overflow-y:auto!important}
+@media (orientation:portrait){
+  .quiz-session-layout > .palette-drawer-top{max-height:58px!important;overflow:hidden!important}
+  .quiz-session-layout > .palette-drawer-top.is-expanded{max-height:min(54dvh,430px)!important;overflow-y:auto!important}
+  .quiz-session-layout > .palette-drawer-top.is-expanded > div:nth-child(2){display:none!important}
+  .quiz-session-layout > .palette-drawer-top.is-expanded .palette-expanded-content{display:block!important;max-height:none!important}
+  .quiz-session-layout .palette-expand-trigger{position:relative;z-index:5;touch-action:manipulation}
+}
+
+</style>
 </head>
 <body>
 <div class="app-layout">
@@ -2492,8 +2508,21 @@ infinite: null
 
 function togglePaletteDrawer() {
   quizState.paletteExpanded = !quizState.paletteExpanded;
-  if (quizState.mode === 'practice') renderPracticeQuiz();
-  else renderTestQuiz();
+  const palette = document.querySelector('.palette-drawer-top');
+  if (palette) {
+    palette.classList.toggle('is-expanded', quizState.paletteExpanded);
+    palette.dataset.expanded = String(quizState.paletteExpanded);
+    const trigger = palette.querySelector('.palette-expand-trigger');
+    if (trigger) {
+      trigger.setAttribute('aria-expanded', String(quizState.paletteExpanded));
+      trigger.setAttribute('aria-label', quizState.paletteExpanded ? 'Collapse question palette' : 'Expand question palette');
+      trigger.title = quizState.paletteExpanded ? 'Collapse question palette' : 'Expand question palette';
+      const icon = trigger.querySelector('i');
+      if (icon) icon.className = `fa-solid ${quizState.paletteExpanded ? 'fa-chevron-up' : 'fa-chevron-down'} text-xs`;
+    }
+    // Keep the current question, scroll position and selected answer intact.
+    palette.scrollTop = 0;
+  }
 }
 
 function openImageZoom(src) { setModal('Question diagram', '', `<img src="${escapeHtml(src)}" alt="Expanded question diagram" class="w-full max-h-[75vh] object-contain rounded-2xl">`, `<button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-white text-xs font-bold">Close</button>`); }
@@ -3347,7 +3376,7 @@ function buildTopInteractiveQuestionPalette(isPractice = false) {
   const isExpanded = quizState.paletteExpanded;
 
   return `
-    <div class="palette-drawer-top w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 rounded-b-2xl shadow-md overflow-hidden mb-3 transition-all duration-300 ${isExpanded ? 'max-h-[420px]' : 'max-h-[105px]'}">
+    <div data-expanded="${isExpanded}" class="palette-drawer-top w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 rounded-b-2xl shadow-md overflow-hidden mb-3 transition-all duration-300 ${isExpanded ? 'is-expanded' : ''}">
       <div onclick="togglePaletteDrawer()" class="px-3 py-2 cursor-pointer flex items-center justify-between bg-slate-50/80 dark:bg-slate-800/60 border-b border-slate-100 dark:border-slate-800">
         <div class="flex items-center gap-2">
           <span class="text-xs font-black uppercase text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
@@ -3370,19 +3399,17 @@ function buildTopInteractiveQuestionPalette(isPractice = false) {
         ${buttonsHtml}
       </div>
 
-      ${isExpanded ? `
-        <div class="p-3 space-y-2 bg-slate-50/50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800">
-          <div class="flex flex-wrap gap-1.5 text-[10px] font-bold border-b border-slate-200 dark:border-slate-800 pb-2">
-            <span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white">Answered</span>
-            <span class="px-2 py-0.5 rounded-md bg-amber-500 text-white">Review Flag</span>
-            <span class="px-2 py-0.5 rounded-md bg-indigo-600 text-white">Answered & Marked</span>
-            <span class="px-2 py-0.5 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Unvisited</span>
-          </div>
-          <div class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2 max-h-52 overflow-y-auto pr-1">
-            ${buttonsHtml}
-          </div>
+      <div class="palette-expanded-content p-3 space-y-2 bg-slate-50/50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800" aria-hidden="${!isExpanded}">
+        <div class="flex flex-wrap gap-1.5 text-[10px] font-bold border-b border-slate-200 dark:border-slate-800 pb-2">
+          <span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white">Answered</span>
+          <span class="px-2 py-0.5 rounded-md bg-amber-500 text-white">Review Flag</span>
+          <span class="px-2 py-0.5 rounded-md bg-indigo-600 text-white">Answered & Marked</span>
+          <span class="px-2 py-0.5 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Unvisited</span>
         </div>
-      ` : ''}
+        <div class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2 max-h-52 overflow-y-auto pr-1">
+          ${buttonsHtml}
+        </div>
+      </div>
     </div>
   `;
 }
