@@ -1834,12 +1834,23 @@ async function startSavedPractice(kind) {
   if (!keys.size) return showToast(`No ${label.toLowerCase()} yet.`, 'info');
   setModal('Preparing practice', label, `<div class="space-y-4 animate-pulse"><div class="h-4 rounded bg-slate-200 dark:bg-slate-800 w-2/3"></div><div class="h-28 rounded-2xl bg-slate-200 dark:bg-slate-800"></div></div>`);
   try {
+    const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
+    const all = [];
+    Object.keys(data).forEach(subj => data[subj].forEach(ch => all.push([subj, ch])));
     const slugs = new Set([...keys].map(k => k.split('#')[0]));
-    const targets = [];
-    Object.keys(data).forEach(subj => data[subj].forEach(ch => { if (slugs.has(slugify(ch))) targets.push([subj, ch]); }));
-    const banks = await Promise.all(targets.map(([subj, ch]) => preloadChapter(subj, ch)));
-    const seen = new Set();
-    const questions = banks.flat().filter(q => keys.has(q.qKey) && !seen.has(q.qKey) && seen.add(q.qKey));
+    const picked = new Map();
+    const add = (subj, ch) => picked.set(subj + '|' + ch, [subj, ch]);
+    keys.forEach(k => { const m = stats[k] || {}; if (m.sj && m.ch && data[m.sj]?.includes(m.ch)) add(m.sj, m.ch); });
+    all.forEach(([subj, ch]) => { if (slugs.has(slugify(ch))) add(subj, ch); });
+    const found = new Map();
+    const collect = banks => banks.flat().forEach(q => { if (keys.has(q.qKey) && !found.has(q.qKey)) found.set(q.qKey, q); });
+    collect(await Promise.all([...picked.values()].map(([subj, ch]) => preloadChapter(subj, ch))));
+    if (found.size < keys.size) {
+      // Fallback for older saved items: scan every chapter that has a question bank.
+      const rest = all.filter(([subj, ch]) => !picked.has(subj + '|' + ch) && (questionIndex[slugify(subj + ' ' + ch)] || questionIndex[slugify(ch)] || 0) > 0);
+      collect(await Promise.all(rest.map(([subj, ch]) => preloadChapter(subj, ch))));
+    }
+    const questions = [...found.values()];
     if (!questions.length) {
       closeModal();
       return showToast('Those questions could not be loaded right now.', 'warning');
@@ -2253,6 +2264,7 @@ function selectPracticeOption(i) {
   const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
   const key = q?.qKey || `${quizState.chapter}:${quizState.currentIndex}`;
   stats[key] = stats[key] || { seen: 0, correct: 0, wrong: 0, streak: 0, lastSeen: 0 };
+  if (quizState.subject && quizState.subject !== 'Mixed' && !q?.sourceChapter?.includes(':')) { stats[key].sj = stats[key].sj || quizState.subject; stats[key].ch = stats[key].ch || (q?.sourceChapter || quizState.chapter); }
   stats[key].seen++; stats[key].lastSeen = Date.now();
   if (correct) { stats[key].correct++; stats[key].streak++; } else { stats[key].wrong++; stats[key].streak = 0; }
   StorageModule.set(STORAGE_KEYS.qstats, stats);
@@ -3732,6 +3744,7 @@ main.innerHTML = `
       const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
       const key = q.qKey || `${quizState.chapter}:${index}`;
       stats[key] = { ...(stats[key] || {}), bookmarked: quizState.bookmarked[index] };
+      if (quizState.subject && quizState.subject !== 'Mixed' && !stats[key].ch) { stats[key].sj = quizState.subject; stats[key].ch = q.sourceChapter || quizState.chapter; }
       StorageModule.set(STORAGE_KEYS.qstats, stats);
       persistQuizSession();
       renderPracticeQuiz();
