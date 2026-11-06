@@ -1069,9 +1069,19 @@ const DATA_BASES = ["/data/", "./data/", "data/"]; // tried in order if the firs
 const dataFileName = (subj, chapter) => FILE_OVERRIDES[chapter] || `${slugify(subj + ' ' + chapter)}.json`;
 async function fetchDataFile(fileName, opts = {}) {
   let lastErr = null;
+  const timeoutMs = 8000;
+  const request = async (url) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      return await fetch(url, { ...opts, signal: controller.signal });
+    } finally {
+      clearTimeout(timer);
+    }
+  };
   for (const base of DATA_BASES) {
     try {
-      const res = await fetch(base + fileName, opts);
+      const res = await request(base + fileName);
       if (res.ok) return res;
       lastErr = new Error(`HTTP ${res.status} for ${base + fileName}`);
     } catch (e) { lastErr = e; }
@@ -1079,7 +1089,7 @@ async function fetchDataFile(fileName, opts = {}) {
   const legacy = LEGACY_FILES[fileName];
   if (legacy) {
     for (const base of DATA_BASES) {
-      try { const res = await fetch(base + legacy, opts); if (res.ok) return res; } catch (e) {}
+      try { const res = await request(base + legacy); if (res.ok) return res; } catch (e) {}
     }
   }
   console.warn('[EduPulse] Could not load data file:', fileName, lastErr);
@@ -1883,7 +1893,9 @@ function buildTopInteractiveQuestionPalette(isPractice = false) {
 
   let answeredCount = 0, markedCount = 0, unvisitedCount = 0;
 
-  const buttonsHtml = quizState.questions.map((_, i) => {
+  // Keep the palette lightweight on long chapter banks; navigation still reaches every question.
+  const paletteQuestions = quizState.questions.slice(0, isPractice ? Math.min(total, 60) : total);
+  const buttonsHtml = paletteQuestions.map((_, i) => {
     const ans = quizState.userAnswers[i];
     const m = quizState.marked[i];
     const isCurrent = i === current;
