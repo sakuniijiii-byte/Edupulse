@@ -1446,6 +1446,56 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
 }
 
 </style>
+
+<style id="edupulse-global-theme-and-dashboard-refresh">
+/* Consistent theme tokens and readable controls across every route/modal. */
+html{color-scheme:light;scroll-behavior:smooth}
+html.dark{color-scheme:dark}
+html.dark body,body.dark{background:var(--bg)!important;color:var(--text-primary)!important}
+html.dark .bg-white,html.dark .bg-slate-50,html.dark .bg-gray-50,html.dark .bg-zinc-50{background-color:#111c2d!important}
+html.dark .bg-slate-100,html.dark .bg-gray-100,html.dark .bg-zinc-100{background-color:#1b293d!important}
+html.dark .text-slate-900,html.dark .text-gray-900,html.dark .text-zinc-900{color:#f1f5f9!important}
+html.dark .text-slate-800,html.dark .text-gray-800,html.dark .text-zinc-800{color:#e2e8f0!important}
+html.dark .text-slate-700,html.dark .text-gray-700,html.dark .text-zinc-700{color:#cbd5e1!important}
+html.dark .text-slate-600,html.dark .text-gray-600,html.dark .text-zinc-600{color:#aab8ca!important}
+html.dark .border-slate-200,html.dark .border-gray-200,html.dark .border-zinc-200{border-color:#334155!important}
+html.dark .border-slate-100,html.dark .border-gray-100,html.dark .border-zinc-100{border-color:#263449!important}
+html.dark input:not([type=checkbox]):not([type=radio]),html.dark textarea,html.dark select,
+body.dark input:not([type=checkbox]):not([type=radio]),body.dark textarea,body.dark select{
+  color:#e5edf7;background-color:#111c2d;border-color:#3a4a60;
+}
+html.dark input::placeholder,html.dark textarea::placeholder{color:#8494aa}
+html.dark option{background:#111c2d;color:#e5edf7}
+html.dark .card,html.dark .dv2-card,html.dark .dv2-stat,html.dark .dv2-act,html.dark .dv2-subj{box-shadow:0 10px 28px -22px rgba(0,0,0,.8)}
+html.dark .topbar{background:rgba(8,15,27,.88);border-color:#263449}
+html.dark .sidebar{background:rgba(12,20,33,.98);border-color:#263449}
+html.dark .custom-modal .modal-box,html.dark .custom-modal .bg-white{background:#111c2d!important;color:#e5edf7}
+html.dark .dv2-h span,html.dark .dv2-h button{color:#aab8ca}
+html.dark .dv2-s-teal .dv2-subj-ic,html.dark .dv2-teal .dv2-stat-ic{color:#5eead4}
+html.dark .dv2-green .dv2-stat-ic,html.dark .dv2-s-bio .dv2-subj-ic{color:#6ee7b7}
+html.dark .dv2-amber .dv2-stat-ic,html.dark .dv2-s-chem .dv2-subj-ic{color:#fcd34d}
+html.dark .dv2-violet .dv2-stat-ic,html.dark .dv2-s-phy .dv2-subj-ic{color:#93c5fd}
+html.dark .dv2-hero{box-shadow:0 24px 60px -34px rgba(45,212,191,.45)}
+html.dark .dv2-saved,html.dark .dv2-weak{background:rgba(15,23,42,.42)}
+html.dark .dv2-bar>div{background:rgba(148,163,184,.12)}
+/* Dashboard: stronger hierarchy, calmer cards, better touch targets. */
+.dv2{max-width:1180px;gap:24px}
+.dv2-hero{min-height:220px;padding:clamp(24px,4vw,38px);border-radius:30px}
+.dv2-hero:after{content:"";position:absolute;width:260px;height:260px;right:8%;top:-180px;border:1px solid rgba(255,255,255,.12);border-radius:50%;box-shadow:0 0 0 28px rgba(255,255,255,.035),0 0 0 58px rgba(255,255,255,.025);pointer-events:none}
+.dv2-hero-text{position:relative;z-index:1}
+.dv2-stats{gap:14px}
+.dv2-stat{padding:17px;border-radius:21px;box-shadow:0 8px 24px -22px rgba(15,23,42,.35);transition:transform .2s,border-color .2s,box-shadow .2s}
+.dv2-stat:hover,.dv2-act:hover,.dv2-saved:not(:disabled):hover,.dv2-weak:hover,.dv2-subj:hover{transform:translateY(-2px);box-shadow:0 12px 26px -18px rgba(13,148,136,.28)}
+.dv2-act{min-height:112px;justify-content:center;transition:transform .2s,border-color .2s,box-shadow .2s}
+.dv2-card{padding:20px;border-radius:23px;box-shadow:0 8px 28px -26px rgba(15,23,42,.35)}
+.dv2-saved{min-height:116px;transition:transform .2s,border-color .2s,background-color .2s}
+.dv2-subj{transition:transform .2s,border-color .2s,box-shadow .2s}
+.dv2-btn{min-height:46px}
+.dv2-ring{z-index:1}
+@media(max-width:640px){.dv2{gap:18px}.dv2-hero{min-height:190px;padding:22px 18px}.dv2-stat{padding:12px;gap:9px}.dv2-stat-ic{width:36px;height:36px}.dv2-stat b{font-size:20px}.dv2-act{min-height:96px}.dv2-card{padding:16px}}
+@media(prefers-reduced-motion:reduce){.dv2-stat,.dv2-act,.dv2-saved,.dv2-weak,.dv2-subj{transition:none!important}}
+</style>
+
 </head>
 <body>
 <div class="app-layout">
@@ -2966,20 +3016,29 @@ overlay.classList.remove('open');
 }
 }
 
-function initTheme() {
-const saved = localStorage.getItem(STORAGE_KEYS.theme) || 'light';
-if (saved === 'dark') {
-document.body.classList.add('dark');
-document.documentElement.classList.add('dark');
-} else {
-document.body.classList.remove('dark');
-document.documentElement.classList.remove('dark');
+function applyTheme(theme, persist = false) {
+  const isDark = theme === 'dark';
+  document.documentElement.classList.toggle('dark', isDark);
+  document.body.classList.toggle('dark', isDark);
+  document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute('content', isDark ? '#070a12' : '#0d9488');
+  if (persist) {
+    try { localStorage.setItem(STORAGE_KEYS.theme, isDark ? 'dark' : 'light'); } catch (err) { console.warn('Theme preference could not be saved:', err); }
+  }
+  const toggle = document.querySelector('[onclick="toggleTheme()"]');
+  if (toggle) {
+    toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    toggle.setAttribute('aria-pressed', String(isDark));
+  }
 }
+function initTheme() {
+  let saved = 'light';
+  try { saved = localStorage.getItem(STORAGE_KEYS.theme) || 'light'; } catch (err) {}
+  applyTheme(saved);
 }
 function toggleTheme() {
-const isDark = document.body.classList.toggle('dark');
-document.documentElement.classList.toggle('dark', isDark);
-localStorage.setItem(STORAGE_KEYS.theme, isDark ? 'dark' : 'light');
+  applyTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark', true);
 }
 initTheme();
 
