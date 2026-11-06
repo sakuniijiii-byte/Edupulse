@@ -433,7 +433,7 @@ StorageModule.init();
 
 // ===== Gemini AI Integration Core =====
 // Change this (or set localStorage 'edupulse_gemini_model') if the model is retired.
-const GEMINI_DEFAULT_MODEL = 'gemini-3-flash-preview';
+const GEMINI_DEFAULT_MODEL = 'gemini-3-flash';
 
 function getGeminiApiKey() {
   return localStorage.getItem(STORAGE_KEYS.geminiKey) || '';
@@ -449,7 +449,7 @@ function openApiKeyModal() {
   setModal('Gemini AI Engine Settings', 'Provide your Gemini API key to activate AI chatbot, explanations, tutoring, and adaptive generators.', `
     <div class="space-y-4 py-2 text-xs">
       <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-700 dark:text-teal-300">
-        <i class="fa-solid fa-circle-info mr-1.5"></i> EduPulse uses standard <strong>gemini-3-flash-preview</strong> calls for live generation. Your key remains stored locally in your browser.
+        <i class="fa-solid fa-circle-info mr-1.5"></i> EduPulse uses <strong>Gemini 3 Flash</strong> calls for live generation. Your key remains stored locally in your browser.
       </div>
 
       <!-- YouTube API Key Tutorial Embed Integration -->
