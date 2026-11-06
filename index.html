@@ -1068,31 +1068,35 @@ const DATA_BASE = "/data/";                 // original (site-root) location
 const DATA_BASES = ["/data/", "./data/", "data/"]; // tried in order if the first one 404s
 const dataFileName = (subj, chapter) => FILE_OVERRIDES[chapter] || `${slugify(subj + ' ' + chapter)}.json`;
 async function fetchDataFile(fileName, opts = {}) {
-  let lastErr = null;
-  const timeoutMs = 8000;
+  const timeoutMs = 4000;
   const request = async (url) => {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
-      return await fetch(url, { ...opts, signal: controller.signal });
+      const response = await fetch(url, { ...opts, signal: controller.signal });
+      return response.ok ? response : null;
+    } catch (error) {
+      return null;
     } finally {
       clearTimeout(timer);
     }
   };
-  for (const base of DATA_BASES) {
-    try {
-      const res = await request(base + fileName);
-      if (res.ok) return res;
-      lastErr = new Error(`HTTP ${res.status} for ${base + fileName}`);
-    } catch (e) { lastErr = e; }
-  }
+
+  const tryFile = async (name) => {
+    const responses = await Promise.all(DATA_BASES.map((base) => request(base + name)));
+    return responses.find(Boolean) || null;
+  };
+
+  const response = await tryFile(fileName);
+  if (response) return response;
+
   const legacy = LEGACY_FILES[fileName];
   if (legacy) {
-    for (const base of DATA_BASES) {
-      try { const res = await request(base + legacy); if (res.ok) return res; } catch (e) {}
-    }
+    const legacyResponse = await tryFile(legacy);
+    if (legacyResponse) return legacyResponse;
   }
-  console.warn('[EduPulse] Could not load data file:', fileName, lastErr);
+
+  console.warn('[EduPulse] Could not load data file:', fileName);
   return null;
 }
 
