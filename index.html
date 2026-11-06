@@ -242,6 +242,57 @@ button[role="radio"][aria-checked="true"]{border-color:#14b8a6;box-shadow:0 0 0 
 #normal-practice-toolkit button.tk-big[aria-pressed="true"]{background:linear-gradient(145deg,#f59e0b,#b45309);box-shadow:0 0 0 3px rgba(245,158,11,.3),0 10px 20px -10px #f59e0b}
 #normal-practice-toolkit details{margin-top:.75rem!important}
 @media (max-width:360px){.tk-quick{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* ---- Bottom navigation (phones/tablets) ---- */
+.bottom-nav{display:none}
+@media (max-width:1023px){
+  .bottom-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:35;padding:6px;border-radius:24px;background:var(--glass,rgba(255,255,255,.88));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid var(--border-color);box-shadow:0 14px 32px -14px rgba(15,23,42,.45)}
+  .main{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+  #ai-chatbot-widget,#toast-container{bottom:calc(92px + env(safe-area-inset-bottom))!important}
+}
+body:has(#appModal.open) .bottom-nav{display:none}
+.bn-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0 6px;border-radius:18px;font-size:10px;font-weight:800;color:var(--text-muted);position:relative}
+.bn-item i{font-size:16px;transition:transform .2s}
+.bn-item.active{color:#0d9488;background:rgba(20,184,166,.14)}
+.bn-item.active i{transform:translateY(-1px) scale(1.12)}
+/* ---- Filter chips ---- */
+.chip-filter{flex:none;padding:.4rem .85rem;border-radius:999px;font-size:11px;font-weight:800;color:var(--text-muted);background:rgba(148,163,184,.1);border:1px solid var(--border-color);white-space:nowrap}
+.chip-filter:hover{border-color:#14b8a6;color:var(--text-primary)}
+.chip-filter.on{color:#fff;background:linear-gradient(135deg,#0d9488,#14b8a6);border-color:transparent;box-shadow:0 6px 14px -8px #0d9488}
+/* ---- Misc polish ---- */
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+.card{will-change:transform}
+::selection{background:rgba(20,184,166,.28)}
+#toast-container>div{backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18)}
+/* ---- Page transition (tab switches only) ---- */
+@keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.route-enter>div>*{animation:riseIn .5s cubic-bezier(.16,1,.3,1) both}
+.route-enter>div>*:nth-child(2){animation-delay:.05s}.route-enter>div>*:nth-child(3){animation-delay:.1s}
+.route-enter>div>*:nth-child(4){animation-delay:.15s}.route-enter>div>*:nth-child(5){animation-delay:.2s}
+.route-enter>div>*:nth-child(n+6){animation-delay:.25s}
+/* ---- Option badges & quiz progress ---- */
+.opt-badge{display:inline-flex;height:2rem;width:2rem;flex:none;align-items:center;justify-content:center;border-radius:.75rem;font-size:12px;font-weight:800;background:#fff;color:#334155;box-shadow:0 1px 3px rgba(15,23,42,.1);transition:background-color .2s,color .2s,transform .2s}
+body.dark .opt-badge{background:#334155;color:#f1f5f9}
+button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#fff}
+.opt-badge.opt-ok{background:#10b981!important;color:#fff!important;animation:badgePop .35s cubic-bezier(.34,1.56,.64,1)}
+.opt-badge.opt-bad{background:#f43f5e!important;color:#fff!important;animation:badgePop .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes badgePop{from{transform:scale(.5);opacity:.4}to{transform:none;opacity:1}}
+.quiz-progress{height:4px;border-radius:99px;background:rgba(148,163,184,.2);overflow:hidden;margin:2px 0 8px}
+.quiz-progress span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#14b8a6,#6366f1);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.result-ring{animation:ringIn 1s cubic-bezier(.4,0,.2,1) both}
+@keyframes ringIn{from{stroke-dasharray:0 276}}
+/* ---- Bottom-sheet dialogs on phones ---- */
+@media (max-width:640px){
+  .custom-modal:not(.fullscreen-modal){place-items:end center;padding:0}
+  .custom-modal:not(.fullscreen-modal) .modal-box{border-radius:28px 28px 0 0;border-bottom:0;max-height:88dvh;padding-bottom:calc(20px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .38s cubic-bezier(.16,1,.3,1)}
+  .custom-modal.open:not(.fullscreen-modal) .modal-box{transform:none}
+  .custom-modal:not(.fullscreen-modal) .modal-box::before{content:'';display:block;flex:none;width:40px;height:4px;border-radius:99px;background:rgba(148,163,184,.5);margin:-10px auto 14px}
+}
+/* ---- No sticky hover lift on touch screens ---- */
+@media (hover:none){
+  .card:hover,.chapter:hover,.quick-action-card:hover{transform:none}
+  button[role="radio"]:not(:disabled):hover{transform:none}
+  #normal-practice-toolkit button.tk-btn:hover,#normal-practice-toolkit button.tk-big:hover{transform:none}
+}
 </style>
 </head>
 <body>
@@ -363,6 +414,13 @@ button[role="radio"][aria-checked="true"]{border-color:#14b8a6;box-shadow:0 0 0 
 </div>
 </div>
 
+<nav class="bottom-nav" id="bottom-nav" aria-label="Primary">
+  <button type="button" class="bn-item active" data-tab="dashboard" onclick="switchTab('dashboard')"><i class="fa-solid fa-house"></i><span>Home</span></button>
+  <button type="button" class="bn-item" data-tab="learn" onclick="switchTab('learn')"><i class="fa-solid fa-bolt"></i><span>Practice</span></button>
+  <button type="button" class="bn-item" data-tab="mock" onclick="switchTab('mock')"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Tests</span></button>
+  <button type="button" class="bn-item" data-tab="progress" onclick="switchTab('progress')"><i class="fa-solid fa-chart-line"></i><span>Stats</span></button>
+  <button type="button" class="bn-item" data-tab="tools" onclick="switchTab('tools')"><i class="fa-solid fa-stopwatch"></i><span>Focus</span></button>
+</nav>
 <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2.5 pointer-events-none"></div>
 
 <script>
@@ -1784,6 +1842,7 @@ function resumeSavedSession() { const s = getSavedResume(); if (!s?.questions?.l
 // ===== Dashboard quick access: Resume / Bookmarked / Incorrect =====
 function getSavedQuestionKeys(kind) {
   const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
+  if (kind === 'due') return getDueRevisionKeys();
   return Object.keys(stats).filter(k => kind === 'bookmarked'
     ? !!stats[k].bookmarked
     : (stats[k].wrong || 0) > 0 && !stats[k].streak); // last attempt was wrong
@@ -1831,9 +1890,186 @@ function buildDashboardJumpBack() {
     </div>
   </div>`;
 }
+// ===== Dashboard insights, chapter filters, backup =====
+const __q = {};            // remembered search text (inputs are recreated on every render)
+let chapterFilter = 'all';
+function onSearchInput(el) {
+  __q[el.id] = el.value;
+  renderView();
+  const n = document.getElementById(el.id);
+  if (n) { n.focus(); const l = n.value.length; try { n.setSelectionRange(l, l); } catch (e) {} }
+}
+function setChapterFilter(f) { chapterFilter = f; renderView(); }
+function chapterMatchesFilter(subj, ch, f) {
+  if (f === 'all') return true;
+  const meta = readChapterMeta()[chapterKey(subj, ch)];
+  const att = StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => a.chapter === ch);
+  const acc = att.length ? att.reduce((n, a) => n + (a.accuracy || 0), 0) / att.length : null;
+  if (f === 'progress') return !!meta && meta.answered > 0 && meta.answered < meta.total;
+  if (f === 'todo') return !meta && !att.length;
+  if (f === 'done') return !!userProgress[ch]?.completed;
+  if (f === 'weak') return acc !== null && acc < 60;
+  return true;
+}
+function buildChapterFilterChips() {
+  const chips = [['all', 'All'], ['progress', 'In progress'], ['todo', 'Not started'], ['weak', 'Needs work'], ['done', 'Completed']];
+  return `<div class="flex gap-2 overflow-x-auto no-scrollbar pt-3" role="tablist" aria-label="Chapter filter">${chips.map(([k, l]) => `<button type="button" role="tab" aria-selected="${chapterFilter === k}" onclick="setChapterFilter('${k}')" class="chip-filter ${chapterFilter === k ? 'on' : ''}">${l}</button>`).join('')}</div>`;
+}
+const DAILY_GOAL_KEY = 'edupulse_daily_goal_v1';
+const getDailyGoal = () => Number(localStorage.getItem(DAILY_GOAL_KEY)) || 30;
+function cycleDailyGoal() {
+  const presets = [10, 20, 30, 50, 100];
+  const next = presets[(presets.indexOf(getDailyGoal()) + 1) % presets.length] || 30;
+  try { localStorage.setItem(DAILY_GOAL_KEY, String(next)); } catch (e) {}
+  renderView();
+  showToast(`Daily goal set to ${next} questions`);
+}
+function questionsSolvedToday() {
+  const start = new Date().setHours(0, 0, 0, 0);
+  return Object.values(StorageModule.get(STORAGE_KEYS.qstats, {})).filter(m => (m.lastSeen || 0) >= start).length;
+}
+function getWeakChapters(limit = 3) {
+  const by = {};
+  StorageModule.get(STORAGE_KEYS.attempts, []).forEach(a => {
+    if (!a.subject || !data[a.subject]?.includes(a.chapter)) return;
+    const k = a.subject + '|' + a.chapter;
+    (by[k] = by[k] || { subject: a.subject, chapter: a.chapter, acc: [] }).acc.push(a.accuracy || 0);
+  });
+  return Object.values(by).map(x => ({ ...x, avg: Math.round(x.acc.reduce((n, v) => n + v, 0) / x.acc.length) }))
+    .filter(x => x.avg < 85).sort((a, b) => a.avg - b.avg).slice(0, limit);
+}
+function buildDashboardInsights() {
+  const goal = getDailyGoal(), done = questionsSolvedToday();
+  const pct = Math.min(100, Math.round((done / goal) * 100));
+  const C = 226.2;
+  const weak = getWeakChapters();
+  const weakHtml = weak.length ? weak.map(w => `
+      <button type="button" onclick="openPracticeSetup('${jsArg(w.subject)}','${jsArg(w.chapter)}')" class="w-full flex items-center gap-3 rounded-2xl border border-slate-200 dark:border-slate-700 p-3 text-left hover:border-rose-400 hover:bg-rose-500/5 transition group">
+        <span class="h-10 w-10 shrink-0 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center text-xs font-black">${w.avg}%</span>
+        <span class="min-w-0 flex-1"><span class="block text-xs font-black text-slate-900 dark:text-slate-100 truncate">${escapeHtml(w.chapter)}</span><span class="block text-[10px] font-semibold text-slate-500">${escapeHtml(w.subject)} · ${w.acc.length} attempt${w.acc.length === 1 ? '' : 's'}</span></span>
+        <span class="text-[10px] font-black text-teal-600 dark:text-teal-400 flex items-center gap-1">Practice <i class="fa-solid fa-arrow-right text-[9px] transition-transform group-hover:translate-x-0.5"></i></span>
+      </button>`).join('') : `<p class="rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 p-4 text-center text-xs font-semibold text-slate-500">Finish a few practice sessions and your weakest chapters will show up here.</p>`;
+  return `
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="card p-5 flex items-center gap-5">
+      <div class="relative h-24 w-24 shrink-0">
+        <svg viewBox="0 0 80 80" class="h-24 w-24 -rotate-90" aria-hidden="true"><circle cx="40" cy="40" r="36" fill="none" stroke="currentColor" stroke-width="7" class="text-slate-200 dark:text-slate-700"/><circle cx="40" cy="40" r="36" fill="none" stroke="url(#goalGrad)" stroke-width="7" stroke-linecap="round" stroke-dasharray="${(C * pct / 100).toFixed(1)} ${C}" style="transition:stroke-dasharray .8s cubic-bezier(.4,0,.2,1)"/><defs><linearGradient id="goalGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14b8a6"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs></svg>
+        <div class="absolute inset-0 flex flex-col items-center justify-center"><span class="text-xl font-black text-slate-900 dark:text-slate-100">${pct}%</span></div>
+      </div>
+      <div class="min-w-0">
+        <span class="text-[10px] uppercase tracking-widest font-black text-teal-600 dark:text-teal-400">Daily goal</span>
+        <p class="mt-1 text-sm font-black text-slate-900 dark:text-slate-100">${done} / ${goal} questions</p>
+        <p class="text-[11px] font-medium text-slate-500 mt-0.5">${done >= goal ? 'Goal reached — great work! 🎉' : `${goal - done} more to hit today's goal`}</p>
+        <button type="button" onclick="cycleDailyGoal()" class="mt-2 rounded-full border border-slate-200 dark:border-slate-700 px-3 py-1 text-[10px] font-extrabold text-slate-600 dark:text-slate-300 hover:border-teal-500">Change goal <i class="fa-solid fa-rotate ml-1 text-[9px]"></i></button>
+      </div>
+    </div>
+    <div class="card p-5 lg:col-span-2 space-y-3">
+      <div class="flex items-center justify-between"><h3 class="text-sm font-black text-slate-900 dark:text-slate-100 flex items-center gap-2"><i class="fa-solid fa-bullseye text-rose-500"></i> Needs work</h3><span class="text-[11px] font-semibold text-slate-400">Lowest accuracy first</span></div>
+      <div class="grid grid-cols-1 md:grid-cols-${Math.min(3, Math.max(1, weak.length))} gap-2">${weakHtml}</div>
+    </div>
+  </div>`;
+}
+function exportBackup() {
+  const data = {};
+  for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && k.startsWith('edupulse')) data[k] = localStorage.getItem(k); }
+  const blob = new Blob([JSON.stringify({ app: 'edupulse', version: 1, exportedAt: new Date().toISOString(), data })], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `edupulse-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  showToast('Backup downloaded.');
+}
+function importBackupFile(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(reader.result);
+      if (parsed?.app !== 'edupulse' || typeof parsed.data !== 'object') throw new Error('Not an EduPulse backup file.');
+      window.__pendingBackup = parsed;
+      const n = Object.keys(parsed.data).length;
+      setModal('Restore backup?', file.name, `<div class="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs font-medium text-amber-800 dark:text-amber-200 leading-relaxed">This replaces your current progress with the backup (${n} saved items${parsed.exportedAt ? ', made ' + escapeHtml(new Date(parsed.exportedAt).toLocaleString()) : ''}). The app will reload afterwards.</div>`,
+        `<button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Cancel</button><button onclick="applyBackup()" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white text-xs font-black">Restore</button>`);
+    } catch (e) { showToast(e.message || 'That file could not be read.', 'error'); }
+  };
+  reader.readAsText(file);
+}
+function applyBackup() {
+  const b = window.__pendingBackup; if (!b) return;
+  try {
+    Object.keys(b.data).forEach(k => { if (k.startsWith('edupulse') && typeof b.data[k] === 'string') localStorage.setItem(k, b.data[k]); });
+    location.reload();
+  } catch (e) { showToast('Restore failed: storage is full.', 'error'); }
+}
+
+// ===== Spaced revision + weekly activity =====
+function getDueRevisionKeys() {
+  // Previously-missed questions come back after 1, 3, 7, then 14 days of being answered correctly in a row; 4 in a row graduates them.
+  const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
+  const now = Date.now(), day = 864e5, gaps = [1, 3, 7, 14];
+  return Object.keys(stats).filter(k => {
+    const m = stats[k];
+    if (!m || !m.seen || !m.lastSeen || !(m.wrong > 0) || (m.streak || 0) >= 4) return false;
+    return now - m.lastSeen >= gaps[Math.min(m.streak || 0, 3)] * day;
+  });
+}
+function getActivityDays(n = 7) {
+  const counts = StorageModule.get(STORAGE_KEYS.streak, { dailyCounts: {} }).dailyCounts || {};
+  const days = [];
+  for (let i = n - 1; i >= 0; i--) {
+    const d = new Date(Date.now() - i * 864e5);
+    const key = d.toISOString().slice(0, 10);
+    days.push({ key, count: counts[key] || 0, label: d.toLocaleDateString([], { weekday: 'narrow' }), today: i === 0 });
+  }
+  return days;
+}
+function getDayStreak() {
+  const counts = StorageModule.get(STORAGE_KEYS.streak, { dailyCounts: {} }).dailyCounts || {};
+  let streak = 0, i = counts[new Date().toISOString().slice(0, 10)] ? 0 : 1; // today may still be empty
+  for (; i < 400; i++) {
+    if (counts[new Date(Date.now() - i * 864e5).toISOString().slice(0, 10)]) streak++; else break;
+  }
+  return streak;
+}
+function buildDashboardActivity() {
+  const days = getActivityDays(7);
+  const max = Math.max(getDailyGoal(), ...days.map(d => d.count), 1);
+  const total = days.reduce((n, d) => n + d.count, 0);
+  const streak = getDayStreak();
+  const due = getDueRevisionKeys().length;
+  const bars = days.map(d => `
+    <div class="flex-1 flex flex-col items-center gap-1.5 min-w-0" title="${d.count} question${d.count === 1 ? '' : 's'}">
+      <span class="text-[10px] font-black ${d.count ? 'text-slate-700 dark:text-slate-200' : 'text-transparent'}">${d.count || 0}</span>
+      <div class="w-full h-24 rounded-xl bg-slate-100 dark:bg-slate-800/70 flex items-end overflow-hidden"><div class="w-full rounded-xl ${d.today ? 'bg-gradient-to-t from-teal-600 to-teal-400' : 'bg-gradient-to-t from-indigo-500/80 to-indigo-400/80'}" style="height:${d.count ? Math.max(8, Math.round((d.count / max) * 100)) : 0}%;transition:height .6s cubic-bezier(.4,0,.2,1)"></div></div>
+      <span class="text-[10px] font-extrabold ${d.today ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400'}">${d.label}</span>
+    </div>`).join('');
+  return `
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="card p-5 lg:col-span-2 space-y-4">
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-sm font-black text-slate-900 dark:text-slate-100 flex items-center gap-2"><i class="fa-solid fa-chart-column text-indigo-500"></i> This week</h3>
+        <div class="flex items-center gap-2 text-[11px] font-extrabold">
+          <span class="rounded-full px-3 py-1 bg-amber-500/10 text-amber-700 dark:text-amber-300"><i class="fa-solid fa-fire mr-1"></i>${streak}-day streak</span>
+          <span class="rounded-full px-3 py-1 bg-teal-500/10 text-teal-700 dark:text-teal-300">${total} solved</span>
+        </div>
+      </div>
+      <div class="flex items-end gap-2">${bars}</div>
+    </div>
+    <div class="card p-5 flex flex-col justify-between gap-4 ${due ? 'border-violet-500/40 bg-gradient-to-br from-violet-500/10 via-transparent to-transparent' : ''}">
+      <div>
+        <span class="text-[10px] uppercase tracking-widest font-black text-violet-600 dark:text-violet-400">Smart revision</span>
+        <p class="mt-1 text-3xl font-black text-slate-900 dark:text-slate-100">${due}</p>
+        <p class="text-xs font-medium text-slate-500 mt-1 leading-relaxed">${due ? `question${due === 1 ? '' : 's'} you missed before ${due === 1 ? 'is' : 'are'} due for a re-check. Spacing them out helps them stick.` : 'Nothing due right now. Missed questions return here after 1, 3, 7 and 14 days.'}</p>
+      </div>
+      <button type="button" ${due ? `onclick="startSavedPractice('due')"` : 'disabled'} class="rounded-xl ${due ? 'bg-violet-600 hover:bg-violet-700 shadow-lg shadow-violet-600/20' : 'bg-slate-300 dark:bg-slate-700'} px-4 py-2.5 text-xs font-black text-white flex items-center justify-center gap-2"><i class="fa-solid ${due ? 'fa-brain' : 'fa-circle-check'} text-[11px]"></i>${due ? 'Start revision' : 'All caught up'}</button>
+    </div>
+  </div>`;
+}
+
 async function startSavedPractice(kind) {
   const keys = new Set(getSavedQuestionKeys(kind));
-  const label = kind === 'bookmarked' ? 'Bookmarked questions' : 'Incorrect questions';
+  const label = kind === 'bookmarked' ? 'Bookmarked questions' : kind === 'due' ? 'Revision due' : 'Incorrect questions';
   if (!keys.size) return showToast(`No ${label.toLowerCase()} yet.`, 'info');
   setModal('Preparing practice', label, `<div class="space-y-4 animate-pulse"><div class="h-4 rounded bg-slate-200 dark:bg-slate-800 w-2/3"></div><div class="h-28 rounded-2xl bg-slate-200 dark:bg-slate-800"></div></div>`);
   try {
@@ -2314,7 +2550,7 @@ function renderPracticeQuiz() {
     } else {
       c += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200';
     }
-    return `<button type="button" role="radio" aria-checked="${selected === i}" aria-label="Option ${String.fromCharCode(65 + i)}${eliminated[i] ? ', eliminated' : ''}" class="${c}" ${answered ? 'disabled' : `onclick="selectPracticeOption(${i})" oncontextmenu="event.preventDefault(); toggleEliminatedOption(${i})"`}> <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${formatQuizText(opt)}</span>${eliminated[i] ? '<i class="fa-solid fa-xmark text-amber-600"></i>' : ''}</button>`;
+    return `<button type="button" role="radio" aria-checked="${selected === i}" aria-label="Option ${String.fromCharCode(65 + i)}${eliminated[i] ? ', eliminated' : ''}" class="${c}" ${answered ? 'disabled' : `onclick="selectPracticeOption(${i})" oncontextmenu="event.preventDefault(); toggleEliminatedOption(${i})"`}> ${answered && i === q.correct ? '<span class="opt-badge opt-ok"><i class="fa-solid fa-check"></i></span>' : answered && i === selected ? '<span class="opt-badge opt-bad"><i class="fa-solid fa-xmark"></i></span>' : `<span class="opt-badge">${String.fromCharCode(65 + i)}</span>`} <span class="flex-1">${formatQuizText(opt)}</span>${eliminated[i] ? '<i class="fa-solid fa-xmark text-amber-600"></i>' : ''}</button>`;
   }).join('');
 
   const qStats = StorageModule.get(STORAGE_KEYS.qstats, {})[q.qKey] || {};
@@ -2355,6 +2591,7 @@ ${!isRight ? `<div class="pt-2"><p class="text-[10px] font-black uppercase track
 </div>
 </div>
 
+${inf ? '' : `<div class="quiz-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(Object.keys(quizState.userAnswers).length / total * 100)}"><span style="width:${Math.round(Object.keys(quizState.userAnswers).length / total * 100)}%"></span></div>`}
 ${topStrip}
 
 <div ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd()" class="flex-1 overflow-y-auto my-1 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/50 flex flex-col justify-between select-none">
@@ -2655,6 +2892,7 @@ toggleFullScreenMode(false);
 const { total, attempted, correct, wrong, skipped, score, maxScore, accuracy } = attempt;
 
 setModal('Quiz Performance Summary', attempt.chapter || 'Full Test Simulation', `<div class="space-y-6 py-2"> 
+${(() => { const C = 2 * Math.PI * 44; const msg = accuracy >= 85 ? ['Outstanding!', '🏆'] : accuracy >= 70 ? ['Great work!', '🎯'] : accuracy >= 50 ? ['Good progress', '📈'] : ['Keep going — you’ve got this', '💪']; return `<div class="flex flex-col items-center gap-3 pt-1"><div class="relative h-32 w-32"><svg viewBox="0 0 100 100" class="h-32 w-32 -rotate-90" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="8" class="text-slate-200 dark:text-slate-700"/><circle cx="50" cy="50" r="44" fill="none" stroke="url(#resGrad)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${(C * accuracy / 100).toFixed(1)} ${C.toFixed(1)}" class="result-ring"/><defs><linearGradient id="resGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14b8a6"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs></svg><div class="absolute inset-0 flex flex-col items-center justify-center"><span class="text-3xl font-black text-slate-900 dark:text-slate-100">${accuracy}%</span><span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">accuracy</span></div></div><p class="text-base font-black text-slate-900 dark:text-slate-100">${msg[1]} ${msg[0]}</p></div>`; })()}
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800"> 
 <div class="space-y-2"> 
 <div class="flex items-baseline justify-between"><span class="text-xs text-slate-500 font-bold uppercase">Final Score</span><span class="text-3xl font-black text-teal-600">${score} / ${maxScore}</span></div> 
@@ -2684,6 +2922,7 @@ function switchTab(tab) {
 previousTab = currentTab;
 currentTab = tab;
 document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.bn-item').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
 const btn = document.getElementById(`nav-${tab}`);
 if (btn) btn.classList.add('active');
 
@@ -2694,6 +2933,8 @@ else backBtn.classList.add('hidden'), backBtn.classList.remove('flex');
 }
 
 toggleMobileNav(false);
+const __main = document.getElementById('main-container');
+if (__main) { __main.classList.add('route-enter'); setTimeout(() => __main.classList.remove('route-enter'), 800); window.scrollTo({ top: 0 }); }
 renderView();
 }
 
@@ -2828,6 +3069,10 @@ main.innerHTML = `
 
   <!-- Jump back in: resume, bookmarked, incorrect -->
   ${buildDashboardJumpBack()}
+
+  ${buildDashboardInsights()}
+
+  ${buildDashboardActivity()}
 
   <!-- Quick Access Panel -->
   <div class="space-y-3">
@@ -3162,7 +3407,7 @@ main.innerHTML = `
 
           <div class="relative">
             <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 text-xs"></i>
-            <input type="text" id="batchSeriesSearch" oninput="renderView()" placeholder="Search test series by title, chapter or scope..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-xs font-semibold focus:outline-none focus:border-teal-500 transition">
+            <input type="text" id="batchSeriesSearch" oninput="onSearchInput(this)" value="${escapeHtml(__q.batchSeriesSearch || '')}" placeholder="Search test series by title, chapter or scope..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-xs font-semibold focus:outline-none focus:border-teal-500 transition">
           </div>
         </div>
 
@@ -3170,7 +3415,7 @@ main.innerHTML = `
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           ${batchTestsDatabase
             .filter(s => {
-              const q = (document.getElementById('batchSeriesSearch')?.value || '').toLowerCase();
+              const q = (__q.batchSeriesSearch || '').toLowerCase();
               const matchQ = s.title.toLowerCase().includes(q) || s.description.toLowerCase().includes(q);
               const matchCat = batchCategoryFilter === 'All' || s.category === batchCategoryFilter;
               return matchQ && matchCat;
@@ -3375,8 +3620,9 @@ main.innerHTML = `
   <div class="card p-4">
     <div class="relative">
       <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 text-xs"></i>
-      <input type="text" id="chapterSearch" oninput="renderView()" placeholder="Search chapter in ${subject}..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-xs font-semibold focus:outline-none focus:border-teal-500 transition">
+      <input type="text" id="chapterSearch" oninput="onSearchInput(this)" value="${escapeHtml(__q.chapterSearch || '')}" placeholder="Search chapter in ${subject}..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-xs font-semibold focus:outline-none focus:border-teal-500 transition">
     </div>
+    ${buildChapterFilterChips()}
   </div>
 
   ${(() => { const resume = getSavedResume(); const signals = getStudySignals(); return `<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -3389,8 +3635,8 @@ main.innerHTML = `
   <!-- Chapters Grid - One Click Practice Cards -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
     ${chaptersList.filter(c => {
-      const q = (document.getElementById('chapterSearch')?.value || '').toLowerCase();
-      return c.toLowerCase().includes(q);
+      const q = (__q.chapterSearch || '').toLowerCase();
+      return c.toLowerCase().includes(q) && chapterMatchesFilter(subject, c, chapterFilter);
     }).map((ch, idx) => {
       const isDone = userProgress[ch]?.completed;
       const bankCount = questionIndex[slugify(subject + ' ' + ch)] || questionIndex[slugify(ch)] || 0;
@@ -3411,6 +3657,7 @@ main.innerHTML = `
             <h4 class="chapter-title group-hover:text-teal-600 transition-colors">${escapeHtml(ch)}</h4><div class="mt-2 flex items-center gap-2 text-[10px] font-bold text-slate-500"><span>${bankCount ? `${bankCount} Qs` : 'Soon'}</span>${chapterAccuracy !== null ? `<span>· ${chapterAccuracy}% accuracy</span>` : ''}<span class="ml-auto h-8 w-8 rounded-full border-4 border-teal-500/30 ${chapterAccuracy !== null ? 'border-t-teal-500' : ''} flex items-center justify-center text-[9px]">${chapterAccuracy ?? 0}%</span></div>
           </div>
 
+          ${hist.session && hist.session.total ? `<div class="progress mt-3" title="${hist.session.answered}/${hist.session.total} answered"><i style="width:${Math.round(hist.session.answered / hist.session.total * 100)}%"></i></div>` : ''}
           <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between gap-1 flex-wrap">
             <span class="practice">
               <span>${hist.session && hist.session.answered ? `Resume · ${hist.session.answered}/${hist.session.total}` : 'Start Practice Now'}</span> <i class="fa-solid fa-bolt text-amber-500 text-[10px]"></i>
@@ -3613,6 +3860,14 @@ main.innerHTML = `
 const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
 main.innerHTML = `
 <div class="space-y-6 animate-fadeIn max-w-3xl mx-auto">
+  <div class="card p-6 border-l-4 border-l-indigo-500 space-y-4">
+    <div><h2 class="text-xl font-black text-slate-900 dark:text-slate-100">Backup & restore</h2><p class="text-xs text-slate-500 mt-1">Your progress lives on this device only. Download a backup before clearing browser data or switching phones.</p></div>
+    <div class="flex flex-wrap gap-3">
+      <button type="button" onclick="exportBackup()" class="rounded-xl bg-indigo-600 hover:bg-indigo-700 px-5 py-2.5 text-xs font-black text-white shadow-lg shadow-indigo-600/20"><i class="fa-solid fa-download mr-1.5"></i>Download backup</button>
+      <button type="button" onclick="document.getElementById('backup-file').click()" class="rounded-xl border border-slate-200 dark:border-slate-700 px-5 py-2.5 text-xs font-black"><i class="fa-solid fa-upload mr-1.5"></i>Restore from file</button>
+      <input id="backup-file" type="file" accept="application/json,.json" class="hidden" onchange="importBackupFile(this.files[0]); this.value=''">
+    </div>
+  </div>
   <div class="card p-6 border-l-4 border-l-teal-500 space-y-6">
     <div>
       <h2 class="text-xl font-black text-slate-900 dark:text-slate-100">App & Marking Settings</h2>
