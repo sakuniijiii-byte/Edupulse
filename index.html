@@ -2832,7 +2832,7 @@ function togglePaletteDrawer(forceState) {
     expandedPanel.setAttribute('aria-hidden', String(!expanded));
   }
   palette.style.setProperty('max-height',
-    expanded ? 'min(54dvh, 430px)' : '58px', 'important');
+    expanded ? 'min(54dvh, 430px)' : 'none', 'important');
   palette.style.setProperty('overflow-y', expanded ? 'auto' : 'hidden', 'important');
   palette.style.setProperty('overflow-x', 'hidden', 'important');
   if (compactRow) compactRow.style.setProperty('display', expanded ? 'none' : 'flex', 'important');
@@ -6003,6 +6003,13 @@ body.dark .pal-dot.pal-current{border-color:#f8fafc}
 .dv2-s-phy .dv2-subj-ic{background:rgba(14,165,233,.14);color:#0284c7}.dv2-s-phy .dv2-subj-p{color:#0284c7}.dv2-s-phy .dv2-subj-bar i{background:#0ea5e9}
 @media (max-width:860px){.dv2-stats{grid-template-columns:repeat(2,1fr)}.dv2-grid,.dv2-subjects{grid-template-columns:1fr}}
 @media (max-width:560px){.dv2{gap:18px}.dv2-hero{padding:22px 18px;border-radius:24px;flex-direction:column;align-items:flex-start}.dv2-ring{position:absolute;top:14px;right:14px;width:84px;height:84px}.dv2-ring-label b{font-size:20px}.dv2-ring-label small{font-size:8px}.dv2-hero-text{padding-top:4px}.dv2-hero h2{max-width:70%}.dv2-saved-grid{gap:8px}.dv2-saved{padding:12px}}
+
+/* ===== Palette collapsed state: show header + full number strip (was clipped to 58px) ===== */
+body .quiz-session-layout.quiz-session-layout > .palette-drawer-top.palette-drawer-top:not(.is-expanded){max-height:none!important;height:auto!important;overflow:hidden!important}
+body .quiz-session-layout.quiz-session-layout > .palette-drawer-top.palette-drawer-top:not(.is-expanded) > div:first-child{display:flex!important;min-height:46px!important}
+body .quiz-session-layout.quiz-session-layout > .palette-drawer-top.palette-drawer-top:not(.is-expanded) > div:nth-child(2){display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:8px!important;min-height:60px!important;padding:8px 10px!important;overflow-x:auto!important;overflow-y:hidden!important;max-height:none!important}
+body .quiz-session-layout.quiz-session-layout > .palette-drawer-top.palette-drawer-top:not(.is-expanded) > .palette-expanded-content{display:none!important}
+body .quiz-session-layout .palette-drawer-top:not(.is-expanded) .palette-touch-btn{flex:0 0 42px!important;width:42px!important;min-width:42px!important;height:42px!important}
 </style>
 <script>
 (function(){
