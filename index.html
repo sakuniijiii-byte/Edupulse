@@ -367,7 +367,7 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
         <div class="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center font-black">✦</div>
         <div>
           <h4 class="font-extrabold text-sm leading-tight">EduPulse AI Copilot & Adaptive Tutor</h4>
-          <span class="text-[10px] text-teal-100 flex items-center gap-1 font-semibold"><i class="fa-solid fa-circle text-[6px] text-emerald-300"></i> Powered by Gemini 3 Flash</span>
+          <span class="text-[10px] text-teal-100 flex items-center gap-1 font-semibold"><i class="fa-solid fa-circle text-[6px] text-emerald-300"></i> Powered by Gemini AI</span>
         </div>
       </div>
       <button onclick="toggleAiChatbotWindow()" class="p-1.5 text-white/80 hover:text-white rounded-lg"><i class="fa-solid fa-xmark text-lg"></i></button>
@@ -546,7 +546,9 @@ StorageModule.init();
 
 // ===== Gemini AI Integration Core =====
 // Change this (or set localStorage 'edupulse_gemini_model') if the model is retired.
-const GEMINI_DEFAULT_MODEL = 'gemini-3-flash';
+const GEMINI_DEFAULT_MODEL = 'gemini-3.8-flash';
+const GEMINI_MODEL_STORAGE_KEY = 'edupulse_gemini_model';
+const GEMINI_API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
 
 function getGeminiApiKey() {
   return localStorage.getItem(STORAGE_KEYS.geminiKey) || '';
@@ -559,10 +561,11 @@ function setGeminiApiKey(key) {
 
 function openApiKeyModal() {
   const currentKey = getGeminiApiKey();
+  const currentModel = localStorage.getItem(GEMINI_MODEL_STORAGE_KEY) || GEMINI_DEFAULT_MODEL;
   setModal('Gemini AI Engine Settings', 'Provide your Gemini API key to activate AI chatbot, explanations, tutoring, and adaptive generators.', `
     <div class="space-y-4 py-2 text-xs">
       <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-700 dark:text-teal-300">
-        <i class="fa-solid fa-circle-info mr-1.5"></i> EduPulse uses <strong>Gemini 3 Flash</strong> calls for live generation. Your key remains stored locally in your browser.
+        <i class="fa-solid fa-circle-info mr-1.5"></i> EduPulse uses a Gemini model that supports generateContent. Available models can be refreshed below. Your key remains stored locally in your browser.
       </div>
 
       <!-- YouTube API Key Tutorial Embed Integration -->
@@ -585,19 +588,62 @@ function openApiKeyModal() {
 
       <div>
         <label class="block font-bold text-slate-700 dark:text-slate-300 mt-2">Gemini API Key</label>
-        <input type="password" id="geminiKeyInput" value="${escapeHtml(currentKey)}" placeholder="AIzaSy..." class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono">
+        <input type="password" id="geminiKeyInput" value="${escapeHtml(currentKey)}" placeholder="AIzaSy..." autocomplete="off" class="w-full mt-1.5 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono">
+      </div>
+      <div>
+        <label for="geminiModelSelect" class="block font-bold text-slate-700 dark:text-slate-300">AI model</label>
+        <div class="flex gap-2 mt-1.5">
+          <select id="geminiModelSelect" class="min-w-0 flex-1 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
+            <option value="${escapeHtml(currentModel)}">${escapeHtml(currentModel)} (selected)</option>
+          </select>
+          <button type="button" onclick="loadGeminiModels()" class="px-3 rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-700 dark:text-teal-300 text-xs font-bold">Refresh models</button>
+        </div>
+        <p id="geminiModelStatus" class="mt-1 text-[10px] text-slate-500">Choose a model supported by your API key. Models are loaded from Google.</p>
       </div>
     </div>
   `, `
     <button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Cancel</button>
     <button onclick="saveApiKeyFromModal()" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-md">Save API Key</button>
   `);
+  if (currentKey) loadGeminiModels();
+}
+
+async function loadGeminiModels() {
+  const key = document.getElementById('geminiKeyInput')?.value.trim() || getGeminiApiKey();
+  const select = document.getElementById('geminiModelSelect');
+  const status = document.getElementById('geminiModelStatus');
+  if (!key) { if (status) status.textContent = 'Enter and save your API key first, then refresh models.'; return; }
+  if (status) status.textContent = 'Loading models available to this API key…';
+  try {
+    const response = await fetch(`${GEMINI_API_BASE}/models?pageSize=1000`, { headers: { 'x-goog-api-key': key } });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.error?.message || `Model list failed (HTTP ${response.status})`);
+    const models = (data.models || []).filter(m => (m.supportedGenerationMethods || []).includes('generateContent')).map(m => (m.name || '').replace(/^models\//, '')).filter(Boolean).sort();
+    if (!models.length) throw new Error('Google returned no models supporting generateContent for this key.');
+    const selected = localStorage.getItem(GEMINI_MODEL_STORAGE_KEY) || GEMINI_DEFAULT_MODEL;
+    select.innerHTML = '';
+    models.forEach(name => { const option = document.createElement('option'); option.value = name; option.textContent = name; select.appendChild(option); });
+    select.value = models.includes(selected) ? selected : (models.includes(GEMINI_DEFAULT_MODEL) ? GEMINI_DEFAULT_MODEL : models[0]);
+    if (status) status.textContent = `${models.length} compatible model(s) found. Selected: ${select.value}`;
+  } catch (error) {
+    if (status) status.textContent = error.message;
+    showToast(`Could not load Gemini models: ${error.message}`, 'error');
+  }
 }
 
 function saveApiKeyFromModal() {
   const val = document.getElementById('geminiKeyInput')?.value || '';
+  const model = document.getElementById('geminiModelSelect')?.value || GEMINI_DEFAULT_MODEL;
   setGeminiApiKey(val);
+  localStorage.setItem(GEMINI_MODEL_STORAGE_KEY, model);
   closeModal();
+}
+
+async function fetchGeminiModelList(apiKey) {
+  const response = await fetch(`${GEMINI_API_BASE}/models?pageSize=1000`, { headers: { 'x-goog-api-key': apiKey } });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error?.message || `Unable to list Gemini models (HTTP ${response.status})`);
+  return (data.models || []).filter(m => (m.supportedGenerationMethods || []).includes('generateContent')).map(m => (m.name || '').replace(/^models\//, '')).filter(Boolean);
 }
 
 async function callGeminiApi(prompt, systemInstruction = '', enableGrounding = false) {
@@ -607,29 +653,44 @@ async function callGeminiApi(prompt, systemInstruction = '', enableGrounding = f
     throw new Error('Please configure your Gemini API Key first.');
   }
 
-  const model = localStorage.getItem('edupulse_gemini_model') || GEMINI_DEFAULT_MODEL;
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
   const payload = {
     contents: [{ parts: [{ text: prompt }] }],
     ...(systemInstruction ? { systemInstruction: { parts: [{ text: systemInstruction }] } } : {}),
-    ...(enableGrounding ? { tools: [{ "google_search": {} }] } : {})
+    ...(enableGrounding ? { tools: [{ google_search: {} }] } : {})
   };
 
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
-    body: JSON.stringify(payload)
-  });
+  const requestModel = async model => {
+    const apiUrl = `${GEMINI_API_BASE}/models/${encodeURIComponent(model)}:generateContent`;
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
+      body: JSON.stringify(payload)
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const error = new Error(result.error?.message || `Gemini API request failed (HTTP ${response.status})`);
+      error.status = response.status;
+      throw error;
+    }
+    const generated = result?.candidates?.[0]?.content?.parts?.map(part => part.text || '').join('').trim();
+    if (!generated) throw new Error(result?.promptFeedback?.blockReason ? `Gemini blocked this prompt: ${result.promptFeedback.blockReason}` : 'Gemini returned no text. Try a different prompt or model.');
+    return generated;
+  };
 
-  if (!response.ok) {
-    const err = await response.json().catch(() => ({}));
-    throw new Error(err.error?.message || `API Call failed: HTTP ${response.status}`);
+  let model = localStorage.getItem(GEMINI_MODEL_STORAGE_KEY) || GEMINI_DEFAULT_MODEL;
+  try {
+    return await requestModel(model);
+  } catch (error) {
+    const modelUnavailable = error.status === 404 || /model .* not found|not supported for generatecontent|unknown model/i.test(error.message);
+    if (!modelUnavailable) throw error;
+    const available = await fetchGeminiModelList(apiKey);
+    const preference = ['gemini-3.8-flash', 'gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3-flash-preview', 'gemini-2.5-flash'];
+    const fallback = preference.find(name => available.includes(name)) || available.find(name => /flash/i.test(name)) || available[0];
+    if (!fallback || fallback === model) throw new Error(`The selected Gemini model "${model}" is unavailable. Open AI Key settings and refresh the model list. ${error.message}`);
+    localStorage.setItem(GEMINI_MODEL_STORAGE_KEY, fallback);
+    showToast(`Gemini model updated to ${fallback}`, 'success');
+    return await requestModel(fallback);
   }
-
-  const result = await response.json();
-  const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!text) throw new Error('No content returned from AI model.');
-  return text;
 }
 
 // ===== Markdown Beauty Formatter =====
