@@ -944,6 +944,196 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
 }
 </style>
 
+<style id="edupulse-neet-portrait-refinement">
+
+/* ===== Portrait exam layout refinement (NEET-style reference) ===== */
+@media (orientation:portrait){
+  .quiz-session-layout{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:auto auto minmax(0,1fr) auto!important;
+    grid-template-areas:"head" "palette" "question" "tools"!important;
+    align-content:stretch!important;
+    align-items:stretch!important;
+    gap:8px!important;
+    padding:8px 10px!important;
+    overflow:hidden!important;
+    height:100%!important;
+    min-height:0!important;
+  }
+  .quiz-session-layout > .mb-1{
+    grid-area:head!important;
+    min-height:42px!important;
+    margin:0!important;
+    padding:0 0 6px!important;
+  }
+  .quiz-session-layout > .quiz-progress{display:none!important}
+  /* Palette becomes a deliberate two-row control: heading + swipeable numbers. */
+  .quiz-session-layout > .palette-drawer-top{
+    grid-area:palette!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:108px!important;
+    margin:0!important;
+    overflow:hidden!important;
+    border:1px solid var(--border-color)!important;
+    border-radius:14px!important;
+    box-shadow:0 3px 12px rgba(15,23,42,.07)!important;
+    transition:max-height .28s ease!important;
+  }
+  .quiz-session-layout > .palette-drawer-top > div:first-child{
+    display:flex!important;
+    min-height:43px!important;
+    padding:5px 10px!important;
+    cursor:default!important;
+  }
+  .quiz-session-layout > .palette-drawer-top > div:nth-child(2){
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    align-items:center!important;
+    gap:7px!important;
+    min-height:56px!important;
+    padding:7px 9px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scrollbar-width:thin!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .quiz-session-layout .palette-touch-btn{
+    flex:0 0 42px!important;
+    width:42px!important;
+    min-width:42px!important;
+    height:42px!important;
+    border-radius:11px!important;
+    font-size:13px!important;
+  }
+  .quiz-session-layout .palette-expand-trigger{
+    display:inline-flex!important;
+    flex:0 0 34px!important;
+    width:34px!important;
+    height:34px!important;
+    margin-left:8px!important;
+    pointer-events:auto!important;
+  }
+  .quiz-session-layout > .palette-drawer-top:has(> .p-3.space-y-2){
+    max-height:min(48vh,390px)!important;
+    overflow-y:auto!important;
+  }
+  .quiz-session-layout > .palette-drawer-top:has(> .p-3.space-y-2) > div:nth-child(2){display:none!important}
+  .quiz-session-layout > .palette-drawer-top:has(> .p-3.space-y-2) .p-3.space-y-2{
+    display:block!important;
+    max-height:calc(48vh - 52px)!important;
+    overflow-y:auto!important;
+  }
+  /* Question is the visual hero; remove the large artificial gap under answers. */
+  .quiz-session-layout > [ontouchstart]{
+    grid-area:question!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    height:100%!important;
+    max-height:100%!important;
+    margin:0!important;
+    padding:clamp(13px,2vw,22px)!important;
+    overflow-y:auto!important;
+    justify-content:flex-start!important;
+    border-radius:16px!important;
+    box-shadow:0 4px 18px rgba(15,23,42,.055)!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .quiz-session-layout > [ontouchstart] > div:first-child{flex:0 0 auto!important}
+  .quiz-session-layout > [ontouchstart] .quiz-meta{margin-top:8px!important;gap:6px!important}
+  .quiz-session-layout > [ontouchstart] .quiz-stem{
+    margin-top:13px!important;
+    font-size:clamp(16px,2.2vw,20px)!important;
+    line-height:1.55!important;
+    max-width:80ch!important;
+  }
+  .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:9px!important;
+    margin-top:18px!important;
+  }
+  .quiz-session-layout > [ontouchstart] .mt-5.space-y-3 > *{
+    min-width:0!important;
+    margin:0!important;
+  }
+  .quiz-session-layout > [ontouchstart] button[role="radio"]{
+    min-height:54px!important;
+    padding:10px 12px!important;
+    border-radius:13px!important;
+    font-size:14px!important;
+  }
+  .quiz-session-layout > [ontouchstart] .sticky{
+    position:sticky!important;
+    bottom:calc(-1 * env(safe-area-inset-bottom))!important;
+    z-index:3!important;
+    margin-top:18px!important;
+    padding:11px 0 calc(5px + env(safe-area-inset-bottom))!important;
+    background:var(--card-bg, #fff)!important;
+  }
+  /* Compact quick actions into an exam-style utility dock. */
+  .quiz-session-layout > #normal-practice-toolkit{
+    grid-area:tools!important;
+    width:100%!important;
+    min-height:0!important;
+    max-height:112px!important;
+    margin:0!important;
+    padding:8px!important;
+    overflow-y:auto!important;
+    border-radius:14px!important;
+  }
+  #normal-practice-toolkit .tk-stats,#normal-practice-toolkit .tk-bar{display:none!important}
+  #normal-practice-toolkit .tk-quick{
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:7px!important;
+    margin:0!important;
+  }
+  #normal-practice-toolkit button.tk-big{
+    min-width:0!important;
+    min-height:48px!important;
+    padding:5px 3px!important;
+    gap:4px!important;
+    border-radius:11px!important;
+    font-size:10px!important;
+  }
+  #normal-practice-toolkit button.tk-big i{
+    width:23px!important;height:23px!important;font-size:11px!important;
+  }
+  #normal-practice-toolkit details{margin-top:6px!important}
+  #normal-practice-toolkit details>summary{
+    min-height:34px!important;padding:5px 8px!important;font-size:10px!important;
+  }
+}
+@media (orientation:portrait) and (max-width:520px){
+  .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:8px!important;
+    margin-top:13px!important;
+  }
+  .quiz-session-layout .palette-touch-btn{
+    flex-basis:38px!important;width:38px!important;min-width:38px!important;height:38px!important;
+  }
+  .quiz-session-layout > #normal-practice-toolkit{max-height:105px!important}
+}
+@media (orientation:portrait) and (max-height:760px){
+  .quiz-session-layout{gap:5px!important;padding:5px 7px!important}
+  .quiz-session-layout > .palette-drawer-top{max-height:96px!important}
+  .quiz-session-layout > .palette-drawer-top > div:first-child{min-height:38px!important}
+  .quiz-session-layout > .palette-drawer-top > div:nth-child(2){min-height:49px!important;padding:5px 8px!important}
+  .quiz-session-layout > [ontouchstart]{padding:10px!important}
+  .quiz-session-layout > [ontouchstart] .quiz-stem{margin-top:8px!important;font-size:15px!important}
+  .quiz-session-layout > [ontouchstart] button[role="radio"]{min-height:44px!important;padding:7px 9px!important}
+  .quiz-session-layout > #normal-practice-toolkit{max-height:96px!important}
+}
+@media (prefers-reduced-motion:reduce){
+  .quiz-session-layout > .palette-drawer-top{transition:none!important}
+}
+
+</style>
 </head>
 <body>
 <div class="app-layout">
@@ -3170,7 +3360,7 @@ function buildTopInteractiveQuestionPalette(isPractice = false) {
         <div class="flex items-center gap-2.5 text-[11px] font-bold">
           <span class="text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-circle text-[7px]"></i> ${answeredCount} Done</span>
           ${!isPractice ? `<span class="text-indigo-600 flex items-center gap-1"><i class="fa-solid fa-circle text-[7px]"></i> ${markedCount} Marked</span>` : ''}
-          <button type="button" aria-label="${isExpanded ? 'Collapse' : 'Expand'} question palette" aria-expanded="${isExpanded}" title="${isExpanded ? 'Collapse question palette' : 'Expand question palette'}" class="palette-expand-trigger w-8 h-8 inline-flex items-center justify-center rounded-full border border-teal-200 dark:border-teal-800 bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 hover:bg-teal-100 dark:hover:bg-teal-900/60 active:scale-95 transition-all shadow-sm">
+          <button type="button" aria-label="${isExpanded ? 'Collapse' : 'Expand'} question palette" aria-expanded="${isExpanded}" title="${isExpanded ? 'Collapse question palette' : 'Expand question palette'}" onclick="event.stopPropagation();togglePaletteDrawer()" class="palette-expand-trigger w-8 h-8 inline-flex items-center justify-center rounded-full border border-teal-200 dark:border-teal-800 bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 hover:bg-teal-100 dark:hover:bg-teal-900/60 active:scale-95 transition-all shadow-sm">
             <i class="fa-solid ${isExpanded ? 'fa-chevron-up' : 'fa-chevron-down'} text-xs"></i>
           </button>
         </div>
