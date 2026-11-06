@@ -191,6 +191,58 @@ body.dark .progress{background:rgba(255,255,255,.1)}
   box-shadow: 0 4px 12px rgba(13,148,136,0.3);
 }
 </style>
+<style id="edupulse-polish">
+/* ---- Accessibility & base buttons ---- */
+:focus{outline:none}
+:focus-visible{outline:2px solid #14b8a6;outline-offset:2px}
+button:disabled,button[disabled]{cursor:not-allowed;opacity:.55;transform:none!important;filter:saturate(.7)}
+button:not(:disabled):active{transform:scale(.97)}
+/* primary / secondary action buttons in modals and quiz footer */
+.modal-box button.bg-teal-600,.quiz-sticky-actions button.bg-teal-600{box-shadow:0 6px 16px -6px rgba(13,148,136,.55)}
+.modal-box button.bg-teal-600:not(:disabled):hover,.quiz-sticky-actions button.bg-teal-600:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 10px 20px -8px rgba(13,148,136,.6)}
+.modal-box button.bg-slate-100:hover,.modal-box button.bg-slate-200:hover{background:rgba(148,163,184,.28)}
+/* ---- Answer options ---- */
+button[role="radio"]{min-height:52px;transition:border-color .15s,background-color .15s,box-shadow .15s,transform .15s}
+button[role="radio"]:not(:disabled):hover{border-color:#14b8a6;background:rgba(20,184,166,.08);box-shadow:0 4px 14px -8px rgba(13,148,136,.5);transform:translateX(3px)}
+button[role="radio"]:not(:disabled):active{transform:scale(.99)}
+button[role="radio"][aria-checked="true"]{border-color:#14b8a6;box-shadow:0 0 0 3px rgba(20,184,166,.18)}
+/* ---- Study tools panel ---- */
+#normal-practice-toolkit .tk-stats{display:flex;flex-wrap:wrap;gap:.45rem}
+.tk-chip{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .65rem;border-radius:999px;font-size:11px;font-weight:700;color:var(--text-muted);background:rgba(148,163,184,.12);border:1px solid var(--border-color)}
+.tk-chip b{color:var(--text-primary);font-weight:900}
+.tk-bar{height:5px;border-radius:99px;background:rgba(148,163,184,.2);margin-top:.65rem;overflow:hidden}
+.tk-bar span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#14b8a6,#10b981);transition:width .5s cubic-bezier(.4,0,.2,1)}
+#normal-practice-toolkit details>summary{display:flex;align-items:center;gap:.5rem;cursor:pointer;user-select:none;font-weight:800;font-size:12px;color:var(--text-primary);transition:background-color .2s}
+#normal-practice-toolkit details>summary:hover{background:rgba(20,184,166,.15)}
+.tk-sum-icon{color:#0d9488}
+.tk-count{margin-left:auto;padding:.15rem .5rem;border-radius:99px;font-size:9px;font-weight:900;color:#0f766e;background:rgba(20,184,166,.14)}
+.tk-chev{font-size:10px;color:var(--text-muted);transition:transform .25s}
+#normal-practice-toolkit details[open] .tk-chev{transform:rotate(180deg)}
+#normal-practice-toolkit details[open]>*:not(summary){animation:tkIn .22s ease-out}
+@keyframes tkIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.tk-group{margin-top:.9rem}
+.tk-label{margin:0 0 .4rem;font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:.5rem}
+#normal-practice-toolkit button.tk-btn{display:flex;align-items:center;justify-content:flex-start;gap:.55rem;width:100%;min-height:46px;padding:.5rem .65rem;border-radius:.9rem;font-size:11px;font-weight:800;line-height:1.2;text-align:left;color:var(--text-primary);background:var(--card-bg);border:1px solid var(--border-color);box-shadow:0 1px 2px rgba(15,23,42,.05)}
+#normal-practice-toolkit .tk-btn i{display:grid;place-items:center;flex:none;width:1.9rem;height:1.9rem;border-radius:.65rem;font-size:.8rem;color:var(--tk-fg);background:var(--tk-bg)}
+#normal-practice-toolkit button.tk-btn:hover{filter:none;border-color:var(--tk-fg);transform:translateY(-2px);box-shadow:0 8px 16px -8px var(--tk-fg)}
+#normal-practice-toolkit .tk-btn:active{transform:scale(.97)}
+#normal-practice-toolkit .tk-btn[aria-pressed="true"]{border-color:#f59e0b;background:rgba(245,158,11,.1)}
+.tk-teal{--tk-fg:#14b8a6;--tk-bg:rgba(20,184,166,.15)}.tk-sky{--tk-fg:#0ea5e9;--tk-bg:rgba(14,165,233,.15)}
+.tk-indigo{--tk-fg:#6366f1;--tk-bg:rgba(99,102,241,.15)}.tk-purple{--tk-fg:#a855f7;--tk-bg:rgba(168,85,247,.15)}
+.tk-violet{--tk-fg:#8b5cf6;--tk-bg:rgba(139,92,246,.15)}.tk-slate{--tk-fg:#64748b;--tk-bg:rgba(100,116,139,.15)}
+.tk-amber{--tk-fg:#f59e0b;--tk-bg:rgba(245,158,11,.16)}.tk-rose{--tk-fg:#f43f5e;--tk-bg:rgba(244,63,94,.15)}
+.tk-emerald{--tk-fg:#10b981;--tk-bg:rgba(16,185,129,.15)}
+@media (max-width:420px){.tk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* ---- Quick action buttons (always visible while practicing) ---- */
+.tk-quick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin-top:.8rem}
+#normal-practice-toolkit button.tk-big{flex-direction:column;justify-content:center;align-items:center;gap:.4rem;min-height:72px;padding:.65rem .35rem;text-align:center;font-size:10.5px;letter-spacing:.01em;color:#fff;border:0;background:linear-gradient(145deg,var(--tk-fg),color-mix(in srgb,var(--tk-fg) 62%,#000));box-shadow:0 8px 18px -10px var(--tk-fg),inset 0 1px 0 rgba(255,255,255,.25)}
+#normal-practice-toolkit button.tk-big i{width:2rem;height:2rem;font-size:.95rem;color:#fff;background:rgba(255,255,255,.2);backdrop-filter:blur(2px)}
+#normal-practice-toolkit button.tk-big:hover{border:0;transform:translateY(-3px);box-shadow:0 14px 24px -10px var(--tk-fg),inset 0 1px 0 rgba(255,255,255,.3)}
+#normal-practice-toolkit button.tk-big[aria-pressed="true"]{background:linear-gradient(145deg,#f59e0b,#b45309);box-shadow:0 0 0 3px rgba(245,158,11,.3),0 10px 20px -10px #f59e0b}
+#normal-practice-toolkit details{margin-top:.75rem!important}
+@media (max-width:360px){.tk-quick{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
 </head>
 <body>
 <div class="app-layout">
@@ -3457,27 +3509,18 @@ main.innerHTML = `
       : '';
 
     panel.innerHTML = `
-      <div class="flex flex-wrap items-center justify-between gap-2 text-xs" aria-live="polite">
-        <div class="flex items-center gap-1.5 font-extrabold text-emerald-700 dark:text-emerald-300"><i class="fa-solid fa-fire text-amber-500"></i>${metrics.correctStreak} correct streak ${streakMessage}</div>
-        <div class="flex items-center gap-1.5 font-extrabold text-teal-700 dark:text-teal-300"><i class="fa-solid fa-bullseye"></i>${accuracy}% accuracy</div>
-        <div class="font-bold text-slate-500 dark:text-slate-400">${metrics.correct}/${metrics.answered} correct</div>
+      <div class="tk-stats" aria-live="polite">
+        <span class="tk-chip"><i class="fa-solid fa-fire" style="color:#f59e0b"></i><b>${metrics.correctStreak}</b> streak ${streakMessage}</span>
+        <span class="tk-chip"><i class="fa-solid fa-bullseye" style="color:#14b8a6"></i><b>${accuracy}%</b> accuracy</span>
+        <span class="tk-chip"><b>${metrics.correct}/${metrics.answered}</b> correct</span>
       </div>
+      <div class="tk-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${accuracy}"><span style="width:${accuracy}%"></span></div>
+      <div class="tk-quick"><button type="button" data-action="explain"></button><button type="button" data-action="mnemonic"></button><button type="button" data-action="bookmark" data-state="${quizState.bookmarked?.[quizState.currentIndex] ? 'on' : 'off'}"></button><button type="button" data-action="reveal"></button></div>
       <details class="mt-3 border-t border-slate-100 dark:border-slate-800 pt-2">
-        <summary class="cursor-pointer select-none text-[11px] font-extrabold text-teal-700 dark:text-teal-300"><i class="fa-solid fa-toolbox mr-1"></i> Study toolkit · 20 practice helpers</summary>
-        <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
-          <button type="button" data-action="more" class="rounded-xl bg-teal-600 px-2 py-2 text-[10px] font-bold text-white">More like this</button>
-          <button type="button" data-action="easier" class="rounded-xl bg-sky-600 px-2 py-2 text-[10px] font-bold text-white">Make easier</button>
-          <button type="button" data-action="harder" class="rounded-xl bg-indigo-600 px-2 py-2 text-[10px] font-bold text-white">Make harder</button>
-          <button type="button" data-action="mnemonic" class="rounded-xl bg-purple-600 px-2 py-2 text-[10px] font-bold text-white">Memory trick</button>
-          <button type="button" data-action="explain" class="rounded-xl bg-violet-600 px-2 py-2 text-[10px] font-bold text-white">Explain simply</button>
-          <button type="button" data-action="copy" class="rounded-xl bg-slate-700 px-2 py-2 text-[10px] font-bold text-white">Copy question</button>
-          <button type="button" data-action="share" class="rounded-xl bg-slate-700 px-2 py-2 text-[10px] font-bold text-white">Share question</button>
-          <button type="button" data-action="bookmark" class="rounded-xl bg-amber-500 px-2 py-2 text-[10px] font-bold text-white">${quizState.bookmarked?.[quizState.currentIndex] ? 'Unbookmark' : 'Bookmark'}</button>
-          <button type="button" data-action="report" class="rounded-xl bg-rose-600 px-2 py-2 text-[10px] font-bold text-white">Report question</button>
-          <button type="button" data-action="focus" class="rounded-xl bg-emerald-700 px-2 py-2 text-[10px] font-bold text-white">25-min focus</button>
-          <button type="button" data-action="reveal" class="rounded-xl bg-slate-600 px-2 py-2 text-[10px] font-bold text-white">Show answer</button>
-          <button type="button" data-action="retry" class="rounded-xl bg-rose-700 px-2 py-2 text-[10px] font-bold text-white">Retry mistakes</button>
-        </div>
+        <summary class="cursor-pointer select-none text-[11px] font-extrabold text-teal-700 dark:text-teal-300"><i class="fa-solid fa-toolbox mr-1"></i> More tools</summary>
+        <div class="tk-group"><p class="tk-label">Adjust with AI</p><div class="tk-grid"><button type="button" data-action="more"></button><button type="button" data-action="easier"></button><button type="button" data-action="harder"></button></div></div>
+        <div class="tk-group"><p class="tk-label">Save &amp; share</p><div class="tk-grid"><button type="button" data-action="copy"></button><button type="button" data-action="share"></button><button type="button" data-action="report"></button></div></div>
+        <div class="tk-group"><p class="tk-label">Practice</p><div class="tk-grid"><button type="button" data-action="retry"></button><button type="button" data-action="focus"></button></div></div>
         <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
           <label class="text-[10px] font-bold text-slate-500">Confidence before answer
             <select data-confidence class="mt-1 w-full rounded-lg border border-slate-200 bg-white p-2 text-xs dark:border-slate-700 dark:bg-slate-800">
@@ -3900,8 +3943,9 @@ main.innerHTML = `
     const main = document.getElementById('main-container');
     const hero = main?.querySelector('.executive-hero');
     const existing = main?.querySelector('#edupulse-dashboard-features');
+    // Study tools are hidden on the dashboard; they live inside practice sessions only.
     if (existing) existing.remove();
-    if (!main || !hero) return;
+    return;
 
     const section = document.createElement('section');
     section.id = 'edupulse-dashboard-features';
@@ -3957,11 +4001,22 @@ main.innerHTML = `
   installConfettiStyle();
   installTestStreakTracking();
   renderDashboardFeatures();
-  const observer = new MutationObserver(() => {
-    installTestStreakTracking();
-    renderDashboardFeatures();
-  });
+  let dashQueued = false;
   const main = document.getElementById('main-container');
+  const observer = new MutationObserver(() => {
+    if (dashQueued) return;
+    dashQueued = true;
+    requestAnimationFrame(() => {
+      dashQueued = false;
+      observer.disconnect();
+      try {
+        installTestStreakTracking();
+        renderDashboardFeatures();
+      } finally {
+        if (main) observer.observe(main, { childList: true, subtree: true });
+      }
+    });
+  });
   if (main) observer.observe(main, { childList: true, subtree: true });
 
   let attempts = 0;
@@ -4010,28 +4065,27 @@ main.innerHTML = `
     if (!panel) return;
 
     const summary = panel.querySelector('details > summary');
-    if (summary) {
-      summary.innerHTML = '<i class="fa-solid fa-toolbox mr-2"></i><span>Study tools</span><span class="ml-auto rounded-full bg-teal-600/10 px-2 py-1 text-[9px] font-black text-teal-700 dark:text-teal-300">12 helpers</span>';
-      summary.classList.add('flex', 'items-center', 'gap-1');
+    if (summary && !summary.dataset.enh) {
+      summary.dataset.enh = '1';
+      summary.innerHTML = '<i class="fa-solid fa-toolbox tk-sum-icon" aria-hidden="true"></i><span>More tools</span><span class="tk-count">8 tools</span><i class="fa-solid fa-chevron-down tk-chev" aria-hidden="true"></i>';
     }
-
-    const actionGrid = panel.querySelector('details [data-action]')?.parentElement;
-    if (actionGrid) {
-      actionGrid.className = 'mt-3 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2';
-      panel.querySelectorAll('[data-action]').forEach((button) => {
-        const action = button.dataset.action;
-        const config = ACTIONS[action];
-        if (!config) return;
-        const [iconName, label, color] = config;
-        const isBookmarked = action === 'bookmark' && /unbookmark/i.test(button.textContent);
-        button.type = 'button';
-        button.title = label;
-        button.setAttribute('aria-label', isBookmarked ? 'Remove bookmark' : label);
-        button.className = 'group flex min-h-11 items-center justify-start gap-2 rounded-xl border border-white/10 px-3 py-2 text-left text-[10px] font-extrabold shadow-sm transition hover:-translate-y-0.5 hover:brightness-110 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500';
-        button.style.cssText = `${COLOR_STYLES[color]};width:100%`;
-        button.innerHTML = `<i class="fa-solid ${iconName} w-4 shrink-0 text-center ${action === 'bookmark' && isBookmarked ? 'text-amber-200' : ''}" aria-hidden="true"></i><span>${isBookmarked ? 'Bookmarked' : label}</span>`;
-      });
-    }
+    panel.querySelectorAll('[data-action]').forEach((button) => {
+      const action = button.dataset.action;
+      const config = ACTIONS[action];
+      if (!config) return;
+      const [iconName, label, color] = config;
+      const on = action === 'bookmark' && button.dataset.state === 'on';
+      const sig = action + (on ? ':on' : '');
+      if (button.dataset.sig === sig) return;
+      button.dataset.sig = sig;
+      button.type = 'button';
+      button.title = on ? 'Remove bookmark' : label;
+      button.setAttribute('aria-label', on ? 'Remove bookmark' : label);
+      if (action === 'bookmark') button.setAttribute('aria-pressed', String(on));
+      button.className = `tk-btn tk-${color}${button.closest('.tk-quick') ? ' tk-big' : ''}`;
+      button.removeAttribute('style');
+      button.innerHTML = `<i class="fa-solid ${iconName}" aria-hidden="true"></i><span>${on ? 'Bookmarked' : label}</span>`;
+    });
 
     const confidence = panel.querySelector('[data-confidence]');
     if (confidence) {
@@ -4067,7 +4121,17 @@ main.innerHTML = `
   function start() {
     addStyles();
     enhanceToolkit();
-    const observer = new MutationObserver(enhanceToolkit);
+    let queued = false;
+    const observer = new MutationObserver(() => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        observer.disconnect();
+        try { enhanceToolkit(); }
+        finally { observer.observe(document.body, { childList: true, subtree: true }); }
+      });
+    });
     observer.observe(document.body, { childList: true, subtree: true });
   }
 
