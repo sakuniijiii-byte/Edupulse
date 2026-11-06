@@ -293,6 +293,69 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
   button[role="radio"]:not(:disabled):hover{transform:none}
   #normal-practice-toolkit button.tk-btn:hover,#normal-practice-toolkit button.tk-big:hover{transform:none}
 }
+
+/* ---- Quiz viewport sizing: keep the question reachable on short landscape screens ---- */
+.fullscreen-modal .modal-box{
+  min-height:0;
+  overflow:hidden;
+}
+.fullscreen-modal #modalContentSlot{
+  min-height:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.quiz-session-layout{
+  min-height:0;
+  height:100%;
+}
+.quiz-session-layout > .palette-drawer-top,
+.quiz-session-layout > #normal-practice-toolkit{
+  flex:none;
+}
+.quiz-session-layout > [ontouchstart]{
+  min-height:0;
+  flex:1 1 0%;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  justify-content:flex-start;
+  -webkit-overflow-scrolling:touch;
+}
+@media (orientation:landscape) and (max-height:600px){
+  .fullscreen-modal .modal-box{height:100dvh;max-height:100dvh}
+  .fullscreen-modal #modalActions{display:none!important}
+  .quiz-session-layout{padding:5px 12px!important;gap:4px}
+  .quiz-session-layout > .mb-1{padding-bottom:4px!important;margin-bottom:0!important;min-height:38px}
+  .quiz-session-layout > .mb-1 h2{font-size:13px!important;line-height:1.2}
+  .quiz-session-layout .quiz-progress{margin:0 0 3px;height:3px}
+  .quiz-session-layout .palette-drawer-top{margin-bottom:3px!important;max-height:68px!important;border-radius:12px!important}
+  .quiz-session-layout .palette-drawer-top > div:first-child{padding:4px 9px!important}
+  .quiz-session-layout .palette-drawer-top .palette-touch-btn{height:32px;min-width:34px;border-radius:9px}
+  #normal-practice-toolkit{padding:7px 9px!important;margin:0 0 3px!important;border-radius:13px!important}
+  #normal-practice-toolkit .tk-stats{gap:4px}
+  #normal-practice-toolkit .tk-chip{font-size:9px;padding:3px 6px}
+  #normal-practice-toolkit .tk-bar{margin-top:4px;height:3px}
+  #normal-practice-toolkit .tk-quick{gap:5px;margin-top:5px}
+  #normal-practice-toolkit button.tk-big{min-height:43px!important;padding:3px!important;gap:2px!important;font-size:9px!important}
+  #normal-practice-toolkit button.tk-big i{width:22px!important;height:22px!important;font-size:11px!important}
+  #normal-practice-toolkit details{margin-top:4px!important}
+  #normal-practice-toolkit details>summary{padding:4px 7px!important;font-size:10px!important}
+  .quiz-session-layout > [ontouchstart]{padding:9px 12px!important;margin:0!important;border-radius:13px!important}
+  .quiz-session-layout > [ontouchstart] .quiz-meta{margin-top:4px;gap:4px}
+  .quiz-session-layout > [ontouchstart] .quiz-meta span{font-size:8px;padding:2px 5px}
+  .quiz-session-layout > [ontouchstart] .quiz-stem{font-size:14px!important;line-height:1.45;margin-top:7px!important}
+  .quiz-session-layout > [ontouchstart] .mt-5{margin-top:9px!important}
+  .quiz-session-layout > [ontouchstart] .space-y-3>*+*{margin-top:6px!important}
+  .quiz-session-layout > [ontouchstart] button[role="radio"]{min-height:38px;padding-top:6px;padding-bottom:6px;font-size:12px}
+  .quiz-session-layout > [ontouchstart] .sticky{position:sticky;bottom:0;margin-top:8px!important;padding-top:7px!important;padding-bottom:4px!important}
+}
+@media (orientation:landscape) and (max-height:430px){
+  .quiz-session-layout .palette-drawer-top{max-height:48px!important}
+  #normal-practice-toolkit .tk-quick{display:none}
+  #normal-practice-toolkit details{margin-top:0!important}
+  .quiz-session-layout > [ontouchstart] .quiz-meta{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -2637,7 +2700,7 @@ ${!isRight ? `<div class="pt-2"><p class="text-[10px] font-black uppercase track
     ? `<button type="button" id="infinite-next-btn" onclick="goToNextPracticeQuestion()" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition flex items-center gap-1.5 disabled:opacity-60"><span>Next Question</span> <i class="fa-solid fa-arrow-right text-[10px]"></i></button>`
     : `<button type="button" onclick="${last ? 'finishPracticeQuiz()' : 'goToNextPracticeQuestion()'}" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-teal-700 transition">${last ? 'Finish Quiz' : 'Next →'}</button>`;
 
-  const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative overflow-hidden">
+  const html = `<div class="quiz-session-layout w-full h-full min-h-0 flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative overflow-hidden">
 <div class="mb-1 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
 <div class="flex items-center gap-3">
 <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button>
@@ -2823,7 +2886,7 @@ else c += 'border-slate-200 bg-slate-50 text-slate-700 hover:border-teal-300 dar
 return `<button type="button" class="${c}" onclick="selectTestOption(${i})"> <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-700 shadow-sm dark:bg-slate-700 dark:text-slate-100">${String.fromCharCode(65 + i)}</span> <span class="flex-1">${escapeHtml(opt)}</span></button>`;
 }).join('');
 
-const html = `<div class="w-full h-full flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative overflow-hidden"> 
+const html = `<div class="quiz-session-layout w-full h-full min-h-0 flex flex-col justify-between max-w-5xl mx-auto p-2 sm:p-4 relative overflow-hidden"> 
 <div class="mb-1 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2"> 
 <div class="flex items-center gap-3"> 
 <button type="button" onclick="confirmExitQuiz()" class="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left text-lg"></i></button> 
