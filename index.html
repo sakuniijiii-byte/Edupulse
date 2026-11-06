@@ -1150,6 +1150,302 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
 }
 
 </style>
+<style id="edupulse-palette-final-fix">
+
+/* Final authoritative palette disclosure rules: override legacy responsive rules. */
+.palette-drawer-top{
+  min-height:0!important;
+  transition:max-height .25s ease!important;
+}
+.palette-drawer-top:not(.is-expanded){
+  max-height:58px!important;
+  height:58px!important;
+  overflow:hidden!important;
+}
+.palette-drawer-top:not(.is-expanded) .palette-expanded-content{display:none!important}
+.palette-drawer-top.is-expanded{
+  max-height:min(54dvh,430px)!important;
+  height:auto!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch;
+}
+.palette-drawer-top.is-expanded .palette-expanded-content{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  max-height:none!important;
+}
+.palette-drawer-top.is-expanded > div:nth-child(2){display:none!important}
+.palette-drawer-top .palette-expand-trigger{
+  display:inline-flex!important;
+  position:relative!important;
+  z-index:20!important;
+  pointer-events:auto!important;
+  touch-action:manipulation!important;
+  cursor:pointer!important;
+}
+@media (orientation:portrait){
+  .quiz-session-layout > .palette-drawer-top:not(.is-expanded){max-height:58px!important;height:58px!important}
+  .quiz-session-layout > .palette-drawer-top.is-expanded{max-height:min(54dvh,430px)!important;height:auto!important}
+}
+
+
+/* Highest-specificity defaults beat earlier :has() palette experiments. */
+.quiz-session-layout > .palette-drawer-top:not(.is-expanded):has(> .palette-expanded-content){
+  max-height:58px!important;height:58px!important;overflow:hidden!important;
+}
+.quiz-session-layout > .palette-drawer-top:not(.is-expanded) > .palette-expanded-content{
+  display:none!important;
+}
+.quiz-session-layout > .palette-drawer-top.is-expanded:has(> .palette-expanded-content){
+  max-height:min(54dvh,430px)!important;height:auto!important;overflow-y:auto!important;
+}
+.quiz-session-layout > .palette-drawer-top.is-expanded > .palette-expanded-content{
+  display:block!important;
+}
+
+</style>
+<style id="edupulse-neet-reference-polish">
+
+/* ===== NEET-style exam workspace polish ===== */
+:root{
+  --exam-teal:#0d9488;
+  --exam-line:rgba(148,163,184,.22);
+}
+.quiz-session-layout{
+  gap:10px!important;
+  max-width:none!important;
+}
+.quiz-session-layout > .mb-1{
+  min-height:48px;
+  padding:3px 2px 9px!important;
+  border-color:var(--exam-line)!important;
+}
+.quiz-session-layout > .mb-1 h2{
+  letter-spacing:-.025em;
+}
+.quiz-session-layout > .quiz-progress{
+  height:4px!important;
+  border-radius:99px!important;
+  overflow:hidden;
+  background:rgba(148,163,184,.16)!important;
+}
+.palette-drawer-top{
+  border:1px solid var(--exam-line)!important;
+  border-radius:16px!important;
+  box-shadow:0 4px 14px rgba(15,23,42,.055)!important;
+  background:var(--card-bg,#fff)!important;
+}
+.palette-drawer-top > div:first-child{
+  min-height:46px;
+  background:rgba(20,184,166,.045)!important;
+}
+.palette-drawer-top .palette-touch-btn{
+  border:1px solid rgba(13,148,136,.18)!important;
+  border-radius:10px!important;
+  font-weight:800!important;
+}
+.palette-drawer-top .palette-touch-btn:focus-visible,
+.palette-expand-trigger:focus-visible{
+  outline:3px solid rgba(20,184,166,.3)!important;
+  outline-offset:2px!important;
+}
+.quiz-session-layout > [ontouchstart]{
+  border-radius:18px!important;
+  border-color:var(--exam-line)!important;
+  box-shadow:0 5px 20px rgba(15,23,42,.045)!important;
+  background:var(--card-bg,#fff)!important;
+  min-width:0;
+}
+.quiz-session-layout .quiz-stem{
+  font-size:clamp(17px,2vw,22px)!important;
+  line-height:1.58!important;
+  letter-spacing:-.012em;
+}
+.quiz-session-layout button[role="radio"]{
+  border-radius:14px!important;
+  background:rgba(148,163,184,.065)!important;
+  border-color:rgba(148,163,184,.15)!important;
+}
+.quiz-session-layout button[role="radio"]:hover{
+  background:rgba(20,184,166,.075)!important;
+}
+.quiz-session-layout button[role="radio"][aria-checked="true"]{
+  background:rgba(20,184,166,.1)!important;
+  border-color:var(--exam-teal)!important;
+}
+#normal-practice-toolkit{
+  border-radius:16px!important;
+  border-color:var(--exam-line)!important;
+  box-shadow:0 5px 18px rgba(15,23,42,.05)!important;
+}
+/* Portrait: compact palette, dominant question, utility dock at the bottom. */
+@media (orientation:portrait){
+  .quiz-session-layout{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:auto auto minmax(0,1fr) auto!important;
+    grid-template-areas:"head" "palette" "question" "tools"!important;
+    gap:8px!important;
+    padding:8px 10px!important;
+    height:100%!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    align-content:stretch!important;
+  }
+  .quiz-session-layout > .mb-1{grid-area:head!important;margin:0!important}
+  .quiz-session-layout > .quiz-progress{display:none!important}
+  .quiz-session-layout > .palette-drawer-top{
+    grid-area:palette!important;
+    width:100%!important;
+    max-height:102px!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    overflow:hidden!important;
+    border-radius:15px!important;
+  }
+  .quiz-session-layout > .palette-drawer-top.is-expanded{
+    max-height:min(42vh,340px)!important;
+    overflow-y:auto!important;
+  }
+  .quiz-session-layout > .palette-drawer-top > div:first-child{
+    min-height:43px!important;
+    padding:5px 10px!important;
+  }
+  .quiz-session-layout > .palette-drawer-top > div:nth-child(2){
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    overflow-x:auto!important;
+    gap:7px!important;
+    padding:6px 9px!important;
+    min-height:54px!important;
+    scrollbar-width:thin;
+    -webkit-overflow-scrolling:touch;
+  }
+  .quiz-session-layout .palette-touch-btn{
+    flex:0 0 39px!important;
+    width:39px!important;
+    min-width:39px!important;
+    height:39px!important;
+  }
+  .quiz-session-layout > .palette-drawer-top.is-expanded > div:nth-child(2){
+    flex-wrap:wrap!important;
+    overflow:visible!important;
+    justify-content:flex-start!important;
+  }
+  .quiz-session-layout > #normal-practice-toolkit{
+    grid-area:tools!important;
+    width:100%!important;
+    max-height:112px!important;
+    min-height:0!important;
+    overflow:auto!important;
+    margin:0!important;
+    padding:8px!important;
+  }
+  .quiz-session-layout > #normal-practice-toolkit .tk-stats,
+  .quiz-session-layout > #normal-practice-toolkit .tk-bar{display:none!important}
+  .quiz-session-layout > #normal-practice-toolkit .tk-quick{
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:7px!important;
+    margin:0!important;
+  }
+  .quiz-session-layout > #normal-practice-toolkit [data-action]{
+    min-width:0!important;
+    min-height:48px!important;
+    padding:6px 3px!important;
+    border-radius:12px!important;
+    font-size:10px!important;
+  }
+  .quiz-session-layout > [ontouchstart]{
+    grid-area:question!important;
+    min-height:0!important;
+    height:100%!important;
+    max-height:100%!important;
+    margin:0!important;
+    padding:clamp(13px,2.5vw,22px)!important;
+    overflow-y:auto!important;
+    justify-content:flex-start!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .quiz-session-layout > [ontouchstart] .quiz-stem{margin-top:12px!important}
+  .quiz-session-layout > [ontouchstart] .sticky{
+    position:sticky!important;
+    bottom:0!important;
+    z-index:4!important;
+    margin-top:16px!important;
+    padding:10px 0 calc(5px + env(safe-area-inset-bottom))!important;
+    background:var(--card-bg,#fff)!important;
+  }
+}
+/* Landscape: NEET-style large question canvas with palette/tools in a right rail. */
+@media (orientation:landscape) and (min-width:650px){
+  .quiz-session-layout{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(260px,30%)!important;
+    grid-template-rows:auto minmax(0,1fr) minmax(0,1fr)!important;
+    grid-template-areas:"head head" "question palette" "question tools"!important;
+    gap:10px 13px!important;
+    padding:8px 12px!important;
+    height:100%!important;
+    min-height:0!important;
+    overflow:hidden!important;
+  }
+  .quiz-session-layout > .mb-1{grid-area:head!important;margin:0!important}
+  .quiz-session-layout > .quiz-progress{display:none!important}
+  .quiz-session-layout > .palette-drawer-top{
+    grid-area:palette!important;
+    max-height:100%!important;
+    min-height:0!important;
+    margin:0!important;
+    overflow:auto!important;
+    border-radius:15px!important;
+  }
+  .quiz-session-layout > .palette-drawer-top > div:nth-child(2){
+    display:grid!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    gap:6px!important;
+    padding:8px!important;
+    overflow:visible!important;
+  }
+  .quiz-session-layout .palette-touch-btn{
+    min-width:0!important;width:100%!important;height:35px!important;
+  }
+  .quiz-session-layout > #normal-practice-toolkit{
+    grid-area:tools!important;
+    min-height:0!important;
+    max-height:100%!important;
+    overflow:auto!important;
+    margin:0!important;
+    padding:9px!important;
+  }
+  .quiz-session-layout > #normal-practice-toolkit .tk-quick{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;
+  }
+  .quiz-session-layout > #normal-practice-toolkit [data-action]{min-height:54px!important}
+  .quiz-session-layout > [ontouchstart]{
+    grid-area:question!important;
+    min-width:0!important;
+    min-height:0!important;
+    height:100%!important;
+    max-height:100%!important;
+    margin:0!important;
+    overflow-y:auto!important;
+    padding:clamp(14px,2vh,24px) clamp(16px,2vw,28px)!important;
+    justify-content:flex-start!important;
+  }
+  .quiz-session-layout > [ontouchstart] .quiz-stem{font-size:clamp(17px,1.8vw,23px)!important}
+}
+@media (prefers-reduced-motion:reduce){
+  .palette-drawer-top{transition:none!important}
+}
+
+</style>
 </head>
 <body>
 <div class="app-layout">
@@ -2506,21 +2802,46 @@ touchEndY: 0,
 infinite: null
 };
 
-function togglePaletteDrawer() {
-  quizState.paletteExpanded = !quizState.paletteExpanded;
+function togglePaletteDrawer(forceState) {
   const palette = document.querySelector('.palette-drawer-top');
-  if (palette) {
-    palette.classList.toggle('is-expanded', quizState.paletteExpanded);
-    palette.dataset.expanded = String(quizState.paletteExpanded);
-    const trigger = palette.querySelector('.palette-expand-trigger');
-    if (trigger) {
-      trigger.setAttribute('aria-expanded', String(quizState.paletteExpanded));
-      trigger.setAttribute('aria-label', quizState.paletteExpanded ? 'Collapse question palette' : 'Expand question palette');
-      trigger.title = quizState.paletteExpanded ? 'Collapse question palette' : 'Expand question palette';
-      const icon = trigger.querySelector('i');
-      if (icon) icon.className = `fa-solid ${quizState.paletteExpanded ? 'fa-chevron-up' : 'fa-chevron-down'} text-xs`;
-    }
-    // Keep the current question, scroll position and selected answer intact.
+  if (!palette) return;
+
+  // Explicit state prevents a tap on the chevron/header from double-toggling.
+  quizState.paletteExpanded = typeof forceState === 'boolean'
+    ? forceState
+    : !palette.classList.contains('is-expanded');
+
+  const expanded = quizState.paletteExpanded;
+  palette.classList.toggle('is-expanded', expanded);
+  palette.dataset.expanded = String(expanded);
+  palette.setAttribute('aria-expanded', String(expanded));
+
+  const trigger = palette.querySelector('.palette-expand-trigger');
+  if (trigger) {
+    trigger.setAttribute('aria-expanded', String(expanded));
+    trigger.setAttribute('aria-label', expanded ? 'Collapse question palette' : 'Expand question palette');
+    trigger.title = expanded ? 'Collapse question palette' : 'Expand question palette';
+    const icon = trigger.querySelector('i');
+    if (icon) icon.className = `fa-solid ${expanded ? 'fa-chevron-up' : 'fa-chevron-down'} text-xs`;
+  }
+
+  const compactRow = palette.children[1];
+  const expandedPanel = palette.querySelector('.palette-expanded-content');
+  if (expandedPanel) {
+    expandedPanel.style.setProperty('display', expanded ? 'block' : 'none', 'important');
+    expandedPanel.setAttribute('aria-hidden', String(!expanded));
+  }
+  palette.style.setProperty('max-height',
+    expanded ? 'min(54dvh, 430px)' : '58px', 'important');
+  palette.style.setProperty('overflow-y', expanded ? 'auto' : 'hidden', 'important');
+  palette.style.setProperty('overflow-x', 'hidden', 'important');
+  if (compactRow) compactRow.style.setProperty('display', expanded ? 'none' : 'flex', 'important');
+
+  // When opening, show the current question in the expanded grid.
+  if (expanded && expandedPanel) {
+    const currentButton = expandedPanel.querySelector('.palette-touch-btn.ring-2, .palette-touch-btn.active');
+    if (currentButton) currentButton.scrollIntoView({block:'nearest', inline:'nearest'});
+  } else {
     palette.scrollTop = 0;
   }
 }
