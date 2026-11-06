@@ -3652,46 +3652,26 @@ function buildTopInteractiveQuestionPalette(isPractice = false) {
 
   let answeredCount = 0, markedCount = 0, unvisitedCount = 0;
 
-  // Keep the palette lightweight on long chapter banks; navigation still reaches every question.
-  const paletteQuestions = quizState.questions.slice(0, isPractice ? Math.min(total, 60) : total);
+  // No cap: every question gets a palette button (strip auto-centres on the current one).
+  const paletteQuestions = quizState.questions;
   const buttonsHtml = paletteQuestions.map((_, i) => {
     const ans = quizState.userAnswers[i];
     const m = quizState.marked[i];
     const isCurrent = i === current;
-
-    let bgClass = 'bg-slate-200 text-slate-800 border-slate-300 dark:bg-slate-800 dark:text-slate-100 dark:border-slate-700';
-
+    let state = 'pal-unseen';
     if (isPractice) {
       if (ans !== undefined) {
-        if (ans === quizState.questions[i].correct) {
-          bgClass = 'bg-emerald-600 text-white font-extrabold border-transparent';
-          answeredCount++;
-        } else {
-          bgClass = 'bg-rose-600 text-white font-extrabold border-transparent';
-          answeredCount++;
-        }
-      } else {
-        unvisitedCount++;
-      }
+        state = ans === quizState.questions[i].correct ? 'pal-correct' : 'pal-wrong';
+        answeredCount++;
+      } else unvisitedCount++;
     } else {
-      if (ans !== undefined && m) {
-        bgClass = 'bg-indigo-600 text-white font-extrabold border-transparent';
-        answeredCount++;
-        markedCount++;
-      } else if (ans !== undefined) {
-        bgClass = 'bg-emerald-600 text-white font-extrabold border-transparent';
-        answeredCount++;
-      } else if (m) {
-        bgClass = 'bg-amber-500 text-slate-950 font-extrabold border-transparent';
-        markedCount++;
-      } else {
-        unvisitedCount++;
-      }
+      if (ans !== undefined && m) { state = 'pal-both'; answeredCount++; markedCount++; }
+      else if (ans !== undefined) { state = 'pal-answered'; answeredCount++; }
+      else if (m) { state = 'pal-marked'; markedCount++; }
+      else unvisitedCount++;
     }
-
-    const ring = isCurrent ? 'ring-2 ring-teal-500 ring-offset-2 dark:ring-offset-slate-900 scale-105 z-10 shadow-md' : '';
-
-    return `<button onclick="${isPractice ? `jumpToPracticeQuestion(${i})` : `jumpToTestQuestion(${i})`}" class="palette-touch-btn border transition-all active:scale-90 ${bgClass} ${ring}">${i + 1}</button>`;
+    const cur = isCurrent ? 'pal-current ring-2' : '';
+    return `<button type="button" data-q="${i}" aria-label="Question ${i + 1}" ${isCurrent ? 'aria-current="true"' : ''} onclick="${isPractice ? `jumpToPracticeQuestion(${i})` : `jumpToTestQuestion(${i})`}" class="palette-touch-btn ${state} ${cur}">${i + 1}</button>`;
   }).join('');
 
   const isExpanded = quizState.paletteExpanded;
@@ -3721,11 +3701,12 @@ function buildTopInteractiveQuestionPalette(isPractice = false) {
       </div>
 
       <div class="palette-expanded-content p-3 space-y-2 bg-slate-50/50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800" aria-hidden="${!isExpanded}">
-        <div class="flex flex-wrap gap-1.5 text-[10px] font-bold border-b border-slate-200 dark:border-slate-800 pb-2">
-          <span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white">Answered</span>
-          <span class="px-2 py-0.5 rounded-md bg-amber-500 text-white">Review Flag</span>
-          <span class="px-2 py-0.5 rounded-md bg-indigo-600 text-white">Answered & Marked</span>
-          <span class="px-2 py-0.5 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Unvisited</span>
+        <div class="pal-legend">
+          ${isPractice
+            ? `<span><i class="pal-dot pal-correct"></i>Correct</span><span><i class="pal-dot pal-wrong"></i>Wrong</span>`
+            : `<span><i class="pal-dot pal-answered"></i>Answered</span><span><i class="pal-dot pal-marked"></i>Review flag</span><span><i class="pal-dot pal-both"></i>Answered &amp; marked</span>`}
+          <span><i class="pal-dot pal-unseen"></i>Not attempted</span>
+          <span><i class="pal-dot pal-current"></i>Current</span>
         </div>
         <div class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2 max-h-52 overflow-y-auto pr-1">
           ${buttonsHtml}
@@ -4281,6 +4262,147 @@ function updateSettingsFromForm() {
   showToast('Settings saved successfully!');
 }
 
+
+// ===== Dashboard v2 =====
+function buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccuracy }) {
+  const goal = getDailyGoal(), today = questionsSolvedToday();
+  const gp = Math.min(100, Math.round((today / goal) * 100));
+  const R = 44, C = 2 * Math.PI * R;
+  const dayStreak = getDayStreak();
+  const resume = getSavedResume();
+  const hasResume = !!resume?.questions?.length;
+  const rTotal = hasResume ? resume.questions.length : 0;
+  const rAt = hasResume ? Math.min((resume.currentIndex || 0) + 1, rTotal) : 0;
+  const nBook = getSavedQuestionKeys('bookmarked').length;
+  const nWrong = getSavedQuestionKeys('incorrect').length;
+  const nDue = getDueRevisionKeys().length;
+  const hr = new Date().getHours();
+  const greet = hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening';
+  const dateStr = new Date().toLocaleDateString([], { weekday: 'long', day: 'numeric', month: 'long' });
+
+  const primary = hasResume
+    ? `<button type="button" onclick="resumeSavedSession()" class="dv2-btn dv2-btn-main"><i class="fa-solid fa-play"></i> Resume · Q${rAt}/${rTotal}</button>`
+    : `<button type="button" onclick="switchTab('learn')" class="dv2-btn dv2-btn-main"><i class="fa-solid fa-bolt"></i> Start practice</button>`;
+
+  const hero = `
+  <section class="dv2-hero">
+    <div class="dv2-hero-text">
+      <p class="dv2-kicker">${escapeHtml(dateStr)}</p>
+      <h2>${greet}, future doctor.</h2>
+      <p class="dv2-sub">${today >= goal ? 'Daily goal smashed. Anything extra is a bonus.' : `${goal - today} question${goal - today === 1 ? '' : 's'} to hit today's goal.`}${hasResume ? ` Pick up <b>${escapeHtml(resume.title || resume.chapter || 'your session')}</b> where you left off.` : ''}</p>
+      <div class="dv2-hero-actions">
+        ${primary}
+        <button type="button" onclick="openAdaptiveAiConfigModal()" class="dv2-btn dv2-btn-ghost"><i class="fa-solid fa-wand-magic-sparkles"></i> AI adaptive drill</button>
+      </div>
+    </div>
+    <button type="button" class="dv2-ring" onclick="cycleDailyGoal()" aria-label="Daily goal ${today} of ${goal}. Tap to change goal">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="${R}" class="dv2-ring-bg"/><circle cx="50" cy="50" r="${R}" class="dv2-ring-fg" stroke-dasharray="${(C * gp / 100).toFixed(1)} ${C.toFixed(1)}"/></svg>
+      <span class="dv2-ring-label"><b>${today}</b><small>of ${goal} today</small></span>
+    </button>
+  </section>`;
+
+  const stat = (icon, tone, label, val, hint) => `
+    <div class="dv2-stat dv2-${tone}"><span class="dv2-stat-ic"><i class="fa-solid ${icon}"></i></span>
+      <div><small>${label}</small><b>${val}</b><em>${hint}</em></div></div>`;
+  const stats = `
+  <section class="dv2-stats">
+    ${stat('fa-book-open', 'teal', 'Syllabus', pct + '%', `${done}/${TOTAL_CHAPTERS} chapters`)}
+    ${stat('fa-fire', 'amber', 'Streak', dayStreak + 'd', `Best ${streak.best || 0}d`)}
+    ${stat('fa-bullseye', 'green', 'Accuracy', avgAccuracy + '%', `${attemptsArr.length} sessions`)}
+    ${stat('fa-check-double', 'violet', 'Solved', totalSolved, 'all time')}
+  </section>`;
+
+  const act = (onclick, icon, tone, label) => `<button type="button" onclick="${onclick}" class="dv2-act dv2-${tone}"><span><i class="fa-solid ${icon}"></i></span>${label}</button>`;
+  const actions = `
+  <section>
+    <div class="dv2-h"><h3>Quick start</h3></div>
+    <div class="dv2-acts no-scrollbar">
+      ${act("switchTab('learn')", 'fa-bolt', 'green', 'Practice')}
+      ${act("switchTab('mock'); setMockSubTab('batch');", 'fa-desktop', 'teal', 'Batch mocks')}
+      ${act("switchTab('mock'); setMockSubTab('generate');", 'fa-wand-magic-sparkles', 'violet', '180Q mock')}
+      ${act("switchTab('directory')", 'fa-book-bookmark', 'amber', 'Vault')}
+      ${act("switchTab('tools')", 'fa-stopwatch', 'sky', 'Focus clock')}
+      ${act("toggleAiChatbotWindow()", 'fa-robot', 'rose', 'Ask AI')}
+    </div>
+  </section>`;
+
+  const tile = (kind, icon, tone, label, n) => `
+    <button type="button" ${n ? `onclick="startSavedPractice('${kind}')"` : 'disabled'} class="dv2-saved dv2-${tone}">
+      <span class="dv2-saved-ic"><i class="fa-solid ${icon}"></i></span>
+      <span class="dv2-saved-t">${label}</span><b>${n}</b>
+    </button>`;
+  const saved = `
+  <section class="dv2-card">
+    <div class="dv2-h"><h3>Your question sets</h3><span>Tap to practise</span></div>
+    <div class="dv2-saved-grid">
+      ${tile('incorrect', 'fa-circle-xmark', 'rose', 'Incorrect', nWrong)}
+      ${tile('bookmarked', 'fa-bookmark', 'amber', 'Bookmarked', nBook)}
+      ${tile('due', 'fa-brain', 'violet', 'Revision due', nDue)}
+    </div>
+  </section>`;
+
+  const days = getActivityDays(7);
+  const max = Math.max(goal, ...days.map(d => d.count), 1);
+  const week = days.reduce((n, d) => n + d.count, 0);
+  const bars = days.map(d => `
+    <div class="dv2-bar${d.today ? ' on' : ''}" title="${d.count} solved">
+      <span>${d.count || ''}</span>
+      <div><i style="height:${d.count ? Math.max(8, Math.round(d.count / max * 100)) : 0}%"></i></div>
+      <em>${d.label}</em>
+    </div>`).join('');
+  const activity = `
+  <section class="dv2-card">
+    <div class="dv2-h"><h3>This week</h3><span>${week} solved</span></div>
+    <div class="dv2-bars">${bars}</div>
+  </section>`;
+
+  const weak = getWeakChapters(3);
+  const weakHtml = weak.length ? weak.map(w => `
+    <button type="button" onclick="openPracticeSetup('${jsArg(w.subject)}','${jsArg(w.chapter)}')" class="dv2-weak">
+      <span class="dv2-weak-pct">${w.avg}%</span>
+      <span class="dv2-weak-t"><b>${escapeHtml(w.chapter)}</b><small>${escapeHtml(w.subject)} · ${w.acc.length} attempt${w.acc.length === 1 ? '' : 's'}</small></span>
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>`).join('') : `<p class="dv2-empty">Finish a few sessions and your weakest chapters will appear here.</p>`;
+  const weakCard = `
+  <section class="dv2-card">
+    <div class="dv2-h"><h3>Needs work</h3><span>Lowest accuracy first</span></div>
+    <div class="dv2-weak-list">${weakHtml}</div>
+  </section>`;
+
+  const subjMeta = { Biology: ['bio', 'fa-dna'], Chemistry: ['chem', 'fa-flask'], Physics: ['phy', 'fa-atom'] };
+  const subjects = `
+  <section>
+    <div class="dv2-h"><h3>NCERT subjects</h3><button type="button" onclick="switchTab('learn')">All chapters →</button></div>
+    <div class="dv2-subjects">
+      ${Object.keys(data).map(s => {
+        const total = data[s].length;
+        const sd = data[s].filter(c => userProgress[c]?.completed).length;
+        const sp = total ? Math.round(sd / total * 100) : 0;
+        const [cls, ic] = subjMeta[s] || ['phy', 'fa-book'];
+        return `
+        <button type="button" onclick="setSubject('${s}'); switchTab('learn');" class="dv2-subj dv2-s-${cls}">
+          <span class="dv2-subj-ic"><i class="fa-solid ${ic}"></i></span>
+          <span class="dv2-subj-t"><b>${s}</b><small>${sd}/${total} chapters done</small></span>
+          <span class="dv2-subj-p">${sp}%</span>
+          <span class="dv2-subj-bar"><i style="width:${sp}%"></i></span>
+        </button>`;
+      }).join('')}
+    </div>
+  </section>`;
+
+  return `
+  <div class="dv2 animate-fadeIn">
+    ${hero}
+    ${stats}
+    ${actions}
+    <div class="dv2-grid">
+      <div class="dv2-col">${saved}${activity}</div>
+      <div class="dv2-col">${weakCard}</div>
+    </div>
+    ${subjects}
+  </div>`;
+}
+
 function renderView() {
 const main = document.getElementById('main-container');
 if (!main) return;
@@ -4294,164 +4416,7 @@ const attemptsArr = StorageModule.get(STORAGE_KEYS.attempts, []);
 const totalSolved = attemptsArr.reduce((s, a) => s + (a.attempted || 0), 0);
 const avgAccuracy = attemptsArr.length > 0 ? Math.round(attemptsArr.reduce((s, a) => s + (a.accuracy || 0), 0) / attemptsArr.length) : 0;
 
-main.innerHTML = `
-<div class="space-y-8 animate-fadeIn max-w-6xl mx-auto">
-  <!-- Welcome & Hero Banner -->
-  <div class="executive-hero relative overflow-hidden rounded-3xl p-6 sm:p-8 text-white">
-    <div class="absolute right-0 top-0 w-80 h-80 rounded-full bg-teal-400/10 blur-3xl pointer-events-none"></div>
-    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-      <div class="space-y-2">
-        <span class="executive-kicker">Your NEET command centre · 2026</span>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">Turn every session into measurable progress.</h2>
-        <p class="text-slate-300 text-xs sm:text-sm max-w-xl font-medium leading-relaxed">A focused daily system for mastering NCERT, closing weak spots, and building exam-day confidence from one question bank.</p>
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <button onclick="switchTab('learn')" class="px-6 py-3.5 rounded-2xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-xs shadow-lg transition flex items-center gap-2">
-          <i class="fa-solid fa-bolt text-xs"></i> Start Practicing Now
-        </button>
-        <button onclick="openAdaptiveAiConfigModal()" class="px-5 py-3.5 rounded-2xl bg-purple-600 hover:bg-purple-500 text-white font-extrabold text-xs shadow-md transition flex items-center gap-2">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> AI Adaptive Drill
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Jump back in: resume, bookmarked, incorrect -->
-  ${buildDashboardJumpBack()}
-
-  ${buildDashboardInsights()}
-
-  ${buildDashboardActivity()}
-
-  <!-- Quick Access Panel -->
-  <div class="space-y-3">
-    <div class="flex items-center justify-between">
-      <h3 class="text-base font-black text-slate-900 dark:text-slate-100 flex items-center gap-2">
-        <i class="fa-solid fa-bolt text-amber-500"></i> Quick Practice & Access
-      </h3>
-      <span class="text-xs font-semibold text-slate-400">One-tap shortcuts</span>
-    </div>
-
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-      <button onclick="switchTab('learn')" class="card p-4 text-center hover:border-emerald-500 transition-all flex flex-col items-center justify-center gap-2 group">
-        <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
-          <i class="fa-solid fa-bolt"></i>
-        </div>
-        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Practice Drills</span>
-      </button>
-
-      <button onclick="switchTab('mock'); setMockSubTab('batch');" class="card p-4 text-center hover:border-teal-500 transition-all flex flex-col items-center justify-center gap-2 group">
-        <div class="w-10 h-10 rounded-2xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
-          <i class="fa-solid fa-desktop"></i>
-        </div>
-        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Batch Mocks</span>
-      </button>
-
-      <button onclick="switchTab('mock'); setMockSubTab('generate');" class="card p-4 text-center hover:border-purple-500 transition-all flex flex-col items-center justify-center gap-2 group">
-        <div class="w-10 h-10 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
-        </div>
-        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">180Q Generator</span>
-      </button>
-
-      <button onclick="switchTab('directory')" class="card p-4 text-center hover:border-amber-500 transition-all flex flex-col items-center justify-center gap-2 group">
-        <div class="w-10 h-10 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
-          <i class="fa-solid fa-book-bookmark"></i>
-        </div>
-        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Vault Index</span>
-      </button>
-
-      <button onclick="switchTab('tools')" class="card p-4 text-center hover:border-sky-500 transition-all flex flex-col items-center justify-center gap-2 group">
-        <div class="w-10 h-10 rounded-2xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
-          <i class="fa-solid fa-stopwatch"></i>
-        </div>
-        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Focus Clock</span>
-      </button>
-
-      <button onclick="toggleAiChatbotWindow()" class="card p-4 text-center hover:border-rose-500 transition-all flex flex-col items-center justify-center gap-2 group">
-        <div class="w-10 h-10 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center text-base group-hover:scale-110 transition-transform">
-          <i class="fa-solid fa-robot"></i>
-        </div>
-        <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">Ask AI Copilot</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- Metric Quick Stats Grid -->
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-cyan-400 bg-gradient-to-br from-cyan-500/5 to-transparent">
-      <span class="text-[11px] font-black text-teal-600 dark:text-teal-400 uppercase tracking-wider">Syllabus Covered</span>
-      <div class="flex items-baseline justify-between">
-        <span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100">${pct}%</span>
-        <span class="text-xs font-bold text-slate-500">${done}/${TOTAL_CHAPTERS} Chs</span>
-      </div>
-      <div class="progress"><i style="width:${pct}%"></i></div>
-    </div>
-
-    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-amber-400 bg-gradient-to-br from-amber-500/5 to-transparent">
-      <span class="text-[11px] font-black text-amber-500 uppercase tracking-wider">Active Streak</span>
-      <div class="flex items-baseline justify-between">
-        <span class="text-2xl sm:text-3xl font-black text-amber-500">${streak.current} <small class="text-xs font-bold">Days</small></span>
-        <span class="text-xs font-bold text-slate-500">Best: ${streak.best}d</span>
-      </div>
-      <p class="text-[11px] text-slate-400 font-semibold">Daily practice active 🔥</p>
-    </div>
-
-    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-emerald-400 bg-gradient-to-br from-emerald-500/5 to-transparent">
-      <span class="text-[11px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Accuracy</span>
-      <div class="flex items-baseline justify-between">
-        <span class="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">${avgAccuracy}%</span>
-        <span class="text-xs font-bold text-slate-500">${totalSolved} Solved</span>
-      </div>
-      <p class="text-[11px] text-slate-400 font-semibold">Across ${attemptsArr.length} sessions 🎯</p>
-    </div>
-
-    <div class="metric-card card p-5 space-y-2 border-l-4 border-l-violet-400 bg-gradient-to-br from-purple-500/5 to-transparent">
-      <span class="text-[11px] font-black text-purple-600 uppercase tracking-wider">Test Portal</span>
-      <div class="flex items-baseline justify-between">
-        <span class="text-2xl sm:text-3xl font-black text-purple-600">CBT Hub</span>
-        <button onclick="switchTab('mock')" class="text-xs font-bold text-teal-600 hover:underline">Open →</button>
-      </div>
-      <p class="text-[11px] text-slate-400 font-semibold">180Q NTA Mocks & Series</p>
-    </div>
-  </div>
-
-  <!-- Subject Breakdown Cards -->
-  <div class="space-y-4">
-    <div class="flex items-center justify-between">
-      <h3 class="text-base font-black text-slate-900 dark:text-slate-100">NCERT Subjects Overview</h3>
-      <button onclick="switchTab('learn')" class="text-xs font-extrabold text-teal-600 dark:text-teal-400 hover:underline">View All Chapters →</button>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      ${Object.keys(data).map(s => {
-        const total = data[s].length;
-        const subDone = data[s].filter(c => userProgress[c]?.completed).length;
-        const subPct = Math.round((subDone / total) * 100);
-        const colorClass = s === 'Biology' ? 'bio' : s === 'Chemistry' ? 'chem' : 'phy';
-        return `
-          <div onclick="setSubject('${s}'); switchTab('learn');" class="card p-6 cursor-pointer hover:border-teal-500 transition-all space-y-4 group">
-            <div class="flex items-center justify-between">
-              <div class="chip ${colorClass}">${s.substring(0,3).toUpperCase()}</div>
-              <span class="text-xs font-black text-slate-400 group-hover:text-teal-600 transition">${subDone}/${total} Done</span>
-            </div>
-            <div>
-              <h4 class="font-extrabold text-lg text-slate-900 dark:text-slate-100">${s}</h4>
-              <p class="text-xs text-slate-500 mt-0.5">NCERT Class 11 & 12 Syllabus</p>
-            </div>
-            <div class="space-y-1">
-              <div class="flex justify-between text-[10px] font-bold text-slate-400">
-                <span>Progress</span>
-                <span>${subPct}%</span>
-              </div>
-              <div class="progress"><i style="width:${subPct}%"></i></div>
-            </div>
-          </div>
-        `;
-      }).join('')}
-    </div>
-  </div>
-</div>`;
+main.innerHTML = buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccuracy });
 } else if (currentTab === 'about') {
 main.innerHTML = `
 <div class="space-y-6 animate-fadeIn max-w-4xl mx-auto">
@@ -5922,6 +5887,138 @@ if ('serviceWorker' in navigator && location.protocol !== 'file:') {
 
 // Initial mount
 renderView();
+</script>
+
+<style id="edupulse-palette-dashboard-v2">
+/* ===== Question palette (NEETprep-style outlined pills) ===== */
+.quiz-session-layout .palette-touch-btn{border-width:1.5px!important;border-style:solid!important;border-radius:9px!important;min-width:42px!important;height:42px!important;font-size:14px!important;font-weight:700!important;transition:transform .15s,background-color .2s,border-color .2s!important}
+.quiz-session-layout .palette-touch-btn.pal-unseen{background:var(--card-bg,#fff)!important;border-color:#cbd5e1!important;color:var(--text-muted,#64748b)!important}
+.quiz-session-layout .palette-touch-btn.pal-correct,.quiz-session-layout .palette-touch-btn.pal-answered{background:#ecfdf5!important;border-color:#10b981!important;color:#047857!important}
+.quiz-session-layout .palette-touch-btn.pal-wrong{background:#fef2f2!important;border-color:#ef4444!important;color:#b91c1c!important}
+.quiz-session-layout .palette-touch-btn.pal-marked{background:#fffbeb!important;border-color:#f59e0b!important;color:#b45309!important}
+.quiz-session-layout .palette-touch-btn.pal-both{background:#eef2ff!important;border-color:#6366f1!important;color:#4338ca!important}
+.quiz-session-layout .palette-touch-btn.pal-current.ring-2{background:var(--card-bg,#fff)!important;border:2.5px solid #0f172a!important;color:#0f172a!important;box-shadow:none!important;transform:none!important}
+body.dark .quiz-session-layout .palette-touch-btn.pal-unseen{border-color:#475569!important}
+body.dark .quiz-session-layout .palette-touch-btn.pal-correct,body.dark .quiz-session-layout .palette-touch-btn.pal-answered{background:rgba(16,185,129,.14)!important;color:#6ee7b7!important}
+body.dark .quiz-session-layout .palette-touch-btn.pal-wrong{background:rgba(239,68,68,.14)!important;color:#fca5a5!important}
+body.dark .quiz-session-layout .palette-touch-btn.pal-marked{background:rgba(245,158,11,.14)!important;color:#fcd34d!important}
+body.dark .quiz-session-layout .palette-touch-btn.pal-both{background:rgba(99,102,241,.18)!important;color:#c7d2fe!important}
+body.dark .quiz-session-layout .palette-touch-btn.pal-current.ring-2{border-color:#f8fafc!important;color:#f8fafc!important}
+.palette-drawer-top > div:nth-child(2){scroll-snap-type:x proximity;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.palette-drawer-top > div:nth-child(2) .palette-touch-btn{scroll-snap-align:center}
+.pal-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11px;font-weight:700;color:var(--text-muted);padding-bottom:8px;border-bottom:1px solid var(--border-color)}
+.pal-legend span{display:inline-flex;align-items:center;gap:6px}
+.pal-dot{display:inline-block;width:14px;height:14px;border-radius:5px;border:1.5px solid;vertical-align:middle}
+.pal-dot.pal-unseen{border-color:#cbd5e1;background:transparent}
+.pal-dot.pal-correct,.pal-dot.pal-answered{border-color:#10b981;background:#ecfdf5}
+.pal-dot.pal-wrong{border-color:#ef4444;background:#fef2f2}
+.pal-dot.pal-marked{border-color:#f59e0b;background:#fffbeb}
+.pal-dot.pal-both{border-color:#6366f1;background:#eef2ff}
+.pal-dot.pal-current{border:2.5px solid #0f172a;background:transparent}
+body.dark .pal-dot.pal-current{border-color:#f8fafc}
+.quiz-session-layout .palette-drawer-top .p-3.space-y-2 .grid{grid-template-columns:repeat(auto-fill,minmax(46px,1fr))!important;max-height:none!important}
+
+/* ===== Dashboard v2 ===== */
+.dv2{--d-teal:#0d9488;--d-surface:var(--card-bg);--d-line:var(--border-color);display:flex;flex-direction:column;gap:22px;max-width:1120px;margin:0 auto}
+.dv2 *{min-width:0}
+.dv2 .no-scrollbar{display:flex}
+.dv2-hero{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px;border-radius:28px;color:#fff;background:radial-gradient(circle at 90% 0%,rgba(45,212,191,.35),transparent 45%),linear-gradient(135deg,#0f766e 0%,#115e59 50%,#0c3b4a 100%);box-shadow:0 22px 50px -26px rgba(13,148,136,.7)}
+.dv2-kicker{margin:0;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#99f6e4}
+.dv2-hero h2{margin:6px 0 0;font-size:clamp(1.5rem,4.4vw,2.3rem);line-height:1.15;font-weight:900;letter-spacing:-.02em}
+.dv2-sub{margin:10px 0 0;max-width:46ch;font-size:13px;line-height:1.6;color:#ccfbf1;font-weight:500}
+.dv2-sub b{color:#fff}
+.dv2-hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.dv2-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;font-size:13px;font-weight:800}
+.dv2-btn-main{background:#fff;color:#0f766e;box-shadow:0 8px 20px -8px rgba(0,0,0,.35)}
+.dv2-btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.28)}
+.dv2-ring{position:relative;flex-shrink:0;width:132px;height:132px;background:none;color:#fff}
+.dv2-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.dv2-ring circle{fill:none;stroke-width:9}
+.dv2-ring-bg{stroke:rgba(255,255,255,.18)}
+.dv2-ring-fg{stroke:#fde68a;stroke-linecap:round;transition:stroke-dasharray .8s cubic-bezier(.4,0,.2,1)}
+.dv2-ring-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.dv2-ring-label b{font-size:30px;font-weight:900;line-height:1}
+.dv2-ring-label small{font-size:10px;font-weight:700;color:#99f6e4;margin-top:4px}
+.dv2-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.dv2-stat{display:flex;align-items:center;gap:12px;padding:14px;border-radius:20px;background:var(--d-surface);border:1px solid var(--d-line)}
+.dv2-stat-ic{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;flex-shrink:0;font-size:15px}
+.dv2-stat small{display:block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.dv2-stat b{display:block;font-size:22px;font-weight:900;line-height:1.15;color:var(--text-primary)}
+.dv2-stat em{display:block;font-style:normal;font-size:10.5px;font-weight:600;color:var(--text-muted)}
+.dv2-teal .dv2-stat-ic,.dv2-teal span:first-child>i{}
+.dv2-teal .dv2-stat-ic{background:rgba(13,148,136,.12);color:#0d9488}
+.dv2-amber .dv2-stat-ic{background:rgba(245,158,11,.14);color:#d97706}
+.dv2-green .dv2-stat-ic{background:rgba(16,185,129,.14);color:#059669}
+.dv2-violet .dv2-stat-ic{background:rgba(139,92,246,.14);color:#7c3aed}
+.dv2-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.dv2-h h3{margin:0;font-size:15px;font-weight:900;color:var(--text-primary)}
+.dv2-h span,.dv2-h button{font-size:11px;font-weight:700;color:var(--text-muted);background:none}
+.dv2-h button{color:var(--teal);font-weight:800}
+.dv2-acts{gap:10px;overflow-x:auto;padding-bottom:2px}
+.dv2-act{flex:1 0 96px;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 8px;border-radius:18px;background:var(--d-surface);border:1px solid var(--d-line);font-size:12px;font-weight:800;color:var(--text-primary)}
+.dv2-act span{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:16px}
+.dv2-act.dv2-green span{background:rgba(16,185,129,.14);color:#059669}
+.dv2-act.dv2-teal span{background:rgba(13,148,136,.14);color:#0d9488}
+.dv2-act.dv2-violet span{background:rgba(139,92,246,.14);color:#7c3aed}
+.dv2-act.dv2-amber span{background:rgba(245,158,11,.16);color:#d97706}
+.dv2-act.dv2-sky span{background:rgba(14,165,233,.14);color:#0284c7}
+.dv2-act.dv2-rose span{background:rgba(244,63,94,.13);color:#e11d48}
+.dv2-act:hover,.dv2-subj:hover,.dv2-saved:not(:disabled):hover,.dv2-weak:hover{border-color:var(--teal)}
+.dv2-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start}
+.dv2-col{display:flex;flex-direction:column;gap:16px}
+.dv2-card{padding:18px;border-radius:22px;background:var(--d-surface);border:1px solid var(--d-line)}
+.dv2-saved-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dv2-saved{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px;border-radius:16px;border:1.5px solid var(--d-line);background:transparent;text-align:left;color:var(--text-primary)}
+.dv2-saved:disabled{opacity:.5;cursor:default}
+.dv2-saved-ic{font-size:15px}
+.dv2-saved-t{font-size:11.5px;font-weight:700;color:var(--text-muted)}
+.dv2-saved b{font-size:26px;font-weight:900;line-height:1}
+.dv2-saved.dv2-rose{border-color:rgba(239,68,68,.35)}.dv2-saved.dv2-rose .dv2-saved-ic,.dv2-saved.dv2-rose b{color:#ef4444}
+.dv2-saved.dv2-amber{border-color:rgba(245,158,11,.4)}.dv2-saved.dv2-amber .dv2-saved-ic,.dv2-saved.dv2-amber b{color:#d97706}
+.dv2-saved.dv2-violet{border-color:rgba(139,92,246,.35)}.dv2-saved.dv2-violet .dv2-saved-ic,.dv2-saved.dv2-violet b{color:#7c3aed}
+.dv2-bars{display:flex;gap:8px;align-items:flex-end}
+.dv2-bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.dv2-bar span{font-size:10px;font-weight:800;color:var(--text-muted);height:12px}
+.dv2-bar>div{width:100%;height:92px;border-radius:10px;background:rgba(148,163,184,.14);display:flex;align-items:flex-end;overflow:hidden}
+.dv2-bar i{width:100%;border-radius:10px;background:#818cf8;transition:height .6s}
+.dv2-bar.on i{background:#14b8a6}
+.dv2-bar em{font-style:normal;font-size:10px;font-weight:800;color:var(--text-muted)}
+.dv2-bar.on em{color:var(--teal)}
+.dv2-weak-list{display:flex;flex-direction:column;gap:8px}
+.dv2-weak{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:16px;border:1px solid var(--d-line);background:transparent;text-align:left;color:var(--text-primary)}
+.dv2-weak-pct{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;flex-shrink:0;font-size:12px;font-weight:900;background:rgba(239,68,68,.12);color:#ef4444}
+.dv2-weak-t{flex:1}.dv2-weak-t b{display:block;font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dv2-weak-t small{font-size:10.5px;font-weight:600;color:var(--text-muted)}
+.dv2-weak>i{font-size:11px;color:var(--text-muted)}
+.dv2-empty{margin:0;padding:18px;border:1.5px dashed var(--d-line);border-radius:16px;text-align:center;font-size:12px;font-weight:600;color:var(--text-muted)}
+.dv2-subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.dv2-subj{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"ic t p" "bar bar bar";align-items:center;gap:12px;padding:16px;border-radius:20px;background:var(--d-surface);border:1px solid var(--d-line);text-align:left;color:var(--text-primary)}
+.dv2-subj-ic{grid-area:ic;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:17px}
+.dv2-subj-t{grid-area:t}.dv2-subj-t b{display:block;font-size:15px;font-weight:900}.dv2-subj-t small{font-size:11px;font-weight:600;color:var(--text-muted)}
+.dv2-subj-p{grid-area:p;font-size:18px;font-weight:900}
+.dv2-subj-bar{grid-area:bar;height:7px;border-radius:99px;background:rgba(148,163,184,.18);overflow:hidden}
+.dv2-subj-bar i{display:block;height:100%;border-radius:99px}
+.dv2-s-bio .dv2-subj-ic{background:rgba(16,185,129,.14);color:#059669}.dv2-s-bio .dv2-subj-p{color:#059669}.dv2-s-bio .dv2-subj-bar i{background:#10b981}
+.dv2-s-chem .dv2-subj-ic{background:rgba(139,92,246,.14);color:#7c3aed}.dv2-s-chem .dv2-subj-p{color:#7c3aed}.dv2-s-chem .dv2-subj-bar i{background:#8b5cf6}
+.dv2-s-phy .dv2-subj-ic{background:rgba(14,165,233,.14);color:#0284c7}.dv2-s-phy .dv2-subj-p{color:#0284c7}.dv2-s-phy .dv2-subj-bar i{background:#0ea5e9}
+@media (max-width:860px){.dv2-stats{grid-template-columns:repeat(2,1fr)}.dv2-grid,.dv2-subjects{grid-template-columns:1fr}}
+@media (max-width:560px){.dv2{gap:18px}.dv2-hero{padding:22px 18px;border-radius:24px;flex-direction:column;align-items:flex-start}.dv2-ring{position:absolute;top:14px;right:14px;width:84px;height:84px}.dv2-ring-label b{font-size:20px}.dv2-ring-label small{font-size:8px}.dv2-hero-text{padding-top:4px}.dv2-hero h2{max-width:70%}.dv2-saved-grid{gap:8px}.dv2-saved{padding:12px}}
+</style>
+<script>
+(function(){
+  function centerPaletteCurrent(){
+    document.querySelectorAll('.palette-drawer-top').forEach(function(p){
+      var row=p.children[1], b=row&&row.querySelector('.pal-current');
+      if(!row||!b) return;
+      var rr=row.getBoundingClientRect(), br=b.getBoundingClientRect();
+      row.scrollLeft += (br.left-rr.left) - (row.clientWidth-br.width)/2;
+    });
+  }
+  ['renderPracticeQuiz','renderTestQuiz'].forEach(function(n){
+    var orig=window[n]; if(typeof orig!=='function') return;
+    window[n]=function(){var r=orig.apply(this,arguments); requestAnimationFrame(centerPaletteCurrent); setTimeout(centerPaletteCurrent,60); return r;};
+  });
+})();
 </script>
 </body>
   </html>
