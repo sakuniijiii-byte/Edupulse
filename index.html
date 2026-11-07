@@ -7550,5 +7550,78 @@ html body .quiz-session-layout .quiz-meta{margin-top:6px!important}
   html body .quiz-session-layout > .palette-drawer-top .palette-touch-btn{height:38px!important}
 }
 </style>
+<style id="edupulse-compact-options-toolbar">
+/* =====================================================================
+   Refinement: smaller, calmer options + slim icon-only toolbar
+   ===================================================================== */
+/* ---- options: compact, content-sized, no stretching ---- */
+html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{
+  grid-auto-rows:minmax(clamp(40px,5.2vh,48px),auto)!important;align-content:start!important;
+  gap:8px!important;margin-top:12px!important;
+}
+html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3 > button[role="radio"]{
+  align-self:start!important;min-height:clamp(40px,5.2vh,48px)!important;height:auto!important;
+  padding:6px 12px!important;border-radius:12px!important;font-size:clamp(14px,1.9vh,15.5px)!important;gap:10px!important;
+}
+html body .quiz-session-layout button[role="radio"] > span:first-child,
+html body .quiz-session-layout button[role="radio"] .opt-badge{width:28px!important;height:28px!important;font-size:12px!important}
+html body .quiz-session-layout .quiz-stem{font-size:clamp(17px,2.1vh,21px)!important;line-height:1.55!important}
+@media (orientation:landscape) and (min-width:600px){
+  html body .quiz-session-layout .quiz-stem{font-size:clamp(16px,1.45vw,20px)!important}
+  html body .quiz-session-layout button[role="radio"]{font-size:clamp(13.5px,1.05vw,15.5px)!important;min-height:0!important}
+}
+
+/* ---- toolbar: icon-only, no stats, popover for "More tools" ---- */
+html body .quiz-session-layout > #normal-practice-toolkit{overflow:visible!important;position:relative!important;padding:6px!important;border-radius:14px!important}
+html body .quiz-session-layout #normal-practice-toolkit .tk-stats,
+html body .quiz-session-layout #normal-practice-toolkit .tk-bar{display:none!important}
+html body .quiz-session-layout #normal-practice-toolkit .tk-quick{margin:0!important;gap:6px!important}
+html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn{
+  justify-content:center!important;padding:0!important;min-height:38px!important;height:38px!important;width:100%!important;border-radius:11px!important;
+}
+html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn span{display:none!important}
+html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn i{width:1.7rem;height:1.7rem}
+html body .quiz-session-layout #normal-practice-toolkit details:not([open]){margin:0!important;padding:0!important;border:0!important}
+html body .quiz-session-layout #normal-practice-toolkit details > summary{
+  font-size:0!important;justify-content:center!important;width:100%;height:38px;min-height:38px;padding:0!important;gap:4px!important;border-radius:11px!important;
+}
+html body .quiz-session-layout #normal-practice-toolkit details > summary i{font-size:14px!important;margin:0!important}
+html body .quiz-session-layout #normal-practice-toolkit details > summary .tk-chev{font-size:10px!important}
+html body .quiz-session-layout #normal-practice-toolkit details[open]{
+  position:absolute!important;z-index:60;margin:0!important;padding:10px!important;overflow:auto;
+  background:var(--card-bg,#0f172a);border:1px solid var(--border-color,rgba(148,163,184,.3));border-radius:16px;
+  box-shadow:0 18px 40px -12px rgba(0,0,0,.55);width:min(320px,86vw);max-height:60vh;display:block!important;
+}
+html body .quiz-session-layout #normal-practice-toolkit details[open] > summary{width:auto;height:auto;min-height:0;font-size:12px!important;padding:6px 10px!important;margin-bottom:6px}
+html body .quiz-session-layout #normal-practice-toolkit details[open] button.tk-btn{justify-content:flex-start!important;gap:.55rem!important;padding:.4rem .6rem!important}
+html body .quiz-session-layout #normal-practice-toolkit details[open] button.tk-btn span{display:inline!important}
+
+/* landscape: slim vertical icon rail on the right, aligned to the card */
+@media (orientation:landscape) and (min-width:600px){
+  html body .quiz-session-layout.quiz-session-layout{grid-template-columns:minmax(0,1fr) 52px!important}
+  html body .quiz-session-layout > #normal-practice-toolkit{align-self:start!important;height:auto!important;max-height:none!important}
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick{grid-template-columns:1fr!important}
+  html body .quiz-session-layout #normal-practice-toolkit details[open]{right:calc(100% + 8px);top:0}
+}
+/* portrait: one slim row, popover opens upward */
+@media (orientation:portrait){
+  html body .quiz-session-layout > #normal-practice-toolkit{display:grid!important;grid-template-columns:minmax(0,1fr) 48px!important;column-gap:6px!important;align-items:center!important;padding:5px!important}
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  html body .quiz-session-layout #normal-practice-toolkit details[open]{grid-column:auto!important;bottom:calc(100% + 8px);left:8px;right:8px;width:auto}
+}
+</style>
+<script>
+/* tooltips + aria-labels for the icon-only tool buttons */
+(function(){
+  function label(){
+    document.querySelectorAll('#normal-practice-toolkit .tk-quick button').forEach(function(b){
+      var t=(b.textContent||'').replace(/\s+/g,' ').trim();
+      if(t&&!b.title) b.title=t; if(t&&!b.getAttribute('aria-label')) b.setAttribute('aria-label',t);
+    });
+    var s=document.querySelector('#normal-practice-toolkit details > summary'); if(s&&!s.title) s.title='More tools';
+  }
+  var timer; new MutationObserver(function(){clearTimeout(timer);timer=setTimeout(label,80);}).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
 </body>
   </html>
