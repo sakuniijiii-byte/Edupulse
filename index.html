@@ -7173,5 +7173,99 @@ html body .quiz-session-layout .pq-foot:has(.pq-next:disabled) .pq-next{box-shad
   html body .quiz-session-layout .pq-prev{width:40px;flex-basis:40px}
 }
 </style>
+<style id="edupulse-more-question-space">
+/* =====================================================================
+   Give the question the screen: one-row header, one-line palette,
+   one-row tools, and no dead strip under the tools.
+   ===================================================================== */
+/* 0) Dead space: an empty modal action bar kept ~50px of padding in quiz mode */
+html body .custom-modal.fullscreen-modal #modalActions:empty{display:none!important;padding:0!important;margin:0!important}
+html body .quiz-session-layout.quiz-session-layout{padding:6px 10px max(8px,env(safe-area-inset-bottom))!important;gap:6px!important}
+
+/* 1) Header: single row (chips are the 2nd child; the progress rail is a div, not a chip group) */
+html body .quiz-session-layout.quiz-session-layout > .mb-1{flex-wrap:nowrap!important;align-items:center!important;padding:6px 8px 9px!important}
+html body .quiz-session-layout > .mb-1 > div:first-child{flex:1 1 0!important;min-width:0!important}
+html body .quiz-session-layout > .mb-1 > div:first-child > div{min-width:0}
+html body .quiz-session-layout > .mb-1 > div:first-child > button{width:34px;height:34px}
+html body .quiz-session-layout > .mb-1 > div:nth-child(2){display:flex!important;flex:0 0 auto!important;width:auto!important;gap:5px!important;flex-wrap:nowrap!important}
+html body .quiz-session-layout .pq-chip{height:32px!important;min-height:32px!important;padding:0 9px!important}
+html body .quiz-session-layout .pq-auto{height:32px!important}
+@media (max-width:520px){
+  html body .quiz-session-layout .pq-chip{padding:0 7px!important;font-size:12px!important}
+  html body .quiz-session-layout .pq-time i{display:none}
+  html body .quiz-session-layout > .mb-1 > div:first-child > div p{display:none}
+}
+/* Exit / End Session (re-targeted to the right element) */
+
+/* Practice header: make Exit / End Session the clear, safe-to-find action */
+html body .quiz-session-layout > .mb-1 > div:nth-child(2) > button:last-child,
+html body.dark .quiz-session-layout > .mb-1 > div:nth-child(2) > button:last-child{
+  display:inline-flex!important;align-items:center;justify-content:center;gap:6px;
+  height:34px!important;min-height:34px!important;min-width:68px;padding:0 14px!important;
+  border-radius:11px!important;border:1px solid rgba(255,255,255,.18)!important;
+  background:linear-gradient(180deg,#f43f5e,#e11d48)!important;color:#fff!important;
+  font-size:12.5px!important;font-weight:800!important;letter-spacing:.01em;white-space:nowrap;
+  box-shadow:0 6px 16px -6px rgba(225,29,72,.65),inset 0 1px 0 rgba(255,255,255,.22)!important;
+  transition:filter .15s,transform .1s,box-shadow .2s!important;
+}
+html body .quiz-session-layout > .mb-1 > div:nth-child(2) > button:last-child::before{
+  content:"\f2f5";font-family:"Font Awesome 6 Free","Font Awesome 5 Free";font-weight:900;font-size:11px;
+}
+html body .quiz-session-layout > .mb-1 > div:nth-child(2) > button:last-child:hover{
+  filter:brightness(1.08)!important;background:linear-gradient(180deg,#fb4a6a,#e11d48)!important;
+  color:#fff!important;box-shadow:0 8px 20px -6px rgba(225,29,72,.8),inset 0 1px 0 rgba(255,255,255,.25)!important;
+}
+html body .quiz-session-layout > .mb-1 > div:nth-child(2) > button:last-child:active{transform:scale(.96)}
+html body.dark .quiz-session-layout > .mb-1 > div:nth-child(2) > button:last-child{
+  background:linear-gradient(180deg,#fb4a6a,#be123c)!important;border-color:rgba(251,113,133,.45)!important;
+  box-shadow:0 0 0 1px rgba(251,113,133,.2),0 8px 22px -8px rgba(244,63,94,.75)!important;
+}
+@media (orientation:landscape) and (max-height:520px){
+  html body .quiz-session-layout > .mb-1 > div:nth-child(2) > button:last-child{height:30px!important;min-height:30px!important;padding:0 10px!important}
+}
+
+
+/* 2) Palette: one scrolling line with a tiny chevron, full drawer when expanded */
+html body .quiz-session-layout > .palette-drawer-top:not(.is-expanded){display:flex!important;flex-direction:row!important;align-items:center;margin:0!important;border-radius:14px!important}
+html body .quiz-session-layout > .palette-drawer-top:not(.is-expanded) > div:nth-child(2){order:1;flex:1 1 auto!important;min-width:0;padding:6px 4px 6px 8px!important}
+html body .quiz-session-layout > .palette-drawer-top:not(.is-expanded) > div:first-child{order:2;flex:0 0 auto;border:0!important;background:transparent!important;padding:0 8px 0 2px!important}
+html body .quiz-session-layout > .palette-drawer-top:not(.is-expanded) > div:first-child > div:first-child,
+html body .quiz-session-layout > .palette-drawer-top:not(.is-expanded) > div:first-child > div:last-child > span{display:none!important}
+html body .quiz-session-layout > .palette-drawer-top:not(.is-expanded) .palette-expand-trigger{width:32px!important;height:32px!important}
+html body .quiz-session-layout > .palette-drawer-top:not(.is-expanded) > .palette-expanded-content{display:none!important}
+
+/* 3) Question card: leaner chrome inside */
+html body .quiz-session-layout > [ontouchstart]{padding:10px 14px 8px!important}
+html body .quiz-session-layout > [ontouchstart] span:has(> .fa-hand-pointer){display:none!important}
+html body .quiz-session-layout > [ontouchstart] .quiz-meta{margin-top:6px!important}
+html body .quiz-session-layout > [ontouchstart] .quiz-meta span{padding:2px 9px!important;font-size:10.5px!important}
+html body .quiz-session-layout .quiz-stem{margin-top:8px!important}
+html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{margin-top:10px!important;gap:7px!important}
+html body .quiz-session-layout button[role="radio"]{min-height:44px!important;padding:8px 12px!important}
+html body .quiz-session-layout .pq-foot{padding:8px 0 2px!important}
+html body .quiz-session-layout .pq-foot button{height:46px!important;min-height:46px!important}
+html body .quiz-session-layout .pq-prev{width:46px;flex-basis:46px}
+
+/* 4) Tools (portrait): ONE row = 4 tiles + a compact "more" button */
+@media (orientation:portrait){
+  html body .quiz-session-layout > #normal-practice-toolkit{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:6px;padding:6px!important}
+  html body .quiz-session-layout #normal-practice-toolkit > .tk-stats,
+  html body .quiz-session-layout #normal-practice-toolkit > .tk-bar{grid-column:1 / -1}
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick{margin:0!important;gap:6px!important}
+  html body .quiz-session-layout #normal-practice-toolkit button.tk-big,
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn{min-height:42px!important;height:42px}
+  html body .quiz-session-layout #normal-practice-toolkit details:not([open]){margin:0!important;padding:0!important;border:0!important}
+  html body .quiz-session-layout #normal-practice-toolkit details:not([open]) > summary{width:44px;height:42px;min-height:42px;padding:0!important;justify-content:center;gap:4px!important;border-radius:11px!important}
+  html body .quiz-session-layout #normal-practice-toolkit details:not([open]) > summary span{display:none!important}
+  html body .quiz-session-layout #normal-practice-toolkit details[open]{grid-column:1 / -1}
+}
+/* narrow phones: icon-only tiles so everything stays on one line */
+@media (orientation:portrait) and (max-width:520px){
+  html body .quiz-session-layout #normal-practice-toolkit .tk-grid.tk-quick,
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn{justify-content:center!important;padding:0!important}
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn span{display:none}
+}
+</style>
 </body>
   </html>
