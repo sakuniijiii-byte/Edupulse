@@ -190,6 +190,45 @@ body.dark .progress{background:rgba(255,255,255,.1)}
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(13,148,136,0.3);
 }
+/* ===== Beautified AI explanations ===== */
+.ai-md{display:flex;flex-direction:column;gap:2px;font-size:13px;line-height:1.7;color:var(--text-primary)}
+.ai-section-card{position:relative;background:var(--card-bg);border:1px solid var(--border-color);border-radius:18px;padding:14px 16px 12px;margin-top:12px;box-shadow:0 2px 12px rgba(0,0,0,.04);overflow:hidden;--ai-c:#0d9488;--ai-bg:rgba(13,148,136,.12)}
+.ai-section-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--ai-c)}
+.ai-section-card.ai-tone-rose{--ai-c:#e11d48;--ai-bg:rgba(225,29,72,.12)}
+.ai-section-card.ai-tone-amber{--ai-c:#d97706;--ai-bg:rgba(217,119,6,.14)}
+.ai-section-card.ai-tone-indigo{--ai-c:#4f46e5;--ai-bg:rgba(79,70,229,.12)}
+.ai-section-header{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;color:var(--text-primary);margin:0 0 10px;padding-bottom:8px;border-bottom:1px dashed var(--border-color)}
+.ai-sec-ico{width:28px;height:28px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;background:var(--ai-bg);color:var(--ai-c);font-size:12px;flex:none}
+.ai-sec-title{flex:1;min-width:0}
+.ai-sec-no{font-size:10px;font-weight:900;letter-spacing:.08em;color:var(--text-muted);opacity:.7;font-variant-numeric:tabular-nums}
+.ai-p{margin:6px 0;font-size:13px;line-height:1.75}
+.ai-strong{font-weight:800;color:var(--ai-c,#0d9488);background:var(--ai-bg,rgba(13,148,136,.12));padding:0 5px;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.ai-md>.ai-p .ai-strong,.ai-md>.ai-bullets .ai-strong{--ai-c:#0d9488;--ai-bg:rgba(13,148,136,.12)}
+.ai-em{font-style:italic;opacity:.92}
+.ai-code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;padding:1px 6px;border-radius:6px;background:rgba(100,116,139,.16);border:1px solid rgba(100,116,139,.2)}
+.ai-math{font-family:'Cambria Math',Georgia,serif;font-style:italic;padding:0 4px;border-radius:5px;background:rgba(100,116,139,.12);white-space:nowrap}
+.ai-pre{margin:8px 0;padding:12px 14px;border-radius:12px;background:#0f172a;color:#e2e8f0;font-size:12px;line-height:1.6;overflow-x:auto}
+.ai-hr{border:0;border-top:1px solid var(--border-color);margin:14px 0}
+.ai-sub{margin:12px 0 4px;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--ai-c,#0d9488)}
+.ai-bullets,.ai-steps{list-style:none;margin:6px 0;padding:0;display:flex;flex-direction:column;gap:7px}
+.ai-bullets li{display:flex;gap:9px;align-items:flex-start}
+.ai-bullets li>i{font-size:10px;color:var(--ai-c,#0d9488);margin-top:7px;flex:none}
+.ai-bullets li.ai-nested{margin-left:20px}
+.ai-steps li{display:flex;gap:11px;align-items:flex-start;padding:9px 11px;border-radius:12px;background:rgba(100,116,139,.07);border:1px solid var(--border-color)}
+.ai-step-no{flex:none;width:22px;height:22px;border-radius:50%;background:var(--ai-c,#0d9488);color:#fff;font-size:11px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.ai-li-body{min-width:0;flex:1;overflow-wrap:anywhere}
+.ai-callout{display:flex;gap:9px;align-items:flex-start;margin:8px 0;padding:10px 12px;border-radius:12px;font-size:12.5px;background:rgba(14,165,233,.10);border:1px solid rgba(14,165,233,.25)}
+.ai-callout>i{margin-top:3px;color:#0ea5e9}
+.ai-callout b{flex:none;font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:rgba(14,165,233,.2);color:#0369a1}
+.ai-callout-ok{background:rgba(16,185,129,.10);border-color:rgba(16,185,129,.3)}.ai-callout-ok b{background:rgba(16,185,129,.22);color:#047857}
+.ai-callout-tip{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.35)}.ai-callout-tip b{background:rgba(245,158,11,.25);color:#b45309}
+.ai-table-wrap{overflow-x:auto;margin:8px 0;border-radius:12px;border:1px solid var(--border-color)}
+.ai-table{width:100%;border-collapse:collapse;font-size:12px}
+.ai-table th{background:rgba(13,148,136,.12);text-align:left;font-weight:800;padding:8px 10px}
+.ai-table td{padding:8px 10px;border-top:1px solid var(--border-color)}
+.ai-table tbody tr:nth-child(even){background:rgba(100,116,139,.06)}
+.dark .ai-callout-ok b{color:#6ee7b7}.dark .ai-callout-tip b{color:#fcd34d}.dark .ai-callout b{color:#7dd3fc}
+.ai-plain-wrap{border-radius:18px;border:1px solid rgba(13,148,136,.25);background:linear-gradient(160deg,rgba(13,148,136,.07),transparent);padding:4px 14px 14px}
 </style>
 <style id="edupulse-polish">
 /* ---- Accessibility & base buttons ---- */
@@ -1912,7 +1951,9 @@ StorageModule.init();
 
 // ===== Gemini AI Integration Core =====
 // Change this (or set localStorage 'edupulse_gemini_model') if the model is retired.
-const GEMINI_DEFAULT_MODEL = 'gemini-3.8-flash';
+const GEMINI_DEFAULT_MODEL = 'gemini-3.5-flash';
+// One-time migration: move users still on the previous default over to the new one
+try { if (localStorage.getItem(GEMINI_MODEL_STORAGE_KEY) === 'gemini-3.8-flash') localStorage.setItem(GEMINI_MODEL_STORAGE_KEY, GEMINI_DEFAULT_MODEL); } catch (e) {}
 const GEMINI_MODEL_STORAGE_KEY = 'edupulse_gemini_model';
 const GEMINI_API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
 
@@ -2050,7 +2091,7 @@ async function callGeminiApi(prompt, systemInstruction = '', enableGrounding = f
     const modelUnavailable = error.status === 404 || /model .* not found|not supported for generatecontent|unknown model/i.test(error.message);
     if (!modelUnavailable) throw error;
     const available = await fetchGeminiModelList(apiKey);
-    const preference = ['gemini-3.8-flash', 'gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3-flash-preview', 'gemini-2.5-flash'];
+    const preference = ['gemini-3.5-flash', 'gemini-3.6-flash', 'gemini-3.8-flash', 'gemini-3.5-flash-lite', 'gemini-3-flash-preview', 'gemini-2.5-flash'];
     const fallback = preference.find(name => available.includes(name)) || available.find(name => /flash/i.test(name)) || available[0];
     if (!fallback || fallback === model) throw new Error(`The selected Gemini model "${model}" is unavailable. Open AI Key settings and refresh the model list. ${error.message}`);
     localStorage.setItem(GEMINI_MODEL_STORAGE_KEY, fallback);
@@ -2062,48 +2103,100 @@ async function callGeminiApi(prompt, systemInstruction = '', enableGrounding = f
 // ===== Markdown Beauty Formatter =====
 function renderFormattedMarkdown(text = '') {
   if (!text) return '';
-  
-  let formatted = escapeHtml(text);
+  const inline = raw => {
+    let t = escapeHtml(raw);
+    t = t.replace(/`([^`]+)`/g, '<code class="ai-code">$1</code>');
+    t = t.replace(/\*\*([^*]+)\*\*/g, '<strong class="ai-strong">$1</strong>');
+    t = t.replace(/(^|[^*\w])\*([^*\s][^*]*?)\*(?!\w)/g, '$1<em class="ai-em">$2</em>');
+    t = t.replace(/_\{([^}]+)\}/g, '<sub>$1</sub>').replace(/\^\{([^}]+)\}/g, '<sup>$1</sup>');
+    t = t.replace(/\$([^$\n]+)\$/g, '<span class="ai-math">$1</span>');
+    return t;
+  };
+  const iconFor = h => {
+    h = h.toLowerCase();
+    if (/ncert|concept|core/.test(h)) return 'fa-book-bookmark';
+    if (/step|logic|derivation|solution|approach/.test(h)) return 'fa-list-check';
+    if (/incorrect|wrong|other option|why/.test(h)) return 'fa-circle-xmark';
+    if (/trick|formula|remember|mnemonic|tip|shortcut/.test(h)) return 'fa-wand-magic-sparkles';
+    if (/summary|takeaway|conclusion/.test(h)) return 'fa-flag-checkered';
+    return 'fa-lightbulb';
+  };
+  const tone = h => {
+    h = h.toLowerCase();
+    if (/incorrect|wrong|other option/.test(h)) return 'rose';
+    if (/trick|formula|remember|mnemonic|tip|shortcut/.test(h)) return 'amber';
+    if (/step|logic|derivation|solution/.test(h)) return 'indigo';
+    return 'teal';
+  };
 
-  formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong class="font-extrabold text-teal-700 dark:text-teal-300 bg-teal-500/10 px-1 py-0.5 rounded">$1</strong>');
-  formatted = formatted.replace(/\*(.*?)\*/g, '<em class="italic text-slate-700 dark:text-slate-300">$1</em>');
-  formatted = formatted.replace(/---/g, '<hr class="my-4 border-slate-200 dark:border-slate-800">');
-
-  const lines = formatted.split('\n');
-  let outputHtml = '';
-  let cardOpen = false;
-
-  lines.forEach(line => {
-    const trimmed = line.trim();
-    if (!trimmed) return;
-
-    if (trimmed.startsWith('###')) {
-      if (cardOpen) outputHtml += '</div>';
-      cardOpen = true;
-      const headingText = trimmed.replace(/^###\s*/, '');
-      let icon = 'fa-lightbulb';
-      if (headingText.toLowerCase().includes('ncert')) icon = 'fa-book-bookmark';
-      else if (headingText.toLowerCase().includes('step')) icon = 'fa-list-check';
-      else if (headingText.toLowerCase().includes('incorrect') || headingText.toLowerCase().includes('why')) icon = 'fa-circle-xmark';
-      else if (headingText.toLowerCase().includes('trick') || headingText.toLowerCase().includes('formula')) icon = 'fa-wand-magic-sparkles';
-
-      outputHtml += `
-        <div class="ai-section-card">
-          <div class="ai-section-header">
-            <i class="fa-solid ${icon} text-teal-600 dark:text-teal-400"></i>
-            <span>${headingText}</span>
-          </div>
-      `;
-    } else if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
-      const bulletText = trimmed.replace(/^[*-]\s+/, '');
-      outputHtml += `<div class="flex items-start gap-2 my-1.5 pl-2"><i class="fa-solid fa-angle-right text-[10px] text-teal-500 mt-1 shrink-0"></i><span class="leading-relaxed text-xs text-slate-700 dark:text-slate-200">${bulletText}</span></div>`;
-    } else {
-      outputHtml += `<p class="my-2 leading-relaxed text-xs text-slate-700 dark:text-slate-200">${trimmed}</p>`;
+  const lines = String(text).replace(/\r/g, '').split('\n');
+  let out = '', cardOpen = false, list = null, table = [], code = null, secNo = 0;
+  const closeList = () => { if (list) { out += `</${list}>`; list = null; } };
+  const flushTable = () => {
+    if (!table.length) return;
+    const rows = table.filter(r => !/^\s*\|?\s*:?-{2,}/.test(r)).map(r => r.trim().replace(/^\||\|$/g, '').split('|').map(c => c.trim()));
+    if (rows.length) {
+      out += '<div class="ai-table-wrap"><table class="ai-table"><thead><tr>' + rows[0].map(c => `<th>${inline(c)}</th>`).join('') + '</tr></thead><tbody>' +
+        rows.slice(1).map(r => '<tr>' + r.map(c => `<td>${inline(c)}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>';
     }
-  });
-  if (cardOpen) outputHtml += '</div>';
+    table = [];
+  };
+  const openCard = (title) => {
+    closeList(); flushTable();
+    if (cardOpen) out += '</section>';
+    cardOpen = true; secNo++;
+    const clean = title.replace(/^\d+[.)]\s*/, '').replace(/[*_`]/g, '');
+    out += `<section class="ai-section-card ai-tone-${tone(clean)}"><div class="ai-section-header"><span class="ai-sec-ico"><i class="fa-solid ${iconFor(clean)}"></i></span><span class="ai-sec-title">${escapeHtml(clean)}</span><span class="ai-sec-no">${String(secNo).padStart(2, '0')}</span></div>`;
+  };
 
-  return outputHtml;
+  for (const raw of lines) {
+    const line = raw.replace(/\s+$/, '');
+    const t = line.trim();
+
+    if (/^```/.test(t)) {
+      if (code === null) { closeList(); flushTable(); code = []; }
+      else { out += `<pre class="ai-pre"><code>${escapeHtml(code.join('\n'))}</code></pre>`; code = null; }
+      continue;
+    }
+    if (code !== null) { code.push(line); continue; }
+
+    if (/^\|.*\|$/.test(t)) { closeList(); table.push(t); continue; }
+    else flushTable();
+
+    if (!t) { closeList(); continue; }
+
+    let m;
+    if ((m = t.match(/^#{1,4}\s+(.*)$/))) { openCard(m[1]); continue; }
+    if (/^(-{3,}|\*{3,}|_{3,})$/.test(t)) { closeList(); out += '<hr class="ai-hr">'; continue; }
+    // standalone bold line like "**Why other options are wrong**" -> sub heading
+    if ((m = t.match(/^\*\*([^*]+?)\*\*:?$/))) { closeList(); out += `<h5 class="ai-sub">${inline(m[1])}</h5>`; continue; }
+    if ((m = t.match(/^>\s?(.*)$/))) { closeList(); out += `<div class="ai-callout"><i class="fa-solid fa-circle-info"></i><span>${inline(m[1])}</span></div>`; continue; }
+    if ((m = t.match(/^(\d+)[.)]\s+(.*)$/))) {
+      if (list !== 'ol') { closeList(); out += '<ol class="ai-steps">'; list = 'ol'; }
+      out += `<li><span class="ai-step-no">${m[1]}</span><span class="ai-li-body">${inline(m[2])}</span></li>`;
+      continue;
+    }
+    if ((m = t.match(/^[*\-•]\s+(.*)$/))) {
+      const indent = (line.match(/^\s*/)[0] || '').length >= 2;
+      if (list !== 'ul') { closeList(); out += '<ul class="ai-bullets">'; list = 'ul'; }
+      out += `<li class="${indent ? 'ai-nested' : ''}"><i class="fa-solid fa-angle-right"></i><span class="ai-li-body">${inline(m[1])}</span></li>`;
+      continue;
+    }
+    // callouts for labelled lines
+    if ((m = t.match(/^(Correct answer|Answer|Key point|Trick|Tip|Note|Remember|Mnemonic|Exam tip)\s*[:\-]\s*(.*)$/i))) {
+      closeList();
+      const k = m[1].toLowerCase();
+      const cls = /correct|answer/.test(k) ? 'ok' : /trick|tip|mnemonic|remember/.test(k) ? 'tip' : 'note';
+      out += `<div class="ai-callout ai-callout-${cls}"><b>${escapeHtml(m[1])}</b><span>${inline(m[2])}</span></div>`;
+      continue;
+    }
+    closeList();
+    out += `<p class="ai-p">${inline(t)}</p>`;
+  }
+  if (code !== null) out += `<pre class="ai-pre"><code>${escapeHtml(code.join('\n'))}</code></pre>`;
+  closeList(); flushTable();
+  if (cardOpen) out += '</section>';
+  return `<div class="ai-md">${out}</div>`;
 }
 
 // ===== YouTube Search & Embed Helper =====
@@ -4876,7 +4969,7 @@ main.innerHTML = `
         <span>Gemini AI Integration</span>
       </div>
       <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-        Integrates Gemini 3 Flash to deliver live question explanations, structured 180Q test paper creation, YouTube one-shot lecture embeds, and custom adaptive study plans.
+        Integrates Gemini 3.5 Flash to deliver live question explanations, structured 180Q test paper creation, YouTube one-shot lecture embeds, and custom adaptive study plans.
       </p>
     </div>
   </div>
@@ -5612,7 +5705,7 @@ main.innerHTML = `
   }
 
   function openTextModal(title, body, text) {
-    setModal(title, body, `<div class="rounded-2xl border border-teal-500/20 bg-teal-500/5 p-4 text-sm leading-relaxed">${multiline(text)}</div>`, `<button onclick="closeModal()" class="rounded-xl bg-slate-100 px-5 py-2 text-xs font-bold dark:bg-slate-800">Close</button>`);
+    setModal(title, body, `<div class="ai-plain-wrap">${renderFormattedMarkdown(text)}</div>`, `<button onclick="closeModal()" class="rounded-xl bg-slate-100 px-5 py-2 text-xs font-bold dark:bg-slate-800">Close</button>`);
   }
 
   async function generateAiQuestions(mode) {
