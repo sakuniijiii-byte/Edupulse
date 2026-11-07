@@ -7402,5 +7402,153 @@ function buildStatsPageV2(){
   </div>`;
 }
 </script>
+<style id="edupulse-question-card-space">
+/* =====================================================================
+   More room for the question card
+   · header really is one row (legacy rules made it a grid that wrapped)
+   · landscape: slimmer header/palette, narrow tools rail, no cut-off options
+   · portrait: text + options scale up with screen height instead of leaving a void
+   ===================================================================== */
+html body .quiz-session-layout.quiz-session-layout > .mb-1{
+  display:flex!important;flex-wrap:nowrap!important;align-items:center!important;
+  min-height:0!important;column-gap:10px!important;row-gap:6px!important;padding:6px 8px 10px!important;
+}
+html body .quiz-session-layout.quiz-session-layout > .mb-1 > div:first-child{flex:1 1 0!important;min-width:0!important}
+html body .quiz-session-layout.quiz-session-layout > .mb-1 > div:nth-child(2){flex:0 0 auto!important;justify-content:flex-end!important;flex-wrap:nowrap!important}
+@media (max-width:560px){          /* phones: title row + chip row */
+  html body .quiz-session-layout.quiz-session-layout > .mb-1{flex-wrap:wrap!important}
+  html body .quiz-session-layout.quiz-session-layout > .mb-1 > div:first-child{flex:1 1 100%!important}
+  html body .quiz-session-layout.quiz-session-layout > .mb-1 > div:nth-child(2){flex:1 1 100%!important;justify-content:flex-start!important}
+}
+
+/* ---------------- LANDSCAPE ---------------- */
+@media (orientation:landscape) and (min-width:600px){
+  html body .quiz-session-layout.quiz-session-layout{
+    padding:4px 12px 8px!important;gap:6px 12px!important;
+    grid-template-columns:minmax(0,1fr) clamp(210px,19vw,252px)!important;
+  }
+  html body .quiz-session-layout > .mb-1{padding:5px 8px 9px!important}
+  html body .quiz-session-layout > .mb-1 > div:first-child > button{width:32px;height:32px}
+  html body .quiz-session-layout > .mb-1 p{display:none!important}          /* "Practice · n of N" is already in the card label */
+  html body .quiz-session-layout > .mb-1 h2{font-size:15px!important}
+  html body .quiz-session-layout > .palette-drawer-top > div:nth-child(2){padding:5px 8px!important}
+  html body .quiz-session-layout .palette-touch-btn{height:34px!important;width:42px!important;min-width:42px!important}
+  /* question card */
+  html body .quiz-session-layout > [ontouchstart]{padding:12px clamp(16px,2vw,28px) 6px!important}
+  html body .quiz-session-layout .quiz-stem{font-size:clamp(17px,1.55vw,23px)!important;line-height:1.55!important}
+  html body .quiz-session-layout button[role="radio"]{min-height:clamp(46px,7vh,60px)!important}
+  html body .quiz-session-layout .pq-foot{padding:6px 0 0!important}
+  html body .quiz-session-layout .pq-foot button{height:44px!important;min-height:44px!important}
+  html body .quiz-session-layout .pq-prev{width:44px;flex-basis:44px}
+  /* tools rail: slim list, only as tall as it needs */
+  html body .quiz-session-layout > #normal-practice-toolkit{align-self:start!important;height:auto!important;max-height:100%!important;padding:10px!important;overflow:auto}
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick{grid-template-columns:1fr!important;gap:6px!important;margin-top:8px!important}
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn{justify-content:flex-start!important;min-height:38px!important;height:38px;padding:4px 10px!important;font-size:12px!important}
+  html body .quiz-session-layout #normal-practice-toolkit details[open]{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (orientation:landscape) and (min-width:1100px) and (min-height:640px){
+  html body .quiz-session-layout.quiz-session-layout{padding:8px 28px 14px!important;gap:10px 18px!important;
+    grid-template-columns:minmax(0,1fr) 264px!important}
+  html body .quiz-session-layout > .mb-1 p{display:block!important}
+  html body .quiz-session-layout > [ontouchstart]{padding:clamp(18px,2.4vh,30px) clamp(24px,3vw,48px) 10px!important}
+  html body .quiz-session-layout .quiz-stem{font-size:clamp(19px,1.6vw,25px)!important;line-height:1.65!important}
+  html body .quiz-session-layout button[role="radio"]{min-height:clamp(54px,7.5vh,72px)!important;font-size:clamp(15px,1.15vw,18px)!important}
+}
+@media (orientation:landscape) and (max-height:520px){
+  html body .quiz-session-layout .quiz-stem{font-size:15.5px!important}
+  html body .quiz-session-layout button[role="radio"]{min-height:40px!important}
+}
+
+/* ---------------- PORTRAIT: scale with height ---------------- */
+@media (orientation:portrait){
+  html body .quiz-session-layout > [ontouchstart]{padding:clamp(12px,1.8vh,24px) clamp(14px,3vw,28px) 8px!important}
+  html body .quiz-session-layout .quiz-stem{font-size:clamp(17px,2.2vh,24px)!important;line-height:1.6!important;margin-top:clamp(8px,1.2vh,16px)!important}
+  html body .quiz-session-layout > [ontouchstart] > div:first-of-type{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
+  html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{flex:1 1 auto;gap:clamp(7px,1.1vh,14px)!important;margin-top:clamp(10px,1.6vh,22px)!important}
+  html body .quiz-session-layout button[role="radio"]{
+    flex:1 1 auto;max-height:clamp(60px,9vh,104px);
+    min-height:clamp(46px,6.2vh,80px)!important;font-size:clamp(15px,1.9vh,19px)!important;
+    padding-block:clamp(8px,1.3vh,16px)!important;
+  }
+  html body .quiz-session-layout button[role="radio"] > span:first-child{width:clamp(30px,4vh,40px)!important;height:clamp(30px,4vh,40px)!important}
+}
+</style>
+<style id="edupulse-question-card-space-2">
+/* =====================================================================
+   Question card gets the room (final override, loads last)
+   · chrome (header / palette / tools) slimmed so the card owns the screen
+   · options + text scale up with available height, no clipped options
+   · portrait: no dead void under the options
+   ===================================================================== */
+html body .quiz-session-layout.quiz-session-layout{max-width:none!important}
+html body .quiz-session-layout.quiz-session-layout > .mb-1 p{display:none!important}   /* "Practice · n of N" duplicates the card label */
+html body .quiz-session-layout.quiz-session-layout > .mb-1{padding:2px 4px 8px!important}
+html body .quiz-session-layout > .mb-1 h2{font-size:15px!important;max-width:none!important}
+html body .quiz-session-layout > .mb-1 .pq-chip,html body .quiz-session-layout > .mb-1 .pq-auto{height:28px!important}
+html body .quiz-session-layout > .quiz-progress{display:none!important}               /* header already has its own progress bar */
+
+/* options always fill the free height of the card (up to a sane cap) */
+html body .quiz-session-layout > [ontouchstart] > div:first-of-type{display:flex!important;flex-direction:column!important;flex:1 1 auto!important;min-height:0!important}
+html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{
+  flex:1 1 auto!important;display:grid!important;
+  grid-auto-rows:minmax(clamp(46px,6.5vh,64px),clamp(64px,13vh,128px))!important;align-content:start!important;
+  gap:clamp(7px,1.2vh,14px)!important;margin-top:clamp(8px,1.4vh,18px)!important;
+}
+html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3 > button[role="radio"]{max-height:none!important;height:auto!important;align-self:stretch!important;min-height:0!important}
+html body .quiz-session-layout .quiz-meta{margin-top:6px!important}
+
+/* ---------------- LANDSCAPE ---------------- */
+@media (orientation:landscape) and (min-width:600px){
+  html body .quiz-session-layout.quiz-session-layout{
+    padding:2px 10px 6px!important;gap:5px 10px!important;
+    grid-template-columns:minmax(0,1fr) clamp(176px,15vw,208px)!important;
+    grid-template-rows:auto auto minmax(0,1fr)!important;
+  }
+  /* palette: one slim strip */
+  html body .quiz-session-layout > .palette-drawer-top{border-radius:12px!important}
+  html body .quiz-session-layout > .palette-drawer-top > div:first-child{padding:3px 8px!important}
+  html body .quiz-session-layout > .palette-drawer-top > div:nth-child(2){padding:4px 8px!important}
+  html body .quiz-session-layout .palette-touch-btn{height:32px!important;width:40px!important;min-width:40px!important;border-radius:9px!important}
+  /* card */
+  html body .quiz-session-layout.quiz-session-layout > [ontouchstart]{padding:10px clamp(14px,2vw,28px) 6px!important;border-radius:18px!important}
+  html body .quiz-session-layout .quiz-stem{font-size:clamp(17px,1.6vw,23px)!important;line-height:1.5!important;margin-top:8px!important}
+  html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{grid-template-columns:1fr 1fr!important}
+  html body .quiz-session-layout button[role="radio"]{padding:8px 12px!important;font-size:clamp(14px,1.15vw,17px)!important;min-height:0!important}
+  html body .quiz-session-layout .pq-foot{padding:8px 0 0!important}
+  html body .quiz-session-layout .pq-foot button{height:44px!important;min-height:44px!important}
+  html body .quiz-session-layout .pq-prev{width:44px;flex-basis:44px}
+  /* tools rail: slimmer, no duplicate progress bar */
+  html body .quiz-session-layout > #normal-practice-toolkit{padding:8px!important}
+  html body .quiz-session-layout #normal-practice-toolkit .tk-bar{display:none!important}
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick{grid-template-columns:1fr!important;gap:5px!important;margin-top:6px!important}
+  html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn{min-height:36px!important;height:36px;padding:3px 8px!important;font-size:11.5px!important}
+}
+@media (orientation:landscape) and (min-width:1100px) and (min-height:640px){
+  html body .quiz-session-layout.quiz-session-layout{padding:6px 20px 12px!important;grid-template-columns:minmax(0,1fr) 224px!important}
+  html body .quiz-session-layout > .mb-1 h2{font-size:17px!important}
+}
+@media (orientation:landscape) and (max-height:520px){
+  html body .quiz-session-layout .quiz-stem{font-size:15.5px!important;line-height:1.4!important;margin-top:4px!important}
+  html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{grid-auto-rows:minmax(38px,1fr)!important;gap:6px!important}
+  html body .quiz-session-layout .pq-foot button{height:38px!important;min-height:38px!important}
+}
+
+/* ---------------- PORTRAIT ---------------- */
+@media (orientation:portrait){
+  html body .quiz-session-layout.quiz-session-layout{padding:4px 8px 6px!important;gap:6px!important}
+  html body .quiz-session-layout.quiz-session-layout > [ontouchstart]{padding:clamp(12px,1.8vh,22px) clamp(14px,3vw,26px) 8px!important}
+  html body .quiz-session-layout .quiz-stem{font-size:clamp(18px,2.4vh,26px)!important;line-height:1.55!important;margin-top:clamp(8px,1.2vh,16px)!important}
+  html body .quiz-session-layout button[role="radio"]{font-size:clamp(15px,2vh,20px)!important;padding-block:clamp(8px,1.3vh,16px)!important}
+}
+@media (orientation:portrait) and (min-width:431px){   /* tablets / big phones: title + chips share one row */
+  html body .quiz-session-layout.quiz-session-layout > .mb-1{flex-wrap:nowrap!important}
+  html body .quiz-session-layout.quiz-session-layout > .mb-1 > div:first-child{flex:1 1 0!important}
+  html body .quiz-session-layout.quiz-session-layout > .mb-1 > div:nth-child(2){flex:0 0 auto!important;justify-content:flex-end!important}
+}
+@media (orientation:portrait) and (max-width:430px){
+  html body .quiz-session-layout.quiz-session-layout > .mb-1{row-gap:4px!important;padding-bottom:7px!important}
+  html body .quiz-session-layout > .palette-drawer-top .palette-touch-btn{height:38px!important}
+}
+</style>
 </body>
   </html>
