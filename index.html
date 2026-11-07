@@ -7623,5 +7623,382 @@ html body .quiz-session-layout #normal-practice-toolkit details[open] button.tk-
   var timer; new MutationObserver(function(){clearTimeout(timer);timer=setTimeout(label,80);}).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
+<style id="edupulse-boost-css">
+/* ===== EduPulse Boost: student + product features ===== */
+html.bz-hidetimer #pq-timer{display:none!important}
+html.bz-focus body .quiz-session-layout > #normal-practice-toolkit{display:none!important}
+html.bz-focus body .quiz-session-layout.quiz-session-layout{grid-template-columns:minmax(0,1fr)!important}
+html.bz-saver *,html.bz-saver *::before,html.bz-saver *::after{animation:none!important;transition:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html.bz-saver .card,html.bz-saver .quiz-session-layout *{box-shadow:none!important}
+#bz-warm{position:fixed;inset:0;background:rgba(255,160,50,.11);mix-blend-mode:multiply;pointer-events:none;z-index:2147483000;display:none}
+html.bz-warm #bz-warm{display:block}
+html body .quiz-session-layout > [ontouchstart]{zoom:var(--bz-fs,1)}
+/* pacing chip */
+#pq-timer[data-pace="ok"] b{color:#10b981}
+#pq-timer[data-pace="warn"] b{color:#f59e0b}
+#pq-timer[data-pace="bad"] b{color:#ef4444}
+#pq-timer[data-pace="warn"],#pq-timer[data-pace="bad"]{box-shadow:inset 0 0 0 1px currentColor}
+/* confidence row */
+.bz-conf{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap}
+.bz-conf small{font-size:11px;font-weight:700;color:var(--text-muted,#94a3b8);margin-right:2px}
+.bz-conf button{height:28px;padding:0 11px;border-radius:99px;border:1px solid rgba(148,163,184,.35);font-size:11.5px;font-weight:800;background:transparent;color:var(--text-muted,#94a3b8);cursor:pointer}
+.bz-conf button[aria-pressed="true"]{background:#0d9488;border-color:#0d9488;color:#fff}
+.bz-tag{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 10px;border-radius:10px;font-size:11.5px;font-weight:800}
+.bz-tag.bad{background:rgba(239,68,68,.14);color:#ef4444}.bz-tag.lucky{background:rgba(245,158,11,.15);color:#d97706}.bz-tag.good{background:rgba(16,185,129,.14);color:#10b981}
+/* flag button */
+.bz-flag{width:44px;height:44px;flex:0 0 44px;border-radius:14px;border:1.5px solid rgba(148,163,184,.35);background:transparent;color:var(--text-muted,#94a3b8);font-size:15px;cursor:pointer}
+.bz-flag[aria-pressed="true"]{border-color:#f97316;color:#f97316;background:rgba(249,115,22,.12)}
+/* long explanations collapse */
+.bz-clamp{max-height:4.6em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
+.bz-more{font-size:11.5px;font-weight:900;color:#0d9488;background:none;border:0;padding:2px 0;cursor:pointer}
+/* today card */
+.bz-today{border-radius:22px;padding:18px;margin-bottom:18px;border:1px solid var(--border-color,rgba(148,163,184,.25));background:linear-gradient(135deg,rgba(20,184,166,.12),rgba(99,102,241,.08) 60%,transparent);display:grid;gap:14px}
+.bz-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.bz-h{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#14b8a6}
+.bz-big{font-size:clamp(18px,2.6vw,24px);font-weight:900;color:var(--text-primary,#0f172a)}
+.bz-sub{font-size:12px;font-weight:600;color:var(--text-muted,#64748b)}
+.bz-btn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:13px;border:0;font-weight:900;font-size:13px;cursor:pointer;color:#fff;background:linear-gradient(135deg,#14b8a6,#0d9488);box-shadow:0 10px 22px -12px rgba(13,148,136,.9)}
+.bz-btn.alt{background:rgba(148,163,184,.18);color:var(--text-primary,#0f172a);box-shadow:none}
+.bz-btn.vio{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
+.bz-bar{height:8px;border-radius:8px;background:rgba(148,163,184,.25);overflow:hidden}.bz-bar i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#14b8a6,#10b981)}
+.bz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.bz-box{border-radius:16px;padding:12px 14px;background:rgba(148,163,184,.1)}
+.bz-chip{display:inline-flex;align-items:center;gap:6px;margin:3px 6px 3px 0;padding:4px 10px;border-radius:99px;font-size:11.5px;font-weight:800;background:rgba(148,163,184,.16);color:var(--text-primary,#0f172a)}
+.bz-chip.weak{background:rgba(239,68,68,.13);color:#ef4444}.bz-chip.badge{background:rgba(245,158,11,.15);color:#d97706}
+.bz-date{height:34px;border-radius:10px;border:1px solid rgba(148,163,184,.35);background:transparent;color:inherit;padding:0 8px;font-size:12px;font-weight:700}
+/* settings panel */
+#bz-panel{margin-top:18px}
+#bz-panel .bz-set{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(148,163,184,.18);font-size:13px;font-weight:700}
+#bz-panel .bz-set small{display:block;font-weight:500;color:var(--text-muted,#94a3b8);font-size:11px;margin-top:2px}
+#bz-panel input[type=text],#bz-panel input[type=password]{width:100%;height:38px;border-radius:10px;border:1px solid rgba(148,163,184,.35);background:transparent;color:inherit;padding:0 10px;font-size:12px;margin-top:6px}
+#bz-panel input[type=checkbox]{width:20px;height:20px;accent-color:#0d9488}
+.bz-sheet{display:grid;gap:10px;max-height:60vh;overflow:auto}
+.bz-sheet article{border:1px solid rgba(148,163,184,.25);border-radius:14px;padding:10px 12px;font-size:13px}
+.bz-sheet b{color:#10b981}
+</style>
+<div id="bz-warm" aria-hidden="true"></div>
+<script id="edupulse-boost-js">
+(function(){
+'use strict';
+var K='edupulse_boost_v1', CK='edupulse_boost_conf_v1';
+var DEF={examDate:'',hindi:false,hideTimer:false,focus:false,saver:false,warm:false,autoTheme:false,fontScale:1,lastSync:0};
+var cfg=Object.assign({},DEF,rd(K,{}));
+function rd(k,f){try{var v=localStorage.getItem(k);return v===null?f:JSON.parse(v);}catch(e){return f;}}
+function wr(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function save(){wr(K,cfg);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function toast(m,t){if(typeof showToast==='function')showToast(m,t||'success');}
+function settings(){try{return StorageModule.get(STORAGE_KEYS.settings,defaultSettings)||{};}catch(e){return {};}}
+
+/* ---------- preferences ---------- */
+function applyPrefs(){
+  var h=document.documentElement;
+  h.classList.toggle('bz-hidetimer',!!cfg.hideTimer);
+  h.classList.toggle('bz-focus',!!cfg.focus);
+  h.classList.toggle('bz-saver',!!cfg.saver);
+  h.classList.toggle('bz-warm',!!cfg.warm);
+  h.style.setProperty('--bz-fs',String(cfg.fontScale||1));
+  autoTheme();
+}
+function autoTheme(){
+  if(!cfg.autoTheme||typeof applyTheme!=='function')return;
+  var hr=new Date().getHours(), want=(hr>=19||hr<6)?'dark':'light';
+  var isDark=document.documentElement.classList.contains('dark');
+  if((want==='dark')!==isDark)applyTheme(want,false);
+}
+setInterval(autoTheme,600000);
+
+/* ---------- pacing chip: green < 60s, amber < 90s, red after ---------- */
+setInterval(function(){
+  var chip=document.getElementById('pq-timer'); if(!chip)return;
+  var b=chip.querySelector('b'); if(!b)return;
+  var p=(b.textContent||'0:00').split(':'), s=(+p[0]||0)*60+(+p[1]||0);
+  chip.setAttribute('data-pace',s<60?'ok':s<90?'warn':'bad');
+},500);
+
+/* ---------- streak with a weekly rest day ---------- */
+window.getDayStreak=function(){
+  var counts=(StorageModule.get(STORAGE_KEYS.streak,{dailyCounts:{}})||{}).dailyCounts||{};
+  function key(i){return new Date(Date.now()-i*864e5).toISOString().slice(0,10);}
+  var streak=0,lastGap=-99,i=counts[key(0)]?0:1;
+  for(;i<400;i++){
+    if(counts[key(i)]){streak++;continue;}
+    if(i-lastGap>=7&&counts[key(i+1)]){lastGap=i;continue;}   /* one rest day per week keeps the streak alive */
+    break;
+  }
+  return streak;
+};
+
+/* ---------- confidence + sound + answer wrapper ---------- */
+var pendingConf={};
+function beep(ok){
+  try{
+    var A=window.AudioContext||window.webkitAudioContext; if(!A)return;
+    var c=window.__bzA||(window.__bzA=new A()), o=c.createOscillator(), g=c.createGain();
+    o.type='sine';o.frequency.value=ok?740:220;g.gain.value=.07;o.connect(g);g.connect(c.destination);
+    o.start();g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.18);o.stop(c.currentTime+.2);
+  }catch(e){}
+}
+var origSel=window.selectPracticeOption;
+if(typeof origSel==='function'){
+  window.selectPracticeOption=function(i){
+    var idx=quizState.currentIndex, fresh=quizState.userAnswers[idx]===undefined, q=quizState.questions[idx];
+    var conf=pendingConf[idx];
+    var r=origSel.apply(this,arguments);
+    if(fresh&&q){
+      var ok=i===q.correct;
+      if(settings().sound)beep(ok);
+      if(conf){var m=rd(CK,{});m[q.qKey||(quizState.chapter+':'+idx)]={c:conf,ok:ok,t:Date.now()};wr(CK,m);}
+    }
+    return r;
+  };
+}
+
+/* ---------- post-render enhancements for practice quiz ---------- */
+function post(){
+  if(typeof quizState==='undefined'||quizState.mode!=='practice')return;
+  var layout=document.querySelector('.quiz-session-layout'); if(!layout)return;
+  var idx=quizState.currentIndex, q=quizState.questions[idx]; if(!q)return;
+  var answered=quizState.userAnswers[idx]!==undefined;
+  var opts=layout.querySelector('.mt-5.space-y-3');
+  /* confidence */
+  if(opts&&!answered&&!layout.querySelector('.bz-conf')){
+    var row=document.createElement('div');row.className='bz-conf';
+    row.innerHTML='<small>How sure?</small>'+[['sure','Sure'],['unsure','Unsure'],['guess','Guess']].map(function(a){return '<button type="button" data-c="'+a[0]+'" aria-pressed="'+(pendingConf[idx]===a[0])+'">'+a[1]+'</button>';}).join('');
+    row.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-c]');if(!b)return;
+      pendingConf[idx]=pendingConf[idx]===b.dataset.c?undefined:b.dataset.c;
+      row.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(pendingConf[idx]===x.dataset.c));});
+    });
+    opts.parentNode.insertBefore(row,opts);
+  }
+  /* result tag + collapsible explanation */
+  var res=document.getElementById('quiz-result');
+  if(res&&!res.querySelector('.bz-tag')){
+    var m=rd(CK,{})[q.qKey||(quizState.chapter+':'+idx)], ok=quizState.userAnswers[idx]===q.correct, tag='';
+    if(m&&m.c==='sure'&&!ok)tag='<span class="bz-tag bad"><i class="fa-solid fa-triangle-exclamation"></i> You were sure but wrong: a high-value mistake. Revisit the concept.</span>';
+    else if(m&&m.c==='guess'&&ok)tag='<span class="bz-tag lucky"><i class="fa-solid fa-dice"></i> Lucky guess. Count this as not yet learned.</span>';
+    else if(m&&m.c==='sure'&&ok)tag='<span class="bz-tag good"><i class="fa-solid fa-circle-check"></i> Confident and correct.</span>';
+    if(tag)res.firstElementChild.insertAdjacentHTML('afterend',tag);
+    var ex=res.querySelector('.text-xs.leading-relaxed');
+    if(ex&&ex.textContent.length>220&&!ex.dataset.bz){
+      ex.dataset.bz='1';ex.classList.add('bz-clamp');
+      var mb=document.createElement('button');mb.type='button';mb.className='bz-more';mb.textContent='Show more';
+      mb.onclick=function(){var open=ex.classList.toggle('bz-clamp');mb.textContent=open?'Show more':'Show less';};
+      ex.parentNode.insertBefore(mb,ex.nextSibling);
+    }
+  }
+  /* flag for review */
+  var foot=layout.querySelector('.pq-foot');
+  if(foot&&!foot.querySelector('.bz-flag')){
+    var f=document.createElement('button');f.type='button';f.className='bz-flag';f.title='Flag for review';f.setAttribute('aria-label','Flag for review');
+    f.innerHTML='<i class="fa-solid fa-flag"></i>';f.setAttribute('aria-pressed',String(!!(quizState.marked&&quizState.marked[idx])));
+    f.onclick=function(){quizState.marked=quizState.marked||{};quizState.marked[idx]=!quizState.marked[idx];if(typeof persistQuizSession==='function')persistQuizSession();renderPracticeQuiz();};
+    var skip=foot.querySelector('.pq-skip'),nxt=foot.querySelector('.pq-next');
+    foot.insertBefore(f,skip||nxt);
+  }
+}
+var origR=window.renderPracticeQuiz;
+if(typeof origR==='function'){
+  window.renderPracticeQuiz=function(){var r=origR.apply(this,arguments);try{post();}catch(e){console.warn('bz post',e);}return r;};
+}
+/* long-press an option to strike it out (touch) */
+(function(){
+  var t=null,fired=false;
+  document.addEventListener('touchstart',function(e){
+    var b=e.target.closest&&e.target.closest('.quiz-session-layout button[role="radio"]'); if(!b)return;
+    fired=false;clearTimeout(t);
+    t=setTimeout(function(){
+      var all=Array.prototype.slice.call(b.parentNode.querySelectorAll('button[role="radio"]')), i=all.indexOf(b);
+      if(i>=0&&typeof toggleEliminatedOption==='function'){fired=true;if(navigator.vibrate)navigator.vibrate(12);toggleEliminatedOption(i);}
+    },480);
+  },{passive:true});
+  ['touchend','touchmove','touchcancel'].forEach(function(n){document.addEventListener(n,function(){clearTimeout(t);},{passive:true});});
+  document.addEventListener('click',function(e){if(fired&&e.target.closest&&e.target.closest('button[role="radio"]')){e.stopPropagation();e.preventDefault();fired=false;}},true);
+})();
+
+/* ---------- Hindi explanations ---------- */
+var origAI=window.callGeminiApi;
+if(typeof origAI==='function'){
+  window.callGeminiApi=function(prompt,sys,grounding){
+    if(cfg.hindi){sys=(sys?sys+'\n':'')+'Write the explanation in simple Hindi (Devanagari). Keep scientific terms in English in brackets.';}
+    return origAI.call(this,prompt,sys,grounding);
+  };
+}
+
+/* ---------- dashboard "Today" card ---------- */
+function daysTo(d){if(!d)return null;var t=new Date(d+'T00:00:00').getTime();return Math.ceil((t-Date.now())/864e5);}
+function weakChapters(){
+  var st=StorageModule.get(STORAGE_KEYS.qstats,{}),g={};
+  Object.keys(st).forEach(function(k){var m=st[k];if(!m||!m.seen||!m.ch)return;var n=(m.sj?m.sj+' · ':'')+m.ch;g[n]=g[n]||{s:0,c:0};g[n].s+=m.seen;g[n].c+=m.correct||0;});
+  return Object.keys(g).filter(function(n){return g[n].s>=3;}).map(function(n){return {n:n,p:Math.round(g[n].c/g[n].s*100)};}).sort(function(a,b){return a.p-b.p;}).slice(0,3);
+}
+function badges(){
+  var s=StorageModule.get(STORAGE_KEYS.streak,{dailyCounts:{}}),dc=s.dailyCounts||{},tot=Object.keys(dc).reduce(function(n,k){return n+dc[k];},0);
+  var st=StorageModule.get(STORAGE_KEYS.qstats,{}),mastered=Object.keys(st).filter(function(k){return st[k]&&st[k].wrong>0&&st[k].streak>=4;}).length;
+  var ds=window.getDayStreak(),o=[];
+  [[100,'100 solved'],[500,'500 solved'],[1000,'1000 solved']].forEach(function(a){if(tot>=a[0])o.push(a[1]);});
+  if(ds>=7)o.push('7-day streak');if(ds>=30)o.push('30-day streak');
+  if(mastered>=10)o.push(mastered+' mistakes mastered');
+  return o;
+}
+function weekSummary(){
+  var dc=(StorageModule.get(STORAGE_KEYS.streak,{dailyCounts:{}})||{}).dailyCounts||{},a=0,b=0;
+  for(var i=0;i<14;i++){var v=dc[new Date(Date.now()-i*864e5).toISOString().slice(0,10)]||0;if(i<7)a+=v;else b+=v;}
+  if(!a&&!b)return 'Solve a few questions to unlock your weekly report.';
+  var d=a-b;return 'This week you solved '+a+' questions'+(b?(d>=0?', up '+d+' from last week.':', down '+Math.abs(d)+' from last week. Try a short session today.'):'.');
+}
+function todayCard(){
+  var sess=StorageModule.get(STORAGE_KEYS.session,null),has=sess&&sess.questions&&sess.questions.length;
+  var dc=(StorageModule.get(STORAGE_KEYS.streak,{dailyCounts:{}})||{}).dailyCounts||{},today=dc[new Date().toISOString().slice(0,10)]||0;
+  var goal=typeof getDailyGoal==='function'?getDailyGoal():30,pct=Math.min(100,Math.round(today/Math.max(1,goal)*100));
+  var due=typeof getDueRevisionKeys==='function'?getDueRevisionKeys().length:0,dl=daysTo(cfg.examDate),weak=weakChapters(),bd=badges();
+  var cont=has?'<button class="bz-btn" onclick="__bz.resume()"><i class="fa-solid fa-play"></i> Continue</button><div class="bz-sub" style="margin-top:6px">'+esc(sess.title||'Practice')+' · Q'+((sess.currentIndex||0)+1)+' of '+sess.questions.length+'</div>'
+    :'<button class="bz-btn" onclick="switchTab(\'directory\')"><i class="fa-solid fa-play"></i> Start practising</button>';
+  return '<section class="bz-today" id="bz-today">'
+   +(auth()?'':'<div class="bz-row" style="background:rgba(99,102,241,.12);border-radius:14px;padding:10px 12px"><span class="bz-sub" style="color:inherit"><i class="fa-solid fa-cloud"></i> Create a free account so your progress is never lost.</span><button class="bz-btn alt" style="height:34px" onclick="switchTab(\'settings\')">Set up</button></div>')
+   +'<div class="bz-row"><div><div class="bz-h">Today</div><div class="bz-big">'+(dl!=null?(dl>0?dl+' days to NEET':dl===0?'NEET is today. All the best!':'Exam date has passed'):'Set your exam date')+'</div></div>'
+   +'<div><input type="date" class="bz-date" value="'+esc(cfg.examDate)+'" onchange="__bz.set(\'examDate\',this.value);switchTab(\'dashboard\')" aria-label="NEET exam date"></div></div>'
+   +'<div class="bz-row"><div>'+cont+'</div><div style="flex:1;min-width:200px"><div class="bz-sub" style="margin-bottom:6px">Daily target: <b>'+today+'</b> / '+goal+' questions</div><div class="bz-bar"><i style="width:'+pct+'%"></i></div></div></div>'
+   +'<div class="bz-grid">'
+   +'<div class="bz-box"><div class="bz-h" style="color:#8b5cf6">Revision</div><div class="bz-sub" style="margin:4px 0 8px">'+(due?due+' missed question'+(due===1?'':'s')+' due now.':'Nothing due. Missed questions return here automatically.')+'</div><button class="bz-btn vio" '+(due?'':'disabled style="opacity:.5"')+' onclick="__bz.quick()"><i class="fa-solid fa-bolt"></i> 5-min revision</button> <button class="bz-btn alt" onclick="__bz.sheet()"><i class="fa-solid fa-file-lines"></i> Revision sheet</button></div>'
+   +'<div class="bz-box"><div class="bz-h" style="color:#ef4444">Weak spots</div><div style="margin:6px 0">'+(weak.length?weak.map(function(w){return '<span class="bz-chip weak">'+esc(w.n)+' · '+w.p+'%</span>';}).join(''):'<span class="bz-sub">Answer a few questions per chapter to see your weakest areas.</span>')+'</div>'+(weak.length?'<button class="bz-btn alt" onclick="startSavedPractice(\'incorrect\')"><i class="fa-solid fa-crosshairs"></i> Practise my mistakes</button>':'')+'</div>'
+   +'<div class="bz-box"><div class="bz-h" style="color:#f59e0b">This week</div><div class="bz-sub" style="margin:4px 0 8px">'+esc(weekSummary())+'</div><div>'+(bd.length?bd.map(function(b){return '<span class="bz-chip badge"><i class="fa-solid fa-medal"></i>'+esc(b)+'</span>';}).join(''):'<span class="bz-sub">Badges appear as you hit milestones.</span>')+'</div></div>'
+   +'</div></section>';
+}
+var origDash=window.buildDashboardV2;
+if(typeof origDash==='function'){
+  window.buildDashboardV2=function(a){var h=origDash.apply(this,arguments);try{return todayCard()+h;}catch(e){console.warn('bz today',e);return h;}};
+}
+
+/* ---------- actions ---------- */
+function allMistakes(){return Object.values(StorageModule.get(STORAGE_KEYS.errorNotebook,{})).filter(function(e){return e&&e.q;});}
+window.__bz={
+  set:function(k,v){cfg[k]=v;save();applyPrefs();},
+  resume:function(){if(typeof resumeQuizSession==='function')resumeQuizSession();},
+  quick:function(){
+    var s=StorageModule.get(STORAGE_KEYS.settings,defaultSettings),old=s.practiceLength;
+    s.practiceLength=10;StorageModule.set(STORAGE_KEYS.settings,s);
+    Promise.resolve(startSavedPractice('due')).finally(function(){setTimeout(function(){var t=StorageModule.get(STORAGE_KEYS.settings,defaultSettings);if(old===undefined)delete t.practiceLength;else t.practiceLength=old;StorageModule.set(STORAGE_KEYS.settings,t);},1500);});
+  },
+  sheet:function(){
+    var list=allMistakes();
+    var body=list.length?'<div class="bz-sheet">'+list.map(function(e,i){var q=e.q,ans=(q.options||[])[q.correct];return '<article><div class="bz-h">Q'+(i+1)+'</div><p style="font-weight:700;margin:4px 0">'+esc(q.question)+'</p><p>Answer: <b>'+esc(ans||'')+'</b></p>'+(q.explanation&&q.explanation!=='NCERT Concept.'?'<p class="bz-sub" style="margin-top:4px">'+esc(q.explanation)+'</p>':'')+'</article>';}).join('')+'</div><p class="bz-sub" style="margin-top:10px"><button class="bz-btn alt" onclick="__bz.copySheet()"><i class="fa-regular fa-copy"></i> Copy as text</button></p>'
+      :'<p class="bz-sub">Your revision sheet fills up from questions you tag in the Error Notebook after a wrong answer.</p>';
+    setModal('Revision sheet','Your mistakes with the right answers',body);
+  },
+  copySheet:function(){
+    var t=allMistakes().map(function(e,i){var q=e.q;return (i+1)+'. '+q.question+'\nAnswer: '+(q.options||[])[q.correct]+(q.explanation?'\n'+q.explanation:'');}).join('\n\n');
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('Revision sheet copied');},function(){toast('Copy failed','error');});
+  },
+  toggleSound:function(v){var s=StorageModule.get(STORAGE_KEYS.settings,defaultSettings);s.sound=!!v;StorageModule.set(STORAGE_KEYS.settings,s);}
+};
+
+/* ---------- accounts + automatic cloud backup (Supabase Auth, see supabase_setup.sql) ---------- */
+var AK='bz_auth', SB_URL='https://xatnonizntpsnupxrzgt.supabase.co', SB_KEY='sb_publishable_cbRpz06E9hkzCugEYotaqg_LUW2VwVE';
+var lastHash='';
+function auth(){return rd(AK,null);}
+function setAuth(a){if(a)wr(AK,a);else localStorage.removeItem(AK);}
+function errMsg(j,fb){return (j&&(j.error_description||j.msg||j.message||j.error))||fb;}
+function sbFetch(path,opt,token){
+  opt=opt||{};opt.headers=Object.assign({apikey:SB_KEY,'Content-Type':'application/json',Authorization:'Bearer '+(token||SB_KEY)},opt.headers||{});
+  return fetch(SB_URL+path,opt).then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null;}catch(e){}if(!r.ok)throw new Error(errMsg(j,'Request failed ('+r.status+')'));return j;});});
+}
+function toSession(j){return {access_token:j.access_token,refresh_token:j.refresh_token,expires_at:Math.floor(Date.now()/1000)+(j.expires_in||3600),user:{id:j.user&&j.user.id,email:j.user&&j.user.email}};}
+function token(){
+  var a=auth();if(!a)return Promise.reject(new Error('Please log in first'));
+  if(a.expires_at-60>Date.now()/1000)return Promise.resolve(a.access_token);
+  return sbFetch('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:JSON.stringify({refresh_token:a.refresh_token})})
+    .then(function(j){var s=toSession(j);setAuth(s);return s.access_token;})
+    .catch(function(e){setAuth(null);rerender();throw new Error('Session expired, please log in again');});
+}
+function snapshot(){
+  var o={};
+  for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf('edupulse')===0&&k!==STORAGE_KEYS.geminiKey&&k!==K)o[k]=localStorage.getItem(k);}
+  return o;
+}
+function hashOf(o){var s=JSON.stringify(o),h=0;for(var i=0;i<s.length;i++){h=((h<<5)-h+s.charCodeAt(i))|0;}return s.length+':'+h;}
+function fetchCloud(){
+  return token().then(function(t){return sbFetch('/rest/v1/user_backups?select=data,updated_at&limit=1',{method:'GET'},t);}).then(function(rows){return rows&&rows[0]?rows[0]:null;});
+}
+function pushCloud(silent){
+  var a=auth();if(!a)return Promise.resolve();
+  var snap=snapshot(),h=hashOf(snap);
+  if(silent&&h===lastHash)return Promise.resolve();
+  return token().then(function(t){
+    return sbFetch('/rest/v1/user_backups?on_conflict=user_id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({user_id:a.user.id,data:snap,updated_at:new Date().toISOString()})},t);
+  }).then(function(){lastHash=h;cfg.lastSync=Date.now();save();updateSyncLabel();if(!silent)toast('Progress backed up');})
+    .catch(function(e){if(!silent)toast('Backup failed: '+e.message,'error');});
+}
+function applyCloud(d){
+  Object.keys(d).forEach(function(k){if(k.indexOf('edupulse')===0&&k!==STORAGE_KEYS.geminiKey&&k!==K)localStorage.setItem(k,d[k]);});
+  location.reload();
+}
+function reconcile(){   /* right after login: offer the cloud copy, otherwise upload this device */
+  return fetchCloud().then(function(row){
+    if(row&&row.data&&Object.keys(row.data).length){
+      var when=row.updated_at?new Date(row.updated_at).toLocaleString():'earlier';
+      if(confirm('We found your saved progress from '+when+'.\n\nOK = load it on this device\nCancel = keep this device\'s progress and replace the saved copy')){applyCloud(row.data);return;}
+    }
+    return pushCloud(false);
+  });
+}
+function authCall(kind,email,pass){
+  var path=kind==='signup'?'/auth/v1/signup':'/auth/v1/token?grant_type=password';
+  return sbFetch(path,{method:'POST',body:JSON.stringify({email:email,password:pass})}).then(function(j){
+    if(!j||!j.access_token){toast('Account created. Check your email to confirm, then log in.','info');return;}
+    setAuth(toSession(j));rerender();toast(kind==='signup'?'Account created':'Logged in');return reconcile();
+  });
+}
+function rerender(){var p=document.getElementById('bz-panel');if(p){p.outerHTML=panel();}}
+function updateSyncLabel(){var el=document.getElementById('bz-last');if(el)el.textContent=cfg.lastSync?'Last backup: '+new Date(cfg.lastSync).toLocaleString():'No backup yet';}
+window.__bzAcc={
+  signup:function(){var e=val('bz-email'),p=val('bz-pass');if(!e||p.length<6){toast('Enter an email and a password of 6+ characters','error');return;}authCall('signup',e,p).catch(function(x){toast(x.message,'error');});},
+  login:function(){var e=val('bz-email'),p=val('bz-pass');if(!e||!p){toast('Enter your email and password','error');return;}authCall('login',e,p).catch(function(x){toast(x.message,'error');});},
+  logout:function(){pushCloud(true).finally(function(){setAuth(null);lastHash='';rerender();toast('Logged out','info');});},
+  now:function(){pushCloud(false);},
+  restore:function(){fetchCloud().then(function(r){if(!r||!r.data){toast('No saved progress yet','info');return;}if(confirm('Replace progress on this device with your saved copy?'))applyCloud(r.data);}).catch(function(x){toast(x.message,'error');});}
+};
+function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+/* automatic backup: when you leave the app, and every 2 minutes if anything changed */
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')pushCloud(true);});
+setInterval(function(){if(auth())pushCloud(true);},120000);
+
+/* ---------- settings panel ---------- */
+function toggle(label,sub,key,extra){return '<label class="bz-set"><span>'+label+'<small>'+sub+'</small></span><input type="checkbox" '+(cfg[key]?'checked':'')+' onchange="'+(extra||'')+'__bz.set(\''+key+'\',this.checked)"></label>';}
+function panel(){
+  var s=settings();
+  return '<div class="card p-6 border-l-4 border-l-indigo-500" id="bz-panel"><h2 class="text-xl font-black">Study comfort &amp; sync</h2><p class="text-xs" style="color:var(--text-muted,#94a3b8);margin:4px 0 8px">Changes apply instantly on this device.</p>'
+   +'<div class="bz-set"><span>Question text size<small>Scales the question card</small></span><input type="range" min="0.9" max="1.4" step="0.05" value="'+(cfg.fontScale||1)+'" oninput="__bz.set(\'fontScale\',+this.value)"></div>'
+   +toggle('Focus mode','Hides the tools bar while practising','focus')
+   +toggle('Hide question timer','Practise without clock pressure','hideTimer')
+   +toggle('Sound effects','Soft tones for right and wrong answers','sound'.replace('sound','__s'),'')
+   +toggle('Battery and low-data saver','Turns off animations and blur effects','saver')
+   +toggle('Eye-comfort tint','Warm tint for late-night study','warm')
+   +toggle('Auto dark mode','Dark from 7pm to 6am, light in the day','autoTheme')
+   +toggle('AI explanations in Hindi','Applies to Explain and Memory trick','hindi')
+   +accountHtml()+'</div>';
+}
+function accountHtml(){
+  var a=auth();
+  if(a)return '<div style="margin-top:14px"><div class="bz-h" style="color:#6366f1">Your account</div><p class="bz-sub" style="margin:4px 0">Signed in as <b>'+esc(a.user.email)+'</b>. Your progress backs up automatically.</p><p class="bz-sub" id="bz-last">'+(cfg.lastSync?'Last backup: '+new Date(cfg.lastSync).toLocaleString():'No backup yet')+'</p>'
+    +'<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="bz-btn" onclick="__bzAcc.now()"><i class="fa-solid fa-cloud-arrow-up"></i> Back up now</button><button class="bz-btn alt" onclick="__bzAcc.restore()"><i class="fa-solid fa-cloud-arrow-down"></i> Restore</button><button class="bz-btn alt" onclick="__bzAcc.logout()"><i class="fa-solid fa-right-from-bracket"></i> Log out</button></div></div>';
+  return '<div style="margin-top:14px"><div class="bz-h" style="color:#6366f1">Account</div><p class="bz-sub" style="margin:4px 0">Create a free account and your progress is saved automatically, so you never lose it if you change phones or clear your browser.</p>'
+    +'<input type="text" id="bz-email" placeholder="Email" autocomplete="email" inputmode="email"><input type="password" id="bz-pass" placeholder="Password (6+ characters)" autocomplete="current-password">'
+    +'<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="bz-btn" onclick="__bzAcc.signup()"><i class="fa-solid fa-user-plus"></i> Create account</button><button class="bz-btn alt" onclick="__bzAcc.login()"><i class="fa-solid fa-right-to-bracket"></i> Log in</button></div></div>';
+}
+function mountPanel(){
+  var main=document.getElementById('main-container');
+  if(!main||document.getElementById('bz-panel'))return;
+  if((main.textContent||'').indexOf('App & Marking Settings')<0)return;
+  var root=main.firstElementChild||main;root.insertAdjacentHTML('beforeend',panel());
+  var sound=document.querySelector('#bz-panel input[onchange*="__s"]');
+  if(sound){sound.checked=!!settings().sound;sound.setAttribute('onchange','__bz.toggleSound(this.checked)');}
+}
+var mo=new MutationObserver(function(){mountPanel();});
+function boot(){var m=document.getElementById('main-container');if(m)mo.observe(m,{childList:true});applyPrefs();mountPanel();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
 </body>
   </html>
