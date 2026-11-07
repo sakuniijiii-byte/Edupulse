@@ -6503,13 +6503,22 @@ body .quiz-session-layout button[role="radio"] .opt-bad{background:#ef4444!impor
     var i=quizState.currentIndex, done=quizState.userAnswers[i]!==undefined;
     el.textContent=fmt(done?(quizState.questionTimes[i]||0):(Date.now()-quizState.questionStartTimer)/1000);
   },1000);
-  var lastIdx=-1, lastLen=-1;
+  var lastIdx=-1, lastLen=-1, pqSession=null, pqSpent={}, pqHiddenAt=0;
   var orig=window.renderPracticeQuiz;
   if(typeof orig==='function'){
     window.renderPracticeQuiz=function(){
       var r=orig.apply(this,arguments);
-      var i=quizState.currentIndex;
+      var i=quizState.currentIndex, now=Date.now();
+      /* new session -> forget per-question carry-over */
+      if(quizState.questionTimes!==pqSession){pqSession=quizState.questionTimes;pqSpent={};lastIdx=-1;}
       if(i!==lastIdx){
+        /* leaving an unanswered question: remember its time so revisits continue, not restart */
+        if(lastIdx!==-1 && quizState.userAnswers[lastIdx]===undefined){pqSpent[lastIdx]=Math.max(0,(now-quizState.questionStartTimer)/1000);}
+        /* entering an unanswered question: start its own clock */
+        if(quizState.userAnswers[i]===undefined){
+          quizState.questionStartTimer=now-(pqSpent[i]||0)*1000;
+          var tEl=document.querySelector('#pq-timer b'); if(tEl){tEl.textContent=fmt((now-quizState.questionStartTimer)/1000);}
+        }
         if(lastIdx!==-1){
           var card=document.querySelector('.quiz-session-layout > [ontouchstart]');
           if(card){card.classList.add('pq-enter');card.addEventListener('animationend',function(){card.classList.remove('pq-enter')},{once:true});}
@@ -6519,6 +6528,14 @@ body .quiz-session-layout button[role="radio"] .opt-bad{background:#ef4444!impor
       return r;
     };
   }
+  /* pause the question clock while the tab/app is in the background */
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){pqHiddenAt=Date.now();return;}
+    if(pqHiddenAt && typeof quizState!=='undefined' && quizState.mode==='practice' && quizState.userAnswers[quizState.currentIndex]===undefined){
+      quizState.questionStartTimer+=Date.now()-pqHiddenAt;
+    }
+    pqHiddenAt=0;
+  });
 })();
 </script>
 
@@ -7086,6 +7103,74 @@ html body.dark .quiz-session-layout > .mb-1 > div:last-of-type > button:last-chi
 }
 @media (orientation:landscape) and (max-height:520px){
   html body .quiz-session-layout > .mb-1 > div:last-of-type > button:last-child{height:30px!important;min-height:30px!important;padding:0 10px!important}
+}
+</style>
+<style id="edupulse-header-footer">
+/* =====================================================================
+   Practice header = one tidy app-bar card (progress runs along its edge)
+   Practice footer = sticky action dock (Prev · Skip · Next)
+   ===================================================================== */
+/* ---------- HEADER ---------- */
+html body .quiz-session-layout.quiz-session-layout > .mb-1{
+  position:relative;overflow:hidden;margin:0!important;padding:8px 10px 11px!important;
+  background:var(--card-bg);border:1px solid var(--border-color)!important;border-radius:16px;
+  box-shadow:0 10px 26px -20px rgba(15,23,42,.45);gap:10px!important;
+}
+html body.dark .quiz-session-layout.quiz-session-layout > .mb-1{
+  background:linear-gradient(180deg,#111a2e,#0d1424);border-color:rgba(148,163,184,.16)!important;
+  box-shadow:0 12px 30px -22px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.02) inset;
+}
+html body .quiz-session-layout > .mb-1 > div:first-child > button{
+  width:38px;height:38px;padding:0!important;display:grid;place-items:center;border-radius:12px!important;
+  border:1px solid var(--border-color);background:rgba(148,163,184,.10);flex:0 0 auto;
+}
+html body .quiz-session-layout > .mb-1 h2{font-size:15.5px!important;font-weight:800!important;letter-spacing:-.015em}
+html body .quiz-session-layout > .mb-1 p{font-size:11.5px!important;font-weight:600;color:var(--text-muted)!important}
+/* slim progress rail along the bottom edge of the bar */
+html body .quiz-session-layout .pq-progress{position:absolute!important;left:0;right:0;bottom:0;height:4px!important;border-radius:0!important;background:rgba(148,163,184,.22)}
+html body .quiz-session-layout .pq-progress i{border-radius:0 4px 4px 0!important;box-shadow:0 0 10px rgba(20,184,166,.55)}
+/* stat pills */
+html body .quiz-session-layout .pq-chip{height:34px!important;min-height:34px!important;padding:0 11px!important;border-radius:11px!important;font-size:12.5px!important;font-weight:800!important;gap:6px}
+html body .quiz-session-layout .pq-time{min-width:68px;justify-content:center;background:rgba(20,184,166,.12)!important;color:#0f766e!important;border:1px solid rgba(20,184,166,.28)}
+html body.dark .quiz-session-layout .pq-time{background:rgba(20,184,166,.14)!important;color:#5eead4!important;border-color:rgba(45,212,191,.32)}
+html body .quiz-session-layout .pq-ok{background:rgba(16,185,129,.13)!important;color:#047857!important;border:1px solid rgba(16,185,129,.28)}
+html body .quiz-session-layout .pq-no{background:rgba(244,63,94,.11)!important;color:#be123c!important;border:1px solid rgba(244,63,94,.26)}
+html body.dark .quiz-session-layout .pq-ok{color:#6ee7b7!important}
+html body.dark .quiz-session-layout .pq-no{color:#fda4af!important}
+html body .quiz-session-layout .pq-auto{height:34px!important;width:34px;padding:0!important;display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:11px!important;
+  background:rgba(148,163,184,.14)!important;color:var(--text-muted)!important;border:1px solid var(--border-color)!important}
+html body .quiz-session-layout .pq-auto.on{width:auto;padding:0 11px!important;background:linear-gradient(135deg,#14b8a6,#0d9488)!important;color:#fff!important;border-color:transparent!important;box-shadow:0 6px 16px -8px rgba(13,148,136,.9)}
+html body .quiz-session-layout .pq-auto.on span{display:inline!important}
+
+/* ---------- FOOTER ---------- */
+html body .quiz-session-layout .pq-foot{
+  position:sticky;bottom:-1px;margin-top:auto!important;gap:10px!important;
+  padding:12px 0 calc(env(safe-area-inset-bottom,0px) + 2px)!important;
+  border-top:1px solid var(--border-color);
+  background:color-mix(in srgb,var(--card-bg) 90%,transparent)!important;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);z-index:3;
+}
+html body .quiz-session-layout .pq-foot button{height:48px!important;min-height:48px!important;border-radius:14px!important}
+html body .quiz-session-layout .pq-prev{width:48px;flex:0 0 48px;background:transparent!important;border:1px solid var(--border-color)!important;color:var(--text-primary)}
+html body .quiz-session-layout .pq-prev:not(:disabled):hover{background:rgba(148,163,184,.14)!important}
+html body .quiz-session-layout .pq-skip{padding:0 18px!important;background:rgba(245,158,11,.12)!important;border:1px solid rgba(245,158,11,.38)!important;color:#b45309!important}
+html body.dark .quiz-session-layout .pq-skip{background:rgba(251,191,36,.12)!important;border-color:rgba(251,191,36,.4)!important;color:#fcd34d!important}
+html body .quiz-session-layout .pq-next{
+  font-size:15px!important;letter-spacing:.005em;
+  background:linear-gradient(135deg,#14b8a6,#0d9488)!important;border:1px solid rgba(255,255,255,.14)!important;
+  box-shadow:0 12px 24px -12px rgba(13,148,136,.9),inset 0 1px 0 rgba(255,255,255,.22)!important;
+}
+html body.dark .quiz-session-layout .pq-next{background:linear-gradient(135deg,#2dd4bf,#0d9488)!important;color:#04201c!important;box-shadow:0 0 0 1px rgba(45,212,191,.25),0 14px 28px -12px rgba(20,184,166,.75)!important}
+html body .quiz-session-layout .pq-foot:has(.pq-next:disabled) .pq-next{box-shadow:none!important}
+@media (hover:hover) and (pointer:fine){
+  html body .quiz-session-layout .pq-foot::after{
+    padding:6px 10px;border-radius:9px;background:rgba(148,163,184,.12);border:1px solid var(--border-color);
+    margin-left:4px;font-size:11px;letter-spacing:.01em}
+}
+@media (orientation:landscape) and (max-height:520px){
+  html body .quiz-session-layout .pq-foot{padding:7px 0 2px!important}
+  html body .quiz-session-layout .pq-foot button{height:40px!important;min-height:40px!important}
+  html body .quiz-session-layout .pq-prev{width:40px;flex-basis:40px}
 }
 </style>
 </body>
