@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
 <link rel="shortcut icon" href="icons/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-<meta name="description" content="EduPulse PRO — NEET practice, mock tests and instant AI explanations.">
+<meta name="description" content="EduPulse PRO — Padhai ki dhadkan. NEET practice, mock tests and instant AI explanations.">
 <meta name="apple-mobile-web-app-title" content="EduPulse">
 <meta property="og:type" content="website">
 <meta property="og:title" content="EduPulse PRO — NEET Preparation">
@@ -1814,7 +1814,7 @@ body.dark .quiz-session-layout .quiz-meta span{
 <div class="brand justify-between items-center w-full">
 <div class="flex items-center gap-3">
 <div class="logo"><svg class="ep-mark-svg" width="42" height="42" viewBox="0 0 512 512" aria-hidden="true"><use href="#ep-mark"/></svg></div>
-<div><b>Edu<span>Pulse</span></b><p class="eyebrow">NEET Ecosystem PRO</p></div>
+<div><b>Edu<span>Pulse</span></b><p class="eyebrow">Padhai ki dhadkan</p></div>
 </div>
 <button class="lg:hidden text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-2" onclick="toggleMobileNav(false)"><i class="fa-solid fa-xmark text-lg"></i></button>
 </div>
@@ -1844,7 +1844,7 @@ body.dark .quiz-session-layout .quiz-meta span{
 <button onclick="toggleMobileNav(true)" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition"><i class="fa-solid fa-bars text-lg"></i></button>
 <button id="back-btn" onclick="goBack()" class="hidden items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700 transition"><i class="fa-solid fa-arrow-left text-xs"></i> Back</button>
 <div>
-<div class="date" id="current-date">NEET Prep Ecosystem 2026</div>
+<div class="date" id="current-date">Padhai ki dhadkan · NEET 2026</div>
 <h1 class="hidden sm:block">Welcome, Aspirant<span style="color:#0d9488">.</span></h1>
 <h1 class="sm:hidden text-base font-black inline-flex items-center gap-2"><svg class="ep-mark-svg" width="26" height="26" viewBox="0 0 512 512" aria-hidden="true"><use href="#ep-mark"/></svg>EduPulse PRO</h1>
 </div>
@@ -2797,8 +2797,8 @@ function epcWelcome() {
   ];
   return `<div class="epc-hero">
     <div class="epc-hero-ico"><svg viewBox="0 0 56 56" aria-hidden="true"><use href="#ep-ai"/></svg></div>
-    <h3>${hi}. What are we working on?</h3>
-    <p>I remember this conversation, can see the question you're practising, and can turn any topic into a quiz.</p>
+    <h3>${hi}. Aaj kya padhna hai?</h3>
+    <p>Doubt ho ya revision, bas poochho. Main yeh chat yaad rakhta hoon, tumhara current question dekh sakta hoon, aur kisi bhi topic ka quiz bana sakta hoon.</p>
     <div class="epc-starters">${cards.map(c => `<button type="button" onclick="epcPreset('${c[0]}')"><b>${c[1]}</b><span>${c[2]}</span></button>`).join('')}</div>
   </div>`;
 }
@@ -8287,6 +8287,14 @@ if(typeof origAI==='function'){
 
 /* ---------- dashboard "Today" card ---------- */
 function daysTo(d){if(!d)return null;var t=new Date(d+'T00:00:00').getTime();return Math.ceil((t-Date.now())/864e5);}
+/* NEET is normally held on the 1st Sunday of May. Until the learner picks their own date we use the next one. */
+function firstSundayOfMay(y){var d=new Date(y,4,1);d.setDate(1+(7-d.getDay())%7);return d;}
+function isoLocal(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function autoExamDate(){var n=new Date(),t=new Date(n.getFullYear(),n.getMonth(),n.getDate()),d=firstSundayOfMay(n.getFullYear());if(d<t)d=firstSundayOfMay(n.getFullYear()+1);return isoLocal(d);}
+function examDate(){return cfg.examDate||autoExamDate();}
+function examDateLabel(){var d=new Date(examDate()+'T00:00:00');return d.toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'long',year:'numeric'});}
+function syncHeaderDate(){var el=document.getElementById('current-date');if(el)el.textContent='Padhai ki dhadkan · NEET '+examDate().slice(0,4);}
+try{syncHeaderDate();}catch(e){}
 function weakChapters(){
   var st=StorageModule.get(STORAGE_KEYS.qstats,{}),g={};
   Object.keys(st).forEach(function(k){var m=st[k];if(!m||!m.seen||!m.ch)return;var n=(m.sj?m.sj+' · ':'')+m.ch;g[n]=g[n]||{s:0,c:0};g[n].s+=m.seen;g[n].c+=m.correct||0;});
@@ -8311,13 +8319,14 @@ function todayCard(){
   var sess=StorageModule.get(STORAGE_KEYS.session,null),has=sess&&sess.questions&&sess.questions.length;
   var dc=(StorageModule.get(STORAGE_KEYS.streak,{dailyCounts:{}})||{}).dailyCounts||{},today=dc[new Date().toISOString().slice(0,10)]||0;
   var goal=typeof getDailyGoal==='function'?getDailyGoal():30,pct=Math.min(100,Math.round(today/Math.max(1,goal)*100));
-  var due=typeof getDueRevisionKeys==='function'?getDueRevisionKeys().length:0,dl=daysTo(cfg.examDate),weak=weakChapters(),bd=badges();
+  var due=typeof getDueRevisionKeys==='function'?getDueRevisionKeys().length:0,dl=daysTo(examDate()),weak=weakChapters(),bd=badges();
   var cont=has?'<button class="bz-btn" onclick="__bz.resume()"><i class="fa-solid fa-play"></i> Continue</button><div class="bz-sub" style="margin-top:6px">'+esc(sess.title||'Practice')+' · Q'+((sess.currentIndex||0)+1)+' of '+sess.questions.length+'</div>'
     :'<button class="bz-btn" onclick="switchTab(\'directory\')"><i class="fa-solid fa-play"></i> Start practising</button>';
   return '<section class="bz-today" id="bz-today">'
    +(auth()?'':'<div class="bz-row" style="background:rgba(99,102,241,.12);border-radius:14px;padding:10px 12px"><span class="bz-sub" style="color:inherit"><i class="fa-solid fa-cloud"></i> Create a free account so your progress is never lost.</span><button class="bz-btn alt" style="height:34px" onclick="switchTab(\'settings\')">Set up</button></div>')
-   +'<div class="bz-row"><div><div class="bz-h">Today</div><div class="bz-big">'+(dl!=null?(dl>0?dl+' days to NEET':dl===0?'NEET is today. All the best!':'Exam date has passed'):'Set your exam date')+'</div></div>'
-   +'<div><input type="date" class="bz-date" value="'+esc(cfg.examDate)+'" onchange="__bz.set(\'examDate\',this.value);switchTab(\'dashboard\')" aria-label="NEET exam date"></div></div>'
+   +'<div class="bz-row"><div><div class="bz-h">Today</div><div class="bz-big">'+(dl!=null?(dl>0?dl+' days to NEET':dl===0?'NEET is today. All the best!':'Exam date has passed'):'Set your exam date')+'</div>'
+   +'<div class="bz-sub" style="margin-top:3px">'+esc(examDateLabel())+' · '+(cfg.examDate?'your date <a href="#" onclick="__bz.set(\'examDate\',\'\');switchTab(\'dashboard\');return false" style="text-decoration:underline">use 1st Sunday of May</a>':'1st Sunday of May, tentative until NTA confirms')+'</div></div>'
+   +'<div><input type="date" class="bz-date" value="'+esc(examDate())+'" onchange="__bz.set(\'examDate\',this.value);switchTab(\'dashboard\')" aria-label="NEET exam date"></div></div>'
    +'<div class="bz-row"><div>'+cont+'</div><div style="flex:1;min-width:200px"><div class="bz-sub" style="margin-bottom:6px">Daily target: <b>'+today+'</b> / '+goal+' questions</div><div class="bz-bar"><i style="width:'+pct+'%"></i></div></div></div>'
    +'<div class="bz-grid">'
    +'<div class="bz-box"><div class="bz-h" style="color:#8b5cf6">Revision</div><div class="bz-sub" style="margin:4px 0 8px">'+(due?due+' missed question'+(due===1?'':'s')+' due now.':'Nothing due. Missed questions return here automatically.')+'</div><button class="bz-btn vio" '+(due?'':'disabled style="opacity:.5"')+' onclick="__bz.quick()"><i class="fa-solid fa-bolt"></i> 5-min revision</button> <button class="bz-btn alt" onclick="__bz.sheet()"><i class="fa-solid fa-file-lines"></i> Revision sheet</button></div>'
@@ -8326,7 +8335,7 @@ function todayCard(){
    +'</div></section>';
 }
 function pill(){
-  var dl=daysTo(cfg.examDate);
+  var dl=daysTo(examDate());
   var t=dl==null?'Set NEET date':dl>0?dl+' days to NEET':dl===0?'NEET is today':'NEET date passed';
   return ' <button type="button" class="bz-pill" onclick="__bz.pickDate()" aria-label="Set NEET exam date"><i class="fa-solid fa-hourglass-half"></i> '+t+'</button>';
 }
@@ -8363,11 +8372,11 @@ if(typeof origDash==='function'){
 /* ---------- actions ---------- */
 function allMistakes(){return Object.values(StorageModule.get(STORAGE_KEYS.errorNotebook,{})).filter(function(e){return e&&e.q;});}
 window.__bz={
-  set:function(k,v){cfg[k]=v;save();applyPrefs();},
+  set:function(k,v){cfg[k]=v;save();applyPrefs();if(k==='examDate')syncHeaderDate();},
   pickDate:function(){
-    var i=document.createElement('input');i.type='date';i.value=cfg.examDate||'';
+    var i=document.createElement('input');i.type='date';i.value=examDate();
     i.style.cssText='position:fixed;left:50%;top:40%;opacity:0;width:1px;height:1px';
-    i.onchange=function(){cfg.examDate=i.value;save();i.remove();if(typeof switchTab==='function')switchTab('dashboard');};
+    i.onchange=function(){cfg.examDate=i.value;save();syncHeaderDate();i.remove();if(typeof switchTab==='function')switchTab('dashboard');};
     i.onblur=function(){setTimeout(function(){i.remove();},300);};
     document.body.appendChild(i);i.focus();
     try{i.showPicker();}catch(e){i.click();}
