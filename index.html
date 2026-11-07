@@ -6996,5 +6996,69 @@ html body #normal-practice-toolkit label{background:transparent!important;border
   html body #normal-practice-toolkit details[open]{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 </style>
+<style id="edupulse-dialog-fix-polish">
+/* =====================================================================
+   FIX: confirm dialogs opened from a full-screen quiz (e.g. "Leave Practice
+   Session?") lost their title + Continue/Leave buttons in landscape.
+   Full-screen quiz screens never have action buttons, so any full-screen
+   modal that DOES have them is a dialog: render it as a centred card.
+   ===================================================================== */
+html body .custom-modal.fullscreen-modal:has(#modalActions > *){
+  padding:16px!important;align-items:center!important;justify-content:center!important;place-items:center!important;
+  background:rgba(7,10,18,.62)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+html body .custom-modal.fullscreen-modal:has(#modalActions > *) .modal-box{
+  height:auto!important;min-height:0!important;max-height:min(88dvh,680px)!important;max-width:520px!important;width:100%;
+  display:flex!important;flex-direction:column!important;overflow:auto!important;
+  padding:22px 24px!important;border-radius:22px!important;transform:none!important;
+  background:var(--card-bg)!important;border:1px solid var(--border-color)!important;
+  box-shadow:0 30px 70px -28px rgba(2,6,23,.55)!important;
+}
+html body .custom-modal.fullscreen-modal:has(#modalActions > *) #modalHeaderSlot{display:block!important;margin-bottom:12px}
+html body .custom-modal.fullscreen-modal:has(#modalActions > *) #modalContentSlot{
+  display:block!important;flex:0 1 auto!important;overflow:auto!important;padding:0!important;min-height:0!important;
+}
+html body .custom-modal.fullscreen-modal:has(#modalActions > *) #modalActions{
+  display:flex!important;flex-wrap:wrap;justify-content:flex-end;gap:10px;margin-top:18px!important;padding:0!important;
+}
+@media (max-width:480px){
+  html body .custom-modal.fullscreen-modal:has(#modalActions > *) #modalActions > button{flex:1 1 100%}
+}
+
+/* ---------- Global polish ---------- */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:rgba(20,184,166,.28)}
+button,[role="button"],a{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid #14b8a6!important;outline-offset:2px;border-radius:8px}
+html body.dark :focus-visible{outline-color:#22d3ee!important}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline-offset:0}
+.pq-chip,.pq-chip b,#test-timer-display,#pq-timer,.palette-touch-btn{font-variant-numeric:tabular-nums}
+/* consistent dialog buttons */
+html body .custom-modal #modalActions button{min-height:44px;padding-inline:18px;border-radius:12px;font-weight:800;transition:filter .15s,transform .1s,background-color .15s}
+html body .custom-modal #modalActions button:hover{filter:brightness(1.06)}
+html body .custom-modal #modalActions button:active{transform:scale(.97)}
+/* primary practice buttons: tactile press + readable tabular progress */
+html body .pq-next,html body .pq-prev,html body .pq-skip{transition:filter .15s,transform .1s,box-shadow .2s}
+html body .pq-next:active,html body .pq-prev:active,html body .pq-skip:active{transform:scale(.97)}
+html body .pq-next:hover{filter:brightness(1.07)}
+html body .pq-progress i,html body .tk-bar span{transition:width .45s cubic-bezier(.4,0,.2,1)}
+/* answer feedback panel + warning boxes breathe a little more */
+html body #quiz-result{border-radius:14px!important;line-height:1.55}
+html body .custom-modal .bg-amber-500\/10{border-radius:14px}
+/* light mode: subtle depth on desktop */
+html body:not(.dark) .card:hover{border-color:rgba(13,148,136,.35)}
+html body:not(.dark) .sidebar{box-shadow:1px 0 0 rgba(15,23,42,.04)}
+/* thin scrollbars everywhere (light) */
+*{scrollbar-width:thin;scrollbar-color:rgba(148,163,184,.45) transparent}
+/* respect reduced-motion preferences */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+/* tablets in landscape: keep dialogs and toasts away from system bars */
+@supports (padding:env(safe-area-inset-bottom)){
+  html body .custom-modal{padding-bottom:max(16px,env(safe-area-inset-bottom))}
+}
+</style>
 </body>
   </html>
