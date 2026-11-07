@@ -7694,6 +7694,53 @@ html body .quiz-session-layout > [ontouchstart]{zoom:var(--bz-fs,1)}
 .bz-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border-color,rgba(148,163,184,.2))}
 .bz-links button{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 13px;border-radius:11px;border:1px solid var(--border-color,rgba(148,163,184,.3));background:transparent;color:var(--text-primary);font-size:12.5px;font-weight:700;cursor:pointer}
 .bz-links button:hover{border-color:#14b8a6;color:#0d9488}
+/* ---- account dialog ---- */
+html.bz-lock,html.bz-lock body{overflow:hidden}
+#bz-auth{position:fixed;inset:0;z-index:2147483100;display:grid;place-items:center;padding:16px;background:rgba(7,10,18,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:bzfade .18s ease}
+@keyframes bzfade{from{opacity:0}to{opacity:1}}@keyframes bzrise{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.bz-card{position:relative;width:100%;max-width:410px;max-height:calc(100dvh - 32px);overflow:auto;border-radius:24px;padding:28px 24px 22px;background:var(--card-bg,#fff);color:var(--text-primary,#0f172a);border:1px solid var(--border-color,rgba(148,163,184,.25));box-shadow:0 30px 70px -20px rgba(0,0,0,.55);animation:bzrise .22s cubic-bezier(.2,.8,.2,1);text-align:center}
+.bz-card h2{font-size:21px;font-weight:900;letter-spacing:-.02em;margin:14px 0 4px}
+.bz-sub2{font-size:13.5px;line-height:1.5;color:var(--text-muted,#64748b);margin:0 0 14px}
+.bz-logo{width:52px;height:52px;margin:0 auto;border-radius:16px;display:grid;place-items:center;font-size:22px;color:#fff;background:linear-gradient(135deg,#14b8a6,#0d9488);box-shadow:0 12px 24px -12px rgba(13,148,136,.9)}
+.bz-logo.ok{background:linear-gradient(135deg,#10b981,#059669)}
+.bz-close{position:absolute;right:12px;top:12px;width:34px;height:34px;border-radius:10px;border:0;background:transparent;color:var(--text-muted,#64748b);cursor:pointer;font-size:15px}
+.bz-close:hover{background:rgba(148,163,184,.16)}
+.bz-perks{list-style:none;margin:0 0 14px;padding:10px 12px;border-radius:14px;background:rgba(20,184,166,.09);text-align:left;display:grid;gap:6px}
+.bz-perks li{font-size:12.5px;font-weight:600;display:flex;gap:9px;align-items:center}.bz-perks i{color:#10b981;font-size:11px}
+@media (max-height:700px){.bz-perks{display:none}}
+.bz-f{display:block;text-align:left;margin-bottom:12px}
+.bz-f>span{display:block;font-size:12px;font-weight:800;margin-bottom:6px}
+.bz-in{position:relative}
+.bz-in input{width:100%;height:48px;border-radius:13px;border:1.5px solid var(--border-color,rgba(148,163,184,.4));background:transparent;color:inherit;padding:0 44px 0 14px;font-size:15px;font-family:inherit;outline:none;transition:border-color .15s,box-shadow .15s}
+.bz-in input:focus{border-color:#14b8a6;box-shadow:0 0 0 4px rgba(20,184,166,.18)}
+.bz-f.bad .bz-in input{border-color:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.14)}
+.bz-eye{position:absolute;right:4px;top:4px;width:40px;height:40px;border:0;background:transparent;color:var(--text-muted,#64748b);cursor:pointer;border-radius:10px}
+.bz-meter{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:-2px 0 6px}
+.bz-meter i{height:5px;border-radius:5px;background:rgba(148,163,184,.25);transition:background .2s}
+.bz-meter i.s1{background:#ef4444}.bz-meter i.s2{background:#f59e0b}.bz-meter i.s3{background:#84cc16}.bz-meter i.s4{background:#10b981}
+.bz-mlbl{font-size:11.5px;font-weight:600;color:var(--text-muted,#64748b);text-align:left;margin-bottom:12px}
+.bz-err{display:none;text-align:left;margin:0 0 12px;padding:10px 12px;border-radius:12px;font-size:12.5px;font-weight:700;line-height:1.45;background:rgba(239,68,68,.12);color:#ef4444}
+.bz-err.on{display:block}
+.bz-link{background:none;border:0;padding:0;font:inherit;font-weight:800;color:#0d9488;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.bz-row2{text-align:right;margin:-4px 0 12px;font-size:12.5px}
+.bz-go{width:100%;height:50px;border:0;border-radius:14px;color:#fff;font-size:15px;font-weight:900;cursor:pointer;background:linear-gradient(135deg,#14b8a6,#0d9488);box-shadow:0 14px 26px -14px rgba(13,148,136,.95);transition:transform .1s,opacity .15s}
+.bz-go:active{transform:scale(.985)}.bz-go:disabled{opacity:.75;cursor:default}
+.bz-go.load span{visibility:hidden}.bz-go.load{position:relative}
+.bz-go.load::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:20px;margin:-10px 0 0 -10px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:bzspin .7s linear infinite}
+@keyframes bzspin{to{transform:rotate(360deg)}}
+.bz-ghost{width:100%;height:46px;margin-top:10px;border-radius:13px;border:1.5px solid var(--border-color,rgba(148,163,184,.4));background:transparent;color:inherit;font-size:14px;font-weight:800;cursor:pointer}
+.bz-ghost:disabled{opacity:.55;cursor:default}
+.bz-sw{margin:16px 0 0;font-size:13px;color:var(--text-muted,#64748b)}.bz-sw button{background:none;border:0;padding:0;font:inherit;font-weight:800;color:#0d9488;cursor:pointer}
+.bz-hint{font-size:12px;color:var(--text-muted,#64748b);margin:10px 0 0}
+/* settings account card */
+.bz-acct{display:flex;gap:14px;align-items:center;padding:14px;border-radius:16px;background:rgba(20,184,166,.09)}
+.bz-acct.off{background:rgba(99,102,241,.10)}
+.bz-av{width:48px;height:48px;flex:0 0 48px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:16px;color:#fff;background:linear-gradient(135deg,#14b8a6,#6366f1)}
+.bz-acct.off .bz-av{background:rgba(99,102,241,.2);color:#6366f1;font-size:19px}
+.bz-acct-t{min-width:0}.bz-acct-t b{display:block;font-size:14.5px;font-weight:800;color:var(--text-primary)}
+.bz-acct-t small{display:block;font-size:12px;color:var(--text-muted);margin-top:1px;overflow-wrap:anywhere}
+.bz-ok{display:inline-flex;align-items:center;gap:6px;margin-top:5px;font-size:11.5px;font-weight:700;color:#10b981}
+.bz-ok i{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.2)}.bz-ok em{font-style:normal}
 </style>
 <div id="bz-warm" aria-hidden="true"></div>
 <script id="edupulse-boost-js">
@@ -7892,7 +7939,7 @@ function pill(){
 }
 function acctStrip(){
   if(auth()||cfg.hideNudge)return '';
-  return '<section class="dv2-card bz-strip"><span class="bz-strip-ic"><i class="fa-solid fa-cloud"></i></span><div><b>Save your progress</b><small>Create a free account and it backs up automatically.</small></div><button type="button" class="dv2-btn dv2-btn-main" onclick="switchTab(\'settings\')">Set up</button><button type="button" class="bz-x" aria-label="Dismiss" onclick="__bz.set(\'hideNudge\',true);switchTab(\'dashboard\')"><i class="fa-solid fa-xmark"></i></button></section>';
+  return '<section class="dv2-card bz-strip"><span class="bz-strip-ic"><i class="fa-solid fa-cloud"></i></span><div><b>Save your progress</b><small>Create a free account and it backs up automatically.</small></div><button type="button" class="dv2-btn dv2-btn-main" onclick="__bzAcc.open(\'signup\')">Create account</button><button type="button" class="bz-x" aria-label="Dismiss" onclick="__bz.set(\'hideNudge\',true);switchTab(\'dashboard\')"><i class="fa-solid fa-xmark"></i></button></section>';
 }
 function insightCard(){
   var weak=weakChapters(),bd=badges(),due=typeof getDueRevisionKeys==='function'?getDueRevisionKeys().length:0;
@@ -7953,21 +8000,21 @@ window.__bz={
 
 /* ---------- accounts + automatic cloud backup (Supabase Auth, see supabase_setup.sql) ---------- */
 var AK='bz_auth', SB_URL='https://xatnonizntpsnupxrzgt.supabase.co', SB_KEY='sb_publishable_cbRpz06E9hkzCugEYotaqg_LUW2VwVE';
-var lastHash='';
+var lastHash='', ov=null, mode='signup', busy=false, pendingCloud=null, recoverySess=null, cooldown=0, cdTimer=null, sentInfo={kind:'confirm',email:''};
 function auth(){return rd(AK,null);}
 function setAuth(a){if(a)wr(AK,a);else localStorage.removeItem(AK);}
 function errMsg(j,fb){return (j&&(j.error_description||j.msg||j.message||j.error))||fb;}
-function sbFetch(path,opt,token){
-  opt=opt||{};opt.headers=Object.assign({apikey:SB_KEY,'Content-Type':'application/json',Authorization:'Bearer '+(token||SB_KEY)},opt.headers||{});
-  return fetch(SB_URL+path,opt).then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null;}catch(e){}if(!r.ok)throw new Error(errMsg(j,'Request failed ('+r.status+')'));return j;});});
+function sbFetch(path,opt,tok){
+  opt=opt||{};opt.headers=Object.assign({apikey:SB_KEY,'Content-Type':'application/json',Authorization:'Bearer '+(tok||SB_KEY)},opt.headers||{});
+  return fetch(SB_URL+path,opt).then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null;}catch(e){}if(!r.ok){var er=new Error(errMsg(j,'Request failed ('+r.status+')'));er.status=r.status;throw er;}return j;});});
 }
-function toSession(j){return {access_token:j.access_token,refresh_token:j.refresh_token,expires_at:Math.floor(Date.now()/1000)+(j.expires_in||3600),user:{id:j.user&&j.user.id,email:j.user&&j.user.email}};}
+function toSession(j){var u=j.user||{};return {access_token:j.access_token,refresh_token:j.refresh_token,expires_at:Math.floor(Date.now()/1000)+(j.expires_in||3600),user:{id:u.id,email:u.email,name:(u.user_metadata&&u.user_metadata.name)||''}};}
 function token(){
   var a=auth();if(!a)return Promise.reject(new Error('Please log in first'));
   if(a.expires_at-60>Date.now()/1000)return Promise.resolve(a.access_token);
   return sbFetch('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:JSON.stringify({refresh_token:a.refresh_token})})
-    .then(function(j){var s=toSession(j);setAuth(s);return s.access_token;})
-    .catch(function(e){setAuth(null);rerender();throw new Error('Session expired, please log in again');});
+    .then(function(j){var s=toSession(j);if(!s.user.name)s.user.name=a.user.name;setAuth(s);return s.access_token;})
+    .catch(function(){setAuth(null);rerender();throw new Error('Session expired, please log in again');});
 }
 function snapshot(){
   var o={};
@@ -7991,32 +8038,168 @@ function applyCloud(d){
   Object.keys(d).forEach(function(k){if(k.indexOf('edupulse')===0&&k!==STORAGE_KEYS.geminiKey&&k!==K)localStorage.setItem(k,d[k]);});
   location.reload();
 }
-function reconcile(){   /* right after login: offer the cloud copy, otherwise upload this device */
-  return fetchCloud().then(function(row){
-    if(row&&row.data&&Object.keys(row.data).length){
-      var when=row.updated_at?new Date(row.updated_at).toLocaleString():'earlier';
-      if(confirm('We found your saved progress from '+when+'.\n\nOK = load it on this device\nCancel = keep this device\'s progress and replace the saved copy')){applyCloud(row.data);return;}
-    }
-    return pushCloud(false);
-  });
-}
-function authCall(kind,email,pass){
-  var path=kind==='signup'?'/auth/v1/signup':'/auth/v1/token?grant_type=password';
-  return sbFetch(path,{method:'POST',body:JSON.stringify({email:email,password:pass})}).then(function(j){
-    if(!j||!j.access_token){toast('Account created. Check your email to confirm, then log in.','info');return;}
-    setAuth(toSession(j));rerender();toast(kind==='signup'?'Account created':'Logged in');return reconcile();
-  });
-}
 function rerender(){var p=document.getElementById('bz-panel');if(p){p.outerHTML=panel();}}
-function updateSyncLabel(){var el=document.getElementById('bz-last');if(el)el.textContent=cfg.lastSync?'Last backup: '+new Date(cfg.lastSync).toLocaleString():'No backup yet';}
+function ago(t){if(!t)return 'No backup yet';var m=Math.round((Date.now()-t)/60000);if(m<1)return 'Backed up just now';if(m<60)return 'Backed up '+m+' min ago';var h=Math.round(m/60);if(h<24)return 'Backed up '+h+' h ago';return 'Backed up '+new Date(t).toLocaleDateString();}
+function updateSyncLabel(){var el=document.getElementById('bz-last');if(el)el.textContent=ago(cfg.lastSync);}
+
+/* ----- friendly errors + validation ----- */
+function friendly(e){
+  var m=(e&&e.message||'').toLowerCase();
+  if(m.indexOf('invalid login')>-1)return 'That email or password is not right. Try again, or reset your password.';
+  if(m.indexOf('already registered')>-1||m.indexOf('already been registered')>-1)return 'ALREADY';
+  if(m.indexOf('rate limit')>-1||m.indexOf('too many')>-1||(e&&e.status===429))return 'Too many attempts. Please wait a minute and try again.';
+  if(m.indexOf('email not confirmed')>-1)return 'Please confirm your email first. Check your inbox for the link.';
+  if(m.indexOf('password')>-1&&m.indexOf('short')>-1)return 'Password is too short. Use at least 8 characters.';
+  if(m.indexOf('failed to fetch')>-1||m.indexOf('network')>-1)return 'No connection. Check your internet and try again.';
+  return e&&e.message?e.message:'Something went wrong. Please try again.';
+}
+function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);}
+function score(p){var s=0;if(p.length>=8)s++;if(p.length>=12)s++;if(/[a-z]/.test(p)&&/[A-Z]/.test(p))s++;if(/\d/.test(p)&&/[^A-Za-z0-9]|[a-z]/i.test(p))s++;return Math.min(4,p.length<8?Math.min(s,1):s);}
+var LBL=['Too weak','Weak','Okay','Good','Strong'];
+
+/* ----- the account dialog ----- */
+function initials(n,e){var s=(n||e||'?').trim();var p=s.split(/[\s@._-]+/).filter(Boolean);return ((p[0]||'?')[0]+(p[1]?p[1][0]:'')).toUpperCase();}
+function field(id,label,type,ph,ac,extra){
+  return '<label class="bz-f" for="'+id+'"><span>'+label+'</span><div class="bz-in"><input id="'+id+'" name="'+id+'" type="'+type+'" placeholder="'+ph+'" autocomplete="'+ac+'" '+(extra||'')+'>'+(type==='password'?'<button type="button" class="bz-eye" aria-label="Show password" onclick="__bzAcc.eye(\''+id+'\',this)"><i class="fa-regular fa-eye"></i></button>':'')+'</div></label>';
+}
+function meterHtml(){return '<div class="bz-meter" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="bz-mlbl" id="bz-mlbl">Use 8+ characters with a mix of letters and numbers</div>';}
+function head(icon,title,sub){return '<div class="bz-logo"><i class="fa-solid '+icon+'"></i></div><h2>'+title+'</h2><p class="bz-sub2">'+sub+'</p>';}
+function btn(label,icon){return '<button type="submit" class="bz-go" id="bz-go"><span><i class="fa-solid '+icon+'"></i> '+label+'</span></button>';}
+function view(){
+  var v='';
+  if(mode==='signup'){
+    v=head('fa-heart-pulse','Create your free account','Back up your progress and continue on any device.')
+     +'<ul class="bz-perks"><li><i class="fa-solid fa-check"></i>Automatic backup, nothing to remember</li><li><i class="fa-solid fa-check"></i>Pick up where you left off on a new phone</li><li><i class="fa-solid fa-check"></i>Your progress is private to you</li></ul>'
+     +'<div class="bz-err" id="bz-err" role="alert" aria-live="polite"></div>'
+     +'<form onsubmit="return __bzAcc.submit(event)" novalidate>'
+     +field('bz-name','Your name','text','e.g. Ananya','name','maxlength="40"')
+     +field('bz-email','Email','email','you@example.com','email','inputmode="email" autocapitalize="off"')
+     +field('bz-pass','Password','password','At least 8 characters','new-password','oninput="__bzAcc.meter(this.value)"')+meterHtml()
+     +btn('Create account','fa-user-plus')+'</form>'
+     +'<p class="bz-sw">Already have an account? <button type="button" onclick="__bzAcc.open(\'login\')">Log in</button></p>';
+  }else if(mode==='login'){
+    v=head('fa-heart-pulse','Welcome back','Log in to restore and back up your progress.')
+     +'<div class="bz-err" id="bz-err" role="alert" aria-live="polite"></div>'
+     +'<form onsubmit="return __bzAcc.submit(event)" novalidate>'
+     +field('bz-email','Email','email','you@example.com','email','inputmode="email" autocapitalize="off"')
+     +field('bz-pass','Password','password','Your password','current-password')
+     +'<div class="bz-row2"><button type="button" class="bz-link" onclick="__bzAcc.open(\'forgot\')">Forgot password?</button></div>'
+     +btn('Log in','fa-right-to-bracket')+'</form>'
+     +'<p class="bz-sw">New here? <button type="button" onclick="__bzAcc.open(\'signup\')">Create a free account</button></p>';
+  }else if(mode==='forgot'){
+    v=head('fa-key','Reset your password','Enter your email and we will send you a reset link.')
+     +'<div class="bz-err" id="bz-err" role="alert" aria-live="polite"></div>'
+     +'<form onsubmit="return __bzAcc.submit(event)" novalidate>'+field('bz-email','Email','email','you@example.com','email','inputmode="email" autocapitalize="off"')
+     +btn('Send reset link','fa-paper-plane')+'</form>'
+     +'<p class="bz-sw"><button type="button" onclick="__bzAcc.open(\'login\')"><i class="fa-solid fa-arrow-left"></i> Back to log in</button></p>';
+  }else if(mode==='sent'){
+    var c=sentInfo.kind==='confirm';
+    v='<div class="bz-logo ok"><i class="fa-solid fa-envelope-circle-check"></i></div><h2>Check your inbox</h2><p class="bz-sub2">'
+     +(c?'We sent a confirmation link to ':'If an account exists for ')+'<b>'+esc(sentInfo.email)+'</b>'+(c?'. Open it to finish creating your account.':', a reset link is on its way.')+'</p>'
+     +'<p class="bz-hint">Can\'t see it? Check your spam folder.</p>'
+     +(c?'<button type="button" class="bz-ghost" id="bz-resend" onclick="__bzAcc.resend()">Resend email</button>':'')
+     +'<p class="bz-sw"><button type="button" onclick="__bzAcc.open(\'login\')">Back to log in</button></p>';
+  }else if(mode==='reset'){
+    v=head('fa-lock','Set a new password','Choose a strong password you will remember.')
+     +'<div class="bz-err" id="bz-err" role="alert" aria-live="polite"></div>'
+     +'<form onsubmit="return __bzAcc.submit(event)" novalidate>'+field('bz-pass','New password','password','At least 8 characters','new-password','oninput="__bzAcc.meter(this.value)"')+meterHtml()
+     +btn('Update password','fa-check')+'</form>';
+  }else if(mode==='restore'){
+    var when=pendingCloud&&pendingCloud.updated_at?new Date(pendingCloud.updated_at).toLocaleString():'earlier';
+    v='<div class="bz-logo ok"><i class="fa-solid fa-cloud-arrow-down"></i></div><h2>We found your saved progress</h2><p class="bz-sub2">Last saved '+esc(when)+'. Which copy do you want to use on this device?</p>'
+     +'<button type="button" class="bz-go" onclick="__bzAcc.useCloud()"><span><i class="fa-solid fa-cloud-arrow-down"></i> Load my saved progress</span></button>'
+     +'<button type="button" class="bz-ghost" onclick="__bzAcc.keepLocal()">Keep this device\'s progress</button>'
+     +'<p class="bz-hint">Keeping this device\'s progress replaces the saved copy.</p>';
+  }
+  return '<div class="bz-card"><button type="button" class="bz-close" aria-label="Close" onclick="__bzAcc.close()"><i class="fa-solid fa-xmark"></i></button>'+v+'</div>';
+}
+function draw(){if(!ov)return;ov.innerHTML=view();setTimeout(function(){var f=ov&&ov.querySelector('input');if(f)f.focus();},40);}
+function openAuth(m){
+  mode=m||'signup';busy=false;
+  if(!ov){ov=document.createElement('div');ov.id='bz-auth';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');
+    ov.addEventListener('mousedown',function(e){if(e.target===ov&&mode!=='restore'&&mode!=='reset')closeAuth();});document.body.appendChild(ov);document.documentElement.classList.add('bz-lock');}
+  draw();
+}
+function closeAuth(){if(ov){ov.remove();ov=null;}document.documentElement.classList.remove('bz-lock');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov&&mode!=='restore'&&mode!=='reset')closeAuth();});
+function showErr(msg,html){var el=document.getElementById('bz-err');if(!el)return;el.innerHTML=html||esc(msg);el.classList.toggle('on',!!msg||!!html);}
+function setBusy(b,label){busy=b;var g=document.getElementById('bz-go');if(!g)return;g.disabled=b;g.classList.toggle('load',b);}
+function markBad(id,bad){var el=document.getElementById(id);if(el)el.closest('.bz-f').classList.toggle('bad',bad);}
+function afterLogin(){
+  return fetchCloud().then(function(row){
+    if(row&&row.data&&Object.keys(row.data).length){pendingCloud=row;mode='restore';if(!ov)openAuth('restore');else draw();}
+    else{closeAuth();rerender();return pushCloud(false);}
+  }).catch(function(){closeAuth();rerender();});
+}
+function startCooldown(){
+  cooldown=30;clearInterval(cdTimer);
+  function tick(){var b=document.getElementById('bz-resend');if(!b){clearInterval(cdTimer);return;}if(cooldown>0){b.disabled=true;b.textContent='Resend in '+cooldown+'s';cooldown--;}else{b.disabled=false;b.textContent='Resend email';clearInterval(cdTimer);}}
+  tick();cdTimer=setInterval(tick,1000);
+}
 window.__bzAcc={
-  signup:function(){var e=val('bz-email'),p=val('bz-pass');if(!e||p.length<6){toast('Enter an email and a password of 6+ characters','error');return;}authCall('signup',e,p).catch(function(x){toast(x.message,'error');});},
-  login:function(){var e=val('bz-email'),p=val('bz-pass');if(!e||!p){toast('Enter your email and password','error');return;}authCall('login',e,p).catch(function(x){toast(x.message,'error');});},
-  logout:function(){pushCloud(true).finally(function(){setAuth(null);lastHash='';rerender();toast('Logged out','info');});},
+  open:openAuth,close:closeAuth,
+  eye:function(id,b){var i=document.getElementById(id);if(!i)return;var show=i.type==='password';i.type=show?'text':'password';b.innerHTML='<i class="fa-regular '+(show?'fa-eye-slash':'fa-eye')+'"></i>';b.setAttribute('aria-label',show?'Hide password':'Show password');},
+  meter:function(v){var s=v?score(v):0,bars=document.querySelectorAll('.bz-meter i');bars.forEach(function(b,i){b.className=i<s?'s'+s:'';});var l=document.getElementById('bz-mlbl');if(l)l.textContent=v?LBL[s]:'Use 8+ characters with a mix of letters and numbers';},
+  submit:function(ev){
+    ev.preventDefault();if(busy)return false;
+    var email=val('bz-email'),pass=(document.getElementById('bz-pass')||{}).value||'',name=val('bz-name');
+    showErr('');['bz-name','bz-email','bz-pass'].forEach(function(i){markBad(i,false);});
+    if(mode==='signup'){
+      if(!name){markBad('bz-name',true);showErr('Please enter your name.');return false;}
+      if(!validEmail(email)){markBad('bz-email',true);showErr('Enter a valid email address.');return false;}
+      if(pass.length<8){markBad('bz-pass',true);showErr('Password must be at least 8 characters.');return false;}
+      setBusy(true);
+      sbFetch('/auth/v1/signup',{method:'POST',body:JSON.stringify({email:email,password:pass,data:{name:name}})}).then(function(j){
+        if(j&&j.access_token){setAuth(toSession(j));toast('Welcome, '+name+'!');return afterLogin();}
+        if(j&&j.user&&j.user.identities&&j.user.identities.length===0){setBusy(false);showErr('',"An account with this email already exists. <button type='button' class='bz-link' onclick=\"__bzAcc.open('login')\">Log in instead</button>");return;}
+        sentInfo={kind:'confirm',email:email};mode='sent';draw();startCooldown();
+      }).catch(function(e){setBusy(false);var f=friendly(e);if(f==='ALREADY')showErr('',"An account with this email already exists. <button type='button' class='bz-link' onclick=\"__bzAcc.open('login')\">Log in instead</button>");else showErr(f);});
+    }else if(mode==='login'){
+      if(!validEmail(email)){markBad('bz-email',true);showErr('Enter a valid email address.');return false;}
+      if(!pass){markBad('bz-pass',true);showErr('Enter your password.');return false;}
+      setBusy(true);
+      sbFetch('/auth/v1/token?grant_type=password',{method:'POST',body:JSON.stringify({email:email,password:pass})}).then(function(j){
+        setAuth(toSession(j));var n=auth().user.name;toast(n?'Welcome back, '+n+'!':'Logged in');return afterLogin();
+      }).catch(function(e){setBusy(false);showErr(friendly(e));});
+    }else if(mode==='forgot'){
+      if(!validEmail(email)){markBad('bz-email',true);showErr('Enter a valid email address.');return false;}
+      setBusy(true);
+      sbFetch('/auth/v1/recover?redirect_to='+encodeURIComponent(location.origin+location.pathname),{method:'POST',body:JSON.stringify({email:email})}).then(function(){
+        sentInfo={kind:'reset',email:email};mode='sent';draw();
+      }).catch(function(e){setBusy(false);showErr(friendly(e));});
+    }else if(mode==='reset'){
+      if(pass.length<8){markBad('bz-pass',true);showErr('Password must be at least 8 characters.');return false;}
+      if(!recoverySess){showErr('This reset link has expired. Please request a new one.');return false;}
+      setBusy(true);
+      sbFetch('/auth/v1/user',{method:'PUT',body:JSON.stringify({password:pass})},recoverySess.access_token).then(function(){
+        setAuth(recoverySess);recoverySess=null;toast('Password updated');return afterLogin();
+      }).catch(function(e){setBusy(false);showErr(friendly(e));});
+    }
+    return false;
+  },
+  resend:function(){
+    if(cooldown>0)return;
+    sbFetch('/auth/v1/resend',{method:'POST',body:JSON.stringify({type:'signup',email:sentInfo.email})}).then(function(){toast('Email sent','info');startCooldown();}).catch(function(e){toast(friendly(e),'error');});
+  },
+  useCloud:function(){if(pendingCloud&&pendingCloud.data)applyCloud(pendingCloud.data);},
+  keepLocal:function(){closeAuth();rerender();pushCloud(false);},
+  logout:function(){if(!confirm('Log out of this device? Your progress stays saved in your account.'))return;pushCloud(true).finally(function(){setAuth(null);lastHash='';rerender();toast('Logged out','info');if(typeof switchTab==='function')switchTab('settings');});},
   now:function(){pushCloud(false);},
-  restore:function(){fetchCloud().then(function(r){if(!r||!r.data){toast('No saved progress yet','info');return;}if(confirm('Replace progress on this device with your saved copy?'))applyCloud(r.data);}).catch(function(x){toast(x.message,'error');});}
+  restore:function(){fetchCloud().then(function(r){if(!r||!r.data){toast('No saved progress yet','info');return;}pendingCloud=r;openAuth('restore');}).catch(function(x){toast(friendly(x),'error');});}
 };
 function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+/* links from emails: confirmation signs the student in, recovery opens the new-password dialog */
+function handleHash(){
+  var h=location.hash;if(h.indexOf('access_token=')<0)return;
+  var p=new URLSearchParams(h.slice(1)),at=p.get('access_token');if(!at)return;
+  var sess={access_token:at,refresh_token:p.get('refresh_token')||'',expires_at:Math.floor(Date.now()/1000)+(+p.get('expires_in')||3600),user:{}};
+  history.replaceState(null,'',location.pathname+location.search);
+  sbFetch('/auth/v1/user',{method:'GET'},at).then(function(u){
+    sess.user={id:u.id,email:u.email,name:(u.user_metadata&&u.user_metadata.name)||''};
+    if(p.get('type')==='recovery'){recoverySess=sess;openAuth('reset');}
+    else{setAuth(sess);toast('Email confirmed. You are logged in.');afterLogin();}
+  }).catch(function(){toast('That link has expired. Please try again.','error');});
+}
 /* automatic backup: when you leave the app, and every 2 minutes if anything changed */
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')pushCloud(true);});
 setInterval(function(){if(auth())pushCloud(true);},120000);
@@ -8034,15 +8217,15 @@ function panel(){
    +toggle('Eye-comfort tint','Warm tint for late-night study','warm')
    +toggle('Auto dark mode','Dark from 7pm to 6am, light in the day','autoTheme')
    +toggle('AI explanations in Hindi','Applies to Explain and Memory trick','hindi')
-   +accountHtml()+'</div>';
+   +'<div style="margin-top:14px"><div class="bz-h" style="color:#6366f1;margin-bottom:8px">Account &amp; backup</div>'+accountHtml()+'</div></div>';
 }
 function accountHtml(){
   var a=auth();
-  if(a)return '<div style="margin-top:14px"><div class="bz-h" style="color:#6366f1">Your account</div><p class="bz-sub" style="margin:4px 0">Signed in as <b>'+esc(a.user.email)+'</b>. Your progress backs up automatically.</p><p class="bz-sub" id="bz-last">'+(cfg.lastSync?'Last backup: '+new Date(cfg.lastSync).toLocaleString():'No backup yet')+'</p>'
-    +'<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="bz-btn" onclick="__bzAcc.now()"><i class="fa-solid fa-cloud-arrow-up"></i> Back up now</button><button class="bz-btn alt" onclick="__bzAcc.restore()"><i class="fa-solid fa-cloud-arrow-down"></i> Restore</button><button class="bz-btn alt" onclick="__bzAcc.logout()"><i class="fa-solid fa-right-from-bracket"></i> Log out</button></div></div>';
-  return '<div style="margin-top:14px"><div class="bz-h" style="color:#6366f1">Account</div><p class="bz-sub" style="margin:4px 0">Create a free account and your progress is saved automatically, so you never lose it if you change phones or clear your browser.</p>'
-    +'<input type="text" id="bz-email" placeholder="Email" autocomplete="email" inputmode="email"><input type="password" id="bz-pass" placeholder="Password (6+ characters)" autocomplete="current-password">'
-    +'<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="bz-btn" onclick="__bzAcc.signup()"><i class="fa-solid fa-user-plus"></i> Create account</button><button class="bz-btn alt" onclick="__bzAcc.login()"><i class="fa-solid fa-right-to-bracket"></i> Log in</button></div></div>';
+  if(a){var u=a.user||{};
+    return '<div class="bz-acct"><div class="bz-av">'+esc(initials(u.name,u.email))+'</div><div class="bz-acct-t"><b>'+esc(u.name||'Your account')+'</b><small>'+esc(u.email||'')+'</small><span class="bz-ok"><i></i><em id="bz-last">'+esc(ago(cfg.lastSync))+'</em> · automatic</span></div></div>'
+      +'<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="bz-btn" onclick="__bzAcc.now()"><i class="fa-solid fa-cloud-arrow-up"></i> Back up now</button><button class="bz-btn alt" onclick="__bzAcc.restore()"><i class="fa-solid fa-cloud-arrow-down"></i> Restore</button><button class="bz-btn alt" onclick="__bzAcc.logout()"><i class="fa-solid fa-right-from-bracket"></i> Log out</button></div>';}
+  return '<div class="bz-acct off"><div class="bz-av"><i class="fa-solid fa-cloud"></i></div><div class="bz-acct-t"><b>Not backed up yet</b><small>Create a free account to keep your progress safe and available on any device.</small></div></div>'
+    +'<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="bz-btn" onclick="__bzAcc.open(\'signup\')"><i class="fa-solid fa-user-plus"></i> Create free account</button><button class="bz-btn alt" onclick="__bzAcc.open(\'login\')"><i class="fa-solid fa-right-to-bracket"></i> Log in</button></div>';
 }
 function mountPanel(){
   var main=document.getElementById('main-container');
@@ -8053,7 +8236,7 @@ function mountPanel(){
   if(sound){sound.checked=!!settings().sound;sound.setAttribute('onchange','__bz.toggleSound(this.checked)');}
 }
 var mo=new MutationObserver(function(){mountPanel();});
-function boot(){var m=document.getElementById('main-container');if(m)mo.observe(m,{childList:true});applyPrefs();mountPanel();}
+function boot(){handleHash();var m=document.getElementById('main-container');if(m)mo.observe(m,{childList:true});applyPrefs();mountPanel();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 </script>
