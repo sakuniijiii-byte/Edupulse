@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>EduPulse</title>
+<title>EduPulse PRO — NEET Preparation Ecosystem</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config = { darkMode: 'class' }</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -5229,6 +5229,8 @@ main.innerHTML = `
 } else if (currentTab === 'learn') {
 main.innerHTML = buildPracticeHome();
 } else if (currentTab === 'progress') {
+main.innerHTML = buildStatsPageV2();
+} else if (false) { /* legacy stats layout kept for reference */
 const attemptsArr = StorageModule.get(STORAGE_KEYS.attempts, []);
 const totalTests = attemptsArr.length;
 const totalQuestionsAttempted = attemptsArr.reduce((acc, curr) => acc + (curr.attempted || 0), 0);
@@ -7267,5 +7269,138 @@ html body .quiz-session-layout .pq-prev{width:46px;flex-basis:46px}
   html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn span{display:none}
 }
 </style>
+<style id="edupulse-stats-page">
+.st{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:18px;animation:fadeIn .35s ease both}
+.st-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
+.st-head h2{font-size:clamp(20px,2.2vw,26px);font-weight:900;letter-spacing:-.03em;color:var(--text-primary)}
+.st-head p{font-size:12.5px;color:var(--text-muted);margin-top:2px;font-weight:500}
+.st-pills{display:flex;gap:4px;padding:4px;border-radius:13px;background:rgba(148,163,184,.14);border:1px solid var(--border-color)}
+.st-pills button{padding:7px 14px;border-radius:10px;font-size:12px;font-weight:800;color:var(--text-muted);transition:.15s}
+.st-pills button.on{background:var(--card-bg);color:var(--text-primary);box-shadow:0 2px 8px -3px rgba(15,23,42,.35)}
+.st-grid{display:grid;gap:16px}
+.st-k4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.st-g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.st-c{background:var(--card-bg);border:1px solid var(--border-color);border-radius:18px;padding:18px 20px;box-shadow:0 12px 30px -24px rgba(15,23,42,.35);min-width:0}
+.st-c h3{font-size:13px;font-weight:900;letter-spacing:.02em;color:var(--text-primary);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.st-c h3 small{font-size:10.5px;font-weight:700;color:var(--text-muted);letter-spacing:0}
+.st-lbl{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.st-big{font-size:34px;line-height:1;font-weight:900;letter-spacing:-.04em;color:var(--text-primary);font-variant-numeric:tabular-nums}
+.st-big sub{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0;margin-left:3px}
+.st-sub{font-size:11.5px;color:var(--text-muted);font-weight:600;margin-top:6px}
+.st-hero{background:linear-gradient(135deg,#0f766e,#0d9488 55%,#0891b2);border:0;color:#fff;position:relative;overflow:hidden}
+.st-hero::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.12)}
+.st-hero .st-lbl,.st-hero .st-sub,.st-hero .st-big,.st-hero .st-big sub{color:#fff}
+.st-hero .st-lbl,.st-hero .st-sub{opacity:.85}
+.st-band{display:inline-block;margin-top:10px;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.2);font-size:11px;font-weight:800}
+.st-kpi{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.st-bar{height:9px;border-radius:99px;background:rgba(148,163,184,.2);overflow:hidden;display:flex}
+.st-bar i{display:block;height:100%}
+.st-row{display:grid;grid-template-columns:96px 1fr 44px;gap:10px;align-items:center;margin-top:12px;font-size:12px;font-weight:700;color:var(--text-primary)}
+.st-row b{text-align:right;font-variant-numeric:tabular-nums}
+.st-row span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st-legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;font-size:11.5px;font-weight:700;color:var(--text-muted)}
+.st-legend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px}
+.st-marks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.st-marks div{padding:11px 12px;border-radius:13px;background:rgba(148,163,184,.1);border:1px solid var(--border-color)}
+.st-marks b{display:block;font-size:20px;font-weight:900;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.st-marks span{font-size:10.5px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em}
+.st-heat{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,1fr);gap:4px;margin-top:14px}
+.st-heat i{aspect-ratio:1;border-radius:4px;background:rgba(148,163,184,.16);min-width:0}
+.st-heat i.l1{background:rgba(20,184,166,.30)}.st-heat i.l2{background:rgba(20,184,166,.55)}.st-heat i.l3{background:rgba(13,148,136,.8)}.st-heat i.l4{background:#0f766e}
+body.dark .st-heat i.l4{background:#2dd4bf}
+.st-ins{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.st-ins p{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border-radius:13px;background:rgba(148,163,184,.1);font-size:12.5px;line-height:1.5;font-weight:600;color:var(--text-primary)}
+.st-ins p i{margin-top:2px}
+.st-empty{padding:26px 8px;text-align:center;color:var(--text-muted);font-size:12.5px;font-weight:600}
+.st-att{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 14px;border-radius:14px;border:1px solid var(--border-color);background:rgba(148,163,184,.07);transition:border-color .15s,background .15s}
+.st-att:hover{border-color:rgba(20,184,166,.45);background:rgba(20,184,166,.06)}
+.st-badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:800;background:rgba(20,184,166,.14);color:#0f766e;margin-right:6px}
+body.dark .st-badge{color:#5eead4}
+.st-chip{font-size:11px;font-weight:800;padding:2px 8px;border-radius:8px}
+@media(max-width:1000px){.st-k4{grid-template-columns:repeat(2,minmax(0,1fr))}.st-g2{grid-template-columns:1fr}}
+@media(max-width:520px){.st-big{font-size:28px}.st-row{grid-template-columns:78px 1fr 40px}.st-att{flex-wrap:wrap}}
+body.dark .st-hero{background:linear-gradient(135deg,#0b4f4a,#0f766e 55%,#0e7490)}
+body.dark .st-c{background:linear-gradient(180deg,#111a2e,#0d1424);box-shadow:0 14px 34px -24px rgba(0,0,0,.85)}
+body.dark .st-hero.st-c{background:linear-gradient(135deg,#0b4f4a,#0f766e 55%,#0e7490)}
+</style>
+<script>
+/* Performance Stats v2 — marks-first analytics (NEET +4 / -1 marking). Read-only over existing storage. */
+function buildStatsPageV2(){
+  const S=StorageModule,K=STORAGE_KEYS,set=S.get(K.settings,defaultSettings)||{};
+  const mc=Number(set.marksCorrect??4),mw=Math.abs(Number(set.marksWrong??-1));
+  const range=window.__statsRange||'all',days=range==='all'?0:Number(range);
+  const cutoff=days?Date.now()-days*864e5:0;
+  const every=S.get(K.attempts,[])||[],at=every.filter(a=>(a.finishedAt||0)>=cutoff);
+  const sum=(arr,f)=>arr.reduce((s,a)=>s+(Number(f(a))||0),0);
+  const att=sum(at,a=>a.attempted),cor=sum(at,a=>a.correct),wr=sum(at,a=>a.wrong),sk=sum(at,a=>a.skipped);
+  const acc=cor+wr?Math.round(cor/(cor+wr)*100):0;
+  const pcts=at.map(a=>a.maxScore>0?Math.max(0,Math.min(100,a.score/a.maxScore*100)):0);
+  const avgPct=pcts.length?Math.round(sum(pcts,x=>x)/pcts.length):0;
+  const bestIdx=pcts.length?pcts.indexOf(Math.max(...pcts)):-1,best=bestIdx>=0?at[bestIdx]:null;
+  const gained=cor*mc,lost=wr*mw,net=gained-lost,projected=Math.round(avgPct/100*720);
+  const band=!at.length?'Take a test to get your estimate':projected>=600?'Top-tier zone 🏆':projected>=450?'Government-seat range 🎯':projected>=300?'Building momentum 📈':'Foundation phase — keep going 💪';
+  const streak=S.get(K.streak,{current:0,best:0,dailyCounts:{}})||{};const counts=streak.dailyCounts||{};
+  const ring=(p,c,s=64)=>{const r=s/2-6,C=2*Math.PI*r;return `<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}" style="flex:none"><circle cx="${s/2}" cy="${s/2}" r="${r}" fill="none" stroke="rgba(148,163,184,.25)" stroke-width="6"/><circle cx="${s/2}" cy="${s/2}" r="${r}" fill="none" stroke="${c}" stroke-width="6" stroke-linecap="round" stroke-dasharray="${(C*p/100).toFixed(1)} ${C}" transform="rotate(-90 ${s/2} ${s/2})"/></svg>`;};
+  /* trend */
+  const last=pcts.slice(0,12).reverse();let trend;
+  if(last.length<2)trend='<div class="st-empty">Complete 2+ tests to see your score trend.</div>';
+  else{const W=600,H=150,P=14,x=i=>P+i*(W-2*P)/(last.length-1),y=v=>H-P-v/100*(H-2*P);
+    const pts=last.map((v,i)=>`${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+    trend=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;margin-top:10px"><defs><linearGradient id="stg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14b8a6" stop-opacity=".35"/><stop offset="1" stop-color="#14b8a6" stop-opacity="0"/></linearGradient></defs>${[25,50,75].map(g=>`<line x1="${P}" x2="${W-P}" y1="${y(g)}" y2="${y(g)}" stroke="rgba(148,163,184,.25)" stroke-dasharray="3 5"/>`).join('')}<polygon points="${P},${H-P} ${pts} ${W-P},${H-P}" fill="url(#stg)"/><polyline points="${pts}" fill="none" stroke="#14b8a6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>${last.map((v,i)=>`<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="#0d9488"><title>${Math.round(v)}%</title></circle>`).join('')}</svg>`;}
+  /* subjects & chapters (all-time question stats) */
+  const qs=S.get(K.qstats,{})||{},subj={},chap={};
+  Object.values(qs).forEach(q=>{if(!q)return;const c=q.correct||0,w=q.wrong||0;if(!(c+w))return;
+    if(q.sj){const s=subj[q.sj]=subj[q.sj]||{c:0,w:0};s.c+=c;s.w+=w;}
+    if(q.ch){const k=(q.sj||'')+'|'+q.ch,h=chap[k]=chap[k]||{n:q.ch,s:q.sj||'',c:0,w:0};h.c+=c;h.w+=w;}});
+  const sc={Physics:'#f59e0b',Chemistry:'#0ea5e9',Biology:'#10b981',Botany:'#22c55e',Zoology:'#ec4899'};
+  const subRows=Object.entries(subj).map(([n,v])=>({n,p:Math.round(v.c/(v.c+v.w)*100),t:v.c+v.w})).sort((a,b)=>b.t-a.t);
+  const subHtml=subRows.length?subRows.map(r=>`<div class="st-row"><span>${escapeHtml(r.n)}</span><div class="st-bar"><i style="width:${r.p}%;background:${sc[r.n]||'#14b8a6'}"></i></div><b>${r.p}%</b></div>`).join(''):'<div class="st-empty">Practice a few chapters to unlock subject analysis.</div>';
+  const chs=Object.values(chap).filter(h=>h.c+h.w>=3).map(h=>({...h,p:Math.round(h.c/(h.c+h.w)*100)}));
+  const row=h=>`<div class="st-row"><span title="${escapeHtml(h.n)}">${escapeHtml(h.n)}</span><div class="st-bar"><i style="width:${h.p}%;background:${h.p>=70?'#10b981':h.p>=45?'#f59e0b':'#ef4444'}"></i></div><b>${h.p}%</b></div>`;
+  const weak=[...chs].sort((a,b)=>a.p-b.p).slice(0,4),strong=[...chs].sort((a,b)=>b.p-a.p).slice(0,3).filter(h=>h.p>=60);
+  const chHtml=chs.length?`<p class="st-lbl" style="margin-top:10px;color:#ef4444">Needs work</p>${weak.map(row).join('')}${strong.length?`<p class="st-lbl" style="margin-top:16px;color:#10b981">Strongest</p>${strong.map(row).join('')}`:''}`:'<div class="st-empty">Answer 3+ questions in a chapter to see strengths &amp; weak spots.</div>';
+  /* heatmap: 14 weeks */
+  const WK=14,end=new Date(),start=new Date(end.getTime()-(WK*7-1)*864e5),pad=start.getDay();let cells='<i style="visibility:hidden"></i>'.repeat(pad),active=0;
+  for(let d=0;d<WK*7-pad+pad&&d<WK*7;d++){const dt=new Date(start.getTime()+d*864e5),k=dt.toISOString().slice(0,10),n=counts[k]||0;if(n)active++;
+    cells+=`<i class="${n>=50?'l4':n>=25?'l3':n>=10?'l2':n>0?'l1':''}" title="${k}: ${n} questions"></i>`;}
+  /* insights */
+  const ins=[];
+  if(wr>0)ins.push(['fa-triangle-exclamation','#f59e0b',`Wrong answers cost you <b>${lost} marks</b>. Skipping unsure questions would have saved them.`]);
+  if(subRows.length>1){const w=[...subRows].sort((a,b)=>a.p-b.p)[0];ins.push(['fa-bullseye','#ef4444',`<b>${escapeHtml(w.n)}</b> is your weakest subject at ${w.p}% accuracy — prioritise it this week.`]);}
+  if(pcts.length>=4){const a=sum(pcts.slice(0,3),x=>x)/3,b=sum(pcts.slice(3,6),x=>x)/Math.max(1,pcts.slice(3,6).length),d=Math.round(a-b);ins.push([d>=0?'fa-arrow-trend-up':'fa-arrow-trend-down',d>=0?'#10b981':'#ef4444',`Your last 3 tests are <b>${Math.abs(d)}% ${d>=0?'higher':'lower'}</b> than the 3 before.`]);}
+  if(sk>att*0.25&&att>0)ins.push(['fa-forward','#0ea5e9',`You skipped ${sk} questions — attempt more where you can eliminate 2 options.`]);
+  if(!ins.length)ins.push(['fa-lightbulb','#14b8a6','Complete a few tests and your personalised insights will appear here.']);
+  const insHtml=ins.map(i=>`<p><i class="fa-solid ${i[0]}" style="color:${i[1]}"></i><span>${i[2]}</span></p>`).join('');
+  /* history (AI feedback button unchanged) */
+  const hist=at.length?`<div style="display:flex;flex-direction:column;gap:10px;max-height:460px;overflow-y:auto;padding-right:4px;margin-top:14px">${at.map(a=>{const p=a.maxScore>0?Math.max(0,Math.round(a.score/a.maxScore*100)):0,col=p>=70?'#10b981':p>=40?'#f59e0b':'#ef4444';
+    return `<div class="st-att"><div style="min-width:0"><h4 style="font-weight:800;font-size:13.5px;color:var(--text-primary);overflow:hidden;text-overflow:ellipsis">${escapeHtml(a.chapter)}</h4><p style="font-size:11px;color:var(--text-muted);margin-top:3px"><span class="st-badge">${escapeHtml(a.mode||'test')}</span>${escapeHtml(a.subject||'')} • ${new Date(a.finishedAt).toLocaleDateString()} ${new Date(a.finishedAt).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</p><div class="st-bar" style="margin-top:9px;max-width:260px"><i style="width:${a.total?(a.correct/a.total*100):0}%;background:#10b981"></i><i style="width:${a.total?(a.wrong/a.total*100):0}%;background:#ef4444"></i><i style="width:${a.total?(a.skipped/a.total*100):0}%;background:#94a3b8"></i></div></div><div style="display:flex;align-items:center;gap:12px;text-align:right;flex:none"><div><b style="display:block;font-size:16px;font-weight:900;color:${col};font-variant-numeric:tabular-nums">${a.score}<span style="font-size:11px;color:var(--text-muted)">/${a.maxScore}</span></b><span style="font-size:10.5px;font-weight:800;color:var(--text-muted)">${a.accuracy||0}% acc · ${a.correct||0}✓ ${a.wrong||0}✗</span></div><button onclick="generateAiTestPerformanceFeedback(${JSON.stringify(a).replace(/"/g,'&quot;')})" class="p-2.5 rounded-xl bg-purple-500/10 text-purple-600 hover:bg-purple-500/20 transition text-xs font-bold" title="AI Feedback"><i class="fa-solid fa-wand-magic-sparkles"></i></button></div></div>`;}).join('')}</div>`:'<div class="st-empty">No attempts in this period. Take a test from the Test Hub!</div>';
+  const pill=(v,l)=>`<button class="${range===v?'on':''}" onclick="window.__statsRange='${v}';renderView()">${l}</button>`;
+  return `<div class="st">
+  <div class="st-head"><div><h2>Performance Analytics</h2><p>Marks, accuracy and time-tested trends — based on +${mc} / −${mw} NEET marking.</p></div><div class="st-pills">${pill('7','7 days')}${pill('30','30 days')}${pill('all','All time')}</div></div>
+  <div class="st-grid st-k4">
+    <div class="st-c st-hero"><span class="st-lbl">Projected NEET score</span><div class="st-big" style="margin-top:10px">${at.length?projected:'—'}<sub>/ 720</sub></div><span class="st-band">${band}</span></div>
+    <div class="st-c st-kpi"><div><span class="st-lbl">Avg test score</span><div class="st-big" style="margin-top:10px">${avgPct}<sub>%</sub></div><div class="st-sub">${best?`Best ${best.score}/${best.maxScore}`:'No tests yet'}</div></div>${ring(avgPct,'#14b8a6')}</div>
+    <div class="st-c st-kpi"><div><span class="st-lbl">Accuracy</span><div class="st-big" style="margin-top:10px">${acc}<sub>%</sub></div><div class="st-sub">${cor} right · ${wr} wrong</div></div>${ring(acc,'#10b981')}</div>
+    <div class="st-c st-kpi"><div><span class="st-lbl">Day streak</span><div class="st-big" style="margin-top:10px">${streak.current||0}<sub>days</sub></div><div class="st-sub">Best ${streak.best||0} · ${att} solved</div></div><span style="font-size:34px">🔥</span></div>
+  </div>
+  <div class="st-grid st-g2">
+    <div class="st-c"><h3>Marks breakdown <small>${at.length} test${at.length===1?'':'s'}</small></h3>
+      <div class="st-marks"><div><b style="color:#10b981">+${gained}</b><span>Gained</span></div><div><b style="color:#ef4444">−${lost}</b><span>Lost</span></div><div><b>${net}</b><span>Net marks</span></div></div>
+      <div class="st-bar" style="margin-top:16px"><i style="width:${att+sk?cor/(att+sk)*100:0}%;background:#10b981"></i><i style="width:${att+sk?wr/(att+sk)*100:0}%;background:#ef4444"></i><i style="width:${att+sk?sk/(att+sk)*100:0}%;background:#94a3b8"></i></div>
+      <div class="st-legend"><span><i style="background:#10b981"></i>Correct ${cor}</span><span><i style="background:#ef4444"></i>Wrong ${wr}</span><span><i style="background:#94a3b8"></i>Skipped ${sk}</span></div></div>
+    <div class="st-c"><h3>Score trend <small>last ${last.length||0} tests · % of max marks</small></h3>${trend}</div>
+  </div>
+  <div class="st-grid st-g2">
+    <div class="st-c"><h3>Subject-wise accuracy <small>all-time</small></h3>${subHtml}</div>
+    <div class="st-c"><h3>Chapter strengths &amp; weak spots <small>all-time</small></h3>${chHtml}</div>
+  </div>
+  <div class="st-grid st-g2">
+    <div class="st-c"><h3>Study consistency <small>${active} active day${active===1?'':'s'} · 14 weeks</small></h3><div class="st-heat">${cells}</div></div>
+    <div class="st-c"><h3>Smart insights</h3><div class="st-ins">${insHtml}</div></div>
+  </div>
+  <div class="st-c"><h3>Test attempt history <small>${at.length} in range</small></h3>${hist}</div>
+  </div>`;
+}
+</script>
 </body>
   </html>
