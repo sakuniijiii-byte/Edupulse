@@ -6664,6 +6664,7 @@ body.dark .pc-ibtn.on{color:#34d399}
    Layout rules are gated to wide landscape screens; colour rules to .dark.
    ===================================================================== */
 
+:root{--app-bg:#f5f7f8;--surface-muted:#f1f5f9}
 /* ---------- DARK THEME TOKENS (all sizes: colour only, no layout) ---------- */
 html body.dark{
   --bg:#070a12; --paper:#0d1424; --card-bg:#0f172a;
@@ -6673,9 +6674,11 @@ html body.dark{
   --glass:rgba(7,10,18,.78);
   --ep-raise:#131c31; --ep-hover:#1a2540; --ep-glow:rgba(34,211,238,.28);
   --exam-line:rgba(148,163,184,.16);
+  --app-bg:#070a12; --surface-muted:#131c31;
   color-scheme:dark;
 }
 html body.dark{background:radial-gradient(1200px 600px at 85% -10%,rgba(20,184,166,.07),transparent 60%),#070a12!important}
+html body.dark .fullscreen-modal .modal-box,html body.dark .quiz-session-layout{background:#070a12!important}
 html body.dark .sidebar{background:linear-gradient(180deg,#0a0f1c,#080c17)!important;border-color:rgba(148,163,184,.12)!important}
 html body.dark .topbar{background:rgba(7,10,18,.78)!important;border-color:rgba(148,163,184,.12)!important;backdrop-filter:blur(18px) saturate(140%)}
 html body.dark .card,html body.dark .dv2-card,html body.dark .dv2-stat,html body.dark .dv2-act,
@@ -6726,6 +6729,33 @@ html body.dark ::-webkit-scrollbar-thumb{background:#243047;border-radius:8px}
 html body.dark ::-webkit-scrollbar-thumb:hover{background:#31405d}
 html body.dark{scrollbar-color:#243047 transparent}
 
+
+/* ---------- LANDSCAPE: palette strip on top, question + tools below ---------- */
+@media (orientation:landscape) and (min-width:600px){
+  html body .quiz-session-layout.quiz-session-layout{
+    grid-template-columns:minmax(0,1fr) minmax(250px,30%)!important;
+    grid-template-rows:auto auto minmax(0,1fr)!important;
+    grid-template-areas:"head head" "palette palette" "question tools"!important;
+  }
+  html body .quiz-session-layout > .palette-drawer-top{
+    grid-area:palette!important;max-height:none!important;min-height:0!important;overflow:hidden!important;
+  }
+  html body .quiz-session-layout > .palette-drawer-top > div:nth-child(2){
+    display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;
+    gap:6px!important;padding:8px 10px!important;scrollbar-width:thin;
+  }
+  html body .quiz-session-layout .palette-touch-btn{flex:0 0 auto!important;width:44px!important;min-width:44px!important}
+  html body .quiz-session-layout > #normal-practice-toolkit{
+    grid-area:tools!important;max-height:100%!important;overflow:auto!important;
+  }
+  html body .quiz-session-layout > [ontouchstart]{grid-area:question!important;grid-row:auto!important}
+}
+@media (orientation:landscape) and (min-width:600px) and (max-height:600px){
+  html body .quiz-session-layout > .palette-drawer-top > div:first-child{padding:3px 8px!important}
+  html body .quiz-session-layout > .palette-drawer-top > div:nth-child(2){padding:5px 8px!important}
+  html body .quiz-session-layout .palette-touch-btn{height:30px!important;width:38px!important;min-width:38px!important}
+}
+
 /* ---------- DESKTOP / WIDE LANDSCAPE LAYOUT ---------- */
 @media (min-width:1100px) and (min-height:640px) and (orientation:landscape){
   html body .sidebar{width:264px;padding:26px 16px 20px;border-right:1px solid var(--border-color)}
@@ -6753,14 +6783,14 @@ html body.dark{scrollbar-color:#243047 transparent}
     max-width:1520px!important;margin-inline:auto!important;
     padding:20px 40px 24px!important;gap:14px 24px!important;
     grid-template-columns:minmax(0,1fr) 340px!important;
-    grid-template-rows:auto minmax(0,1fr) minmax(0,auto)!important;
+    grid-template-rows:auto auto minmax(0,1fr)!important;
+    grid-template-areas:"head head" "palette palette" "question tools"!important;
     height:calc(100dvh - 64px)!important;
   }
   html body .quiz-session-layout > .mb-1{padding:0 0 12px!important}
   html body .quiz-session-layout > .mb-1 h2{font-size:19px!important;max-width:42vw;letter-spacing:-.025em}
   html body .quiz-session-layout > .pq-progress,html body .quiz-session-layout .pq-progress{height:3px}
   html body .quiz-session-layout > [ontouchstart]{
-    grid-row:2 / span 2!important;
     padding:clamp(28px,3.4vw,52px) clamp(32px,4.4vw,72px)!important;
     border-radius:20px!important;border:1px solid var(--border-color);background:var(--card-bg);
     box-shadow:0 1px 2px rgba(15,23,42,.04),0 24px 60px -34px rgba(15,23,42,.22);
@@ -6776,15 +6806,13 @@ html body.dark{scrollbar-color:#243047 transparent}
   html body .quiz-session-layout button[role="radio"]:hover{transform:translateY(-1px)}
   /* right rail */
   html body .quiz-session-layout > .palette-drawer-top{
-    grid-row:2!important;border-radius:16px!important;max-height:none!important;
+    border-radius:16px!important;max-height:none!important;
     box-shadow:0 10px 30px -22px rgba(15,23,42,.3)!important;scrollbar-width:thin;
   }
-  html body .quiz-session-layout > .palette-drawer-top > div:nth-child(2){
-    grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:7px!important;padding:12px!important;
-  }
-  html body .quiz-session-layout .palette-touch-btn{height:38px!important;border-radius:10px!important;font-size:12.5px;font-weight:700}
+  html body .quiz-session-layout > .palette-drawer-top > div:nth-child(2){gap:8px!important;padding:12px 14px!important}
+  html body .quiz-session-layout .palette-touch-btn{height:38px!important;width:46px!important;min-width:46px!important;border-radius:10px!important;font-size:12.5px;font-weight:700}
   html body .quiz-session-layout > #normal-practice-toolkit{
-    grid-row:3!important;border-radius:16px!important;padding:14px!important;max-height:42vh!important;scrollbar-width:thin;
+    border-radius:16px!important;padding:14px!important;max-height:100%!important;scrollbar-width:thin;
   }
   html body .quiz-session-layout > #normal-practice-toolkit [data-action]{min-height:48px!important;border-radius:12px!important}
   html body .quiz-session-layout ::-webkit-scrollbar{width:8px;height:8px}
@@ -6798,7 +6826,174 @@ html body.dark{scrollbar-color:#243047 transparent}
 @media (min-width:1700px) and (min-height:760px) and (orientation:landscape){
   html body .main{padding-inline:64px}
   html body .quiz-session-layout.quiz-session-layout{grid-template-columns:minmax(0,1fr) 380px!important}
-  html body .quiz-session-layout > .palette-drawer-top > div:nth-child(2){grid-template-columns:repeat(7,minmax(0,1fr))!important}
+}
+</style>
+<style id="edupulse-practice-compact">
+/* =====================================================================
+   Practice mode — space-efficient layout (CSS only; markup/JS untouched)
+   Goal: give the question + options the screen, shrink chrome around them.
+   ===================================================================== */
+html body .quiz-session-layout.quiz-session-layout{padding:6px 10px 8px!important;gap:6px!important}
+
+/* 1) One-row header: back · title · chips (no wrapping, title ellipsis) */
+html body .quiz-session-layout > .mb-1{flex-wrap:nowrap!important;gap:8px!important;padding:0 0 6px!important;margin:0!important;position:relative}
+html body .quiz-session-layout > .mb-1 > div:first-child{min-width:0;flex:1 1 auto;gap:6px!important}
+html body .quiz-session-layout > .mb-1 > div:first-child button{padding:6px 8px!important}
+html body .quiz-session-layout > .mb-1 h2{font-size:15px!important;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+html body .quiz-session-layout > .mb-1 p{font-size:11px!important;line-height:1.2;margin-top:1px}
+html body .quiz-session-layout > .mb-1 > div:last-of-type{flex:0 0 auto;gap:5px!important}
+html body .quiz-session-layout .pq-chip,html body .quiz-session-layout .pq-auto,
+html body .quiz-session-layout > .mb-1 > div:last-of-type > button{min-height:32px!important;height:32px;padding:0 10px!important;border-radius:10px!important;font-size:12px!important}
+html body .quiz-session-layout .pq-auto span{display:none}            /* icon-only Auto */
+html body .quiz-session-layout .pq-auto.on span{display:inline}
+
+/* 2) Palette: slim bar, one scrolling row of numbers */
+html body .quiz-session-layout > .palette-drawer-top{margin:0!important;border-radius:14px!important;max-height:none!important}
+html body .quiz-session-layout > .palette-drawer-top > div:first-child{padding:5px 12px!important;min-height:0}
+html body .quiz-session-layout > .palette-drawer-top > div:first-child .rounded-full{padding:1px 7px!important}
+html body .quiz-session-layout > .palette-drawer-top > div:first-child > :last-child{transform:scale(.8);transform-origin:right center}
+html body .quiz-session-layout > .palette-drawer-top[data-expanded="false"] > div:nth-child(2),
+html body .quiz-session-layout > .palette-drawer-top:not(.is-expanded) > div:nth-child(2){
+  display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:6px!important;padding:6px 10px!important;scrollbar-width:none}
+html body .quiz-session-layout .palette-touch-btn{flex:0 0 auto!important;width:40px!important;min-width:40px!important;height:34px!important;border-radius:9px!important;font-size:12.5px!important}
+
+/* 3) Question card: tighter padding, smaller chips, denser options */
+html body .quiz-session-layout > [ontouchstart]{padding:12px 14px 10px!important;margin:0!important;border-radius:16px!important}
+html body .quiz-session-layout > [ontouchstart] .quiz-meta{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:6px;margin-top:8px!important;scrollbar-width:none}
+html body .quiz-session-layout > [ontouchstart] .quiz-meta span{flex:0 0 auto;padding:3px 10px!important;font-size:11px!important;line-height:1.4}
+html body .quiz-session-layout .quiz-stem{margin-top:10px!important;font-size:17px!important;line-height:1.55!important}
+html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3{margin-top:12px!important;display:flex;flex-direction:column;gap:8px!important}
+html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3 > *{margin:0!important}
+html body .quiz-session-layout button[role="radio"]{min-height:46px!important;padding:9px 12px!important;border-radius:12px!important;font-size:15px!important;line-height:1.4;gap:10px!important}
+html body .quiz-session-layout button[role="radio"]:not(:disabled):hover{transform:none}
+html body .quiz-session-layout button[role="radio"] > span:first-child{width:30px!important;height:30px!important;min-width:30px;font-size:13px}
+html body .quiz-session-layout .pq-foot{margin-top:8px!important;padding-top:8px!important;gap:8px!important}
+html body .quiz-session-layout .pq-foot button{min-height:46px!important;height:46px;border-radius:12px!important}
+
+/* 4) Tools: compact 4-up row, label beside icon, tight "More tools" */
+html body .quiz-session-layout > #normal-practice-toolkit{margin:0!important;padding:8px!important;border-radius:14px!important}
+html body .quiz-session-layout #normal-practice-toolkit .tk-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important}
+html body .quiz-session-layout #normal-practice-toolkit button.tk-btn{flex-direction:row!important;justify-content:center!important;min-height:40px!important;padding:5px 8px!important;gap:6px!important;border-radius:11px!important;font-size:11px!important;text-align:left}
+html body .quiz-session-layout #normal-practice-toolkit .tk-btn i{width:1.55rem!important;height:1.55rem!important;font-size:.72rem!important}
+html body .quiz-session-layout #normal-practice-toolkit details>summary{padding:6px 8px!important;min-height:34px}
+
+/* Small portrait phones: tiles go 2x2 so labels never truncate */
+@media (max-width:520px) and (orientation:portrait){
+  html body .quiz-session-layout #normal-practice-toolkit .tk-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html body .quiz-session-layout .quiz-stem{font-size:16.5px!important}
+}
+
+/* Landscape: question gets the width, tools rail becomes a 2-col tile grid */
+@media (orientation:landscape) and (min-width:600px){
+  html body .quiz-session-layout #normal-practice-toolkit .tk-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+/* Desktop: more reading room, no swipe hint */
+@media (min-width:1100px) and (min-height:640px) and (orientation:landscape){
+  html body .quiz-session-layout .fa-hand-pointer,html body .quiz-session-layout .fa-hand-pointer + *{display:none}
+  html body .quiz-session-layout .quiz-stem{font-size:clamp(19px,1.5vw,23px)!important;line-height:1.7!important}
+  html body .quiz-session-layout button[role="radio"]{min-height:54px!important;padding:12px 16px!important;font-size:15.5px!important}
+  html body .quiz-session-layout #normal-practice-toolkit button.tk-btn{min-height:46px!important;font-size:12px!important}
+}
+/* Short landscape phones: squeeze chrome further */
+@media (orientation:landscape) and (max-height:520px){
+  html body .quiz-session-layout .quiz-stem{font-size:15px!important;line-height:1.45!important;margin-top:6px!important}
+  html body .quiz-session-layout button[role="radio"]{min-height:38px!important;padding:6px 10px!important;font-size:13.5px!important}
+  html body .quiz-session-layout .pq-foot button{min-height:40px!important;height:40px}
+}
+</style>
+<style id="edupulse-practice-tools">
+/* =====================================================================
+   Practice toolkit — curated tools + redesigned tiles (CSS only).
+   Hidden (not deleted, so every handler/storage key still works):
+   · Copy question  → Share already falls back to copy when needed
+   · 25-min focus   → no visible countdown; the Tools tab has a real timer
+   · "x/y correct" chip → duplicates the ✓/✗ counters in the header
+   · "Also available…" paragraph + "8 tools" badge → clutter / now inaccurate
+   ===================================================================== */
+html body #normal-practice-toolkit [data-action="copy"],
+html body #normal-practice-toolkit [data-action="focus"],
+html body #normal-practice-toolkit .tk-stats .tk-chip:nth-child(3),
+html body #normal-practice-toolkit details > p,
+html body #normal-practice-toolkit .tk-count,
+html body #normal-practice-toolkit .tk-label{display:none!important}
+
+/* colour roles: a soft tint + a vivid foreground per tool */
+#normal-practice-toolkit .tk-btn{--tk-fg:#0d9488;--tk-t:rgba(13,148,136,.10)}
+#normal-practice-toolkit .tk-violet{--tk-fg:#7c3aed;--tk-t:rgba(124,58,237,.10)}
+#normal-practice-toolkit .tk-purple{--tk-fg:#9333ea;--tk-t:rgba(147,51,234,.10)}
+#normal-practice-toolkit .tk-amber{--tk-fg:#d97706;--tk-t:rgba(217,119,6,.12)}
+#normal-practice-toolkit .tk-slate{--tk-fg:#475569;--tk-t:rgba(71,85,105,.10)}
+#normal-practice-toolkit .tk-teal{--tk-fg:#0d9488;--tk-t:rgba(13,148,136,.10)}
+#normal-practice-toolkit .tk-sky{--tk-fg:#0284c7;--tk-t:rgba(2,132,199,.10)}
+#normal-practice-toolkit .tk-indigo{--tk-fg:#4f46e5;--tk-t:rgba(79,70,229,.10)}
+#normal-practice-toolkit .tk-rose{--tk-fg:#e11d48;--tk-t:rgba(225,29,72,.09)}
+#normal-practice-toolkit .tk-emerald{--tk-fg:#059669;--tk-t:rgba(5,150,105,.10)}
+html body.dark #normal-practice-toolkit .tk-violet{--tk-fg:#a78bfa;--tk-t:rgba(167,139,250,.14)}
+html body.dark #normal-practice-toolkit .tk-purple{--tk-fg:#c084fc;--tk-t:rgba(192,132,252,.14)}
+html body.dark #normal-practice-toolkit .tk-amber{--tk-fg:#fbbf24;--tk-t:rgba(251,191,36,.14)}
+html body.dark #normal-practice-toolkit .tk-slate{--tk-fg:#cbd5e1;--tk-t:rgba(148,163,184,.12)}
+html body.dark #normal-practice-toolkit .tk-teal{--tk-fg:#2dd4bf;--tk-t:rgba(45,212,191,.13)}
+html body.dark #normal-practice-toolkit .tk-sky{--tk-fg:#38bdf8;--tk-t:rgba(56,189,248,.13)}
+html body.dark #normal-practice-toolkit .tk-indigo{--tk-fg:#818cf8;--tk-t:rgba(129,140,248,.14)}
+html body.dark #normal-practice-toolkit .tk-rose{--tk-fg:#fb7185;--tk-t:rgba(251,113,133,.13)}
+html body.dark #normal-practice-toolkit .tk-emerald{--tk-fg:#34d399;--tk-t:rgba(52,211,153,.13)}
+
+/* tile design: tinted glass, coloured icon chip, crisp label */
+html body .quiz-session-layout #normal-practice-toolkit button.tk-btn{
+  background:var(--tk-t)!important;color:var(--text-primary)!important;
+  border:1px solid color-mix(in srgb,var(--tk-fg) 28%,transparent)!important;
+  box-shadow:none!important;font-weight:700!important;letter-spacing:-.005em;
+  transition:background-color .18s,border-color .18s,box-shadow .18s,transform .12s!important;
+}
+html body .quiz-session-layout #normal-practice-toolkit button.tk-btn i{
+  background:color-mix(in srgb,var(--tk-fg) 18%,transparent)!important;color:var(--tk-fg)!important;
+}
+html body .quiz-session-layout #normal-practice-toolkit button.tk-btn:hover{
+  border-color:var(--tk-fg)!important;transform:none!important;
+  box-shadow:0 6px 18px -10px var(--tk-fg)!important;
+}
+html body .quiz-session-layout #normal-practice-toolkit button.tk-btn:active{transform:scale(.97)!important}
+/* bookmark: clearly filled when on */
+html body .quiz-session-layout #normal-practice-toolkit [data-action="bookmark"]{outline:none!important}
+html body .quiz-session-layout #normal-practice-toolkit [data-action="bookmark"][aria-pressed="true"]{
+  background:var(--tk-fg)!important;color:#1b1203!important;border-color:var(--tk-fg)!important;
+  box-shadow:0 8px 22px -10px var(--tk-fg)!important;
+}
+html body .quiz-session-layout #normal-practice-toolkit [data-action="bookmark"][aria-pressed="true"] i{
+  background:rgba(0,0,0,.14)!important;color:#1b1203!important;
+}
+
+/* stats: streak + accuracy as a slim one-line header with a bar */
+html body #normal-practice-toolkit .tk-stats{flex-wrap:nowrap;gap:6px}
+html body #normal-practice-toolkit .tk-chip{padding:3px 10px;font-size:11px;white-space:nowrap}
+html body #normal-practice-toolkit .tk-bar{height:4px;margin-top:7px}
+html body #normal-practice-toolkit .tk-quick{margin-top:8px!important}
+
+/* "More tools": one tidy 3-column board instead of three labelled groups */
+html body #normal-practice-toolkit details[open]{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding-top:8px!important;
+}
+html body #normal-practice-toolkit details[open] > summary{grid-column:1 / -1}
+html body #normal-practice-toolkit details[open] .tk-group,
+html body #normal-practice-toolkit details[open] .tk-grid{display:contents!important}
+html body #normal-practice-toolkit details[open] button.tk-btn{
+  flex-direction:column!important;justify-content:center!important;text-align:center!important;
+  min-height:58px!important;padding:8px 4px!important;gap:4px!important;font-size:10.5px!important;
+}
+html body #normal-practice-toolkit details[open] > .grid{grid-column:1 / -1;margin-top:4px!important;gap:8px!important}
+
+/* confidence + note: quiet, aligned inputs */
+html body #normal-practice-toolkit [data-confidence],html body #normal-practice-toolkit [data-note]{
+  border-radius:10px!important;font-size:12px!important;padding:7px 10px!important;
+  background:var(--card-bg)!important;color:var(--text-primary)!important;border:1px solid var(--border-color)!important;
+}
+html body #normal-practice-toolkit [data-note]{min-height:56px;resize:vertical}
+html body #normal-practice-toolkit label{background:transparent!important;border:0!important;padding:0!important;
+  font-size:10.5px!important;font-weight:800!important;letter-spacing:.03em;text-transform:uppercase;color:var(--text-muted)!important}
+
+/* landscape rail / desktop: toolkit scrolls, tiles stay 2-up on top */
+@media (orientation:landscape) and (min-width:600px){
+  html body #normal-practice-toolkit details[open]{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 </style>
 </body>
