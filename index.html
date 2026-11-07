@@ -9,8 +9,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
+<link rel="shortcut icon" href="icons/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<meta name="description" content="EduPulse PRO — NEET practice, mock tests and instant AI explanations.">
+<meta name="apple-mobile-web-app-title" content="EduPulse">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EduPulse PRO — NEET Preparation">
+<meta property="og:description" content="Practice NEET MCQs with instant AI explanations.">
+<meta property="og:image" content="icons/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="icons/og-image.png">
 <meta name="theme-color" content="#0d9488">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -229,6 +240,13 @@ body.dark .progress{background:rgba(255,255,255,.1)}
 .ai-table tbody tr:nth-child(even){background:rgba(100,116,139,.06)}
 .dark .ai-callout-ok b{color:#6ee7b7}.dark .ai-callout-tip b{color:#fcd34d}.dark .ai-callout b{color:#7dd3fc}
 .ai-plain-wrap{border-radius:18px;border:1px solid rgba(13,148,136,.25);background:linear-gradient(160deg,rgba(13,148,136,.07),transparent);padding:4px 14px 14px}
+/* EduPulse brand mark */
+.logo{background:none!important;border-radius:22%!important;box-shadow:0 8px 22px -6px rgba(13,148,136,.55)!important;overflow:hidden}
+.ep-mark-svg{display:block;flex:none}
+.logo .ep-mark-svg{width:100%;height:100%}
+h1 .ep-mark-svg{border-radius:22%;box-shadow:0 4px 12px -4px rgba(13,148,136,.55)}
+.bz-logo.bz-brand{background:none;overflow:hidden;box-shadow:0 12px 24px -12px rgba(13,148,136,.9)}
+.bz-logo.bz-brand svg{display:block;width:100%;height:100%}
 </style>
 <style id="edupulse-polish">
 /* ---- Accessibility & base buttons ---- */
@@ -1701,12 +1719,13 @@ body.dark .quiz-session-layout .quiz-meta span{
 
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="ep-g" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0d9488"/><stop offset="1" stop-color="#6366f1"/></linearGradient><symbol id="ep-mark" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="url(#ep-g)"/><path d="M76 300H150L190 232L232 356L274 276L306 306L402 164" fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/><circle cx="402" cy="164" r="48" fill="#fff" fill-opacity=".22"/><circle cx="402" cy="164" r="32" fill="#a3e635"/></symbol></defs></svg>
 <div class="app-layout">
 <div class="mobile-nav-overlay" id="navOverlay" onclick="toggleMobileNav(false)"></div>
 <aside class="sidebar" id="sidebarDrawer">
 <div class="brand justify-between items-center w-full">
 <div class="flex items-center gap-3">
-<div class="logo"><i class="fa-solid fa-graduation-cap text-lg"></i></div>
+<div class="logo"><svg class="ep-mark-svg" width="42" height="42" viewBox="0 0 512 512" aria-hidden="true"><use href="#ep-mark"/></svg></div>
 <div><b>Edu<span>Pulse</span></b><p class="eyebrow">NEET Ecosystem PRO</p></div>
 </div>
 <button class="lg:hidden text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-2" onclick="toggleMobileNav(false)"><i class="fa-solid fa-xmark text-lg"></i></button>
@@ -1739,7 +1758,7 @@ body.dark .quiz-session-layout .quiz-meta span{
 <div>
 <div class="date" id="current-date">NEET Prep Ecosystem 2026</div>
 <h1 class="hidden sm:block">Welcome, Aspirant<span style="color:#0d9488">.</span></h1>
-<h1 class="sm:hidden text-base font-black">EduPulse PRO</h1>
+<h1 class="sm:hidden text-base font-black inline-flex items-center gap-2"><svg class="ep-mark-svg" width="26" height="26" viewBox="0 0 512 512" aria-hidden="true"><use href="#ep-mark"/></svg>EduPulse PRO</h1>
 </div>
 </div>
 <div class="flex items-center gap-2 sm:gap-3">
@@ -8156,7 +8175,7 @@ function field(id,label,type,ph,ac,extra){
   return '<label class="bz-f" for="'+id+'"><span>'+label+'</span><div class="bz-in"><input id="'+id+'" name="'+id+'" type="'+type+'" placeholder="'+ph+'" autocomplete="'+ac+'" '+(extra||'')+'>'+(type==='password'?'<button type="button" class="bz-eye" aria-label="Show password" onclick="__bzAcc.eye(\''+id+'\',this)"><i class="fa-regular fa-eye"></i></button>':'')+'</div></label>';
 }
 function meterHtml(){return '<div class="bz-meter" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="bz-mlbl" id="bz-mlbl">Use 8+ characters with a mix of letters and numbers</div>';}
-function head(icon,title,sub){return '<div class="bz-logo"><i class="fa-solid '+icon+'"></i></div><h2>'+title+'</h2><p class="bz-sub2">'+sub+'</p>';}
+function head(icon,title,sub){var lg=icon==='fa-heart-pulse'?'<div class="bz-logo bz-brand"><svg width="52" height="52" viewBox="0 0 512 512" aria-hidden="true"><use href="#ep-mark"/></svg></div>':'<div class="bz-logo"><i class="fa-solid '+icon+'"></i></div>';return lg+'<h2>'+title+'</h2><p class="bz-sub2">'+sub+'</p>';}
 function btn(label,icon){return '<button type="submit" class="bz-go" id="bz-go"><span><i class="fa-solid '+icon+'"></i> '+label+'</span></button>';}
 function view(){
   var v='';
