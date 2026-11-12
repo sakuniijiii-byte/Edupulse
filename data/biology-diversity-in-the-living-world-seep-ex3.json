@@ -1,0 +1,2242 @@
+{
+ "sourceId": "seep",
+ "sourceLabel": "Seep Pahuja",
+ "exercise": "ex3",
+ "meta": {
+  "chapter": "Diversity in the Living World",
+  "subject": "Biology",
+  "total": 68
+ },
+ "qs": [
+  {
+   "id": "lwar1",
+   "no": 1,
+   "q": "Statement 1: There are seven obligate categories in hierarchy of taxonomy\nStatement 2: Other categories of similar type can be called as intermediate categories",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 2,
+   "s": "The obligate categories are species, genus, family, order, class, division/phylum and kingdom. Sub-categories such as sub-species or varieties are added for clear distinction and are called intermediate categories.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "alsoAt": [
+    "LW-AR-11"
+   ],
+   "ref": "LW-AR-1"
+  },
+  {
+   "id": "lwar2",
+   "no": 2,
+   "q": "Statement 1: Linnaeus system of animal classification is essentially an artificial system, yet it has become a natural system.\nStatement 2: Similarities forming the basis in Linnaeus system are indicative of genetic relationship",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 3,
+   "s": "Linnaeus divided the entire living world into two kingdoms. Animalia lack chlorophyll and cellulosic cell wall and show locomotion; Plantae have chlorophyll and cellulosic cell wall but no locomotion.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-AR-2"
+  },
+  {
+   "id": "lwar3",
+   "no": 3,
+   "q": "Statement 1: Museums are places/institution where preserved plant, animals, artistic and educational material are exhibited to public\nStatement 2: Museums are of different kinds, like art, history, science and general museum which exhibit their material to public awareness",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 1,
+   "s": "Museums are sources of ancient and present informational matter where preserved plants, animals and artistic and educational material are exhibited for public awareness; they can be categorised into different kinds.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "alsoAt": [
+    "LW-AR-14"
+   ],
+   "ref": "LW-AR-3"
+  },
+  {
+   "id": "lwar4",
+   "no": 4,
+   "q": "Statement 1: The scientific name Malus malus is illegitimate\nStatement 2: It is a tautonym.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 1,
+   "s": "The scientific name Malus malus is illegitimate because it is just a tautonym.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-AR-4"
+  },
+  {
+   "id": "lwar5",
+   "no": 5,
+   "q": "Statement 1: Death is considered as the regulatory process on earth\nStatement 2: It avoids increasing population caused by continuous reproduction",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 1,
+   "s": "Death (stoppage of all life activities, accompanied by an increase in entropy) is compensated by reproduction.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "alsoAt": [
+    "LW-AR-7"
+   ],
+   "ref": "LW-AR-5"
+  },
+  {
+   "id": "lwar6",
+   "no": 6,
+   "q": "Statement 1: Hierarchial system of classification is useful to reduce volume's description in a catalogue of organism\nStatement 2: Characters of a larger category (like division are not repeated for smaller/lower categories family and order)",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 1,
+   "s": "Hierarchy in classification reduces the volume of description in a catalogue of plants and animals: species share more similarities than a genus, genera with common characters form a family, families form an order, orders a class, and classes a phylum.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "alsoAt": [
+    "LW-AR-9"
+   ],
+   "ref": "LW-AR-6"
+  },
+  {
+   "id": "lwar8",
+   "no": 7,
+   "q": "Statement 1: “The Biological Species” concept helps us to ask how species are formed.\nStatement 2: The concept of biological species focusses our attention on the question of how reproductive isolation comes about",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 4,
+   "s": "Ernst Mayr proposed the biological species concept: a group of actually or potentially inter-breeding natural populations which are reproductively isolated from other such groups.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-AR-8"
+  },
+  {
+   "id": "lwar10",
+   "no": 8,
+   "q": "Statement 1: All white tigers in the world are progeny of white male tiger ‘Mohan’\nStatement 2: A white male tiger was captured from forest by Maharaja of Rewa and reared as Mohan",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 2,
+   "s": "Almost all white tigers of the world have a common ancestor: a white male tiger captured by the king of Rewa, domesticated at Govindgarh Palace and named ‘Mohan’.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "alsoAt": [
+    "LW-AR-13"
+   ],
+   "ref": "LW-AR-10"
+  },
+  {
+   "id": "lwar12",
+   "no": 9,
+   "q": "Statement 1: A morphology based approach to taxonomy is called ‘Alpha taxonomy’ and it is old fashioned\nStatement 2: A multi-disciplinary approach to taxonomy called ‘Omega taxonomy’ if favored in recent years, as it excludes morphological features.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 3,
+   "s": "Turrill used alpha taxonomy for collection and identification of organisms on the basis of gross morphology. Omega taxonomy (biosystematics) uses evolutionary, genetic AND morphological traits, so it does not exclude morphological features: Statement 2 is false.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "keyCorrected": true,
+   "ref": "LW-AR-12"
+  },
+  {
+   "id": "lwmm3",
+   "no": 10,
+   "q": "Match the following columns",
+   "o": [
+    "A-5, B-3, C-2, D-4, E-1",
+    "A-1, B-3, C-2, D-4, E-1",
+    "A-2, B-1, C-3, D-4, E-1",
+    "A-4, B-1, C-3, D-4, E-1"
+   ],
+   "a": 1,
+   "s": "Lal Bagh – Bengaluru; National Botanical Garden – Lucknow; Indian Botanical Garden – Kolkata; Forest Research Institute – Dehradun; Lloyd’s Botanical Garden – Darjeeling.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Lal Bagh",
+      "(1) Darjeeling"
+     ],
+     [
+      "(B) National Botanical Garden",
+      "(2) Kolkata"
+     ],
+     [
+      "(C) Indian Botanical Garden",
+      "(3) Lucknow"
+     ],
+     [
+      "(D) Forest Research Institute",
+      "(4) Dehradun"
+     ],
+     [
+      "(E) Loyd’s Botanical Garden",
+      "(5) Bengaluru"
+     ]
+    ]
+   },
+   "alsoAt": [
+    "LW-MM-2"
+   ],
+   "ref": "LW-MM-3"
+  },
+  {
+   "id": "lwmm4",
+   "no": 11,
+   "q": "Match the following columns",
+   "o": [
+    "A-3, B-4, C-2, D-1",
+    "A-1, B-4, C-2, D-3",
+    "A-4, B-3, C-1, D-2",
+    "A-4, B-1, C-2, D-3"
+   ],
+   "a": 1,
+   "s": "Herbarium – preserved plant specimen on sheet; Botanical Garden – diversity of living plants; Zoological Park – living wild animals in their natural habitat; Museum – preserved plants and animals plus artistic and educational material.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Herbarium",
+      "(1) Preserved plant and animal specimen and also artistic and educational material"
+     ],
+     [
+      "(B) Botanical Garden",
+      "(2) Living wild animal in their natural habitat"
+     ],
+     [
+      "(C) Zoological Park",
+      "(3) Preserved plant specimen on sheet"
+     ],
+     [
+      "(D) Museum",
+      "(4) Diversity of living plant"
+     ]
+    ]
+   },
+   "alsoAt": [
+    "LW-MM-1"
+   ],
+   "ref": "LW-MM-4"
+  },
+  {
+   "id": "lwmm6",
+   "no": 12,
+   "q": "Match the following columns",
+   "o": [
+    "A-3, B-5, C-4, D-2, E-1",
+    "A-3, B-4, C-5, D-2, E-1",
+    "A-3, B-5, C-2, D-4, E-1",
+    "A-1, B-5, C-2, D-4, E-1"
+   ],
+   "a": 1,
+   "s": "Kingdom – Fungi; Order – Rannales; Family – Canidae; Genus – Helianthus; Species – anuus.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Kingdom",
+      "(1) Anuus"
+     ],
+     [
+      "(B) Order",
+      "(2) Helianthus"
+     ],
+     [
+      "(C) Family",
+      "(3) Fungi"
+     ],
+     [
+      "(D) Genus",
+      "(4) Canidae"
+     ],
+     [
+      "(E) Species",
+      "(5) Rannales"
+     ]
+    ]
+   },
+   "alsoAt": [
+    "LW-MM-8"
+   ],
+   "ref": "LW-MM-6"
+  },
+  {
+   "id": "lwmm7",
+   "no": 13,
+   "q": "Match the following columns",
+   "o": [
+    "A-5, B-4, C-2, D-3, E-1",
+    "A-5, B-4, C-1, D-3, E-1",
+    "A-1, B-2, C-3, D-5, E-1",
+    "A-2, B-1, C-3, D-4, E-1"
+   ],
+   "a": 1,
+   "s": "Family – Solanaceae; Kingdom – Plantae; Order – Polymoniales; Genus – Solanum; Species – tuberosum.",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Family",
+      "(1) Tuberosum"
+     ],
+     [
+      "(B) Kingdom",
+      "(2) Polymoniales"
+     ],
+     [
+      "(C) Order",
+      "(3) Solanum"
+     ],
+     [
+      "(D) Genus",
+      "(4) Plantae"
+     ],
+     [
+      "(E) Species",
+      "(5) Solanaceae"
+     ]
+    ]
+   },
+   "alsoAt": [
+    "LW-MM-9"
+   ],
+   "ref": "LW-MM-7"
+  },
+  {
+   "id": "lwmm10",
+   "no": 14,
+   "q": "Match the following columns",
+   "o": [
+    "A-1, B-2, C-4, D-5, E-1",
+    "A-4, B-2, C-3, D-3, E-1",
+    "A-3, B-2, C-3, D-1, E-1",
+    "A-4, B-2, C-1, D-3, E-1"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Planaria",
+      "(1) Binary fission"
+     ],
+     [
+      "(B) Fungi",
+      "(2) Asexual spores"
+     ],
+     [
+      "(C) Yeast",
+      "(3) Budding"
+     ],
+     [
+      "(D) Hydra",
+      "(4) True regeneration"
+     ],
+     [
+      "(E) Amoeba",
+      "(5) Fragmentation"
+     ]
+    ]
+   },
+   "alsoAt": [
+    "LW-MM-5"
+   ],
+   "ref": "LW-MM-10"
+  },
+  {
+   "id": "bcar1",
+   "no": 15,
+   "q": "Statement 1: The fungi are widespread in distribution and they even live on or inside other plants and animals\nStatement 2: Fungi are able to grow anywhere on land, water or on other organisms because they have a variety of pigments, including chlorophyll, carotenoids fucoxanthin and phycoerythrin.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 3,
+   "s": "Fungi are widespread (epiphytic, saprophytic, symbiotic, parasitic) but lack chlorophyll and the autotrophic mode of nutrition, so Statement 2 is false.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-AR-1"
+  },
+  {
+   "id": "bcar2",
+   "no": 16,
+   "q": "Statement 1: Euglena is a plant due to presence of chlorophyll.\nStatement 2: Euglena cannot be classified on the basis of two kingdom system.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 4,
+   "s": "Euglena is a green, single-celled organism that moves like animals. Some taxonomists placed it in plants (chlorophyll), others in animals (flagellar locomotion), so it cannot be fitted into the two-kingdom system. It is not a plant: Statement 1 is false.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "keyCorrected": true,
+   "ref": "BC-AR-2"
+  },
+  {
+   "id": "bcar4",
+   "no": 17,
+   "q": "Statement 1: The true nucleus is generally absent in E. coli and other prokaryotes.\nStatement 2: An undifferentiated, unorganized fibrillar nucleus without any limiting membrane is observed in prokaryotic cells.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 1,
+   "s": "E. coli is a well studied prokaryote. Prokaryotic cells lack a true nucleus and membrane-bound organelles; the genetic material lies in the cytoplasm as an unorganised fibrillar nucleus without nuclear membrane (nucleoid).",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-AR-4"
+  },
+  {
+   "id": "bcar5",
+   "no": 18,
+   "q": "Statement 1: In fungi, sexual apparatus decreases in complexity from lower to higher forms.\nStatement 2: In algae, sexual apparatus increases in complexity from simple to the higher forms.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 2,
+   "s": "In fungi there is gradual simplification and ultimate elimination of the sexual apparatus from lower to higher forms; in algae it increases in complexity from simple to higher forms.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-AR-5"
+  },
+  {
+   "id": "bcar6",
+   "no": 19,
+   "q": "Statement 1: Viruses cause diseases and replicate when they are in the host\nStatement 2: Viruses do not replicate outside the host but they remain alive.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 3,
+   "s": "Viruses replicate only inside a living host; outside the host they behave as non-living particles, so Statement 2 is false.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-AR-6"
+  },
+  {
+   "id": "bcar7",
+   "no": 20,
+   "q": "Statement 1: Euglena is a plant due to the presence of chlorophyll\nStatement 2: Euglena can not be classified on the basis of two kingdom system",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 4,
+   "s": "Euglena is a green, single-celled organism that moves like animals. Some taxonomists included it in plants on the basis of chlorophyll, others in animals with flagellated protozoans because of locomotion by flagella.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-AR-7"
+  },
+  {
+   "id": "bcmm1",
+   "no": 21,
+   "q": "Match the column I with column II and choose the right option.",
+   "o": [
+    "A-3, B-4, C-1, D-2",
+    "A-2, B-3, C-4, D-1",
+    "A-4, B-1, C-2, D-3",
+    "A-3, B-4, C-2, D-1"
+   ],
+   "a": 2,
+   "s": "Morels (Morchella) – Ascomycetes; smuts (Ustilago) – Basidiomycetes; bread mould Rhizopus – Phycomycetes; Deuteromycetes are called ‘Imperfect fungi’ as sexual reproduction is absent.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Morels",
+      "(1) Deuteromycetes"
+     ],
+     [
+      "(B) Smut",
+      "(2) Ascomycetes"
+     ],
+     [
+      "(C) Bread mould",
+      "(3) Basidiomycetes"
+     ],
+     [
+      "(D) Imperfect fungi",
+      "(4) Phycomycetes"
+     ]
+    ]
+   },
+   "ref": "BC-MM-1"
+  },
+  {
+   "id": "bcmm2",
+   "no": 22,
+   "q": "Match the following columns and select the correct option.",
+   "o": [
+    "A-4, B-5, C-3, D-2",
+    "A-4, B-5, C-1, D-2",
+    "A-2, B-3, C-5, D-1",
+    "A-2, B-3, C-1, D-5"
+   ],
+   "a": 2,
+   "s": "Blast disease of rice – septate conidiophores; citrus canker – Gram negative bacteria; grain smut of Sorghum – dikaryotic mycelium; red rot of sugarcane – single-celled conidiophores.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Blast disease of rice",
+      "(1) Dikaryotic mycelium"
+     ],
+     [
+      "(B) Citrus canker",
+      "(2) Single-celled conidiophores"
+     ],
+     [
+      "(C) Grain smut of Sorghum",
+      "(3) Gram positive bacteria"
+     ],
+     [
+      "(D) Red rot of sugarcane",
+      "(4) Septate conidiophores"
+     ],
+     [
+      "",
+      "(5) Gram negative bacteria"
+     ]
+    ]
+   },
+   "ref": "BC-MM-2"
+  },
+  {
+   "id": "bcmm3",
+   "no": 23,
+   "q": "Match the following columns",
+   "o": [
+    "A-3, B-2, C-1, D-4",
+    "A-4, B-3, C-2, D-1",
+    "A-2, B-1, C-4, D-3",
+    "A-1, B-4, C-3, D-2"
+   ],
+   "a": 3,
+   "s": "Coccus – spherical; Bacillus – rod-shaped; Vibrio – comma-shaped; Spirillum – spiral.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Coccus",
+      "(1) Rod-shaped"
+     ],
+     [
+      "(B) Bacillus",
+      "(2) Spherical"
+     ],
+     [
+      "(C) Vibrio",
+      "(3) Spiral-shaped"
+     ],
+     [
+      "(D) Spirillum",
+      "(4) Comma-shaped"
+     ]
+    ]
+   },
+   "ref": "BC-MM-3"
+  },
+  {
+   "id": "bcmm4",
+   "no": 24,
+   "q": "Match the column I with column II and choose the right option.",
+   "o": [
+    "A-4, B-3, C-1, D-2",
+    "A-2, B-3, C-4, D-1",
+    "A-4, B-1, C-2, D-3",
+    "A-3, B-4, C-2, D-1"
+   ],
+   "a": 3,
+   "s": "Rhizopus – Zygomycetes; Penicillium – Eurotiomycetes; Ustilago – Ustilaginomycetes; Alternaria – Dothideomycetes.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Rhizopus",
+      "(1) Euroioimycetes"
+     ],
+     [
+      "(B) Penicillium",
+      "(2) Ustilaginomycetes"
+     ],
+     [
+      "(C) Ustilago",
+      "(3) Dothideomycetes"
+     ],
+     [
+      "(D) Alternaria",
+      "(4) Zygomycetes"
+     ]
+    ]
+   },
+   "ref": "BC-MM-4"
+  },
+  {
+   "id": "bcmm5",
+   "no": 25,
+   "q": "Study the following columns",
+   "o": [
+    "A-1, B-2, C-3, D-4",
+    "A-5, B-4, C-2, D-1",
+    "A-1, B-3, C-2, D-4",
+    "A-5, B-1, C-2, D-4"
+   ],
+   "a": 3,
+   "s": "Devoid of flagella – single spherical bacterium; rod-shaped – anthrax causing bacterium; bacteria in pairs – pneumonia causing bacterium; comma shaped – cholera causing bacterium.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Devoid of flagella",
+      "(1) Single spherical bacterium"
+     ],
+     [
+      "(B) Rod shaped",
+      "(2) Pneumonia causing bacteria"
+     ],
+     [
+      "(C) Bacteria in pairs",
+      "(3) Anthrax causing bacteria"
+     ],
+     [
+      "(D) Comma shaped",
+      "(4) Cholera causing bacteria"
+     ],
+     [
+      "",
+      "(5) Pleiomorphic bacteria"
+     ]
+    ]
+   },
+   "alsoAt": [
+    "BC-MM-19"
+   ],
+   "ref": "BC-MM-5"
+  },
+  {
+   "id": "bcmm6",
+   "no": 26,
+   "q": "Match the following columns",
+   "o": [
+    "A-2, B-1, C-3",
+    "A-1, B-2, C-4",
+    "A-4, B-3, C-1",
+    "A-3, B-1, C-2"
+   ],
+   "a": 4,
+   "s": "Two kingdom system – Carolus Linnaeus; five kingdom system – RH Whittaker; six kingdom system – Carl Woese.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Two kingdom system of classification",
+      "(1) RH Whittaker"
+     ],
+     [
+      "(B) Five kingdom system of classification",
+      "(2) Carl Woese"
+     ],
+     [
+      "(C) Six kingdom system of classification",
+      "(3) Carolus Linnaeus"
+     ]
+    ]
+   },
+   "ref": "BC-MM-6"
+  },
+  {
+   "id": "bcmm7",
+   "no": 27,
+   "q": "Study the following columns",
+   "o": [
+    "A-3, B-1, C-4, D-2",
+    "A-2, B-1, C-3, D-4",
+    "A-3, B-4, C-2, D-1",
+    "A-4, B-3, C-1, D-2"
+   ],
+   "a": 1,
+   "s": "M13 bacteriophage – ssDNA; rice dwarf virus – dsRNA; cauliflower mosaic virus – dsDNA; polio virus – ssRNA.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) M 13 Bacteriophage",
+      "(1) dsRNA"
+     ],
+     [
+      "(B) Rice dwarf virus",
+      "(2) ssRNA"
+     ],
+     [
+      "(C) Cauliflower mosaic virus",
+      "(3) ssDNA"
+     ],
+     [
+      "(D) Polio virus",
+      "(4) dsDNA"
+     ]
+    ]
+   },
+   "ref": "BC-MM-7"
+  },
+  {
+   "id": "bcmm8",
+   "no": 28,
+   "q": "Match the following columns",
+   "o": [
+    "A-1, B-4, C-3, D-2",
+    "A-4, B-3, C-2, D-1",
+    "A-2, B-1, C-4, D-3",
+    "A-3, B-2, C-1, D-4"
+   ],
+   "a": 2,
+   "s": "Ivanowsky (1892) – mosaic disease of tobacco; Beijerinck (1898) – Contagium vivum fluidum; Stanley (1935) – first crystallised TMV; Diener (1971) – viroids.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) DJ Ivanowky (1892)",
+      "(1) Viroids"
+     ],
+     [
+      "(B) MW Beijerinck (1898)",
+      "(2) First crystallised TMV"
+     ],
+     [
+      "(C) WM Stanley (1935)",
+      "(3) Contagium vivum fluidum"
+     ],
+     [
+      "(D) TO Diener (1971)",
+      "(4) Mosaic disease of tobacco"
+     ]
+    ]
+   },
+   "keyCorrected": true,
+   "ref": "BC-MM-8"
+  },
+  {
+   "id": "bcmm9",
+   "no": 29,
+   "q": "Match the following columns",
+   "o": [
+    "A-2, B-1, C-4, D-3",
+    "A-4, B-3, C-2, D-1",
+    "A-1, B-4, C-3, D-2",
+    "A-3, B-2, C-1, D-4"
+   ],
+   "a": 3,
+   "s": "Phycomycetes – algal fungi; Ascomycetes – sac fungi; Basidiomycetes – bracket fungi; Deuteromycetes – imperfect fungi.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Phycomycetes",
+      "(1) Algal fungi"
+     ],
+     [
+      "(B) Ascomycetes",
+      "(2) Imerfecti fungi"
+     ],
+     [
+      "(C) Basidiomycetes",
+      "(3) Bracket fungi"
+     ],
+     [
+      "(D) Deuteromycetes",
+      "(4) Sac fungi"
+     ]
+    ]
+   },
+   "ref": "BC-MM-9"
+  },
+  {
+   "id": "bcmm10",
+   "no": 30,
+   "q": "Match the following columns and choose the correct combination form the given option",
+   "o": [
+    "A-4, B-3, C-2, D-1",
+    "A-1, B-2, C-3, D-4",
+    "A-3, B-4, C-2, D-1",
+    "A-4, B-2, C-3, D-1"
+   ],
+   "a": 1,
+   "s": "In Whittaker’s five kingdom system algae belong to Plantae; Phycomycetes (algal fungi) belong to Fungi; Euglenoids are protistan algae; Archaebacteria are monerans living in extreme conditions.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Plantae",
+      "(1) Archaebacteria"
+     ],
+     [
+      "(B) Fungi",
+      "(2) Euglenoids"
+     ],
+     [
+      "(C) Protista",
+      "(3) Phycomycetes"
+     ],
+     [
+      "(D) Monera",
+      "(4) Algae"
+     ]
+    ]
+   },
+   "ref": "BC-MM-10"
+  },
+  {
+   "id": "bcmm12",
+   "no": 31,
+   "q": "Match the following columns",
+   "o": [
+    "A-3, B-5, C-4, D-2",
+    "A-1, B-3, C-5, D-4",
+    "A-2, B-1, C-3, D-5",
+    "A-4, B-2, C-1, D-3"
+   ],
+   "a": 4,
+   "s": "Parasitic fungus on mustard – Albugo; rust and smut – Puccinia and Ustilago; used in genetic work – Neurospora; edible delicacies – morels and truffles; bread mould – Rhizopus.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Parasitic fungi on mustard",
+      "(1) Neurospora"
+     ],
+     [
+      "(B) Rust and smut disease",
+      "(2) Puccinia and Ustilago"
+     ],
+     [
+      "(C) Used to genetic work",
+      "(3) Morels and truffles"
+     ],
+     [
+      "(D) Edible fungus",
+      "(4) Albugo"
+     ],
+     [
+      "(E) Bread mould",
+      "(5) Rhizopus"
+     ]
+    ]
+   },
+   "ref": "BC-MM-12"
+  },
+  {
+   "id": "bcmm13",
+   "no": 32,
+   "q": "Match the type of bacteria listed in column I with their activity given in column II. Choose the correct combination of alphabets of the two columns.",
+   "o": [
+    "A-2, B-3, C-1, D-5",
+    "A-2, B-3, C-4, D-5",
+    "A-4, B-5, C-1, D-3",
+    "A-5, B-1, C-3, D-4"
+   ],
+   "a": 2,
+   "s": "Streptomyces – source of antibiotics; Rhizobium – nitrogen fixation; Nitrosomonas – nitrification; Acetobacter – vinegar synthesis.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Streptomyces",
+      "(1) Food Poisoning"
+     ],
+     [
+      "(B) Rhizobium",
+      "(2) Source of antibiotics"
+     ],
+     [
+      "(C) Nitrosomonas",
+      "(3) Nitrogen fixation"
+     ],
+     [
+      "(D) Acetobacter",
+      "(4) Nitrification"
+     ],
+     [
+      "",
+      "(5) Vinegar synthesis"
+     ]
+    ]
+   },
+   "ref": "BC-MM-13"
+  },
+  {
+   "id": "bcmm14",
+   "no": 33,
+   "q": "Study the following columns.",
+   "o": [
+    "A-4, B-1, C-2, D-3",
+    "A-2, B-3, C-4, D-5",
+    "A-5, B-4, C-3, D-2",
+    "A-3, B-2, C-1, D-4"
+   ],
+   "a": 3,
+   "s": "Pasteurella pestis – plague; Treponema pallidum – syphilis; Mycobacterium bovis – actinomycosis of cattle (as per source); Streptomyces nodolus – amphotericin source.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Pasteurella pestis",
+      "(1) Angular leaf spot of cotton"
+     ],
+     [
+      "(B) Treponema pollidum",
+      "(2) Amphoterican"
+     ],
+     [
+      "(C) Mycobacterium bovis",
+      "(3) Actinomycosis of cattle"
+     ],
+     [
+      "(D) Streptomyces nodolus",
+      "(4) Syphilis"
+     ],
+     [
+      "",
+      "(5) Plague"
+     ]
+    ]
+   },
+   "ref": "BC-MM-14"
+  },
+  {
+   "id": "bcmm15",
+   "no": 34,
+   "q": "Match the following columns",
+   "o": [
+    "A-2, B-1, C-5, D-4",
+    "A-5, B-4, C-3, D-2",
+    "A-4, B-3, C-2, D-1",
+    "A-3, B-2, C-1, D-5"
+   ],
+   "a": 2,
+   "s": "Chrysophytes – diatoms and golden algae; dinoflagellates – Gonyaulax; euglenoids – Euglena; slime moulds – saprophytic protists; protozoans – Paramecium.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Chrysophytes",
+      "(1) Paramecium"
+     ],
+     [
+      "(B) Dianoflagellates",
+      "(2) Saprophytic protists"
+     ],
+     [
+      "(C) Euglenoids",
+      "(3) Euglena"
+     ],
+     [
+      "(D) Slime moulds",
+      "(4) Gonyaulax"
+     ],
+     [
+      "(E) Protozoans",
+      "(5) Diatoms and golden algae"
+     ]
+    ]
+   },
+   "ref": "BC-MM-15"
+  },
+  {
+   "id": "bcmm16",
+   "no": 35,
+   "q": "Match the following columns",
+   "o": [
+    "A-4, B-3, C-2, D-1",
+    "A-3, B-2, C-1, D-4",
+    "A-2, B-1, C-4, D-3",
+    "A-1, B-4, C-3, D-2"
+   ],
+   "a": 1,
+   "s": "Halophiles – salty areas; thermoacidophiles – hot springs; methanogens – marshy areas; basophiles – alkaline medium.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Halophiles",
+      "(1) Bacteria which survive in alkaline medium"
+     ],
+     [
+      "(B) Thermoacidophiles",
+      "(2) Bacteria which survive in marshy area"
+     ],
+     [
+      "(C) Methanogens",
+      "(3) Bacteria residing in hot springs"
+     ],
+     [
+      "(D) Basophiles",
+      "(4) Bacteria residing in salty areas"
+     ]
+    ]
+   },
+   "ref": "BC-MM-16"
+  },
+  {
+   "id": "bcmm17",
+   "no": 36,
+   "q": "Match the following columns",
+   "o": [
+    "A-2, B-3, C-4, D-1",
+    "A-1, B-2, C-3, D-4",
+    "A-3, B-4, C-1, D-2",
+    "A-4, B-1, C-2, D-3"
+   ],
+   "a": 2,
+   "s": "Chief producers in the oceans – diatoms; red tide – dinoflagellates; connecting link between plants and animals – euglenoids; fungus-animals – slime moulds.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Chief produces in the oceans",
+      "(1) diatoms"
+     ],
+     [
+      "(B) Red tides",
+      "(2) Dinoflagellates"
+     ],
+     [
+      "(C) Connecting link between plants and animals",
+      "(3) Euglenoids"
+     ],
+     [
+      "(D) Fungus-animals",
+      "(4) Slime mould"
+     ]
+    ]
+   },
+   "ref": "BC-MM-17"
+  },
+  {
+   "id": "bcmm20",
+   "no": 37,
+   "q": "Match the microbes in column I with their commercial/industrial products in column II and choose the correct answer.",
+   "o": [
+    "A-4, B-5, C-2, D-1",
+    "A-5, B-4, C-1, D-2",
+    "A-3, B-4, C-1, D-5",
+    "A-3, B-4, C-5, D-1"
+   ],
+   "a": 3,
+   "s": "A. niger – citric acid; C. butylicum – butyric acid; S. cerevisiae – ethanol; T. polysporum – cyclosporine-A; M. purpureus – statins.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Aspergillus niger",
+      "(1) Ethanol"
+     ],
+     [
+      "(B) Clostridium butylicum",
+      "(2) Statins"
+     ],
+     [
+      "(C) Saccharomyces cerevisiae",
+      "(3) Citric acid"
+     ],
+     [
+      "(D) Trichoderma polysporum",
+      "(4) Butyric acid"
+     ],
+     [
+      "(E) Monascus purpureus",
+      "(5) Cyclosporine-A"
+     ]
+    ]
+   },
+   "ref": "BC-MM-20"
+  },
+  {
+   "id": "bcmm21",
+   "no": 38,
+   "q": "Match the following columns",
+   "o": [
+    "A-1, B-4, C-3, D-2",
+    "A-2, B-1, C-4, D-3",
+    "A-4, B-3, C-2, D-1",
+    "A-3, B-2, C-1, D-4"
+   ],
+   "a": 3,
+   "s": "Phycomycetes – Mucor, Rhizopus, Pythium; Ascomycetes – Aspergillus, Claviceps, Neurospora; Basidiomycetes – Agaricus, Ustilago; Deuteromycetes – Alternaria, Trichoderma.",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Phycomycetes",
+      "(1) Alternaria and Trichoderma"
+     ],
+     [
+      "(B) Ascomycetes",
+      "(2) Agaricus and Ustilago"
+     ],
+     [
+      "(C) Basidiomycetes",
+      "(3) Aspergillus, Claviceps and Neurospora"
+     ],
+     [
+      "(D) Deuteromycetes",
+      "(4) Mucor, Rhizopus and Pythium"
+     ]
+    ]
+   },
+   "ref": "BC-MM-21"
+  },
+  {
+   "id": "pkar1",
+   "no": 39,
+   "q": "Statement 1: Both apospory and apogamy are observed in Pteris.\nStatement 2: They are evident by the production of haploid sporophyte by apospory and diploid gametophyte by apogamy.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 3,
+   "s": "Apospory is development of diploid gametophytes from vegetative parts of the diploid sporophyte without spores; apogamy is development of sporophyte directly from the gametophyte without sex organs and gametes. Statement 2 reverses these, so it is false.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-AR-1"
+  },
+  {
+   "id": "pkar2",
+   "no": 40,
+   "q": "Statement 1: Red algae contributes in producing coral reefs.\nStatement 2: Some red algae secrete and deposit calcium carbonate over their walls.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 1,
+   "s": "In coralline red algae the cell walls become hardened with calcium carbonate; these are important for coral reef formation.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-AR-2"
+  },
+  {
+   "id": "pkar3",
+   "no": 41,
+   "q": "Statement 1: In class-Rhodophyceae, cell wall is made up of cellulose\nStatement 2: In class-Rhodophyceae flagellar number is two and position of insertion is lateral",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 3,
+   "s": "Statement 1 is true but Statement 2 is false: in Rhodophyceae flagella are absent.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "keyCorrected": true,
+   "ref": "PK-AR-3"
+  },
+  {
+   "id": "pkar5",
+   "no": 42,
+   "q": "Statement 1: Fertilization in Cycas in called zooidogamy\nStatement 2: Fertilization in Cycas takes place by the formation of pollen tube.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 2,
+   "s": "Cycas is a gymnosperm in which fertilization is called zooidogamy. A pollen tube is formed through which the male nucleus passes.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-AR-5"
+  },
+  {
+   "id": "pkar6",
+   "no": 43,
+   "q": "Statement 1: In Spirogyra, some cells in one of the two filaments become empty after conjugation.\nStatement 2: The aplanogametes from the cells of one filament pass through the conjugation tubes into the cells of the other filament.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 1,
+   "s": "In Spirogyra conjugation, one cell (gametangium) functions as female and receives the aplanogamete (non-flagellated mass of protoplasm) of the adjacent cell; this transfer leaves behind an empty cell.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-AR-6"
+  },
+  {
+   "id": "pkar7",
+   "no": 44,
+   "q": "Statement 1: Certain marine brown and red algae produce large amounts of hydrocolloids\nStatement 2: Algin and carrageenin are used commercially as water holding substance",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 2,
+   "s": "Certain marine brown and red algae produce hydrocolloids (water holding substances), e.g. algin (brown algae) and carrageenan (red algae), which are used commercially. Both statements are true.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "keyCorrected": true,
+   "ref": "PK-AR-7"
+  },
+  {
+   "id": "pkar8",
+   "no": 45,
+   "q": "Statement 1: Conjugation is a temporary union between two ciliates belonging to two different mating types for the exchange and reconstitution of nuclear materials.\nStatement 2: Conjugation occurs between two inactive individuals which have gained their vigour and vitality due to chromosomal imbalance in their macronuclei, caused by repeated amitotic division.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 3,
+   "s": "In ciliates two individuals fuse temporarily, exchange micronuclear material and separate. Conjugation occurs between individuals that have LOST vigour, so Statement 2 is false.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-AR-8"
+  },
+  {
+   "id": "pkar9",
+   "no": 46,
+   "q": "Statement 1: One male gamete fuses with egg to form zygote\nStatement 2: This event is called syngamy",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 2,
+   "s": "Syngamy is the fusion of male and female gametes resulting in formation of a zygote, which develops into a new organism.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-AR-9"
+  },
+  {
+   "id": "pkar10",
+   "no": 47,
+   "q": "Statement 1: The life cycle of Funaria is called diplohaplontic.\nStatement 2: In Funaria, there is alternation of haploid gametophytic and diploid sporophytic phases, one becoming parent of the other.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 2,
+   "s": "In Funaria there are two distinct individuals: the haploid, independent, leafy moss plant and the diploid, leafless sporogonium, partially dependent on the gametophyte for nutrition.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-AR-10"
+  },
+  {
+   "id": "pkar11",
+   "no": 48,
+   "q": "Statement 1: Bryophytes are the amphibians of plant kingdom\nStatement 2: They are found in swamps and the areas, where water and land meet",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 1,
+   "s": "Bryophytes live in the transitional (amphibious) zone between aquatic and terrestrial habitats and cannot complete their life cycle without external water; hence they are called amphibians of the plant kingdom.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-AR-11"
+  },
+  {
+   "id": "pkar12",
+   "no": 49,
+   "q": "Statement 1: The term Bryophyta was used first time by Brawn (1864)\nStatement 2: He included algae, fungi, lichens and mosses in bryophytes",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 2,
+   "s": "The term bryophyte was coined by Braun (1864), who included algae, fungi, lichens and mosses. Later algae, fungi and lichens were placed in Thallophyta, while liverworts and mosses stayed in bryophytes.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-AR-12"
+  },
+  {
+   "id": "pkmm1",
+   "no": 50,
+   "q": "Match the following columns and select the correct option.",
+   "o": [
+    "A-4, B-2, C-5, D-3",
+    "A-3, B-4, C-2, D-5",
+    "A-5, B-3, C-1, D-2",
+    "A-2, B-1, C-3, D-4"
+   ],
+   "a": 3,
+   "s": "Sphaerotheca – columella (as per source); Colletotrichum – falcate conidia; Pyricularia – three-celled conidia; Olpidium – zoospores.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Sphaerotheca",
+      "(1) Three-celled conidia"
+     ],
+     [
+      "(B) Colletotrichum",
+      "(2) Zoospores"
+     ],
+     [
+      "(C) Pyricularia",
+      "(3) Falcate conidia"
+     ],
+     [
+      "(D) Olpidium",
+      "(4) Suspensor"
+     ],
+     [
+      "",
+      "(5) Columella"
+     ]
+    ]
+   },
+   "ref": "PK-MM-1"
+  },
+  {
+   "id": "pkmm2",
+   "no": 51,
+   "q": "Match column I with column II and select the correct option.",
+   "o": [
+    "A-1, B-2, C-4, D-3",
+    "A-2, B-4, C-3, D-1",
+    "A-2, B-3, C-1, D-4",
+    "A-3, B-1, C-4, D-2"
+   ],
+   "a": 4,
+   "s": "Red algae – Polysiphonia; liverwort – Marchantia; walking fern – Adiantum; gymnosperm – Pinus.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Red algae",
+      "(1) Marchantia"
+     ],
+     [
+      "(B) Liverwort",
+      "(2) Pinus"
+     ],
+     [
+      "(C) Walking fern",
+      "(3) Polysiphonia"
+     ],
+     [
+      "(D) Gymnosperm",
+      "(4) Adiantum"
+     ]
+    ]
+   },
+   "ref": "PK-MM-2"
+  },
+  {
+   "id": "pkmm3",
+   "no": 52,
+   "q": "Match the following columns",
+   "o": [
+    "A-1, B-4, C-3, D-2",
+    "A-4, B-3, C-2, D-1",
+    "A-3, B-2, C-1, D-4",
+    "A-4, B-3, C-1, D-2"
+   ],
+   "a": 2,
+   "s": "Polar nuclei + male gamete – endosperm; ovule – seed; ovary – fruit; syngamy + triple fusion – double fertilisation.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Polar nuclei + male gamete",
+      "(1) Double fertilisation"
+     ],
+     [
+      "(B) Ovule",
+      "(2) Fruits"
+     ],
+     [
+      "(C) Ovary",
+      "(3) Seed"
+     ],
+     [
+      "(D) Syngamy + triple fusion",
+      "(4) Endosperm"
+     ]
+    ]
+   },
+   "ref": "PK-MM-3"
+  },
+  {
+   "id": "pkmm4",
+   "no": 53,
+   "q": "Match the following columns",
+   "o": [
+    "A-4, B-3, C-2, D-1",
+    "A-3, B-2, C-1, D-4",
+    "A-2, B-1, C-4, D-3",
+    "A-1, B-4, C-3, D-2"
+   ],
+   "a": 1,
+   "s": "Psilopsida – Psilotum; Lycopsida – Selaginella, Lycopodium; Sphenopsida – Equisetum; Pteropsida – Dryopteris, Pteris, Adiantum.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Psilopsida",
+      "(1) Dryopteris, Pteris, Adiantum"
+     ],
+     [
+      "(B) Lycopsida",
+      "(2) Equisetum"
+     ],
+     [
+      "(C) Sphenopsida",
+      "(3) Selaginella"
+     ],
+     [
+      "(D) Pteropsida",
+      "(4) Psilotum"
+     ]
+    ]
+   },
+   "ref": "PK-MM-4"
+  },
+  {
+   "id": "pkmm5",
+   "no": 54,
+   "q": "Match the following columns and select the correct option.",
+   "o": [
+    "A-5, B-3, C-4, D-2",
+    "A-1, B-4, C-2, D-5",
+    "A-5, B-1, C-2, D-3",
+    "A-2, B-4, C-1, D-3"
+   ],
+   "a": 1,
+   "s": "Sarcotesta (from integument) is diploid; apospory gives DIPLOID gametophytes from the sporophyte; the azygospore (parthenogenetic) is haploid; the Pteris structure listed is diploid. The source solution table lists aposporous gametophores as haploid.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Sarcotesta of Cycas",
+      "(1) Haploid"
+     ],
+     [
+      "(B) Aposporous gametophores of Funaria",
+      "(2) Diploid"
+     ],
+     [
+      "(C) Azygospore of Rhizopus",
+      "(3) Diploid"
+     ],
+     [
+      "(D) Hypostomium of Pteris",
+      "(4) Haploid"
+     ],
+     [
+      "",
+      "(5) Diploid"
+     ]
+    ]
+   },
+   "keyCorrected": true,
+   "ref": "PK-MM-5"
+  },
+  {
+   "id": "pkmm6",
+   "no": 55,
+   "q": "Match the following columns and select the correct option.",
+   "o": [
+    "A-1, B-5, C-4, D-3",
+    "A-3, B-2, C-4, D-5",
+    "A-2, B-5, C-4, D-1",
+    "A-2, B-4, C-3, D-5"
+   ],
+   "a": 4,
+   "s": "Pteris spermatozoids – malic acid; Cycas male gametes – sucrose; Funaria antherozoids – oogamy; Spirogyra aplanogametes – physiological anisogamy.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Pteris − Spermatozoids",
+      "(1) Zooidogamy"
+     ],
+     [
+      "(B) Cycas − Male gametes",
+      "(2) Malic acid"
+     ],
+     [
+      "(C) Funaria − Antherozoids",
+      "(3) Oogamy"
+     ],
+     [
+      "(D) Spirogyra − Aplanogametes",
+      "(4) Sucrose"
+     ],
+     [
+      "",
+      "(5) Physiological anisogamy"
+     ]
+    ]
+   },
+   "ref": "PK-MM-6"
+  },
+  {
+   "id": "pkmm7",
+   "no": 56,
+   "q": "Match the branches of biology in column I with the areas of study in column II. Choose the answer, which gives the correct combination of alphabets of the colums.",
+   "o": [
+    "A-1, B-4, C-2, D-5",
+    "A-5, B-1, C-4, D-3",
+    "A-4, B-5, C-3, D-1",
+    "A-3, B-1, C-4, D-2"
+   ],
+   "a": 2,
+   "s": "Helminthology – worms; entomology – insects; ornithology – birds; phycology – algae.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Helminthology",
+      "(1) Study of insects"
+     ],
+     [
+      "(B) Entomology",
+      "(2) Study of fungus"
+     ],
+     [
+      "(C) Ornithology",
+      "(3) Study of algae"
+     ],
+     [
+      "(D) Phycology",
+      "(4) Study of birds"
+     ],
+     [
+      "",
+      "(5) Study of worms"
+     ]
+    ]
+   },
+   "ref": "PK-MM-7"
+  },
+  {
+   "id": "pkmm8",
+   "no": 57,
+   "q": "Match the following columns and select the correct option",
+   "o": [
+    "A-1, B-4, C-5, D-3",
+    "A-1, B-5, C-3, D-4",
+    "A-4, B-1, C-5, D-3",
+    "A-3, B-2, C-1, D-4"
+   ],
+   "a": 1,
+   "s": "Apospory in Pteris occurs in the sporophyte; Cycas endosperm and Funaria calyptra are gametophytic; Cycas nucellus is sporophytic.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Apospory in Pteris takes place in",
+      "(1) Sporophyte"
+     ],
+     [
+      "(B) Endosperm in Cycas",
+      "(2) Gametophyte"
+     ],
+     [
+      "(C) Calyptra in Funaria",
+      "(3) Sporophyte"
+     ],
+     [
+      "(D) Nucellus in Cycas",
+      "(4) Gametophyte"
+     ],
+     [
+      "",
+      "(5) Gametophyte"
+     ]
+    ]
+   },
+   "ref": "PK-MM-8"
+  },
+  {
+   "id": "pkmm9",
+   "no": 58,
+   "q": "Match items in column I with those in column II.",
+   "o": [
+    "A-2, B-1, C-3, D-4",
+    "A-5, B-3, C-2, D-5",
+    "A-1, B-2, C-5, D-3",
+    "A-3, B-1, C-4, D-5"
+   ],
+   "a": 4,
+   "s": "Peritrichous flagellation – E. coli; living fossil – Ginkgo; rhizophore – Selaginella; smallest flowering plant – Wolffia; largest perennial alga – Macrocystis.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Peritrichous flagellation",
+      "(1) Ginkgo"
+     ],
+     [
+      "(B) Living fossil",
+      "(2) Macrocystis"
+     ],
+     [
+      "(C) Rhizophore",
+      "(3) Escherichia coli"
+     ],
+     [
+      "(D) Smallest flowering plant",
+      "(4) Selaginella"
+     ],
+     [
+      "(E) Largest perennial alga",
+      "(5) Wolffia"
+     ]
+    ]
+   },
+   "ref": "PK-MM-9"
+  },
+  {
+   "id": "pkmm10",
+   "no": 59,
+   "q": "Study the following columns.",
+   "o": [
+    "A-5, B-2, C-4, D-1",
+    "A-4, B-1, C-5, D-3",
+    "A-3, B-5, C-2, D-4",
+    "A-2, B-3, C-1, D-5"
+   ],
+   "a": 2,
+   "s": "Coleorhiza – protective covering of radicle; apogamy – development of sporophyte directly from gametophyte without gametes; indusium – protective structure of a sorus; caudex – unbranched columnar stem with a crown of leaves.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Coleorhizae",
+      "(1) Development of sporophyte directly from gametophyte without intervention of gametes"
+     ],
+     [
+      "(B) Apogamy",
+      "(2) Development of gametophyte directly from sporophyte without the involvement of reduction division"
+     ],
+     [
+      "(C) Indusium",
+      "(3) An unbranched columnar stem with a crown of leaves"
+     ],
+     [
+      "(D) Caudex",
+      "(4) Protective covering of radical"
+     ],
+     [
+      "",
+      "(5) Protective structure of a sorus"
+     ]
+    ]
+   },
+   "ref": "PK-MM-10"
+  },
+  {
+   "id": "pkmm11",
+   "no": 60,
+   "q": "Match the column I with column II and select the correct option.",
+   "o": [
+    "A-2, B-4, C-3, D-1",
+    "A-3, B-1, C-4, D-2",
+    "A-3, B-4, C-2, D-1",
+    "A-4, B-3, C-1, D-2"
+   ],
+   "a": 2,
+   "s": "Chloroplast types: cup-shaped – Chlamydomonas; girdle-shaped – Ulothrix; stellate – Zygnema; reticulate – Oedogonium.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Cup-shaped",
+      "(1) Ulothrix"
+     ],
+     [
+      "(B) Girdle-shaped",
+      "(2) Oedogonium"
+     ],
+     [
+      "(C) Stellate",
+      "(3) Chlamydomonas"
+     ],
+     [
+      "(D) Reticulate",
+      "(4) Zygnema"
+     ]
+    ]
+   },
+   "ref": "PK-MM-11"
+  },
+  {
+   "id": "pkmm12",
+   "no": 61,
+   "q": "Match the following columns",
+   "o": [
+    "A-3, B-2, C-1",
+    "A-1, B-2, C-3",
+    "A-2, B-1, C-3",
+    "A-3, B-1, C-2"
+   ],
+   "a": 1,
+   "s": "Isogamous – both gametes similar in size and non-motile; anisogamous – gametes dissimilar in size; oogamous – fusion between a small male and a large female gamete.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Isogamous",
+      "(1) Fusion between male (small) and female gamete (large)"
+     ],
+     [
+      "(B) Anisogamous",
+      "(2) Both gametes are dissimilar in size"
+     ],
+     [
+      "(C) Oogamous",
+      "(3) Both gametes are similar in size and non-motile"
+     ]
+    ]
+   },
+   "ref": "PK-MM-12"
+  },
+  {
+   "id": "pkmm13",
+   "no": 62,
+   "q": "Match the following columns and select the correct option.",
+   "o": [
+    "A-1, B-4, C-3, D-2",
+    "A-3, B-5, C-1, D-2",
+    "A-2, B-1, C-5, D-3",
+    "A-3, B-2, C-1, D-4"
+   ],
+   "a": 2,
+   "s": "Per source solution: apophysis – Funaria; columella – Rhizopus; columella – Funaria; apophysis – Cycas.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Apophysis",
+      "(1) Funaria"
+     ],
+     [
+      "(B) Columella",
+      "(2) Cycas"
+     ],
+     [
+      "(C) Columella",
+      "(3) Funaria"
+     ],
+     [
+      "(D) Apophysis",
+      "(4) Spirogyra"
+     ],
+     [
+      "",
+      "(5) Rhizopus"
+     ]
+    ]
+   },
+   "ref": "PK-MM-13"
+  },
+  {
+   "id": "pkmm14",
+   "no": 63,
+   "q": "Match the column I with column II and select the correct option.",
+   "o": [
+    "A-6, B-5, C-1, D-3",
+    "A-5, B-4, C-3, D-2",
+    "A-5, B-1, C-2, D-4",
+    "A-3, B-2, C-1, D-5"
+   ],
+   "a": 3,
+   "s": "Anthoceros – hornwort; Adiantum – walking fern; Sargassum – alga; prothallus – gametophyte; Asterales – Inferae.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Anthoceros",
+      "(1) Walking fern"
+     ],
+     [
+      "(B) Adiantum",
+      "(2) Alga"
+     ],
+     [
+      "(C) Sargassum",
+      "(3) Inferae"
+     ],
+     [
+      "(D) Prothallus",
+      "(4) Gametophyte"
+     ],
+     [
+      "(E) Asterales",
+      "(5) Hornwort"
+     ],
+     [
+      "",
+      "(6) Liverwort"
+     ]
+    ]
+   },
+   "ref": "PK-MM-14"
+  },
+  {
+   "id": "pkmm15",
+   "no": 64,
+   "q": "Match the following column",
+   "o": [
+    "A-3, B-1, C-2",
+    "A-1, B-2, C-3",
+    "A-2, B-3, C-1",
+    "A-3, B-2, C-1"
+   ],
+   "a": 4,
+   "s": "Haplontic – Volvox, Spirogyra, Chlamydomonas; diplontic – gymnosperms and angiosperms; haplo-diplontic – bryophytes and pteridophytes. (The source solution swaps the last two.)",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Haplontic life cycle",
+      "(1) Bryophytes and pteridophytes"
+     ],
+     [
+      "(B) Dipontic life cycle",
+      "(2) Gymnosperms and angiosperms"
+     ],
+     [
+      "(C) Haplo-diplontic life cycle",
+      "(3) Volvox, Spirogyra and Chlamydomonas"
+     ]
+    ]
+   },
+   "keyCorrected": true,
+   "ref": "PK-MM-15"
+  },
+  {
+   "id": "pkmm16",
+   "no": 65,
+   "q": "Match the following columns",
+   "o": [
+    "A-2, B-1, C-3",
+    "A-3, B-1, C-2",
+    "A-2, B-3, C-1",
+    "A-1, B-2, C-3"
+   ],
+   "a": 4,
+   "s": "Natural – Bentham and Hooker; artificial – Linnaeus; phylogenetic – Engler and Prantl.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Natural system of classification",
+      "(1) Bentham and Hooker"
+     ],
+     [
+      "(B) Artificial system of classification",
+      "(2) Linnaeus"
+     ],
+     [
+      "(C) Phylogenetic system of classification",
+      "(3) Englar and Prantl"
+     ]
+    ]
+   },
+   "ref": "PK-MM-16"
+  },
+  {
+   "id": "pkmm17",
+   "no": 66,
+   "q": "Match the following columns",
+   "o": [
+    "A-2,3; B-1",
+    "A-1,2; B-3,4",
+    "A-1,4; B-2,3",
+    "A-2,4; B-1,3"
+   ],
+   "a": 1,
+   "s": "Branched stem – Pinus and Cedrus; unbranched stem – Cycas.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Branched stem",
+      "(1) Cycas"
+     ],
+     [
+      "(B) Unbranched stem",
+      "(2) Pinus"
+     ],
+     [
+      "",
+      "(3) Cedrus"
+     ],
+     [
+      "",
+      "(4) Fern"
+     ]
+    ]
+   },
+   "ref": "PK-MM-17"
+  },
+  {
+   "id": "pkmm18",
+   "no": 67,
+   "q": "Match the following columns",
+   "o": [
+    "A-1, B-2, C-3, D-4",
+    "A-3, B-4, C-1, D-2",
+    "A-4, B-1, C-2, D-3",
+    "A-2, B-3, C-4, D-1"
+   ],
+   "a": 4,
+   "s": "Ulothrix – filamentous; Volvox – colonial; Chlamydomonas – unicellular; some giant marine forms – kelp.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Ulothrix",
+      "(1) Kelp"
+     ],
+     [
+      "(B) Volvox",
+      "(2) Filamentous"
+     ],
+     [
+      "(C) Chlamydomonas",
+      "(3) Colonial form"
+     ],
+     [
+      "(D) Some giant marine form",
+      "(4) Unicellular"
+     ]
+    ]
+   },
+   "ref": "PK-MM-18"
+  },
+  {
+   "id": "pkmm19",
+   "no": 68,
+   "q": "Match the following columns",
+   "o": [
+    "A-1, B-4, C-3, D-2",
+    "A-2, B-1, C-4, D-3",
+    "A-4, B-3, C-2, D-1",
+    "A-3, B-2, C-1, D-4"
+   ],
+   "a": 3,
+   "s": "Algin – Laminaria (brown algae); carrageenin – Chondrus (red algae); agar – Gelidium; parasitic alga – Cephaleuros.",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Algin",
+      "(1) Cephaleuros"
+     ],
+     [
+      "(B) Carrageenin",
+      "(2) Gelidium"
+     ],
+     [
+      "(C) Agar",
+      "(3) Chondrus"
+     ],
+     [
+      "(D) Parasitic algae",
+      "(4) Laminaria"
+     ]
+    ]
+   },
+   "ref": "PK-MM-19"
+  }
+ ]
+}
