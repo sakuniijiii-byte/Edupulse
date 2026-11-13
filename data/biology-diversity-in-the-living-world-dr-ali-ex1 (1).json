@@ -1,0 +1,2775 @@
+{
+ "sourceId": "dr-ali",
+ "sourceLabel": "Dr. Ali Objective Biology Vol-1",
+ "exercise": "ex1",
+ "meta": {
+  "chapter": "Diversity in the Living World",
+  "subject": "Biology",
+  "total": 164
+ },
+ "qs": [
+  {
+   "id": "lw1",
+   "no": 1,
+   "q": "I. Increase in mass\nII. Differentiation\nIII. Increase in number of individuals\nIV. Response to stimuli\nWhich two points are known as the twin characteristics of growth?",
+   "o": [
+    "I and II",
+    "I and IV",
+    "II and III",
+    "I and III"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-1"
+  },
+  {
+   "id": "lw2",
+   "no": 2,
+   "q": "Cell division occurs ________ in plants and ________ in animals",
+   "o": [
+    "Continuously, only upto a certain age",
+    "Only upto a certain age, continuously",
+    "Continuously, never",
+    "Once, twice"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-2"
+  },
+  {
+   "id": "lw3",
+   "no": 3,
+   "q": "Generally growth and reproduction are –",
+   "o": [
+    "Mutually inclusive events",
+    "Mutually exclusive events",
+    "Either a or b",
+    "None"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-3"
+  },
+  {
+   "id": "lw4",
+   "no": 4,
+   "q": "Match the Column I with Column II –",
+   "o": [
+    "A-I, B-II, C-III, D-IV, E-VI, F-V",
+    "A-IV, B-II,V, C-III, D-III, E-I, F-VI",
+    "A-III, B-II, C-IV, D-III, E-VI, F-I",
+    "A-II, B-III, C-I, D-IV, E-II, F-VI"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column I",
+     "Column II"
+    ],
+    "rows": [
+     [
+      "A. Planaria",
+      "I. Binary fission"
+     ],
+     [
+      "B. Fungi",
+      "II. Asexual spores"
+     ],
+     [
+      "C. Yeast",
+      "III. Budding"
+     ],
+     [
+      "D. Hydra",
+      "IV. True regeneration"
+     ],
+     [
+      "E. Amoeba",
+      "V. Fragmentation"
+     ],
+     [
+      "F. Species Plantarum and Systema Naturae",
+      "VI. Linnaeus"
+     ]
+    ]
+   },
+   "ref": "LW-4"
+  },
+  {
+   "id": "lw5",
+   "no": 5,
+   "q": "Which set of organisms multiply by fragmentation?",
+   "o": [
+    "Earthworm, Amoeba, fungi",
+    "Earthworm, fungi, bacteria",
+    "Fungi, filamentous algae, protonema of mosses",
+    "Amoeba, Hydra, bacteria"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-5"
+  },
+  {
+   "id": "lw6",
+   "no": 6,
+   "q": "Which of the following organisms do not reproduce?",
+   "o": [
+    "Mules",
+    "Sterile worker bees",
+    "Both a and b",
+    "None"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-6"
+  },
+  {
+   "id": "lw7",
+   "no": 7,
+   "q": "Metabolic reactions take place –",
+   "o": [
+    "In isolated cell-free systems",
+    "In living systems",
+    "Both a and b",
+    "Either a or b"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-7"
+  },
+  {
+   "id": "lw8",
+   "no": 8,
+   "q": "Organisms that can respond to stimuli are –",
+   "o": [
+    "Eukaryotes only",
+    "Prokaryotes only",
+    "Both Prokaryotes and eukaryotes",
+    "Those with a well developed nervous system"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-8"
+  },
+  {
+   "id": "lw9",
+   "no": 9,
+   "q": "I. Growth\nII. Reproduction\nIII. Response to stimuli\nIV. Metabolism\nV. Cellular organisation\nWhich of the above features are generally characteristic of life?",
+   "o": [
+    "I, II, IV, V",
+    "All",
+    "II, III, IV",
+    "I, II, III, V"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-9"
+  },
+  {
+   "id": "lw10",
+   "no": 10,
+   "q": "Growth, development and functioning of living body is due to –",
+   "o": [
+    "Order",
+    "Homeostasis",
+    "Metabolism",
+    "Adaptations"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-10"
+  },
+  {
+   "id": "lw11",
+   "no": 11,
+   "q": "Which type of organisation is found in only living beings is –",
+   "o": [
+    "Atomic",
+    "Molecular",
+    "Mixture",
+    "Subcellular"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-11"
+  },
+  {
+   "id": "lw12",
+   "no": 12,
+   "q": "Organisation levels in living beings are –",
+   "o": [
+    "Subcellular → cellular → individual → community → population",
+    "Atomic → molecular → subcellular → cellular → tissue → organ → individual",
+    "Individual → population → organ system → tissue → cellular → molecular → atomic",
+    "Atomic → molecular → tissue → individual → ecosystem → community"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-12"
+  },
+  {
+   "id": "lw13",
+   "no": 13,
+   "q": "Given below are assertion and reason. Point out if both are true and the reason is correct explanation (I), both are true but reason is not correct explanation (II), assertion is true but reason is wrong (III) and both are wrong (IV).\nAssertion – Death is regarded as the most regulatory process on earth.\nReason – It avoids over-crowding caused by continuous reproduction.",
+   "o": [
+    "I",
+    "II",
+    "III",
+    "IV"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-13"
+  },
+  {
+   "id": "lw14",
+   "no": 14,
+   "q": "Biological organisation begins at –",
+   "o": [
+    "Cellular level",
+    "Atomic level",
+    "Organismic level",
+    "Submicroscopic molecular level"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-14"
+  },
+  {
+   "id": "lw15",
+   "no": 15,
+   "q": "A living organism can be exceptionally differentiated from a nonliving thing on the basis of its ability for –",
+   "o": [
+    "reproduction",
+    "Growth and movement",
+    "Responsiveness to touch",
+    "Interaction with environment and progressive evolution"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "keyCorrected": true,
+   "ref": "LW-15"
+  },
+  {
+   "id": "lw16",
+   "no": 16,
+   "q": "Linnaeus evolved a system of nomenclature called –",
+   "o": [
+    "Mononomial",
+    "Vernacular",
+    "Binomial",
+    "Polynomial"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-16"
+  },
+  {
+   "id": "lw17",
+   "no": 17,
+   "q": "Which one is the species?",
+   "o": [
+    "Carnivora",
+    "Canis",
+    "familiaris",
+    "Canis familiaris"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-17"
+  },
+  {
+   "id": "lw18",
+   "no": 18,
+   "q": "Binomial nomenclature seems to be difficult because a scientific name is derived from –",
+   "o": [
+    "English",
+    "Sanskrit",
+    "Latin",
+    "French"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-18"
+  },
+  {
+   "id": "lw19",
+   "no": 19,
+   "q": "Two plants are taxonomically related if –",
+   "o": [
+    "They store carbohydrate in the same type of molecule",
+    "Both obtain energy from hydrolysis of ATP into ADP and inorganic phosphate",
+    "Both have similarly lobed palmate leaves",
+    "Both have pinnately veined leaves"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-19"
+  },
+  {
+   "id": "lw20",
+   "no": 20,
+   "q": "A group of plants or animals with similar traits of any rank is –",
+   "o": [
+    "Species",
+    "Genus",
+    "Order",
+    "Taxon"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-20"
+  },
+  {
+   "id": "lw21",
+   "no": 21,
+   "q": "Binomial nomenclature means –",
+   "o": [
+    "One name given by two scientists",
+    "One scientific name consisting of a generic and specific epithet",
+    "Two names, one latinised, other of a person",
+    "Two names, one scientific, other local"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-21"
+  },
+  {
+   "id": "lw22",
+   "no": 22,
+   "q": "Basic unit or smallest taxon of taxonomy / classification is –",
+   "o": [
+    "Species",
+    "Kingdom",
+    "Family",
+    "Variety"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-22"
+  },
+  {
+   "id": "lw23",
+   "no": 23,
+   "q": "Father of taxonomy is –",
+   "o": [
+    "De Candolle",
+    "Hooker",
+    "Linnaeus",
+    "Aristotle"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-23"
+  },
+  {
+   "id": "lw24",
+   "no": 24,
+   "q": "A scientist connected with the study of variations, evolution and origin along with classification is known as –",
+   "o": [
+    "Classical taxonomist",
+    "Herbal taxonomist",
+    "Modern taxonomist",
+    "New taxonomist"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-24"
+  },
+  {
+   "id": "lw25",
+   "no": 25,
+   "q": "Linnaeus system of classification was based on –",
+   "o": [
+    "Morphology",
+    "Ecology",
+    "Embryology",
+    "Cytology"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-25"
+  },
+  {
+   "id": "lw26",
+   "no": 26,
+   "q": "First act in taxonomy is –",
+   "o": [
+    "Description",
+    "Identification",
+    "Naming",
+    "Classification"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-26"
+  },
+  {
+   "id": "lw27",
+   "no": 27,
+   "q": "Taxonomy based on determination of genetic relationships is –",
+   "o": [
+    "Cytotaxonomy",
+    "Numerical taxonomy",
+    "Biochemical taxonomy",
+    "Experimental taxonomy"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-27"
+  },
+  {
+   "id": "lw28",
+   "no": 28,
+   "q": "A group of interbreeding organisms is –",
+   "o": [
+    "Genus",
+    "Family",
+    "Order",
+    "Species"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-28"
+  },
+  {
+   "id": "lw29",
+   "no": 29,
+   "q": "A taxon is –",
+   "o": [
+    "A group of related families",
+    "A group of related species",
+    "A type of living organisms",
+    "A taxonomic group of any ranking."
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-29"
+  },
+  {
+   "id": "lw30",
+   "no": 30,
+   "q": "Branch connected with nomenclature, identification and classification is –",
+   "o": [
+    "Ecology",
+    "Taxonomy",
+    "Morphology",
+    "Physiology"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-30"
+  },
+  {
+   "id": "lw31",
+   "no": 31,
+   "q": "Sequence of taxonomic categories is –",
+   "o": [
+    "Class – Phylum – Tribe – Order – Family – Genus – Species",
+    "Division – Class – Family – Tribe – Order – Genus – Species",
+    "Division – Class – Order – Family – Tribe – Genus – Species",
+    "Phylum – Order – Class – Tribe – Family – Genus – Species"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-31"
+  },
+  {
+   "id": "lw32",
+   "no": 32,
+   "q": "The third name in trinomial nomenclature is –",
+   "o": [
+    "Species",
+    "Subgenus",
+    "Subspecies",
+    "Ecotype"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-32"
+  },
+  {
+   "id": "lw33",
+   "no": 33,
+   "q": "In nomenclature –",
+   "o": [
+    "Both genus and species are printed in italics",
+    "Genus and species may be of same name",
+    "Both in genus & species, the first letter is capital",
+    "Genus is written after the species."
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-33"
+  },
+  {
+   "id": "lw34",
+   "no": 34,
+   "q": "In fish, Catla catla the specific name is identical with the generic name, thus it is an example of",
+   "o": [
+    "antonym",
+    "tautonym",
+    "synonym",
+    "homonym"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-34"
+  },
+  {
+   "id": "lw35",
+   "no": 35,
+   "q": "Species A and species B are in the same phylum. Species A and species C, but not species B, are in the same order. From this information you can conclude that –",
+   "o": [
+    "species C could be in the same class as species A and B",
+    "all three species are members of the same genus",
+    "all three species are not members of the same phylum",
+    "species A and species B are in the same family"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-35"
+  },
+  {
+   "id": "lw36",
+   "no": 36,
+   "q": "Which one of the following is not a correct statement?",
+   "o": [
+    "Herbarium houses dried, pressed and preserved plant specimens",
+    "Botanical gardens have collection of living plants for reference",
+    "A museum has collection of photographs of plants and animals",
+    "Key is a taxonomic aid for identification of specimens"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-36"
+  },
+  {
+   "id": "lw37",
+   "no": 37,
+   "q": "Mayer's biological concepts of species is mainly based on",
+   "o": [
+    "Morphological traits",
+    "Reproductive isolation",
+    "Modes of reproduction",
+    "Morphology and reproduction"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-37"
+  },
+  {
+   "id": "lw38",
+   "no": 38,
+   "q": "In the following flow diagram, identify the correct categories.\n[Angiospermae ← C ← B ← D ← A ← E ← Species]\nI. Wheat and mango belongs to same category B.\nII. Potato, brinjal and makoi belong to same category E.\nIII. Muscidae, anacardiaceae and angiospermae belongs to category A.\nIV. Gorilla, gibbon and chimpanzee belongs to same category D.\nV. Dicotyledonae and monocotyledonae belongs to category C.\nSelect the correct statement",
+   "o": [
+    "IV, II, III",
+    "I, III, V",
+    "II, IV",
+    "V, II, IV"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-38"
+  },
+  {
+   "id": "lw39",
+   "no": 39,
+   "q": "Recognise the following flow diagram and the find correct option according to taxonomic hierarchy.\n[Angiospermae ← C ← B ← A ← Mangifera]",
+   "o": [
+    "A is comparable to muscidae while B is at the same level as that of primata",
+    "C includes all the angiosperms having two cotyledons in their seeds",
+    "For wheat A is poaceae, B is poales and C is monocotyledonae",
+    "All of the above are correct statements."
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-39"
+  },
+  {
+   "id": "lw40",
+   "no": 40,
+   "q": "Recognise the following flow diagram and find the correct option according to taxonomic hierarchy.\n[Angiospermae ← Dicotyledonae ← B ← A ← Petunia]",
+   "o": [
+    "A - Sapindales, B - Anacardiaceae",
+    "A - Polymoniales, B - Convolvulaceae",
+    "A - Polymoniales, B - Solanaceae",
+    "A - Solanaceae, B - Polymoniales"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-40"
+  },
+  {
+   "id": "lw41",
+   "no": 41,
+   "q": "Which of the following statements best describes “emergent properties”?",
+   "o": [
+    "The properties of individual molecules which perform a specific chemical function.",
+    "The function of a group of molecules is more than the abilities of a single molecule in the group.",
+    "The magical interaction of molecules in water.",
+    "All of these statements are examples of “emergent properties”."
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-41"
+  },
+  {
+   "id": "lw42",
+   "no": 42,
+   "q": "“Properties of cellular organelles are not present in the molecular constituents of the organelle but arise as a result of interactions among the molecular components comprising the organelle. These interactions result in emergent properties at a higher level of organisation”.\nThe above statement best describes the",
+   "o": [
+    "emergent properties",
+    "Individual properties",
+    "synergestic properties",
+    "None"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-42"
+  },
+  {
+   "id": "lw43",
+   "no": 43,
+   "q": "Match the items given in Column I with those in Column II and select the correct option given below:",
+   "o": [
+    "a-(ii), b-(iv), c-(iii), d-(i)",
+    "a-(iii), b-(ii), c-(i), d-(iv)",
+    "a-(i), b-(iv), c-(iii), d-(ii)",
+    "a-(iii), b-(iv), c-(i), d-(ii)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column I",
+     "Column II"
+    ],
+    "rows": [
+     [
+      "a. Herbarium",
+      "(i) It is a place having a collection of preserved plants and animals"
+     ],
+     [
+      "b. Key",
+      "(ii) A list that enumerates methodically all the species found in an area with brief description aiding identification"
+     ],
+     [
+      "c. Museum",
+      "(iii) Is a place where dried and pressed plant specimens mounted on sheets are kept"
+     ],
+     [
+      "d. Catalogue",
+      "(iv) A booklet containing a list of characters and their alternates which are helpful in identification of various taxa."
+     ]
+    ]
+   },
+   "ref": "LW-43"
+  },
+  {
+   "id": "lw44",
+   "no": 44,
+   "q": "A taxonomic key used to identify organisms is labeled:",
+   "o": [
+    "phylogenetic key",
+    "evergreen key",
+    "dichotomous key",
+    "none of the above"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-44"
+  },
+  {
+   "id": "lw45",
+   "no": 45,
+   "q": "Which one of the following has least similar characters?",
+   "o": [
+    "Family",
+    "Class",
+    "Genus",
+    "Species"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-45"
+  },
+  {
+   "id": "lw46",
+   "no": 46,
+   "q": "On which of the following, five kingdom classification is based –",
+   "o": [
+    "Cell wall",
+    "Genetic material",
+    "Types of organelles",
+    "Mode of nutrition"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-46"
+  },
+  {
+   "id": "lw47",
+   "no": 47,
+   "q": "Number of criteria used in classifying organisms in five-kingdom classification is –",
+   "o": [
+    "5",
+    "4",
+    "3",
+    "2"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-47"
+  },
+  {
+   "id": "lw48",
+   "no": 48,
+   "q": "Which of the following is less general in characters as compared to genus –",
+   "o": [
+    "Species",
+    "Family",
+    "Class",
+    "Division"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-48"
+  },
+  {
+   "id": "lw49",
+   "no": 49,
+   "q": "What is correct?",
+   "o": [
+    "APIS INDICA",
+    "Trypansoma gambiense",
+    "Ficus Bengalensis",
+    "Mangifera indica"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-49"
+  },
+  {
+   "id": "lw50",
+   "no": 50,
+   "q": "Descending arrangement of categories is called –",
+   "o": [
+    "Classification",
+    "Taxonomy",
+    "Hierarchy",
+    "Key"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-50"
+  },
+  {
+   "id": "lw51",
+   "no": 51,
+   "q": "Nicotiana is –",
+   "o": [
+    "Variety",
+    "Subspecies",
+    "Species",
+    "Genus"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-51"
+  },
+  {
+   "id": "lw52",
+   "no": 52,
+   "q": "Which one is odd/not a category?",
+   "o": [
+    "Species",
+    "Class",
+    "Phylum",
+    "Glumaceae / Malvaceae"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-52"
+  },
+  {
+   "id": "lw53",
+   "no": 53,
+   "q": "In hierarchical classification, class is interpolated between –",
+   "o": [
+    "Family and genus",
+    "Phylum and order",
+    "Order and family",
+    "Kingdom and phylum"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-53"
+  },
+  {
+   "id": "lw54",
+   "no": 54,
+   "q": "The disadvantage of using common names for species is that:",
+   "o": [
+    "the names may change",
+    "one name does not apply universally",
+    "one species may have several common names and one common name may be applied to two species",
+    "all of the above"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-54"
+  },
+  {
+   "id": "lw55",
+   "no": 55,
+   "q": "Place of keeping and studying dry plants is –",
+   "o": [
+    "Arboretum",
+    "Museum",
+    "Vasculum",
+    "Herbarium"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-55"
+  },
+  {
+   "id": "lw56",
+   "no": 56,
+   "q": "Hierarchy of categories of Carolus Linnaeus had categories except –",
+   "o": [
+    "Genus and species",
+    "Order and class",
+    "Kingdom and class",
+    "Phylum and family"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-56"
+  },
+  {
+   "id": "lw57",
+   "no": 57,
+   "q": "An important function of botanical garden is –",
+   "o": [
+    "Providing beautiful area for recreation",
+    "One can observe tropical plants over there",
+    "They allow ex-situ conservation of germ plasm",
+    "They provide natural habitat to wildlife"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-57"
+  },
+  {
+   "id": "lw58",
+   "no": 58,
+   "q": "Two plants belong to same species if they –",
+   "o": [
+    "Have more than 90% similar genes",
+    "Look similar and possess identical secondary metabolites",
+    "Have similar number of chromosomes",
+    "Can reproduce freely with each other and form seeds"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-58"
+  },
+  {
+   "id": "lw59",
+   "no": 59,
+   "q": "The given table gives the classification of a wheat plant.",
+   "o": [
+    "i-Genus; ii-Class; iii-Poaceae",
+    "i-Class; ii-Order; iii-Poaceae",
+    "i-Genus; ii-Class; iii-Solanaceae",
+    "i-Class; ii-Order; iii-Solanaceae"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Category",
+     "Name"
+    ],
+    "rows": [
+     [
+      "Kingdom",
+      "Plantae"
+     ],
+     [
+      "Division",
+      "Angiospermae"
+     ],
+     [
+      "i",
+      "Monocotyledonae"
+     ],
+     [
+      "ii",
+      "Poales"
+     ],
+     [
+      "Family",
+      "iii"
+     ]
+    ]
+   },
+   "ref": "LW-59"
+  },
+  {
+   "id": "lw60",
+   "no": 60,
+   "q": "In Oryza sativa, sativa stands for –",
+   "o": [
+    "Name of species",
+    "Specific nomenclature",
+    "Specific epithet",
+    "Species"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-60"
+  },
+  {
+   "id": "lw61",
+   "no": 61,
+   "q": "An organism is in the same class but not in the same family. It may belong to same",
+   "o": [
+    "Genus",
+    "Species",
+    "Variety",
+    "Order"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-61"
+  },
+  {
+   "id": "lw62",
+   "no": 62,
+   "q": "Largest herbarium in India is at –",
+   "o": [
+    "National Botanical Garden, Lucknow",
+    "Lloyd Botanical garden, Darjeeling",
+    "Forest Research Institute, Dehradun",
+    "Indian Botanical Garden, Sibpur"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-62"
+  },
+  {
+   "id": "lw63",
+   "no": 63,
+   "q": "The famous botanical garden of Kew is located in –",
+   "o": [
+    "India",
+    "England",
+    "Germany",
+    "France"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-63"
+  },
+  {
+   "id": "lw64",
+   "no": 64,
+   "q": "Related genera belong to same –",
+   "o": [
+    "Variety",
+    "Family",
+    "Species",
+    "None of these"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-64"
+  },
+  {
+   "id": "lw65",
+   "no": 65,
+   "q": "Which is not applicable to biological species concept?",
+   "o": [
+    "Hybridisation",
+    "Reproductive isolation",
+    "Natural selection",
+    "Gene pool"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-65"
+  },
+  {
+   "id": "lw66",
+   "no": 66,
+   "q": "Which taxonomic aid gives comprehensive account of complete compiled information of a genus or family at a particular time?",
+   "o": [
+    "Taxonomic key",
+    "Herbarium",
+    "Monograph",
+    "Flora"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-66"
+  },
+  {
+   "id": "lw67",
+   "no": 67,
+   "q": "ICBN is –",
+   "o": [
+    "International Code of Biological Naming",
+    "International Code of Botanical Nomenclature",
+    "Internal Class of Biological Nomenclature",
+    "International Classification of Biological Nomenclature"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-67"
+  },
+  {
+   "id": "lw68",
+   "no": 68,
+   "q": "Who did write “Species Plantarum” and provide a basis for classification of plants?",
+   "o": [
+    "Carolus Linnaeus",
+    "Charles Darwin",
+    "Robert Hooke",
+    "Leeuwenhoek"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-68"
+  },
+  {
+   "id": "lw69",
+   "no": 69,
+   "q": "Identify the true statements from below –\nI. Father of taxonomy is John Ray\nII. Homo sapiens is the scientific name of man\nIII. A taxon is a group of related plants or animals.\nIV. Basic unit or lowest taxonomic category is species.\nV. The first step in taxonomy is naming.\nVI. Modern classification is based on phylogeny\nVII. First time binomial nomenclature was written in latin\nVIII. The number of species that are known and described, range between 1.7 - 1.8 million",
+   "o": [
+    "I, II, III and IV",
+    "II, IV, VI, VII and VIII",
+    "I, III, V and VII",
+    "II, III, V and VI"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-69"
+  },
+  {
+   "id": "lw70",
+   "no": 70,
+   "q": "Classification systems have many uses. Which of the following is not a goal of biological classification?",
+   "o": [
+    "To depict convergent evolution",
+    "To clarify relationships among organisms",
+    "To help us remember organisms and their traits",
+    "To clearly identify organisms being studied"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-70"
+  },
+  {
+   "id": "lw71",
+   "no": 71,
+   "q": "Taxonomic systems used by biologists are hierarchical, that is,",
+   "o": [
+    "taxonomic groups reflect shared characters, not evolutionary relationships.",
+    "each higher taxonomic group contains all the groups below it.",
+    "taxonomic groups reflect common habitats.",
+    "a hierarchy of traits is used to establish classifications."
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-71"
+  },
+  {
+   "id": "lw72",
+   "no": 72,
+   "q": "Classification systems serve four important roles. Which of the following is not one of those roles?",
+   "o": [
+    "To help us remember characteristics of a large number of different things",
+    "To help us identify shared traits, such as hair, mammary glands and constant high body temperature in mammals",
+    "To reveal the harmony of nature",
+    "To provide stable, unique, unequivocal names for organisms and to help reconstruct evolutionary pathways"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-72"
+  },
+  {
+   "id": "lw73",
+   "no": 73,
+   "q": "In referring to an organism in writing, such as in a newspaper, textbook, or lab report, which of these rules should be followed?\n1. Underline or italicize genus\n2. Underline or italicize species\n3. First letter of species should be uppercase\n4. First letter of genus should be uppercase",
+   "o": [
+    "1, 2, 4",
+    "1, 2, 3",
+    "2, 3, 4",
+    "1, 3, 4"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-73"
+  },
+  {
+   "id": "lw74",
+   "no": 74,
+   "q": "Which of the following statements about classification is not true?\nI. Members of a family are less similar than members of an included genus\nII. An order has more members than the number of members in an included genus\nIII. Families have more members than phyla\nIV. Members of a family share a common ancestor in the more distant past than members of an included genus\nV. The number of species in a taxon depends on their relative degree of similarity.",
+   "o": [
+    "Only III",
+    "Only IV",
+    "Only V",
+    "None"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-74"
+  },
+  {
+   "id": "lw75",
+   "no": 75,
+   "q": "Select the true statement for reproduction.\nI. It is not an all-exclusive defining characteristic of living organisms\nII. It is not an all-inclusive defining characteristic of living organisms\nIII. It is an all-inclusive defining characteristic of plants and fungi only\nIV. Photoperiod affects reproduction in seasonal plant breeders only.\nV. Photoperiod affects reproduction in seasonal breeders both plants and animals\nVI. Photoperiod has no role in reproduction",
+   "o": [
+    "II and V",
+    "I and IV",
+    "IV and VI",
+    "All"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-75"
+  },
+  {
+   "id": "lw76",
+   "no": 76,
+   "q": "Reproduction is synonymous with growth / cell division in –\nI. Bacteria\nII. Hydra\nIII. Planaria\nIV. Unicellular algae\nV. Amoeba",
+   "o": [
+    "I, III and V",
+    "I, II and IV",
+    "I, IV and V",
+    "All"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-76"
+  },
+  {
+   "id": "lw77",
+   "no": 77,
+   "q": "Choose the correct statement–",
+   "o": [
+    "Growth in multicellular organisms cannot take place in in vitro culture.",
+    "Growth by cell division in unicellular organisms can be observed in in vivo culture.",
+    "Growth by cell division in unicellular organisms can be observed in in vitro culture.",
+    "Growth by cell division in unicellular organisms cannot be observed by any method."
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-77"
+  },
+  {
+   "id": "lw78",
+   "no": 78,
+   "q": "Which one of the following constitutes the two best reasons for distinguishing the living from the non living?",
+   "o": [
+    "Growth and locomotion",
+    "Irritability and locomotion",
+    "Respiration and excretion",
+    "Reproduction and locomotion"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-78"
+  },
+  {
+   "id": "lw79",
+   "no": 79,
+   "q": "Which of the following biological processes do not operate within the life span of a given organism ?",
+   "o": [
+    "Birth and nutrition",
+    "Growth and maturation",
+    "Metabolism and excretion",
+    "Decomposition and mineralization"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-79"
+  },
+  {
+   "id": "lw80",
+   "no": 80,
+   "q": "The life can be attempted to be defined as a peculiar series of functions associated with",
+   "o": [
+    "Transformation and utilization of energy",
+    "Transmission and utilization of genetic information",
+    "Metabolism and response to the environmental variations",
+    "All of the above."
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-80"
+  },
+  {
+   "id": "lw81",
+   "no": 81,
+   "q": "The process called evolution, exhibited by the living organisms is the manifestation of",
+   "o": [
+    "Only short term changes in the environment",
+    "Reasonably long term changes in the environment",
+    "A fully stable conditions of the environment",
+    "The own desire of the organism to change the environment."
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-81"
+  },
+  {
+   "id": "lw82",
+   "no": 82,
+   "q": "The living organisms of all hierarchial levels share in common, which one of the following features?",
+   "o": [
+    "Nature of protoplasmic constituent",
+    "Method of cell division",
+    "Degree of body organization",
+    "Mode of nutrition."
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-82"
+  },
+  {
+   "id": "lw83",
+   "no": 83,
+   "q": "Mark the incorrect statement concerning life",
+   "o": [
+    "It is a self-regulated thermodynamic system.",
+    "It is capable of catalyzing the metabolic reactions",
+    "It is capable of self-generation from generation to generation without DNA duplication",
+    "It is simply impossible without energy."
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-83"
+  },
+  {
+   "id": "lw84",
+   "no": 84,
+   "q": "Which one of the following aspects is an exclusive characteristic of living things?",
+   "o": [
+    "Isolated metabolic reactions occur in vitro",
+    "Increase in mass from inside only",
+    "Perception of events happening in the environment and their memory",
+    "Increase in mass by accumulation of material both on surface as well as internally"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-84"
+  },
+  {
+   "id": "lw85",
+   "no": 85,
+   "q": "Which of the following is self-conscious?",
+   "o": [
+    "Human being",
+    "Tiger",
+    "Lion",
+    "Amoeba"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-85"
+  },
+  {
+   "id": "lw86",
+   "no": 86,
+   "q": "Living organisms can be unexceptionally distinguished from the nonliving thing on the basis of their ability for –",
+   "o": [
+    "Reproduction",
+    "Growth and movement",
+    "Interaction with environment and progressive evolution",
+    "responsiveness to touch"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-86"
+  },
+  {
+   "id": "lw87",
+   "no": 87,
+   "q": "All living organism present, past and future are",
+   "o": [
+    "Not linked to any extent",
+    "Linked to one another in their cell membrane",
+    "Linked to one another by the sharing of the common genetic materials, but to varying degrees.",
+    "Linked to another by the sharing of the common genetic materials to 100% extent"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-87"
+  },
+  {
+   "id": "lw88",
+   "no": 88,
+   "q": "Choose the correct one\nI. Growth cannot be taken as a defining property of living organism.\nII. Dead organism does not grow.\nIII. Reproduction cannot be an all inclusive defining characteristic of living organisms.\nIV. No nonliving object is capable of replicating itself.\nV. Metabolism in a test tube is nonliving.\nVI. Metabolism is a defining feature of all living organism.",
+   "o": [
+    "I and III",
+    "All except V",
+    "All except III",
+    "All"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-88"
+  },
+  {
+   "id": "lw89",
+   "no": 89,
+   "q": "Properties of tissues",
+   "o": [
+    "Are present in the constituent cells",
+    "Are due to similar cells in them",
+    "Are due to their similar origin",
+    "Arise as a result of interactions among the constituent cells"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-89"
+  },
+  {
+   "id": "lw90",
+   "no": 90,
+   "q": "Which of the following statement is false?",
+   "o": [
+    "Properties of cellular organelles are present in the molecular constituents of the organelles",
+    "Interactions among the molecular components of the organelles result into properties of cell organelles",
+    "Biology is the story of life on earth",
+    "Biology is the story of evolution of living organisms on earth"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-90"
+  },
+  {
+   "id": "lw91",
+   "no": 91,
+   "q": "The growth and reproduction are mutually exclusive events in",
+   "o": [
+    "Plants only",
+    "Animals only",
+    "Higher animal and plants",
+    "Lower organisms"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-91"
+  },
+  {
+   "id": "lw92",
+   "no": 92,
+   "q": "The sum total of chemical reactions occurring in our body is called –",
+   "o": [
+    "Metabolism",
+    "Homeostasis",
+    "Irritability",
+    "Catabolism"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-92"
+  },
+  {
+   "id": "lw93",
+   "no": 93,
+   "q": "Mark the correct statement",
+   "o": [
+    "Only living organisms grow",
+    "Plants grow only up to a certain age",
+    "The growth in living organisms is from inside",
+    "All of these"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-93"
+  },
+  {
+   "id": "lw94",
+   "no": 94,
+   "q": "Which of the following multiply by the process of fragmentation?",
+   "o": [
+    "Planaria",
+    "Filamentous algae",
+    "Fungi",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-94"
+  },
+  {
+   "id": "lw95",
+   "no": 95,
+   "q": "Given below is the botanical name of mango. Mark the option in which the name is correctly written",
+   "o": [
+    "Magnifera Indica",
+    "Mangifera indica",
+    "Mangifera Indica (in italics)",
+    "Mangifera indica (in italics)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-95"
+  },
+  {
+   "id": "lw96",
+   "no": 96,
+   "q": "Identify the correct sequence of taxonomic categories",
+   "o": [
+    "Species-order-kingdom-phylum",
+    "Species-family-genus-class",
+    "Genus-species-order-phylum",
+    "Species-genus-order-phylum"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-96"
+  },
+  {
+   "id": "lw97",
+   "no": 97,
+   "q": "Which of the following options represents the correct classification for the given animal?",
+   "o": [
+    "Phylum – Chordata; Class – Vertebrata; Order – Chiroptera; Family – Felidae; Genus – Canis; Species – tigris",
+    "Phylum – Chordata; Class – Mammalia; Order – Carnivora; Family – Felidae; Genus – Panthera; Species – tigris",
+    "Phylum – Vertebrata; Class – Mammalia; Order – Carnivora; Family – Felidae; Genus – Panthera; Species – tigris",
+    "Phylum – Mammalia; Class – Felidae; Order – Carnivora; Family – Feliaceae; Genus – Panthera; Species – Leo"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "diagram",
+   "ref": "LW-97",
+   "needsImage": true
+  },
+  {
+   "id": "lw98",
+   "no": 98,
+   "q": "The ‘Birds’ taxonomically represent –",
+   "o": [
+    "Family",
+    "Order",
+    "Class",
+    "Phylum"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-98"
+  },
+  {
+   "id": "lw99",
+   "no": 99,
+   "q": "The Indian Botanical garden is located in",
+   "o": [
+    "Howrah",
+    "Lucknow",
+    "Mumbai",
+    "Mysore"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-99"
+  },
+  {
+   "id": "lw100",
+   "no": 100,
+   "q": "Following taxonomic aid provides information for the identification of names of species found in an area",
+   "o": [
+    "Monograph",
+    "Manual",
+    "Memoir",
+    "Periodical"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-100"
+  },
+  {
+   "id": "lw101",
+   "no": 101,
+   "q": "Why did Linneous choose Latin language for Binomial Nomenclature?",
+   "o": [
+    "Because this language was scientific",
+    "Because this language was modern",
+    "Because this language was dead",
+    "Because this language was ancient"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-101"
+  },
+  {
+   "id": "lw102",
+   "no": 102,
+   "q": "The binomial nomenclature was given by",
+   "o": [
+    "Lamarck",
+    "Ernst Mayr",
+    "Carolus Linnaeus",
+    "Cuvier"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-102"
+  },
+  {
+   "id": "lw103",
+   "no": 103,
+   "q": "Which one of the following organisms is scientifically correctly named, correctly printed according to the International Rules of Nomenclature and correctly described?",
+   "o": [
+    "Musca domestica - The common house lizard, a reptile",
+    "Plasmodium falciparum - A protozoan pathogen causing the most serious type of malaria",
+    "Felis tigris - The Indian tiger, well protected in Gir forests.",
+    "E.coli - Full name Entamoeba coli, a commonly occurring bacterium in human intestine"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-103"
+  },
+  {
+   "id": "lw104",
+   "no": 104,
+   "q": "Exclusive character of human being, which separate human from other organism is –",
+   "o": [
+    "Consciousness",
+    "Self regulation",
+    "Self Consciousness",
+    "Both (b) and (c)"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-104"
+  },
+  {
+   "id": "lw105",
+   "no": 105,
+   "q": "Who has been called as “The Darwin of 20 century and Alexander Agassiz professor of Zoology Emeritus”. He was awarded the triple crown of biology also",
+   "o": [
+    "Linnaeus",
+    "Mayr",
+    "Mayers",
+    "Aristotle"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-105"
+  },
+  {
+   "id": "lw106",
+   "no": 106,
+   "q": "Which one has real existence?",
+   "o": [
+    "Phylum",
+    "Class",
+    "Genus",
+    "Species"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-106"
+  },
+  {
+   "id": "lw107",
+   "no": 107,
+   "q": "Sensitivity is the",
+   "o": [
+    "Ability to grow",
+    "Ability to reproduce",
+    "Ability to detect changes in the environment",
+    "Ability to capture sunlight"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-107"
+  },
+  {
+   "id": "lw108",
+   "no": 108,
+   "q": "Homeostasis is",
+   "o": [
+    "Tendency to change with change in environment",
+    "Tendency to resist change / self regulatory mechanism",
+    "Disturbance in regulatory control",
+    "Plants and animal extracts used in homeopathy."
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-108"
+  },
+  {
+   "id": "lw109",
+   "no": 109,
+   "q": "Carnivora includes",
+   "o": [
+    "Group of organisms belonging to related genera",
+    "Group of organisms belonging to related species",
+    "Group of organisms belonging to related families",
+    "Group of organisms which are similar in all features"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-109"
+  },
+  {
+   "id": "lw110",
+   "no": 110,
+   "q": "Different organisms belonging to different orders are placed in a single class due to the fact that –",
+   "o": [
+    "They have all similar morphological and reproductive characters",
+    "They have similar place of origin",
+    "They share a common habitat",
+    "They have few similar or common characters"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-110"
+  },
+  {
+   "id": "lw111",
+   "no": 111,
+   "q": "Botanical gardens consist of",
+   "o": [
+    "Dried and preserved plant specimens",
+    "Living plants and animals specimens",
+    "Living plants specimens",
+    "Dead specimens of plants are preserved in jars"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-111"
+  },
+  {
+   "id": "lw112",
+   "no": 112,
+   "q": "Select the odd one out w.r.t. Botanical gardens",
+   "o": [
+    "Collection of living plants for reference",
+    "Indian Botanical garden is at Howrah",
+    "It is a method of ex-situ study",
+    "Collections of preserved plants and animals specimens"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-112"
+  },
+  {
+   "id": "lw113",
+   "no": 113,
+   "q": "Read the following statements carefully and select correct option\n(i) In zoological parks, conditions similar to natural habitats are provided to animals\n(ii) Keys are generally analytical in nature\n(iii) In herbarium sheet, local names are not mentioned\n(iv) Taxonomical aids are useful in knowing bioresources",
+   "o": [
+    "Only (i) and (ii)",
+    "(i), (iii) and (iv)",
+    "(i), (ii) and (iv)",
+    "All of the above"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-113"
+  },
+  {
+   "id": "lw114",
+   "no": 114,
+   "q": "Nomenclature is very must in taxonomy which of the following is not correct about scientific nomenclature?",
+   "o": [
+    "They ensure that each organism has only one name",
+    "They also ensure that such a name has not been used for any other known organism",
+    "Scientific nomenclature is a standardised naming system",
+    "Different countries of the world use different kinds of scientific nomenclature system"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-114"
+  },
+  {
+   "id": "lw115",
+   "no": 115,
+   "q": "In potato, brinjal, makoi, lion and leopard. How many species, genera and families are there?",
+   "o": [
+    "5 species, 3 genera, 2 families",
+    "4 species, 2 genera, 3 families",
+    "5 species, 2 genera, 2 families",
+    "4 species, 3 genera, 2 families"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-115"
+  },
+  {
+   "id": "lw116",
+   "no": 116,
+   "q": "Recognise the following flow diagram and the find correct option according to taxonomic hierarchy.",
+   "o": [
+    "I-Canis, II-Felis, III-Homo, IV-Felidae, V-Hominidae, VI-Primata",
+    "I-Canidae, II-Felidae, III-Hominidae, IV-Carnivora, V-Primata, VI-Mammalia",
+    "I-Canidae, II-Felidae, III-Homonidae, IV-Carnivora, V-Mammalia, VI-Chordata",
+    "I-Canis, II-Felis, III-Homo, IV-Carnivora, V-Primata, VI-Mammalia"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "diagram",
+   "needsImage": true,
+   "ref": "LW-116"
+  },
+  {
+   "id": "lw117",
+   "no": 117,
+   "q": "Who gave the nomenclature according to which humans are called Homo Sapiens?",
+   "o": [
+    "Darwin",
+    "Mendel",
+    "Aristotle",
+    "Linnaeus"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-117"
+  },
+  {
+   "id": "lw118",
+   "no": 118,
+   "q": "Which is highest in the hierarchy of taxonomic category? –",
+   "o": [
+    "Genus",
+    "Family",
+    "Order",
+    "Class"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-118"
+  },
+  {
+   "id": "lw119",
+   "no": 119,
+   "q": "Which of the following is correctly matched with its particular taxonomic category?",
+   "o": [
+    "Triticum aestivum – Species",
+    "Fishes – Pisces – Phylum",
+    "Man – Primate – Family",
+    "Mango – Sapindales – Class"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-119"
+  },
+  {
+   "id": "lw120",
+   "no": 120,
+   "q": "Most obvious and technically complicated feature of all living organism.",
+   "o": [
+    "Metabolism",
+    "Growth",
+    "Replication",
+    "Ability to sense their environment"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-120"
+  },
+  {
+   "id": "lw121",
+   "no": 121,
+   "q": "Select out incorrect statement.",
+   "o": [
+    "Herbaria serve as quick referral system in taxonomy",
+    "Monographs contains information on any one taxon",
+    "Manual provide the index to the plant species found in particular area",
+    "Separate taxonomic Keys are required for each taxonomic category."
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-121"
+  },
+  {
+   "id": "lw122",
+   "no": 122,
+   "q": "Which of the following statements is / are correct about Herbarium?",
+   "o": [
+    "It is a store house of collected plant specimens that are dried and preserved on sheets.",
+    "Herbarium sheets contain information about date and place of collection, names, family, collector's name, etc.",
+    "It serves as quick referral systems in taxonomical studies.",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-122"
+  },
+  {
+   "id": "lw123",
+   "no": 123,
+   "q": "The label of a herbarium sheet does not carry information on:",
+   "o": [
+    "Local names",
+    "height of the plant",
+    "date of collection",
+    "name of collector"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-123"
+  },
+  {
+   "id": "lw124",
+   "no": 124,
+   "q": "Study the four statements (A–D) given below and select the two correct ones out of them :\nA. Definition of biological species was given by Ernst Mayr.\nB. Photoperiod does not affect reproduction in plants.\nC. Binomial nomenclature system was given by R.H. Whittaker.\nD. In unicellular organisms, reproduction is synonymous with growth.\nThe two correct statements are",
+   "o": [
+    "A and D",
+    "A and B",
+    "B and C",
+    "C and D"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-124"
+  },
+  {
+   "id": "lw125",
+   "no": 125,
+   "q": "Tautonym is",
+   "o": [
+    "Unscientific explanation of a phenomenon",
+    "Common name used as scientific name",
+    "Non-latinised name",
+    "Same name for genus and species"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-125"
+  },
+  {
+   "id": "lw126",
+   "no": 126,
+   "q": "An organism's ability to detect stimuli from either the internal or external environment is called",
+   "o": [
+    "natural selection.",
+    "evolution.",
+    "mutation.",
+    "responsiveness."
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-126"
+  },
+  {
+   "id": "lw127",
+   "no": 127,
+   "q": "Which of the following is a characteristic of living organisms?",
+   "o": [
+    "Have membrane-bound organelles",
+    "Maintenance and regulation of internal conditions",
+    "Ability to produce energy",
+    "Have a nucleus"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-127"
+  },
+  {
+   "id": "lw128",
+   "no": 128,
+   "q": "All of the following are true of all living organisms EXCEPT that they",
+   "o": [
+    "are made of cells.",
+    "can reproduce themselves.",
+    "can grow.",
+    "possess either DNA or RNA."
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-128"
+  },
+  {
+   "id": "lw129",
+   "no": 129,
+   "q": "Consider the following (A to D) and find out the correct sequence of taxonomical categories.\nA. Petunia\nB. Polymoniales\nC. Dicotyledonae\nD. Solanaceae",
+   "o": [
+    "A → D → B → C",
+    "C → D → B → A",
+    "A → B → C → D",
+    "C → B → A → D"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-129"
+  },
+  {
+   "id": "lw130",
+   "no": 130,
+   "q": "A group of very closely related species that share a number of similar traits is called a(an)",
+   "o": [
+    "phylum",
+    "order",
+    "genus",
+    "class"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-130"
+  },
+  {
+   "id": "lw131",
+   "no": 131,
+   "q": "Systematics is the",
+   "o": [
+    "Branch of biology concerned with evolutionary relationships among organisms",
+    "Branch of biology concerned with the scientific classification of organisms",
+    "Branch of biology concerned with the diversity of life",
+    "Branched of biology concerned with the study of multicellular organisms."
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-131"
+  },
+  {
+   "id": "lw132",
+   "no": 132,
+   "q": "A group of interbreeding individuals that is reproductively isolated from other groups is called a(n)",
+   "o": [
+    "phylum",
+    "organism",
+    "family",
+    "species"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-132"
+  },
+  {
+   "id": "lw133",
+   "no": 133,
+   "q": "An animal phylum is defined on the basis of",
+   "o": [
+    "the uniqueness of its DNA content",
+    "the uniqueness of its body plan",
+    "its type of body plan syrnmetry",
+    "its fundamental habitat (aquatic, terrestrial, etc.)"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-133"
+  },
+  {
+   "id": "lw134",
+   "no": 134,
+   "q": "Which one of the following categories of taxonomic classification is the least inclusive?",
+   "o": [
+    "class",
+    "family",
+    "genus",
+    "order"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-134"
+  },
+  {
+   "id": "lw135",
+   "no": 135,
+   "q": "Which of the following levels in the hierarchy of biology organization includes all of the other levels in the list?",
+   "o": [
+    "Cells",
+    "Biological molecules",
+    "Atoms",
+    "Tissues"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-135"
+  },
+  {
+   "id": "lw136",
+   "no": 136,
+   "q": "Two species belonging to the same class must also belong to the same",
+   "o": [
+    "species",
+    "order",
+    "genus",
+    "phylum"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-136"
+  },
+  {
+   "id": "lw137",
+   "no": 137,
+   "q": "Arrange the following taxa to form the correct sequence of classification of man :\n(i) Primata\n(ii) Chordata\n(iii) Mammalia\n(iv) Hominidae",
+   "o": [
+    "i, iii, iv, ii",
+    "ii, iii, i, iv",
+    "iv, ii, i, iii",
+    "iii, ii, iv, i"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-137"
+  },
+  {
+   "id": "lw138",
+   "no": 138,
+   "q": "A species can be distinguished from the other closely related species on the basis of",
+   "o": [
+    "Common ancestor",
+    "Distinct morphological features",
+    "Sharing a common gene pool",
+    "Being biologically interfertile"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-138"
+  },
+  {
+   "id": "lw139",
+   "no": 139,
+   "q": "Information on any one phylum, class, order is related to the –",
+   "o": [
+    "Flora",
+    "Manuals",
+    "Monograph",
+    "Key"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-139"
+  },
+  {
+   "id": "lw140",
+   "no": 140,
+   "q": "Which of the following is the correct sequence in the increasing order of complexity ?",
+   "o": [
+    "molecules, tissues, community, population",
+    "cell, tissues, community, population",
+    "tissues, organisms, population, community",
+    "molecules, tissues, community, cells"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-140"
+  },
+  {
+   "id": "lw141",
+   "no": 141,
+   "q": "The total words in binomial nomenclature are",
+   "o": [
+    "5",
+    "3",
+    "2",
+    "4"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-141"
+  },
+  {
+   "id": "lw142",
+   "no": 142,
+   "q": "Two organisms of same class but different families will be kept under the same",
+   "o": [
+    "genera",
+    "species",
+    "order",
+    "family"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-142"
+  },
+  {
+   "id": "lw143",
+   "no": 143,
+   "q": "Which of the following will form a new species?",
+   "o": [
+    "interbreeding",
+    "variations",
+    "differential reproduction",
+    "none of the above"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-143"
+  },
+  {
+   "id": "lw144",
+   "no": 144,
+   "q": "Recognise the following flow diagram and the find correct option according to taxonomic hierarchy.",
+   "o": [
+    "I-Polymoniales, II-Sapindales, III-Poales, IV-Dicotyledonae, V-Monocotyledonae, VI-Angiospermae",
+    "I-Solanaceae, II-Anacardiaceae, III-Poaceae, IV-Polymoniales, V-Poales, VI-Angiospermae",
+    "I-Solanum, II-Mangifera, III-Triticum, IV-Dicotyledonae, V-Monocotyledonae, VI-Plantae",
+    "I-Polymoniales, II-Sapindales, III-Poales, IV-Angiospermae, V-Monocotyledonae, VI-Plantae"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "diagram",
+   "needsImage": true,
+   "ref": "LW-144"
+  },
+  {
+   "id": "lw145",
+   "no": 145,
+   "q": "In the following flow diagram, identify the correct categories according to the taxonomic hierarchy.\n[Kingdom ← 4 ← 5 ← 1 ← 2 ← 3 ← Species]\nI. Primata, diptera and carnivora belong to category 1.\nII. Petunia, Datura and Solanum belongs to same category 2.\nIII. Angiospermae belongs to category 5.\nIV. Man and dog shows maximum similarity at category 4.\nV. Category 3 is same for lion, tiger and leopard.\nSelect the correct statement",
+   "o": [
+    "I, II, IV, V",
+    "II, III, IV, V",
+    "I, II, III",
+    "I, II, V"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-145"
+  },
+  {
+   "id": "lw146",
+   "no": 146,
+   "q": "Nomenclature is governed by certain universal rules. Which one of the following is contrary to the rules of nomenclature?",
+   "o": [
+    "Biological names can be written in any language",
+    "The first word in a biological name represents the genus name, and the second is a specific epithet",
+    "The names are written in Latin and are italicised",
+    "When written by hand, the names are to be underlined"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-146"
+  },
+  {
+   "id": "lw147",
+   "no": 147,
+   "q": "Who is known as Darwin of 20th Century?",
+   "o": [
+    "R. H. Whittaker",
+    "D. J. Ivanowsky",
+    "Ernst Mayr",
+    "T. O. Diener"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-147"
+  },
+  {
+   "id": "lw148",
+   "no": 148,
+   "q": "Extrinsic and intrinsic growth are found respectively in –",
+   "o": [
+    "Mountain, Boulders",
+    "Humans, Mangotree",
+    "House fly, Mountains",
+    "Sand mounds, Moss"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-148"
+  },
+  {
+   "id": "lw149",
+   "no": 149,
+   "q": "Scientific name of “brinjal” is standardised through rules given in :-",
+   "o": [
+    "ICZN",
+    "ICNB",
+    "ICBN",
+    "ICNCP"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-149"
+  },
+  {
+   "id": "lw150",
+   "no": 150,
+   "q": "Match the column-I with column-II :-",
+   "o": [
+    "A-iii, B-ii, C-i, D-iv",
+    "A-iv, B-iii, C-ii, D-i",
+    "A-iv, B-i, C-iii, D-ii",
+    "A-ii, B-i, C-iii, D-iv"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Systerma Naturae",
+      "(i) Julian Huxley"
+     ],
+     [
+      "(B) Genera Plantarum",
+      "(ii) Binomial system for plants"
+     ],
+     [
+      "(C) Species Plantarum",
+      "(iii) Sexual Classification"
+     ],
+     [
+      "(D) New Systematics",
+      "(iv) Binomial system for animals."
+     ]
+    ]
+   },
+   "ref": "LW-150"
+  },
+  {
+   "id": "lw151",
+   "no": 151,
+   "q": "According to species concept cauliflower, cabbage, knol-khol are :-",
+   "o": [
+    "Three taxonomic species and one biological species.",
+    "One taxonomic species and one biological species.",
+    "One taxonomic species and three biological species.",
+    "Three taxonomic species and three biological species"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-151"
+  },
+  {
+   "id": "lw152",
+   "no": 152,
+   "q": "Felis + Panthera → A\nSolanaceae + Convolvulaceae → B\nIdentify A and B and choose the correct option:-",
+   "o": [
+    "A = canidae, B = Poales",
+    "A = Felidae, B = Polymoniales",
+    "A = Felidae, B = Sapindales",
+    "A = Canidae, B = Polymoniales"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-152"
+  },
+  {
+   "id": "lw153",
+   "no": 153,
+   "q": "As we go from kingdom to species, the number of common characteristic goes on-",
+   "o": [
+    "Decreasing",
+    "Increasing",
+    "Remain same",
+    "First increasing then decreasing"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-153"
+  },
+  {
+   "id": "lw154",
+   "no": 154,
+   "q": "Which of the following statement is not correct about cyanobacteria?",
+   "o": [
+    "The name cyanobacteria was suggested by ICBN",
+    "They were the first organisms that produced O₂ on earth.",
+    "They have pigments for photosynthesis.",
+    "They are not always of blue green colour."
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-154"
+  },
+  {
+   "id": "lw155",
+   "no": 155,
+   "q": "Herbarium sheets are arranged according to the system of classification and should have information about",
+   "o": [
+    "Time and place of collection, English, local and botanical names, phylum, collector's name",
+    "Date and time of collection, English, local and botanical names, class, collector's name",
+    "Date and place of collection, English, local and botanical names, order, collector's name",
+    "Date and place of collection, English, local and botanical names, family, collector's name"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-155"
+  },
+  {
+   "id": "lw156",
+   "no": 156,
+   "q": "Botanical gardens and Zoological parks have a collection of",
+   "o": [
+    "Endemic living species only",
+    "Exotic living species only",
+    "Endemic and exotic living species",
+    "Only loyal plants and animals"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-156"
+  },
+  {
+   "id": "lw157",
+   "no": 157,
+   "q": "Select incorrect statement w.ft. growth",
+   "o": [
+    "Increase in body mass is criterion for growth in non-living objects",
+    "Animals grow upto a certain age",
+    "Growth in plants is definite always",
+    "in living organisms, growth is from inside"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-157"
+  },
+  {
+   "id": "lw158",
+   "no": 158,
+   "q": "Go through the following statements carefully.\nI. Common and generic names are similar in case of Gorilla.\nII. A non-obligate component of hierarchy of categories used by Linnaeus was Variety.\nIII. Species has a real existence.\nIV. Correlated characters are similar traits found in all species of a genus.\nHow many of the above statement(s) is / are incorrect.",
+   "o": [
+    "All",
+    "2",
+    "3",
+    "0"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-158"
+  },
+  {
+   "id": "lw159",
+   "no": 159,
+   "q": "The practical purpose of classification of living organisms is to",
+   "o": [
+    "facilitate identification of unknown organisms.",
+    "explain the origin of living organisms.",
+    "trace the evolution of living organisms.",
+    "name the living organisms."
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-159"
+  },
+  {
+   "id": "lw160",
+   "no": 160,
+   "q": "In five kingdom classification, which single kingdom contains blue-green algae, nitrogen fixing bacteria and methanogenic archaebacteria — ‘",
+   "o": [
+    "Monera",
+    "Protista",
+    "Plantae",
+    "Fungi"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-160"
+  },
+  {
+   "id": "lw161",
+   "no": 161,
+   "q": "Taxonomy helps agriculturists because it aids in",
+   "o": [
+    "evolution of new species",
+    "Plant protection",
+    "Complete study of plant behaviours",
+    "All of the above"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-161"
+  },
+  {
+   "id": "lw162",
+   "no": 162,
+   "q": "The number of obligate categories which are always used in a taxonomic hierarchy are",
+   "o": [
+    "7",
+    "5",
+    "3",
+    "8"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-162"
+  },
+  {
+   "id": "lw163",
+   "no": 163,
+   "q": "Select the correctly written scientific name of Mango which was first described by Carolus Linnaeus",
+   "o": [
+    "Mangifera indica Car. Linn.",
+    "Mangifera indica Linn.",
+    "Mangifera indica",
+    "Mangifera Indica"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-163"
+  },
+  {
+   "id": "lw164",
+   "no": 164,
+   "q": "The contrasting characteristics generally in a pair used for identification of animals in Taxonomic Key are referred to as:",
+   "o": [
+    "Alternate",
+    "Lead",
+    "Couplet",
+    "Doublet"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-164"
+  }
+ ]
+}
