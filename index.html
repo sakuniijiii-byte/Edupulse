@@ -1996,7 +1996,7 @@ html body #normal-practice-toolkit details>.tk-group,html body #normal-practice-
 </div>
 </div>
 <div class="flex items-center gap-2 sm:gap-3">
-<div id="offline-badge" role="status" aria-live="polite" aria-label="Offline. Changes remain saved on this device." class="hidden items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold border border-rose-500/20"><i class="fa-solid fa-wifi-slash" aria-hidden="true"></i> Offline</div>
+<div id="offline-badge" role="status" aria-live="polite" aria-label="Offline. Changes remain saved on this device." class="hidden items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold border border-rose-500/20"><i class="fa-solid fa-wifi-slash" aria-hidden="true"></i><span id="offline-label">Offline</span></div>
 <button id="pwa-install-btn" onclick="triggerPwaInstall()" class="hidden items-center gap-1.5 px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-md shadow-teal-600/20 transition"><i class="fa-solid fa-download text-xs"></i> Install</button>
 <button onclick="openHelpModal()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Shortcuts (?)"><i class="fa-solid fa-keyboard text-sm"></i></button>
 <button onclick="openApiKeyModal()" class="px-3 py-2 rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-600 dark:text-teal-400 hover:bg-teal-500/20 text-xs font-bold transition flex items-center gap-1.5" title="Configure Gemini AI Key">
@@ -2105,7 +2105,8 @@ focus: 'edupulse_focus_sessions',
 timerPreset: 'edupulse_timer_preset',
 savedMockPresets: 'edupulse_mock_presets_v1',
 geminiKey: 'edupulse_gemini_key_v1',
-errorNotebook: 'edupulse_error_notebook_v1'
+errorNotebook: 'edupulse_error_notebook_v1',
+deviceReminders: 'ep_device_reminders_v1'
 };
 
 const defaultSettings = {
@@ -3851,6 +3852,17 @@ const epSrcLabel = id => EP_SOURCE_LABELS[id] || String(id || '').replace(/(^|-)
 const EP_GITHUB_REPO = 'sakuniijiii-byte/Edupulse';
 const EP_GITHUB_BRANCH = 'main';
 let EP_DATA_INDEX_P = null;
+const EP_DIAGNOSTICS = window.EP_DIAGNOSTICS = { contentIndex: 'not checked', contentFileCount: 0, failedQuestionFiles: [], loadedChapters: 0, loadedQuestions: 0, cachedQuestionFiles: 0, aiTest: null, serviceWorker: 'unknown' };
+function epRecordQuestionIssue(file, reason) {
+  const key = String(file || 'Unknown question data');
+  EP_DIAGNOSTICS.failedQuestionFiles = EP_DIAGNOSTICS.failedQuestionFiles.filter(item => item.file !== key);
+  EP_DIAGNOSTICS.failedQuestionFiles.unshift({ file: key, reason: String(reason || 'Could not load'), at: Date.now() });
+  EP_DIAGNOSTICS.failedQuestionFiles = EP_DIAGNOSTICS.failedQuestionFiles.slice(0, 12);
+}
+function epClearQuestionIssue(file) {
+  const key = String(file || 'Unknown question data');
+  EP_DIAGNOSTICS.failedQuestionFiles = EP_DIAGNOSTICS.failedQuestionFiles.filter(item => item.file !== key);
+}
 function epDataIndex() {
   if (EP_DATA_INDEX_P) return EP_DATA_INDEX_P;
   const p = (async () => {
@@ -3864,10 +3876,12 @@ function epDataIndex() {
       if (!Array.isArray(rows)) throw new Error('Unexpected GitHub directory response');
       const names = rows.filter(x => x && x.type === 'file' && /\.json$/i.test(x.name)).map(x => x.name);
       try { localStorage.setItem(CK, JSON.stringify({ t: Date.now(), n: names })); } catch (_) {}
+      EP_DIAGNOSTICS.contentIndex = 'online'; EP_DIAGNOSTICS.contentFileCount = names.length; EP_DIAGNOSTICS.contentIndexCheckedAt = Date.now();
       return new Set(names);
     } catch (e) {
-      try { const c = JSON.parse(localStorage.getItem('ep_data_idx_v2') || 'null'); if (c && Array.isArray(c.n)) { console.warn('[EduPulse] Using cached /data listing.', e); return new Set(c.n); } } catch (_) {}
+      try { const c = JSON.parse(localStorage.getItem('ep_data_idx_v2') || 'null'); if (c && Array.isArray(c.n)) { console.warn('[EduPulse] Using cached /data listing.', e); EP_DIAGNOSTICS.contentIndex = 'cached'; EP_DIAGNOSTICS.contentFileCount = c.n.length; EP_DIAGNOSTICS.contentIndexCheckedAt = Date.now(); return new Set(c.n); } } catch (_) {}
       console.warn('[EduPulse] Automatic /data discovery failed; using legacy filename probes.', e);
+      EP_DIAGNOSTICS.contentIndex = 'legacy fallback'; EP_DIAGNOSTICS.contentIndexCheckedAt = Date.now();
       if (EP_DATA_INDEX_P === p) EP_DATA_INDEX_P = null;
       return null;
     }
@@ -3916,7 +3930,7 @@ async function loadSourceFile(file, source, ex, tagKeys) {
       if (tagKeys && !o.qKey && o.id != null && o.id !== '') o.qKey = `${tagKeys}#${o.source || 'x'}-${o.section || 'x'}-${String(o.id).toLowerCase()}`;
       return o;
     });
-  } catch (e) { console.warn('[EduPulse] Bad JSON in', file, e); return []; }
+  } catch (e) { epRecordQuestionIssue(file, 'Invalid JSON response'); console.warn('[EduPulse] Bad JSON in', file, e); return []; }
 }
 // Same question in two sources -> keep the first, remember where else it appears (q.alsoIn).
 function epDedupeAcrossSources(list) {
@@ -3993,6 +4007,7 @@ async function fetchDataFile(fileName, opts = {}) {
     if (legacyResponse) return legacyResponse;
   }
 
+  epRecordQuestionIssue(fileName, 'File could not be loaded from /data.');
   console.warn('[EduPulse] Could not load data file:', fileName);
   return null;
 }
@@ -4624,16 +4639,37 @@ overlay.classList.remove('open');
 }
 }
 
+const EP_APP_THEMES = ['light', 'dark', 'amoled', 'forest', 'aurora'];
+const EP_OPTIONAL_ENTITLEMENTS = Object.freeze({ advancedAnalytics: 'premium', visualAiExplanations: 'premium', extendedMockHistory: 'premium' });
+function epFeatureAvailable(feature) {
+  if (!EP_OPTIONAL_ENTITLEMENTS[feature]) return true;
+  const provider = window.EduPulseEntitlementsProvider;
+  if (!provider || typeof provider.isFeatureAvailable !== 'function') return true;
+  try { return provider.isFeatureAvailable(feature) !== false; } catch (error) { return true; }
+}
+// No provider means every current feature stays free; any future paid API must verify entitlements server-side.
+window.EP_ENTITLEMENTS = Object.freeze({ plan: function(){const provider=window.EduPulseEntitlementsProvider;return provider&&typeof provider.getPlan==='function'?provider.getPlan():'free';}, isFeatureAvailable: epFeatureAvailable, optionalFeatures: EP_OPTIONAL_ENTITLEMENTS });
 function applyTheme(theme, persist = false) {
-  const isDark = theme === 'dark';
+  const next = EP_APP_THEMES.includes(theme) ? theme : 'light';
+  const isDark = next !== 'light';
   document.documentElement.classList.toggle('dark', isDark);
   document.body.classList.toggle('dark', isDark);
+  document.body.classList.remove('theme-amoled', 'theme-forest', 'theme-aurora');
+  if (['amoled', 'forest', 'aurora'].includes(next)) document.body.classList.add('theme-' + next);
+  document.documentElement.dataset.theme = next;
+  document.body.dataset.theme = next;
   document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+  const accessibilitySettings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings) || {};
+  document.documentElement.classList.toggle('ep-high-contrast', !!accessibilitySettings.highContrast);
+  document.body.classList.toggle('ep-high-contrast', !!accessibilitySettings.highContrast);
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', isDark ? '#070a12' : '#0d9488');
+  const themeColors = { light: '#0d9488', dark: '#070a12', amoled: '#000000', forest: '#0b1c15', aurora: '#15152d' };
+  if (meta) meta.setAttribute('content', themeColors[next]);
   if (persist) {
-    try { localStorage.setItem(STORAGE_KEYS.theme, isDark ? 'dark' : 'light'); } catch (err) { console.warn('Theme preference could not be saved:', err); }
+    try { localStorage.setItem(STORAGE_KEYS.theme, next); } catch (err) { console.warn('Theme preference could not be saved:', err); }
   }
+  const picker = document.getElementById('ep-theme-select');
+  if (picker) picker.value = next;
   const toggle = document.querySelector('[onclick="toggleTheme()"]');
   if (toggle) {
     toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
@@ -4669,13 +4705,29 @@ document.addEventListener('keydown', e => {
 });
 window.addEventListener('online', updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
+function countOfflineQuestionFiles() {
+  if (!('caches' in window)) return Promise.resolve(0);
+  return caches.keys().then(names => Promise.all(names.map(name => caches.open(name).then(cache => cache.keys()).catch(() => []))))
+    .then(groups => { const urls = new Set(); groups.flat().forEach(request => { try { const url = new URL(request.url); if (url.pathname.includes('/data/') && /\\.json$/i.test(url.pathname)) urls.add(url.href); } catch (error) {} }); return urls.size; })
+    .catch(() => 0);
+}
+function refreshOfflineAvailability(online) {
+  const badge = document.getElementById('offline-badge');
+  const label = document.getElementById('offline-label');
+  if (!badge) return Promise.resolve(0);
+  if (online) { if (label) label.textContent = 'Offline'; badge.setAttribute('aria-label', 'Online. Cloud backup can sync.'); return Promise.resolve(0); }
+  return countOfflineQuestionFiles().then(count => {
+    if (window.EP_DIAGNOSTICS) window.EP_DIAGNOSTICS.cachedQuestionFiles = count;
+    if (label) label.textContent = count ? 'Offline · ' + count + ' cached files' : 'Offline · app only';
+    badge.setAttribute('aria-label', count ? 'Offline. ' + count + ' cached question files are available.' : 'Offline. No question files are cached yet; the app shell is available.');
+    return count;
+  });
+}
 function updateOnlineStatus() {
 const online = navigator.onLine;
 const badge = document.getElementById('offline-badge');
-if (badge) {
-  badge.classList.toggle('hidden', online);
-  badge.setAttribute('aria-label', online ? 'Online. Cloud backup can sync.' : 'Offline. Changes remain saved on this device.');
-}
+if (badge) badge.classList.toggle('hidden', online);
+refreshOfflineAvailability(online);
 if (window.__bzAcc && typeof window.__bzAcc.connectionChanged === 'function') window.__bzAcc.connectionChanged();
 }
 setTimeout(updateOnlineStatus, 500);
@@ -5299,9 +5351,10 @@ async function preloadChapter(subj, chapterName) {
   const promise = (async () => {
     try {
       const list = await loadChapterRaw(subj, chapterName);
-      if (!list.length) return [];
-      const qs = normalizeQuestions(list, subj, chapterName); epPreloadImages(qs); return qs;
+      if (!list.length) { epRecordQuestionIssue(`${subj} — ${chapterName}`, 'No questions were returned for this chapter.'); return []; }
+      const qs = normalizeQuestions(list, subj, chapterName); epClearQuestionIssue(`${subj} — ${chapterName}`); EP_DIAGNOSTICS.loadedChapters++; EP_DIAGNOSTICS.loadedQuestions += qs.length; epPreloadImages(qs); return qs;
     } catch (error) {
+      epRecordQuestionIssue(`${subj} — ${chapterName}`, error && error.message || 'Chapter data request failed.');
       console.warn('[EduPulse] Chapter load failed:', subj, chapterName, error);
       return [];
     }
@@ -10382,19 +10435,44 @@ window.__bzAcc={
   },
   now:function(){pushCloud(false);},
   connectionChanged:function(){if(!navigator.onLine)setSyncStatus('offline');else if(syncStatus==='offline')setSyncStatus('idle');},
-  restore:function(){fetchCloud().then(function(row){if(!row){toast('No saved progress yet','info');return;}pendingCloud={data:row.payload||{},revision:Number(row.revision)||0,updated_at:row.updated_at||null,userId:auth()&&auth().user.id,conflict:false};openAuth('restore');}).catch(function(error){toast(friendly(error),'error');});}
+  saveReminderTime:saveReminderTime,
+  toggleReminders:toggleStudyReminders,
+  setHighContrast:setHighContrast,
+  openDiagnostics:openDiagnostics,
+  refreshDiagnostics:refreshDiagnostics,
+  testAiConnection:testAiConnection,
+  configureAi:function(){openApiKeyModal();},
+  restore:function(){fetchCloud().then(function(row){if(!row){toast('No saved progress yet','info');return;}pendingCloud={data:row.payload||{},revision:Number(row.revision)||0,updated_at:row.updated_at||null,userId:auth()&&auth().user.id,conflict:false};openAuth('restore');}).catch(function(error){toast(friendly(error),'error');})}
 };
 function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+function setHighContrast(enabled){var s=StorageModule.get(STORAGE_KEYS.settings,defaultSettings)||{};s.highContrast=!!enabled;StorageModule.set(STORAGE_KEYS.settings,s);document.documentElement.classList.toggle('ep-high-contrast',!!enabled);document.body.classList.toggle('ep-high-contrast',!!enabled);}
+function reminderSettings(){return StorageModule.get(STORAGE_KEYS.deviceReminders,{enabled:false,time:'18:00',lastSent:''})||{enabled:false,time:'18:00',lastSent:''};}
+function saveReminderSettings(value){StorageModule.set(STORAGE_KEYS.deviceReminders,value);}
+function reminderStatus(){var r=reminderSettings();if(!('Notification'in window))return 'Notifications are not supported in this browser.';if(Notification.permission==='denied')return 'Notifications are blocked in browser settings.';return r.enabled?'Enabled on this device. EduPulse must remain open for checks.':'Off. Choose a time and enable browser permission.';}
+function refreshReminderUi(){var r=reminderSettings(),status=document.getElementById('ep-reminder-status'),button=document.getElementById('ep-reminder-toggle');if(status)status.textContent=reminderStatus();if(button){button.disabled=!('Notification'in window)||Notification.permission==='denied';button.textContent=r.enabled?'Turn reminders off':Notification.permission==='denied'?'Blocked in browser':'Enable reminders';}}
+function saveReminderTime(value){var r=reminderSettings();r.time=/^([01]\\d|2[0-3]):[0-5]\\d$/.test(value)?value:'18:00';saveReminderSettings(r);checkStudyReminders();}
+async function toggleStudyReminders(){var r=reminderSettings();if(r.enabled){r.enabled=false;saveReminderSettings(r);refreshReminderUi();return;}if(!('Notification'in window)){refreshReminderUi();return;}try{var permission=Notification.permission;if(permission==='default')permission=await Notification.requestPermission();if(permission==='granted'){r.enabled=true;r.time=r.time||'18:00';saveReminderSettings(r);refreshReminderUi();checkStudyReminders();}else refreshReminderUi();}catch(error){refreshReminderUi();toast('Could not request notification permission','error');}}
+function checkStudyReminders(){var r=reminderSettings();if(!r.enabled||!('Notification'in window)||Notification.permission!=='granted')return;var now=new Date(),parts=String(r.time||'18:00').split(':'),hour=Number(parts[0]),minute=Number(parts[1]);if(now.getHours()<hour||(now.getHours()===hour&&now.getMinutes()<minute))return;var today=now.toISOString().slice(0,10);if(r.lastSent===today)return;var streak=StorageModule.get(STORAGE_KEYS.streak,{dailyCounts:{}})||{dailyCounts:{}},done=(streak.dailyCounts||{})[today]||0,goal=Number(settings().dailyGoalQuestions)||30,messages=[];if(done<goal)messages.push('Daily goal: '+done+'/'+goal+' questions');var due=typeof getDueRevisionKeys==='function'?getDueRevisionKeys().length:0;if(due)messages.push(due+' revision question'+(due===1?'':'s')+' due');var nowDay=now.toDateString(),tests=typeof scheduledTestItems==='function'?scheduledTestItems():[],testsToday=tests.filter(function(item){var stamp=Date.parse(String(item.test&&item.test.schedule||'').split('|')[0]);return Number.isFinite(stamp)&&new Date(stamp).toDateString()===nowDay;}).length;if(testsToday)messages.push(testsToday+' mock test'+(testsToday===1?'':'s')+' scheduled today');if(!messages.length)return;try{var notice=new Notification('EduPulse study check-in',{body:messages.join(' · '),tag:'edupulse-daily-'+today,renotify:false});notice.onclick=function(){window.focus();notice.close();};r.lastSent=today;saveReminderSettings(r);}catch(error){console.warn('[EduPulse] Study reminder could not be shown:',error);}}
+function geminiKeyConfigured(){try{return !!getGeminiApiKey();}catch(error){return false;}}
+function diagnosticsMarkup(){var d=window.EP_DIAGNOSTICS||{},status=d.aiTest&&d.aiTest.status==='checking'?'Testing…':d.aiTest?d.aiTest.message:(geminiKeyConfigured()?'Ready to test':'Not configured');var failures=Array.isArray(d.failedQuestionFiles)?d.failedQuestionFiles:[];var fileRows=failures.length?'<ul class="mt-2 space-y-1 text-xs">'+failures.map(function(item){return '<li><b>'+escapeHtml(item.file)+'</b> — '+escapeHtml(item.reason)+'</li>';}).join('')+'</ul>':'<p class="mt-2 text-xs text-emerald-700 dark:text-emerald-300">No question-data failures recorded this session.</p>';var indexLabel=d.contentIndex==='online'?'Online ('+(d.contentFileCount||0)+' files)':d.contentIndex==='cached'?'Using cached index ('+(d.contentFileCount||0)+' files)':d.contentIndex==='legacy fallback'?'Legacy filename probing':'Not checked';var syncLabel=auth()?syncStatus:'Not signed in';return '<div class="space-y-4"><div class="grid grid-cols-1 sm:grid-cols-2 gap-2"><div class="rounded-xl border border-slate-200 dark:border-slate-700 p-3"><small class="block text-[10px] uppercase tracking-wide text-slate-500">Connection</small><b>'+ (navigator.onLine?'Online':'Offline')+'</b></div><div class="rounded-xl border border-slate-200 dark:border-slate-700 p-3"><small class="block text-[10px] uppercase tracking-wide text-slate-500">Local storage</small><b>'+(d.storageAvailable?'Available':'Checking')+'</b></div><div class="rounded-xl border border-slate-200 dark:border-slate-700 p-3"><small class="block text-[10px] uppercase tracking-wide text-slate-500">Question catalog</small><b>'+escapeHtml(indexLabel)+'</b></div><div class="rounded-xl border border-slate-200 dark:border-slate-700 p-3"><small class="block text-[10px] uppercase tracking-wide text-slate-500">Cloud sync</small><b>'+escapeHtml(syncLabel)+'</b></div><div class="rounded-xl border border-slate-200 dark:border-slate-700 p-3"><small class="block text-[10px] uppercase tracking-wide text-slate-500">Service worker</small><b>'+escapeHtml(d.serviceWorker||'Checking')+'</b></div><div class="rounded-xl border border-slate-200 dark:border-slate-700 p-3"><small class="block text-[10px] uppercase tracking-wide text-slate-500">Offline questions</small><b>'+Number(d.cachedQuestionFiles||0)+' cached files</b></div><div class="rounded-xl border border-slate-200 dark:border-slate-700 p-3"><small class="block text-[10px] uppercase tracking-wide text-slate-500">AI connection</small><b id="ep-diagnostic-ai" role="status" aria-live="polite">'+escapeHtml(status)+'</b></div></div><section class="rounded-xl border border-slate-200 dark:border-slate-700 p-3"><h3 class="font-bold">Question data</h3><p class="mt-1 text-xs text-slate-500">'+Number(d.loadedChapters||0)+' chapter banks and '+Number(d.loadedQuestions||0)+' questions loaded in this session.</p>'+fileRows+(d.contentTest?'<p class="mt-2 text-xs" role="status" aria-live="polite">Sample check: '+escapeHtml(d.contentTest)+'</p>':'')+'</section><section class="rounded-xl bg-teal-500/5 p-3 text-xs"><b>Free-first entitlements</b><p class="mt-1 text-slate-500">Future entitlement hooks are ready, but no provider is connected. All existing study tools remain free and ungated.</p></section><p class="text-[10px] text-slate-500">Daily notifications are device-specific and checked while EduPulse is open; closed-browser push delivery is not configured.</p></div>';}
+function updateDiagnosticsView(){var root=document.getElementById('ep-diagnostics-body');if(root)root.innerHTML=diagnosticsMarkup();}
+async function refreshDiagnostics(testContent){var d=window.EP_DIAGNOSTICS;d.connection=navigator.onLine?'online':'offline';d.syncStatus=auth()?syncStatus:'not signed in';try{var probe='__ep_health_'+Date.now();localStorage.setItem(probe,'ok');localStorage.removeItem(probe);d.storageAvailable=true;}catch(error){d.storageAvailable=false;}d.aiKeyConfigured=geminiKeyConfigured();d.cachedQuestionFiles=await countOfflineQuestionFiles();if('serviceWorker'in navigator){d.serviceWorker='Checking';navigator.serviceWorker.getRegistration().then(function(reg){d.serviceWorker=reg?'Ready':'Not registered';updateDiagnosticsView();}).catch(function(){d.serviceWorker='Unavailable';updateDiagnosticsView();});}else d.serviceWorker='Unsupported';updateDiagnosticsView();try{if(typeof epDataIndex==='function')await epDataIndex();}catch(error){}if(testContent){d.contentTest='Checking a sample Biology chapter…';updateDiagnosticsView();try{var sample=await preloadChapter('Biology',data.Biology[0]);d.contentTest=sample.length?sample.length+' questions loaded':'No questions returned; review the failed-file list.';}catch(error){d.contentTest='Sample chapter could not be loaded.';}}updateDiagnosticsView();}
+function openDiagnostics(){setModal('Help & diagnostics','App health, question data, and AI connection checks','<div id="ep-diagnostics-body">'+diagnosticsMarkup()+'</div>','<div class="flex flex-wrap items-center justify-end gap-2"><button type="button" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold" onclick="__bzAcc.refreshDiagnostics(true)">Run checks</button><button type="button" class="px-3 py-2 rounded-xl bg-teal-600 text-white text-xs font-bold" onclick="__bzAcc.testAiConnection()">Test AI</button><button type="button" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold" onclick="__bzAcc.configureAi()">Configure AI</button><button type="button" class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold" onclick="closeModal()">Done</button></div>');refreshDiagnostics(false);}
+async function testAiConnection(){var d=window.EP_DIAGNOSTICS,key='';try{key=getGeminiApiKey();}catch(error){}if(!key){d.aiTest={status:'missing',message:'Configure a Gemini API key to test.'};updateDiagnosticsView();return;}d.aiTest={status:'checking',message:'Testing…'};updateDiagnosticsView();try{await callGeminiApi('Reply with exactly EDU PULSE CONNECTED.','Return only the exact confirmation requested.');d.aiTest={status:'ok',message:'Connected successfully'};}catch(error){d.aiTest={status:'error',message:error&&error.status?'Request failed (HTTP '+error.status+')':'Network or model request failed'};}updateDiagnosticsView();}
+function testQuestionData(){refreshDiagnostics(true);}
 /* automatic backup: when you leave the app, on reconnect, and every 2 minutes if anything changed */
-document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden'&&auth())pushCloud(true);});
-window.addEventListener('online',function(){if(auth())pushCloud(true);});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden'&&auth())pushCloud(true);else if(document.visibilityState==='visible')checkStudyReminders();});
+window.addEventListener('online',function(){if(auth())pushCloud(true);checkStudyReminders();});
 setInterval(function(){if(auth())pushCloud(true);},120000);
+setInterval(checkStudyReminders,60000);
 
 /* ---------- settings panel ---------- */
 function toggle(label,sub,key,extra){return '<label class="bz-set"><span>'+label+'<small>'+sub+'</small></span><input type="checkbox" '+(cfg[key]?'checked':'')+' onchange="'+(extra||'')+'__bz.set(\''+key+'\',this.checked)"></label>';}
 function panel(){
   var s=settings();
   return '<div class="card p-6 border-l-4 border-l-indigo-500" id="bz-panel"><h2 class="text-xl font-black">Study comfort &amp; sync</h2><p class="text-xs" style="color:var(--text-muted,#94a3b8);margin:4px 0 8px">Changes apply instantly on this device.</p>'
+   +'<label class="bz-set" for="ep-theme-select"><span>Visual theme<small>Five complete palettes, including true-black AMOLED</small></span><select id="ep-theme-select" aria-label="Visual theme" onchange="applyTheme(this.value,true)"><option value="light">Light</option><option value="dark">Dark</option><option value="amoled">AMOLED black</option><option value="forest">Forest</option><option value="aurora">Aurora</option></select></label>'
+   +'<label class="bz-set"><span>High contrast<small>Stronger boundaries and keyboard focus outlines</small></span><input type="checkbox" '+(s.highContrast?'checked':'')+' onchange="__bzAcc.setHighContrast(this.checked)"></label>'
    +'<div class="bz-set"><span>Question text size<small>Scales the question card</small></span><input type="range" min="0.9" max="1.4" step="0.05" value="'+(cfg.fontScale||1)+'" oninput="__bz.set(\'fontScale\',+this.value)"></div>'
    +toggle('Focus mode','Hides the tools bar while practising','focus')
    +toggle('Hide question timer','Practise without clock pressure','hideTimer')
@@ -10403,6 +10481,8 @@ function panel(){
    +toggle('Eye-comfort tint','Warm tint for late-night study','warm')
    +toggle('Auto dark mode','Dark from 7pm to 6am, light in the day','autoTheme')
    +toggle('AI explanations in Hindi','Applies to Explain and Memory trick','hindi')
+   +'<section class="bz-reminder" style="margin-top:14px;padding:14px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-bg)"><div class="font-black text-sm">Study reminders</div><p class="text-xs text-slate-500 mt-1">Daily goal, revision, and planned mock-test reminders. Checked while EduPulse is open.</p><label class="bz-set" style="padding:8px 0"><span>Daily reminder time<small>Uses your device local time</small></span><input id="ep-reminder-time" type="time" aria-label="Daily study reminder time" value="'+escapeHtml(reminderSettings().time||'18:00')+'" onchange="__bzAcc.saveReminderTime(this.value)"></label><div class="flex flex-wrap items-center justify-between gap-2"><p id="ep-reminder-status" class="text-xs text-slate-500" role="status" aria-live="polite">'+escapeHtml(reminderStatus())+'</p><button type="button" id="ep-reminder-toggle" class="bz-btn" '+(!('Notification'in window)||Notification.permission==='denied'?'disabled':'')+' onclick="__bzAcc.toggleReminders()">'+(reminderSettings().enabled?'Turn reminders off':'Enable reminders')+'</button></div></section>'
+   +'<div class="mt-3"><button type="button" class="bz-btn alt" onclick="__bzAcc.openDiagnostics()"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i> Help &amp; diagnostics</button></div>'
    +'<div style="margin-top:14px"><div class="bz-h" style="color:#6366f1;margin-bottom:8px">Account &amp; backup</div>'+accountHtml()+'</div></div>';
 }
 function accountHtml(){
@@ -10419,8 +10499,11 @@ function mountPanel(){
   if(!main||document.getElementById('bz-panel'))return;
   if((main.textContent||'').indexOf('App & Marking Settings')<0)return;
   var root=main.firstElementChild||main;root.insertAdjacentHTML('beforeend',panel());
+  var themeSelect=document.getElementById('ep-theme-select');
+  if(themeSelect){try{themeSelect.value=localStorage.getItem(STORAGE_KEYS.theme)||'light';}catch(e){themeSelect.value='light';}}
   var sound=document.querySelector('#bz-panel input[onchange*="__s"]');
   if(sound){sound.checked=!!settings().sound;sound.setAttribute('onchange','__bz.toggleSound(this.checked)');}
+  refreshReminderUi();
 }
 var mo=new MutationObserver(function(){mountPanel();});
   function boot(){var m=document.getElementById('main-container');if(m)mo.observe(m,{childList:true});applyPrefs();mountPanel();}
@@ -11739,7 +11822,26 @@ body.dark #ep-step-root .eps-grp-top{background:color-mix(in srgb,var(--c) 16%,t
 </style>
 <style id="ep-study-insights">
 .study-section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:24px 0 12px}.study-section-head h3{margin:3px 0 0;font-size:20px;font-weight:900;letter-spacing:-.035em;color:var(--text-primary,#0f172a)}.study-section-head>span{font-size:11px;font-weight:700;color:var(--text-muted,#64748b)}.study-overline,.study-rec-label{font-size:9px;font-weight:900;letter-spacing:.14em;color:#0f9f91}.study-subject-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.study-subject{--study-accent:#0f9f91;--study-bg:rgba(20,184,166,.09);padding:16px;border:1px solid var(--border-color,rgba(148,163,184,.2));border-radius:20px;background:var(--card-bg,#fff);min-width:0}.study-subject.chem{--study-accent:#8b5cf6;--study-bg:rgba(139,92,246,.09)}.study-subject.phy{--study-accent:#f59e0b;--study-bg:rgba(245,158,11,.1)}.study-subject-head{display:flex;align-items:center;gap:10px}.study-subject-icon,.study-rec-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;color:var(--study-accent,#0f9f91);background:var(--study-bg,rgba(20,184,166,.09));flex:0 0 auto}.study-subject-head b,.study-subject-head small{display:block}.study-subject-head b{font-size:13px;font-weight:900;color:var(--text-primary,#0f172a)}.study-subject-head small{margin-top:2px;font-size:10px;color:var(--text-muted,#64748b)}.study-subject-score{display:flex;align-items:baseline;gap:6px;margin:18px 0 8px}.study-subject-score strong{font-size:27px;letter-spacing:-.05em;color:var(--text-primary,#0f172a)}.study-subject-score span{font-size:10px;font-weight:700;color:var(--text-muted,#64748b)}.study-meter{height:6px;border-radius:9px;background:rgba(148,163,184,.2);overflow:hidden}.study-meter i{display:block;height:100%;border-radius:inherit;background:var(--study-accent);transition:width .3s ease}.study-subject-tip{display:block;width:100%;margin-top:11px;text-align:left;font-size:10px;line-height:1.5;font-weight:700;color:var(--text-muted,#64748b)}button.study-subject-tip{color:var(--study-accent)}.study-subject-tip i{margin-left:4px}.study-recommendation{display:flex;gap:14px;padding:18px;margin:18px 0 6px;border:1px solid rgba(20,184,166,.24);border-radius:20px;background:linear-gradient(115deg,rgba(20,184,166,.09),rgba(139,92,246,.055) 70%,var(--card-bg,#fff))}.study-rec-icon{width:40px;height:40px;color:#0f9f91;background:rgba(20,184,166,.14)}.study-recommendation h3{margin:5px 0;font-size:16px;line-height:1.3;font-weight:900;letter-spacing:-.02em;color:var(--text-primary,#0f172a)}.study-recommendation p{max-width:620px;margin:0;font-size:11px;line-height:1.6;color:var(--text-muted,#64748b)}.study-recommendation button{margin-top:11px;font-size:11px;font-weight:900;color:#0f9f91}.study-plan-heading{margin-top:24px}.study-plan-card{padding:6px 14px;border:1px solid var(--border-color,rgba(148,163,184,.2));border-radius:20px;background:var(--card-bg,#fff)}.study-plan-row{display:flex;align-items:center;gap:11px;padding:11px 0}.study-plan-row+.study-plan-row{border-top:1px solid rgba(148,163,184,.16)}.study-check{display:grid;place-items:center;size:34px;width:34px;height:34px;flex:0 0 auto;border-radius:11px;color:#0f9f91;background:rgba(20,184,166,.1)}.study-plan-row.is-done .study-check{color:#fff;background:#0f9f91}.study-plan-task{flex:1;min-width:0;text-align:left}.study-plan-task b,.study-plan-task small{display:block}.study-plan-task b{font-size:12px;font-weight:850;color:var(--text-primary,#0f172a)}.study-plan-task small{margin-top:3px;font-size:10px;color:var(--text-muted,#64748b)}.study-plan-time{flex:0 0 auto;font-size:9px;font-weight:800;color:var(--text-muted,#64748b)}.study-plan-row.is-done .study-plan-task b{text-decoration:line-through;opacity:.65}body.dark .study-subject,body.dark .study-plan-card{background:rgba(15,23,42,.65)}body.dark .study-recommendation{background:linear-gradient(115deg,rgba(20,184,166,.13),rgba(139,92,246,.08) 70%,rgba(15,23,42,.65))}@media(max-width:700px){.study-subject-grid{grid-template-columns:1fr}.study-subject{padding:14px}.study-subject-score{margin:12px 0 7px}.study-section-head{align-items:start;flex-direction:column;gap:4px}.study-plan-time{max-width:72px;text-align:right}.study-recommendation{padding:15px}}
+/* Global theme presets and accessible contrast overrides */
+html body.theme-amoled{--bg:#000;--paper:#000;--card-bg:#080808;--border-color:#262626;--line:#262626;--ink:#f5f5f5;--text-primary:#f5f5f5;--text-muted:#a3a3a3;--muted:#a3a3a3;--teal:#5eead4;--teal-dark:#14b8a6;--teal-light:rgba(20,184,166,.16);--deep:#042f2e;--glass:rgba(0,0,0,.92);--ep-grad:linear-gradient(135deg,#14b8a6,#a3e635);--ep-grad-soft:rgba(45,212,191,.12)}
+html body.theme-forest{--bg:#07140f;--paper:#0b1c15;--card-bg:#10251c;--border-color:#264437;--line:#264437;--ink:#ecfdf5;--text-primary:#ecfdf5;--text-muted:#a7c4b5;--muted:#a7c4b5;--teal:#6ee7b7;--teal-dark:#10b981;--teal-light:rgba(110,231,183,.16);--deep:#052e20;--glass:rgba(7,20,15,.9);--ep-grad:linear-gradient(135deg,#10b981,#a3e635);--ep-grad-soft:rgba(110,231,183,.12)}
+html body.theme-aurora{--bg:#101022;--paper:#15152d;--card-bg:#1c1c3b;--border-color:#343457;--line:#343457;--ink:#f5f3ff;--text-primary:#f5f3ff;--text-muted:#b6b1d2;--muted:#b6b1d2;--teal:#67e8f9;--teal-dark:#06b6d4;--teal-light:rgba(103,232,249,.16);--deep:#211d52;--glass:rgba(16,16,34,.9);--ep-grad:linear-gradient(135deg,#67e8f9,#c084fc);--ep-grad-soft:rgba(192,132,252,.13)}
+body.theme-amoled::before{background:#000}
+body.theme-forest::before{background:radial-gradient(60rem 36rem at -8% -12%,rgba(16,185,129,.16),transparent 60%),radial-gradient(46rem 30rem at 108% -8%,rgba(132,204,22,.1),transparent 60%)}
+body.theme-aurora::before{background:radial-gradient(60rem 36rem at -8% -12%,rgba(103,232,249,.13),transparent 60%),radial-gradient(46rem 30rem at 108% -8%,rgba(192,132,252,.16),transparent 60%)}
+body:is(.theme-amoled,.theme-forest,.theme-aurora) :is(.card,.sidebar,.topbar,.modal-box,.epc-win,.bz-panel){background-color:var(--card-bg)!important;border-color:var(--border-color)!important;color:var(--text-primary)}
+body:is(.theme-amoled,.theme-forest,.theme-aurora) :is([class~="bg-white"],[class~="bg-slate-50"],[class~="bg-slate-100"],[class~="dark:bg-slate-900"],[class~="dark:bg-slate-800"],[class~="dark:bg-slate-800/60"]){background-color:var(--card-bg)!important}
+body:is(.theme-amoled,.theme-forest,.theme-aurora) :is([class~="text-slate-900"],[class~="text-slate-800"],[class~="text-slate-700"],[class~="dark:text-slate-100"],[class~="dark:text-slate-200"]){color:var(--text-primary)!important}
+body:is(.theme-amoled,.theme-forest,.theme-aurora) :is([class~="text-slate-500"],[class~="text-slate-400"],[class~="dark:text-slate-400"]){color:var(--text-muted)!important}
+body:is(.theme-amoled,.theme-forest,.theme-aurora) :is([class~="border-slate-200"],[class~="dark:border-slate-700"],[class~="dark:border-slate-800"]){border-color:var(--border-color)!important}
+body.theme-amoled .dv2-hero{background:linear-gradient(135deg,#042f2e,#080808 56%,#000)!important}
+body.theme-forest .dv2-hero{background:linear-gradient(135deg,#064e3b,#14532d 55%,#1f2937)!important}
+body.theme-aurora .dv2-hero{background:linear-gradient(135deg,#0e7490,#312e81 55%,#6d28d9)!important}
+.ep-high-contrast :is(.card,.bz-set,.ep-search,button,input,select,textarea){border-width:2px!important}
+.ep-high-contrast :focus-visible{outline:3px solid var(--teal)!important;outline-offset:3px!important}
+.ep-high-contrast{--text-muted:#475569}
+.ep-high-contrast.dark{--text-muted:#d1d5db}
 </style>
 
 </body>
-  </html>
+</html>
