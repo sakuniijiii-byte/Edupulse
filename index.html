@@ -1,6 +1,143 @@
 <!doctype html>
 <html lang="en">
   <!-- 1. PASTE BEFORE </head> -->
+<style id="edupulse-customizer-styles">
+  .ep-customizer-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 800;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ep-customizer-btn:hover {
+    background: rgba(13, 148, 136, 0.1);
+    border-color: #0d9488;
+    color: #0d9488;
+  }
+
+  /* Customization Modal Grid Options */
+  .ep-module-toggle-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+  }
+  .ep-module-toggle-card.disabled {
+    opacity: 0.5;
+  }
+</style>
+
+<!-- 2. PASTE BEFORE </body> -->
+<script>
+(function initDashboardCustomizer() {
+  const CUSTOMIZER_KEY = 'edupulse_dashboard_layout_v1';
+
+  // Define available dashboard modules and default order/visibility
+  const DEFAULT_MODULES = [
+    { id: 'streak-banner', label: '🔥 Streak & Daily Activity Banner', enabled: true, order: 0 },
+    { id: 'daily-targets', label: '🎯 Daily MCQ Targets & Subject Progress', enabled: true, order: 1 },
+    { id: 'weak-topics', label: '⚠️ Weak Subtopics & Concept Gaps', enabled: true, order: 2 },
+    { id: 'quick-actions', label: '⚡ Quick Practice & Chapter Launcher', enabled: true, order: 3 },
+    { id: 'ai-mentor-tip', label: '💡 AI Aspirant Motivation & Tip of the Day', enabled: true, order: 4 }
+  ];
+
+  window.getDashboardLayoutConfig = function() {
+    return StorageModule.get(CUSTOMIZER_KEY, DEFAULT_MODULES);
+  };
+
+  window.openDashboardCustomizerModal = function() {
+    const currentCfg = getDashboardLayoutConfig();
+    
+    setModal(
+      'Customize Dashboard Layout',
+      'Choose which widgets to display and reorder your learning command center.',
+      `<div class="space-y-2 py-2 text-xs">
+        <p class="text-slate-500 mb-3">Toggle cards on or off based on your current NEET preparation focus.</p>
+        <div id="ep-module-list">
+          ${currentCfg.sort((a,b) => a.order - b.order).map((mod, idx) => `
+            <div class="ep-module-toggle-card ${mod.enabled ? '' : 'disabled'}" data-mod-id="${mod.id}">
+              <div class="flex items-center gap-3">
+                <span class="text-slate-400 font-mono font-bold">#${idx + 1}</span>
+                <span class="font-bold text-slate-800 dark:text-slate-200">${escapeHtml(mod.label)}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" onclick="moveDashboardModule('${mod.id}', -1)" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:text-teal-600" title="Move Up"><i class="fa-solid fa-arrow-up"></i></button>
+                <button type="button" onclick="moveDashboardModule('${mod.id}', 1)" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:text-teal-600" title="Move Down"><i class="fa-solid fa-arrow-down"></i></button>
+                <label class="relative inline-flex items-center cursor-pointer ml-2">
+                  <input type="checkbox" ${mod.enabled ? 'checked' : ''} onchange="toggleDashboardModuleState('${mod.id}', this.checked)" class="sr-only peer">
+                  <div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal-600"></div>
+                </label>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>`,
+      `<button type="button" onclick="resetDashboardLayout()" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Reset Defaults</button>
+       <button type="button" onclick="closeModal(); if(typeof renderView === 'function') renderView(); showToast('Dashboard layout updated!', 'success');" class="px-4 py-2 rounded-xl bg-teal-600 text-white text-xs font-black">Save & Apply</button>`
+    );
+  };
+
+  window.toggleDashboardModuleState = function(modId, isEnabled) {
+    let cfg = getDashboardLayoutConfig();
+    const target = cfg.find(m => m.id === modId);
+    if (target) {
+      target.enabled = isEnabled;
+      StorageModule.set(CUSTOMIZER_KEY, cfg);
+      const card = document.querySelector(`[data-mod-id="${modId}"]`);
+      if (card) card.classList.toggle('disabled', !isEnabled);
+    }
+  };
+
+  window.moveDashboardModule = function(modId, direction) {
+    let cfg = getDashboardLayoutConfig().sort((a, b) => a.order - b.order);
+    const idx = cfg.findIndex(m => m.id === modId);
+    if (idx < 0) return;
+    const targetIdx = idx + direction;
+    if (targetIdx < 0 || targetIdx >= cfg.length) return;
+
+    // Swap orders
+    const temp = cfg[idx].order;
+    cfg[idx].order = cfg[targetIdx].order;
+    cfg[targetIdx].order = temp;
+
+    cfg.sort((a, b) => a.order - b.order);
+    StorageModule.set(CUSTOMIZER_KEY, cfg);
+    if (typeof openDashboardCustomizerModal === 'function') openDashboardCustomizerModal();
+  };
+
+  window.resetDashboardLayout = function() {
+    StorageModule.set(CUSTOMIZER_KEY, DEFAULT_MODULES);
+    if (typeof openDashboardCustomizerModal === 'function') openDashboardCustomizerModal();
+    showToast('Dashboard layout reset to default.', 'info');
+  };
+
+  // Helper function to inject the customize button into your top bar automatically on load
+  document.addEventListener('DOMContentLoaded', () => {
+    const topBarActions = document.querySelector('.topbar-actions, header .flex.items-center.gap-3, .topbar');
+    if (topBarActions && !document.getElementById('ep-customizer-trigger')) {
+      const btn = document.createElement('button');
+      btn.id = 'ep-customizer-trigger';
+      btn.className = 'ep-customizer-btn';
+      btn.innerHTML = `<i class="fa-solid fa-sliders text-teal-600"></i><span>Customize</span>`;
+      btn.onclick = openDashboardCustomizerModal;
+      topBarActions.prepend(btn);
+    }
+  });
+})();
+</script>
+  <!-- 1. PASTE BEFORE </head> -->
 <style id="edupulse-v2-upgrades">
 /* Distraction-Free Practice Lock */
 body.ep-focus-locked .quiz-session-layout > .palette-drawer-top:not(.is-expanded) {
