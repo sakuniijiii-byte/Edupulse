@@ -30,7 +30,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<style>
+<style id="edupulse-core-design">
 :root{
   --ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--paper:#ffffff;--bg:#f8fafc;
   --teal:#0d9488;--teal-dark:#0f766e;--teal-light:#ccfbf1;--deep:#134e4a;--lime:#84cc16;
@@ -343,8 +343,8 @@ body.dark .epc-seg button.on{background:rgba(255,255,255,.1)}
   #epc-max-btn{display:none}
 }
 @media (prefers-reduced-motion:reduce){.epc-fab-ring,.epc-fab.unread .epc-fab-dot,.epc-typing i{animation:none}#ai-chatbot-window.epc-win{animation:none}}
-</style>
-<style id="edupulse-polish">
+
+/* Layer: edupulse-polish */
 /* ---- Accessibility & base buttons ---- */
 :focus{outline:none}
 :focus-visible{outline:2px solid #14b8a6;outline-offset:2px}
@@ -855,9 +855,8 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
   .quiz-session-layout *{scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
 
-</style>
 
-<style id="edupulse-neet-inspired-refresh">
+/* Layer: edupulse-neet-inspired-refresh */
 /* EduPulse NEET-inspired practice refresh: clean exam canvas, compact controls */
 .fullscreen-modal .modal-box{
   height:100dvh!important;max-height:100dvh!important;min-height:0!important;
@@ -1095,9 +1094,8 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
     display:block!important;max-height:calc(52vh - 54px)!important;overflow-y:auto!important;
   }
 }
-</style>
 
-<style id="edupulse-neet-portrait-refinement">
+/* Layer: edupulse-neet-portrait-refinement */
 
 /* ===== Portrait exam layout refinement (NEET-style reference) ===== */
 @media (orientation:portrait){
@@ -1286,8 +1284,8 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
   .quiz-session-layout > .palette-drawer-top{transition:none!important}
 }
 
-</style>
-<style id="palette-toggle-reliability-fix">
+
+/* Layer: palette-toggle-reliability-fix */
 
 /* Reliable palette disclosure: toggle the existing panel without rerendering the quiz. */
 .palette-drawer-top .palette-expanded-content{display:none!important}
@@ -1302,8 +1300,8 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
   .quiz-session-layout .palette-expand-trigger{position:relative;z-index:5;touch-action:manipulation}
 }
 
-</style>
-<style id="edupulse-palette-final-fix">
+
+/* Layer: edupulse-palette-final-fix */
 
 /* Final authoritative palette disclosure rules: override legacy responsive rules. */
 .palette-drawer-top{
@@ -1359,8 +1357,8 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
   display:block!important;
 }
 
-</style>
-<style id="edupulse-neet-reference-polish">
+
+/* Layer: edupulse-neet-reference-polish */
 
 /* ===== NEET-style exam workspace polish ===== */
 :root{
@@ -1598,9 +1596,8 @@ button[role="radio"]:not(:disabled):hover .opt-badge{background:#14b8a6;color:#f
   .palette-drawer-top{transition:none!important}
 }
 
-</style>
 
-<style id="edupulse-global-theme-and-dashboard-refresh">
+/* Layer: edupulse-global-theme-and-dashboard-refresh */
 /* Consistent theme tokens and readable controls across every route/modal. */
 html{color-scheme:light;scroll-behavior:smooth}
 html.dark{color-scheme:dark}
@@ -1647,10 +1644,8 @@ html.dark .dv2-bar>div{background:rgba(148,163,184,.12)}
 .dv2-ring{z-index:1}
 @media(max-width:640px){.dv2{gap:18px}.dv2-hero{min-height:190px;padding:22px 18px}.dv2-stat{padding:12px;gap:9px}.dv2-stat-ic{width:36px;height:36px}.dv2-stat b{font-size:20px}.dv2-act{min-height:96px}.dv2-card{padding:16px}}
 @media(prefers-reduced-motion:reduce){.dv2-stat,.dv2-act,.dv2-saved,.dv2-weak,.dv2-subj{transition:none!important}}
-</style>
 
-
-<style id="quiz-interface-accessibility-refresh">
+/* Layer: quiz-interface-accessibility-refresh */
 /* Quiz header: readable in both themes and resilient when controls wrap. */
 .quiz-session-layout > .mb-1{
   display:grid!important;
@@ -1811,9 +1806,8 @@ body.dark .quiz-session-layout .quiz-meta span{
   body.dark .quiz-session-layout > .mb-1 p{color:#f1f5f9!important}
   .quiz-session-layout .quiz-meta span{border-width:2px!important}
 }
-</style>
 
-<style id="ep-fig-css">
+/* Layer: ep-fig-css */
 .ep-figs{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
 .ep-fig{position:relative;margin:0;background:#fff;border:1px solid rgba(148,163,184,.5);border-radius:16px;padding:8px;cursor:zoom-in;max-width:100%;min-width:140px;min-height:96px;display:flex;flex-direction:column;align-items:center}
 .ep-fig img{display:block;max-width:100%;max-height:min(46vh,320px);object-fit:contain;border-radius:10px}
@@ -1832,8 +1826,8 @@ body.dark .quiz-session-layout .quiz-meta span{
 .katex-display{overflow-x:auto;overflow-y:hidden;max-width:100%;margin:.6em 0}
 .ep-opt-img{display:block;margin-top:6px;max-height:150px;max-width:100%;background:#fff;border-radius:8px;padding:3px;object-fit:contain}
 @media (prefers-reduced-motion:reduce){.ep-load::after{animation:none}}
-</style>
-<style id="ep-responsive">
+
+/* Layer: ep-responsive */
 /* ===== EduPulse responsive pass: phones, tablets, desktops, portrait and landscape ===== */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .content,.main,#main-container{min-width:0}
@@ -8689,8 +8683,8 @@ body .quiz-session-layout .mb-1 h2{max-width:none!important}
 /* keyboard hint: wide screens only */
 .pq-foot::after{display:none!important}
 @media (min-width:900px) and (hover:hover) and (pointer:fine){.pq-foot::after{display:block!important}}
-</style>
-<style id="practice-home-v1">
+
+/* Layer: practice-home-v1 */
 /* ===== Practice home ===== */
 .pc{display:flex;flex-direction:column;gap:18px;max-width:1120px;margin:0 auto}
 .pc :focus-visible{outline:2px solid var(--teal);outline-offset:2px}
@@ -8809,8 +8803,8 @@ body.dark .pc-ibtn.on{color:#34d399}
   .pc-subj{grid-template-columns:minmax(0,1fr);grid-template-areas:"t" "bar";padding:10px 12px;gap:6px}
   .pc-subj-ic{display:none}
 }
-</style>
-<style id="edupulse-desktop-dark-redesign">
+
+/* Layer: edupulse-desktop-dark-redesign */
 /* =====================================================================
    EduPulse PRO — Desktop/Landscape + Dark Mode redesign (CSS-only layer)
    Appended last. No markup, script, storage or mobile-portrait changes.
@@ -8980,8 +8974,8 @@ html body.dark{scrollbar-color:#243047 transparent}
   html body .main{padding-inline:64px}
   html body .quiz-session-layout.quiz-session-layout{grid-template-columns:minmax(0,1fr) 380px!important}
 }
-</style>
-<style id="edupulse-practice-compact">
+
+/* Layer: edupulse-practice-compact */
 /* =====================================================================
    Practice mode — space-efficient layout (CSS only; markup/JS untouched)
    Goal: give the question + options the screen, shrink chrome around them.
@@ -9053,8 +9047,8 @@ html body .quiz-session-layout #normal-practice-toolkit details>summary{padding:
   html body .quiz-session-layout button[role="radio"]{min-height:38px!important;padding:6px 10px!important;font-size:13.5px!important}
   html body .quiz-session-layout .pq-foot button{min-height:40px!important;height:40px}
 }
-</style>
-<style id="edupulse-practice-tools">
+
+/* Layer: edupulse-practice-tools */
 /* =====================================================================
    Practice toolkit — curated tools + redesigned tiles (CSS only).
    Hidden (not deleted, so every handler/storage key still works):
@@ -9148,8 +9142,8 @@ html body #normal-practice-toolkit label{background:transparent!important;border
 @media (orientation:landscape) and (min-width:600px){
   html body #normal-practice-toolkit details[open]{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-</style>
-<style id="edupulse-dialog-fix-polish">
+
+/* Layer: edupulse-dialog-fix-polish */
 /* =====================================================================
    FIX: confirm dialogs opened from a full-screen quiz (e.g. "Leave Practice
    Session?") lost their title + Continue/Leave buttons in landscape.
@@ -9212,8 +9206,8 @@ html body:not(.dark) .sidebar{box-shadow:1px 0 0 rgba(15,23,42,.04)}
 @supports (padding:env(safe-area-inset-bottom)){
   html body .custom-modal{padding-bottom:max(16px,env(safe-area-inset-bottom))}
 }
-</style>
-<style id="edupulse-exit-button">
+
+/* Layer: edupulse-exit-button */
 /* Practice header: make Exit / End Session the clear, safe-to-find action */
 html body .quiz-session-layout > .mb-1 > div:last-of-type > button:last-child,
 html body.dark .quiz-session-layout > .mb-1 > div:last-of-type > button:last-child{
@@ -9240,8 +9234,8 @@ html body.dark .quiz-session-layout > .mb-1 > div:last-of-type > button:last-chi
 @media (orientation:landscape) and (max-height:520px){
   html body .quiz-session-layout > .mb-1 > div:last-of-type > button:last-child{height:30px!important;min-height:30px!important;padding:0 10px!important}
 }
-</style>
-<style id="edupulse-header-footer">
+
+/* Layer: edupulse-header-footer */
 /* =====================================================================
    Practice header = one tidy app-bar card (progress runs along its edge)
    Practice footer = sticky action dock (Prev · Skip · Next)
@@ -9308,8 +9302,8 @@ html body .quiz-session-layout .pq-foot:has(.pq-next:disabled) .pq-next{box-shad
   html body .quiz-session-layout .pq-foot button{height:40px!important;min-height:40px!important}
   html body .quiz-session-layout .pq-prev{width:40px;flex-basis:40px}
 }
-</style>
-<style id="edupulse-more-question-space">
+
+/* Layer: edupulse-more-question-space */
 /* =====================================================================
    Give the question the screen: one-row header, one-line palette,
    one-row tools, and no dead strip under the tools.
@@ -9402,8 +9396,8 @@ html body .quiz-session-layout .pq-prev{width:46px;flex-basis:46px}
   html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn{justify-content:center!important;padding:0!important}
   html body .quiz-session-layout #normal-practice-toolkit .tk-quick button.tk-btn span{display:none}
 }
-</style>
-<style id="edupulse-stats-page">
+
+/* Layer: edupulse-stats-page */
 .st{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:18px;animation:fadeIn .35s ease both}
 .st-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
 .st-head h2{font-size:clamp(20px,2.2vw,26px);font-weight:900;letter-spacing:-.03em;color:var(--text-primary)}
@@ -9606,8 +9600,8 @@ html body .quiz-session-layout.quiz-session-layout > .mb-1 > div:nth-child(2){fl
   }
   html body .quiz-session-layout button[role="radio"] > span:first-child{width:clamp(30px,4vh,40px)!important;height:clamp(30px,4vh,40px)!important}
 }
-</style>
-<style id="edupulse-question-card-space-2">
+
+/* Layer: edupulse-question-card-space-2 */
 /* =====================================================================
    Question card gets the room (final override, loads last)
    · chrome (header / palette / tools) slimmed so the card owns the screen
@@ -9683,8 +9677,8 @@ html body .quiz-session-layout .quiz-meta{margin-top:6px!important}
   html body .quiz-session-layout.quiz-session-layout > .mb-1{row-gap:4px!important;padding-bottom:7px!important}
   html body .quiz-session-layout > .palette-drawer-top .palette-touch-btn{height:38px!important}
 }
-</style>
-<style id="edupulse-compact-options-toolbar">
+
+/* Layer: edupulse-compact-options-toolbar */
 /* =====================================================================
    Refinement: smaller, calmer options + slim icon-only toolbar
    ===================================================================== */
@@ -11232,8 +11226,8 @@ html body .quiz-session-layout > [ontouchstart] .mt-5.space-y-3 > button[role="r
   min-height:46px!important;height:auto!important;
 }
 html body .quiz-session-layout .pq-foot{flex:0 0 auto!important}
-</style>
-<style id="ep-step-tools-v1">
+
+/* Layer: ep-step-tools-v1 */
 /* ===== 1. Quiz tools: moved out of the footer/side rail into the question card ===== */
 html body .quiz-session-layout.ep-tools-in-card{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto auto minmax(0,1fr)!important;grid-template-areas:"head" "palette" "question"!important}
 html body .quiz-session-layout.ep-tools-in-card > [ontouchstart]{grid-area:question!important}
@@ -11338,8 +11332,8 @@ html body .quiz-session-layout.ep-tools-in-card .ep-qa-bm{display:none!important
 .eps-empty{padding:22px 16px;border-radius:18px;text-align:center;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3)}
 .eps-empty b{display:block;font-size:14px;font-weight:800}
 .eps-empty span{display:block;margin:4px 0 12px;font-size:12px;color:var(--text-muted)}
-</style>
-<style id="ep-grp-css">
+
+/* Layer: ep-grp-css */
 .eps-grp{margin-top:14px}
 .eps-grp-h{width:100%;display:flex;align-items:center;gap:10px;padding:8px 12px;margin-bottom:8px;border-radius:12px;border:1px solid var(--border-color,#e2e8f0);background:transparent;color:inherit;text-align:left;cursor:pointer}
 .eps-grp-h b{font-size:13px;font-weight:900}.eps-grp-h small{flex:1;font-size:11px;font-weight:600;color:#64748b}
@@ -11589,8 +11583,8 @@ html body .quiz-session-layout.ep-tools-in-card .ep-qa-bm{display:inline-flex!im
 .ep-ns-x{width:34px;height:34px;border-radius:10px;border:1px solid var(--border-color,#e2e8f0);background:transparent;color:inherit}
 .ep-ns-card label{display:flex;flex-direction:column;gap:6px;font-size:11px;font-weight:800;color:#64748b}
 .ep-ns-card select,.ep-ns-card textarea{width:100%;padding:9px;border-radius:10px;border:1px solid var(--border-color,#cbd5e1);background:transparent;color:inherit;font-size:13px;font-weight:600}
-</style>
-<style id="ep-redesign-v3">
+
+/* Layer: ep-redesign-v3 */
 /* ===== EduPulse redesign v3 — same teal theme, new structure ===== */
 :root{--ep-fs:1;--ep-r:20px;--ep-sh:0 1px 2px rgba(15,23,42,.05),0 8px 24px -8px rgba(15,23,42,.14);--ep-sh-hi:0 2px 4px rgba(15,23,42,.06),0 18px 36px -12px rgba(13,148,136,.28)}
 body.dark{--ep-sh:0 1px 2px rgba(0,0,0,.4),0 10px 28px -10px rgba(0,0,0,.6);--ep-sh-hi:0 2px 4px rgba(0,0,0,.5),0 18px 36px -12px rgba(20,184,166,.28)}
@@ -11783,9 +11777,8 @@ body.dark #epss .epss-row button{background:#172235;border-color:#334155}
 @media (max-width:380px){#ep-step-root .eps-steps{gap:3px}#ep-step-root .eps-steps span{padding:6px 8px;font-size:10px}#ep-step-root .eps-bar-t b{font-size:15px}#ep-step-root .eps-bar-t small{max-width:145px}#ep-step-root .eps-go{padding:0 11px;font-size:11.5px}#epss .epss-themes{grid-template-columns:1fr 1fr}}
 @media (max-height:600px) and (orientation:landscape){#epss{padding:8px}#epss .epss-sheet{max-height:98dvh}#epss .epss-body{grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);padding:10px 16px;gap:16px}#epss .epss-stage{padding:10px}#epss .epss-stage:before{margin-bottom:6px}#epss .epss-frame{height:55dvh}#epss .epss-side{gap:5px}#epss .epss-lbl{margin-top:4px}}
 @media (prefers-reduced-motion:reduce){#ep-step-root *,#epss *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-</style>
 
-<style id="ep-grp-v2">
+/* Layer: ep-grp-v2 */
 /* Practice step 2 - source sections, v2 */
 #ep-step-root .eps-h{margin:6px 2px 0;font-size:15px;font-weight:800;letter-spacing:-.01em;text-transform:none;color:var(--text-primary)}
 #ep-step-root .eps-h .eps-h-sub{display:block;margin-top:2px;font-size:12px;font-weight:600;letter-spacing:0;color:var(--text-muted)}
@@ -11819,8 +11812,8 @@ body.dark #epss .epss-row button{background:#172235;border-color:#334155}
 body.dark #ep-step-root .eps-grp{background:rgba(255,255,255,.03)}
 body.dark #ep-step-root .eps-grp-top{background:color-mix(in srgb,var(--c) 16%,transparent)}
 #ep-step-root .eps-chip2:focus-visible,#ep-step-root .eps-grp-sel:focus-visible,#ep-step-root .eps-ex:focus-visible{outline:3px solid color-mix(in srgb,var(--c,var(--teal)) 60%,#fff);outline-offset:2px}
-</style>
-<style id="ep-study-insights">
+
+/* Layer: ep-study-insights */
 .study-section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:24px 0 12px}.study-section-head h3{margin:3px 0 0;font-size:20px;font-weight:900;letter-spacing:-.035em;color:var(--text-primary,#0f172a)}.study-section-head>span{font-size:11px;font-weight:700;color:var(--text-muted,#64748b)}.study-overline,.study-rec-label{font-size:9px;font-weight:900;letter-spacing:.14em;color:#0f9f91}.study-subject-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.study-subject{--study-accent:#0f9f91;--study-bg:rgba(20,184,166,.09);padding:16px;border:1px solid var(--border-color,rgba(148,163,184,.2));border-radius:20px;background:var(--card-bg,#fff);min-width:0}.study-subject.chem{--study-accent:#8b5cf6;--study-bg:rgba(139,92,246,.09)}.study-subject.phy{--study-accent:#f59e0b;--study-bg:rgba(245,158,11,.1)}.study-subject-head{display:flex;align-items:center;gap:10px}.study-subject-icon,.study-rec-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;color:var(--study-accent,#0f9f91);background:var(--study-bg,rgba(20,184,166,.09));flex:0 0 auto}.study-subject-head b,.study-subject-head small{display:block}.study-subject-head b{font-size:13px;font-weight:900;color:var(--text-primary,#0f172a)}.study-subject-head small{margin-top:2px;font-size:10px;color:var(--text-muted,#64748b)}.study-subject-score{display:flex;align-items:baseline;gap:6px;margin:18px 0 8px}.study-subject-score strong{font-size:27px;letter-spacing:-.05em;color:var(--text-primary,#0f172a)}.study-subject-score span{font-size:10px;font-weight:700;color:var(--text-muted,#64748b)}.study-meter{height:6px;border-radius:9px;background:rgba(148,163,184,.2);overflow:hidden}.study-meter i{display:block;height:100%;border-radius:inherit;background:var(--study-accent);transition:width .3s ease}.study-subject-tip{display:block;width:100%;margin-top:11px;text-align:left;font-size:10px;line-height:1.5;font-weight:700;color:var(--text-muted,#64748b)}button.study-subject-tip{color:var(--study-accent)}.study-subject-tip i{margin-left:4px}.study-recommendation{display:flex;gap:14px;padding:18px;margin:18px 0 6px;border:1px solid rgba(20,184,166,.24);border-radius:20px;background:linear-gradient(115deg,rgba(20,184,166,.09),rgba(139,92,246,.055) 70%,var(--card-bg,#fff))}.study-rec-icon{width:40px;height:40px;color:#0f9f91;background:rgba(20,184,166,.14)}.study-recommendation h3{margin:5px 0;font-size:16px;line-height:1.3;font-weight:900;letter-spacing:-.02em;color:var(--text-primary,#0f172a)}.study-recommendation p{max-width:620px;margin:0;font-size:11px;line-height:1.6;color:var(--text-muted,#64748b)}.study-recommendation button{margin-top:11px;font-size:11px;font-weight:900;color:#0f9f91}.study-plan-heading{margin-top:24px}.study-plan-card{padding:6px 14px;border:1px solid var(--border-color,rgba(148,163,184,.2));border-radius:20px;background:var(--card-bg,#fff)}.study-plan-row{display:flex;align-items:center;gap:11px;padding:11px 0}.study-plan-row+.study-plan-row{border-top:1px solid rgba(148,163,184,.16)}.study-check{display:grid;place-items:center;size:34px;width:34px;height:34px;flex:0 0 auto;border-radius:11px;color:#0f9f91;background:rgba(20,184,166,.1)}.study-plan-row.is-done .study-check{color:#fff;background:#0f9f91}.study-plan-task{flex:1;min-width:0;text-align:left}.study-plan-task b,.study-plan-task small{display:block}.study-plan-task b{font-size:12px;font-weight:850;color:var(--text-primary,#0f172a)}.study-plan-task small{margin-top:3px;font-size:10px;color:var(--text-muted,#64748b)}.study-plan-time{flex:0 0 auto;font-size:9px;font-weight:800;color:var(--text-muted,#64748b)}.study-plan-row.is-done .study-plan-task b{text-decoration:line-through;opacity:.65}body.dark .study-subject,body.dark .study-plan-card{background:rgba(15,23,42,.65)}body.dark .study-recommendation{background:linear-gradient(115deg,rgba(20,184,166,.13),rgba(139,92,246,.08) 70%,rgba(15,23,42,.65))}@media(max-width:700px){.study-subject-grid{grid-template-columns:1fr}.study-subject{padding:14px}.study-subject-score{margin:12px 0 7px}.study-section-head{align-items:start;flex-direction:column;gap:4px}.study-plan-time{max-width:72px;text-align:right}.study-recommendation{padding:15px}}
 /* Global theme presets and accessible contrast overrides */
 html body.theme-amoled{--bg:#000;--paper:#000;--card-bg:#080808;--border-color:#262626;--line:#262626;--ink:#f5f5f5;--text-primary:#f5f5f5;--text-muted:#a3a3a3;--muted:#a3a3a3;--teal:#5eead4;--teal-dark:#14b8a6;--teal-light:rgba(20,184,166,.16);--deep:#042f2e;--glass:rgba(0,0,0,.92);--ep-grad:linear-gradient(135deg,#14b8a6,#a3e635);--ep-grad-soft:rgba(45,212,191,.12)}
