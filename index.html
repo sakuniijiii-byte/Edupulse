@@ -6139,6 +6139,19 @@ function updateSettingsFromForm() {
 
 
 // ===== Dashboard v2 =====
+function toggleStudyPlanTask(taskId) {
+  const key = 'edupulse_study_plan_v1';
+  const todayKey = new Date().toISOString().slice(0, 10);
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) {}
+  if (state.date !== todayKey) state = { date: todayKey, done: [] };
+  const done = new Set(state.done || []);
+  done.has(taskId) ? done.delete(taskId) : done.add(taskId);
+  state.done = [...done];
+  try { localStorage.setItem(key, JSON.stringify(state)); } catch (e) { showToast('Could not save your plan on this device.', 'error'); }
+  renderView();
+}
+
 function buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccuracy }) {
   const goal = getDailyGoal(), today = questionsSolvedToday();
   const gp = Math.min(100, Math.round((today / goal) * 100));
@@ -6179,12 +6192,15 @@ function buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccu
   const stat = (icon, tone, label, val, hint) => `
     <div class="dv2-stat dv2-${tone}"><span class="dv2-stat-ic"><i class="fa-solid ${icon}"></i></span>
       <div><small>${label}</small><b>${val}</b><em>${hint}</em></div></div>`;
+  const previousAccuracy = attemptsArr.length > 1 ? Math.round(attemptsArr.slice(0, -1).reduce((sum, a) => sum + (a.accuracy || 0), 0) / (attemptsArr.length - 1)) : avgAccuracy;
+  const accuracyDelta = avgAccuracy - previousAccuracy;
+  const weekSolved = getActivityDays(7).reduce((sum, day) => sum + day.count, 0);
   const stats = `
-  <section class="dv2-stats">
-    ${stat('fa-book-open', 'teal', 'Syllabus', pct + '%', `${done}/${TOTAL_CHAPTERS} chapters`)}
-    ${stat('fa-fire', 'amber', 'Streak', dayStreak + 'd', `Best ${streak.best || 0}d`)}
-    ${stat('fa-bullseye', 'green', 'Accuracy', avgAccuracy + '%', `${attemptsArr.length} sessions`)}
-    ${stat('fa-check-double', 'violet', 'Solved', totalSolved, 'all time')}
+  <section class="dv2-stats" aria-label="Study insights">
+    ${stat('fa-bullseye', 'green', 'Recent accuracy', avgAccuracy + '%', `${accuracyDelta >= 0 ? '+' : ''}${accuracyDelta} pts vs earlier sessions`)}
+    ${stat('fa-calendar-check', 'teal', 'This week', weekSolved, `${today} questions today`)}
+    ${stat('fa-fire', 'amber', 'Study streak', dayStreak + ' days', `Personal best ${streak.best || 0} days`)}
+    ${stat('fa-rotate', 'violet', 'Revision due', nDue, `${nWrong} questions missed`)}
   </section>`;
 
   const act = (onclick, icon, tone, label) => `<button type="button" onclick="${onclick}" class="dv2-act dv2-${tone}"><span><i class="fa-solid ${icon}"></i></span>${label}</button>`;
@@ -6265,10 +6281,42 @@ function buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccu
     </div>
   </section>`;
 
+  const subjectCards = ['Biology', 'Chemistry', 'Physics'].map((name) => {
+    const rows = attemptsArr.filter(a => a.subject === name);
+    const accuracy = rows.length ? Math.round(rows.reduce((sum, a) => sum + (a.accuracy || 0), 0) / rows.length) : 0;
+    const attempts = rows.reduce((sum, a) => sum + (a.attempted || 0), 0);
+    const tone = name === 'Biology' ? 'bio' : name === 'Chemistry' ? 'chem' : 'phy';
+    const icon = name === 'Biology' ? 'fa-dna' : name === 'Chemistry' ? 'fa-flask' : 'fa-atom';
+    const chapter = getWeakChapters(10).find(item => item.subject === name);
+    return `<article class="study-subject ${tone}"><div class="study-subject-head"><span class="study-subject-icon"><i class="fa-solid ${icon}" aria-hidden="true"></i></span><span><b>${name}</b><small>${attempts} questions attempted</small></span></div><div class="study-subject-score"><strong>${accuracy}%</strong><span>accuracy</span></div><div class="study-meter" role="progressbar" aria-label="${name} accuracy" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${accuracy}"><i style="width:${accuracy}%"></i></div>${chapter ? `<button type="button" class="study-subject-tip" onclick="openPracticeSetup('${jsArg(chapter.subject)}','${jsArg(chapter.chapter)}')">Focus next: ${escapeHtml(chapter.chapter)} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>` : `<p class="study-subject-tip">Complete a practice set to unlock a chapter focus.</p>`}</article>`;
+  }).join('');
+  const todayKey = new Date().toISOString().slice(0, 10);
+  const planKey = 'edupulse_study_plan_v1';
+  let planState = {};
+  try { planState = JSON.parse(localStorage.getItem(planKey) || '{}'); } catch (e) {}
+  if (planState.date !== todayKey) planState = { date: todayKey, done: [] };
+  const planCandidates = [
+    { id: 'goal', title: `Complete ${Math.max(0, goal - today)} questions`, detail: `${today} of ${goal} completed`, time: 'Today', icon: 'fa-bullseye' },
+    ...(nDue ? [{ id: 'revision', title: `Review ${Math.min(nDue, 10)} questions due`, detail: 'Spaced repetition · from your saved answers', time: 'Before 6:00 PM', icon: 'fa-rotate' }] : [{ id: 'weak', title: weak.length ? `Revisit ${weak[0].chapter}` : 'Choose a chapter to practise', detail: weak.length ? `${weak[0].subject} · ${weak[0].avg}% accuracy` : 'Build your first study signal', time: 'Next study block', icon: 'fa-book-open' }]),
+    { id: 'mistakes', title: 'Learn from recent mistakes', detail: `${nWrong} questions in your incorrect set`, time: '10 min', icon: 'fa-lightbulb' }
+  ];
+  const plan = planCandidates.map(item => {
+    const checked = planState.done.includes(item.id);
+    const action = item.id === 'goal' ? "switchTab('learn')" : item.id === 'revision' ? "startSavedPractice('due')" : item.id === 'mistakes' ? "startSavedPractice('incorrect')" : `openPracticeSetup('${jsArg(weak[0]?.subject || 'Biology')}','${jsArg(weak[0]?.chapter || (data.Biology || [])[0] || '')}')`;
+    return `<div class="study-plan-row${checked ? ' is-done' : ''}"><button type="button" class="study-check" aria-label="Mark ${escapeHtml(item.title)} ${checked ? 'incomplete' : 'complete'}" aria-pressed="${checked}" onclick="toggleStudyPlanTask('${item.id}')"><i class="fa-solid ${checked ? 'fa-check' : item.icon}" aria-hidden="true"></i></button><button type="button" class="study-plan-task" onclick="${action}"><b>${escapeHtml(item.title)}</b><small>${escapeHtml(item.detail)}</small></button><span class="study-plan-time">${escapeHtml(item.time)}</span></div>`;
+  }).join('');
+  const recommendation = weak[0];
+  const recommendations = recommendation ? `<section class="study-recommendation"><div class="study-rec-icon"><i class="fa-solid fa-sparkles" aria-hidden="true"></i></div><div><span class="study-rec-label">PERSONALIZED NEXT STEP</span><h3>Rebuild confidence in ${escapeHtml(recommendation.chapter)}</h3><p>${escapeHtml(recommendation.subject)} · ${recommendation.avg}% accuracy across ${recommendation.acc.length} practice sessions. Start with missed questions, then retry the chapter.</p><button type="button" onclick="openPracticeSetup('${jsArg(recommendation.subject)}','${jsArg(recommendation.chapter)}','incorrect')">Practise this chapter <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></section>` : `<section class="study-recommendation"><div class="study-rec-icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></div><div><span class="study-rec-label">YOUR NEXT STEP</span><h3>Start a focused practice session</h3><p>Recommendations become personal after you answer questions. Your incorrect answers and chapter accuracy guide what appears here.</p><button type="button" onclick="switchTab('learn')">Explore chapters <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></section>`;
+
   return `
   <div class="dv2 animate-fadeIn">
     ${hero}
     ${stats}
+    ${recommendations}
+    <div class="study-section-head"><div><span class="study-overline">YOUR PREPARATION</span><h3>Subject performance</h3></div><span>Based on practice history</span></div>
+    <section class="study-subject-grid" aria-label="Subject performance">${subjectCards}</section>
+    <div class="study-section-head study-plan-heading"><div><span class="study-overline">A LITTLE EVERY DAY</span><h3>Today&apos;s study plan</h3></div><span>${planState.done.length}/${planCandidates.length} complete</span></div>
+    <section class="study-plan-card" aria-label="Today's study plan">${plan}</section>
     ${actions}
     <div class="dv2-grid">
       <div class="dv2-col">${saved}${activity}</div>
@@ -11247,6 +11295,9 @@ body.dark #epss .epss-row button{background:#172235;border-color:#334155}
 body.dark #ep-step-root .eps-grp{background:rgba(255,255,255,.03)}
 body.dark #ep-step-root .eps-grp-top{background:color-mix(in srgb,var(--c) 16%,transparent)}
 #ep-step-root .eps-chip2:focus-visible,#ep-step-root .eps-grp-sel:focus-visible,#ep-step-root .eps-ex:focus-visible{outline:3px solid color-mix(in srgb,var(--c,var(--teal)) 60%,#fff);outline-offset:2px}
+</style>
+<style id="ep-study-insights">
+.study-section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:24px 0 12px}.study-section-head h3{margin:3px 0 0;font-size:20px;font-weight:900;letter-spacing:-.035em;color:var(--text-primary,#0f172a)}.study-section-head>span{font-size:11px;font-weight:700;color:var(--text-muted,#64748b)}.study-overline,.study-rec-label{font-size:9px;font-weight:900;letter-spacing:.14em;color:#0f9f91}.study-subject-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.study-subject{--study-accent:#0f9f91;--study-bg:rgba(20,184,166,.09);padding:16px;border:1px solid var(--border-color,rgba(148,163,184,.2));border-radius:20px;background:var(--card-bg,#fff);min-width:0}.study-subject.chem{--study-accent:#8b5cf6;--study-bg:rgba(139,92,246,.09)}.study-subject.phy{--study-accent:#f59e0b;--study-bg:rgba(245,158,11,.1)}.study-subject-head{display:flex;align-items:center;gap:10px}.study-subject-icon,.study-rec-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;color:var(--study-accent,#0f9f91);background:var(--study-bg,rgba(20,184,166,.09));flex:0 0 auto}.study-subject-head b,.study-subject-head small{display:block}.study-subject-head b{font-size:13px;font-weight:900;color:var(--text-primary,#0f172a)}.study-subject-head small{margin-top:2px;font-size:10px;color:var(--text-muted,#64748b)}.study-subject-score{display:flex;align-items:baseline;gap:6px;margin:18px 0 8px}.study-subject-score strong{font-size:27px;letter-spacing:-.05em;color:var(--text-primary,#0f172a)}.study-subject-score span{font-size:10px;font-weight:700;color:var(--text-muted,#64748b)}.study-meter{height:6px;border-radius:9px;background:rgba(148,163,184,.2);overflow:hidden}.study-meter i{display:block;height:100%;border-radius:inherit;background:var(--study-accent);transition:width .3s ease}.study-subject-tip{display:block;width:100%;margin-top:11px;text-align:left;font-size:10px;line-height:1.5;font-weight:700;color:var(--text-muted,#64748b)}button.study-subject-tip{color:var(--study-accent)}.study-subject-tip i{margin-left:4px}.study-recommendation{display:flex;gap:14px;padding:18px;margin:18px 0 6px;border:1px solid rgba(20,184,166,.24);border-radius:20px;background:linear-gradient(115deg,rgba(20,184,166,.09),rgba(139,92,246,.055) 70%,var(--card-bg,#fff))}.study-rec-icon{width:40px;height:40px;color:#0f9f91;background:rgba(20,184,166,.14)}.study-recommendation h3{margin:5px 0;font-size:16px;line-height:1.3;font-weight:900;letter-spacing:-.02em;color:var(--text-primary,#0f172a)}.study-recommendation p{max-width:620px;margin:0;font-size:11px;line-height:1.6;color:var(--text-muted,#64748b)}.study-recommendation button{margin-top:11px;font-size:11px;font-weight:900;color:#0f9f91}.study-plan-heading{margin-top:24px}.study-plan-card{padding:6px 14px;border:1px solid var(--border-color,rgba(148,163,184,.2));border-radius:20px;background:var(--card-bg,#fff)}.study-plan-row{display:flex;align-items:center;gap:11px;padding:11px 0}.study-plan-row+.study-plan-row{border-top:1px solid rgba(148,163,184,.16)}.study-check{display:grid;place-items:center;size:34px;width:34px;height:34px;flex:0 0 auto;border-radius:11px;color:#0f9f91;background:rgba(20,184,166,.1)}.study-plan-row.is-done .study-check{color:#fff;background:#0f9f91}.study-plan-task{flex:1;min-width:0;text-align:left}.study-plan-task b,.study-plan-task small{display:block}.study-plan-task b{font-size:12px;font-weight:850;color:var(--text-primary,#0f172a)}.study-plan-task small{margin-top:3px;font-size:10px;color:var(--text-muted,#64748b)}.study-plan-time{flex:0 0 auto;font-size:9px;font-weight:800;color:var(--text-muted,#64748b)}.study-plan-row.is-done .study-plan-task b{text-decoration:line-through;opacity:.65}body.dark .study-subject,body.dark .study-plan-card{background:rgba(15,23,42,.65)}body.dark .study-recommendation{background:linear-gradient(115deg,rgba(20,184,166,.13),rgba(139,92,246,.08) 70%,rgba(15,23,42,.65))}@media(max-width:700px){.study-subject-grid{grid-template-columns:1fr}.study-subject{padding:14px}.study-subject-score{margin:12px 0 7px}.study-section-head{align-items:start;flex-direction:column;gap:4px}.study-plan-time{max-width:72px;text-align:right}.study-recommendation{padding:15px}}
 </style>
 
 </body>
