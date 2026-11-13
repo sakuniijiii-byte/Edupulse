@@ -1,5 +1,649 @@
 <!doctype html>
 <html lang="en">
+  <!-- 1. PASTE BEFORE </head> -->
+<style id="edupulse-v2-upgrades">
+/* Distraction-Free Practice Lock */
+body.ep-focus-locked .quiz-session-layout > .palette-drawer-top:not(.is-expanded) {
+  max-height: 44px !important;
+  height: 44px !important;
+  opacity: 0.85;
+}
+body.ep-focus-locked #normal-practice-toolkit .tk-stats,
+body.ep-focus-locked #normal-practice-toolkit .tk-bar,
+body.ep-focus-locked #normal-practice-toolkit details:not([open]) {
+  display: none !important;
+}
+body.ep-focus-locked .quiz-session-layout > [ontouchstart] {
+  max-width: 820px !important;
+  margin-inline: auto !important;
+  box-shadow: 0 20px 50px -15px rgba(15, 23, 42, 0.12) !important;
+}
+
+/* Skeleton Loaders & Retry States */
+@keyframes epShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.ep-skeleton {
+  background: linear-gradient(90deg, rgba(148,163,184,0.12) 25%, rgba(148,163,184,0.24) 50%, rgba(148,163,184,0.12) 75%);
+  background-size: 200% 100%;
+  animation: epShimmer 1.4s infinite linear;
+  border-radius: 12px;
+}
+
+/* NCERT & Mistake Tagger Pills */
+.ep-ncert-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+body.dark .ep-ncert-pill { color: #6ee7b7; }
+
+.ep-mistake-chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  transition: all 0.2s ease;
+}
+.ep-mistake-chip.active {
+  background: #e11d48;
+  color: #fff;
+  border-color: #e11d48;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+}
+</style>
+
+<!-- 2. PASTE BEFORE </body> -->
+<script>
+(function initEduPulseV2() {
+  // =========================================================================
+  // 1. STORAGE KEYS & DEFAULT PROFILE (Onboarding + Supabase + Social)
+  // =========================================================================
+  const V2_KEYS = {
+    profile: 'edupulse_aspirant_profile_v1',
+    subtopicStats: 'edupulse_subtopic_stats_v1',
+    supabaseCfg: 'edupulse_supabase_cfg_v1',
+    socialFriends: 'edupulse_social_friends_v1',
+    challenges: 'edupulse_challenges_v1',
+    focusLock: 'edupulse_focus_lock_v1'
+  };
+
+  const defaultProfile = {
+    onboarded: false,
+    name: 'Aspirant',
+    examYear: '2027',
+    targetScore: 680,
+    dailyHours: 8,
+    dailyGoalQuestions: 60
+  };
+
+  // =========================================================================
+  // 2. FIRST-RUN ONBOARDING (Exam Year, Target Score, Daily Hours)
+  // =========================================================================
+  window.getAspirantProfile = () => StorageModule.get(V2_KEYS.profile, defaultProfile);
+
+  window.openOnboardingModal = function(force = false) {
+    const prof = getAspirantProfile();
+    if (prof.onboarded && !force) return;
+
+    setModal(
+      'Welcome to EduPulse PRO',
+      'Personalize your NEET roadmap, daily targets, and rank predictor.',
+      `<div class="space-y-4 py-2 text-xs">
+        <div>
+          <label class="block font-bold mb-1">Your Name / Callsign</label>
+          <input id="ob-name" type="text" value="${escapeHtml(prof.name)}" placeholder="e.g., Ansh" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-bold">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block font-bold mb-1">Target NEET Year</label>
+            <select id="ob-year" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-bold">
+              ${['2026', '2027', '2028'].map(y => `<option value="${y}" ${prof.examYear === y ? 'selected' : ''}>NEET ${y}</option>`).join('')}
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold mb-1">Target Score (/720)</label>
+            <input id="ob-score" type="number" min="400" max="720" step="5" value="${prof.targetScore}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-bold">
+          </div>
+          <div>
+            <label class="block font-bold mb-1">Daily Study Hours</label>
+            <input id="ob-hours" type="number" min="1" max="16" step="0.5" value="${prof.dailyHours}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-bold">
+          </div>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-800 dark:text-teal-300 font-semibold">
+          <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i>
+          Auto-calculates a daily target of <strong id="ob-q-preview">${Math.round(prof.dailyHours * 12)} MCQs/day</strong> to hit <strong>${prof.targetScore}+</strong>.
+        </div>
+      </div>`,
+      `<button type="button" onclick="saveOnboardingProfile()" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs shadow-md">Launch My Dashboard</button>`
+    );
+
+    const hrsEl = document.getElementById('ob-hours');
+    const scrEl = document.getElementById('ob-score');
+    const updatePrev = () => {
+      const h = Number(hrsEl?.value) || 6;
+      const s = Number(scrEl?.value) || 650;
+      const prev = document.getElementById('ob-q-preview');
+      if (prev) prev.parentElement.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> Auto-calculates a daily target of <strong>${Math.round(h * 12)} MCQs/day</strong> to hit <strong>${s}+</strong>.`;
+    };
+    hrsEl?.addEventListener('input', updatePrev);
+    scrEl?.addEventListener('input', updatePrev);
+  };
+
+  window.saveOnboardingProfile = function() {
+    const name = (document.getElementById('ob-name')?.value || 'Aspirant').trim();
+    const examYear = document.getElementById('ob-year')?.value || '2027';
+    const targetScore = Math.min(720, Math.max(300, Number(document.getElementById('ob-score')?.value) || 680));
+    const dailyHours = Math.min(18, Math.max(1, Number(document.getElementById('ob-hours')?.value) || 8));
+    const dailyGoalQuestions = Math.round(dailyHours * 12);
+
+    StorageModule.set(V2_KEYS.profile, {
+      onboarded: true, name, examYear, targetScore, dailyHours, dailyGoalQuestions
+    });
+    localStorage.setItem(DAILY_GOAL_KEY, String(dailyGoalQuestions));
+
+    const dateEl = document.getElementById('current-date');
+    if (dateEl) dateEl.textContent = `Padhai ki dhadkan · NEET ${examYear} · Target ${targetScore}`;
+    const h1El = document.querySelector('.topbar h1.hidden');
+    if (h1El) h1El.innerHTML = `Welcome, ${escapeHtml(name)}<span style="color:#0d9488">.</span>`;
+
+    closeModal();
+    if (typeof renderView === 'function') renderView();
+    showToast(`Profile calibrated for NEET ${examYear} (${targetScore}+)!`, 'success');
+  };
+
+  // =========================================================================
+  // 3. SUBTOPIC-LEVEL WEAK TOPIC DETECTION (Concept, NCERT Line, Difficulty)
+  // =========================================================================
+  window.recordSubtopicAttempt = function(q, isCorrect, mistakeReason = null) {
+    if (!q) return;
+    const concept = (q.concept || q.subtopic || q.topic || 'General Concept').trim();
+    const ncertLine = (q.ncertLine || q.ncertRef || q.ncert || '').trim();
+    const difficulty = (q.difficulty || 'Moderate').trim();
+    const chapter = (q.sourceChapter || quizState.chapter || 'General').trim();
+    const key = `${chapter}::${concept}`;
+
+    const db = StorageModule.get(V2_KEYS.subtopicStats, {});
+    const entry = db[key] || {
+      key, chapter, concept, ncertLine, difficulty,
+      attempts: 0, correct: 0, wrong: 0,
+      reasons: { concept: 0, calculation: 0, misread: 0, guess: 0 },
+      lastSeen: 0
+    };
+
+    entry.attempts += 1;
+    if (isCorrect) entry.correct += 1;
+    else {
+      entry.wrong += 1;
+      if (mistakeReason && entry.reasons[mistakeReason] !== undefined) {
+        entry.reasons[mistakeReason] += 1;
+      }
+    }
+    if (ncertLine) entry.ncertLine = ncertLine;
+    entry.lastSeen = Date.now();
+    db[key] = entry;
+    StorageModule.set(V2_KEYS.subtopicStats, db);
+  };
+
+  window.getWeakSubtopics = function(limit = 6) {
+    const db = StorageModule.get(V2_KEYS.subtopicStats, {});
+    return Object.values(db)
+      .filter(s => s.attempts >= 1)
+      .map(s => ({
+        ...s,
+        accuracy: Math.round((s.correct / s.attempts) * 100),
+        dominantFlaw: Object.entries(s.reasons || {}).sort((a, b) => b[1] - a[1])[0]?.[0] || 'concept'
+      }))
+      .filter(s => s.accuracy < 75)
+      .sort((a, b) => a.accuracy - b.accuracy || b.wrong - a.wrong)
+      .slice(0, limit);
+  };
+
+  // =========================================================================
+  // 4. "WHY I GOT IT WRONG" TAGGER -> FEEDS FOCUS & PLANNER AUTOMATICALLY
+  // =========================================================================
+  const MISTAKE_TYPES = [
+    { id: 'concept', label: 'Concept Gap', icon: 'fa-brain', action: 'Revise NCERT theory & solve 10 foundation MCQs' },
+    { id: 'calculation', label: 'Calculation Error', icon: 'fa-calculator', action: 'Drill 5 numericals with step-by-step unit checks' },
+    { id: 'misread', label: 'Misread Question', icon: 'fa-eye-slash', action: 'Practice highlighting NOT / INCORRECT keywords' },
+    { id: 'guess', label: 'Blind Guess', icon: 'fa-dice', action: 'Review elimination rules before attempting' }
+  ];
+
+  window.renderMistakeTaggerBar = function(qIndex) {
+    const q = quizState.questions[qIndex];
+    const ans = quizState.userAnswers[qIndex];
+    if (!q || ans === undefined || ans === q.correct) return '';
+
+    const activeTag = (quizState.wrongReasons || {})[qIndex] || '';
+    return `
+      <div class="mt-4 p-3.5 rounded-2xl bg-rose-500/5 border border-rose-500/20 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-black uppercase tracking-wider text-rose-600 dark:text-rose-400">
+            <i class="fa-solid fa-tag mr-1"></i> Why did you get this wrong? (Feeds Planner)
+          </span>
+          ${activeTag ? `<span class="text-[10px] font-bold text-emerald-600"><i class="fa-solid fa-check"></i> Added to Planner</span>` : ''}
+        </div>
+        <div class="flex flex-wrap gap-2">
+          ${MISTAKE_TYPES.map(m => `
+            <button type="button" onclick="applyWrongTagAndFeedPlanner(${qIndex}, '${m.id}')" class="ep-mistake-chip ${activeTag === m.id ? 'active' : ''}">
+              <i class="fa-solid ${m.icon} mr-1"></i> ${m.label}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  };
+
+  window.applyWrongTagAndFeedPlanner = function(qIndex, reasonId) {
+    const q = quizState.questions[qIndex];
+    if (!q) return;
+    quizState.wrongReasons = quizState.wrongReasons || {};
+    quizState.wrongReasons[qIndex] = reasonId;
+
+    const meta = MISTAKE_TYPES.find(m => m.id === reasonId) || MISTAKE_TYPES[0];
+    const concept = q.concept || q.subtopic || q.sourceChapter || quizState.chapter || 'Weak Topic';
+    const ncertNote = q.ncertLine ? ` (${q.ncertLine})` : '';
+
+    // Record subtopic flaw
+    recordSubtopicAttempt(q, false, reasonId);
+    saveErrorNotebookEntry(q, quizState.userAnswers[qIndex], meta.label);
+
+    // Push targeted action item directly to Focus & Planner todos
+    const taskTitle = `[${meta.label}] ${concept}${ncertNote} — ${meta.action}`;
+    if (!todos.some(t => t.title === taskTitle && !t.completed)) {
+      todos.unshift({
+        id: 'td_err_' + Date.now(),
+        title: taskTitle,
+        subject: quizState.subject || 'Biology',
+        priority: 'high',
+        completed: false,
+        createdAt: Date.now()
+      });
+      saveToLocalStorage();
+    }
+
+    persistQuizSession();
+    showToast(`Tagged as ${meta.label} & queued in Planner!`, 'info');
+    if (typeof renderPracticeQuiz === 'function') renderPracticeQuiz();
+  };
+
+  // =========================================================================
+  // 5. NCERT LINE-LINKED EXPLANATIONS (Exact Page & Line Extractor)
+  // =========================================================================
+  window.renderNcertReferenceBadge = function(q) {
+    if (!q) return '';
+    const ref = q.ncertLine || q.ncertRef || q.ncert || '';
+    const page = q.ncertPage ? `Page ${q.ncertPage}` : '';
+    const line = q.ncertPara || q.lineNo ? `Line ${q.ncertPara || q.lineNo}` : '';
+    const label = [ref, page, line].filter(Boolean).join(' · ');
+    if (!label) return '';
+
+    return `
+      <div class="mt-3 flex flex-wrap items-center gap-2">
+        <span class="ep-ncert-pill">
+          <i class="fa-solid fa-book-open"></i>
+          <span>NCERT Direct Link: <strong>${escapeHtml(label)}</strong></span>
+        </span>
+      </div>
+    `;
+  };
+
+  // =========================================================================
+  // 6. SHARED AI EXPLANATION CACHE IN SUPABASE (Pay Once, All Students Benefit)
+  // =========================================================================
+  window.openSupabaseCacheConfigModal = function() {
+    const cfg = StorageModule.get(V2_KEYS.supabaseCfg, { url: '', anonKey: '', enabled: false });
+    setModal(
+      'Shared AI Explanation Cache (Supabase)',
+      'Store generated Gemini explanations in Supabase by question ID so every student loads them instantly at zero extra API cost.',
+      `<div class="space-y-3 py-2 text-xs">
+        <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 font-mono text-[10px] overflow-x-auto">
+          -- Run once in Supabase SQL Editor:<br>
+          create table if not exists ai_explanations (<br>
+          &nbsp;&nbsp;question_id text primary key,<br>
+          &nbsp;&nbsp;explanation text not null,<br>
+          &nbsp;&nbsp;ncert_ref text,<br>
+          &nbsp;&nbsp;created_at timestamptz default now()<br>
+          );
+        </div>
+        <div>
+          <label class="block font-bold mb-1">Supabase Project URL</label>
+          <input id="sb-url" type="url" value="${escapeHtml(cfg.url)}" placeholder="https://xyzcompany.supabase.co" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-mono">
+        </div>
+        <div>
+          <label class="block font-bold mb-1">Supabase Anon Public Key</label>
+          <input id="sb-key" type="password" value="${escapeHtml(cfg.anonKey)}" placeholder="eyJhbGciOi..." class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-mono">
+        </div>
+      </div>`,
+      `<button type="button" onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Cancel</button>
+       <button type="button" onclick="saveSupabaseConfig()" class="px-4 py-2 rounded-xl bg-teal-600 text-white text-xs font-bold">Save Shared Cache</button>`
+    );
+  };
+
+  window.saveSupabaseConfig = function() {
+    const url = (document.getElementById('sb-url')?.value || '').trim().replace(/\/$/, '');
+    const anonKey = (document.getElementById('sb-key')?.value || '').trim();
+    StorageModule.set(V2_KEYS.supabaseCfg, { url, anonKey, enabled: !!(url && anonKey) });
+    closeModal();
+    showToast(url && anonKey ? 'Supabase shared AI cache connected!' : 'Supabase cache disabled.', 'success');
+  };
+
+  async function fetchSharedAiExplanation(questionId) {
+    const cfg = StorageModule.get(V2_KEYS.supabaseCfg, {});
+    if (!cfg.enabled || !cfg.url || !cfg.anonKey || !questionId) return null;
+    try {
+      const res = await fetch(`${cfg.url}/rest/v1/ai_explanations?question_id=eq.${encodeURIComponent(questionId)}&select=explanation`, {
+        headers: { apikey: cfg.anonKey, Authorization: `Bearer ${cfg.anonKey}` }
+      });
+      if (!res.ok) return null;
+      const rows = await res.json();
+      return rows?.[0]?.explanation || null;
+    } catch (_) { return null; }
+  }
+
+  async function saveSharedAiExplanation(questionId, explanation, ncertRef = '') {
+    const cfg = StorageModule.get(V2_KEYS.supabaseCfg, {});
+    if (!cfg.enabled || !cfg.url || !cfg.anonKey || !questionId || !explanation) return;
+    try {
+      await fetch(`${cfg.url}/rest/v1/ai_explanations`, {
+        method: 'POST',
+        headers: {
+          apikey: cfg.anonKey,
+          Authorization: `Bearer ${cfg.anonKey}`,
+          'Content-Type': 'application/json',
+          Prefer: 'resolution=merge-duplicates'
+        },
+        body: JSON.stringify({ question_id: questionId, explanation, ncert_ref: ncertRef })
+      });
+    } catch (_) {}
+  }
+
+  // Wrap callGeminiApi transparently when caching question explanations
+  const _origShowAiExplanation = window.showAiQuestionExplanation;
+  window.showAiQuestionExplanation = async function(qIndex) {
+    const q = quizState.questions[qIndex];
+    if (!q) return;
+    const qId = q.qKey || simpleHash(q.question || '');
+    const localCache = StorageModule.get('edupulse_ai_explanations_v1', {});
+    const localKey = `${qId}:shared`;
+
+    if (!localCache[localKey]) {
+      const remoteHit = await fetchSharedAiExplanation(qId);
+      if (remoteHit) {
+        localCache[localKey] = remoteHit;
+        StorageModule.set('edupulse_ai_explanations_v1', localCache);
+        showToast('Loaded from shared student AI cache ⚡', 'success');
+      }
+    }
+    await _origShowAiExplanation(qIndex);
+
+    // Sync newly generated explanation back to Supabase for other students
+    const updatedCache = StorageModule.get('edupulse_ai_explanations_v1', {});
+    const newestEntry = Object.entries(updatedCache).find(([k]) => k.startsWith(qId));
+    if (newestEntry) {
+      saveSharedAiExplanation(qId, newestEntry[1], q.ncertLine || '');
+    }
+  };
+
+  // =========================================================================
+  // 7. POST-TEST DEEP ANALYSIS (Time/Q, Guess vs Sure, Silly vs Concept, Rank %ile)
+  // =========================================================================
+  window.computePostTestAnalytics = function(questions, userAnswers, questionTimes, markedMap, wrongReasonsMap) {
+    let totalSec = 0, sureCorrect = 0, sureTotal = 0, guessCorrect = 0, guessTotal = 0;
+    let sillyMistakes = 0, conceptGaps = 0, correctCount = 0, wrongCount = 0;
+
+    questions.forEach((q, idx) => {
+      const ans = userAnswers[idx];
+      const t = Number(questionTimes?.[idx]) || 0;
+      totalSec += t;
+      if (ans === undefined) return;
+
+      const isRight = ans === q.correct;
+      const isGuess = !!markedMap?.[idx] || t < 12; // Flagged for review or <12s snap guess
+
+      if (isRight) correctCount++;
+      else wrongCount++;
+
+      if (isGuess) {
+        guessTotal++;
+        if (isRight) guessCorrect++;
+      } else {
+        sureTotal++;
+        if (isRight) sureCorrect++;
+      }
+
+      if (!isRight) {
+        const tag = wrongReasonsMap?.[idx];
+        if (tag === 'calculation' || tag === 'misread' || (!tag && t < 20)) sillyMistakes++;
+        else conceptGaps++;
+      }
+    });
+
+    const attempted = correctCount + wrongCount;
+    const score = correctCount * 4 - wrongCount * 1;
+    const maxScore = Math.max(1, questions.length * 4);
+    const pct = Math.max(0, score / maxScore);
+
+    // Realistic NEET 24-Lakh aspirant sigmoid percentile model
+    const percentile = Math.min(99.99, Math.max(12.5, +(100 / (1 + Math.exp(-9.2 * (pct - 0.56)))).toFixed(2)));
+    const estimatedAIR = Math.max(1, Math.round((100 - percentile) * 24000));
+
+    return {
+      avgTimePerQ: attempted ? Math.round(totalSec / attempted) : 0,
+      sureAccuracy: sureTotal ? Math.round((sureCorrect / sureTotal) * 100) : 0,
+      guessAccuracy: guessTotal ? Math.round((guessCorrect / guessTotal) * 100) : 0,
+      sureTotal, guessTotal, sillyMistakes, conceptGaps,
+      score, maxScore, percentile, estimatedAIR
+    };
+  };
+
+  window.renderPostTestAnalyticsCard = function(stats) {
+    return `
+      <div class="p-5 rounded-3xl bg-gradient-to-br from-slate-900 to-teal-950 text-white space-y-4 border border-teal-500/30 shadow-xl">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3">
+          <div>
+            <span class="text-[10px] font-black uppercase tracking-widest text-teal-300">NTA Rank-Style Diagnostic</span>
+            <h4 class="text-lg font-black">Projected Percentile: <span class="text-lime-400">${stats.percentile}%ile</span></h4>
+          </div>
+          <div class="text-right">
+            <span class="block text-xs font-bold text-slate-300">Est. All-India Rank</span>
+            <span class="text-base font-black text-amber-300">AIR ~${stats.estimatedAIR.toLocaleString()}</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+          <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+            <span class="block text-xl font-black text-cyan-300">${stats.avgTimePerQ}s</span>
+            <span class="text-[10px] uppercase font-bold text-slate-300">Avg Time / Q</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+            <span class="block text-xl font-black text-emerald-300">${stats.sureAccuracy}%</span>
+            <span class="text-[10px] uppercase font-bold text-slate-300">Sure-Shot Acc (${stats.sureTotal})</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+            <span class="block text-xl font-black text-amber-300">${stats.guessAccuracy}%</span>
+            <span class="text-[10px] uppercase font-bold text-slate-300">Guess Acc (${stats.guessTotal})</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+            <span class="block text-xl font-black text-rose-300">${stats.sillyMistakes} vs ${stats.conceptGaps}</span>
+            <span class="text-[10px] uppercase font-bold text-slate-300">Silly vs Concept</span>
+          </div>
+        </div>
+      </div>
+    `;
+  };
+
+  // =========================================================================
+  // 8. DISTRACTION-FREE PRACTICE LOCK
+  // =========================================================================
+  window.toggleFocusLock = function(force) {
+    const next = typeof force === 'boolean' ? force : !document.body.classList.contains('ep-focus-locked');
+    document.body.classList.toggle('ep-focus-locked', next);
+    StorageModule.set(V2_KEYS.focusLock, next);
+    showToast(next ? 'Distraction-Free Focus Mode Locked' : 'Full Practice Toolbar Restored', 'info');
+  };
+
+  // =========================================================================
+  // 9. BETTER EMPTY, ERROR & LOADING STATES WITH SKELETONS + RETRY BUTTON
+  // =========================================================================
+  window.renderSkeletonChapterGrid = function(count = 6) {
+    return `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      ${Array.from({ length: count }).map(() => `
+        <div class="card p-5 space-y-3">
+          <div class="flex justify-between items-center"><div class="ep-skeleton w-10 h-10"></div><div class="ep-skeleton w-16 h-5"></div></div>
+          <div class="ep-skeleton w-3/4 h-5"></div>
+          <div class="ep-skeleton w-full h-2"></div>
+        </div>
+      `).join('')}
+    </div>`;
+  };
+
+  window.renderFileRetryState = function(fileName, retryFnCall, errorMsg = 'File failed to load or returned empty.') {
+    return `
+      <div class="p-6 rounded-3xl border border-rose-500/30 bg-rose-500/5 text-center space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-rose-500/15 text-rose-600 mx-auto flex items-center justify-center text-xl">
+          <i class="fa-solid fa-file-circle-exclamation"></i>
+        </div>
+        <h4 class="text-sm font-black text-slate-900 dark:text-slate-100">Could not load ${escapeHtml(fileName)}</h4>
+        <p class="text-xs text-slate-500 max-w-md mx-auto">${escapeHtml(errorMsg)}</p>
+        <button type="button" onclick="${retryFnCall}" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-black shadow-md inline-flex items-center gap-2">
+          <i class="fa-solid fa-rotate-right"></i> Retry this file
+        </button>
+      </div>
+    `;
+  };
+
+  // =========================================================================
+  // 10. SHAREABLE SOCIAL HUB: WEEKLY LEADERBOARD, STREAK CARD & CHALLENGES
+  // =========================================================================
+  window.generateStreakShareCard = async function() {
+    const prof = getAspirantProfile();
+    const streak = epStreakDays() || 1;
+    const solvedToday = questionsSolvedToday();
+    const cv = document.createElement('canvas');
+    cv.width = 1080; cv.height = 1080;
+    const ctx = cv.getContext('2d');
+
+    const grad = ctx.createLinearGradient(0, 0, 1080, 1080);
+    grad.addColorStop(0, '#04060f'); grad.addColorStop(1, '#0f2e33');
+    ctx.fillStyle = grad; ctx.fillRect(0, 0, 1080, 1080);
+
+    epDrawMark(ctx, 80, 80, 84);
+    ctx.fillStyle = '#f8fafc'; ctx.font = '800 44px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText('EduPulse PRO', 185, 138);
+
+    ctx.fillStyle = '#f59e0b'; ctx.font = '900 180px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText(`${streak} DAYS`, 80, 430);
+
+    ctx.fillStyle = '#5eead4'; ctx.font = '800 42px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText(`Unbroken NEET ${prof.examYear} Study Streak`, 80, 505);
+
+    ctx.fillStyle = '#cbd5e1'; ctx.font = '600 32px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText(`Aspirant: ${prof.name} · Target: ${prof.targetScore}/720`, 80, 600);
+    ctx.fillText(`Solved Today: ${solvedToday} MCQs · Daily Goal: ${prof.dailyHours}h`, 80, 655);
+
+    ctx.fillStyle = '#a3e635'; ctx.font = '800 30px "Plus Jakarta Sans", sans-serif';
+    ctx.fillText('Challenge me on edupulse.cc.cd', 80, 960);
+
+    cv.toBlob(async blob => {
+      if (!blob) return;
+      const file = new File([blob], `edupulse-streak-${streak}d.png`, { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: `${streak}-Day NEET Streak`, text: `On a ${streak}-day NEET streak on EduPulse PRO! Beat my score: https://edupulse.cc.cd` });
+      } else {
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = file.name; a.click();
+        showToast('Streak Share Card downloaded!', 'success');
+      }
+    });
+  };
+
+  window.createChapterChallengeLink = function(subj, chapter) {
+    const prof = getAspirantProfile();
+    const payload = btoa(unescape(encodeURIComponent(JSON.stringify({
+      from: prof.name, s: subj, c: chapter, target: prof.targetScore, ts: Date.now()
+    }))));
+    const url = `${location.origin}${location.pathname}?challenge=${payload}`;
+    navigator.clipboard?.writeText(url);
+    showToast(`Chapter challenge link copied for ${chapter}!`, 'success');
+    return url;
+  };
+
+  window.openSocialLeaderboardModal = function() {
+    const prof = getAspirantProfile();
+    const myPoints = Object.values(StorageModule.get(STORAGE_KEYS.qstats, {})).reduce((acc, q) => acc + (q.correct || 0) * 4, 0);
+    const board = [
+      { name: prof.name + ' (You)', pts: myPoints, streak: epStreakDays(), badge: 'You' },
+      { name: 'Siddhi', pts: Math.max(420, myPoints + 85), streak: 14, badge: 'Study Partner' },
+      { name: 'Shreyansh', pts: Math.max(360, myPoints - 40), streak: 9, badge: 'Squad' },
+      { name: 'Aarav (AIR Target)', pts: 1240, streak: 21, badge: 'Top 1%' }
+    ].sort((a, b) => b.pts - a.pts);
+
+    setModal(
+      'Weekly Study Squad & Challenges',
+      'Compare weekly XP, share your streak card, or send a 1v1 chapter duel.',
+      `<div class="space-y-4 py-2 text-xs">
+        <div class="space-y-2">
+          ${board.map((u, idx) => `
+            <div class="flex items-center justify-between p-3 rounded-2xl border ${u.badge === 'You' ? 'border-teal-500 bg-teal-500/10' : 'border-slate-200 dark:border-slate-700'}">
+              <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-xl bg-slate-900 text-white font-black flex items-center justify-center">#${idx + 1}</span>
+                <div>
+                  <b class="text-sm">${escapeHtml(u.name)}</b>
+                  <span class="block text-[10px] text-slate-500">${u.streak}-day streak · ${u.badge}</span>
+                </div>
+              </div>
+              <span class="font-black text-teal-600 dark:text-teal-400 text-sm">${u.pts} XP</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
+          <button type="button" onclick="generateStreakShareCard()" class="p-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-black flex items-center justify-center gap-2">
+            <i class="fa-solid fa-fire"></i> Share Streak Card
+          </button>
+          <button type="button" onclick="createChapterChallengeLink('Biology', 'Cell: The Unit of Life')" class="p-3 rounded-xl bg-teal-600 text-white font-black flex items-center justify-center gap-2">
+            <i class="fa-solid fa-swords"></i> Copy 1v1 Chapter Duel
+          </button>
+        </div>
+      </div>`,
+      `<button type="button" onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Close</button>`
+    );
+  };
+
+  // =========================================================================
+  // 11. HOOK INTO PRACTICE RENDERER & CHECK INCOMING CHALLENGE URL
+  // =========================================================================
+  document.addEventListener('DOMContentLoaded', () => {
+    // Default distraction-free lock ON when practicing
+    if (StorageModule.get(V2_KEYS.focusLock, true)) {
+      document.body.classList.add('ep-focus-locked');
+    }
+
+    // Check incoming ?challenge= link from a friend
+    const params = new URLSearchParams(location.search);
+    const chParam = params.get('challenge');
+    if (chParam) {
+      try {
+        const dataCh = JSON.parse(decodeURIComponent(escape(atob(chParam))));
+        showToast(`${dataCh.from} challenged you in ${dataCh.c}!`, 'info');
+        setTimeout(() => openPracticeSetup(dataCh.s, dataCh.c, { length: 15 }), 600);
+      } catch (_) {}
+    } else {
+      // Trigger first-run onboarding if never completed
+      setTimeout(() => openOnboardingModal(false), 450);
+    }
+  });
+})();
+</script>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover" />
