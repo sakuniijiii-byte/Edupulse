@@ -1866,7 +1866,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   html body header.topbar button[onclick*="openApiKeyModal"] i,
   html body header.topbar #back-btn i{font-size:15px}
   html body header.topbar button[onclick*="openHelpModal"]{display:none}
-  html body header.topbar #offline-badge{font-size:0;padding:9px;gap:0}
+  html body header.topbar #offline-badge{font-size:10px;padding:7px 8px;gap:5px;white-space:nowrap}
   html body header.topbar #offline-badge i{font-size:13px}
   html body header.topbar>div:last-child{gap:4px}
 }
@@ -1996,7 +1996,7 @@ html body #normal-practice-toolkit details>.tk-group,html body #normal-practice-
 </div>
 </div>
 <div class="flex items-center gap-2 sm:gap-3">
-<div id="offline-badge" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold border border-rose-500/20"><i class="fa-solid fa-wifi-slash"></i> Offline</div>
+<div id="offline-badge" role="status" aria-live="polite" aria-label="Offline. Changes remain saved on this device." class="hidden items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold border border-rose-500/20"><i class="fa-solid fa-wifi-slash" aria-hidden="true"></i> Offline</div>
 <button id="pwa-install-btn" onclick="triggerPwaInstall()" class="hidden items-center gap-1.5 px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-md shadow-teal-600/20 transition"><i class="fa-solid fa-download text-xs"></i> Install</button>
 <button onclick="openHelpModal()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Shortcuts (?)"><i class="fa-solid fa-keyboard text-sm"></i></button>
 <button onclick="openApiKeyModal()" class="px-3 py-2 rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-600 dark:text-teal-400 hover:bg-teal-500/20 text-xs font-bold transition flex items-center gap-1.5" title="Configure Gemini AI Key">
@@ -4670,8 +4670,13 @@ document.addEventListener('keydown', e => {
 window.addEventListener('online', updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
 function updateOnlineStatus() {
+const online = navigator.onLine;
 const badge = document.getElementById('offline-badge');
-if (badge) badge.classList.toggle('hidden', navigator.onLine);
+if (badge) {
+  badge.classList.toggle('hidden', online);
+  badge.setAttribute('aria-label', online ? 'Online. Cloud backup can sync.' : 'Offline. Changes remain saved on this device.');
+}
+if (window.__bzAcc && typeof window.__bzAcc.connectionChanged === 'function') window.__bzAcc.connectionChanged();
 }
 setTimeout(updateOnlineStatus, 500);
 
@@ -9816,7 +9821,7 @@ html.bz-lock,html.bz-lock body{overflow:hidden}
 .bz-acct-t{min-width:0}.bz-acct-t b{display:block;font-size:14.5px;font-weight:800;color:var(--text-primary)}
 .bz-acct-t small{display:block;font-size:12px;color:var(--text-muted);margin-top:1px;overflow-wrap:anywhere}
 .bz-ok{display:inline-flex;align-items:center;gap:6px;margin-top:5px;font-size:11.5px;font-weight:700;color:#10b981}
-.bz-ok i{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.2)}.bz-ok em{font-style:normal}
+.bz-ok i{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.2)}.bz-ok em{font-style:normal}.bz-ok[data-state="syncing"]{color:#b45309}.bz-ok[data-state="offline"],.bz-ok[data-state="failed"]{color:#b91c1c}.bz-ok[data-state="conflict"]{color:#c2410c}.bz-ok[data-state="syncing"] i,.bz-ok[data-state="offline"] i,.bz-ok[data-state="failed"] i,.bz-ok[data-state="conflict"] i{background:currentColor;box-shadow:none}body.dark .bz-ok[data-state="syncing"]{color:#fbbf24}body.dark .bz-ok[data-state="offline"],body.dark .bz-ok[data-state="failed"]{color:#fca5a5}body.dark .bz-ok[data-state="conflict"]{color:#fdba74}
 </style>
 <div id="bz-warm" aria-hidden="true"></div>
 <script id="edupulse-boost-js">
@@ -10085,7 +10090,7 @@ window.__bz={
 
 /* ---------- account auth and revision-safe cloud backup ---------- */
 var SYNC_META_KEY='edupulse_sync_meta_v1';
-var lastHash='', ov=null, mode='signup', busy=false, pendingCloud=null, recoverySess=null, cooldown=0, cdTimer=null, sentInfo={kind:'confirm',email:''};
+var lastHash='', ov=null, mode='signup', busy=false, pendingCloud=null, recoverySess=null, cooldown=0, cdTimer=null, sentInfo={kind:'confirm',email:''}, syncStatus=navigator.onLine?'idle':'offline';
 var supabaseClient=null, currentSession=null, supabaseRedirectUrl=location.origin+'/auth/callback', supabaseReady=null, syncInitError=false;
 function normalizeSession(session){
   if(!session)return null;
@@ -10149,8 +10154,10 @@ function fetchCloud(){
 }
 function pushCloud(silent,expectedRevision){
   var session=auth();if(!session||!session.user||!session.user.id)return Promise.resolve('signed-out');
+  if(!navigator.onLine){setSyncStatus('offline');return Promise.resolve('offline');}
   var data=snapshot(),hash=hashOf(data),baseRevision=expectedRevision==null?getSyncRevision(session.user.id):Number(expectedRevision);
-  if(silent&&hash===lastHash)return Promise.resolve('unchanged');
+  if(silent&&hash===lastHash){setSyncStatus('saved');return Promise.resolve('unchanged');}
+  setSyncStatus('syncing');
   return supabaseReady.then(function(context){
     return context.client.rpc('save_edupulse_sync_state',{p_user_id:session.user.id,p_base_revision:baseRevision,p_payload:data});
   }).then(function(result){
@@ -10158,15 +10165,16 @@ function pushCloud(silent,expectedRevision){
     var saved=Array.isArray(result.data)?result.data[0]:result.data;
     if(!saved||saved.saved!==true){
       pendingCloud={data:saved&&saved.payload||{},revision:Number(saved&&saved.revision)||0,updated_at:saved&&saved.updated_at||null,userId:session.user.id,conflict:true};
+      setSyncStatus('conflict');
       mode='restore';if(!ov)openAuth('restore');else draw();
       if(!silent)toast('A newer backup exists. Choose which copy to keep.','info');
       return 'conflict';
     }
     setSyncRevision(saved.revision,session.user.id);
-    cfg.lastSync=Date.parse(saved.updated_at)||Date.now();save();lastHash=hash;pendingCloud=null;updateSyncLabel();
+    cfg.lastSync=Date.parse(saved.updated_at)||Date.now();save();lastHash=hash;pendingCloud=null;setSyncStatus('saved');
     if(!silent)toast('Progress backed up');
     return 'saved';
-  }).catch(function(error){if(!silent)toast('Backup failed: '+friendly(error),'error');return 'failed';});
+  }).catch(function(error){setSyncStatus(navigator.onLine?'failed':'offline');if(!silent)toast('Backup failed: '+friendly(error),'error');return 'failed';});
 }
 function applyCloud(data,revision,userId){
   var current=snapshot();
@@ -10177,7 +10185,14 @@ function applyCloud(data,revision,userId){
 }
 function rerender(){var panelElement=document.getElementById('bz-panel');if(panelElement)panelElement.outerHTML=panel();}
 function ago(t){if(!t)return 'No backup yet';var stamp=typeof t==='number'?t:Date.parse(t),m=Math.round((Date.now()-stamp)/60000);if(m<1)return 'Backed up just now';if(m<60)return 'Backed up '+m+' min ago';var h=Math.round(m/60);if(h<24)return 'Backed up '+h+' h ago';return 'Backed up '+new Date(stamp).toLocaleDateString();}
-function updateSyncLabel(){var el=document.getElementById('bz-last');if(el)el.textContent=ago(cfg.lastSync);}
+function syncLabel(){var labels={syncing:'Syncing progress…',offline:'Offline · changes saved on this device',failed:'Sync failed · changes saved on this device',conflict:'Another saved version needs review',saved:ago(cfg.lastSync),idle:ago(cfg.lastSync)};return labels[syncStatus]||labels.idle;}
+function updateSyncLabel(){
+  var el=document.getElementById('bz-last');
+  var card=document.getElementById('bz-sync-status');
+  if(el)el.textContent=syncLabel();
+  if(card)card.dataset.state=syncStatus;
+}
+function setSyncStatus(next){syncStatus=next;updateSyncLabel();}
 
 /* ----- friendly errors + validation ----- */
 function friendly(error){
@@ -10268,25 +10283,28 @@ function setBusy(b,label){busy=b;var g=document.getElementById('bz-go');if(!g)re
 function markBad(id,bad){var el=document.getElementById(id);if(el)el.closest('.bz-f').classList.toggle('bad',bad);}
 function afterLogin(){
   var session=auth();if(!session||!session.user||!session.user.id)return Promise.resolve('signed-out');
+  if(!navigator.onLine){setSyncStatus('offline');return Promise.resolve('offline');}
+  setSyncStatus('syncing');
   return fetchCloud().then(function(row){
     var local=snapshot(),localHash=hashOf(local),localRevision=getSyncRevision(session.user.id);
     if(row){
       var remote=row.payload||{},remoteRevision=Number(row.revision)||0,remoteHash=hashOf(remote);
       if(localHash===remoteHash){
         setSyncRevision(remoteRevision,session.user.id);lastHash=localHash;pendingCloud=null;
-        cfg.lastSync=Date.parse(row.updated_at)||cfg.lastSync;save();closeAuth();rerender();updateSyncLabel();return 'unchanged';
+        cfg.lastSync=Date.parse(row.updated_at)||cfg.lastSync;save();setSyncStatus('saved');closeAuth();rerender();updateSyncLabel();return 'unchanged';
       }
       if(localRevision===remoteRevision){
         lastHash=remoteHash;pendingCloud=null;closeAuth();rerender();
         return pushCloud(true,remoteRevision);
       }
       pendingCloud={data:remote,revision:remoteRevision,updated_at:row.updated_at||null,userId:session.user.id,conflict:localRevision>0};
+      setSyncStatus('conflict');
       mode='restore';if(!ov)openAuth('restore');else draw();
       return 'conflict';
     }
     setSyncRevision(0,session.user.id);lastHash='';closeAuth();rerender();
     return pushCloud(false,0);
-  }).catch(function(error){closeAuth();rerender();if(auth())toast('Could not check your saved progress: '+friendly(error),'error');return 'failed';});
+  }).catch(function(error){setSyncStatus(navigator.onLine?'failed':'offline');closeAuth();rerender();if(auth())toast('Could not check your saved progress: '+friendly(error),'error');return 'failed';});
 }
 function startCooldown(){
   cooldown=30;clearInterval(cdTimer);
@@ -10363,6 +10381,7 @@ window.__bzAcc={
     });
   },
   now:function(){pushCloud(false);},
+  connectionChanged:function(){if(!navigator.onLine)setSyncStatus('offline');else if(syncStatus==='offline')setSyncStatus('idle');},
   restore:function(){fetchCloud().then(function(row){if(!row){toast('No saved progress yet','info');return;}pendingCloud={data:row.payload||{},revision:Number(row.revision)||0,updated_at:row.updated_at||null,userId:auth()&&auth().user.id,conflict:false};openAuth('restore');}).catch(function(error){toast(friendly(error),'error');});}
 };
 function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
@@ -10390,7 +10409,7 @@ function accountHtml(){
   if(syncInitError)return '<div class="bz-acct off"><div class="bz-av"><i class="fa-solid fa-cloud-slash"></i></div><div class="bz-acct-t"><b>Cloud sync unavailable</b><small>Your progress is still saved on this device. Try reloading when you are back online.</small></div></div>';
   var a=auth();
   if(a){var u=a.user||{};
-    return '<div class="bz-acct"><div class="bz-av">'+esc(initials(u.name,u.email))+'</div><div class="bz-acct-t"><b>'+esc(u.name||'Your account')+'</b><small>'+esc(u.email||'')+'</small><span class="bz-ok"><i></i><em id="bz-last">'+esc(ago(cfg.lastSync))+'</em> · automatic</span></div></div>'
+    return '<div class="bz-acct"><div class="bz-av">'+esc(initials(u.name,u.email))+'</div><div class="bz-acct-t"><b>'+esc(u.name||'Your account')+'</b><small>'+esc(u.email||'')+'</small><span class="bz-ok" id="bz-sync-status" role="status" aria-live="polite" data-state="'+esc(syncStatus)+'"><i aria-hidden="true"></i><em id="bz-last">'+esc(syncLabel())+'</em> · automatic</span></div></div>'
       +'<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="bz-btn" onclick="__bzAcc.now()"><i class="fa-solid fa-cloud-arrow-up"></i> Back up now</button><button class="bz-btn alt" onclick="__bzAcc.restore()"><i class="fa-solid fa-cloud-arrow-down"></i> Restore</button><button class="bz-btn alt" onclick="__bzAcc.logout()"><i class="fa-solid fa-right-from-bracket"></i> Log out</button></div>';}
   return '<div class="bz-acct off"><div class="bz-av"><i class="fa-solid fa-cloud"></i></div><div class="bz-acct-t"><b>Not backed up yet</b><small>Create a free account to keep your progress safe and available on any device.</small></div></div>'
     +'<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="bz-btn" onclick="__bzAcc.open(\'signup\')"><i class="fa-solid fa-user-plus"></i> Create free account</button><button class="bz-btn alt" onclick="__bzAcc.open(\'login\')"><i class="fa-solid fa-right-to-bracket"></i> Log in</button></div>';
