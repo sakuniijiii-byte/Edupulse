@@ -1,4 +1,4 @@
-const VERSION = 'edupulse-v6';
+const VERSION = 'edupulse-v7';
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
 const SHELL_FILES = ['./', './index.html', './manifest.json', './practice-metrics.js', './practice-enhancements.js', './study-tools-ui.js'];
@@ -66,6 +66,7 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
+  if (url.origin === self.location.origin && (url.pathname.startsWith('/api/') || url.pathname === '/auth/callback')) return;
 
   if (req.mode === 'navigate') {
     event.respondWith(

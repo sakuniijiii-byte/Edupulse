@@ -2709,10 +2709,38 @@ async function launchAiAdaptiveSessionFromModal(chapterSubject = null, chapterNa
   }
 }
 
+// ===== Contextual practice doubt =====
+function openPracticeDoubt(qIndex) {
+  const q = quizState.questions[qIndex]; if (!q) return;
+  const selected = quizState.userAnswers[qIndex];
+  const selectedText = selected === undefined ? 'Not answered' : `${String.fromCharCode(65 + selected)}. ${q.options[selected]}`;
+  setModal('Ask a doubt', `${quizState.subject || 'NEET'} · ${q.sourceChapter || quizState.chapter || 'Current concept'}`, `<div class="space-y-4 py-2"><div class="rounded-xl border border-teal-500/20 bg-teal-500/5 p-4 text-sm"><p class="font-bold">${escapeHtml(q.question)}</p><p class="mt-2 text-xs text-slate-500">Your answer: ${escapeHtml(selectedText)}</p></div><label for="practice-doubt-input" class="block text-xs font-bold">What would you like clarified?</label><textarea id="practice-doubt-input" rows="3" class="w-full rounded-xl border border-slate-200 bg-transparent p-3 text-sm dark:border-slate-700" placeholder="Ask about a step, option, formula, or related concept"></textarea><div id="practice-doubt-answer" class="text-sm leading-relaxed"></div></div>`, `<button type="button" onclick="closeModal()" class="rounded-xl bg-slate-100 px-4 py-2 text-xs font-bold dark:bg-slate-800">Back to practice</button><button type="button" onclick="answerPracticeDoubt(${qIndex})" class="rounded-xl bg-teal-600 px-4 py-2 text-xs font-bold text-white">Ask Pulse AI</button>`);
+}
+async function answerPracticeDoubt(qIndex) {
+  const q = quizState.questions[qIndex], input = document.getElementById('practice-doubt-input'), output = document.getElementById('practice-doubt-answer');
+  if (!q || !input || !output || !input.value.trim()) { showToast('Write a doubt first.','warning'); return; }
+  const selected = quizState.userAnswers[qIndex], selectedText = selected === undefined ? 'Not answered' : `${String.fromCharCode(65 + selected)}. ${q.options[selected]}`;
+  output.innerHTML = '<div class="flex items-center gap-2 text-teal-700"><i class="fa-solid fa-spinner fa-spin"></i><span>Thinking through your question…</span></div>';
+  try {
+    const answer = await callGeminiApi(`Current NEET question: ${q.question}\
+Options: ${q.options.map((option, index) => `${String.fromCharCode(65 + index)}. ${option}`).join(' | ')}\
+Correct answer: ${q.options[q.correct]}\
+Student selected: ${selectedText}\
+Chapter: ${q.sourceChapter || quizState.chapter}\
+Student doubt: ${input.value.trim()}\
+\
+Answer the student's specific doubt clearly, step by step, at a NEET-appropriate level. Refer to their selected answer if helpful.`, 'You are Pulse AI, a patient NEET tutor. Be accurate, concise, and grounded in NCERT.');
+    output.innerHTML = renderFormattedMarkdown(answer);
+  } catch (error) { output.textContent = error?.message || 'The explanation could not be generated. Please try again.'; }
+}
+
 // ===== AI Question Explanation Modal =====
 async function showAiQuestionExplanation(qIndex) {
   const q = quizState.questions[qIndex];
   if (!q) return;
+  const selectedIndex = quizState.userAnswers[qIndex];
+  const selectedAnswer = selectedIndex === undefined ? 'Not answered yet' : `${String.fromCharCode(65 + selectedIndex)}. ${q.options[selectedIndex]}`;
+  const mistakeCategory = quizState.wrongReasons[qIndex] || 'Not categorized';
 
   const modalSlotId = 'ai-explanation-content-container';
   setModal('✦ AI Question Deep-Dive & Lecture Embed', `${quizState.subject || 'NEET'} — ${q.sourceChapter || quizState.chapter || 'Concept Solution'}`, `
@@ -2732,9 +2760,7 @@ async function showAiQuestionExplanation(qIndex) {
 Question: ${q.question}
 Options:
 ${q.options.map((o, i) => `${String.fromCharCode(65 + i)}. ${o}`).join('\n')}
-Correct Option: ${String.fromCharCode(65 + q.correct)}. ${q.options[q.correct]}
-
-Please break down your response in clear markdown format with sections:
+Correct Option: ${String.fromCharCode(65 + q.correct)}. ${q.options[q.correct]}\nStudent selected: ${selectedAnswer}\nMistake category: ${mistakeCategory}\n\nPlease break down your response in clear markdown format with sections:
 1. ### Core NCERT Concept
 2. ### Step-by-Step Logic & Derivation
 3. ### Why Other Options are Incorrect
@@ -2742,7 +2768,7 @@ Please break down your response in clear markdown format with sections:
 
     const sysInstruction = "You are a master NEET Physics, Chemistry & Biology tutor. Provide structured, accurate, and easy to understand markdown explanations for entrance exam aspirants.";
     
-    const aiCacheKey = `${q.qKey || quizState.chapter + ':' + qIndex}:en`;
+    const aiCacheKey = `${q.qKey || quizState.chapter + ':' + qIndex}:en:${selectedIndex ?? 'na'}:${mistakeCategory}`;
     const aiCache = StorageModule.get('edupulse_ai_explanations_v1', {});
     const explanationText = aiCache[aiCacheKey] || await callGeminiApi(prompt, sysInstruction);
     if (!aiCache[aiCacheKey]) { aiCache[aiCacheKey] = explanationText; StorageModule.set('edupulse_ai_explanations_v1', aiCache); }
@@ -4015,8 +4041,9 @@ let focusTimerRunning = false;
 let focusTimerInterval = null;
 
 // Batch Test Hub State
-let mockSubTab = 'batch'; 
-let batchCategoryFilter = 'All'; 
+const TEST_REVIEW_KEY = 'edupulse_test_review_details_v1';
+let mockSubTab = 'batch';
+let batchCategoryFilter = 'All';
 let selectedBatchSeries = null;
 let selectedBatchSubject = 'Physics';
 let batchTestsDatabase = [];
@@ -4085,8 +4112,46 @@ async function loadBatchTestsDatabase() {
 loadBatchTestsDatabase();
 
 function setMockSubTab(sub) {
-  mockSubTab = sub;
+  mockSubTab = ['batch', 'scheduled', 'generate', 'completed'].includes(sub) ? sub : 'batch';
   renderView();
+}
+
+function scheduledTestItems() {
+  return (batchTestsDatabase || []).flatMap(series => (series.tests || [])
+    .filter(test => test.status !== 'available')
+    .map(test => ({ series, test })));
+}
+
+function completedTestAttempts() {
+  const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
+  return (Array.isArray(attempts) ? attempts : [])
+    .filter(attempt => attempt && (attempt.mode === 'test' || attempt.mode === 'mock'))
+    .sort((a, b) => Number(b.finishedAt || 0) - Number(a.finishedAt || 0));
+}
+
+function buildScheduledTestsView() {
+  const items = scheduledTestItems();
+  if (!items.length) return '<div class="card p-8 text-center"><h3 class="text-base font-black">No scheduled tests</h3><p class="mt-2 text-sm text-slate-500">New batch papers will appear here when dates are announced.</p></div>';
+  return `<div class="space-y-4"><div class="card p-5"><h3 class="text-base font-black">Scheduled tests</h3><p class="mt-1 text-xs text-slate-500">Upcoming papers stay separate from tests you can start now.</p></div><div class="grid grid-cols-1 md:grid-cols-2 gap-4">${items.map(({ series, test }) => `<article class="card p-5 space-y-4"><div class="flex items-start justify-between gap-3"><div><p class="text-[10px] font-black uppercase tracking-wider text-teal-600">${escapeHtml(series.category || 'Batch series')}</p><h4 class="mt-1 font-black">${escapeHtml(test.title)}</h4><p class="mt-1 text-xs text-slate-500">${escapeHtml(series.title)}</p></div><span class="shrink-0 rounded-full bg-amber-500/10 px-2.5 py-1 text-[10px] font-black text-amber-700 dark:text-amber-300">Scheduled</span></div><div class="grid grid-cols-3 gap-2 rounded-xl bg-slate-50 p-3 text-center dark:bg-slate-800/60"><div><b class="block">${Number(test.questions) || '—'}</b><small class="text-[9px] uppercase text-slate-400">Questions</small></div><div><b class="block">${Number(test.marks) || '—'}</b><small class="text-[9px] uppercase text-slate-400">Marks</small></div><div><b class="block">${Number(test.timeMins) || '—'}m</b><small class="text-[9px] uppercase text-slate-400">Duration</small></div></div><div class="flex items-center justify-between gap-3"><span class="text-xs text-slate-500"><i class="fa-regular fa-calendar mr-1 text-teal-600"></i>${escapeHtml(test.schedule || 'Date to be announced')}</span><button type="button" class="rounded-xl border border-slate-200 px-3 py-2 text-xs font-bold dark:border-slate-700" onclick="openBatchSyllabusModal('${jsArg(test.title)}', ${JSON.stringify(test.syllabus || []).replace(/"/g, '&quot;')})">View syllabus</button></div></article>`).join('')}</div></div>`;
+}
+
+function buildCompletedTestsView() {
+  const attempts = completedTestAttempts();
+  if (!attempts.length) return '<div class="card p-8 text-center"><h3 class="text-base font-black">No completed tests yet</h3><p class="mt-2 text-sm text-slate-500">Finished CBT attempts and their analysis will be collected here.</p><button type="button" class="mt-4 rounded-xl bg-teal-600 px-4 py-2 text-xs font-black text-white" onclick="setMockSubTab(\'generate\')">Create a custom test</button></div>';
+  const reviews = StorageModule.get(TEST_REVIEW_KEY, {}) || {};
+  const average = Math.round(attempts.reduce((sum, item) => sum + (Number(item.accuracy) || 0), 0) / attempts.length);
+  const best = Math.max(...attempts.map(item => Number(item.accuracy) || 0));
+  const latest = attempts[0], previous = attempts[1];
+  const delta = previous ? Number(latest.accuracy || 0) - Number(previous.accuracy || 0) : null;
+  const trend = attempts.slice(0, 8).reverse().map((item, index) => {
+    const accuracy = Math.max(0, Math.min(100, Number(item.accuracy) || 0));
+    return `<div class="flex min-w-0 flex-1 flex-col items-center justify-end gap-1" title="${escapeHtml(item.chapter || 'Test')} · ${accuracy}%"><span class="text-[9px] font-black text-slate-500">${accuracy}%</span><i class="w-full max-w-8 rounded-t-md bg-teal-500/80" style="height:${Math.max(5, Math.round(accuracy * 0.55))}px"></i><small class="max-w-full truncate text-[8px] text-slate-400">${index + 1}</small></div>`;
+  }).join('');
+  return `<div class="space-y-5"><section class="grid grid-cols-1 gap-3 sm:grid-cols-3"><article class="card p-4"><small class="text-[10px] font-black uppercase text-slate-400">Completed tests</small><b class="mt-1 block text-2xl">${attempts.length}</b></article><article class="card p-4"><small class="text-[10px] font-black uppercase text-slate-400">Average accuracy</small><b class="mt-1 block text-2xl">${average}%</b></article><article class="card p-4"><small class="text-[10px] font-black uppercase text-slate-400">Personal best</small><b class="mt-1 block text-2xl">${best}%</b></article></section><section class="card p-5"><div class="flex items-start justify-between gap-3"><div><h3 class="font-black">Accuracy trend</h3><p class="mt-1 text-xs text-slate-500">Most recent ${Math.min(attempts.length, 8)} completed tests</p></div>${delta === null ? '' : `<span class="rounded-full px-2.5 py-1 text-[10px] font-black ${delta >= 0 ? 'bg-emerald-500/10 text-emerald-700' : 'bg-rose-500/10 text-rose-700'}">${delta >= 0 ? '+' : ''}${delta} pts vs previous</span>`}</div><div class="mt-4 flex h-20 items-end gap-2" role="img" aria-label="Accuracy trend from ${Math.min(attempts.length, 8)} recent tests">${trend}</div></section>${previous ? `<section class="card p-4 sm:p-5"><h3 class="font-black">Compare recent tests</h3><div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2"><div class="rounded-xl bg-teal-500/5 p-3"><small class="text-[9px] font-black uppercase text-teal-700">Latest</small><b class="mt-1 block">${Number(latest.accuracy) || 0}% accuracy</b><span class="text-[10px] text-slate-500">${Number(latest.score) || 0}/${Number(latest.maxScore) || 0} marks · ${Math.round((Number(latest.timeSpentSeconds) || 0) / 60)} min</span></div><div class="rounded-xl bg-slate-100 p-3 dark:bg-slate-800"><small class="text-[9px] font-black uppercase text-slate-500">Previous</small><b class="mt-1 block">${Number(previous.accuracy) || 0}% accuracy</b><span class="text-[10px] text-slate-500">${Number(previous.score) || 0}/${Number(previous.maxScore) || 0} marks · ${Math.round((Number(previous.timeSpentSeconds) || 0) / 60)} min</span></div></div></section>` : ''}<section class="space-y-3"><h3 class="text-base font-black">Attempt history</h3>${attempts.map(attempt => {
+    const date = attempt.finishedAt ? new Date(attempt.finishedAt).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : 'Date unavailable';
+    const reviewable = Array.isArray(reviews[attempt.id]?.questions) && reviews[attempt.id].questions.length > 0;
+    return `<article class="card p-4 sm:p-5"><div class="flex flex-wrap items-start justify-between gap-3"><div><h4 class="font-black">${escapeHtml(attempt.chapter || 'Completed test')}</h4><p class="mt-1 text-xs text-slate-500">${escapeHtml(attempt.subject || 'Mixed subjects')} · ${escapeHtml(date)}</p></div><strong class="text-xl text-teal-700 dark:text-teal-300">${Number(attempt.accuracy) || 0}%</strong></div><div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-500"><span>${Number(attempt.correct) || 0} correct</span><span>${Number(attempt.wrong) || 0} incorrect</span><span>${Number(attempt.skipped) || 0} skipped</span><span>${Number(attempt.score) || 0}/${Number(attempt.maxScore) || 0} marks</span>${attempt.timeSpentSeconds ? `<span>${Math.round(attempt.timeSpentSeconds / 60)} min</span>` : ''}</div><div class="mt-4 flex flex-wrap gap-2"><button type="button" class="rounded-xl bg-teal-600 px-3 py-2 text-xs font-black text-white" onclick="openTestAnalysis('${jsArg(attempt.id)}')">Analyze attempt</button><button type="button" class="rounded-xl border border-slate-200 px-3 py-2 text-xs font-bold disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700" ${reviewable ? '' : 'disabled'} onclick="practiceFromTest('${jsArg(attempt.id)}','missed')">Revise missed</button><button type="button" class="rounded-xl border border-slate-200 px-3 py-2 text-xs font-bold disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700" ${reviewable ? '' : 'disabled'} onclick="practiceFromTest('${jsArg(attempt.id)}','marked')">Revise flagged</button></div></article>`;
+  }).join('')}</section></div>`;
 }
 
 function openBatchSeriesDetail(seriesId) {
@@ -4139,7 +4204,7 @@ async function startBatchTestAttempt(testObj, seriesTitle) {
         const raw = await res.json();
         const list = Array.isArray(raw) ? raw : (raw.qs || raw.questions || []);
         if (list.length > 0) {
-          rawQuestions = list.map((q, i) => { const nq = normalizeQuestion(q, i, testObj.title); return nq && { ...nq, qKey: `batch_${testObj.id}_${i}`, sourceChapter: testObj.title }; }).filter(Boolean);
+          rawQuestions = list.map((q, i) => { const nq = normalizeQuestion(q, i, testObj.title); return nq && { ...nq, qKey: nq.qKey || `batch_${testObj.id}_${i}`, subject: testObj.subject, sourceChapter: testObj.title }; }).filter(Boolean);
         }
       }
     } catch (e) {
@@ -4150,7 +4215,7 @@ async function startBatchTestAttempt(testObj, seriesTitle) {
     if (!rawQuestions && /(^|\/)data\//.test(fetchPath)) {
       const list = await loadRawBySlug(fetchPath.split('/').pop().replace(/\.json$/i, ''));
       if (list.length) {
-        rawQuestions = list.map((q, i) => { const nq = normalizeQuestion(q, i, testObj.title); return nq && { ...nq, qKey: `batch_${testObj.id}_${i}`, sourceChapter: testObj.title }; }).filter(Boolean);
+        rawQuestions = list.map((q, i) => { const nq = normalizeQuestion(q, i, testObj.title); return nq && { ...nq, qKey: nq.qKey || `batch_${testObj.id}_${i}`, subject: testObj.subject, sourceChapter: testObj.title }; }).filter(Boolean);
       }
     }
 
@@ -4172,7 +4237,8 @@ let wizardState = {
   format: 'full_180',
   qCount: 180,
   durationMins: 180,
-  difficulty: 'Standard NEET',
+  difficulty: 'mixed',
+  source: 'All',
   selectedSubjects: ['Biology', 'Chemistry', 'Physics'],
   selectedChapters: { Biology: [], Chemistry: [], Physics: [] }
 };
@@ -4193,6 +4259,22 @@ function wizardSelectFormat(fmt, count, mins) {
     wizardState.selectedSubjects = ['Biology'];
   }
   wizardSetStep(2);
+}
+
+function wizardSetQuestionCount(value) {
+  const parsed = Number(value);
+  wizardState.qCount = Number.isFinite(parsed) ? Math.max(1, Math.min(180, Math.round(parsed))) : 180;
+  renderView();
+}
+
+function wizardSetDifficulty(value) {
+  wizardState.difficulty = value;
+  renderView();
+}
+
+function wizardSetSource(value) {
+  wizardState.source = value;
+  renderView();
 }
 
 function wizardToggleSubject(subj) {
@@ -4231,29 +4313,57 @@ function wizardClearChapters(subj) {
 }
 
 async function buildFull180qMock() {
-  const targetSubjCounts = { 'Biology': 90, 'Chemistry': 45, 'Physics': 45 };
-  let assembledQuestions = [];
+  const subjects = wizardState.selectedSubjects;
+  const count = Math.max(1, Math.min(180, Number(wizardState.qCount) || 180));
+  const ntaWeights = subjects.length === 3 ? { Biology: 2, Chemistry: 1, Physics: 1 } : {};
+  const weightTotal = subjects.reduce((sum, item) => sum + (ntaWeights[item] || 1), 0);
+  const allocations = subjects.map((item, index) => {
+    const exact = count * (ntaWeights[item] || 1) / weightTotal;
+    return { item, index, exact, count: Math.floor(exact) };
+  });
+  let remainder = count - allocations.reduce((sum, item) => sum + item.count, 0);
+  allocations.slice().sort((a, b) => (b.exact - b.count) - (a.exact - a.count) || a.index - b.index).slice(0, remainder).forEach(item => {
+    allocations.find(entry => entry.item === item.item).count++;
+  });
+  const quotaBySubject = Object.fromEntries(allocations.map(item => [item.item, item.count]));
+  const stats = StorageModule.get(STORAGE_KEYS.qstats, {}) || {};
+  const assembledQuestions = [];
 
-  for (const s of wizardState.selectedSubjects) {
-    const required = wizardState.selectedSubjects.length === 3 ? (targetSubjCounts[s] || 60) : Math.ceil(wizardState.qCount / wizardState.selectedSubjects.length);
-    const chosenChapters = (wizardState.selectedChapters[s] && wizardState.selectedChapters[s].length > 0) ? wizardState.selectedChapters[s] : data[s];
-    let subQs = [];
+  for (const subjectName of subjects) {
+    const required = quotaBySubject[subjectName] || 0;
+    if (!required) continue;
+    const chapters = wizardState.selectedChapters[subjectName]?.length ? wizardState.selectedChapters[subjectName] : data[subjectName];
+    const subjectQuestions = [];
 
-    for (const ch of chosenChapters) {
-      if (subQs.length >= required * 2) break;
+    for (const chapterName of chapters) {
+      if (subjectQuestions.length >= required * 2) break;
       try {
-        const list = await loadChapterRaw(s, ch);
-        list.forEach((q, i) => {
-          const nq = normalizeQuestion(q, i, ch);
-          if (nq) subQs.push({ ...nq, qKey: `full180_${slugify(ch)}_${nq.id || i}_${Math.random()}`, sourceChapter: `${s}: ${ch}` });
+        const questions = await loadChapterRaw(subjectName, chapterName);
+        questions.forEach((rawQuestion, index) => {
+          const question = normalizeQuestion(rawQuestion, index, chapterName);
+          if (!question) return;
+          const stat = stats[question.qKey] || {};
+          const rawDifficulty = String(question.difficulty || question.level || '').toLowerCase();
+          const matchesDifficulty = wizardState.difficulty === 'mixed' || !rawDifficulty ||
+            (wizardState.difficulty === 'easy' && /easy|basic|beginner/.test(rawDifficulty)) ||
+            (wizardState.difficulty === 'moderate' && /moderate|medium|intermediate/.test(rawDifficulty)) ||
+            (wizardState.difficulty === 'difficult' && /difficult|hard|advanced/.test(rawDifficulty));
+          const sourceText = [question.source, question.sourceName, question.sourceTitle, question.book, question.exam, question.year].filter(Boolean).join(' ');
+          let matchesSource = true;
+          if (wizardState.source === 'PYQ only') matchesSource = !!(question.exam || question.year || /pyq/i.test(sourceText));
+          else if (wizardState.source === 'NCERT only') matchesSource = /ncert/i.test(sourceText);
+          else if (wizardState.source === 'Previously wrong') matchesSource = (stat.wrong || 0) > 0 || (stat.seen || 0) > (stat.correct || 0);
+          else if (wizardState.source === 'Unseen') matchesSource = !stat.seen;
+          if (!matchesDifficulty || !matchesSource) return;
+          subjectQuestions.push({ ...question, subject: subjectName, qKey: question.qKey || `test_${slugify(chapterName)}_${question.id || index}`, sourceChapter: `${subjectName}: ${chapterName}` });
         });
-      } catch (e) {
-        console.warn(`Local mock load error for ${ch}:`, e);
+      } catch (error) {
+        console.warn(`Local mock load error for ${chapterName}:`, error);
       }
     }
 
-    subQs.sort(() => Math.random() - 0.5);
-    assembledQuestions.push(...subQs.slice(0, required));
+    subjectQuestions.sort(() => Math.random() - 0.5);
+    assembledQuestions.push(...subjectQuestions.slice(0, required));
   }
 
   assembledQuestions.sort(() => Math.random() - 0.5);
@@ -4283,7 +4393,7 @@ async function executeWizardTestGeneration() {
         promptChapters.push(...chs.map(c => `${s}: ${c}`));
       });
 
-      const prompt = `Generate ${qCount} high-yield NEET MCQs covering: ${promptChapters.join(', ')}. Return strictly valid JSON array: [{"q":"...","o":["A","B","C","D"],"a":1,"s":"..."}]`;
+      const prompt = `Generate ${qCount} high-yield NEET MCQs covering: ${promptChapters.join(', ')}. Difficulty: ${wizardState.difficulty}. Match this source style when possible: ${wizardState.source}. Return strictly valid JSON array: [{"q":"...","o":["A","B","C","D"],"a":1,"s":"..."}]`;
       const sys = "Output only valid JSON arrays for NEET question banks.";
       const rawJson = await callGeminiApi(prompt, sys);
       const cleanJson = rawJson.replace(/```json/g, '').replace(/```/g, '').trim();
@@ -4294,6 +4404,7 @@ async function executeWizardTestGeneration() {
         options: q.o,
         correct: (q.a || 1) - 1,
         explanation: q.s || 'NCERT Line-by-Line concept.',
+        subject: selectedSubs.find(subjectName => promptChapters[i % promptChapters.length].startsWith(subjectName)) || selectedSubs[0],
         sourceChapter: promptChapters[i % promptChapters.length] || selectedSubs[0]
       }));
     } else {
@@ -4302,8 +4413,9 @@ async function executeWizardTestGeneration() {
     }
 
     if (!rawQuestions.length) throw new Error('No practice questions available for the selected choices.');
+    if (rawQuestions.length < qCount) showToast(`Only ${rawQuestions.length} questions matched those filters.`, 'info');
 
-    launchTestSession(selectedSubs.join(' & '), `NEET Mock Simulation (${qCount}Q)`, rawQuestions);
+    launchTestSession(selectedSubs.join(' & '), `NEET Mock Simulation (${rawQuestions.length}Q)`, rawQuestions);
   } catch (err) {
     showToast('Generation failed: ' + err.message, 'error');
     closeModal();
@@ -4324,6 +4436,8 @@ skippedQuestions: {},
 questionTimes: {},
 questionStartTimer: Date.now(),
 testEndTimestamp: null,
+practiceDeadlineTimestamp: null,
+practiceTimeExpired: false,
 tabSwitches: 0,
 paletteExpanded: false,
 timerInterval: null,
@@ -4696,7 +4810,7 @@ function startQuickTen() {
     showToast('No uploaded question banks were found. Check the /data/ filenames.', 'warning');
   })();
 }
-function resumeSavedSession() { const s = getSavedResume(); if (!s?.questions?.length) return; Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, marked:s.marked || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null }); closeModal(); renderPracticeQuiz(); }
+function resumeSavedSession() { const s = getSavedResume(); if (!s?.questions?.length) return; Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, marked:s.marked || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, practiceDeadlineTimestamp:s.practiceDeadlineTimestamp || null, practiceTimeExpired:false, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null }); closeModal(); renderPracticeQuiz(); }
 
 // ===== Dashboard quick access: Resume / Bookmarked / Incorrect =====
 function getSavedQuestionKeys(kind) {
@@ -5240,6 +5354,16 @@ function epApplyScope(qs, subj, chapterName) {
   const out = qs.filter(q => (!EP_SCOPE.srcs.size || epQSrcs(q).some(x => EP_SCOPE.srcs.has(x))) && (!EP_SCOPE.ex.size || EP_SCOPE.ex.has(epExKey(q)) || EP_SCOPE.ex.has(sec(q))) && (!EP_SCOPE.topics.size || EP_SCOPE.topics.has(top(q))));
   return out.length ? out : qs;
 }
+function applyPracticePreset(value) {
+  const source = { ncert: 'NCERT only', pyq: 'PYQ only', incorrect: 'Previously wrong', unattempted: 'Unseen', full: 'All' }[value] || 'All';
+  const sourceSelect = document.getElementById('practice-source');
+  if (sourceSelect) sourceSelect.value = source;
+  const lengthButton = document.querySelector('#modalContentSlot [data-value="all"]');
+  if (value === 'full' && lengthButton) {
+    document.querySelectorAll('#modalContentSlot [data-value]').forEach(button => button.classList.remove('ring-2', 'ring-teal-500'));
+    lengthButton.classList.add('ring-2', 'ring-teal-500');
+  }
+}
 function openPracticeSetup(subj, chapterName, preset = null, skipResume = false) {
   EP_SCOPE.ex.clear(); EP_SCOPE.srcs.clear(); EP_SCOPE.topics.clear(); EP_SCOPE.key = '';
   if (!preset && !skipResume) {
@@ -5248,7 +5372,7 @@ function openPracticeSetup(subj, chapterName, preset = null, skipResume = false)
   }
   const saved = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
   if (preset) { saved.practiceLength = preset.length; saved.practiceSource = preset.source || 'all'; StorageModule.set(STORAGE_KEYS.settings, saved); }
-  setModal('Set up your practice', `${subj} · ${chapterName}`, `<div class="space-y-5 py-2"><div class="grid grid-cols-4 gap-2">${[10,20,30,'all'].map(v => `<button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('ring-2','ring-teal-500'));this.classList.add('ring-2','ring-teal-500');this.dataset.value='${v}'" class="rounded-2xl border border-slate-200 dark:border-slate-700 p-3 text-xs font-black ${saved.practiceLength == v ? 'ring-2 ring-teal-500' : ''}" data-value="${v}">${v === 'all' ? 'All' : v}</button>`).join('')}</div><div id="practice-scope" data-key="${escapeHtml(subj)}|${escapeHtml(chapterName)}" class="hidden space-y-4 rounded-2xl border border-slate-200 p-3 dark:border-slate-700"></div><div class="space-y-2"><label class="text-xs font-black">Question source</label><select id="practice-source" class="w-full rounded-xl border p-3 text-sm bg-transparent"><option>All</option><option>Unseen</option><option>Previously wrong</option><option>Bookmarked</option><option>PYQ only</option></select></div><label class="flex items-center justify-between rounded-xl border p-3 text-sm font-bold">Shuffle questions <input id="practice-shuffle" type="checkbox" ${saved.shuffleQuestions ? 'checked' : ''}></label><label class="flex items-center justify-between rounded-xl border p-3 text-sm font-bold">Shuffle options <input id="practice-shuffle-options" type="checkbox" ${saved.shuffleOptions ? 'checked' : ''}></label><p class="text-[11px] text-slate-500">Your last choices are remembered on this device.</p><button type="button" onclick="startInfiniteFromChapter('${jsArg(subj)}','${jsArg(chapterName)}')" class="w-full rounded-2xl border border-violet-300/60 bg-gradient-to-r from-violet-500/10 to-teal-500/10 p-4 text-left transition hover:border-violet-400 hover:shadow-sm"><span class="flex items-center justify-between"><span><span class="block text-sm font-black text-slate-900 dark:text-slate-100">Infinite adaptive practice</span><span class="mt-1 block text-[11px] font-medium text-slate-500">Keep going while the engine adapts difficulty to you.</span></span><i class="fa-solid fa-infinity text-violet-500"></i></span></button></div>`, `<button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Cancel</button><button onclick="startConfiguredPractice('${jsArg(subj)}','${jsArg(chapterName)}')" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white text-xs font-black">Start practice</button>`);
+  setModal('Set up your practice', `${subj} · ${chapterName}`, `<div class="space-y-5 py-2"><div class="grid grid-cols-4 gap-2">${[10,20,30,'all'].map(v => `<button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('ring-2','ring-teal-500'));this.classList.add('ring-2','ring-teal-500');this.dataset.value='${v}'" class="rounded-2xl border border-slate-200 dark:border-slate-700 p-3 text-xs font-black ${saved.practiceLength == v ? 'ring-2 ring-teal-500' : ''}" data-value="${v}">${v === 'all' ? 'All' : v}</button>`).join('')}</div><div id="practice-scope" data-key="${escapeHtml(subj)}|${escapeHtml(chapterName)}" class="hidden space-y-4 rounded-2xl border border-slate-200 p-3 dark:border-slate-700"></div><div class="space-y-2"><label class="text-xs font-black">Question source</label><select id="practice-source" class="w-full rounded-xl border p-3 text-sm bg-transparent"><option>All</option><option>Unseen</option><option>Previously wrong</option><option>Bookmarked</option><option>PYQ only</option><option>NCERT only</option></select></div><div class="grid grid-cols-1 sm:grid-cols-3 gap-3"><label class="text-xs font-black">Practice preset<select id="practice-preset" onchange="applyPracticePreset(this.value)" class="mt-2 w-full rounded-xl border p-3 text-sm font-semibold bg-transparent"><option value="" ${saved.practicePreset ? '' : 'selected'}>Choose preset</option><option value="ncert" ${saved.practicePreset === 'ncert' ? 'selected' : ''}>NCERT</option><option value="pyq">PYQ</option><option value="incorrect">Incorrect</option><option value="unattempted">Unattempted</option><option value="full">Full Chapter</option></select></label><label class="text-xs font-black">Difficulty<select id="practice-difficulty" class="mt-2 w-full rounded-xl border p-3 text-sm font-semibold bg-transparent"><option value="mixed" ${!saved.practiceDifficulty || saved.practiceDifficulty === 'mixed' ? 'selected' : ''}>Mixed</option><option value="easy" ${saved.practiceDifficulty === 'easy' ? 'selected' : ''}>Easy</option><option value="moderate" ${saved.practiceDifficulty === 'moderate' ? 'selected' : ''}>Moderate</option><option value="difficult" ${saved.practiceDifficulty === 'difficult' ? 'selected' : ''}>Difficult</option></select></label><label class="text-xs font-black">Session timer<select id="practice-session-minutes" class="mt-2 w-full rounded-xl border p-3 text-sm font-semibold bg-transparent"><option value="0" ${!saved.sessionMinutes ? 'selected' : ''}>No limit</option><option value="15" ${Number(saved.sessionMinutes) === 15 ? 'selected' : ''}>15 minutes</option><option value="30" ${Number(saved.sessionMinutes) === 30 ? 'selected' : ''}>30 minutes</option><option value="45" ${Number(saved.sessionMinutes) === 45 ? 'selected' : ''}>45 minutes</option><option value="60" ${Number(saved.sessionMinutes) === 60 ? 'selected' : ''}>60 minutes</option></select></label></div><label class="flex items-center justify-between rounded-xl border p-3 text-sm font-bold">Shuffle questions <input id="practice-shuffle" type="checkbox" ${saved.shuffleQuestions ? 'checked' : ''}></label><label class="flex items-center justify-between rounded-xl border p-3 text-sm font-bold">Shuffle options <input id="practice-shuffle-options" type="checkbox" ${saved.shuffleOptions ? 'checked' : ''}></label><p class="text-[11px] text-slate-500">Your last choices are remembered on this device.</p><button type="button" onclick="startInfiniteFromChapter('${jsArg(subj)}','${jsArg(chapterName)}')" class="w-full rounded-2xl border border-violet-300/60 bg-gradient-to-r from-violet-500/10 to-teal-500/10 p-4 text-left transition hover:border-violet-400 hover:shadow-sm"><span class="flex items-center justify-between"><span><span class="block text-sm font-black text-slate-900 dark:text-slate-100">Infinite adaptive practice</span><span class="mt-1 block text-[11px] font-medium text-slate-500">Keep going while the engine adapts difficulty to you.</span></span><i class="fa-solid fa-infinity text-violet-500"></i></span></button></div>`, `<button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Cancel</button><button onclick="startConfiguredPractice('${jsArg(subj)}','${jsArg(chapterName)}')" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white text-xs font-black">Start practice</button>`);
   preloadChapter(subj, chapterName).then(epRenderScope).catch(() => {});
   }
 function startInfiniteFromChapter(subj, chapterName) {
@@ -5259,7 +5383,7 @@ async function startConfiguredPractice(subj, chapterName) {
   const lengthBtn = sheet?.querySelector('[data-value].ring-2');
   const length = lengthBtn?.dataset.value || '10';
   const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
-  settings.practiceLength = length; settings.practiceSource = document.getElementById('practice-source')?.value || settings.practiceSource || 'All'; settings.shuffleQuestions = !!document.getElementById('practice-shuffle')?.checked; settings.shuffleOptions = !!document.getElementById('practice-shuffle-options')?.checked;
+  settings.practiceLength = length; settings.practiceSource = document.getElementById('practice-source')?.value || settings.practiceSource || 'All'; settings.practicePreset = document.getElementById('practice-preset')?.value || ''; settings.practiceDifficulty = document.getElementById('practice-difficulty')?.value || 'mixed'; settings.sessionMinutes = Number(document.getElementById('practice-session-minutes')?.value || 0); settings.shuffleQuestions = !!document.getElementById('practice-shuffle')?.checked; settings.shuffleOptions = !!document.getElementById('practice-shuffle-options')?.checked;
   StorageModule.set(STORAGE_KEYS.settings, settings);
   await setupQuizMode('practice', subj, chapterName, null, true);
 }
@@ -5342,7 +5466,7 @@ function saveChapterSession(snap) {
 }
 function persistQuizSession() {
   if (quizState.mode !== 'practice' || !quizState.questions.length) return;
-  const snap = { chapter: quizState.chapter, subject: quizState.subject, title: quizState.title, questions: quizState.questions, currentIndex: quizState.currentIndex, userAnswers: quizState.userAnswers, marked: quizState.marked || {}, bookmarked: quizState.bookmarked, skippedQuestions: quizState.skippedQuestions, questionTimes: quizState.questionTimes, eliminatedOptions: quizState.eliminatedOptions, wrongReasons: quizState.wrongReasons, savedAt: Date.now() };
+  const snap = { chapter: quizState.chapter, subject: quizState.subject, title: quizState.title, questions: quizState.questions, currentIndex: quizState.currentIndex, userAnswers: quizState.userAnswers, marked: quizState.marked || {}, bookmarked: quizState.bookmarked, skippedQuestions: quizState.skippedQuestions, questionTimes: quizState.questionTimes, eliminatedOptions: quizState.eliminatedOptions, wrongReasons: quizState.wrongReasons, practiceDeadlineTimestamp: quizState.practiceDeadlineTimestamp || null, savedAt: Date.now() };
   StorageModule.set(STORAGE_KEYS.session, snap);
   // Normal chapter practice (not infinite / mixed / retry sessions) is also kept per chapter.
   if (!quizState.infinite && data[quizState.subject]?.includes(quizState.chapter)) saveChapterSession(snap);
@@ -5432,22 +5556,33 @@ function eraseChapterHistory(subj, ch) {
 function clearQuizSession() { localStorage.removeItem(STORAGE_KEYS.session); }
 function resumeQuizSession() {
   const s = StorageModule.get(STORAGE_KEYS.session, null); if (!s?.questions?.length) return;
-  Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, marked:s.marked || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null });
+  Object.assign(quizState, { mode:'practice', chapter:s.chapter, subject:s.subject, title:s.title, questions:s.questions, currentIndex:s.currentIndex || 0, userAnswers:s.userAnswers || {}, marked:s.marked || {}, bookmarked:s.bookmarked || {}, skippedQuestions:s.skippedQuestions || {}, questionTimes:s.questionTimes || {}, eliminatedOptions:s.eliminatedOptions || {}, wrongReasons:s.wrongReasons || {}, practiceDeadlineTimestamp:s.practiceDeadlineTimestamp || null, practiceTimeExpired:false, questionStartTimer:Date.now(), paletteExpanded:false, infinite:null });
   closeModal(); renderPracticeQuiz();
 }
 function launchPracticeSession(subj, chapterName, rawQuestions, infiniteState = null) {
   const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
   const stats = StorageModule.get(STORAGE_KEYS.qstats, {});
   const source = settings.practiceSource || 'All';
+  const requestedDifficulty = String(settings.practiceDifficulty || 'mixed').toLowerCase();
   let questions = [...rawQuestions].filter(q => {
     const stat = stats[q.qKey] || {};
-    if (/pyq/i.test(source)) return !!(q.exam || q.year);
-    if (source.toLowerCase() === 'unseen') return !stat.seen;
-    if (source.toLowerCase().includes('wrong')) return (stat.wrong || 0) > 0;
-    if (source.toLowerCase().includes('bookmark')) return !!stat.bookmarked;
-    return true;
+    let matchesSource = true;
+    if (/pyq/i.test(source)) matchesSource = !!(q.exam || q.year);
+    else if (/ncert/i.test(source)) matchesSource = /ncert/i.test([q.source, q.sourceName, q.book, q.sourceTitle].filter(Boolean).join(' '));
+    else if (source.toLowerCase() === 'unseen') matchesSource = !stat.seen;
+    else if (source.toLowerCase().includes('wrong')) matchesSource = (stat.wrong || 0) > 0;
+    else if (source.toLowerCase().includes('bookmark')) matchesSource = !!stat.bookmarked;
+    const rawDifficulty = String(q.difficulty || q.level || '').toLowerCase();
+    const matchesDifficulty = requestedDifficulty === 'mixed' || !rawDifficulty ||
+      (requestedDifficulty === 'easy' && /easy|basic|beginner/.test(rawDifficulty)) ||
+      (requestedDifficulty === 'moderate' && /moderate|medium|intermediate/.test(rawDifficulty)) ||
+      (requestedDifficulty === 'difficult' && /difficult|hard|advanced/.test(rawDifficulty));
+    return matchesSource && matchesDifficulty;
   });
-  if (!questions.length) questions = [...rawQuestions];
+  if (!questions.length) {
+    showToast('No questions match this preset and difficulty. Try Mixed or another source.', 'warning');
+    return;
+  }
   questions = settings.shuffleQuestions ? fisherYates(questions) : questions;
   if (settings.shuffleOptions) questions = questions.map(q => {
     if (hasLockedOption(q.options, q)) return q;
@@ -5473,6 +5608,8 @@ wrongReasons: {},
 questionTimes: {},
     questionStartTimer: Date.now(),
     testEndTimestamp: null,
+    practiceDeadlineTimestamp: Number(settings.sessionMinutes) > 0 ? Date.now() + Number(settings.sessionMinutes) * 60 * 1000 : null,
+    practiceTimeExpired: false,
     paletteExpanded: false,
     infinite: infiniteState   // null for normal chapter practice
   });
@@ -5496,6 +5633,7 @@ marked: {},
 bookmarked: {},
 skippedQuestions: {},
 questionTimes: {},
+wrongReasons: {},
 questionStartTimer: Date.now(),
 testEndTimestamp: endTimestamp,
 paletteExpanded: false,
@@ -5655,14 +5793,12 @@ function renderPracticeQuiz() {
 </div>
 ${q.explanation && q.explanation !== 'NCERT Concept.' ? `<div class="text-xs font-medium opacity-80 leading-relaxed">${formatQuizText(q.explanation)}</div>` : `<button onclick="showAiQuestionExplanation(${idx})" class="text-xs font-black text-purple-600 hover:underline">Generate explanation</button>`}
 ${q.note ? `<div class="rounded-lg bg-amber-500/10 px-3 py-2 text-[11px] font-semibold leading-relaxed">${multiline(q.note)}</div>` : ''}
-${!isRight ? `<div class="pt-2"><p class="text-[10px] font-black uppercase tracking-wider text-slate-400 mb-2">Why did you miss it?</p><div class="flex flex-wrap gap-2">${['Silly mistake','Didn\'t know','Guessed','Mixed up concepts'].map(reason => `<button onclick="tagWrongReason('${jsArg(reason)}')" class="px-2.5 py-1.5 rounded-lg border text-[10px] font-bold ${quizState.wrongReasons[idx] === reason ? 'border-rose-500 bg-rose-50 text-rose-700' : 'border-slate-200 dark:border-slate-700'}">${reason}</button>`).join('')}</div></div>` : ''}
+${!isRight ? `<div class="pt-2"><p class="text-[10px] font-black uppercase tracking-wider text-slate-400 mb-2">Why did you miss it?</p><div class="flex flex-wrap gap-2">${['Conceptual gap','Factual recall','Calculation error','Careless mistake'].map(reason => `<button onclick="tagWrongReason('${jsArg(reason)}')" class="px-2.5 py-1.5 rounded-lg border text-[10px] font-bold ${quizState.wrongReasons[idx] === reason ? 'border-rose-500 bg-rose-50 text-rose-700' : 'border-slate-200 dark:border-slate-700'}">${reason}</button>`).join('')}</div></div>` : ''}
 <div class="pt-2 border-t border-slate-200/50 dark:border-slate-700/50 flex flex-wrap justify-end gap-2">
   <button type="button" onclick="searchQuestionOnYouTube()" class="ep-yt-explain px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5" aria-label="Watch video explanation of this question on YouTube" title="Search this question on YouTube">
     <i class="fa-brands fa-youtube text-sm"></i> Video Explanation
   </button>
-  <button onclick="showAiQuestionExplanation(${idx})" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
-    <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> AI Explain
-  </button>
+  <button onclick="showAiQuestionExplanation(${idx})" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">\n    <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> AI Explain\n  </button>\n  <button onclick="openPracticeDoubt(${idx})" class="px-4 py-2 rounded-xl border border-teal-200 bg-teal-50 text-teal-800 dark:border-teal-900 dark:bg-teal-950/30 dark:text-teal-200 font-bold text-xs transition flex items-center gap-1.5">\n    <i class="fa-regular fa-circle-question text-xs"></i> Ask a doubt\n  </button>
 </div>
 </div>` : '';
 
@@ -5684,7 +5820,7 @@ ${!isRight ? `<div class="pt-2"><p class="text-[10px] font-black uppercase track
 </div>
 </div>
 <div class="flex items-center gap-2">
-<span class="pq-chip pq-time" id="pq-timer" title="Time on this question"><i class="fa-regular fa-clock"></i><b>0:00</b></span><span class="pq-chip pq-ok" title="Correct"><i class="fa-solid fa-check"></i>${pqRight}</span><span class="pq-chip pq-no" title="Wrong"><i class="fa-solid fa-xmark"></i>${pqWrong}</span>
+${quizState.practiceDeadlineTimestamp ? '<span class="pq-chip pq-session-time" id="practice-time-left" title="Time left in this session" aria-live="polite"><i class="fa-solid fa-hourglass-half"></i><b>--:--</b></span>' : ''}<span class="pq-chip pq-time" id="pq-timer" title="Time on this question"><i class="fa-regular fa-clock"></i><b>0:00</b></span><span class="pq-chip pq-ok" title="Correct"><i class="fa-solid fa-check"></i>${pqRight}</span><span class="pq-chip pq-no" title="Wrong"><i class="fa-solid fa-xmark"></i>${pqWrong}</span>
 ${inf ? '' : `<button type="button" class="pq-auto ${pqAuto ? 'on' : ''}" onclick="togglePqAutoNext()" aria-pressed="${pqAuto}" title="Auto-advance after a correct answer"><i class="fa-solid fa-forward-fast"></i><span>Auto</span></button>`}
 <button onclick="finishPracticeQuiz()" class="px-3.5 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-extrabold text-xs hover:bg-rose-500 hover:text-white transition">${inf ? 'End Session' : 'Exit'}</button>
 </div>
@@ -5906,9 +6042,28 @@ ${paletteHtml}
 setModal('', '', html);
 }
 
-function selectTestOption(i) { quizState.userAnswers[quizState.currentIndex] = i; renderTestQuiz(); }
+function recordCurrentTestQuestionTime() {
+  if (quizState.mode !== 'test' || !quizState.questions.length) return;
+  const startedAt = Number(quizState.questionStartTimer) || Date.now();
+  const elapsed = Math.max(0, Math.floor((Date.now() - startedAt) / 1000));
+  quizState.questionTimes[quizState.currentIndex] = (Number(quizState.questionTimes[quizState.currentIndex]) || 0) + elapsed;
+  quizState.questionStartTimer = Date.now();
+}
+
+function selectTestOption(i) {
+  recordCurrentTestQuestionTime();
+  quizState.userAnswers[quizState.currentIndex] = i;
+  renderTestQuiz();
+}
 function toggleMarkTestCurrent() { quizState.marked[quizState.currentIndex] = !quizState.marked[quizState.currentIndex]; renderTestQuiz(); }
-function jumpToTestQuestion(i) { if (i >= 0 && i < quizState.questions.length) { quizState.currentIndex = i; renderTestQuiz(); } }
+function jumpToTestQuestion(i) {
+  if (i >= 0 && i < quizState.questions.length) {
+    recordCurrentTestQuestionTime();
+    quizState.currentIndex = i;
+    quizState.questionStartTimer = Date.now();
+    renderTestQuiz();
+  }
+}
 function confirmSubmitTest() { submitTestQuiz(false); }
 
 function confirmExitQuiz() {
@@ -5931,8 +6086,145 @@ function confirmExitQuiz() {
   `);
 }
 
+function testSubjectForQuestion(question) {
+  const text = `${question.subject || ''} ${question.sourceChapter || ''} ${question.source || ''}`;
+  if (/biology|botany|zoology/i.test(text)) return 'Biology';
+  if (/chemistry/i.test(text)) return 'Chemistry';
+  if (/physics/i.test(text)) return 'Physics';
+  return ['Biology', 'Chemistry', 'Physics'].includes(quizState.subject) ? quizState.subject : 'Other';
+}
+
+function buildTestReviewItems() {
+  return quizState.questions.map((question, index) => {
+    const options = Array.isArray(question.options) ? question.options.slice(0, 4).map(option => String(option || '').slice(0, 80)) : [];
+    return {
+      number: index + 1,
+      selected: quizState.userAnswers[index] === undefined ? null : Number(quizState.userAnswers[index]),
+      seconds: Number(quizState.questionTimes[index]) || 0,
+      marked: !!quizState.marked[index],
+      question: {
+        qKey: String(question.qKey || '').slice(0, 120),
+        question: String(question.question || '').slice(0, 200),
+        options,
+        correct: Number.isInteger(Number(question.correct)) ? Number(question.correct) : 0,
+        explanation: String(question.explanation || '').slice(0, 160),
+        subject: testSubjectForQuestion(question),
+        sourceChapter: String(question.sourceChapter || quizState.chapter || '').slice(0, 120),
+        topic: String(question.topic || question.section || '').slice(0, 90),
+        difficulty: String(question.difficulty || question.level || '').slice(0, 40)
+      }
+    };
+  });
+}
+
+function saveTestReviewDetails(attemptId, questions) {
+  try {
+    const stored = StorageModule.get(TEST_REVIEW_KEY, {});
+    const reviews = stored && typeof stored === 'object' && !Array.isArray(stored) ? stored : {};
+    reviews[attemptId] = { savedAt: Date.now(), questions };
+    const retained = Object.entries(reviews)
+      .sort((a, b) => Number(a[1]?.savedAt || 0) - Number(b[1]?.savedAt || 0))
+      .slice(-2);
+    StorageModule.set(TEST_REVIEW_KEY, Object.fromEntries(retained));
+  } catch (error) {
+    console.warn('[EduPulse] Detailed test review could not be saved:', error);
+  }
+}
+
+function recordTestQuestionStats(items) {
+  const stats = StorageModule.get(STORAGE_KEYS.qstats, {}) || {};
+  const lastSeen = Date.now();
+  items.forEach(item => {
+    if (item.selected === null) return;
+    const question = item.question;
+    const key = question.qKey || `${quizState.chapter}:${item.number - 1}`;
+    const stat = stats[key] || { seen: 0, correct: 0, wrong: 0, streak: 0, lastSeen: 0 };
+    stat.seen = (Number(stat.seen) || 0) + 1;
+    stat.lastSeen = lastSeen;
+    stat.sj = stat.sj || question.subject;
+    stat.ch = stat.ch || question.sourceChapter || quizState.chapter;
+    if (item.selected === question.correct) {
+      stat.correct = (Number(stat.correct) || 0) + 1;
+      stat.streak = (Number(stat.streak) || 0) + 1;
+    } else {
+      stat.wrong = (Number(stat.wrong) || 0) + 1;
+      stat.streak = 0;
+    }
+    stats[key] = stat;
+  });
+  StorageModule.set(STORAGE_KEYS.qstats, stats);
+}
+
+function testSubjectBreakdown(items) {
+  const groups = {};
+  items.forEach(item => {
+    const name = item.question.subject || 'Other';
+    const group = groups[name] || (groups[name] = { subject: name, total: 0, correct: 0, wrong: 0, skipped: 0 });
+    group.total++;
+    if (item.selected === null) group.skipped++;
+    else if (item.selected === item.question.correct) group.correct++;
+    else group.wrong++;
+  });
+  return Object.values(groups).map(group => ({ ...group, accuracy: group.correct + group.wrong ? Math.round(group.correct / (group.correct + group.wrong) * 100) : 0 }));
+}
+
+function openTestAnalysis(attemptId) {
+  const attempt = completedTestAttempts().find(item => item.id === attemptId);
+  if (!attempt) return showToast('This test attempt could not be found.', 'warning');
+  const reviews = StorageModule.get(TEST_REVIEW_KEY, {}) || {};
+  const questions = Array.isArray(reviews[attemptId]?.questions) ? reviews[attemptId].questions : [];
+  if (!questions.length) {
+    setModal('Test analysis', attempt.chapter || 'Completed test', `<div class="space-y-3"><p class="text-sm font-bold">${Number(attempt.accuracy) || 0}% accuracy · ${Number(attempt.correct) || 0} correct · ${Number(attempt.wrong) || 0} incorrect.</p><p class="text-xs text-slate-500">This older attempt has a saved summary only. Detailed question review is available for the two most recent tests.</p></div>`, '<button type="button" onclick="closeModal()" class="rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-white">Close</button>');
+    return;
+  }
+
+  const subjectRows = testSubjectBreakdown(questions).map(group => `<article class="rounded-xl border border-slate-200 p-3 dark:border-slate-700"><div class="flex items-center justify-between gap-2"><b class="text-xs">${escapeHtml(group.subject)}</b><strong class="text-sm">${group.accuracy}%</strong></div><div class="mt-2 h-1.5 rounded-full bg-slate-100 dark:bg-slate-800"><i class="block h-full rounded-full bg-teal-500" style="width:${group.accuracy}%"></i></div><p class="mt-2 text-[10px] text-slate-500">${group.correct} correct · ${group.wrong} incorrect · ${group.skipped} skipped</p></article>`).join('');
+  const topics = {};
+  questions.forEach(item => {
+    const key = item.question.topic || item.question.sourceChapter || 'General';
+    const group = topics[key] || (topics[key] = { total: 0, correct: 0 });
+    group.total++;
+    if (item.selected === item.question.correct) group.correct++;
+  });
+  const heatmap = Object.entries(topics).map(([topic, group]) => {
+    const accuracy = Math.round(group.correct / Math.max(1, group.total) * 100);
+    const tone = accuracy >= 70 ? 'border-emerald-200 bg-emerald-500/5 dark:border-emerald-900' : accuracy >= 45 ? 'border-amber-200 bg-amber-500/5 dark:border-amber-900' : 'border-rose-200 bg-rose-500/5 dark:border-rose-900';
+    return `<div class="rounded-xl border p-3 ${tone}"><div class="flex items-center justify-between gap-2"><span class="truncate text-[11px] font-bold">${escapeHtml(topic)}</span><b class="text-xs">${accuracy}%</b></div><small class="text-[10px] text-slate-500">${group.correct}/${group.total} correct</small></div>`;
+  }).join('');
+  const timed = questions.filter(item => item.seconds > 0).sort((a, b) => b.seconds - a.seconds);
+  const averageSeconds = timed.length ? Math.round(timed.reduce((sum, item) => sum + item.seconds, 0) / timed.length) : 0;
+  const slowest = timed.slice(0, 5).map(item => `<li class="flex items-center justify-between gap-3 text-[11px]"><span>Question ${item.number} · ${escapeHtml(item.question.topic || item.question.sourceChapter || 'General')}</span><b>${Math.floor(item.seconds / 60)}:${String(item.seconds % 60).padStart(2, '0')}</b></li>`).join('');
+  const questionRows = questions.map(item => {
+    const question = item.question;
+    const status = item.selected === null ? 'Skipped' : item.selected === question.correct ? 'Correct' : 'Incorrect';
+    const statusClass = status === 'Correct' ? 'text-emerald-700' : status === 'Incorrect' ? 'text-rose-700' : 'text-amber-700';
+    const options = question.options.map((option, index) => `<li class="rounded-lg px-3 py-2 text-[11px] ${index === question.correct ? 'bg-emerald-500/10 font-bold text-emerald-800' : index === item.selected ? 'bg-rose-500/10 text-rose-800' : 'bg-slate-50 text-slate-600 dark:bg-slate-800 dark:text-slate-300'}"><span class="mr-2 font-black">${String.fromCharCode(65 + index)}.</span>${escapeHtml(option)}</li>`).join('');
+    const selected = item.selected === null ? 'Not answered' : `${String.fromCharCode(65 + item.selected)}. ${escapeHtml(question.options[item.selected] || '')}`;
+    const correct = `${String.fromCharCode(65 + question.correct)}. ${escapeHtml(question.options[question.correct] || '')}`;
+    return `<details class="rounded-xl border border-slate-200 p-3 dark:border-slate-700"><summary class="cursor-pointer text-[11px] font-bold"><span class="${statusClass}">${status}</span> · Q${item.number}${item.marked ? ' · Flagged' : ''} · ${escapeHtml(question.question.slice(0, 100))}${question.question.length > 100 ? '…' : ''}</summary><div class="mt-3 space-y-3"><p class="text-sm font-semibold leading-relaxed">${formatQuizText(question.question)}</p><ul class="grid gap-2">${options}</ul><div class="grid grid-cols-1 gap-2 text-[11px] sm:grid-cols-2"><p><b>Your answer:</b> ${selected}</p><p><b>Correct answer:</b> ${correct}</p></div>${question.explanation ? `<p class="rounded-lg bg-teal-500/5 p-3 text-xs leading-relaxed">${formatQuizText(question.explanation)}</p>` : ''}<p class="text-[10px] text-slate-400">${item.seconds}s on this question · ${escapeHtml(question.difficulty || 'Difficulty not tagged')}</p></div></details>`;
+  }).join('');
+  const flagged = questions.some(item => item.marked);
+  const missed = questions.some(item => item.selected !== item.question.correct);
+  const totalSeconds = Number(attempt.timeSpentSeconds) || questions.reduce((sum, item) => sum + item.seconds, 0);
+  const content = `<div class="max-h-[65vh] space-y-4 overflow-y-auto pr-1"><section class="grid grid-cols-1 gap-3 sm:grid-cols-3"><article class="rounded-xl bg-teal-500/10 p-3"><small class="text-[9px] font-black uppercase text-teal-700">Accuracy</small><b class="mt-1 block text-xl">${Number(attempt.accuracy) || 0}%</b></article><article class="rounded-xl bg-slate-100 p-3 dark:bg-slate-800"><small class="text-[9px] font-black uppercase text-slate-500">Total time</small><b class="mt-1 block text-xl">${Math.floor(totalSeconds / 60)}m</b></article><article class="rounded-xl bg-amber-500/10 p-3"><small class="text-[9px] font-black uppercase text-amber-700">Average / question</small><b class="mt-1 block text-xl">${averageSeconds}s</b></article></section><section class="space-y-2"><h3 class="text-xs font-black uppercase tracking-wide">Subject analysis</h3><div class="grid grid-cols-1 gap-2 sm:grid-cols-3">${subjectRows}</div></section><section class="space-y-2"><h3 class="text-xs font-black uppercase tracking-wide">Accuracy heatmap</h3><div class="grid grid-cols-1 gap-2 sm:grid-cols-2">${heatmap}</div></section><section class="space-y-2"><h3 class="text-xs font-black uppercase tracking-wide">Time analysis</h3>${slowest ? `<p class="text-[11px] text-slate-500">Longest question times</p><ol class="space-y-2">${slowest}</ol>` : '<p class="text-[11px] text-slate-500">Question timing was not recorded for this attempt.</p>'}</section><section class="space-y-2"><h3 class="text-xs font-black uppercase tracking-wide">Question-level review <span class="text-slate-400">(${questions.length})</span></h3>${questionRows}</section></div>`;
+  const footer = `<div class="flex flex-wrap justify-end gap-2"><button type="button" onclick="practiceFromTest('${jsArg(attemptId)}','missed')" ${missed ? '' : 'disabled'} class="rounded-xl border border-slate-200 px-3 py-2 text-xs font-bold disabled:opacity-40 dark:border-slate-700">Revise missed</button><button type="button" onclick="practiceFromTest('${jsArg(attemptId)}','marked')" ${flagged ? '' : 'disabled'} class="rounded-xl bg-teal-600 px-3 py-2 text-xs font-bold text-white disabled:opacity-40">Revise flagged</button><button type="button" onclick="closeModal()" class="rounded-xl bg-slate-100 px-3 py-2 text-xs font-bold dark:bg-slate-800">Close</button></div>`;
+  setModal('Test analysis', attempt.chapter || 'Completed test', content, footer);
+}
+
+function practiceFromTest(attemptId, filter) {
+  const reviews = StorageModule.get(TEST_REVIEW_KEY, {}) || {};
+  const items = Array.isArray(reviews[attemptId]?.questions) ? reviews[attemptId].questions : [];
+  const selected = items.filter(item => filter === 'marked' ? item.marked : item.selected !== item.question.correct);
+  if (!selected.length) return showToast(filter === 'marked' ? 'No questions were flagged in this test.' : 'No missed questions to revise.', 'info');
+  const attempt = completedTestAttempts().find(item => item.id === attemptId);
+  const questions = selected.map(item => ({ ...item.question, options: [...item.question.options] }));
+  closeModal();
+  launchPracticeSession(attempt?.subject || 'Mixed', `${attempt?.chapter || 'Test'} · ${filter === 'marked' ? 'Flagged' : 'Missed'}`, questions, null);
+}
+
 function submitTestQuiz(isAuto = false) {
 if (quizState.timerInterval) { clearInterval(quizState.timerInterval); quizState.timerInterval = null; }
+recordCurrentTestQuestionTime();
 const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
 const total = quizState.questions.length;
 let correct = 0, wrong = 0, skipped = 0;
@@ -5948,6 +6240,8 @@ const attempted = correct + wrong;
 const score = (correct * settings.marksCorrect) + (wrong * settings.marksWrong);
 const maxScore = total * settings.marksCorrect;
 const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+const reviewItems = buildTestReviewItems();
+const timeSpentSeconds = reviewItems.reduce((sum, item) => sum + item.seconds, 0);
 
 const attemptRecord = {
 id: 'att_' + Date.now(),
@@ -5956,12 +6250,17 @@ subject: quizState.subject,
 mode: quizState.mode === 'practice' ? 'practice' : 'test',
 finishedAt: Date.now(),
 total, attempted, correct, wrong, skipped,
-score, maxScore, accuracy
+score, maxScore, accuracy, timeSpentSeconds,
+subjectBreakdown: testSubjectBreakdown(reviewItems)
 };
 
 const attempts = StorageModule.get(STORAGE_KEYS.attempts, []);
 attempts.unshift(attemptRecord);
 StorageModule.set(STORAGE_KEYS.attempts, attempts);
+if (attemptRecord.mode === 'test') {
+  recordTestQuestionStats(reviewItems);
+  saveTestReviewDetails(attemptRecord.id, reviewItems);
+}
 StorageModule.recordActivity(attempted);
 showResultScreen(attemptRecord);
 }
@@ -6629,23 +6928,28 @@ main.innerHTML = `
         </p>
       </div>
 
-      <!-- Modern Sub-Tab Nav Box -->
-      <div class="p-1.5 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 flex items-center gap-2 shrink-0 self-start md:self-auto">
-        <button onclick="setMockSubTab('batch')" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition-all flex items-center gap-2 ${mockSubTab === 'batch' ? 'test-hub-tab-active scale-102' : 'text-slate-300 hover:text-white hover:bg-white/5'}">
-          <i class="fa-solid fa-layer-group text-xs"></i>
-          <span>Batch Series</span>
-          <span class="px-2 py-0.5 rounded-full ${mockSubTab === 'batch' ? 'bg-white/20 text-white' : 'bg-slate-800/60 text-slate-400'} text-[10px]">${batchTestsDatabase.length}</span>
+      <!-- Test sections stay compact and wrap cleanly on narrow screens. -->
+      <div role="tablist" aria-label="Test hub sections" class="p-1.5 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 flex flex-wrap items-center gap-1.5 shrink-0 self-start md:self-auto max-w-full">
+        <button type="button" role="tab" aria-selected="${mockSubTab === 'batch'}" onclick="setMockSubTab('batch')" class="px-2.5 sm:px-3.5 py-2.5 rounded-xl font-extrabold text-[10px] sm:text-xs transition-all flex items-center gap-1.5 ${mockSubTab === 'batch' ? 'test-hub-tab-active scale-102' : 'text-slate-300 hover:text-white hover:bg-white/5'}">
+          <i class="fa-solid fa-layer-group text-xs"></i><span>Series</span>
+          <span class="px-1.5 py-0.5 rounded-full ${mockSubTab === 'batch' ? 'bg-white/20 text-white' : 'bg-slate-800/60 text-slate-400'} text-[9px]">${batchTestsDatabase.length}</span>
         </button>
-        <button onclick="setMockSubTab('generate')" class="px-5 py-2.5 rounded-xl font-extrabold text-xs transition-all flex items-center gap-2 ${mockSubTab === 'generate' ? 'test-hub-tab-active scale-102' : 'text-slate-300 hover:text-white hover:bg-white/5'}">
-          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
-          <span>Custom Generator</span>
-          <span class="px-2 py-0.5 rounded-full bg-teal-500/30 text-teal-200 text-[9px] uppercase font-black">180Q</span>
+        <button type="button" role="tab" aria-selected="${mockSubTab === 'scheduled'}" onclick="setMockSubTab('scheduled')" class="px-2.5 sm:px-3.5 py-2.5 rounded-xl font-extrabold text-[10px] sm:text-xs transition-all flex items-center gap-1.5 ${mockSubTab === 'scheduled' ? 'test-hub-tab-active scale-102' : 'text-slate-300 hover:text-white hover:bg-white/5'}">
+          <i class="fa-regular fa-calendar text-xs"></i><span>Scheduled</span>
+          <span class="px-1.5 py-0.5 rounded-full ${mockSubTab === 'scheduled' ? 'bg-white/20 text-white' : 'bg-slate-800/60 text-slate-400'} text-[9px]">${scheduledTestItems().length}</span>
+        </button>
+        <button type="button" role="tab" aria-selected="${mockSubTab === 'generate'}" onclick="setMockSubTab('generate')" class="px-2.5 sm:px-3.5 py-2.5 rounded-xl font-extrabold text-[10px] sm:text-xs transition-all flex items-center gap-1.5 ${mockSubTab === 'generate' ? 'test-hub-tab-active scale-102' : 'text-slate-300 hover:text-white hover:bg-white/5'}">
+          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i><span>Custom</span>
+        </button>
+        <button type="button" role="tab" aria-selected="${mockSubTab === 'completed'}" onclick="setMockSubTab('completed')" class="px-2.5 sm:px-3.5 py-2.5 rounded-xl font-extrabold text-[10px] sm:text-xs transition-all flex items-center gap-1.5 ${mockSubTab === 'completed' ? 'test-hub-tab-active scale-102' : 'text-slate-300 hover:text-white hover:bg-white/5'}">
+          <i class="fa-solid fa-chart-column text-xs"></i><span>Completed</span>
+          <span class="px-1.5 py-0.5 rounded-full ${mockSubTab === 'completed' ? 'bg-white/20 text-white' : 'bg-slate-800/60 text-slate-400'} text-[9px]">${completedTestAttempts().length}</span>
         </button>
       </div>
     </div>
   </div>
 
-  ${mockSubTab === 'batch' ? `
+  ${mockSubTab === 'scheduled' ? buildScheduledTestsView() : mockSubTab === 'completed' ? buildCompletedTestsView() : mockSubTab === 'batch' ? `
     ${selectedBatchSeries ? `
       <!-- BATCH SERIES DETAIL & TEST LIST INTERFACE -->
       <div class="space-y-6 animate-fadeIn">
@@ -6914,6 +7218,12 @@ main.innerHTML = `
             <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20"><span class="text-[10px] font-black uppercase tracking-wider text-amber-600">Duration</span><h4 class="text-2xl font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.durationMins} Minutes</h4></div>
             <div class="p-4 rounded-2xl bg-purple-500/10 border border-purple-500/20"><span class="text-[10px] font-black uppercase tracking-wider text-purple-600">Subjects</span><h4 class="text-base font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.selectedSubjects.join(', ')}</h4></div>
           </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="space-y-1 text-xs font-bold text-slate-600 dark:text-slate-300">Question count <input type="number" min="1" max="180" step="1" value="${wizardState.qCount}" onchange="wizardSetQuestionCount(this.value)" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 dark:border-slate-700 dark:bg-slate-800"></label>
+            <label class="space-y-1 text-xs font-bold text-slate-600 dark:text-slate-300">Difficulty <select value="${wizardState.difficulty}" onchange="wizardSetDifficulty(this.value)" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 dark:border-slate-700 dark:bg-slate-800"><option value="mixed" ${wizardState.difficulty === 'mixed' ? 'selected' : ''}>Mixed</option><option value="easy" ${wizardState.difficulty === 'easy' ? 'selected' : ''}>Easy</option><option value="moderate" ${wizardState.difficulty === 'moderate' ? 'selected' : ''}>Moderate</option><option value="difficult" ${wizardState.difficulty === 'difficult' ? 'selected' : ''}>Difficult</option></select></label>
+            <label class="space-y-1 text-xs font-bold text-slate-600 dark:text-slate-300">Question source <select onchange="wizardSetSource(this.value)" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 dark:border-slate-700 dark:bg-slate-800"><option ${wizardState.source === 'All' ? 'selected' : ''}>All</option><option ${wizardState.source === 'PYQ only' ? 'selected' : ''}>PYQ only</option><option ${wizardState.source === 'NCERT only' ? 'selected' : ''}>NCERT only</option><option ${wizardState.source === 'Previously wrong' ? 'selected' : ''}>Previously wrong</option><option ${wizardState.source === 'Unseen' ? 'selected' : ''}>Unseen</option></select></label>
+          </div>
+          <p class="text-[11px] text-slate-500">Source and difficulty filters use your available question bank. AI mode uses them as generation guidance.</p>
 
           <div class="flex justify-between items-center pt-2">
             <button onclick="wizardSetStep(3)" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 font-bold text-xs">← Back</button>
@@ -8261,7 +8571,13 @@ body .quiz-session-layout button[role="radio"] .opt-bad{background:#ef4444!impor
 (function(){
   function fmt(t){t=Math.max(0,Math.min(5999,Math.round(t)));return Math.floor(t/60)+':'+String(t%60).padStart(2,'0');}
   setInterval(function(){
-    var el=document.querySelector('#pq-timer b'); if(!el||typeof quizState==='undefined'||quizState.mode!=='practice') return;
+    if(typeof quizState==='undefined'||quizState.mode!=='practice') return;
+    if(quizState.practiceDeadlineTimestamp){
+      var remaining=Math.max(0,Math.ceil((quizState.practiceDeadlineTimestamp-Date.now())/1000));
+      var sessionClock=document.querySelector('#practice-time-left b'); if(sessionClock)sessionClock.textContent=fmt(remaining);
+      if(remaining<=0&&!quizState.practiceTimeExpired){quizState.practiceTimeExpired=true;quizState.practiceDeadlineTimestamp=null;showToast('Practice time is up. Your session has been saved.','info');finishPracticeQuiz();return;}
+    }
+    var el=document.querySelector('#pq-timer b'); if(!el) return;
     var i=quizState.currentIndex, done=quizState.userAnswers[i]!==undefined;
     el.textContent=fmt(done?(quizState.questionTimes[i]||0):(Date.now()-quizState.questionStartTimer)/1000);
   },1000);
@@ -8812,7 +9128,7 @@ button,[role="button"],a{-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid #14b8a6!important;outline-offset:2px;border-radius:8px}
 html body.dark :focus-visible{outline-color:#22d3ee!important}
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline-offset:0}
-.pq-chip,.pq-chip b,#test-timer-display,#pq-timer,.palette-touch-btn{font-variant-numeric:tabular-nums}
+.pq-chip,.pq-chip b,#test-timer-display,#pq-timer,.palette-touch-btn{font-variant-numeric:tabular-nums}.pq-session-time{color:#0f766e;background:rgba(20,184,166,.1);border-color:rgba(20,184,166,.24)}
 /* consistent dialog buttons */
 html body .custom-modal #modalActions button{min-height:44px;padding-inline:18px;border-radius:12px;font-weight:800;transition:filter .15s,transform .1s,background-color .15s}
 html body .custom-modal #modalActions button:hover{filter:brightness(1.06)}
@@ -9617,9 +9933,9 @@ function post(){
   /* flag for review */
   var foot=layout.querySelector('.pq-foot');
   if(foot&&!foot.querySelector('.bz-flag')){
-    var f=document.createElement('button');f.type='button';f.className='bz-flag';f.title='Flag for review';f.setAttribute('aria-label','Flag for review');
+    var f=document.createElement('button');f.type='button';f.className='bz-flag';f.title=quizState.marked&&quizState.marked[idx]?'Remove review flag':'Mark for review';f.setAttribute('aria-label',f.title);
     f.innerHTML='<i class="fa-solid fa-flag"></i>';f.setAttribute('aria-pressed',String(!!(quizState.marked&&quizState.marked[idx])));
-    f.onclick=function(){quizState.marked=quizState.marked||{};quizState.marked[idx]=!quizState.marked[idx];if(typeof persistQuizSession==='function')persistQuizSession();renderPracticeQuiz();};
+    f.onclick=function(){quizState.marked=quizState.marked||{};quizState.marked[idx]=!quizState.marked[idx];var stats=StorageModule.get(STORAGE_KEYS.qstats,{}),key=q.qKey||quizState.chapter+':'+idx;stats[key]=stats[key]||{};stats[key].review=quizState.marked[idx];if(quizState.subject){stats[key].sj=stats[key].sj||quizState.subject;stats[key].ch=stats[key].ch||q.sourceChapter||quizState.chapter;}StorageModule.set(STORAGE_KEYS.qstats,stats);if(typeof persistQuizSession==='function')persistQuizSession();renderPracticeQuiz();};
     var skip=foot.querySelector('.pq-skip'),nxt=foot.querySelector('.pq-next');
     foot.insertBefore(f,skip||nxt);
   }
@@ -9767,60 +10083,115 @@ window.__bz={
   toggleSound:function(v){var s=StorageModule.get(STORAGE_KEYS.settings,defaultSettings);s.sound=!!v;StorageModule.set(STORAGE_KEYS.settings,s);}
 };
 
-/* ---------- accounts + automatic cloud backup (Supabase Auth, see supabase_setup.sql) ---------- */
-var AK='bz_auth', SB_URL='https://xatnonizntpsnupxrzgt.supabase.co', SB_KEY='sb_publishable_cbRpz06E9hkzCugEYotaqg_LUW2VwVE';
+/* ---------- account auth and revision-safe cloud backup ---------- */
+var SYNC_META_KEY='edupulse_sync_meta_v1';
 var lastHash='', ov=null, mode='signup', busy=false, pendingCloud=null, recoverySess=null, cooldown=0, cdTimer=null, sentInfo={kind:'confirm',email:''};
-function auth(){return rd(AK,null);}
-function setAuth(a){if(a)wr(AK,a);else localStorage.removeItem(AK);}
-function errMsg(j,fb){return (j&&(j.error_description||j.msg||j.message||j.error))||fb;}
-function sbFetch(path,opt,tok){
-  opt=opt||{};opt.headers=Object.assign({apikey:SB_KEY,'Content-Type':'application/json',Authorization:'Bearer '+(tok||SB_KEY)},opt.headers||{});
-  return fetch(SB_URL+path,opt).then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null;}catch(e){}if(!r.ok){var er=new Error(errMsg(j,'Request failed ('+r.status+')'));er.status=r.status;throw er;}return j;});});
+var supabaseClient=null, currentSession=null, supabaseRedirectUrl=location.origin+'/auth/callback', supabaseReady=null, syncInitError=false;
+function normalizeSession(session){
+  if(!session)return null;
+  var user=Object.assign({},session.user||{});
+  user.name=user.name||(user.user_metadata&&(user.user_metadata.name||user.user_metadata.full_name))||'';
+  return Object.assign({},session,{user:user});
 }
-function toSession(j){var u=j.user||{};return {access_token:j.access_token,refresh_token:j.refresh_token,expires_at:Math.floor(Date.now()/1000)+(j.expires_in||3600),user:{id:u.id,email:u.email,name:(u.user_metadata&&u.user_metadata.name)||''}};}
-function token(){
-  var a=auth();if(!a)return Promise.reject(new Error('Please log in first'));
-  if(a.expires_at-60>Date.now()/1000)return Promise.resolve(a.access_token);
-  return sbFetch('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:JSON.stringify({refresh_token:a.refresh_token})})
-    .then(function(j){var s=toSession(j);if(!s.user.name)s.user.name=a.user.name;setAuth(s);return s.access_token;})
-    .catch(function(){setAuth(null);rerender();throw new Error('Session expired, please log in again');});
+function auth(){return currentSession;}
+function setAuth(session){currentSession=normalizeSession(session);}
+function initializeSupabase(){
+  return fetch('/api/supabase-config',{cache:'no-store',headers:{Accept:'application/json'}}).then(function(response){
+    if(!response.ok)throw new Error('Supabase public configuration is unavailable.');
+    return response.json();
+  }).then(function(config){
+    if(!config||!config.url||!config.anonKey)throw new Error('Supabase public configuration is unavailable.');
+    var projectUrl=new URL(config.url);
+    if(projectUrl.protocol!=='https:')throw new Error('Supabase public configuration is invalid.');
+    supabaseRedirectUrl=config.redirectUrl||location.origin+'/auth/callback';
+    return import('https://esm.sh/@supabase/supabase-js@2').then(function(library){
+      supabaseClient=library.createClient(projectUrl.origin,config.anonKey,{auth:{flowType:'pkce',autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}});
+      supabaseClient.auth.onAuthStateChange(function(event,session){
+        currentSession=normalizeSession(session);
+        if(event==='PASSWORD_RECOVERY'){
+          recoverySess=currentSession;mode='reset';
+          if(!ov)openAuth('reset');else draw();
+        }
+        if(event==='SIGNED_OUT'){lastHash='';pendingCloud=null;}
+        rerender();
+      });
+      return supabaseClient.auth.getSession().then(function(result){
+        if(result.error)throw result.error;
+        currentSession=normalizeSession(result.data.session);
+        return {client:supabaseClient,redirectUrl:supabaseRedirectUrl};
+      });
+    });
+  });
 }
+function startSupabase(){
+  supabaseReady=initializeSupabase();
+  supabaseReady.then(function(){syncInitError=false;rerender();if(auth()&&mode!=='reset')afterLogin();},function(){syncInitError=true;rerender();});
+}
+startSupabase();
+function syncMeta(){try{var value=JSON.parse(localStorage.getItem(SYNC_META_KEY)||'{}');return value&&typeof value==='object'?value:{};}catch(e){return {};}}
+function getSyncRevision(userId){var a=auth(),id=userId||(a&&a.user&&a.user.id),value=id?Number(syncMeta()[id]):0;return Number.isInteger(value)&&value>=0?value:0;}
+function setSyncRevision(revision,userId){
+  var a=auth(),id=userId||(a&&a.user&&a.user.id);if(!id)return;
+  var meta=syncMeta();meta[id]=Math.max(0,Number(revision)||0);
+  try{localStorage.setItem(SYNC_META_KEY,JSON.stringify(meta));}catch(e){}
+}
+function isSyncableKey(key){return !!key&&key.indexOf('edupulse')===0&&key!==STORAGE_KEYS.geminiKey&&key!==K&&key!==SYNC_META_KEY;}
 function snapshot(){
-  var o={};
-  for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf('edupulse')===0&&k!==STORAGE_KEYS.geminiKey&&k!==K)o[k]=localStorage.getItem(k);}
-  return o;
+  var data={};
+  for(var i=0;i<localStorage.length;i++){var key=localStorage.key(i);if(isSyncableKey(key))data[key]=localStorage.getItem(key);}
+  return data;
 }
-function hashOf(o){var s=JSON.stringify(o),h=0;for(var i=0;i<s.length;i++){h=((h<<5)-h+s.charCodeAt(i))|0;}return s.length+':'+h;}
+function hashOf(data){return JSON.stringify(Object.keys(data||{}).sort().map(function(key){return [key,data[key]];}));}
 function fetchCloud(){
-  return token().then(function(t){return sbFetch('/rest/v1/user_backups?select=data,updated_at&limit=1',{method:'GET'},t);}).then(function(rows){return rows&&rows[0]?rows[0]:null;});
+  var session=auth();if(!session||!session.user||!session.user.id)return Promise.reject(new Error('Please log in first.'));
+  return supabaseReady.then(function(context){return context.client.from('edupulse_sync_state').select('payload,revision,updated_at').eq('user_id',session.user.id).maybeSingle();})
+    .then(function(result){if(result.error)throw result.error;return result.data;});
 }
-function pushCloud(silent){
-  var a=auth();if(!a)return Promise.resolve();
-  var snap=snapshot(),h=hashOf(snap);
-  if(silent&&h===lastHash)return Promise.resolve();
-  return token().then(function(t){
-    return sbFetch('/rest/v1/user_backups?on_conflict=user_id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({user_id:a.user.id,data:snap,updated_at:new Date().toISOString()})},t);
-  }).then(function(){lastHash=h;cfg.lastSync=Date.now();save();updateSyncLabel();if(!silent)toast('Progress backed up');})
-    .catch(function(e){if(!silent)toast('Backup failed: '+e.message,'error');});
+function pushCloud(silent,expectedRevision){
+  var session=auth();if(!session||!session.user||!session.user.id)return Promise.resolve('signed-out');
+  var data=snapshot(),hash=hashOf(data),baseRevision=expectedRevision==null?getSyncRevision(session.user.id):Number(expectedRevision);
+  if(silent&&hash===lastHash)return Promise.resolve('unchanged');
+  return supabaseReady.then(function(context){
+    return context.client.rpc('save_edupulse_sync_state',{p_user_id:session.user.id,p_base_revision:baseRevision,p_payload:data});
+  }).then(function(result){
+    if(result.error)throw result.error;
+    var saved=Array.isArray(result.data)?result.data[0]:result.data;
+    if(!saved||saved.saved!==true){
+      pendingCloud={data:saved&&saved.payload||{},revision:Number(saved&&saved.revision)||0,updated_at:saved&&saved.updated_at||null,userId:session.user.id,conflict:true};
+      mode='restore';if(!ov)openAuth('restore');else draw();
+      if(!silent)toast('A newer backup exists. Choose which copy to keep.','info');
+      return 'conflict';
+    }
+    setSyncRevision(saved.revision,session.user.id);
+    cfg.lastSync=Date.parse(saved.updated_at)||Date.now();save();lastHash=hash;pendingCloud=null;updateSyncLabel();
+    if(!silent)toast('Progress backed up');
+    return 'saved';
+  }).catch(function(error){if(!silent)toast('Backup failed: '+friendly(error),'error');return 'failed';});
 }
-function applyCloud(d){
-  Object.keys(d).forEach(function(k){if(k.indexOf('edupulse')===0&&k!==STORAGE_KEYS.geminiKey&&k!==K)localStorage.setItem(k,d[k]);});
+function applyCloud(data,revision,userId){
+  var current=snapshot();
+  Object.keys(current).forEach(function(key){if(!Object.prototype.hasOwnProperty.call(data||{},key))localStorage.removeItem(key);});
+  Object.keys(data||{}).forEach(function(key){if(isSyncableKey(key)&&typeof data[key]==='string')localStorage.setItem(key,data[key]);});
+  setSyncRevision(revision,userId);
   location.reload();
 }
-function rerender(){var p=document.getElementById('bz-panel');if(p){p.outerHTML=panel();}}
-function ago(t){if(!t)return 'No backup yet';var m=Math.round((Date.now()-t)/60000);if(m<1)return 'Backed up just now';if(m<60)return 'Backed up '+m+' min ago';var h=Math.round(m/60);if(h<24)return 'Backed up '+h+' h ago';return 'Backed up '+new Date(t).toLocaleDateString();}
+function rerender(){var panelElement=document.getElementById('bz-panel');if(panelElement)panelElement.outerHTML=panel();}
+function ago(t){if(!t)return 'No backup yet';var stamp=typeof t==='number'?t:Date.parse(t),m=Math.round((Date.now()-stamp)/60000);if(m<1)return 'Backed up just now';if(m<60)return 'Backed up '+m+' min ago';var h=Math.round(m/60);if(h<24)return 'Backed up '+h+' h ago';return 'Backed up '+new Date(stamp).toLocaleDateString();}
 function updateSyncLabel(){var el=document.getElementById('bz-last');if(el)el.textContent=ago(cfg.lastSync);}
 
 /* ----- friendly errors + validation ----- */
-function friendly(e){
-  var m=(e&&e.message||'').toLowerCase();
-  if(m.indexOf('invalid login')>-1)return 'That email or password is not right. Try again, or reset your password.';
-  if(m.indexOf('already registered')>-1||m.indexOf('already been registered')>-1)return 'ALREADY';
-  if(m.indexOf('rate limit')>-1||m.indexOf('too many')>-1||(e&&e.status===429))return 'Too many attempts. Please wait a minute and try again.';
-  if(m.indexOf('email not confirmed')>-1)return 'Please confirm your email first. Check your inbox for the link.';
-  if(m.indexOf('password')>-1&&m.indexOf('short')>-1)return 'Password is too short. Use at least 8 characters.';
-  if(m.indexOf('failed to fetch')>-1||m.indexOf('network')>-1)return 'No connection. Check your internet and try again.';
-  return e&&e.message?e.message:'Something went wrong. Please try again.';
+function friendly(error){
+  var message=(error&&error.message||'').toLowerCase(),code=error&&error.code||'';
+  if(code==='invalid_credentials'||message.indexOf('invalid login credentials')>-1||message.indexOf('invalid credentials')>-1)return 'That email or password is not right. Try again, or reset your password.';
+  if(code==='email_not_confirmed'||message.indexOf('email not confirmed')>-1)return 'Please confirm your email first. Check your inbox for the link.';
+  if(code==='weak_password'||(message.indexOf('password')>-1&&(message.indexOf('short')>-1||message.indexOf('weak')>-1)))return 'Password is too weak. Use at least 8 characters.';
+  if(code==='email_address_invalid'||message.indexOf('invalid email')>-1)return 'Enter a valid email address.';
+  if(message.indexOf('rate limit')>-1||message.indexOf('too many')>-1||(error&&error.status===429))return 'Too many attempts. Please wait a minute and try again.';
+  if(message.indexOf('expired')>-1||message.indexOf('invalid code')>-1)return 'This link expired. Request a new one and try again.';
+  if(message.indexOf('sync payload exceeds')>-1||message.indexOf('payload too large')>-1)return 'Your saved progress is over the 512 KiB cloud backup limit. Remove older detailed test reviews, then try again.';
+  if(message.indexOf('failed to fetch')>-1||message.indexOf('network')>-1)return 'No connection. Check your internet and try again.';
+  if(syncInitError||message.indexOf('configuration')>-1)return 'Secure account sync is unavailable right now. Your progress is still saved on this device.';
+  return 'We could not complete that request. Please try again.';
 }
 function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);}
 function score(p){var s=0;if(p.length>=8)s++;if(p.length>=12)s++;if(/[a-z]/.test(p)&&/[A-Z]/.test(p))s++;if(/\d/.test(p)&&/[^A-Za-z0-9]|[a-z]/i.test(p))s++;return Math.min(4,p.length<8?Math.min(s,1):s);}
@@ -9864,7 +10235,7 @@ function view(){
   }else if(mode==='sent'){
     var c=sentInfo.kind==='confirm';
     v='<div class="bz-logo ok"><i class="fa-solid fa-envelope-circle-check"></i></div><h2>Check your inbox</h2><p class="bz-sub2">'
-     +(c?'We sent a confirmation link to ':'If an account exists for ')+'<b>'+esc(sentInfo.email)+'</b>'+(c?'. Open it to finish creating your account.':', a reset link is on its way.')+'</p>'
+     +(c?'If the address can be registered, a confirmation link was sent to ':'If an account exists for ')+'<b>'+esc(sentInfo.email)+'</b>'+(c?'. Open it to finish creating your account.':', a reset link is on its way.')+'</p>'
      +'<p class="bz-hint">Can\'t see it? Check your spam folder.</p>'
      +(c?'<button type="button" class="bz-ghost" id="bz-resend" onclick="__bzAcc.resend()">Resend email</button>':'')
      +'<p class="bz-sw"><button type="button" onclick="__bzAcc.open(\'login\')">Back to log in</button></p>';
@@ -9875,10 +10246,11 @@ function view(){
      +btn('Update password','fa-check')+'</form>';
   }else if(mode==='restore'){
     var when=pendingCloud&&pendingCloud.updated_at?new Date(pendingCloud.updated_at).toLocaleString():'earlier';
-    v='<div class="bz-logo ok"><i class="fa-solid fa-cloud-arrow-down"></i></div><h2>We found your saved progress</h2><p class="bz-sub2">Last saved '+esc(when)+'. Which copy do you want to use on this device?</p>'
-     +'<button type="button" class="bz-go" onclick="__bzAcc.useCloud()"><span><i class="fa-solid fa-cloud-arrow-down"></i> Load my saved progress</span></button>'
+    var conflict=pendingCloud&&pendingCloud.conflict;
+    v='<div class="bz-logo ok"><i class="fa-solid fa-cloud-arrow-down"></i></div><h2>'+(conflict?'A newer version is saved':'We found your saved progress')+'</h2><p class="bz-sub2">'+(conflict?'Your account changed on another device since this device last synced.':'Last saved '+esc(when)+'. Which copy do you want to use on this device?')+'</p>'
+     +'<button type="button" class="bz-go" onclick="__bzAcc.useCloud()"><span><i class="fa-solid fa-cloud-arrow-down"></i> Load saved progress</span></button>'
      +'<button type="button" class="bz-ghost" onclick="__bzAcc.keepLocal()">Keep this device\'s progress</button>'
-     +'<p class="bz-hint">Keeping this device\'s progress replaces the saved copy.</p>';
+     +'<p class="bz-hint">Your choice is checked against the latest account revision before saving.</p>';
   }
   return '<div class="bz-card"><button type="button" class="bz-close" aria-label="Close" onclick="__bzAcc.close()"><i class="fa-solid fa-xmark"></i></button>'+v+'</div>';
 }
@@ -9895,10 +10267,26 @@ function showErr(msg,html){var el=document.getElementById('bz-err');if(!el)retur
 function setBusy(b,label){busy=b;var g=document.getElementById('bz-go');if(!g)return;g.disabled=b;g.classList.toggle('load',b);}
 function markBad(id,bad){var el=document.getElementById(id);if(el)el.closest('.bz-f').classList.toggle('bad',bad);}
 function afterLogin(){
+  var session=auth();if(!session||!session.user||!session.user.id)return Promise.resolve('signed-out');
   return fetchCloud().then(function(row){
-    if(row&&row.data&&Object.keys(row.data).length){pendingCloud=row;mode='restore';if(!ov)openAuth('restore');else draw();}
-    else{closeAuth();rerender();return pushCloud(false);}
-  }).catch(function(){closeAuth();rerender();});
+    var local=snapshot(),localHash=hashOf(local),localRevision=getSyncRevision(session.user.id);
+    if(row){
+      var remote=row.payload||{},remoteRevision=Number(row.revision)||0,remoteHash=hashOf(remote);
+      if(localHash===remoteHash){
+        setSyncRevision(remoteRevision,session.user.id);lastHash=localHash;pendingCloud=null;
+        cfg.lastSync=Date.parse(row.updated_at)||cfg.lastSync;save();closeAuth();rerender();updateSyncLabel();return 'unchanged';
+      }
+      if(localRevision===remoteRevision){
+        lastHash=remoteHash;pendingCloud=null;closeAuth();rerender();
+        return pushCloud(true,remoteRevision);
+      }
+      pendingCloud={data:remote,revision:remoteRevision,updated_at:row.updated_at||null,userId:session.user.id,conflict:localRevision>0};
+      mode='restore';if(!ov)openAuth('restore');else draw();
+      return 'conflict';
+    }
+    setSyncRevision(0,session.user.id);lastHash='';closeAuth();rerender();
+    return pushCloud(false,0);
+  }).catch(function(error){closeAuth();rerender();if(auth())toast('Could not check your saved progress: '+friendly(error),'error');return 'failed';});
 }
 function startCooldown(){
   cooldown=30;clearInterval(cdTimer);
@@ -9918,59 +10306,69 @@ window.__bzAcc={
       if(!validEmail(email)){markBad('bz-email',true);showErr('Enter a valid email address.');return false;}
       if(pass.length<8){markBad('bz-pass',true);showErr('Password must be at least 8 characters.');return false;}
       setBusy(true);
-      sbFetch('/auth/v1/signup',{method:'POST',body:JSON.stringify({email:email,password:pass,data:{name:name}})}).then(function(j){
-        if(j&&j.access_token){setAuth(toSession(j));toast('Welcome, '+name+'!');return afterLogin();}
-        if(j&&j.user&&j.user.identities&&j.user.identities.length===0){setBusy(false);showErr('',"An account with this email already exists. <button type='button' class='bz-link' onclick=\"__bzAcc.open('login')\">Log in instead</button>");return;}
+      supabaseReady.then(function(context){return context.client.auth.signUp({email:email,password:pass,options:{emailRedirectTo:context.redirectUrl,data:{name:name}}});}).then(function(result){
+        if(result.error)throw result.error;
+        if(result.data&&result.data.session){setAuth(result.data.session);toast('Welcome, '+name+'!');return afterLogin();}
         sentInfo={kind:'confirm',email:email};mode='sent';draw();startCooldown();
-      }).catch(function(e){setBusy(false);var f=friendly(e);if(f==='ALREADY')showErr('',"An account with this email already exists. <button type='button' class='bz-link' onclick=\"__bzAcc.open('login')\">Log in instead</button>");else showErr(f);});
+      }).catch(function(error){setBusy(false);showErr(friendly(error));});
     }else if(mode==='login'){
       if(!validEmail(email)){markBad('bz-email',true);showErr('Enter a valid email address.');return false;}
       if(!pass){markBad('bz-pass',true);showErr('Enter your password.');return false;}
       setBusy(true);
-      sbFetch('/auth/v1/token?grant_type=password',{method:'POST',body:JSON.stringify({email:email,password:pass})}).then(function(j){
-        setAuth(toSession(j));var n=auth().user.name;toast(n?'Welcome back, '+n+'!':'Logged in');return afterLogin();
-      }).catch(function(e){setBusy(false);showErr(friendly(e));});
+      supabaseReady.then(function(context){return context.client.auth.signInWithPassword({email:email,password:pass});}).then(function(result){
+        if(result.error)throw result.error;
+        setAuth(result.data.session);var n=auth()&&auth().user.name;toast(n?'Welcome back, '+n+'!':'Logged in');return afterLogin();
+      }).catch(function(error){setBusy(false);showErr(friendly(error));});
     }else if(mode==='forgot'){
       if(!validEmail(email)){markBad('bz-email',true);showErr('Enter a valid email address.');return false;}
       setBusy(true);
-      sbFetch('/auth/v1/recover?redirect_to='+encodeURIComponent(location.origin+location.pathname),{method:'POST',body:JSON.stringify({email:email})}).then(function(){
+      supabaseReady.then(function(context){return context.client.auth.resetPasswordForEmail(email,{redirectTo:context.redirectUrl});}).then(function(result){
+        if(result.error)throw result.error;
         sentInfo={kind:'reset',email:email};mode='sent';draw();
-      }).catch(function(e){setBusy(false);showErr(friendly(e));});
+      }).catch(function(error){setBusy(false);showErr(friendly(error));});
     }else if(mode==='reset'){
       if(pass.length<8){markBad('bz-pass',true);showErr('Password must be at least 8 characters.');return false;}
       if(!recoverySess){showErr('This reset link has expired. Please request a new one.');return false;}
       setBusy(true);
-      sbFetch('/auth/v1/user',{method:'PUT',body:JSON.stringify({password:pass})},recoverySess.access_token).then(function(){
-        setAuth(recoverySess);recoverySess=null;toast('Password updated');return afterLogin();
-      }).catch(function(e){setBusy(false);showErr(friendly(e));});
+      supabaseReady.then(function(context){return context.client.auth.updateUser({password:pass});}).then(function(result){
+        if(result.error)throw result.error;
+        recoverySess=null;toast('Password updated');return afterLogin();
+      }).catch(function(error){setBusy(false);showErr(friendly(error));});
     }
     return false;
   },
   resend:function(){
     if(cooldown>0)return;
-    sbFetch('/auth/v1/resend',{method:'POST',body:JSON.stringify({type:'signup',email:sentInfo.email})}).then(function(){toast('Email sent','info');startCooldown();}).catch(function(e){toast(friendly(e),'error');});
+    supabaseReady.then(function(context){return context.client.auth.resend({type:'signup',email:sentInfo.email,options:{emailRedirectTo:context.redirectUrl}});}).then(function(result){
+      if(result.error)throw result.error;
+      toast('If the address is awaiting confirmation, a link was sent.','info');startCooldown();
+    }).catch(function(error){toast(friendly(error),'error');});
   },
-  useCloud:function(){if(pendingCloud&&pendingCloud.data)applyCloud(pendingCloud.data);},
-  keepLocal:function(){closeAuth();rerender();pushCloud(false);},
-  logout:function(){if(!confirm('Log out of this device? Your progress stays saved in your account.'))return;pushCloud(true).finally(function(){setAuth(null);lastHash='';rerender();toast('Logged out','info');if(typeof switchTab==='function')switchTab('settings');});},
+  useCloud:function(){if(pendingCloud)applyCloud(pendingCloud.data,pendingCloud.revision,pendingCloud.userId);},
+  keepLocal:function(){
+    if(!pendingCloud)return;
+    var baseRevision=Number(pendingCloud.revision)||0,userId=pendingCloud.userId||(auth()&&auth().user.id);
+    setSyncRevision(baseRevision,userId);closeAuth();rerender();return pushCloud(false,baseRevision);
+  },
+  logout:function(){
+    if(!confirm('Log out of this device? Your progress stays saved in your account.'))return;
+    pushCloud(true).then(function(status){
+      if(status==='conflict'){toast('Resolve the newer backup before logging out.','error');return;}
+      return supabaseReady.then(function(context){return context.client.auth.signOut();}).then(function(result){
+        if(result.error)throw result.error;
+        setAuth(null);lastHash='';pendingCloud=null;rerender();
+        toast(status==='failed'?'Logged out. This device still has your local progress, but the latest changes could not sync.':'Logged out','info');
+        if(typeof switchTab==='function')switchTab('settings');
+      }).catch(function(error){toast(friendly(error),'error');});
+    });
+  },
   now:function(){pushCloud(false);},
-  restore:function(){fetchCloud().then(function(r){if(!r||!r.data){toast('No saved progress yet','info');return;}pendingCloud=r;openAuth('restore');}).catch(function(x){toast(friendly(x),'error');});}
+  restore:function(){fetchCloud().then(function(row){if(!row){toast('No saved progress yet','info');return;}pendingCloud={data:row.payload||{},revision:Number(row.revision)||0,updated_at:row.updated_at||null,userId:auth()&&auth().user.id,conflict:false};openAuth('restore');}).catch(function(error){toast(friendly(error),'error');});}
 };
 function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
-/* links from emails: confirmation signs the student in, recovery opens the new-password dialog */
-function handleHash(){
-  var h=location.hash;if(h.indexOf('access_token=')<0)return;
-  var p=new URLSearchParams(h.slice(1)),at=p.get('access_token');if(!at)return;
-  var sess={access_token:at,refresh_token:p.get('refresh_token')||'',expires_at:Math.floor(Date.now()/1000)+(+p.get('expires_in')||3600),user:{}};
-  history.replaceState(null,'',location.pathname+location.search);
-  sbFetch('/auth/v1/user',{method:'GET'},at).then(function(u){
-    sess.user={id:u.id,email:u.email,name:(u.user_metadata&&u.user_metadata.name)||''};
-    if(p.get('type')==='recovery'){recoverySess=sess;openAuth('reset');}
-    else{setAuth(sess);toast('Email confirmed. You are logged in.');afterLogin();}
-  }).catch(function(){toast('That link has expired. Please try again.','error');});
-}
-/* automatic backup: when you leave the app, and every 2 minutes if anything changed */
-document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')pushCloud(true);});
+/* automatic backup: when you leave the app, on reconnect, and every 2 minutes if anything changed */
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden'&&auth())pushCloud(true);});
+window.addEventListener('online',function(){if(auth())pushCloud(true);});
 setInterval(function(){if(auth())pushCloud(true);},120000);
 
 /* ---------- settings panel ---------- */
@@ -9989,6 +10387,7 @@ function panel(){
    +'<div style="margin-top:14px"><div class="bz-h" style="color:#6366f1;margin-bottom:8px">Account &amp; backup</div>'+accountHtml()+'</div></div>';
 }
 function accountHtml(){
+  if(syncInitError)return '<div class="bz-acct off"><div class="bz-av"><i class="fa-solid fa-cloud-slash"></i></div><div class="bz-acct-t"><b>Cloud sync unavailable</b><small>Your progress is still saved on this device. Try reloading when you are back online.</small></div></div>';
   var a=auth();
   if(a){var u=a.user||{};
     return '<div class="bz-acct"><div class="bz-av">'+esc(initials(u.name,u.email))+'</div><div class="bz-acct-t"><b>'+esc(u.name||'Your account')+'</b><small>'+esc(u.email||'')+'</small><span class="bz-ok"><i></i><em id="bz-last">'+esc(ago(cfg.lastSync))+'</em> · automatic</span></div></div>'
@@ -10005,7 +10404,7 @@ function mountPanel(){
   if(sound){sound.checked=!!settings().sound;sound.setAttribute('onchange','__bz.toggleSound(this.checked)');}
 }
 var mo=new MutationObserver(function(){mountPanel();});
-function boot(){handleHash();var m=document.getElementById('main-container');if(m)mo.observe(m,{childList:true});applyPrefs();mountPanel();}
+  function boot(){var m=document.getElementById('main-container');if(m)mo.observe(m,{childList:true});applyPrefs();mountPanel();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 </script>
@@ -10901,7 +11300,7 @@ html body .quiz-session-layout.ep-tools-in-card .ep-qa-bm{display:none!important
     var s=StorageModule.get(STORAGE_KEYS.settings,defaultSettings)||{};
     STEP={subj:subj,ch:ch,qs:null,ex:new Set(),srcs:new Set(),topics:new Set(),
       len:String(s.practiceLength!=null?s.practiceLength:'20'),
-      src:s.practiceSource||'All',shuf:!!s.shuffleQuestions,shufOpt:!!s.shuffleOptions,
+      src:s.practiceSource||'All',difficulty:s.practiceDifficulty||'mixed',minutes:String(s.sessionMinutes||'30'),preset:s.practicePreset||'custom',shuf:!!s.shuffleQuestions,shufOpt:!!s.shuffleOptions,
       open:{opt:false,top:false}};
     opening=true;
     try{ if(currentTab!=='learn') switchTab('learn'); else renderView(); }finally{opening=false;}
@@ -10934,7 +11333,17 @@ html body .quiz-session-layout.ep-tools-in-card .ep-qa-bm{display:none!important
         if(ea==='other')return 1; if(eb==='other')return -1; return ea.localeCompare(eb,undefined,{numeric:true});});
       S.ex.forEach(function(k){if(secs.indexOf(k)<0)S.ex.delete(k);});
       stats=StorageModule.get(STORAGE_KEYS.qstats,{})||{};
-      base=vis.filter(function(q){return !S.ex.size||S.ex.has(secOf(q));});
+      base=vis.filter(function(q){
+        var stat=stats[q.qKey]||{},sourceMatch=true;
+        if(S.src==='Unseen')sourceMatch=!stat.seen;
+        else if(S.src==='Previously wrong')sourceMatch=(stat.wrong||0)>0||(stat.seen||0)>(stat.correct||0);
+        else if(S.src==='Bookmarked')sourceMatch=!!stat.bookmarked;
+        else if(S.src==='PYQ only')sourceMatch=!!(q.exam||q.year||/pyq/i.test(String(q.source||'')));
+        else if(S.src==='NCERT only')sourceMatch=/ncert/i.test([q.source,q.sourceName,q.book,q.sourceTitle].filter(Boolean).join(' '));
+        var raw=String(q.difficulty||q.level||'').toLowerCase();
+        var difficultyMatch=S.difficulty==='mixed'||!raw||(S.difficulty==='easy'&&/easy|basic|beginner/.test(raw))||(S.difficulty==='moderate'&&/moderate|medium|intermediate/.test(raw))||(S.difficulty==='difficult'&&/difficult|hard|advanced/.test(raw));
+        return (!S.ex.size||S.ex.has(secOf(q)))&&sourceMatch&&difficultyMatch;
+      });
       tops=Array.from(new Set(base.map(topOf).filter(Boolean)));
       S.topics.forEach(function(t){if(tops.indexOf(t)<0)S.topics.delete(t);});
       picked=base.filter(function(q){return !S.topics.size||S.topics.has(topOf(q));});
@@ -11011,7 +11420,10 @@ html body .quiz-session-layout.ep-tools-in-card .ep-qa-bm{display:none!important
       '<div class="eps-det-b"><div><p class="eps-lbl">Questions per session</p><div class="eps-row">'+
       lens.map(function(v){return '<button type="button" class="eps-seg '+(String(v)===S.len?'on':'')+'" data-v="'+v+'" onclick="epLen(this)">'+(v==='all'?'All':v)+'</button>';}).join('')+
       '</div></div><div class="eps-opts">'+
-      '<label>Show <select onchange="epSrc(this)">'+['All','Unseen','Previously wrong','Bookmarked','PYQ only'].map(function(o){return '<option'+(o===S.src?' selected':'')+'>'+o+'</option>';}).join('')+'</select></label>'+
+      '<label>Preset <select aria-label="Practice preset" onchange="epPreset(this)">'+[['ncert','NCERT'],['pyq','PYQ'],['incorrect','Incorrect'],['unattempted','Unattempted'],['full','Full Chapter'],['custom','Custom']].map(function(o){return '<option value="'+o[0]+'"'+(o[0]===S.preset?' selected':'')+'>'+o[1]+'</option>';}).join('')+'</select></label>'+
+      '<label>Difficulty <select aria-label="Question difficulty" onchange="epDifficulty(this)">'+[['easy','Easy'],['moderate','Moderate'],['difficult','Difficult'],['mixed','Mixed']].map(function(o){return '<option value="'+o[0]+'"'+(o[0]===S.difficulty?' selected':'')+'>'+o[1]+'</option>';}).join('')+'</select></label>'+
+      '<label>Time limit <select aria-label="Practice duration" onchange="epMinutes(this)">'+[['15','15 minutes'],['30','30 minutes'],['45','45 minutes'],['60','60 minutes']].map(function(o){return '<option value="'+o[0]+'"'+(o[0]===S.minutes?' selected':'')+'>'+o[1]+'</option>';}).join('')+'</select></label>'+
+      '<label>Show <select aria-label="Question status" onchange="epSrc(this)">'+['All','Unseen','Previously wrong','Bookmarked','PYQ only','NCERT only'].map(function(o){return '<option'+(o===S.src?' selected':'')+'>'+o+'</option>';}).join('')+'</select></label>'+
       '<label>Shuffle questions <input type="checkbox" '+(S.shuf?'checked':'')+' onchange="epShuf(this,\'shuf\')"></label>'+
       '<label>Shuffle options <input type="checkbox" '+(S.shufOpt?'checked':'')+' onchange="epShuf(this,\'shufOpt\')"></label></div></div></details>';
 
@@ -11038,14 +11450,24 @@ html body .quiz-session-layout.ep-tools-in-card .ep-qa-bm{display:none!important
   window.epEx=function(b){var v=b.dataset.v; if(!v) STEP.ex.clear(); else if(STEP.ex.has(v)) STEP.ex.delete(v); else STEP.ex.add(v); repaint();};
   window.epSrcPick=function(b){var v=b.dataset.v,had=v&&STEP.srcs.has(v); STEP.srcs.clear(); if(v&&!had) STEP.srcs.add(v); STEP.ex.clear(); repaint();};
   window.epTopic=function(b){var v=b.dataset.v; if(!v) STEP.topics.clear(); else if(STEP.topics.has(v)) STEP.topics.delete(v); else STEP.topics.add(v); repaint();};
-  window.epLen=function(b){STEP.len=b.dataset.v; repaint();};
-  window.epSrc=function(s){STEP.src=s.value; repaint();};
+  window.epLen=function(b){STEP.len=b.dataset.v;STEP.preset='custom';repaint();};
+  window.epSrc=function(s){STEP.src=s.value;STEP.preset='custom';repaint();};
+  window.epDifficulty=function(s){STEP.difficulty=s.value;STEP.preset='custom';repaint();};
+  window.epMinutes=function(s){STEP.minutes=s.value;STEP.preset='custom';repaint();};
+  window.epPreset=function(s){
+    STEP.preset=s.value;
+    if(s.value==='custom'){repaint();return;}
+    var filters={ncert:'NCERT only',pyq:'PYQ only',incorrect:'Previously wrong',unattempted:'Unseen',full:'All'};
+    STEP.src=filters[s.value]||'All';
+    if(s.value==='full'){STEP.len='all';STEP.ex.clear();STEP.srcs.clear();STEP.topics.clear();}
+    repaint();
+  };
   window.epShuf=function(c,k){STEP[k]=c.checked; repaint();};
   window.epOpen=function(k,d){if(STEP) STEP.open[k]=d.open;};
   window.epStart=function(){
     var S=STEP; if(!S) return;
     var s=StorageModule.get(STORAGE_KEYS.settings,defaultSettings);
-    s.practiceLength=S.len; s.practiceSource=S.src; s.shuffleQuestions=S.shuf; s.shuffleOptions=S.shufOpt;
+    s.practiceLength=S.len; s.practiceSource=S.src; s.practiceDifficulty=S.difficulty; s.sessionMinutes=S.minutes; s.practicePreset=S.preset; s.shuffleQuestions=S.shuf; s.shuffleOptions=S.shufOpt;
     StorageModule.set(STORAGE_KEYS.settings,s);
     var exSet=new Set(S.ex); if(!exSet.size&&S.srcs.size){S.qs.forEach(function(q){if(S.srcs.has(gk(q.source)))exSet.add(secOf(q));});} EP_SCOPE.ex=exSet; EP_SCOPE.srcs=new Set(); EP_SCOPE.topics=new Set(S.topics); EP_SCOPE.key=S.subj+'|'+S.ch;
     setupQuizMode('practice',S.subj,S.ch,null,true);
