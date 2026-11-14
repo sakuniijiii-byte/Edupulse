@@ -1,0 +1,320 @@
+{
+ "schema": "edupulse.flashcards/1",
+ "id": "biology-diversity-in-the-living-world-allen-flash",
+ "subject": "Biology",
+ "chapter": "Diversity in the Living World",
+ "source": "allen",
+ "title": "The Living World · NCR recall",
+ "cards": [
+  {
+   "id": "allen-lw-fc-001",
+   "topic": "Living world",
+   "front": "Increase in mass and in number of individuals are twin characteristics of which feature of living organisms?",
+   "back": "Growth"
+  },
+  {
+   "id": "allen-lw-fc-002",
+   "topic": "Living world",
+   "front": "True or false: growth, reproduction and the ability to sense the environment are features of living organisms.",
+   "back": "True"
+  },
+  {
+   "id": "allen-lw-fc-003",
+   "topic": "Living world",
+   "front": "Who is called the “Darwin of the 20th century”?",
+   "back": "Ernst Mayr"
+  },
+  {
+   "id": "allen-lw-fc-004",
+   "topic": "Living world",
+   "front": "Taxonomic studies recognise similarities shared among organisms both ‘A’ and ‘B’.",
+   "back": "A: horizontally\nB: vertically"
+  },
+  {
+   "id": "allen-lw-fc-005",
+   "topic": "Living world",
+   "front": "What is the common method of multiplication in fungi, filamentous algae and the protonema of mosses?",
+   "back": "Fragmentation"
+  },
+  {
+   "id": "allen-lw-fc-006",
+   "topic": "Living world",
+   "front": "Why is reproduction not a defining characteristic of living organisms?",
+   "back": "Many organisms cannot reproduce (for example mules and sterile worker bees)."
+  },
+  {
+   "id": "allen-lw-fc-007",
+   "topic": "Living world",
+   "front": "For unicellular organisms like bacteria, unicellular algae and *Amoeba*, ‘A’ is synonymous with ‘B’.",
+   "back": "A: reproduction\nB: growth"
+  },
+  {
+   "id": "allen-lw-fc-008",
+   "topic": "Living world",
+   "front": "True or false: in the majority of higher animals and plants, growth and reproduction are mutually exclusive events.",
+   "back": "True"
+  },
+  {
+   "id": "allen-lw-fc-009",
+   "topic": "Living world",
+   "front": "True or false: properties of tissues are not present in the constituent cells but arise from interactions among them.",
+   "back": "True"
+  },
+  {
+   "id": "allen-lw-fc-010",
+   "topic": "Living world",
+   "front": "What is the sum total of all chemical reactions in a living body?",
+   "back": "Metabolism",
+   "note": "Anabolism + catabolism"
+  },
+  {
+   "id": "allen-lw-fc-011",
+   "topic": "Living world",
+   "front": "What is the most obvious and technically complicated feature of all living organisms?",
+   "back": "Consciousness"
+  },
+  {
+   "id": "allen-lw-fc-012",
+   "topic": "Living world",
+   "front": "A brain-dead patient has no self-consciousness and never returns to normal life. Living or non-living?",
+   "back": "Living"
+  },
+  {
+   "id": "allen-lw-fc-013",
+   "topic": "Living world",
+   "front": "Early man could easily perceive the difference between ______ matter and living organisms.",
+   "back": "Inanimate"
+  },
+  {
+   "id": "allen-lw-fc-014",
+   "topic": "Living world",
+   "front": "The number and types of organisms present on earth is called?",
+   "back": "Biodiversity"
+  },
+  {
+   "id": "allen-lw-fc-015",
+   "topic": "Living world",
+   "front": "How many species are known and described till now?",
+   "back": "1.7 – 1.8 million"
+  },
+  {
+   "id": "allen-lw-fc-016",
+   "topic": "Nomenclature",
+   "front": "Each name in binomial nomenclature has two components: ‘A’ and ‘B’.",
+   "back": "A: generic name\nB: specific epithet"
+  },
+  {
+   "id": "allen-lw-fc-017",
+   "topic": "Nomenclature",
+   "front": "Who gave the binomial naming system now used by biologists worldwide?",
+   "back": "Carolus Linnaeus"
+  },
+  {
+   "id": "allen-lw-fc-018",
+   "topic": "Nomenclature",
+   "front": "What is the full form of ICBN?",
+   "back": "International Code of Botanical Nomenclature",
+   "note": "It provides the agreed principles for naming plants."
+  },
+  {
+   "id": "allen-lw-fc-019",
+   "topic": "Nomenclature",
+   "front": "Biological names are generally in ‘A’ language and written in ‘B’.",
+   "back": "A: Latin\nB: italics"
+  },
+  {
+   "id": "allen-lw-fc-020",
+   "topic": "Nomenclature",
+   "front": "When handwritten, both words of a biological name are ______ ; printed, they are in ______ , to indicate their Latin origin.",
+   "back": "Separately underlined; italics"
+  },
+  {
+   "id": "allen-lw-fc-021",
+   "topic": "Nomenclature",
+   "front": "In a binomial, how are the first letters of the first and second word written, respectively?",
+   "back": "Capital and small"
+  },
+  {
+   "id": "allen-lw-fc-022",
+   "topic": "Nomenclature",
+   "front": "Standardising names so one organism has the same name all over the world is called?",
+   "back": "Nomenclature"
+  },
+  {
+   "id": "allen-lw-fc-023",
+   "topic": "Nomenclature",
+   "front": "In *Mangifera indica*, what do *Mangifera* and *indica* represent?",
+   "back": "Genus and specific epithet"
+  },
+  {
+   "id": "allen-lw-fc-024",
+   "topic": "Nomenclature",
+   "front": "Scientific names of (A) human, (B) potato, (C) leopard?",
+   "back": "*Homo sapiens*\n*Solanum tuberosum*\n*Panthera pardus*"
+  },
+  {
+   "id": "allen-lw-fc-025",
+   "topic": "Nomenclature",
+   "front": "Match: Man, Housefly, Mango, Wheat with *Mangifera indica*, *Triticum aestivum*, *Homo sapiens*, *Musca domestica*.",
+   "back": "Man: *Homo sapiens*\nHousefly: *Musca domestica*\nMango: *Mangifera indica*\nWheat: *Triticum aestivum*"
+  },
+  {
+   "id": "allen-lw-fc-026",
+   "topic": "Nomenclature",
+   "front": "Who used *Systema Naturae* as the title of his publication?",
+   "back": "Linnaeus"
+  },
+  {
+   "id": "allen-lw-fc-027",
+   "topic": "Nomenclature",
+   "front": "Who wrote “Théorie élémentaire de la botanique”?",
+   "back": "A. P. de Candolle"
+  },
+  {
+   "id": "allen-lw-fc-028",
+   "topic": "Taxonomy",
+   "front": "The process of placing organisms into taxa on the basis of characteristics is called?",
+   "back": "Classification"
+  },
+  {
+   "id": "allen-lw-fc-029",
+   "topic": "Taxonomy",
+   "front": "The word systematics comes from the Latin ‘systema’. What does it mean?",
+   "back": "Systematic arrangement of organisms"
+  },
+  {
+   "id": "allen-lw-fc-030",
+   "topic": "Taxonomy",
+   "front": "What are the three basics of taxonomy?",
+   "back": "Identification, nomenclature, classification"
+  },
+  {
+   "id": "allen-lw-fc-031",
+   "topic": "Taxonomy",
+   "front": "The earliest classifications were based on the ______ of various organisms.",
+   "back": "Uses (economic importance)"
+  },
+  {
+   "id": "allen-lw-fc-032",
+   "topic": "Taxonomy",
+   "front": "What is a genus?",
+   "back": "A group of related species with more characters in common than with species of other genera."
+  },
+  {
+   "id": "allen-lw-fc-033",
+   "topic": "Taxonomy",
+   "front": "Felidae and *Felis* represent which taxonomic categories, respectively?",
+   "back": "Family and genus"
+  },
+  {
+   "id": "allen-lw-fc-034",
+   "topic": "Taxonomy",
+   "front": "*Solanum*, *Petunia* and *Datura* belong to which family?",
+   "back": "Solanaceae"
+  },
+  {
+   "id": "allen-lw-fc-035",
+   "topic": "Taxonomy",
+   "front": "A group of individual organisms with fundamental morphological similarities is called?",
+   "back": "Species"
+  },
+  {
+   "id": "allen-lw-fc-036",
+   "topic": "Taxonomy",
+   "front": "Which group of related genera has fewer similarities than a genus or species?",
+   "back": "Family"
+  },
+  {
+   "id": "allen-lw-fc-037",
+   "topic": "Taxonomy",
+   "front": "Fishes, amphibians, reptiles, birds and mammals together form which higher category?",
+   "back": "Phylum (Chordata)"
+  },
+  {
+   "id": "allen-lw-fc-038",
+   "topic": "Taxonomy",
+   "front": "As we go from species up to kingdom, what happens to the number of common characters?",
+   "back": "They decrease"
+  },
+  {
+   "id": "allen-lw-fc-039",
+   "topic": "Taxonomy",
+   "front": "Kingdom ← Phylum ← B ← Order ← A ← Genus ← Species. Find A and B.",
+   "back": "A: family\nB: class"
+  },
+  {
+   "id": "allen-lw-fc-040",
+   "topic": "Taxonomy",
+   "front": "Find the odd one: Chordata, Carnivora, *Solanum*, Mammalia.",
+   "back": "*Solanum*",
+   "note": "It is a genus; the others are higher categories."
+  },
+  {
+   "id": "allen-lw-fc-041",
+   "topic": "Taxonomy",
+   "front": "Find the odd one by rank: Sapindales, Anacardiaceae, Poales.",
+   "back": "Anacardiaceae",
+   "note": "It is a family; the others are orders."
+  },
+  {
+   "id": "allen-lw-fc-042",
+   "topic": "Taxonomy",
+   "front": "*Triticum aestivum* → *Triticum* → A → Poales → B → Angiospermae. Identify A and B.",
+   "back": "A: Poaceae\nB: Monocotyledonae"
+  },
+  {
+   "id": "allen-lw-fc-043",
+   "topic": "Taxonomy",
+   "front": "Why is it harder to determine relationships at higher categories?",
+   "back": "Common characters are fewer in higher taxa."
+  },
+  {
+   "id": "allen-lw-fc-044",
+   "topic": "Taxonomy",
+   "front": "‘Animals’, ‘mammals’ and ‘dogs’ represent taxa at what levels?",
+   "back": "Different levels"
+  },
+  {
+   "id": "allen-lw-fc-045",
+   "topic": "Taxonomy",
+   "front": "Each step in the hierarchy of classification represents a ______ or ______ .",
+   "back": "Rank or category"
+  },
+  {
+   "id": "allen-lw-fc-046",
+   "topic": "Taxonomy",
+   "front": "All the taxonomic categories together constitute the ______ .",
+   "back": "Taxonomic hierarchy"
+  },
+  {
+   "id": "allen-lw-fc-047",
+   "topic": "Taxonomy",
+   "front": "What is the highest category to which animals of all phyla are assigned?",
+   "back": "Kingdom"
+  },
+  {
+   "id": "allen-lw-fc-048",
+   "topic": "Taxonomy",
+   "front": "A species determined on the basis of morphological characters is called?",
+   "back": "Taxonomic species"
+  },
+  {
+   "id": "allen-lw-fc-049",
+   "topic": "Taxonomy",
+   "front": "Ernst Mayr proposed which concept of species?",
+   "back": "Biological concept"
+  },
+  {
+   "id": "allen-lw-fc-050",
+   "topic": "Taxonomy",
+   "front": "Which classification is done with computers and uses all observable characteristics?",
+   "back": "Phenetic (numerical) classification"
+  },
+  {
+   "id": "allen-lw-fc-051",
+   "topic": "Taxonomy",
+   "front": "Why are taxonomic studies of plants and animals useful?",
+   "back": "They help agriculture, forestry and industry, and show our bio-resources and their diversity."
+  }
+ ]
+}
