@@ -1,0 +1,2290 @@
+{
+ "sourceId": "unacademy",
+ "sourceLabel": "Unacademy",
+ "exercise": "ex4",
+ "meta": {
+  "chapter": "Diversity in the Living World",
+  "subject": "Biology",
+  "total": 123,
+  "section": "Exercise IV (previous year questions)"
+ },
+ "qs": [
+  {
+   "id": "lw-ex4-1",
+   "no": 1,
+   "q": "Which one of the following is not a correct statement?",
+   "o": [
+    "Key is taxonomic aid for identification of specimens",
+    "Herbarium houses dried, pressed and preserved plants specimen",
+    "Botanical gardens have collection of living plant for reference",
+    "A museum has collection of photographs of plants and animals"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-1",
+   "exam": "NEET-UG-2013"
+  },
+  {
+   "id": "lw-ex4-2",
+   "no": 2,
+   "q": "Planaria possess high capacity of:",
+   "o": [
+    "Metamorphosis",
+    "Regeneration",
+    "Alternation of generation",
+    "Bioluminescence"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-2",
+   "exam": "NEET-UG-2013"
+  },
+  {
+   "id": "lw-ex4-3",
+   "no": 3,
+   "q": "Nomenclature is governed by certain universal rules. Which one of the following is contrary to the rules of nomenclature?",
+   "o": [
+    "Biological names can be written in any language",
+    "The first word in a biological name represents the genus name and second is specific epithet",
+    "The names are written in latin and are italicized",
+    "When written by hand, the names are to be underlined"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-3",
+   "exam": "NEET-I-2016"
+  },
+  {
+   "id": "lw-ex4-4",
+   "no": 4,
+   "q": "The label of a herbarium sheet does not carry information on:",
+   "o": [
+    "Name of collector",
+    "Local names",
+    "Height of the plant",
+    "Date of collection"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-4",
+   "exam": "NEET-I-2016"
+  },
+  {
+   "id": "lw-ex4-5",
+   "no": 5,
+   "q": "Match Column I with Column II for housefly classification and select the correct option using the codes given below:",
+   "o": [
+    "(a)–(iii), (b)–(ii), (c)–(iv), (d)–(i)",
+    "(a)–(iv), (b)–(iii), (c)–(ii), (d)–(i)",
+    "(a)–(iv), (b)–(ii), (c)–(i), (d)–(iii)",
+    "(a)–(iii), (b)–(i), (c)–(iv), (d)–(ii)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "",
+     "Column-I",
+     "",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(a)",
+      "Family",
+      "(i)",
+      "Dipetera"
+     ],
+     [
+      "(b)",
+      "Order",
+      "(ii)",
+      "Arthropoda"
+     ],
+     [
+      "(c)",
+      "Class",
+      "(iii)",
+      "Muscidae"
+     ],
+     [
+      "(d)",
+      "Phylum",
+      "(iv)",
+      "Insecta"
+     ]
+    ]
+   },
+   "ref": "LW-5",
+   "exam": "NEET-I-2016"
+  },
+  {
+   "id": "lw-ex4-6",
+   "no": 6,
+   "q": "Study the four statements (A-D) given below and select the two correct ones out of them:\n(A) Definition of biological species was given by Ernst Mayr\n(B) Photoperiod does not affect reproduction in plant\n(C) Binomial nomenclature system was given by R. H. Whittaker\n(D) In unicellular organisms, reproduction is synonymous with growth The two correct statement are:",
+   "o": [
+    "C and D",
+    "A and D",
+    "A and B",
+    "B and C"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-6",
+   "exam": "NEET-I-2016"
+  },
+  {
+   "id": "lw-ex4-7",
+   "no": 7,
+   "q": "Match the items given in Column-I with those Column-II and select the Correct option given below:",
+   "o": [
+    "a–i, b–iv, c–iii, d–ii",
+    "a–iii, b–ii, c–i, d–iv",
+    "a–ii, b–iv, c–iii, d–i",
+    "a–iii, b–iv, c–i, d–ii"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "",
+     "Column-I",
+     "",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(a)",
+      "Herbarium",
+      "(i)",
+      "It is a place having a collection of preserved plants and animals."
+     ],
+     [
+      "(b)",
+      "Key",
+      "(ii)",
+      "A list that enumerates methodically all the species found in an area with brief description aiding identification."
+     ],
+     [
+      "(c)",
+      "Museum",
+      "(iii)",
+      "Is a place where dried and pressed plant specimens mounted on sheets are kept."
+     ],
+     [
+      "(d)",
+      "Catalogue",
+      "(iv)",
+      "A booklet containing a list of characters and their alternates which are helpful in identification various taxa."
+     ]
+    ]
+   },
+   "ref": "LW-7",
+   "exam": "NEET–2018"
+  },
+  {
+   "id": "lw-ex4-8",
+   "no": 8,
+   "q": "Select the correctly written scientific name of Mango which was first described by Carolus Linnaeus:",
+   "o": [
+    "Mangifera indica",
+    "Mangifera Indica",
+    "Mangifera indica Car. Linn.",
+    "Mangifera indica Linn."
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-8",
+   "exam": "NEET–2019"
+  },
+  {
+   "id": "lw-ex4-9",
+   "no": 9,
+   "q": "Which of the following statements is incorrect?",
+   "o": [
+    "Infective constituent in viruses is the protein coat.",
+    "Prions consist of abnormally folded proteins.",
+    "Viroids lack a protein coat.",
+    "Viruses are obligate parasites."
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "alsoAt": [
+    "BC-52"
+   ],
+   "ref": "LW-9",
+   "exam": "NEET–2019"
+  },
+  {
+   "id": "lw-ex4-10",
+   "no": 10,
+   "q": "Which of the following is against the rules of ICBN?",
+   "o": [
+    "Hand written scientific names should be underlined.",
+    "Every species should have a generic name and a specific epithet.",
+    "Scientific names are in Latin and should be italicized.",
+    "Generic and specific names should be written starting with small letters."
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-10",
+   "exam": "NEET–2020"
+  },
+  {
+   "id": "lw-ex4-11",
+   "no": 11,
+   "q": "The contrasting characteristics generally in a pair used for identification of animals in taxonomic key are referred to as:",
+   "o": [
+    "Lead",
+    "Couplet",
+    "Doublet",
+    "Alternate"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-11",
+   "exam": "NEET–2020"
+  },
+  {
+   "id": "lw-ex4-12",
+   "no": 12,
+   "q": "Which one of the following belongs to the family muscidae?",
+   "o": [
+    "Fire fly",
+    "Grasshopper",
+    "Cockroach",
+    "House fly"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-12",
+   "exam": "NEET–2020"
+  },
+  {
+   "id": "lw-ex4-13",
+   "no": 13,
+   "q": "In the taxonomic categories which hierarchical arrangement in ascending order is correct in case of animals?",
+   "o": [
+    "Kingdom, Phylum, Class, Order, Family, Genus, Species",
+    "Kingdom, Class, Phylum, Family, Order, Genus, Species",
+    "Kingdom, Order, Class, Phylum, Family, Genus, Species",
+    "Kingdom, Order, Phylum, Class, Family, Genus, Species"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-13",
+   "exam": "NEET–2022"
+  },
+  {
+   "id": "lw-ex4-14",
+   "no": 14,
+   "q": "'X' and 'Y' are the components of Binomial nomenclature. This naming system was proposed by 'Z':",
+   "o": [
+    "X-Generic name, Y-Specific epithet, Z-Carolus Linnaeus",
+    "X-Specific epithet, Y-Generic name, Z-R.H. Whittaker",
+    "X-Specific epithet, Y-Generic name, Z-Carolus Linnaeus",
+    "X-Generic name, Y-Specific epithet, Z-R.H. Whittaker"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-14",
+   "exam": "NEET–2022"
+  },
+  {
+   "id": "bc-ex4-1",
+   "no": 15,
+   "q": "Which of the following are likely to be present in deep sea water ?",
+   "o": [
+    "Saprophytic fungi",
+    "Archaebacteria",
+    "Eubacteria",
+    "Blue-green algae"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-1",
+   "exam": "NEET-UG—2013"
+  },
+  {
+   "id": "bc-ex4-2",
+   "no": 16,
+   "q": "A good producer of citric acid is:",
+   "o": [
+    "Saccharomyces",
+    "Aspergillus",
+    "Pseudomonas",
+    "Clostridium"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-2",
+   "exam": "NEET-UG—2013"
+  },
+  {
+   "id": "bc-ex4-3",
+   "no": 17,
+   "q": "Select the wrong statement:",
+   "o": [
+    "Chlamydomonas exhibits both isogamy and anisogamy and Fucus shows oogamy",
+    "Isogemetes are similar in structure, function and behaviour",
+    "Anisogametes differ either in structure, function or behaviour",
+    "In Oomycetes female gamete is smaller and motile, while male gamete is larger and non-motile"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-3",
+   "exam": "NEET-UG—2013"
+  },
+  {
+   "id": "bc-ex4-4",
+   "no": 18,
+   "q": "Which of the following represents maximum number of species among global diversity ?",
+   "o": [
+    "Mosses and fern",
+    "Algae",
+    "Lichens",
+    "Fungi"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "alsoAt": [
+    "PK-4"
+   ],
+   "ref": "BC-4",
+   "exam": "NEET-UG—2013"
+  },
+  {
+   "id": "bc-ex4-5",
+   "no": 19,
+   "q": "Pigment - containing membranous extensions in some cyanobacteria are:",
+   "o": [
+    "Chromatophores",
+    "Heterocysts",
+    "Basal bodies",
+    "Pneumatophores"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-5",
+   "exam": "NEET-UG—2013"
+  },
+  {
+   "id": "bc-ex4-6",
+   "no": 20,
+   "q": "Which of the following is not correctly matched for the organism and its cell wall degrading enzyme ?",
+   "o": [
+    "Fungi – Chitinase",
+    "Bacteria - Lysozyme",
+    "Plant cells – Cellulase",
+    "Algae – Methylase"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-6",
+   "exam": "NEET-UG—2013"
+  },
+  {
+   "id": "bc-ex4-7",
+   "no": 21,
+   "q": "Five kingdom system of classification suggested by RH Whittaker is not based on:",
+   "o": [
+    "Presence or absence of a well defined nucleus",
+    "Mode of reproduction",
+    "Mode of nutrition",
+    "Complexity of body organisation"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-7",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "bc-ex4-8",
+   "no": 22,
+   "q": "Which one of the following fungi contain hallucinogens ?",
+   "o": [
+    "Morchella esculenta",
+    "Amanita muscari",
+    "Neurospora sp.",
+    "Ustilago sp."
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-8",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "bc-ex4-9",
+   "no": 23,
+   "q": "Archaebacteria differ from eubacteria in:",
+   "o": [
+    "Cell membrane",
+    "Mode of nutrition",
+    "Cell shape",
+    "Mode of reproduction"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-9",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "bc-ex4-10",
+   "no": 24,
+   "q": "Anoxygenic photosynthesis is characteristic of:",
+   "o": [
+    "Rhodospirillum",
+    "Spirogyra",
+    "Chlamydomonas",
+    "Ulva"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-10",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "bc-ex4-11",
+   "no": 25,
+   "q": "Which of the following shows coiled RNA strand and capsomeres ?",
+   "o": [
+    "Polio virus",
+    "Tobacco mosaic virus",
+    "Measles virus",
+    "Retrovirus"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-11",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "bc-ex4-12",
+   "no": 26,
+   "q": "Transformation was discovered by:",
+   "o": [
+    "Meselson and Stahl",
+    "Hershey and Chase",
+    "Griffith",
+    "Watson and Crick"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-12",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "bc-ex4-13",
+   "no": 27,
+   "q": "Viruses have:",
+   "o": [
+    "DNA enclosed in a protein coat",
+    "Prokaryotic nucleus",
+    "Single chromosome",
+    "Both DNA and RNA"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-13",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "bc-ex4-14",
+   "no": 28,
+   "q": "Which one of the following living organisms completely lack a cell wall ?",
+   "o": [
+    "Cyanobacteria",
+    "Sea – fan (Gorgonia)",
+    "Sacchromyces",
+    "Blue-green algae"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-14",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "bc-ex4-15",
+   "no": 29,
+   "q": "Which one of the following matches is correct ?",
+   "o": [
+    "Alternaria – Sexual reproduction absent – Deuteromycetes",
+    "Mucor – Reproduction by Conjugation – Ascomycetes",
+    "Agaricus – Parasitic fungus – Basidiomycetes",
+    "Phytophthora – Aseptate mycelium – Basidiomycetes"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-15",
+   "exam": "AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-16",
+   "no": 30,
+   "q": "True nucleus is absent in:",
+   "o": [
+    "Mucor",
+    "Vaucheria",
+    "Volvox",
+    "Anabaena"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-16",
+   "exam": "AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-17",
+   "no": 31,
+   "q": "Which one of the following is not an inclusion body found in prokaryotes ?",
+   "o": [
+    "Cyanophycean granule",
+    "Glycogen granule",
+    "Polysome",
+    "Phosphate granule"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-17",
+   "exam": "AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-18",
+   "no": 32,
+   "q": "The guts of cow and buffalo possess:",
+   "o": [
+    "Chlorella spp.",
+    "Methanogens",
+    "Cyanobacteria",
+    "Fucus spp."
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-18",
+   "exam": "AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-19",
+   "no": 33,
+   "q": "Which one is a wrong statement ?",
+   "o": [
+    "Brown algae have chlorophyll a, c and fucoxanthin",
+    "Archegonia are found in Bryophyta Pteridophyta and Gymnosperms",
+    "Mucor has biflagellate zoospores",
+    "Haploid endosperm is typical feature of gymnosperms"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "alsoAt": [
+    "PK-17"
+   ],
+   "ref": "BC-19",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-20",
+   "no": 34,
+   "q": "Which of the following structures is not found in prokaryotic cells ?",
+   "o": [
+    "Plasma membrane",
+    "Nuclear envelope",
+    "Ribosome",
+    "Mesosome"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-20",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-21",
+   "no": 35,
+   "q": "Choose the wrong statement:",
+   "o": [
+    "Yeast is unicellular and useful in fermentation",
+    "Penicillium is multicellular and produces antibiotics",
+    "Neurospora is used in the study of biochemical genetics",
+    "Morels and truffles are poisonous mushrooms"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-21",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-22",
+   "no": 36,
+   "q": "Which of the following are not membrane- bound ?",
+   "o": [
+    "Mesosomes",
+    "Vacuoles",
+    "Ribosomes",
+    "Lysosomes"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-22",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-23",
+   "no": 37,
+   "q": "Cell wall is absent in:",
+   "o": [
+    "Nostoc",
+    "Aspergillus",
+    "Funaria",
+    "Mycoplasma"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-23",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-24",
+   "no": 38,
+   "q": "In which group of organisms the cells walls form two thin overlapping shells which fit together ?",
+   "o": [
+    "Slime moulds",
+    "Chrysophytes",
+    "Euglenoids",
+    "Dinoflagellates"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-24",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-25",
+   "no": 39,
+   "q": "Chromatophores take part in:",
+   "o": [
+    "Respiration",
+    "Photosynthesis",
+    "Growth",
+    "Movement"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-25",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-26",
+   "no": 40,
+   "q": "The structures that help some bacteria to attach to rocks and/or host tissues are:",
+   "o": [
+    "Holdfast",
+    "Rhizoids",
+    "Fimbriae",
+    "Mesosomes"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-26",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-27",
+   "no": 41,
+   "q": "The imperfect fungi which are decomposers of litter and help in mineral cycling belong to:",
+   "o": [
+    "Ascomycetes",
+    "Deuteromycetes",
+    "Basidiomycetes",
+    "Phycomycetes"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-27",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-28",
+   "no": 42,
+   "q": "Pick up the wrong statement:",
+   "o": [
+    "Nuclear membrane is present in Monera",
+    "Cell wall is absent in Animalia",
+    "Protista have photosynthetic and heterotrophic modes of nutrition",
+    "Some fungi are edible"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-28",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-29",
+   "no": 43,
+   "q": "Denitrification is done by:",
+   "o": [
+    "Pseudomonas",
+    "Nitrosomones",
+    "Nitrobecter",
+    "Nitrococcus"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-29",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "bc-ex4-30",
+   "no": 44,
+   "q": "Which of the following statements is wrong for viroids ?",
+   "o": [
+    "They lack a protein coat",
+    "They are smaller than viruses",
+    "They causes infections",
+    "Their RNA is of high molecular weight"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-30",
+   "exam": "NEET-I – 2016"
+  },
+  {
+   "id": "bc-ex4-31",
+   "no": 45,
+   "q": "One of the major components of cell wall of most fungi is:",
+   "o": [
+    "Chitin",
+    "Peptidoglycan",
+    "Cellulose",
+    "Hemicellulose"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-31",
+   "exam": "NEET-I – 2016"
+  },
+  {
+   "id": "bc-ex4-32",
+   "no": 46,
+   "q": "Which one of the following statements is wrong ?",
+   "o": [
+    "Cyanobacteria are also called blue- green algae",
+    "Golden algae are also called desmids",
+    "Eubacteria are also called false bacteria",
+    "Phycomycetes are also called algal fungi"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-32",
+   "exam": "NEET-I – 2016"
+  },
+  {
+   "id": "bc-ex4-33",
+   "no": 47,
+   "q": "Chrysophytes, Euglenoids, Dinoflagellates and Slime moulds are includes in the kingdom:",
+   "o": [
+    "Animalia",
+    "Protista",
+    "Monera",
+    "Fungi"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-33",
+   "exam": "NEET-I – 2016"
+  },
+  {
+   "id": "bc-ex4-34",
+   "no": 48,
+   "q": "Select the wrong statement:",
+   "o": [
+    "Pili and fimbriae are mainly involved in motility of bacterial cells",
+    "Cyanobacteria lack flagellated cells",
+    "Mycoplasma is a wall-less microorganism",
+    "Bacterial cell wall is made up of peptidoglycan"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-34",
+   "exam": "NEET-II – 2016"
+  },
+  {
+   "id": "bc-ex4-35",
+   "no": 49,
+   "q": "Which one of the following is wrong for fungi ?",
+   "o": [
+    "All fungi possess a purely cellulosic cell wall",
+    "They are heterotrophic",
+    "They are both unicellular and multicellular",
+    "They are eukaryotic"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-35",
+   "exam": "NEET-II – 2016"
+  },
+  {
+   "id": "bc-ex4-36",
+   "no": 50,
+   "q": "Methanogens belong to:",
+   "o": [
+    "Archaebacteria",
+    "Dinoflagellates",
+    "Slime moulds",
+    "Eubacteria"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-36",
+   "exam": "NEET-II – 2016"
+  },
+  {
+   "id": "bc-ex4-37",
+   "no": 51,
+   "q": "Select the wrong statements:",
+   "o": [
+    "Diatomaceous earth is formed by the cell walls of diatoms",
+    "Diatoms are chief producers in the oceans",
+    "Diatoms are microscopic and float passively in water",
+    "The walls of diatoms are easily destructible"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-37",
+   "exam": "NEET-II – 2016"
+  },
+  {
+   "id": "bc-ex4-38",
+   "no": 52,
+   "q": "Which of the following sets of diseases is caused by bacteria ?",
+   "o": [
+    "Typhoid and smallpox",
+    "Tetanus and mumps",
+    "Herps and influenza",
+    "Cholera and tetanus"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-38",
+   "exam": "NEET-II – 2016"
+  },
+  {
+   "id": "bc-ex4-39",
+   "no": 53,
+   "q": "Which among the following are the smallest living cells, known without a definite cell wall, pathogenic to plants as well as animals and can survive without oxygen ?",
+   "o": [
+    "Bacillus",
+    "Pseudomonas",
+    "Mycoplasma",
+    "Nostoc"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-39",
+   "exam": "NEET – 2017"
+  },
+  {
+   "id": "bc-ex4-40",
+   "no": 54,
+   "q": "Which of the following are found in extreme saline conditions ?",
+   "o": [
+    "Archaebacteria",
+    "Eubacteria",
+    "Cyanobacteria",
+    "Mycobacteria"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-40",
+   "exam": "NEET – 2017"
+  },
+  {
+   "id": "bc-ex4-41",
+   "no": 55,
+   "q": "Select the mismatch:",
+   "o": [
+    "Frankia – Alnus",
+    "Rhodospirillum – Mycorrhiza",
+    "Anabaena – Nitrogen fixer",
+    "Rhizobium – Alfalfa"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-41",
+   "exam": "NEET – 2017"
+  },
+  {
+   "id": "bc-ex4-42",
+   "no": 56,
+   "q": "Mycorrhizae are the example of:",
+   "o": [
+    "Fungistasis",
+    "Amensalism",
+    "Antibiosis",
+    "Mutualism"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-42",
+   "exam": "NEET – 2017"
+  },
+  {
+   "id": "bc-ex4-43",
+   "no": 57,
+   "q": "Which of the following is correctly matched for the product produced by them ?",
+   "o": [
+    "Acetobacter aceti: Antibiotics",
+    "Methanobacterium: Lactic acid",
+    "Penicillium notatum: Acetic acid",
+    "Saccharomyces cerevisiae: Ethanol"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-43",
+   "exam": "NEET – 2017"
+  },
+  {
+   "id": "bc-ex4-44",
+   "no": 58,
+   "q": "Which among the following is not a prokaryote?",
+   "o": [
+    "Saccharomyces",
+    "Mycobacterium",
+    "Nostoc",
+    "Oscillatoria"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-44",
+   "exam": "NEET – 2018"
+  },
+  {
+   "id": "bc-ex4-45",
+   "no": 59,
+   "q": "Select the wrong statement:",
+   "o": [
+    "Cell wall is present in members of Fungi and Plantae.",
+    "Mushrooms belong to Basidiomycetes.",
+    "Pseudopodia are locomotory and feeding structures in Sporozoans.",
+    "Mitochondria are the powerhouse of the cell in all kingdoms except Monera."
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-45",
+   "exam": "NEET – 2018"
+  },
+  {
+   "id": "bc-ex4-46",
+   "no": 60,
+   "q": "After karyogamy followed by meiosis, spores produced exogenously in:",
+   "o": [
+    "Neurospora",
+    "Alternaria",
+    "Agaricus",
+    "Saccharomyces"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-46",
+   "exam": "NEET – 2018"
+  },
+  {
+   "id": "bc-ex4-47",
+   "no": 61,
+   "q": "Oxygen is not produced during photosynthesis by:",
+   "o": [
+    "Green sulphur bacteria",
+    "Nostoc",
+    "Cycas",
+    "Chara"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-47",
+   "exam": "NEET – 2018"
+  },
+  {
+   "id": "bc-ex4-48",
+   "no": 62,
+   "q": "Which of the following organisms are known as chief producers in the oceans ?",
+   "o": [
+    "Dinoflagellates",
+    "Diatoms",
+    "Cyanobacteria",
+    "Euglenoids"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-48",
+   "exam": "NEET – 2018"
+  },
+  {
+   "id": "bc-ex4-49",
+   "no": 63,
+   "q": "Ciliates differ from all other protozoans in:",
+   "o": [
+    "Using flagella for locomotion",
+    "Having a contractile vacuole for removing excess water",
+    "Using pseudopodia for capturing prey",
+    "Having two types of nuclei"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-49",
+   "exam": "NEET – 2018"
+  },
+  {
+   "id": "bc-ex4-50",
+   "no": 64,
+   "q": "Which of the following statements is incorrect ?",
+   "o": [
+    "Conidia are produced exogenously and ascospores endogenously.",
+    "Yeasts have filamentous bodies with long thread-like hyphae.",
+    "Morels and truffles are edible delicacies.",
+    "Claviceps is a source of many alkaloids and LSD"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-50",
+   "exam": "NEET – 2019"
+  },
+  {
+   "id": "bc-ex4-51",
+   "no": 65,
+   "q": "Thiobacillus is a group of bacteria helpful in carrying out:",
+   "o": [
+    "Nitrification",
+    "Denitrification",
+    "Nitrogen fixation",
+    "Chemoautotrophic fixation"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-51",
+   "exam": "NEET – 2019"
+  },
+  {
+   "id": "bc-ex4-53",
+   "no": 66,
+   "q": "Match Column-I with Column-II. Choose the correct answer form the options given below.",
+   "o": [
+    "(a)–(ii), (b)–(i), (c)–(iii), (d)–(iv)",
+    "(a)–(ii), (b)–(iii), (c)–(iv), (d)–(i)",
+    "(a)–(i), (b)–(ii), (c)–(ii), (d)–(iv)",
+    "(a)–(iii), (b)–(ii), (c)–(i), (d)–(iv)"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "",
+     "Column-I",
+     "",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(a)",
+      "Saprophyte",
+      "(i)",
+      "Symbiotic association of fungi with plant roots"
+     ],
+     [
+      "(b)",
+      "Parasite",
+      "(ii)",
+      "Decomposition of dead organic materials"
+     ],
+     [
+      "(c)",
+      "Lichens",
+      "(iii)",
+      "Living on living plants or animals"
+     ],
+     [
+      "(d)",
+      "Mycorrhiza",
+      "(iv)",
+      "Symbiotic association of algae and fungi"
+     ]
+    ]
+   },
+   "ref": "BC-53",
+   "exam": "NEET – 2019"
+  },
+  {
+   "id": "bc-ex4-54",
+   "no": 67,
+   "q": "Which of the following is incorrect about cynobacteria",
+   "o": [
+    "They are photoautotrophs",
+    "They lack heterocysts",
+    "They often form blooms in polluted water bodies",
+    "They have chlorophyll A similar to green plants"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-54",
+   "exam": "NEET–2020 (COVID-19)"
+  },
+  {
+   "id": "bc-ex4-55",
+   "no": 68,
+   "q": "Inclusion bodies of blue-green, purple and green-photosynthetic bacteria are:-",
+   "o": [
+    "Contractile vacuoles",
+    "Gas vacuoles",
+    "Centrioles",
+    "Microtubules"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-55",
+   "exam": "NEET–2020 (COVID-19)"
+  },
+  {
+   "id": "bc-ex4-56",
+   "no": 69,
+   "q": "Which of the following is correct about viroids?",
+   "o": [
+    "They have free DNA without protein coat.",
+    "They have RNA with protein coat.",
+    "They have free RNA without protein coat.",
+    "They have DNA with protein coat."
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-56",
+   "exam": "NEET–2020"
+  },
+  {
+   "id": "bc-ex4-57",
+   "no": 70,
+   "q": "Which of the following statements is correct?",
+   "o": [
+    "Fusion of two cells is called karyogamy.",
+    "Fusion of protoplasm's between two motile on non-motile gametes is called plasmogamy.",
+    "Organisms that depend on living plants are called saprophytes.",
+    "Some of the organisms can fix atmospheric nitrogen in specialized cells called sheath cells."
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-57",
+   "exam": "NEET – 2021"
+  },
+  {
+   "id": "bc-ex4-58",
+   "no": 71,
+   "q": "Given below are two statements :\nStatement I : Mycoplasma can pass through less than 1 micron filter size.\nStatement II: Mycoplasma are bacteria with cell wall In the light of the above statements, choose the most appropriate answer from the options given below:",
+   "o": [
+    "Both Statement I and Statement II are correct",
+    "Both Statement I and Statement II are incorrect",
+    "Statement I is correct but Statement II is incorrect",
+    "Statement I is incorrect but Statement II is correct"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-58",
+   "exam": "NEET–2022"
+  },
+  {
+   "id": "bc-ex4-59",
+   "no": 72,
+   "q": "Identify the asexual reproductive structure associated with Penicillium:",
+   "o": [
+    "Zoospores",
+    "Conidia",
+    "Gemmules",
+    "Buds"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-59",
+   "exam": "NEET–2022"
+  },
+  {
+   "id": "bc-ex4-60",
+   "no": 73,
+   "q": "Which of the following is a correct statement?",
+   "o": [
+    "Cyanobacteria are a group of autotrophic organisms classified under Kingdom Monera.",
+    "Bacteria are exclusively heterotrophic organisms.",
+    "Slime moulds are saprophytic organisms classified under Kingdom Monera.",
+    "Mycoplasma have DNA, Ribosome and cell wall"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-60",
+   "exam": "NEET–2022"
+  },
+  {
+   "id": "pk-ex4-1",
+   "no": 74,
+   "q": "Megasporangium is equivalent to:",
+   "o": [
+    "Ovule",
+    "Embryo sac",
+    "Fruit",
+    "Nucellus"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-1",
+   "exam": "NEET-UG—2013"
+  },
+  {
+   "id": "pk-ex4-2",
+   "no": 75,
+   "q": "Isogamous condition with non-flagellated gametes is found in:",
+   "o": [
+    "Fucus",
+    "hlamydomonas",
+    "Spirogyra",
+    "Volvox"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-2",
+   "exam": "NEET-UG—2013"
+  },
+  {
+   "id": "pk-ex4-3",
+   "no": 76,
+   "q": "Monoecious plant of Chara shows occurrence of:",
+   "o": [
+    "Upper oogonium and lower antheridium on the same plant",
+    "Antheridiophore and archegoniophore on the same plant",
+    "Stamen and carpel on the same plant",
+    "Upper antheridium and lower oogonium on the same plant"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-3",
+   "exam": "NEET-UG—2013"
+  },
+  {
+   "id": "pk-ex4-5",
+   "no": 77,
+   "q": "Read the following statements (A - E) and answer the question which follows them.\n(a) In liverworts, mosses and ferns gametophytes are free living\n(b) Gymnosperms and some ferns are heterosporous\n(c) Sexual reproduction in Fucus, Volvox and Allbugo is oogamous\n(d) The sporophyte in liverworts is more elaborate than that in mosses\n(e) Both Pinus and Marchantia are dioccious How many of the above statements are correct?",
+   "o": [
+    "Four",
+    "One",
+    "Two",
+    "Three"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-5",
+   "exam": "NEET-UG—2013"
+  },
+  {
+   "id": "pk-ex4-6",
+   "no": 78,
+   "q": "Match the column-I with column-II:\nColumn-I Column-II\n(i) Chlorophyceae (a) Ectocarpus\n(ii) Lycopsida (b) Chara\n(iii) Phaeophyceae (c) Selaginella\n(iv) Liverwort (d) Marchantia",
+   "o": [
+    "i-b. ii-c. iii-a. iv-d",
+    "i-b, ii-d. iii-a. iv-c",
+    "i-a. ii-d. iii-c. iv-b",
+    "i-c. ii-a. iii-b. iv-d"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-6",
+   "exam": "AIIMS-2013"
+  },
+  {
+   "id": "pk-ex4-7",
+   "no": 79,
+   "q": "Which one of the following shows isogamy with non-flagellated gametes?",
+   "o": [
+    "Sargassum",
+    "Ectocarpus",
+    "Ulothrix",
+    "Spirogyra"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-7",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "pk-ex4-8",
+   "no": 80,
+   "q": "Which of the following is responsible for peat formation?",
+   "o": [
+    "Marchantia",
+    "Riccia",
+    "Funaria",
+    "Sphagnum"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-8",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "pk-ex4-9",
+   "no": 81,
+   "q": "An Alga which can be employed as food for human being is :",
+   "o": [
+    "Ulothrix",
+    "Chlorella",
+    "Spirogyra",
+    "Polysiphonia"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-9",
+   "exam": "AIPMT-2014"
+  },
+  {
+   "id": "pk-ex4-10",
+   "no": 82,
+   "q": "Which of the following is homosporous?",
+   "o": [
+    "Selaginella",
+    "Pinus",
+    "Cycas",
+    "Lycopodium"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-10",
+   "exam": "AIIMS-2014"
+  },
+  {
+   "id": "pk-ex4-11",
+   "no": 83,
+   "q": "Which of the following is not monoecious plant?",
+   "o": [
+    "Cycas",
+    "Pinus",
+    "Wheat",
+    "Mustard"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-11",
+   "exam": "AIIMS-2014"
+  },
+  {
+   "id": "pk-ex4-12",
+   "no": 84,
+   "q": "Algae, used in preparation of ice-creams and jellies are:",
+   "o": [
+    "Gelidium and Chlorella",
+    "Gelidium and Gracilaria",
+    "Choara and Spirulina",
+    "Chlorella and Spiruline"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-12",
+   "exam": "AIIMS-2014"
+  },
+  {
+   "id": "pk-ex4-13",
+   "no": 85,
+   "q": "In which of the following gametophyte is not independent free living:",
+   "o": [
+    "Marchantia",
+    "Pteris",
+    "Pinus",
+    "Funaria"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-13",
+   "exam": "AIPMT-2015"
+  },
+  {
+   "id": "pk-ex4-14",
+   "no": 86,
+   "q": "Read the following five statements (A to E) and select the option with all correct statements:\n(A) Mosses and Lichens are the first organisms to colonise a bare rock.\n(B) Selaginella is a homosporous pteridophyte\n(C) Coralloid roots in Cycas have VAM\n(D) Main plant body in bryophytes is gametophytic. whereas in pteridophytes it is sporophytic\n(E) In gymnosperms male and female gametophytes are present within sporangia located on sporophyte",
+   "o": [
+    "(B), (C) and (D)",
+    "(A), (D) and (E)",
+    "(B), (C) and (E)",
+    "(A),(C) and (D)"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-14",
+   "exam": "AIPMT-2015"
+  },
+  {
+   "id": "pk-ex4-15",
+   "no": 87,
+   "q": "Male gemetes are flagellated in:",
+   "o": [
+    "Anabaena",
+    "Ectocarpus",
+    "Spirogyra",
+    "Polysiphonia"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-15",
+   "exam": "AIPMT-2015"
+  },
+  {
+   "id": "pk-ex4-16",
+   "no": 88,
+   "q": "Which one of the following statements is wrong?",
+   "o": [
+    "Agar - agar is obtained from Gelidium and Gracilaria",
+    "Chlorella and Spirulina are used as space food",
+    "Mannitol is stored food in Rhodophyceae",
+    "Algin and carragenin are products of algae"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-16",
+   "exam": "AIPMT-2015"
+  },
+  {
+   "id": "pk-ex4-18",
+   "no": 89,
+   "q": "Algin can be obtained from:",
+   "o": [
+    "Rhodophyceace & chlorophyceae",
+    "Phaeophyceae & rhodophyceae",
+    "Rhodophyceae only",
+    "Phaeophyccae only"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-18",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "pk-ex4-19",
+   "no": 90,
+   "q": "In Pinus, endosperm cells have 30 chromosomes then how many chromosomes are present in sieve cells:",
+   "o": [
+    "30",
+    "60",
+    "10",
+    "15"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-19",
+   "exam": "RE-AIPMT-2015"
+  },
+  {
+   "id": "pk-ex4-20",
+   "no": 91,
+   "q": "Select the correct statement:",
+   "o": [
+    "Gymonsperms are both homosporous and heterosporous",
+    "Salvinia, Ginkgo and Pinus all are gymnosperms",
+    "Sequoia is one of the tallest trees",
+    "The leaves of gymnosperms are not well adapted to extrems of climate"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-20",
+   "exam": "NEET-I – 2016"
+  },
+  {
+   "id": "pk-ex4-21",
+   "no": 92,
+   "q": "In bryophytes and pteriodophytes, transport of male gaemetes requires:",
+   "o": [
+    "Wind",
+    "Insects",
+    "Birds",
+    "Water"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-21",
+   "exam": "NEET-I – 2016"
+  },
+  {
+   "id": "pk-ex4-22",
+   "no": 93,
+   "q": "The ovule of an angiosperm is techincally equivalent to:",
+   "o": [
+    "Megasporophyll",
+    "Megaspore mother cell",
+    "Megaspore",
+    "Megasporangium"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-22",
+   "exam": "NEET-II – 2016"
+  },
+  {
+   "id": "pk-ex4-23",
+   "no": 94,
+   "q": "Conifers are adapted to tolerate extreme environmetal conditions because of:",
+   "o": [
+    "Superficial stomata",
+    "Thick cuticle",
+    "Presence of vessels",
+    "Broad hardy leaves"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-23",
+   "exam": "NEET-II – 2016"
+  },
+  {
+   "id": "pk-ex4-24",
+   "no": 95,
+   "q": "Which one of the following statements is wrong?",
+   "o": [
+    "Algin is obtained from red algae, and carrageenan from brown algae",
+    "Agar-agar is obtained from Gelidium and Gracilaria",
+    "Laminaria and Sargassum are used as food",
+    "Algae increase the level of dissolved oxygen in the immediate environment"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-24",
+   "exam": "NEET-II – 2016"
+  },
+  {
+   "id": "pk-ex4-25",
+   "no": 96,
+   "q": "Zygotic meiosis is Characteristic of:",
+   "o": [
+    "Marchantia",
+    "Fucus",
+    "Funaria",
+    "Chlamydomonas"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-25",
+   "exam": "NEET – 2017"
+  },
+  {
+   "id": "pk-ex4-26",
+   "no": 97,
+   "q": "An example of colonial alga is:",
+   "o": [
+    "Chlorella",
+    "Volvox",
+    "Ulothrix",
+    "Spirogyra"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-26",
+   "exam": "NEET – 2017"
+  },
+  {
+   "id": "pk-ex4-27",
+   "no": 98,
+   "q": "Select the mismatch:",
+   "o": [
+    "Pinus – Dioecious",
+    "Cycas – Dioecious",
+    "Salvinia – Heterosporous",
+    "Equisetum – Homosporous"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-27",
+   "exam": "NEET – 2017"
+  },
+  {
+   "id": "pk-ex4-28",
+   "no": 99,
+   "q": "Life cycle of Ectocarpus and Fucus respectively are:",
+   "o": [
+    "Haplontic, Diplontic",
+    "Diplontic, Haplodiplontic",
+    "Haplodiplontic, Diplontic",
+    "Haplodiplontic, Haplontic"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-28",
+   "exam": "NEET – 2017"
+  },
+  {
+   "id": "pk-ex4-29",
+   "no": 100,
+   "q": "Which of the following statements is correct?",
+   "o": [
+    "Ovules are not enclosed by ovary wall in gymnosperms.",
+    "Selaginella is heterosporous, while Salvinia is homosporous.",
+    "Horsetails are gymnosperms.",
+    "Stems are usually unbranched in both Cycas and Cedrus."
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-29",
+   "exam": "NEET – 2018"
+  },
+  {
+   "id": "pk-ex4-30",
+   "no": 101,
+   "q": "Plants having little or no secondary growth are:",
+   "o": [
+    "Grasses",
+    "Deciduous angiosperms",
+    "Conifers",
+    "Cycads"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-30",
+   "exam": "NEET – 2018"
+  },
+  {
+   "id": "pk-ex4-31",
+   "no": 102,
+   "q": "Which one is wrongly matched?",
+   "o": [
+    "Uniflagellate gametes - Polysiphonia",
+    "Biflagellate zoospores - Brown algae",
+    "Gemma cups - Marchantia",
+    "Unicellular organism – Chlorella"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-31",
+   "exam": "NEET – 2018"
+  },
+  {
+   "id": "pk-ex4-32",
+   "no": 103,
+   "q": "Winged pollen grains are present in:",
+   "o": [
+    "Mustard",
+    "Cycas",
+    "Mango",
+    "Pinus"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-32",
+   "exam": "NEET – 2018"
+  },
+  {
+   "id": "pk-ex4-33",
+   "no": 104,
+   "q": "Pinus seed cannot germinate and establish without fungal association. This is because.",
+   "o": [
+    "it has very hard seed coat.",
+    "its seeds contain inhibitors that prevent germination.",
+    "its embryo is immature.",
+    "it has obligate association with mycorrhaizae."
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-33",
+   "exam": "NEET – 2019"
+  },
+  {
+   "id": "pk-ex4-34",
+   "no": 105,
+   "q": "Floridean starch has structure similar to:",
+   "o": [
+    "Laminarin and cellulose",
+    "Starch and cellulose",
+    "Amylopectin and glycogen",
+    "Mannitol and align"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-34",
+   "exam": "NEET(UG) – 2020"
+  },
+  {
+   "id": "pk-ex4-35",
+   "no": 106,
+   "q": "Which of the following pairs is of unicellular algae?",
+   "o": [
+    "Chlorella and Spirulina",
+    "Laminaria and Sargassum",
+    "Gelidium and Gracilaria",
+    "Anabaena and Volvox"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-35",
+   "exam": "NEET(UG) – 2020"
+  },
+  {
+   "id": "pk-ex4-36",
+   "no": 107,
+   "q": "Strobili or cones are found in:",
+   "o": [
+    "Equisetum",
+    "Salvinia",
+    "Pteris",
+    "Marchantia"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-36",
+   "exam": "NEET(UG) – 2020"
+  },
+  {
+   "id": "pk-ex4-37",
+   "no": 108,
+   "q": "Phycoerythrin is the major pigment in:",
+   "o": [
+    "Red algae",
+    "Blue green algae",
+    "Green algae",
+    "Brown algae"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-37",
+   "exam": "NEET(UG) 2020 (COVID-19)"
+  },
+  {
+   "id": "pk-ex4-38",
+   "no": 109,
+   "q": "Which of the following statements is incorrect about gymnosperms?",
+   "o": [
+    "They are heterosporous",
+    "Male and female gametophytes are free living",
+    "Most of them have narrow leaves with thick cuticle",
+    "Their seeds are not covered"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-38",
+   "exam": "NEET(UG) 2020 (COVID-19)"
+  },
+  {
+   "id": "pk-ex4-39",
+   "no": 110,
+   "q": "Male and female gametophytes do not have an independent free living existence in:-",
+   "o": [
+    "Pteriodophytes",
+    "Algae",
+    "Angiosperms",
+    "Bryophytes"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-39",
+   "exam": "NEET(UG) 2020 (COVID-19)"
+  },
+  {
+   "id": "pk-ex4-40",
+   "no": 111,
+   "q": "Gemmae are present in:",
+   "o": [
+    "Mosses",
+    "Pteridophytes",
+    "Some Gymnosperms",
+    "Some Liverworts"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-40",
+   "exam": "NEET(UG) – 2021"
+  },
+  {
+   "id": "pk-ex4-41",
+   "no": 112,
+   "q": "Genera like Selaginella and Salvinia produce two kinds of spores. Such plants are known as:",
+   "o": [
+    "Homosorus",
+    "Heterosorus",
+    "Homosporous",
+    "Heterosporous"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-41",
+   "exam": "NEET(UG) – 2021"
+  },
+  {
+   "id": "pk-ex4-42",
+   "no": 113,
+   "q": "Which of the following plants is monoecious?",
+   "o": [
+    "Carica papaya",
+    "Chara",
+    "Marchantia polymorpha",
+    "Cycs circinalis"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-42",
+   "exam": "NEET(UG) – 2021"
+  },
+  {
+   "id": "pk-ex4-43",
+   "no": 114,
+   "q": "Which of the following algae contains mannitol as reserve food material?",
+   "o": [
+    "Ectocarpus",
+    "Gracilaria",
+    "Volvox",
+    "Ulothrix"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-43",
+   "exam": "NEET(UG) – 2021"
+  },
+  {
+   "id": "pk-ex4-44",
+   "no": 115,
+   "q": "Which of the following algae produce Carrageen?",
+   "o": [
+    "Green algae",
+    "Brown algae",
+    "Red algae",
+    "Blue-green algae"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-44",
+   "exam": "NEET(UG) – 2021"
+  },
+  {
+   "id": "pk-ex4-45",
+   "no": 116,
+   "q": "Which of the following is incorrectly matched?",
+   "o": [
+    "Ectocarpus – Fucoxanthin",
+    "Ulothrix – Mannitol",
+    "Porphyra – Floridian Starch",
+    "Volvox – Starch"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-45",
+   "exam": "NEET(UG) 2022"
+  },
+  {
+   "id": "pk-ex4-46",
+   "no": 117,
+   "q": "Hydrocolloid carrageen is obtained from:",
+   "o": [
+    "Chlorophyceae and Phaeophyceae",
+    "Phaeophyceae and Rhodophycae",
+    "Rhodophyceae only",
+    "Phaeophyceae only"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-46",
+   "exam": "NEET(UG) 2022"
+  },
+  {
+   "id": "pk-ex4-47",
+   "no": 118,
+   "q": "Match the plant with the kind of life cycle if exhibits: Choose the correct answer from the options given below:",
+   "o": [
+    "(a)–(iv), (b)–(i), (c)–(ii), (d)–(iii)",
+    "(a)–(ii), (b)–(iii), (c)–(iv), (d)–(i)",
+    "(a)–(iii), (b)–(iv), (c)–(i), (d)–(ii)",
+    "(a)–(ii), (b)–(iv), (c)–(i), (d)–(iii)"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "",
+     "List–I",
+     "",
+     "List–II"
+    ],
+    "rows": [
+     [
+      "(a)",
+      "Spirogyra",
+      "(i)",
+      "Dominant diploid sporophyte vascular plant. With highly reduced male or female gametophyte"
+     ],
+     [
+      "(b)",
+      "Fern",
+      "(ii)",
+      "Dominant haploid free–living gametophyte"
+     ],
+     [
+      "(c)",
+      "Funaria",
+      "(iii)",
+      "Dominant diploid sporophyte alternating with reduced gametophyte called prothallus"
+     ],
+     [
+      "(d)",
+      "Cycas",
+      "(iv)",
+      "Dominant haploid leafy gametophyte alternating with partially dependent multicellular sporophyte"
+     ]
+    ]
+   },
+   "ref": "PK-47",
+   "exam": "NEET(UG) 2022"
+  },
+  {
+   "id": "pk-ex4-48",
+   "no": 119,
+   "q": "Given below are two statement: One is labelled as Assertion A and the other is labelled as Reason R:\nAssertion A: The first stage of gametophyte in the life cycle of moss in protonema stage.\nReason R: Protonema develops directly from spores produced in capsule. In the light of the above statements, choose the most appropriate answer from the options given below:",
+   "o": [
+    "Both A and R are correct and R is the correct explanation of A.",
+    "Both A and R are correct but R is NOT the correct explanation of A.",
+    "A is true but R is false.",
+    "A is false but R is true."
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-48",
+   "exam": "NEET-2023"
+  },
+  {
+   "id": "pk-ex4-49",
+   "no": 120,
+   "q": "Identify the pair of heterosporous pteridophytes among the following:",
+   "o": [
+    "Lycopodium and Seloginella",
+    "Selaginella and Solvinia",
+    "Psilotum and Solvinio",
+    "Equisetum and Solvinia"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-49",
+   "exam": "NEET-2023"
+  },
+  {
+   "id": "pk-ex4-50",
+   "no": 121,
+   "q": "Match List-I with List-II Choose the correct answer from the options given below :",
+   "o": [
+    "(A) - (II), (B) - (III), (C) - (I), (D) - (IV)",
+    "(A) - (III), (B) - (I), (C) - (IV), (D) - (II)",
+    "(A) - (II), (B) - (III), (C) - (IV), (D) - (I)",
+    "(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "",
+     "List-I",
+     "",
+     "List-II"
+    ],
+    "rows": [
+     [
+      "(A)",
+      "Pteropsida",
+      "(I)",
+      "Psilotum"
+     ],
+     [
+      "(B)",
+      "Lycopsida",
+      "(II)",
+      "Equisetum"
+     ],
+     [
+      "(C)",
+      "Psilopsida",
+      "(III)",
+      "Adiantum"
+     ],
+     [
+      "(D)",
+      "Sphenopsida",
+      "(IV)",
+      "Seloginello"
+     ]
+    ]
+   },
+   "ref": "PK-50",
+   "exam": "NEET-2023"
+  },
+  {
+   "id": "pk-ex4-51",
+   "no": 122,
+   "q": "Which classes of algae possess pigment fucoxanthin and pigment phycoerythrin, respectively?",
+   "o": [
+    "Phaeophyceae and Chlorophyceae",
+    "Phaeophyceae and Rhodophyceae",
+    "Chlorophyceae and Rhodophyceae",
+    "Rhodophyceae and Phaeophyceae"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-51",
+   "exam": "NEET-2023"
+  },
+  {
+   "id": "pk-ex4-52",
+   "no": 123,
+   "q": "Which of the following statements is true?",
+   "o": [
+    "All pteridophytes exhibit haplo- diplontic pattern.",
+    "Seed bearing plants follow haplontic pattern",
+    "Most algal genera are diplontic",
+    "Most bryophytes do not have haplodiplontic life cycle."
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-52",
+   "exam": "NEET-2023"
+  }
+ ]
+}

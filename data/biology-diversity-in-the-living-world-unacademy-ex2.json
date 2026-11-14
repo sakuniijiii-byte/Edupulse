@@ -1,0 +1,3035 @@
+{
+ "sourceId": "unacademy",
+ "sourceLabel": "Unacademy",
+ "exercise": "ex2",
+ "meta": {
+  "chapter": "Diversity in the Living World",
+  "subject": "Biology",
+  "total": 182,
+  "section": "Exercise II (statement-based)"
+ },
+ "qs": [
+  {
+   "id": "lw-ex2-1",
+   "no": 1,
+   "q": "The process by which anything is grouped into convenient categories based on some easily observable characters is called as:",
+   "o": [
+    "Biodiversity",
+    "Classifications",
+    "Identification",
+    "Nomenclature"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-1"
+  },
+  {
+   "id": "lw-ex2-2",
+   "no": 2,
+   "q": "The process in which biologists follow universally accepted principles to provide name of any organism is called as:",
+   "o": [
+    "Identification",
+    "Classification",
+    "Nomenclature",
+    "Systematics"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-2"
+  },
+  {
+   "id": "lw-ex2-3",
+   "no": 3,
+   "q": "What are the essential basis of modern taxonomic studies?",
+   "o": [
+    "External and internal structure",
+    "Structure of cell",
+    "Developmental process and ecological information",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-3"
+  },
+  {
+   "id": "lw-ex2-4",
+   "no": 4,
+   "q": "In the names Mangifera indica, Solanum tuberosum and Panthera leo, the words indica, tuberosum and leo represent:",
+   "o": [
+    "Generic name",
+    "Generic epithet",
+    "Species name",
+    "Specific epithet"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-4"
+  },
+  {
+   "id": "lw-ex2-5",
+   "no": 5,
+   "q": "Why the determination of relationship becomes more complex in higher taxonomic categories?",
+   "o": [
+    "Number of common characters goes on decreasing in lower taxa",
+    "Number of common characters goes on decreasing in higher taxa",
+    "Because classification itself is very difficult process",
+    "Number of common characters goes on increasing in higher taxa"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-5"
+  },
+  {
+   "id": "lw-ex2-6",
+   "no": 6,
+   "q": "Which of the following is not a correct statement?",
+   "o": [
+    "Order is the assemblage of families which exhibit a few similar characters in comparisation to families",
+    "Convolvulaceae and Solanaceae families are included in order polymoniales mainly on the basis of floral characters",
+    "In hierarchy broad categories and sub categories both are used",
+    "Class is a category which includes related divisions"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-6"
+  },
+  {
+   "id": "lw-ex2-7",
+   "no": 7,
+   "q": "All the categories used in classification of organism constitute:",
+   "o": [
+    "Nomenclature",
+    "Phylogeny",
+    "Taxonomic hierarchy",
+    "Taxonomic affinity"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-7"
+  },
+  {
+   "id": "lw-ex2-8",
+   "no": 8,
+   "q": "Which of the following is not true for a species?",
+   "o": [
+    "Variations occur among members of a species",
+    "Gene flow does not occur between the populations of a species",
+    "Each species is reproductively isolated from every other species",
+    "Members of a species can interbreed"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-8"
+  },
+  {
+   "id": "lw-ex2-9",
+   "no": 9,
+   "q": "Study the following statements carefully and give the answer:\nA. Biological names are generally in Latin and printed in italics.\nB. The first word in biological names represents the genus.\nC. Both the words in a biological name are separately underlined when hand written.\nD. The first word of biological name starts with capital letter.",
+   "o": [
+    "A, D - incorrect B, C - correct",
+    "A, C - correct B, D - incorrect",
+    "A, B - correct C, D - incorrect",
+    "A, B, C, D all are correct."
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "LW-9"
+  },
+  {
+   "id": "lw-ex2-10",
+   "no": 10,
+   "q": "Which of the following is / are correctly match?",
+   "o": [
+    "i & ii",
+    "only i",
+    "only ii",
+    "All four"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "",
+     "Common Name",
+     "Genus",
+     "Family"
+    ],
+    "rows": [
+     [
+      "(i)",
+      "Man",
+      "Homo",
+      "Hominidae"
+     ],
+     [
+      "(ii)",
+      "Housefly",
+      "Musca",
+      "Muscidae"
+     ],
+     [
+      "(iii)",
+      "Mango",
+      "Mangifera",
+      "Anacardiaceae"
+     ],
+     [
+      "(iv)",
+      "Wheat",
+      "Triticum",
+      "Poaceae"
+     ]
+    ]
+   },
+   "lockOrder": true,
+   "ref": "LW-10"
+  },
+  {
+   "id": "lw-ex2-11",
+   "no": 11,
+   "q": "How many are the incorrect statements from the followings?\n(A) Lower the taxa, more are the characteristics that the members within the taxon share\n(B) Higher the taxonomic category, greater is the difficulty of determining the relationships to other taxa at the same level\n(C) In lower taxa the problems of classification becomes more complex\n(D) As we go higher from species to kingdom, the number of common characters increases",
+   "o": [
+    "A, C",
+    "C, D",
+    "B, D",
+    "A, D"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-11"
+  },
+  {
+   "id": "lw-ex2-12",
+   "no": 12,
+   "q": "The relation of solanaceae and convolvulaceae with polymoniales is similar to the relation occuring in:",
+   "o": [
+    "Felidae and canidae with carnivora",
+    "Primata and carnivora with mammalia",
+    "Amphibia and reptilia with chordata",
+    "Solanum and Petunia with solanaceae"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "The Living World",
+   "type": "mcq",
+   "ref": "LW-12"
+  },
+  {
+   "id": "bc-ex2-1",
+   "no": 13,
+   "q": "Archaebacteria differ from other bacteria in having a:",
+   "o": [
+    "Different cell wall structure",
+    "Different cellular organization",
+    "Parasitic nature",
+    "All of these"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-1"
+  },
+  {
+   "id": "bc-ex2-2",
+   "no": 14,
+   "q": "Nitrogen fixing cyanobacteria are:",
+   "o": [
+    "Rhizobium, Nostoc",
+    "Rhizobium, Anabaena",
+    "Nostoc, Anabaena",
+    "Anabaena, Azolla"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-2"
+  },
+  {
+   "id": "bc-ex2-3",
+   "no": 15,
+   "q": "The vast majority of bacteria are:",
+   "o": [
+    "Symbiotic",
+    "Autotrophic",
+    "Heterotrophic",
+    "Nitrogen fixing"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-3"
+  },
+  {
+   "id": "bc-ex2-4",
+   "no": 16,
+   "q": "Which character indicates that Cyanobacteria are similar to higher green plants ?",
+   "o": [
+    "Type of cell wall",
+    "Nitrogen fixation ability",
+    "Presence of chlorophyll 'a'",
+    "Presence of gelatinous sheath"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-4"
+  },
+  {
+   "id": "bc-ex2-5",
+   "no": 17,
+   "q": "Typhoid and tetanus are caused by:",
+   "o": [
+    "Bacteria",
+    "Virus",
+    "Viroids",
+    "Fungi"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-5"
+  },
+  {
+   "id": "bc-ex2-6",
+   "no": 18,
+   "q": "Which one of the following prokaryotes lack cell wall ?",
+   "o": [
+    "Virus",
+    "Cyanobacteria",
+    "Mycoplasma",
+    "Protozoa"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-6"
+  },
+  {
+   "id": "bc-ex2-7",
+   "no": 19,
+   "q": "Which organisms have silica in their cell wall ?",
+   "o": [
+    "Dinoflagellates",
+    "Slime mould",
+    "Diatoms",
+    "Euglenoids"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-7"
+  },
+  {
+   "id": "bc-ex2-8",
+   "no": 20,
+   "q": "Which organism is responsible for red surface of sea ?",
+   "o": [
+    "Euglena",
+    "Gonyaulax",
+    "Amoeba",
+    "Paramecium"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-8"
+  },
+  {
+   "id": "bc-ex2-9",
+   "no": 21,
+   "q": "Read the following staements:\n(i) Body organization of fungi is multicellular/loose tissue type\n(ii) Mode of nutrition in monerans is autotrophic or heterotrophic\n(iii) Nuclear membrane may be present in\nE. coli\n(iv) Cell wall is cellulosic in animals cells\n(v) Non-cellulosic cell wall is present in fungi How many of the above statements are correct ?",
+   "o": [
+    "Three",
+    "Two",
+    "Four",
+    "Five"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-9"
+  },
+  {
+   "id": "bc-ex2-10",
+   "no": 22,
+   "q": "Read the following staements:\n(i) The bacterial structure is very simple but they are complex in behaviour\n(ii) Compared to many other organisms, bacteria as a group show the most extensive metabolic diversity\n(iii) Some of the bacteria are autotrophic\n(iv) Most of the bacteria are heterotrophic\n(v) Bacteria possess cell wall How many of the above statements are not incorrect ?",
+   "o": [
+    "Four",
+    "Five",
+    "Two",
+    "Zero"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-10"
+  },
+  {
+   "id": "bc-ex2-11",
+   "no": 23,
+   "q": "Read the following statements:\n(i) Majority of the slime moulds are fresh water organisms\n(ii) Dinoflagellates are mostly fresh water organisms\n(iii) Slime moulds form plasmodium\n(iv) Protozoans may be autotrophs\n(v) The spores of slime moulds are dispersed by water currents Which of the above statements are correct ?",
+   "o": [
+    "Only (iii)",
+    "All five",
+    "(i), (ii) and (v)",
+    "(i), (ii), (iv) and (v)"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-11"
+  },
+  {
+   "id": "bc-ex2-12",
+   "no": 24,
+   "q": "Select the correct statement about slime moulds:",
+   "o": [
+    "Saprophytic, plasmodium with cell wall, spores dispersed by air currents",
+    "Saprophytic, plasmodium without cell wall, spores with true cell wall and dispersed by air currents",
+    "Parasitic, plasmodium without cell wall, spores dispersed by air current",
+    "Parasitic, plasmodium without cell wall, spores with true cell wall and dispersed by water current"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-12"
+  },
+  {
+   "id": "bc-ex2-13",
+   "no": 25,
+   "q": "Main reason of water bloom in rivers, lakes, sea etc. is:",
+   "o": [
+    "Brown algae and green algae",
+    "Cyanobacteria",
+    "Eichornea",
+    "Fishes"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-13"
+  },
+  {
+   "id": "bc-ex2-14",
+   "no": 26,
+   "q": "Genetic material of prokaryotic cell:",
+   "o": [
+    "Non histonic double stranded DNA",
+    "Histonic double stranded DNA",
+    "Histone & DNA both are absent",
+    "Histone without DNA"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-14"
+  },
+  {
+   "id": "bc-ex2-15",
+   "no": 27,
+   "q": "What is true for cyanobacteria ?",
+   "o": [
+    "Oxygenic with nitrogenase",
+    "Oxygenic without nitrogenase",
+    "Non oxygenic with nitrogenase",
+    "Non oxygenic without nitrogenase"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-15"
+  },
+  {
+   "id": "bc-ex2-16",
+   "no": 28,
+   "q": "In bacteria, plasmid is :",
+   "o": [
+    "Extra chromosomal material",
+    "Main DNA",
+    "None functional DNA",
+    "Repetitive gene"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-16"
+  },
+  {
+   "id": "bc-ex2-17",
+   "no": 29,
+   "q": "In which kingdom would you classify the archaea and nitrogen-fixing organisms, if the five-kingdom system of classification is used:",
+   "o": [
+    "Plantae",
+    "Fungi",
+    "Protista",
+    "Monera"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-17"
+  },
+  {
+   "id": "bc-ex2-18",
+   "no": 30,
+   "q": "Flagella of prokaryotic and eukaryotic cells differ in:",
+   "o": [
+    "Microtubular organization and function",
+    "Type of movement and placement in cell",
+    "Location in cell and mode of functioning",
+    "Microtubular organization and type of movement"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-18"
+  },
+  {
+   "id": "bc-ex2-19",
+   "no": 31,
+   "q": "A free living nitrogen-fixing cyanobacterium which can also form symbiotic association with the water fern Azolla is:",
+   "o": [
+    "Anabaena",
+    "Tolypothrix",
+    "Chlorella",
+    "Nostoc"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-19"
+  },
+  {
+   "id": "bc-ex2-20",
+   "no": 32,
+   "q": "Carbohydrates, the most abundant biomolecules on earth, are produced by:",
+   "o": [
+    "Some bacteria, algae and green plant cells",
+    "All bacteria, fungi and algae",
+    "Fungi, algae and green plant cells",
+    "Viruses, fungi and bacteria"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-20"
+  },
+  {
+   "id": "bc-ex2-21",
+   "no": 33,
+   "q": "Some characters are given below. Which of them are true for the cyanobacteria ?\n(a) Oxygenic photosynthesis\n(b) Non-oxygenic chemotrophism\n(c) Oxygenic chemotrophism\n(d) Ability of N fixation 2",
+   "o": [
+    "a and b",
+    "a and c",
+    "a and d",
+    "b and d"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-21"
+  },
+  {
+   "id": "bc-ex2-22",
+   "no": 34,
+   "q": "Which of the following is non-cellular entity ?",
+   "o": [
+    "Bacteria",
+    "Fungi",
+    "Algae",
+    "Virus"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-22"
+  },
+  {
+   "id": "bc-ex2-23",
+   "no": 35,
+   "q": "The organism present in the guts of several ruminant animals and are responsible for the production of methane (biogas) are :",
+   "o": [
+    "Mycoplasma",
+    "Methanogens",
+    "Thermoacidophiles",
+    "Archaebacteria"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-23"
+  },
+  {
+   "id": "bc-ex2-24",
+   "no": 36,
+   "q": "Find the incorrect statement :",
+   "o": [
+    "Bacteria are the sole members of the kingdom Monera",
+    "Bacteria occur almost everywhere",
+    "Bacteria are most abundant micro organisms",
+    "Bacteria are not able to survine in extreme habitats"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-24"
+  },
+  {
+   "id": "bc-ex2-25",
+   "no": 37,
+   "q": "Which one is not true about blue green algae:",
+   "o": [
+    "They are recently known as cyanobacteria",
+    "They are photosynthetic autorophs",
+    "They are unicellular colonial or filamentous",
+    "None of them can fix nitrogen"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-25"
+  },
+  {
+   "id": "bc-ex2-26",
+   "no": 38,
+   "q": "Which character was not considered by Whittaker in his five kingdom system ?",
+   "o": [
+    "Complexity of cell",
+    "Complexity of organism",
+    "Mode of Nutrition",
+    "Pigment composition"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-26"
+  },
+  {
+   "id": "bc-ex2-27",
+   "no": 39,
+   "q": "Which of the following option is incorrect about bacterial pili ?",
+   "o": [
+    "They are made up of Pilin protein",
+    "They are shorter than flagella",
+    "They help in genetic recombination",
+    "They play an important role in movement"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-27"
+  },
+  {
+   "id": "bc-ex2-28",
+   "no": 40,
+   "q": "Choose the correct statement from the following :-",
+   "o": [
+    "Bacterial photosynthesis is oxygenic",
+    "On the basis of hydrogen donor autotrophs are two type photosynthetic and chemosynthetic",
+    "Shorter pili is present in non pathogenic bacteria",
+    "In chemosynthetic bacteria photosynthetic pigments are absent"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-28"
+  },
+  {
+   "id": "bc-ex2-29",
+   "no": 41,
+   "q": "Select out the odd one with respect to Monera",
+   "o": [
+    "Cell wall is generally made up of peptidoglycan.",
+    "Absance of membrane bounded cell organelles",
+    "naked DNA",
+    "9 + 2 arrangement in flagella"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-29"
+  },
+  {
+   "id": "bc-ex2-30",
+   "no": 42,
+   "q": "Chemosynthetic bacteria",
+   "o": [
+    "Reducing inorganic compounds to accquire energy",
+    "Use sun rays to acquire energy",
+    "Have photosynthetic Pigments",
+    "Are autotrophic"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-30"
+  },
+  {
+   "id": "bc-ex2-31",
+   "no": 43,
+   "q": "Bacteria that get their energy by incomplete oxidation and for whom oxygen is lethal are called",
+   "o": [
+    "Obligate anaerobes",
+    "Obligate aerobes",
+    "Facultative aerobes",
+    "Facultative anaerobes"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-31"
+  },
+  {
+   "id": "bc-ex2-32",
+   "no": 44,
+   "q": "What is incorrect for chemoautotrophic bacteria ?",
+   "o": [
+    "Oxidise various organic or inorganic substances",
+    "Use the energy released through oxidation for their ATP production",
+    "Play great role in recycling nutrients like nitrogen, phosphorus, iron and sulphur",
+    "They are most abundant in nature"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-32"
+  },
+  {
+   "id": "bc-ex2-33",
+   "no": 45,
+   "q": "What is true for bacteria ?",
+   "o": [
+    "Simple structure, simple behaviour",
+    "Complex structure, simple behaviour",
+    "Simple structure, comlex behaviour",
+    "Complex structure, complex behaviour"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-33"
+  },
+  {
+   "id": "bc-ex2-34",
+   "no": 46,
+   "q": "Two kingdom classification used for a long time was found inadequate, a need was also felt for including besides gross morphology other characteristics like :-\n(A) cell structure\n(B) Nature of wall\n(C) Mode of nutrition\n(D) Habitate\n(E) Methods of reproduction\n(F) Evolutionary relationships Select the correct option that are used characters:-",
+   "o": [
+    "A & B",
+    "A, B & C",
+    "A, C & F",
+    "A, B, C, D, E & F"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-34"
+  },
+  {
+   "id": "bc-ex2-35",
+   "no": 47,
+   "q": "In five kingdom classification of whittaker, decomposer belongs to kingdom :-",
+   "o": [
+    "Only plantae",
+    "Only mycota",
+    "Monera & mycota",
+    "Monera, Protista & Mycota"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-35"
+  },
+  {
+   "id": "bc-ex2-36",
+   "no": 48,
+   "q": "Choose the incorrect statement :-",
+   "o": [
+    "Ribosomes are the site of protein synthesis",
+    "Periplasmic space is analogous to lysosome",
+    "Plasmid is formed by the extensions of plasma membrane in to cell",
+    "Mesosomes help in cell wall formation"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-36"
+  },
+  {
+   "id": "bc-ex2-37",
+   "no": 49,
+   "q": "With respect to fungal sexual cycle, what is the correct sequence:",
+   "o": [
+    "Karyogamy, plasmogamy & meiosis",
+    "Meiosis, plasmogamy & karyogamy",
+    "Plasmogamy, karyogamy & meiosis",
+    "Meiosis, karyogamy & plasmogamy"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-37"
+  },
+  {
+   "id": "bc-ex2-38",
+   "no": 50,
+   "q": "Select the incorrect statement about fungi?",
+   "o": [
+    "The cell walls are composed of chitin and polysaccharides",
+    "These are heterotrophic organisms",
+    "They are autotrophic organism",
+    "They are absorptive in nature"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-38"
+  },
+  {
+   "id": "bc-ex2-39",
+   "no": 51,
+   "q": "In fungi, vegetative reproduction takes place by:",
+   "o": [
+    "Fragmentation",
+    "Conidia",
+    "Zygospore",
+    "Oospore"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-39"
+  },
+  {
+   "id": "bc-ex2-40",
+   "no": 52,
+   "q": "In ascomycetes and basidiomycetes, the dikaryotic cell is:",
+   "o": [
+    "Haploid",
+    "Diploid",
+    "Triploid",
+    "Polyploid"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-40"
+  },
+  {
+   "id": "bc-ex2-41",
+   "no": 53,
+   "q": "Which of the following is not a member of class phycomycetes?",
+   "o": [
+    "Albugo",
+    "Mucor",
+    "Rhizopus",
+    "Neurospora"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-41"
+  },
+  {
+   "id": "bc-ex2-42",
+   "no": 54,
+   "q": "The mycelium is aseptate and Coenocytic in:",
+   "o": [
+    "Phycomycetes",
+    "Basidiomycetes",
+    "Deuteromycetes",
+    "None"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-42"
+  },
+  {
+   "id": "bc-ex2-43",
+   "no": 55,
+   "q": "Septate and branched mycelium is found in:",
+   "o": [
+    "Basidiomycetes",
+    "Deuteromycetes",
+    "Ascomycetes",
+    "All the above"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-43"
+  },
+  {
+   "id": "bc-ex2-44",
+   "no": 56,
+   "q": "Select the correct matched pair / pairs:",
+   "o": [
+    "Claviceps – Ascomycetes",
+    "Morels – Ascomycetes",
+    "Agaricus – Basidiomycetes",
+    "All the above"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-44"
+  },
+  {
+   "id": "bc-ex2-45",
+   "no": 57,
+   "q": "Asexual reproduction takes place by conidia formation in:",
+   "o": [
+    "Aspergillus",
+    "Penicillium",
+    "Colletotrichum",
+    "All the above"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-45"
+  },
+  {
+   "id": "bc-ex2-46",
+   "no": 58,
+   "q": "Which of the following are not considered in five kingdom system of classification?",
+   "o": [
+    "Lichen",
+    "Virus",
+    "Viroid",
+    "All the above"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-46"
+  },
+  {
+   "id": "bc-ex2-47",
+   "no": 59,
+   "q": "Viroid was discovered by:",
+   "o": [
+    "Haeckel",
+    "Pasteur",
+    "T.O. Diener",
+    "Theophrastus"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-47"
+  },
+  {
+   "id": "bc-ex2-48",
+   "no": 60,
+   "q": "Read the following statements w.r.t. fungi:\n(i) Their body consist of long, slender thread like structure called hyphae\n(ii) The network of hyphae is called mycelium\n(iii) Hyphae may be continuous tubes filled with multinucleated cytoplasm; these hyphae are coenocytic\n(iv) In many cases hyphae have septate or cross walls\n(v) The cell wall of fungi is composed by chitin and polysaccharides How many of the above statements are correct?",
+   "o": [
+    "One",
+    "Three",
+    "Four",
+    "Five"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-48"
+  },
+  {
+   "id": "bc-ex2-49",
+   "no": 61,
+   "q": "Identify the fungi and the parts A, B, C and D in the diagram given below:",
+   "o": [
+    "Mucor, A = Stipe, B = Gills, C = Annulus, D = Pileus",
+    "Rhizopus, A = Stipe, B = Gills, C = Annulus, D = Pileus",
+    "Agaricus, A = Pileus, B = Gills, C = Annulus, D = Stipe",
+    "Agaricus, A = Stipe, B = Gills, C = Annulus, D = Pileus"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "diagram",
+   "needsImage": true,
+   "ref": "BC-49"
+  },
+  {
+   "id": "bc-ex2-50",
+   "no": 62,
+   "q": "Select the true statement:",
+   "o": [
+    "Viruses are obligate parasites",
+    "In Lichens, algal component is called phycobiont",
+    "In Lichens, Fungal component is called mycobiont",
+    "All the above"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-50"
+  },
+  {
+   "id": "bc-ex2-51",
+   "no": 63,
+   "q": "Identify the virus and name the structure marked A, B, C, D and E:",
+   "o": [
+    "Bacteriophage, A = Head, B = Sheath, C = Collar, D = Tail fibre, E = Tail pin",
+    "Bacteriophage, A = Head, B = Collar, C = Base plate, D = Sheath, E = Base Tail fibre",
+    "Bacteriophage, A = Head, B = Sheath, C = Tail fibre, D = Collar, E = Tail pin",
+    "Bacteriophage, A = Head, B = Collar, C = Sheath, D = Tail fibre, E = Tail pin"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "diagram",
+   "needsImage": true,
+   "ref": "BC-51"
+  },
+  {
+   "id": "bc-ex2-52",
+   "no": 64,
+   "q": "Read the names of different fungi given below: Mucor, Albugo, Penicillium, Ustilago, Colletotrichum, Puccinia, Agaricus, Aspergillus and Rhizopus How many of the following belong to the class phycomycetes?",
+   "o": [
+    "Three",
+    "Two",
+    "Four",
+    "Seven"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-52"
+  },
+  {
+   "id": "bc-ex2-53",
+   "no": 65,
+   "q": "Find the incorrect statement about fungi:",
+   "o": [
+    "They show a great diversity in morphology and habitats",
+    "Fungi are cosmopolitan and occur in air, water soil and as parasites also",
+    "They prefer to grow in cold and dry places",
+    "With the exception of yeasts, fungi are filamentous"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-53"
+  },
+  {
+   "id": "bc-ex2-54",
+   "no": 66,
+   "q": "Select the correct statements about fungi:\n(A) Most of the fungi are saprophytes\n(B) Fungi can also survive as symbionts\n(C) Sexual reproduction in fungi involves three steps\n(D) Reduction division in fungi occurs in fruiting bodies which forms haploid spores",
+   "o": [
+    "A, B are correct",
+    "C, D are correct",
+    "A, B & C are correct",
+    "A, B, C & D are correct"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-54"
+  },
+  {
+   "id": "bc-ex2-55",
+   "no": 67,
+   "q": "Choose the incorrect statement regarding decomposer:",
+   "o": [
+    "They may be prokaryotes or eukaryotes.",
+    "They may be unicellular or multicellular",
+    "They convert inorganic into organic compounds",
+    "They play a great role in ecology"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-55"
+  },
+  {
+   "id": "bc-ex2-56",
+   "no": 68,
+   "q": "Choose the incorrect statement about Phycomycetes-",
+   "o": [
+    "Members are found in aquatic habitats",
+    "Spores are endogenously produced in sporangium",
+    "A zygospores is formed by reduction division",
+    "They show all type of syngamy"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-56"
+  },
+  {
+   "id": "bc-ex2-57",
+   "no": 69,
+   "q": "Choose the incorrect match of following:",
+   "o": [
+    "Mushroom – Agaricus",
+    "Claviceps – Ergot disease",
+    "Yeast – unicellular",
+    "Puccinia – Smut disease"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-57"
+  },
+  {
+   "id": "bc-ex2-58",
+   "no": 70,
+   "q": "Which statement is wrong about lichens?",
+   "o": [
+    "Lichen helps in soil formation",
+    "Lichen are made up of algae and fungi",
+    "Lichen are highly sensitive towards air pollution",
+    "Lichen are cosmopolitan in nature"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-58"
+  },
+  {
+   "id": "bc-ex2-59",
+   "no": 71,
+   "q": "Choose the incorrect statement of following?",
+   "o": [
+    "Virus show mutations",
+    "Virus are specific towards host",
+    "Virus can multiply with out host cell",
+    "Virus can not be grown in culture media"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-59"
+  },
+  {
+   "id": "bc-ex2-60",
+   "no": 72,
+   "q": "Body organisation of fungi is :",
+   "o": [
+    "Cellular",
+    "Multicellular / loose tissue",
+    "Tissue / organs",
+    "Tissue / organs / organ system"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-60"
+  },
+  {
+   "id": "bc-ex2-61",
+   "no": 73,
+   "q": "Genetic material of HIV is:-",
+   "o": [
+    "ssRNA",
+    "ssDNA",
+    "dsRNA",
+    "dsDNA"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-61"
+  },
+  {
+   "id": "bc-ex2-62",
+   "no": 74,
+   "q": "Which of the following is pair of viral diseases?",
+   "o": [
+    "Common cold, AIDS",
+    "Dysentery, common cold",
+    "Typhoid, Tuberculosis",
+    "Ringworm, AIDS"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-62"
+  },
+  {
+   "id": "bc-ex2-63",
+   "no": 75,
+   "q": "Which fungus is used extensively in bio- chemical and genetic work ?",
+   "o": [
+    "E.coli",
+    "Puccinia",
+    "Neurospora",
+    "(1) and (3) both"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "BC-63"
+  },
+  {
+   "id": "bc-ex2-64",
+   "no": 76,
+   "q": "Sexual reproduction in fungi may occur by means of :-",
+   "o": [
+    "Sporangiospore, Oospore and Ascospore",
+    "Zoospore, Oospore and Ascospore",
+    "Sporangiospore, Ascospore and basidiospore",
+    "Oospore, Ascospore and Basidiospore"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-64"
+  },
+  {
+   "id": "bc-ex2-65",
+   "no": 77,
+   "q": "Choose the incorrect statement out of the following-",
+   "o": [
+    "Yeast are used to make bread and beer",
+    "Fungi prefer to grow in warm and humid places",
+    "Cell wall of fungi is composed of chitin and polysaccharides",
+    "Fungi show symbiotic association with algae as mycorrhiza and with roots of higher plants as lichens"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-65"
+  },
+  {
+   "id": "bc-ex2-66",
+   "no": 78,
+   "q": "Which one of the following options indicates the organism of group Ascomycetes ?",
+   "o": [
+    "Agaricus, Claviceps, Neurospora",
+    "Aspergillus, Neurospora, Ustilago",
+    "Aspergillus, Claviceps, Penicillium",
+    "Agaricus, Penicillium, Neurospora"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-66"
+  },
+  {
+   "id": "bc-ex2-67",
+   "no": 79,
+   "q": "Which option is related to Basidiomycetes?",
+   "o": [
+    "Puff ball, Mushroom, Morchella",
+    "Neurospora, rust, Smut",
+    "Puff ball, Mushroom, Smut",
+    "Pezzia, Morels, Rust"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Biological Classification",
+   "type": "mcq",
+   "ref": "BC-67"
+  },
+  {
+   "id": "pk-ex2-1",
+   "no": 80,
+   "q": "Algae reproduce by:",
+   "o": [
+    "Asexual",
+    "Sexual",
+    "Vegetative",
+    "All the above"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-1"
+  },
+  {
+   "id": "pk-ex2-2",
+   "no": 81,
+   "q": "Stored food in Phaeophyceae is:",
+   "o": [
+    "Laminarin or mannitol",
+    "Starch",
+    "Cellulose",
+    "Algin"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-2"
+  },
+  {
+   "id": "pk-ex2-3",
+   "no": 82,
+   "q": "Asexual reproduction in maximum Brown Algae is by:",
+   "o": [
+    "Biflagellated zoospore",
+    "Single flagellated zoospore",
+    "Aplanospore",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-3"
+  },
+  {
+   "id": "pk-ex2-4",
+   "no": 83,
+   "q": "Major Pigments in Phaeophyceae:",
+   "o": [
+    "Chlorophyll a",
+    "Chlorophyll c",
+    "Fucoxanthin",
+    "All the above"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-4"
+  },
+  {
+   "id": "pk-ex2-5",
+   "no": 84,
+   "q": "Generally red Algae do not form:",
+   "o": [
+    "Zoospore",
+    "Non-motile spore",
+    "Non-motile gamete",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-5"
+  },
+  {
+   "id": "pk-ex2-6",
+   "no": 85,
+   "q": "The artificial system of classification gives equal weightage to vegetative and sexual Characters. This is not acceptable as:",
+   "o": [
+    "Sexual Characters are more easily affected by the environment than vegetative Characters.",
+    "Vegetative Characters are more easily affected by the environment than sexual Characters.",
+    "Both vegetative and sexual Characters are equally affected by the environment.",
+    "Neither vegetative nor sexual Characters are affected by the environment."
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-6"
+  },
+  {
+   "id": "pk-ex2-7",
+   "no": 86,
+   "q": "According to phylogenetic system of classification:",
+   "o": [
+    "Organisms belonging to same taxa have different ancestors",
+    "Morphology is the main basis for organism classification",
+    "Organisms belonging to different taxa have same ancestors",
+    "Organisms belonging to same taxa have a common ancestor"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-7"
+  },
+  {
+   "id": "pk-ex2-8",
+   "no": 87,
+   "q": "Match the column:\nColumn-I Column-II\nA. Chlamydomonas (i) Isogamous\nB. Volvox (ii) Anisogamous\nC. Fucus (iii) Oogamous\nD. Spirogyra",
+   "o": [
+    "A - (i), B - (ii), C - (iii), D - (ii, iii)",
+    "A - (i, ii), B - (iii), C - (i), D - (i, iii)",
+    "A - (iii), B - (i, ii), C - (iii), D - (i)",
+    "A - (i, ii, iii), B - (iii), C - (iii), D - (i)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-8"
+  },
+  {
+   "id": "pk-ex2-9",
+   "no": 88,
+   "q": "Read the following statement:\n(i) Agar-agar is used to grow microbes and in the preparations of ice-cream and jellies\n(ii) Chlorella and Spirulina are unicellular algae, rich in fat and are used as food supplements by space travellers\n(iii) Porphyra, Laminaria and Sargassum are poisonous\n(iv) Algae are photosynthetic\n(v) Spirogyra is a filamentous fungus How many of the above statements are incorrect?",
+   "o": [
+    "Five",
+    "Three",
+    "Four",
+    "Two"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-9"
+  },
+  {
+   "id": "pk-ex2-10",
+   "no": 89,
+   "q": "Identify X, Y and Z in the table given below:",
+   "o": [
+    "X = Fucoxanthin, Y = Starch, Z = 2-8 flagella",
+    "X = Phycobilins, Y = Mannitol, Z = Flagella absent",
+    "X = Chlorophyll-e, Y = Laminarin, Z = 2-flagella",
+    "X = Chlorophyll-a and c, Y = Starch, Z = Flagella absent"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "table": {
+    "headers": [
+     "",
+     "Classes",
+     "Major pigments",
+     "Stored food",
+     "Flagella"
+    ],
+    "rows": [
+     [
+      "(1)",
+      "Chlorophyceae",
+      "Chlorophyll a and b",
+      "Y",
+      "2-8, equal, apical"
+     ],
+     [
+      "(2)",
+      "Phaeophyceae",
+      "X",
+      "Mannitol laminarin",
+      "2, unequal, lateral"
+     ],
+     [
+      "(3)",
+      "Rhodophyceae",
+      "Chlorophyll a and b",
+      "Fluoridean starch",
+      "Z"
+     ]
+    ]
+   },
+   "ref": "PK-10"
+  },
+  {
+   "id": "pk-ex2-11",
+   "no": 90,
+   "q": "The main plant body of bryophyte is:",
+   "o": [
+    "Haploid",
+    "Diploid",
+    "Haplo-diploid",
+    "Diplo-haploid"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-11"
+  },
+  {
+   "id": "pk-ex2-12",
+   "no": 91,
+   "q": "The plant body of liverworts is:",
+   "o": [
+    "Sporophyte",
+    "Thalloid",
+    "With roots",
+    "Xerophytic"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-12"
+  },
+  {
+   "id": "pk-ex2-13",
+   "no": 92,
+   "q": "Vegetative reproduction in mosses is by:",
+   "o": [
+    "Fragmentation",
+    "Budding",
+    "Both (1) & (2)",
+    "By spore"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-13"
+  },
+  {
+   "id": "pk-ex2-14",
+   "no": 93,
+   "q": "Marchantia is the example of:",
+   "o": [
+    "Mosses",
+    "Liverworts",
+    "Sphenopsida",
+    "Lycopsida"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-14"
+  },
+  {
+   "id": "pk-ex2-15",
+   "no": 94,
+   "q": "In Mosses creeping, green, branched and frequently filamentous stage is called:",
+   "o": [
+    "Protonema",
+    "Rhizome",
+    "Rhizophore",
+    "All of these"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-15"
+  },
+  {
+   "id": "pk-ex2-16",
+   "no": 95,
+   "q": "Identify the diagram below and mention the class to which this plant belongs:",
+   "o": [
+    "Equisetum, Sphenopsida",
+    "Funaria, Bryopsida",
+    "Funaria, Hepaticopsida",
+    "Dryopteris, Filicopsida"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "diagram",
+   "needsImage": true,
+   "ref": "PK-16"
+  },
+  {
+   "id": "pk-ex2-17",
+   "no": 96,
+   "q": "Which of the following is incorrect w.r.t. bryophytes?",
+   "o": [
+    "They play an important role in plant succession on bare rocks/soil",
+    "They usually occur in shaded, dry and xeric areas",
+    "They lack gamete formation",
+    "2 and 3 both"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-17"
+  },
+  {
+   "id": "pk-ex2-18",
+   "no": 97,
+   "q": "Read the following statements w.r.t. bryophytes:\n(i) Sporophyte is multicellular\n(ii) Sporophyte is free living\n(iii) The spores germinate to produce sporophyte\n(iv) Some cells of sporophyte undergo reduction division to produce haploid spores\n(v) Gametophyte is non-photosynthetic structure Which of the above statements are correct?",
+   "o": [
+    "(i), (ii) and (v)",
+    "(i) and (iv)",
+    "(ii), (iii) and (v)",
+    "(i), (iii) and (iv)"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-18"
+  },
+  {
+   "id": "pk-ex2-19",
+   "no": 98,
+   "q": "Read the following statements:\nA. Bryophytes live in soil but depend on water for sexual reproduction\nB. The male gamete (sperm) of bryophytes is biflagellated Choose the correct option",
+   "o": [
+    "Both the statements A and B are incorrect",
+    "Both the statements A and B are correct",
+    "The statement A is correct but B is incorrect",
+    "The statement A is incorrect but B is correct"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-19"
+  },
+  {
+   "id": "pk-ex2-20",
+   "no": 99,
+   "q": "Which of the following is correct for pteridophytes showing the events which is precursor to the seed habit?",
+   "o": [
+    "These are heterosporous",
+    "The female gametophyte(s) in these plants is/are retained on the parent sporophytes for some periods",
+    "The development of zygotes into young embryos take place within the male gametophytes",
+    "All are correct"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-20"
+  },
+  {
+   "id": "pk-ex2-21",
+   "no": 100,
+   "q": "The leaves of Pteridophyta are:",
+   "o": [
+    "Microphylls",
+    "Macrophylls",
+    "Both (1) & (2)",
+    "None of these"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-21"
+  },
+  {
+   "id": "pk-ex2-22",
+   "no": 101,
+   "q": "In majority of the Pteridophytes all the spores are of similar kind such plants are called:",
+   "o": [
+    "Homosporous",
+    "Heterosporous",
+    "Prothallus",
+    "Protonema"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-22"
+  },
+  {
+   "id": "pk-ex2-23",
+   "no": 102,
+   "q": "Which is the dominant phase of Pteridophytes?",
+   "o": [
+    "Gametophyte",
+    "Sporophyte",
+    "Spores",
+    "Gametes"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-23"
+  },
+  {
+   "id": "pk-ex2-24",
+   "no": 103,
+   "q": "In Pteridophytes, sporophylls may form distinct compact structure, called:",
+   "o": [
+    "Strobili or cones",
+    "Microphyll",
+    "Macrophyll",
+    "Tropophyll"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-24"
+  },
+  {
+   "id": "pk-ex2-25",
+   "no": 104,
+   "q": "Pteridophytes are classified in to:",
+   "o": [
+    "Three classes",
+    "Two classes",
+    "Four classes",
+    "Five classes"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-25"
+  },
+  {
+   "id": "pk-ex2-26",
+   "no": 105,
+   "q": "Gymnospermic plants are:",
+   "o": [
+    "Homosporous",
+    "Heterosporous",
+    "Both",
+    "With out spores"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-26"
+  },
+  {
+   "id": "pk-ex2-27",
+   "no": 106,
+   "q": "The nucellus is protected by envelopes and the composite structure is called:",
+   "o": [
+    "Megaspore",
+    "Microspore",
+    "Ovule",
+    "Cone"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-27"
+  },
+  {
+   "id": "pk-ex2-28",
+   "no": 107,
+   "q": "In Cycas specialised roots are associated with N fixing cyanobacteria, called: 2",
+   "o": [
+    "Tap root",
+    "Coralloid root",
+    "Adventitious root",
+    "All the above"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-28"
+  },
+  {
+   "id": "pk-ex2-29",
+   "no": 108,
+   "q": "Gymnosperms does not, include:",
+   "o": [
+    "Medium sized trees",
+    "Tall tree",
+    "Shrubs",
+    "Grasses"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-29"
+  },
+  {
+   "id": "pk-ex2-30",
+   "no": 109,
+   "q": "In Gymnosperm which is not found:",
+   "o": [
+    "Antheridia",
+    "Archegonia",
+    "Both",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-30"
+  },
+  {
+   "id": "pk-ex2-31",
+   "no": 110,
+   "q": "Read the following statement w.r.t. gymnosperms:\n(i) The cones bearing megasporophylls with ovules or megasporangia are called megasporangiate or female strobili.\n(ii) The male or female cones or strobili may be borne on the same tree (e.g., Pinus).\n(iii) In Cycas, male cones and female cones are borne on different trees.\n(iv) One of the cells of nucellus differentiates into megaspore mother cell.\n(v) Ovule is a specialised megasporangium which is non-integumented, dehiscent and permanently stores the megaspores How many of the above statements are correct?",
+   "o": [
+    "Three",
+    "Five",
+    "Four",
+    "Two"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "keyCorrected": true,
+   "ref": "PK-31"
+  },
+  {
+   "id": "pk-ex2-32",
+   "no": 111,
+   "q": "Unlike bryophytes and pteridophytes, in gymnosperms the:",
+   "o": [
+    "Male and female gametophytes do not have an independent free-living existence",
+    "Male gametophytes have an independent existence but female gametophytes do not",
+    "Male gametophytes do not have an independent existence but female gametophytes have",
+    "Male and female gametophytes have an independent free-living existence"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-32"
+  },
+  {
+   "id": "pk-ex2-33",
+   "no": 112,
+   "q": "Select the correct incorporation sequence of one structure within the other in a gymnosperm:",
+   "o": [
+    "Spores → Sporophylls → Strobilus → Sporangia",
+    "Sporangia → Spores → Sporophylls → Strobilus",
+    "Sporangia → Strobilus → Sporophylls → Spores",
+    "Spores → Sporangia → Sporophylls → Strobilus"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-33"
+  },
+  {
+   "id": "pk-ex2-34",
+   "no": 113,
+   "q": "Which statement is wrong for Cycas?",
+   "o": [
+    "Xylem have vessels",
+    "Male cones are well developed",
+    "It has coralloid roots",
+    "Integumented megasporangium"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-34"
+  },
+  {
+   "id": "pk-ex2-35",
+   "no": 114,
+   "q": "Which of the following statement is true for bryophyta?",
+   "o": [
+    "Along with water absorption roots also provide anchorage to plants",
+    "Sporophyte is dominant",
+    "Gametophyte is dominant and sporophyte is mostly parasitic",
+    "Gametophyte is parasitic"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-35"
+  },
+  {
+   "id": "pk-ex2-36",
+   "no": 115,
+   "q": "Vessels are found in:",
+   "o": [
+    "All angiosperms and some gymnosperms",
+    "Most of the angiosperms and few gymnosperms",
+    "All angiosperms, all gymnosperms and some pteridophytes",
+    "All pteridophytes"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-36"
+  },
+  {
+   "id": "pk-ex2-37",
+   "no": 116,
+   "q": "Which one pair of examples will correctly represent the grouping spermatophyta for classifying plants?",
+   "o": [
+    "Marchantia, Sugarcane",
+    "Pinus, Cycas",
+    "Polytrichum, Pinus",
+    "Ginkgo, Pteris"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-37"
+  },
+  {
+   "id": "pk-ex2-38",
+   "no": 117,
+   "q": "Plants reproducing by spores such as mosses and ferns are grouped under the general term:",
+   "o": [
+    "Cryptogams",
+    "Bryophytes",
+    "Sporophytes",
+    "Thallophytes"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-38"
+  },
+  {
+   "id": "pk-ex2-39",
+   "no": 118,
+   "q": "Which one of the following pairs of plants are not seed producers?",
+   "o": [
+    "Fern and Funaria",
+    "Funaria and Ficus",
+    "Ficus and Chlamydomonas",
+    "Punica and Pinus"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-39"
+  },
+  {
+   "id": "pk-ex2-40",
+   "no": 119,
+   "q": "Classification systems are changing every now and then because an attempt has been made to evolve such a system ultimately which is able to explain evolutionary relations in organisms. What was the correct sequence of these types of classification systems with respect to their evolution:",
+   "o": [
+    "Practical → Artificial → Natural → Phylogenetic → Numerical",
+    "Artificial → Practical → Numerical → Phylogenetic",
+    "Practical → Artificial → Natural → Numerical → phylogenetic",
+    "Numerical → Artificial → Natural → Practical → phylogenetic"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-40"
+  },
+  {
+   "id": "pk-ex2-41",
+   "no": 120,
+   "q": "The correct sequence of evolution is:",
+   "o": [
+    "Bryophyta → Pteridophyta → Gymnosperms → Dicots → Monocots",
+    "Pteridophyta → Gymnosperms → Dicots → Monocots → Bryophyta",
+    "Bryophyta → Gymnosperms → Dicots → Monocots → Angiosperms",
+    "Bryophyta → Pteridophyta → Gymnosperms → Monocots → Dicots"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-41"
+  },
+  {
+   "id": "pk-ex2-42",
+   "no": 121,
+   "q": "Which of the following is not a Character related to Red Algae?",
+   "o": [
+    "Sexual reproduction is oogamous.",
+    "They occur in both well lighted areas and great depths of oceans.",
+    "The food stored in them is cyanophycean starch, very similar to amylopectin and glycogen.",
+    "They reproduce asexually by non- motile spores."
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-42"
+  },
+  {
+   "id": "pk-ex2-43",
+   "no": 122,
+   "q": "Find the incorrect from the followings:",
+   "o": [
+    "Sporophyte of moss is more elaborate than that in liverworts.",
+    "Gemmae are asexual buds formed in moss only",
+    "Funaria, Polytrichum & Sphagnum are moss plants",
+    "After meiosis spores are produced within the capsule of bryophytes"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-43"
+  },
+  {
+   "id": "pk-ex2-44",
+   "no": 123,
+   "q": "Oogamous type of sexual reproduction is found in:",
+   "o": [
+    "Chlamydomonas & Spirogyra",
+    "Chlamydomonas & Ulothrix",
+    "Spirogyra & Ulothrix",
+    "Volvox & Fucus"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-44"
+  },
+  {
+   "id": "pk-ex2-45",
+   "no": 124,
+   "q": "A plant shows sporophyte as a main generation. Its gametophyte shows rhizoids and is haploid. It needs water to complete its life cycle because the male gametes are motile. Identify the group to which it belongs to:",
+   "o": [
+    "Pteridophytes",
+    "Gymnosperms",
+    "Monocots",
+    "Bryophytes"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-45"
+  },
+  {
+   "id": "pk-ex2-46",
+   "no": 125,
+   "q": "A protonema is?",
+   "o": [
+    "A structure in pteridophytes formed before the thallus develops",
+    "A sporophytic free living structure formed in pteridophytes",
+    "A creeping, green, filamentous and gametophytic structure produced in bryophytes",
+    "A primitive structure formed after fertilization in pteridophytes"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-46"
+  },
+  {
+   "id": "pk-ex2-47",
+   "no": 126,
+   "q": "Read the following statements & select the correct option:\n(A) Gymnosperms do not show xerophytic Characters.\n(B) In Cycas coralloid roots are associated with mycorrhiza\n(C) In conifers needle like leaves reduce the surface area\n(D) All gymnosperms are heterosporous How many above statements are correct & incorrect?",
+   "o": [
+    "2 - correct, 2 - incorrect",
+    "3 - correct, 1 - incorrect",
+    "1 - correct, 3 - incorrect",
+    "0 - correct, 4 – incorrect"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-47"
+  },
+  {
+   "id": "pk-ex2-48",
+   "no": 127,
+   "q": "Diplontic life cycle is found in:",
+   "o": [
+    "Thallophyta & Bryophyta",
+    "Gymnosperms & Angiosperms",
+    "Bryophyta & Pteridophyta",
+    "Both (2) & (3)"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-48"
+  },
+  {
+   "id": "pk-ex2-49",
+   "no": 128,
+   "q": "The life cycle pattern shown is seen in which group of plants:",
+   "o": [
+    "In algae only",
+    "In bryophytes and pteridophytes",
+    "In gymnosperms only",
+    "In algae and gymnosperms"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "diagram",
+   "needsImage": true,
+   "ref": "PK-49"
+  },
+  {
+   "id": "pk-ex2-50",
+   "no": 129,
+   "q": "Identify the life cycle pattern:",
+   "o": [
+    "Diplontic",
+    "Haplontic",
+    "Diplo-haplontic",
+    "Haplo-diplontic"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "diagram",
+   "needsImage": true,
+   "ref": "PK-50"
+  },
+  {
+   "id": "pk-ex2-51",
+   "no": 130,
+   "q": "Read the following statements w.r.t. artificial system of classification.\na. Involves usage of one or few morphological Characters for grouping of organisms.\nb. Aristotle used sexual Characters as they are affected by environment.\nc. Linnaeus gave sexual system of classification.\nd. Gave equal weightage to vegetative and sexual Characteristics. Select the correct option.",
+   "o": [
+    "B, C & D",
+    "A, B & C",
+    "A, C & D",
+    "C, B & D"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-51"
+  },
+  {
+   "id": "pk-ex2-52",
+   "no": 131,
+   "q": "Select the incorrect statement w.r.t. phenetics.",
+   "o": [
+    "Numbers and codes are assigned to all observable Characters.",
+    "All observable Characters are given equal importance considering sexual Characters on the outmost priority.",
+    "Organization and analysis of data forms core of numerical taxonomy.",
+    "Notations like ‘0’, ‘+’ and ‘-‘are used for data not available, presence and absence of Character respectively."
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-52"
+  },
+  {
+   "id": "pk-ex2-53",
+   "no": 132,
+   "q": "Which of the following taxonomy is based on chromosome structure and behaviour?",
+   "o": [
+    "Chemotaxonomy",
+    "Cytotaxonomy",
+    "Karyotaxonomy",
+    "Both (2) and (3)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-53"
+  },
+  {
+   "id": "pk-ex2-54",
+   "no": 133,
+   "q": "Choose the incorrect option w.r.t. general Characteristics of algae.",
+   "o": [
+    "Are mainly aquatic",
+    "Reproduces sexually only",
+    "Shows variation in size",
+    "Are atracheophytes"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-54"
+  },
+  {
+   "id": "pk-ex2-55",
+   "no": 134,
+   "q": "Oogamous reproduction in algae involves",
+   "o": [
+    "gamete-motile, gamete–non motile",
+    "gamete-non motile, gamete- motile",
+    "gamete-non motile, gamete-non motile",
+    "Both (1) and (3)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-55"
+  },
+  {
+   "id": "pk-ex2-56",
+   "no": 135,
+   "q": "Family tree based on evolutionary relationship is called.",
+   "o": [
+    "Karyogram",
+    "Dendrogram",
+    "Cladogram",
+    "Idiogram"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-56"
+  },
+  {
+   "id": "pk-ex2-57",
+   "no": 136,
+   "q": "The most common method of asexual reproduction in algae involves formation of.",
+   "o": [
+    "Conidia",
+    "Aplanospores",
+    "Zoospores",
+    "Akinetes"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-57"
+  },
+  {
+   "id": "pk-ex2-58",
+   "no": 137,
+   "q": "Which of the following algae is colonial and mobile?",
+   "o": [
+    "Spirogyra",
+    "Sargassum",
+    "Fucus",
+    "Volvox"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-58"
+  },
+  {
+   "id": "pk-ex2-59",
+   "no": 138,
+   "q": "Choose the odd one w.r.t. cryptogams.",
+   "o": [
+    "Chlamydomonas",
+    "Porphyra",
+    "Anabaena",
+    "Spirogyra"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-59"
+  },
+  {
+   "id": "pk-ex2-60",
+   "no": 139,
+   "q": "Natural system of classification is based upon.",
+   "o": [
+    "Anatomy, Ultrastructure",
+    "Embryology, Morphology",
+    "Phylogeny",
+    "Both (1) and (2)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-60"
+  },
+  {
+   "id": "pk-ex2-61",
+   "no": 140,
+   "q": "How many of the given features are associated with algae: Embryophytes, planogametes, Atracheophytes, unicellular sex organs, Zoospores",
+   "o": [
+    "Two",
+    "Three",
+    "Five",
+    "Four"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-61"
+  },
+  {
+   "id": "pk-ex2-62",
+   "no": 141,
+   "q": "In green algae outer and inner layer of wall is composed of __(A)__ and __(B)__, respectively.",
+   "o": [
+    "(A) Cellulose (B) Hemicellulose",
+    "(A) Cellulose (B) Pectin",
+    "(A) Pectose (B) Cellulose",
+    "(A) Lignin (B) Cellulose"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-62"
+  },
+  {
+   "id": "pk-ex2-63",
+   "no": 142,
+   "q": "Select the correct option w.r.t. motility and origin of asexual spores of green algae.",
+   "o": [
+    "Motile and endogenous",
+    "Non motile and endogenous",
+    "Motile and exogenous",
+    "Non-motile and exogenous"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-63"
+  },
+  {
+   "id": "pk-ex2-64",
+   "no": 143,
+   "q": "Chlorophyll b, chlorophyll d and chlorophyll c are major pigments in _____, _____ and _____ respectively.",
+   "o": [
+    "Chlorophyceae, Phaeophyceae and Rhodophyceae",
+    "Phaeophyceae, Rhodophyceae and Chlorophyceae",
+    "Rhodophyceae, Phaeophyceae and Chlorophyceae",
+    "Chlorophyceae, Rhodophyceae and Phaeophyceae"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-64"
+  },
+  {
+   "id": "pk-ex2-65",
+   "no": 144,
+   "q": "Kelps are.",
+   "o": [
+    "Filamentous brown algae",
+    "Profusely branched brown algae",
+    "Profusely branched red algae",
+    "Colonial green algae"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-65"
+  },
+  {
+   "id": "pk-ex2-66",
+   "no": 145,
+   "q": "Select the incorrect statement w.r.t. Dictyota.",
+   "o": [
+    "Food is stored in form of mannitol.",
+    "Vegetative cells have coating of algin, surrounding the cellulosic wall.",
+    "Zoospores are pyriform and bear two equal laterally attached flagella.",
+    "It is marine alga."
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-66"
+  },
+  {
+   "id": "pk-ex2-67",
+   "no": 146,
+   "q": "How many among the followings are members of Rhodophyceae and Phaeophyceae, respectively: Fucus, Ulothrix, Spirullina, Gelidum, Chalmydomonas, Porphyra, Chlorella, Polysiphonia, Sargassum, Laminaria, Ectocarpus, Gracilaria.",
+   "o": [
+    "5,4",
+    "3,5",
+    "4,5",
+    "4,4"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-67"
+  },
+  {
+   "id": "pk-ex2-68",
+   "no": 147,
+   "q": "Stored food in Polysiphonia is structurally very similar to.",
+   "o": [
+    "Starch and amylose",
+    "Amylopectin and glycogen",
+    "Amylose and glycogen",
+    "Mannitol and amylopectin"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-68"
+  },
+  {
+   "id": "pk-ex2-69",
+   "no": 148,
+   "q": "Which of the following algae reproduces asexually by non-motile spores only?",
+   "o": [
+    "Dictyota",
+    "Ectocarpus",
+    "Ulothrix",
+    "Polysiphonia"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-69"
+  },
+  {
+   "id": "pk-ex2-70",
+   "no": 149,
+   "q": "Hydrocolloids “Carrageen” and “Algin” are obtained from ____ and ____ respectively",
+   "o": [
+    "Gelidum (red alga), Macrocystis (brown alga)",
+    "Chondrus (brown alga), Gelidum (red alga)",
+    "Chondrus (red alga), Macrocystis (brown alga)",
+    "Macrocystis (red alga), Gracilaria (red alga)"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-70"
+  },
+  {
+   "id": "pk-ex2-71",
+   "no": 150,
+   "q": "Pear shaped gametes with two laterally attached flagella are formed in.",
+   "o": [
+    "Polysiphonia",
+    "Ulothrix",
+    "Fucus",
+    "Spirogyra"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-71"
+  },
+  {
+   "id": "pk-ex2-72",
+   "no": 151,
+   "q": "Read the following statements:\n(A) Algae are primary producers of energy rich compounds in aquatic habitat.\n(B) Marine algae are producers of hydrocolloids.\n(C) Stipe which is the leaf like photosynthetic organ found in Ectocarpus.\n(D) Chlamydomonas shows only isogamous type of sexual reproduction.\n(E) Atlantic ocean’s sargasso sea was named after one of the brown algae. Select the correct option",
+   "o": [
+    "All except (b) and (c)",
+    "All except (a) and (c)",
+    "All except (d)",
+    "All except (c) and (d)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-72"
+  },
+  {
+   "id": "pk-ex2-73",
+   "no": 152,
+   "q": "Which photosynthetic pigment helps members of rhodophyceae to grow at greatest depths in oceans where little light can penetrates?",
+   "o": [
+    "Phycocyanin",
+    "Phycoerythrin",
+    "Carotene",
+    "Fucoxanthin"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-73"
+  },
+  {
+   "id": "pk-ex2-74",
+   "no": 153,
+   "q": "Agar is obtained from.",
+   "o": [
+    "Gracilaria",
+    "Laminaria",
+    "Gelidum",
+    "Both (1) & (3)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-74"
+  },
+  {
+   "id": "pk-ex2-75",
+   "no": 154,
+   "q": "Which of the following alga are used as food supplements by space travellers?",
+   "o": [
+    "Laminaria and Chlorella",
+    "Spirogyra and Spirullina",
+    "Spirullina and Chlorella",
+    "Chlorella and Spirogyra"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-75"
+  },
+  {
+   "id": "pk-ex2-76",
+   "no": 155,
+   "q": "Which of the following forms mats on the soil and play major role in preventing soil erosion?",
+   "o": [
+    "Liverworts",
+    "Hornworts",
+    "Mosses",
+    "Algae"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-76"
+  },
+  {
+   "id": "pk-ex2-77",
+   "no": 156,
+   "q": "How many among the followings are haploid structures of bryophytes? Gametophyte, Zygote, Sporophyte, Seta, Rhizoid, Antheridium, Protonema, Antherozoid, Spore, NCC, Archegonium, Oosphere",
+   "o": [
+    "6",
+    "11",
+    "9",
+    "8"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-77"
+  },
+  {
+   "id": "pk-ex2-78",
+   "no": 157,
+   "q": "Gemmae are.",
+   "o": [
+    "Non green, Multicellular, asexual buds",
+    "Green, Multicellular, asexual buds",
+    "Non green, unicellular, asexual buds",
+    "Non green, Multicellular, sexual buds"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-78"
+  },
+  {
+   "id": "pk-ex2-79",
+   "no": 158,
+   "q": "Select the incorrect statement w.r.t plant body of bryophytes.",
+   "o": [
+    "It is thallus like and may be prostate or erect",
+    "It lacks true roots, stem, or leaves",
+    "Xylem and phloem are present",
+    "It is attached to substratum by unicellular or multicellular rhizoids"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-79"
+  },
+  {
+   "id": "pk-ex2-80",
+   "no": 159,
+   "q": "Dominant phase of bryophytes bear.",
+   "o": [
+    "Multicellular sex organs",
+    "Unicellular sex organs",
+    "Spore mother cells",
+    "Capsules"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-80"
+  },
+  {
+   "id": "pk-ex2-81",
+   "no": 160,
+   "q": "Read the following statements w.r.t. bryophytes\n(a) They are homosporous\n(b) They are first embryophytes\n(c) Zygote does not undergo equational division\n(d) Water acts as transfer medium for antherozoids to reach the archegonia\n(e) In mosses, Spores germinate to form filamentous gametophyte Select the correct option",
+   "o": [
+    "(a), (b), (c) & (e)",
+    "All except (c)",
+    "(b), (c), (d) & (e)",
+    "(a), (b) & (d) only"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-81"
+  },
+  {
+   "id": "pk-ex2-82",
+   "no": 161,
+   "q": "In Marchantia and Riccia, antheridia and archegonia are produced on ____ and ____ thalli respectively.",
+   "o": [
+    "Same, same",
+    "Same, different",
+    "Different, same",
+    "Different, different"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-82"
+  },
+  {
+   "id": "pk-ex2-83",
+   "no": 162,
+   "q": "Which of the following features are true for bryophytes?\n(A) Zygotic meiosis\n(B) Zygotic mitosis\n(C) Sporic meiosis\n(D) Vegetative reproduction by fragmentation",
+   "o": [
+    "(A), (B) & (C)",
+    "(B), (C) & (D)",
+    "Only (A) & (C)",
+    "(A), (B) & (D)"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-83"
+  },
+  {
+   "id": "pk-ex2-84",
+   "no": 163,
+   "q": "Statement A: The mosses have an elaborate mechanism of spore dispersal.\nStatement B: Leafy Stage in mosses develops from secondary protonema as an apical bud.",
+   "o": [
+    "Both Statement A and Statement B are incorrect",
+    "Both Statement A and Statement B are correct",
+    "Statement B is incorrect",
+    "Statement A is incorrect"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-84"
+  },
+  {
+   "id": "pk-ex2-85",
+   "no": 164,
+   "q": "How many among the followings are mosses and liverworts, respectively? Sphagnum, Riccia, Polysiphonia, Fucus, Marchantia, Sargassum, Funaria, Porphyra, Porella, Polytrichum",
+   "o": [
+    "4, 4",
+    "4, 5",
+    "3, 2",
+    "3, 3"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-85"
+  },
+  {
+   "id": "pk-ex2-86",
+   "no": 165,
+   "q": "Which bryophyte was used as a surgical dressing during World War I.",
+   "o": [
+    "Sargassum",
+    "Funaria",
+    "Sphagnum",
+    "Porella"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-86"
+  },
+  {
+   "id": "pk-ex2-87",
+   "no": 166,
+   "q": "Select the odd one w.r.t. economic importance of bryophytes.",
+   "o": [
+    "Helps in water retention",
+    "Used as ornamental",
+    "Have medicinal uses",
+    "Helps om overcoming soil alkalinity"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-87"
+  },
+  {
+   "id": "pk-ex2-88",
+   "no": 167,
+   "q": "Select the odd one w.r.t. the moss which is a good manure and has great water holding capacity",
+   "o": [
+    "Bog moss",
+    "Peat moss",
+    "Cotton moss",
+    "Irish moss"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-88"
+  },
+  {
+   "id": "pk-ex2-89",
+   "no": 168,
+   "q": "Which bryophyte was employed in removing kidney stones?",
+   "o": [
+    "Sphagnum",
+    "Polytrichum commune",
+    "Porella",
+    "Funaria"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-89"
+  },
+  {
+   "id": "pk-ex2-90",
+   "no": 169,
+   "q": "Which of the followings is a dioecious bryophyte?",
+   "o": [
+    "Riccia",
+    "Marchantia",
+    "Funaria",
+    "Polytrichum"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-90"
+  },
+  {
+   "id": "pk-ex2-91",
+   "no": 170,
+   "q": "Select the incorrect answer:",
+   "o": [
+    "Small leaves - microsporophyll in ferns",
+    "Large leaves – macrophylls in Pteropsida",
+    "Compactly arranged sporophylls – strobili",
+    "Leaflets & leaves having sporangia – sporophylls"
+   ],
+   "a": 1,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-91"
+  },
+  {
+   "id": "pk-ex2-92",
+   "no": 171,
+   "q": "Prothallus is",
+   "o": [
+    "Small, multicellular, free living, photosynthetic thalloid sporophyte",
+    "Small, multicellular, free living, photosynthetic thalloid gametophyte",
+    "Large, multicellular, free living, photosynthetic thalloid gametophyte",
+    "Large, multicellular, free living, non- photosynthetic sporophyte"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-92"
+  },
+  {
+   "id": "pk-ex2-93",
+   "no": 172,
+   "q": "Read the following statements w.r.t. pteridophytes\n(a) They are soil binders\n(b) First terrestrial plants\n(c) First tracheophytes\n(d) Dominant phase is differentiated into true stem, leaves, and roots\n(e) Sporophyte is an independent plant Choose the correct answer",
+   "o": [
+    "a, b, c & d",
+    "All except d",
+    "All except b",
+    "B, c, d & e"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-93"
+  },
+  {
+   "id": "pk-ex2-94",
+   "no": 173,
+   "q": "Which of the following pteridophytes bear strobili?",
+   "o": [
+    "Equisetum",
+    "Selaginella",
+    "Dryopteris",
+    "Both (1) & (2)"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-94"
+  },
+  {
+   "id": "pk-ex2-95",
+   "no": 174,
+   "q": "Morphologically different types of spores are produced by",
+   "o": [
+    "Lycopodium and Dryopteris",
+    "Lycopodium and Salvinia",
+    "Equisetum and Dryopteris",
+    "Selaginella and Salvinia"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-95"
+  },
+  {
+   "id": "pk-ex2-96",
+   "no": 175,
+   "q": "Megaspores and microspores germinate to give rise to ____ and ____ respectively",
+   "o": [
+    "Female and male sporophytes",
+    "Male and female sporophytes",
+    "Female and male gametophytes",
+    "Male and female gametophytes"
+   ],
+   "a": 3,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-96"
+  },
+  {
+   "id": "pk-ex2-97",
+   "no": 176,
+   "q": "Which of the following has dominant diploid generation and produces motile sperms?",
+   "o": [
+    "Funaria",
+    "Selaginella",
+    "Marchantia",
+    "Both (1) and (3)"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-97"
+  },
+  {
+   "id": "pk-ex2-98",
+   "no": 177,
+   "q": "Statement-1: In heterosporous pteridophytes, development of zygote into young embryo takes place within the female gametophyte.\nStatement-2: Heterospory is one of the essentialities for seed habit in plants.",
+   "o": [
+    "Only statement-1 is correct",
+    "Only statement-2 is correct",
+    "Both the statements are incorrect",
+    "Both the statements are correct"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "lockOrder": true,
+   "ref": "PK-98"
+  },
+  {
+   "id": "pk-ex2-99",
+   "no": 178,
+   "q": "Select the correct option w.r.t. Marsilea.",
+   "o": [
+    "Heterosporous vascular spermatophyte",
+    "Heterosporous vascular cryptogam",
+    "Homosporous vascular cryptogam",
+    "Heterosporous non-vascular embryophyte"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-99"
+  },
+  {
+   "id": "pk-ex2-100",
+   "no": 179,
+   "q": "Select the odd one w.r.t. members of class ‘Pteropsida’.",
+   "o": [
+    "Dryopteris",
+    "Pteris",
+    "Adiantum",
+    "Selaginella"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-100"
+  },
+  {
+   "id": "pk-ex2-101",
+   "no": 180,
+   "q": "Which of the following statement is incorrect w.r.t. Azolla?\n(a) It is an aquatic water fern\n(b) It is used as biofertilizer\n(c) It is homosporous vascular cryptogam\n(d) It shows symbolic association with alga Anabaena which fixes atmospheric nitrogen",
+   "o": [
+    "All except (c)",
+    "a and b",
+    "b only",
+    "c only"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-101"
+  },
+  {
+   "id": "pk-ex2-102",
+   "no": 181,
+   "q": "Which of the following pteridophyte is the source of anthelmintic drug?",
+   "o": [
+    "Selaginella",
+    "Equisetum",
+    "Marsilea",
+    "Dryopteris"
+   ],
+   "a": 4,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-102"
+  },
+  {
+   "id": "pk-ex2-103",
+   "no": 182,
+   "q": "____ stems are used in scouring and polishing of metals",
+   "o": [
+    "Azolla",
+    "Equisetum",
+    "Psilotum",
+    "Selaginella"
+   ],
+   "a": 2,
+   "s": "",
+   "topic": "Plant Kingdom",
+   "type": "mcq",
+   "ref": "PK-103"
+  }
+ ]
+}
