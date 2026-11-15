@@ -1,0 +1,3821 @@
+{
+ "schema": 1,
+ "id": "biological-classification",
+ "book": "NCERT Biology Class XI",
+ "chapter": 2,
+ "title": "Biological Classification",
+ "sourcePdf": "Biological_Classification_Annotated_NCERT.pdf",
+ "pageOffset": 9,
+ "legend": {
+  "yellow": "key line highlighted in the annotated PDF",
+  "green": "secondary highlight (names, examples, extra-important facts)"
+ },
+ "counts": {
+  "pages": 13,
+  "sections": 17,
+  "sentences": 282,
+  "highlightedSentences": 211,
+  "exercises": 12
+ },
+ "sections": [
+  {
+   "id": "2.1",
+   "title": "Kingdom Monera",
+   "level": 2,
+   "page": 12
+  },
+  {
+   "id": "2.1.1",
+   "title": "Archaebacteria",
+   "level": 3,
+   "page": 13
+  },
+  {
+   "id": "2.1.2",
+   "title": "Eubacteria",
+   "level": 3,
+   "page": 13
+  },
+  {
+   "id": "2.2",
+   "title": "Kingdom Protista",
+   "level": 2,
+   "page": 14
+  },
+  {
+   "id": "2.2.1",
+   "title": "Chrysophytes",
+   "level": 3,
+   "page": 14
+  },
+  {
+   "id": "2.2.2",
+   "title": "Dinoflagellates",
+   "level": 3,
+   "page": 15
+  },
+  {
+   "id": "2.2.3",
+   "title": "Euglenoids",
+   "level": 3,
+   "page": 15
+  },
+  {
+   "id": "2.2.4",
+   "title": "Slime Moulds",
+   "level": 3,
+   "page": 15
+  },
+  {
+   "id": "2.2.5",
+   "title": "Protozoans",
+   "level": 3,
+   "page": 15
+  },
+  {
+   "id": "2.3",
+   "title": "Kingdom Fungi",
+   "level": 2,
+   "page": 16
+  },
+  {
+   "id": "2.3.1",
+   "title": "Phycomycetes",
+   "level": 3,
+   "page": 17
+  },
+  {
+   "id": "2.3.2",
+   "title": "Ascomycetes",
+   "level": 3,
+   "page": 17
+  },
+  {
+   "id": "2.3.3",
+   "title": "Basidiomycetes",
+   "level": 3,
+   "page": 18
+  },
+  {
+   "id": "2.3.4",
+   "title": "Deuteromycetes",
+   "level": 3,
+   "page": 18
+  },
+  {
+   "id": "2.4",
+   "title": "Kingdom Plantae",
+   "level": 2,
+   "page": 19
+  },
+  {
+   "id": "2.5",
+   "title": "Kingdom Animalia",
+   "level": 2,
+   "page": 19
+  },
+  {
+   "id": "2.6",
+   "title": "Viruses , Viroids , Prions And Lichens",
+   "level": 2,
+   "page": 19
+  }
+ ],
+ "pages": [
+  {
+   "pg": 10,
+   "pdf": 1,
+   "blocks": [
+    {
+     "type": "text",
+     "section": null,
+     "sentences": [
+      {
+       "id": "biological-classification-p10-0-0",
+       "text": "B IOLOGICAL C LASSIFICATION Since the dawn of civilisation, there have been many attempts to classify living organisms.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "many attempts to classify living organisms.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p10-0-1",
+       "text": "It was done instinctively not using criteria that were scientific but borne out of a need to use organisms for our own use – for food, shelter and clothing.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "need to use organisms for our own use",
+         "c": "yellow"
+        },
+        {
+         "text": "food, shelter and clothing.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p10-0-2",
+       "text": "Aristotle was the earliest to attempt a more scientific basis for classification.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Aristotle",
+         "c": "yellow"
+        },
+        {
+         "text": "earliest to attempt a more scientific basis for classification.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p10-0-3",
+       "text": "He used simple morphological characters to classify plants into trees, shrubs and herbs.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "simple morphological characters to classify plants into trees, shrubs and herbs.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p10-0-4",
+       "text": "He also divided animals into two groups, those which had red blood and those that did not.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "divided animals into two groups,",
+         "c": "yellow"
+        },
+        {
+         "text": "had red blood and those that did not.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p10-0-5",
+       "text": "In Linnaeus' time a Two Kingdom system of classification with Plantae and Animalia kingdoms was developed that included all plants and animals respectively.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Linnaeus'",
+         "c": "yellow"
+        },
+        {
+         "text": "Two Kingdom system",
+         "c": "yellow"
+        },
+        {
+         "text": "Plantae and Animalia",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p10-0-6",
+       "text": "This system did not distinguish between the eukaryotes and prokaryotes, unicellular and multicellular organisms and photosynthetic (green algae) and non-photosynthetic (fungi) organisms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "not distinguish between",
+         "c": "yellow"
+        },
+        {
+         "text": "eukaryotes and prokaryotes, unicellular and multicellular",
+         "c": "yellow"
+        },
+        {
+         "text": "photosynthetic (green algae) and non-photosynthetic (fungi)",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p10-0-7",
+       "text": "Classification of organisms into plants and animals was easily done and was easy to understand, but, a large number of organisms did not fall into either category.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "large number of organisms did not fall into either category.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p10-0-8",
+       "text": "Hence the two kingdom classification used for a long time was found inadequate.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "found inadequate.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p10-0-9",
+       "text": "Besides, gross morphology a need was also felt for including other characteristics like cell structure, nature of wall, mode of nutrition, habitat, methods of reproduction, evolutionary relationships, etc. Classification systems for the living organisms have hence, undergone several changes over the time.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Besides, gross morphology",
+         "c": "yellow"
+        },
+        {
+         "text": "need was also felt for including other characteristics like cell structure, nature of wall, mode of nutrition, habitat, methods of reproduction, evolutionary relationships,",
+         "c": "yellow"
+        },
+        {
+         "text": "undergone several changes over the time.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p10-0-10",
+       "text": "Though plant and animal kingdoms have been a constant under all different systems, the understanding of what groups/organisms be included under these kingdoms have been changing; the number and nature of other kingdoms have also been understood differently by different scientists over the time.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "plant and animal kingdoms have been a constant under all different systems,",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 11,
+   "pdf": 2,
+   "blocks": [
+    {
+     "type": "text",
+     "section": null,
+     "sentences": [
+      {
+       "id": "biological-classification-p11-0-0",
+       "text": "B IOLOGICAL C LASSIFICATION",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "caption",
+     "text": "TABLE 2.1 Characteristics of the Five Kingdoms"
+    },
+    {
+     "type": "text",
+     "section": null,
+     "sentences": [
+      {
+       "id": "biological-classification-p11-2-0",
+       "text": "Prokaryotic Present Present Absent loose tissue (Photosyn- ( H o l o z o i c / R.H. Whittaker (1969) proposed a Five Kingdom Classification.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Prokaryotic",
+         "c": "yellow"
+        },
+        {
+         "text": "Present Present",
+         "c": "green"
+        },
+        {
+         "text": "Absent loose tissue",
+         "c": "yellow"
+        },
+        {
+         "text": "R.H. Whittaker (1969)",
+         "c": "yellow"
+        },
+        {
+         "text": "a Five Kingdom Classification.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p11-2-1",
+       "text": "The kingdoms defined by him were named Monera, Protista, Fungi, Plantae and Animalia.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p11-2-2",
+       "text": "The main criteria for classification used by him include cell structure, body organisation, mode of nutrition, reproduction and phylogenetic relationships.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "main criteria for classification",
+         "c": "green"
+        },
+        {
+         "text": "cell structure, body organisation, mode of nutrition, reproduction and phylogenetic relationships.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p11-2-3",
+       "text": "Table 2.1 gives a comparative account of different characteristics of the five kingdoms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p11-2-4",
+       "text": "The three-domain system has also been proposed that divides the Kingdom Monera into two domains, leaving the remaining eukaryotic kingdoms in the third domain and thereby a six kingdom classification.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "three-domain system",
+         "c": "yellow"
+        },
+        {
+         "text": "Monera into two domains,",
+         "c": "yellow"
+        },
+        {
+         "text": "eukaryotic kingdoms in the third domain",
+         "c": "yellow"
+        },
+        {
+         "text": "six kingdom classification.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p11-2-5",
+       "text": "You will learn about this system in detail at higher classes.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p11-2-6",
+       "text": "Let us look at this five kingdom classification to understand the issues and considerations that influenced the classification system.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p11-2-7",
+       "text": "Earlier classification systems included bacteria, blue green algae, fungi, mosses, ferns, gymnosperms and the angiosperms under ‘Plants’.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Earlier classification systems included bacteria, blue green algae, fungi, mosses, ferns, gymnosperms and the angiosperms under ‘Plants’.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p11-2-8",
+       "text": "The character that unified this whole kingdom was that all the organisms included had a cell wall in their cells.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "cell wall in their cells.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p11-2-9",
+       "text": "This placed together groups which widely differed in other characteristics.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p11-2-10",
+       "text": "It brought together the prokaryotic bacteria and the blue green algae ( cyanobacteria) with other groups which were eukaryotic.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "brought together the prokaryotic bacteria and the blue green algae ( cyanobacteria) with other groups which were eukaryotic.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p11-2-11",
+       "text": "It also grouped together the unicellular organisms and the multicellular ones, say, for example, Chlamydomonas and Spirogyra were placed together under algae.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "together the unicellular organisms and the multicellular ones,",
+         "c": "yellow"
+        },
+        {
+         "text": "Chlamydomonas and Spirogyra",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p11-2-12",
+       "text": "The classification did not differentiate between the heterotrophic group – fungi, and the autotrophic green plants, though they also showed a characteristic difference in their walls composition – the fungi had chitin",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "not differentiate between the heterotrophic group – fungi, and the autotrophic green plants,",
+         "c": "yellow"
+        },
+        {
+         "text": "walls composition",
+         "c": "yellow"
+        },
+        {
+         "text": "fungi",
+         "c": "yellow"
+        },
+        {
+         "text": "chitin",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 12,
+   "pdf": 3,
+   "blocks": [
+    {
+     "type": "text",
+     "section": null,
+     "sentences": [
+      {
+       "id": "biological-classification-p12-0-0",
+       "text": "in their walls while the green plants had a cellulosic cell wall.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "green plants had a cellulosic cell wall.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-0-1",
+       "text": "When such characteristics were considered, the fungi were placed in a separate kingdom – Kingdom Fungi.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "fungi were placed in a separate kingdom",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-0-2",
+       "text": "All prokaryotic organisms were grouped together under Kingdom Monera and the unicellular eukaryotic organisms were placed in Kingdom Protista.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "All prokaryotic",
+         "c": "yellow"
+        },
+        {
+         "text": "under Kingdom Monera",
+         "c": "yellow"
+        },
+        {
+         "text": "unicellular eukaryotic organisms",
+         "c": "yellow"
+        },
+        {
+         "text": "Kingdom Protista.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-0-3",
+       "text": "Kingdom Protista has brought together Chlamydomonas, Chlorella (earlier placed in Algae within Plants and both having cell walls) with Paramoecium and Amoeba (which were earlier placed in the animal kingdom which lack cell wall).",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Kingdom Protista has brought together Chlamydomonas, Chlorella (earlier placed in Algae",
+         "c": "green"
+        },
+        {
+         "text": "Paramoecium and Amoeba",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-0-4",
+       "text": "It has put together organisms which, in earlier classifications, were placed in different kingdoms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p12-0-5",
+       "text": "This happened because the criteria for classification changed.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "criteria for classification changed.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-0-6",
+       "text": "This kind of changes will take place in future too depending on the improvement in our understanding of characteristics and evolutionary relationships.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "changes will take place in future too",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-0-7",
+       "text": "Over time, an attempt has been made to evolve a classification system which reflects not only the morphological, physiological and reproductive similarities, but is also phylogenetic, i.e., is based on evolutionary relationships.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "based on evolutionary relationships.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-0-8",
+       "text": "In this chapter we will study characteristics of Kingdoms Monera, Protista and Fungi of the Whittaker system of classification.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p12-0-9",
+       "text": "The Kingdoms Plantae and Animalia, commonly referred to as plant and animal kingdoms, respectively, will be dealt separately in chapters 3 and 4.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.1",
+     "text": "Kingdom Monera",
+     "level": 2
+    },
+    {
+     "type": "text",
+     "section": "2.1",
+     "sentences": [
+      {
+       "id": "biological-classification-p12-2-0",
+       "text": "Bacteria are the sole members of the Kingdom Monera.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Bacteria",
+         "c": "yellow"
+        },
+        {
+         "text": "sole members of the Kingdom Monera.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-2-1",
+       "text": "They are the most abundant micro-organisms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "most abundant micro-organisms.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-2-2",
+       "text": "Bacteria occur almost everywhere.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p12-2-3",
+       "text": "Hundreds of bacteria are present in a handful of soil.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Hundreds of bacteria are present in a handful of soil.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-2-4",
+       "text": "They also live in extreme habitats such as hot springs, deserts, snow and deep oceans where very few other life forms can survive.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "live in extreme habitats",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-2-5",
+       "text": "Many of them live in or on other organisms as parasites.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "live in or on other organisms as parasites.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p12-2-6",
+       "text": "Bacteria are grouped under four categories based on their shape: the spherical Coccus (pl.: cocci), the rod-shaped Bacillus (pl.: bacilli), the comma-shaped Vibrium (pl.: vibrio) and the spiral Spirillum (pl.: spirilla) (Figure 2.1).",
+       "hl": null,
+       "marks": [
+        {
+         "text": "four categories based on their shape:",
+         "c": "yellow"
+        },
+        {
+         "text": "spherical",
+         "c": "yellow"
+        },
+        {
+         "text": "rod-shaped",
+         "c": "yellow"
+        },
+        {
+         "text": "comma-shaped",
+         "c": "yellow"
+        },
+        {
+         "text": "spiral",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "caption",
+     "text": "Figure 2.1 Bacteria of different shapes"
+    }
+   ]
+  },
+  {
+   "pg": 13,
+   "pdf": 4,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "2.1",
+     "sentences": [
+      {
+       "id": "biological-classification-p13-0-0",
+       "text": "B IOLOGICAL C LASSIFICATION Though the bacterial structure is very simple, they are very complex in behaviour.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "structure is very simple, they are very complex in behaviour.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-0-1",
+       "text": "Compared to many other organisms, bacteria as a group show the most extensive metabolic diversity.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "most extensive metabolic diversity.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-0-2",
+       "text": "Some of the bacteria are autotrophic, i.e., they synthesise their own food from inorganic substrates.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Some of the bacteria are autotrophic,",
+         "c": "green"
+        },
+        {
+         "text": "synthesise their own food from inorganic substrates.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-0-3",
+       "text": "They may be photosynthetic autotrophic or chemosynthetic autotrophic.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "photosynthetic",
+         "c": "yellow"
+        },
+        {
+         "text": "chemosynthetic",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-0-4",
+       "text": "The vast majority of bacteria are heterotrophs, i.e., they depend on other organisms or on dead organic matter for food.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "vast majority of bacteria are heterotrophs,",
+         "c": "green"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.1.1",
+     "text": "Archaebacteria",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.1.1",
+     "sentences": [
+      {
+       "id": "biological-classification-p13-2-0",
+       "text": "These bacteria are special since they live in some of the most harsh habitats such as extreme salty areas (halophiles), hot springs (thermoacidophiles) and marshy areas (methanogens).",
+       "hl": null,
+       "marks": [
+        {
+         "text": "harsh habitats",
+         "c": "yellow"
+        },
+        {
+         "text": "extreme salty areas (halophiles),",
+         "c": "green"
+        },
+        {
+         "text": "hot springs (thermoacidophiles)",
+         "c": "yellow"
+        },
+        {
+         "text": "marshy areas (methanogens).",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-2-1",
+       "text": "Archaebacteria differ from other bacteria in having a different cell wall structure and this feature is responsible for their survival in extreme conditions.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "different cell wall structure",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-2-2",
+       "text": "Methanogens are present in the gut of several ruminant animals such as cows and buffaloes and they are responsible for the production of methane (biogas) from the dung of these animals.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Methanogens",
+         "c": "yellow"
+        },
+        {
+         "text": "gut of several ruminant animals such as cows and buffaloes",
+         "c": "yellow"
+        },
+        {
+         "text": "responsible for the production of methane (biogas) from the dung of these animals.",
+         "c": "green"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.1.2",
+     "text": "Eubacteria",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.1.2",
+     "sentences": [
+      {
+       "id": "biological-classification-p13-4-0",
+       "text": "There are thousands of different eubacteria or ‘true bacteria’.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "‘true bacteria’.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-1",
+       "text": "They are characterised by the presence of a rigid cell wall, and if motile, a flagellum.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "presence of a rigid cell wall,",
+         "c": "yellow"
+        },
+        {
+         "text": "if motile, a flagellum.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-2",
+       "text": "The cyanobacteria (also referred to as blue-green algae) have chlorophyll a similar to green plants and are photosynthetic autotrophs (Figure 2.2).",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "cyanobacteria",
+         "c": "green"
+        },
+        {
+         "text": "blue-green algae) have chlorophyll a similar to green plants",
+         "c": "green"
+        },
+        {
+         "text": "photosynthetic autotrophs",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-3",
+       "text": "The cyanobacteria are unicellular, colonial or filamentous, freshwater/marine or terrestrial algae.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "cyanobacteria",
+         "c": "yellow"
+        },
+        {
+         "text": "unicellular, colonial or filamentous, freshwater/marine or terrestrial algae.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-4",
+       "text": "The colonies are generally surrounded by gelatinous sheath.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "surrounded by gelatinous sheath.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-5",
+       "text": "They often form blooms in polluted water bodies.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "often form blooms in polluted water bodies.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-6",
+       "text": "Some of these organisms can fix atmospheric nitrogen in specialised cells called heterocysts, e.g., Nostoc and Anabaena.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Some of these organisms can fix atmospheric nitrogen in specialised cells called heterocysts,",
+         "c": "green"
+        },
+        {
+         "text": "Nostoc and Anabaena.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-7",
+       "text": "Chemosynthetic autotrophic bacteria oxidise various inorganic substances such as nitrates, nitrites and ammonia and use the released energy for their ATP production.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Chemosynthetic autotrophic",
+         "c": "yellow"
+        },
+        {
+         "text": "oxidise various inorganic substances such as nitrates, nitrites and ammonia and use the released energy for their ATP production.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-8",
+       "text": "They play a great role in recycling nutrients like nitrogen, phosphorous, iron and sulphur.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "recycling nutrients like nitrogen, phosphorous, iron and sulphur.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-9",
+       "text": "Heterotrophic bacteria are most abundant in nature.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "most abundant",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-10",
+       "text": "The majority are important decomposers.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "majority",
+         "c": "yellow"
+        },
+        {
+         "text": "important decomposers.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-11",
+       "text": "Many of them have a significant impact on human affairs.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "significant impact on human affairs.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p13-4-12",
+       "text": "They are helpful in making curd from milk, production of antibiotics, fixing nitrogen in legume",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "making curd",
+         "c": "yellow"
+        },
+        {
+         "text": "production of antibiotics, fixing nitrogen in legume",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "caption",
+     "text": "Figure 2.2 A filamentous blue-green"
+    }
+   ]
+  },
+  {
+   "pg": 14,
+   "pdf": 5,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "2.1.2",
+     "sentences": [
+      {
+       "id": "biological-classification-p14-0-0",
+       "text": "roots, etc. Some are pathogens causing damage to human beings, crops, farm animals and pets.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Some are pathogens",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-0-1",
+       "text": "Cholera, typhoid, tetanus, citrus canker are well known diseases caused by different bacteria.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Cholera, typhoid, tetanus, citrus canker",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-0-2",
+       "text": "Bacteria reproduce mainly by fission (Figure 2.3).",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "reproduce mainly by fission",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-0-3",
+       "text": "Sometimes, under unfavourable conditions, they produce spores.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Sometimes, under unfavourable conditions,",
+         "c": "yellow"
+        },
+        {
+         "text": "produce spores.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-0-4",
+       "text": "They also reproduce by a sort of sexual reproduction by adopting a primitive type of DNA transfer from one bacterium to the other.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "reproduce by a sort of sexual reproduction by adopting a primitive type of DNA transfer from one bacterium to the other.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "caption",
+     "text": "Figure 2.3 A dividing bacterium"
+    },
+    {
+     "type": "text",
+     "section": "2.1.2",
+     "sentences": [
+      {
+       "id": "biological-classification-p14-2-0",
+       "text": "The Mycoplasma are organisms that completely lack a cell wall.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Mycoplasma",
+         "c": "green"
+        },
+        {
+         "text": "completely lack a cell wall.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-2-1",
+       "text": "They are the smallest living cells known and can survive without oxygen.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "smallest living cells known",
+         "c": "green"
+        },
+        {
+         "text": "survive without oxygen.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-2-2",
+       "text": "Many mycoplasma are pathogenic in animals and plants.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Many mycoplasma are pathogenic in animals and plants.",
+         "c": "green"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.2",
+     "text": "Kingdom Protista",
+     "level": 2
+    },
+    {
+     "type": "text",
+     "section": "2.2",
+     "sentences": [
+      {
+       "id": "biological-classification-p14-4-0",
+       "text": "All single-celled eukaryotes are placed under Protista, but the boundaries of this kingdom are not well defined.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "single-celled eukaryotes",
+         "c": "yellow"
+        },
+        {
+         "text": "boundaries of this kingdom are not well defined.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-4-1",
+       "text": "What may be ‘a photosynthetic protistan’ to one biologist may be ‘a plant’ to another.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p14-4-2",
+       "text": "In this book we include Chrysophytes, Dinoflagellates, Euglenoids, Slime moulds and Protozoans under Protista.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p14-4-3",
+       "text": "Members of Protista are primarily aquatic.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Members of Protista are primarily aquatic.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-4-4",
+       "text": "This kingdom forms a link with the others dealing with plants, animals and fungi.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "forms a link with the others dealing with plants, animals and fungi.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-4-5",
+       "text": "Being eukaryotes, the protistan cell body contains a well defined nucleus and other membrane-bound organelles.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p14-4-6",
+       "text": "Some have flagella or cilia.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Some have flagella or cilia.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-4-7",
+       "text": "Protists reproduce asexually and sexually by a process involving cell fusion and zygote formation.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "reproduce asexually and sexually by a process involving cell fusion and zygote formation.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.2.1",
+     "text": "Chrysophytes",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.2.1",
+     "sentences": [
+      {
+       "id": "biological-classification-p14-6-0",
+       "text": "This group includes diatoms and golden algae (desmids).",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "includes diatoms and golden algae (desmids).",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-6-1",
+       "text": "They are found in fresh water as well as in marine environments.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "fresh water as well as in marine environments.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-6-2",
+       "text": "They are microscopic and float passively in water currents (plankton).",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "microscopic and float passively in water currents (plankton).",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-6-3",
+       "text": "Most of them are photosynthetic.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Most",
+         "c": "yellow"
+        },
+        {
+         "text": "photosynthetic.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-6-4",
+       "text": "In diatoms the cell walls form two thin overlapping shells, which fit together as in a soap box.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "In diatoms the cell walls form two thin overlapping shells, which fit together as in a soap box.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-6-5",
+       "text": "The walls are embedded with silica and thus the walls are indestructible.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "walls are embedded with silica and thus the walls are indestructible.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-6-6",
+       "text": "Thus, diatoms have left behind large amount of cell wall deposits in their habitat; this accumulation over billions of years is referred to as ‘diatomaceous earth’.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "left behind large amount of cell wall deposits in their habitat; this accumulation over billions of years is referred to as ‘diatomaceous earth’.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-6-7",
+       "text": "Being gritty this soil is used in polishing, filtration of oils and syrups.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Being gritty this soil is used in polishing, filtration of oils and syrups.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p14-6-8",
+       "text": "Diatoms are the chief ‘producers’ in the oceans.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "chief ‘producers’ in the oceans.",
+         "c": "green"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 15,
+   "pdf": 6,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "2.2.1",
+     "sentences": [
+      {
+       "id": "biological-classification-p15-0-0",
+       "text": "B IOLOGICAL C LASSIFICATION",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.2.2",
+     "text": "Dinoflagellates",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.2.2",
+     "sentences": [
+      {
+       "id": "biological-classification-p15-2-0",
+       "text": "These organisms are mostly marine and photosynthetic.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "mostly marine and photosynthetic.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-2-1",
+       "text": "They appear yellow, green, brown, blue or red depending on the main pigments present in their cells.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "appear yellow, green, brown, blue or red",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-2-2",
+       "text": "The cell wall has stiff cellulose plates on the outer surface.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "cell wall has stiff cellulose plates on the outer surface.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-2-3",
+       "text": "Most of them have two flagella; one lies longitudinally and the other transversely in a furrow between the wall plates.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Most of them have two flagella; one lies longitudinally",
+         "c": "yellow"
+        },
+        {
+         "text": "other transversely in a furrow between the wall plates.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-2-4",
+       "text": "Very often, red dinoflagellates (Example: Gonyaulax) undergo such rapid multiplication that they make the sea appear red (red tides).",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "red dinoflagellates",
+         "c": "yellow"
+        },
+        {
+         "text": "Gonyaulax) undergo such rapid multiplication",
+         "c": "yellow"
+        },
+        {
+         "text": "sea appear red (red tides).",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-2-5",
+       "text": "Toxins released by such large numbers may even kill other marine animals such as fishes.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Toxins",
+         "c": "yellow"
+        },
+        {
+         "text": "may even kill other marine animals such as fishes.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.2.3",
+     "text": "Euglenoids",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.2.3",
+     "sentences": [
+      {
+       "id": "biological-classification-p15-4-0",
+       "text": "Majority of them are fresh water organisms found in stagnant water.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Majority",
+         "c": "yellow"
+        },
+        {
+         "text": "fresh water",
+         "c": "yellow"
+        },
+        {
+         "text": "found in stagnant water.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-4-1",
+       "text": "Instead of a cell wall, they have a protein rich layer called pellicle which makes their body flexible.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Instead of a cell wall, they have a protein rich layer called pellicle",
+         "c": "yellow"
+        },
+        {
+         "text": "body flexible.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-4-2",
+       "text": "They have two flagella, a short and a long one.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "have two flagella, a short and a long one.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-4-3",
+       "text": "Though they are photosynthetic in the presence of sunlight, when deprived of sunlight they behave like heterotrophs by predating on other smaller organisms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "photosynthetic in the presence of sunlight,",
+         "c": "yellow"
+        },
+        {
+         "text": "deprived of sunlight they behave like heterotrophs",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-4-4",
+       "text": "Interestingly, the pigments of euglenoids are identical to those present in higher plants.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "pigments of euglenoids",
+         "c": "yellow"
+        },
+        {
+         "text": "identical to those present in higher plants.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-4-5",
+       "text": "Example: Euglena (Figure 2.4b).",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Example: Euglena",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.2.4",
+     "text": "Slime Moulds",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.2.4",
+     "sentences": [
+      {
+       "id": "biological-classification-p15-6-0",
+       "text": "Slime moulds are saprophytic protists.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "saprophytic protists.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-6-1",
+       "text": "The body moves along decaying twigs and leaves engulfing organic material.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "body moves along decaying twigs and leaves engulfing organic material.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-6-2",
+       "text": "Under suitable conditions, they form an aggregation called plasmodium which may grow and spread over several feet.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "suitable conditions,",
+         "c": "yellow"
+        },
+        {
+         "text": "aggregation called plasmodium",
+         "c": "yellow"
+        },
+        {
+         "text": "spread over several feet.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-6-3",
+       "text": "During unfavourable conditions, the plasmodium differentiates and forms fruiting bodies bearing spores at their tips.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "unfavourable conditions,",
+         "c": "yellow"
+        },
+        {
+         "text": "plasmodium differentiates and forms fruiting bodies bearing spores at their tips.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-6-4",
+       "text": "The spores possess true walls.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "possess true walls.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-6-5",
+       "text": "They are extremely resistant and survive for many years, even under adverse conditions.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "extremely resistant",
+         "c": "yellow"
+        },
+        {
+         "text": "survive for many years,",
+         "c": "yellow"
+        },
+        {
+         "text": "under adverse conditions.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-6-6",
+       "text": "The spores are dispersed by air currents.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "The spores are dispersed by air currents.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.2.5",
+     "text": "Protozoans",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.2.5",
+     "sentences": [
+      {
+       "id": "biological-classification-p15-8-0",
+       "text": "All protozoans are heterotrophs and live as predators or parasites.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "All protozoans are heterotrophs and live as predators or parasites.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-8-1",
+       "text": "They are believed to be primitive relatives of animals.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "primitive relatives of animals.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-8-2",
+       "text": "There are four major groups of protozoans.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p15-8-3",
+       "text": "Amoeboid protozoans: These organisms live in fresh water, sea water or moist soil.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Amoeboid protozoans:",
+         "c": "yellow"
+        },
+        {
+         "text": "live in fresh water, sea water or moist soil.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p15-8-4",
+       "text": "They move and capture",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "They move and capture",
+         "c": "green"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "caption",
+     "text": "Figure 2.4 (a) Dinoflagellates"
+    }
+   ]
+  },
+  {
+   "pg": 16,
+   "pdf": 7,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "2.2.5",
+     "sentences": [
+      {
+       "id": "biological-classification-p16-0-0",
+       "text": "their prey by putting out pseudopodia (false feet) as in Amoeba.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "their prey by putting out pseudopodia (false feet) as in Amoeba.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-0-1",
+       "text": "Marine forms have silica shells on their surface.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Marine forms have silica shells on their surface.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-0-2",
+       "text": "Some of them such as Entamoeba are parasites.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Some of them such as Entamoeba are parasites.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-0-3",
+       "text": "Flagellated protozoans: The members of this group are either free-living or parasitic.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Flagellated protozoans:",
+         "c": "yellow"
+        },
+        {
+         "text": "free-living or parasitic.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-0-4",
+       "text": "They have flagella.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p16-0-5",
+       "text": "The parasitic forms cause diaseases such as sleeping sickness.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "sleeping sickness.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-0-7",
+       "text": "Ciliated protozoans: These are aquatic, actively moving organisms because of the presence of thousands of cilia.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Ciliated protozoans:",
+         "c": "yellow"
+        },
+        {
+         "text": "aquatic, actively moving organisms",
+         "c": "yellow"
+        },
+        {
+         "text": "presence of thousands of cilia.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-0-8",
+       "text": "They have a cavity (gullet) that opens to the outside of the cell surface.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "cavity (gullet) that opens to the outside of the cell surface.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-0-9",
+       "text": "The coordinated movement of rows of cilia causes the water laden with food to be steered into the gullet.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "coordinated movement",
+         "c": "yellow"
+        },
+        {
+         "text": "water laden with food to be steered into the gullet.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-0-10",
+       "text": "Example: Paramoecium (Figure 2.4d).",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Paramoecium",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-0-11",
+       "text": "Sporozoans: This includes diverse organisms that have an infectious spore-like stage in their life cycle.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Sporozoans:",
+         "c": "yellow"
+        },
+        {
+         "text": "infectious spore-like stage in their life cycle.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-0-12",
+       "text": "The most notorious is Plasmodium (malarial parasite) which causes malaria, a disease which has a staggering effect on human population.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "notorious is Plasmodium (malarial parasite) which causes malaria, a disease which has a staggering effect on human population.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.3",
+     "text": "Kingdom Fungi",
+     "level": 2
+    },
+    {
+     "type": "text",
+     "section": "2.3",
+     "sentences": [
+      {
+       "id": "biological-classification-p16-2-0",
+       "text": "The fungi constitute a unique kingdom of heterotrophic organisms.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "heterotrophic",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-1",
+       "text": "They show a great diversity in morphology and habitat.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "great diversity in morphology and habitat.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-2",
+       "text": "You must have seen fungi on a moist bread and rotten fruits.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "moist bread and rotten fruits.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-3",
+       "text": "The common mushroom you eat and toadstools are also fungi.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "mushroom",
+         "c": "yellow"
+        },
+        {
+         "text": "toadstools are also fungi.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-4",
+       "text": "White spots seen on mustard leaves are due to a parasitic fungus.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "White spots seen on mustard leaves",
+         "c": "yellow"
+        },
+        {
+         "text": "parasitic fungus.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-5",
+       "text": "Some unicellular fungi, e.g., yeast are used to make bread and beer.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "unicellular fungi, e.g., yeast are used to make bread and beer.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-6",
+       "text": "Other fungi cause diseases in plants and animals; wheat rust-causing Puccinia is an important example.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "rust-causing Puccinia",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-7",
+       "text": "Some are the source of antibiotics, e.g., Penicillium.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "antibiotics, e.g., Penicillium.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-8",
+       "text": "Fungi are cosmopolitan and occur in air, water, soil and on animals and plants.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "cosmopolitan",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-9",
+       "text": "They prefer to grow in warm and humid places.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "grow in warm and humid",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-10",
+       "text": "Have you ever wondered why we keep food in the refrigerator ?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p16-2-11",
+       "text": "Yes, it is to prevent food from going bad due to bacterial or fungal infections.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p16-2-12",
+       "text": "With the exception of yeasts which are unicellular, fungi are filamentous.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "yeasts which are unicellular, fungi are filamentous.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-13",
+       "text": "Their bodies consist of long, slender thread-like structures called hyphae.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "long, slender thread-like structures called hyphae.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-14",
+       "text": "The network of hyphae is known as mycelium.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "network of hyphae is known as mycelium.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-15",
+       "text": "Some hyphae are continuous tubes filled with multinucleated cytoplasm – these are called coenocytic hyphae.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "coenocytic hyphae.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-16",
+       "text": "Others have septae or cross walls in their hyphae.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p16-2-17",
+       "text": "The cell walls of fungi are composed of chitin and polysaccharides.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "cell walls of fungi are composed of chitin and polysaccharides.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-18",
+       "text": "Most fungi are heterotrophic and absorb soluble organic matter from dead substrates and hence are called saprophytes.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Most fungi are heterotrophic and absorb soluble organic matter from dead substrates and hence are called saprophytes.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-19",
+       "text": "Those that depend on living plants and animals are called parasites.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "parasites.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-20",
+       "text": "They can also live as symbionts – in association with algae as lichens and with roots of higher plants as mycorrhiza.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "symbionts",
+         "c": "yellow"
+        },
+        {
+         "text": "lichens",
+         "c": "yellow"
+        },
+        {
+         "text": "mycorrhiza.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-21",
+       "text": "Reproduction in fungi can take place by vegetative means – fragmentation, fission and budding.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Reproduction",
+         "c": "yellow"
+        },
+        {
+         "text": "vegetative means",
+         "c": "yellow"
+        },
+        {
+         "text": "fragmentation, fission and budding.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p16-2-22",
+       "text": "Asexual reproduction is by spores",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 17,
+   "pdf": 8,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "2.3",
+     "sentences": [
+      {
+       "id": "biological-classification-p17-0-0",
+       "text": "B IOLOGICAL C LASSIFICATION called conidia or sporangiospores or zoospores, and sexual reproduction is by oospores, ascospores and basidiospores.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "conidia or sporangiospores or zoospores,",
+         "c": "yellow"
+        },
+        {
+         "text": "sexual reproduction is by oospores, ascospores and basidiospores.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-0-1",
+       "text": "The various spores are produced in distinct structures called fruiting bodies.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "fruiting bodies.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-0-2",
+       "text": "The sexual cycle involves the following three steps: Fusion of protoplasms between two motile or non-motile gametes called plasmogamy.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Fusion of protoplasms between two motile or non-motile gametes called plasmogamy.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-0-3",
+       "text": "Fusion of two nuclei called karyogamy.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Fusion of two nuclei called karyogamy.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-0-4",
+       "text": "(iii) Meiosis in zygote resulting in haploid spores.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Meiosis",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-0-5",
+       "text": "When a fungus reproduces sexually, two haploid hyphae of compatible mating types come together and fuse.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "two haploid hyphae of compatible mating types come together and fuse.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-0-6",
+       "text": "In some fungi the fusion of two haploid cells immediately results in diploid cells (2n).",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p17-0-7",
+       "text": "However, in other fungi (ascomycetes and basidiomycetes), an intervening dikaryotic stage (n + n, i.e., two nuclei per cell) occurs; such a condition is called a dikaryon and the phase is called dikaryophase of fungus.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "(ascomycetes and basidiomycetes),",
+         "c": "yellow"
+        },
+        {
+         "text": "(n + n,",
+         "c": "yellow"
+        },
+        {
+         "text": "dikaryon",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-0-8",
+       "text": "Later, the parental nuclei fuse and the cells become diploid.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p17-0-9",
+       "text": "The fungi form fruiting bodies in which reduction division occurs, leading to formation of haploid spores.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "fungi form fruiting bodies in which reduction division occurs,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-0-10",
+       "text": "The morphology of the mycelium, mode of spore formation and fruiting bodies form the basis for the division of the kingdom into various classes.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "morphology of the mycelium, mode of spore formation and fruiting bodies form the basis for the division of the kingdom into various classes.",
+         "c": "green"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.3.1",
+     "text": "Phycomycetes",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.3.1",
+     "sentences": [
+      {
+       "id": "biological-classification-p17-2-0",
+       "text": "Members of phycomycetes are found in aquatic habitats and on decaying wood in moist and damp places or as obligate parasites on plants.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "aquatic habitats",
+         "c": "yellow"
+        },
+        {
+         "text": "on decaying wood in moist and damp places",
+         "c": "yellow"
+        },
+        {
+         "text": "obligate parasites on plants.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-2-1",
+       "text": "The mycelium is aseptate and coenocytic.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "aseptate and coenocytic.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-2-2",
+       "text": "Asexual reproduction takes place by zoospores (motile) or by aplanospores (non-motile).",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "zoospores (motile) or by aplanospores (non-motile).",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-2-3",
+       "text": "These spores are endogenously produced in sporangium.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "endogenously produced in sporangium.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-2-4",
+       "text": "A zygospore is formed by fusion of two gametes.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "zygospore is formed by fusion of two gametes.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-2-5",
+       "text": "These gametes are similar in morphology (isogamous) or dissimilar (anisogamous or oogamous).",
+       "hl": null,
+       "marks": [
+        {
+         "text": "(isogamous)",
+         "c": "yellow"
+        },
+        {
+         "text": "(anisogamous or oogamous).",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-2-6",
+       "text": "Some common examples are Mucor (Figure 2.5a), Rhizopus (the bread mould mentioned earlier) and Albugo (the parasitic fungi on mustard).",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Mucor",
+         "c": "yellow"
+        },
+        {
+         "text": "Rhizopus (the bread mould",
+         "c": "green"
+        },
+        {
+         "text": "Albugo",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.3.2",
+     "text": "Ascomycetes",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.3.2",
+     "sentences": [
+      {
+       "id": "biological-classification-p17-4-0",
+       "text": "Commonly known as sac-fungi, the ascomycetes are mostly multicellular, e.g., Penicillium, or rarely unicellular, e.g., yeast (Saccharomyces).",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "sac-fungi,",
+         "c": "yellow"
+        },
+        {
+         "text": "mostly multicellular, e.g., Penicillium,",
+         "c": "green"
+        },
+        {
+         "text": "rarely unicellular, e.g., yeast",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p17-4-1",
+       "text": "They are saprophytic, decomposers, Figure 2.5 Fungi: (a) Mucor (b) Aspergillus (c) Agaricus parasitic or coprophilous (growing on dung).",
+       "hl": null,
+       "marks": [
+        {
+         "text": "saprophytic, decomposers,",
+         "c": "yellow"
+        },
+        {
+         "text": "parasitic or coprophilous",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 18,
+   "pdf": 9,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "2.3.2",
+     "sentences": [
+      {
+       "id": "biological-classification-p18-0-0",
+       "text": "is branched and septate.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p18-0-1",
+       "text": "The asexual spores are conidia produced exogenously on the special mycelium called conidiophores.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "asexual spores are conidia produced exogenously on the special mycelium called conidiophores.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-0-2",
+       "text": "Conidia on germination produce mycelium.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p18-0-3",
+       "text": "Sexual spores are called ascospores which are produced endogenously in sac like asci (singular ascus).",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Sexual spores are called ascospores",
+         "c": "green"
+        },
+        {
+         "text": "produced endogenously in sac like asci (singular ascus).",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-0-4",
+       "text": "These asci are arranged in different types of fruiting bodies called ascocarps.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "fruiting bodies called ascocarps.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-0-5",
+       "text": "Some examples are Aspergillus (Figure 2.5b), Claviceps and Neurospora.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Aspergillus",
+         "c": "yellow"
+        },
+        {
+         "text": "Claviceps",
+         "c": "green"
+        },
+        {
+         "text": "Neurospora.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-0-6",
+       "text": "Neurospora is used extensively in biochemical and genetic work.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Neurospora is used extensively in biochemical and genetic work.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-0-7",
+       "text": "Many members like morels and truffles are edible and are considered delicacies.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "morels and truffles are edible and are considered delicacies.",
+         "c": "green"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.3.3",
+     "text": "Basidiomycetes",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.3.3",
+     "sentences": [
+      {
+       "id": "biological-classification-p18-2-0",
+       "text": "Commonly known forms of basidiomycetes are mushrooms, bracket fungi or puffballs.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "mushrooms, bracket fungi or puffballs.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-2-1",
+       "text": "They grow in soil, on logs and tree stumps and in living plant bodies as parasites, e.g., rusts and smuts.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "soil, on logs and tree stumps",
+         "c": "yellow"
+        },
+        {
+         "text": "in living plant bodies as parasites, e.g., rusts and smuts.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-2-2",
+       "text": "The mycelium is branched and septate.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "mycelium is branched and septate.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-2-3",
+       "text": "The asexual spores are generally not found, but vegetative reproduction by fragmentation is common.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "asexual spores are generally not found, but vegetative reproduction by fragmentation is common.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-2-4",
+       "text": "The sex organs are absent, but plasmogamy is brought about by fusion of two vegetative or somatic cells of different strains or genotypes.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "sex organs are absent,",
+         "c": "yellow"
+        },
+        {
+         "text": "plasmogamy is brought about by fusion of two vegetative or somatic cells of different strains or genotypes.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-2-5",
+       "text": "The resultant structure is dikaryotic which ultimately gives rise to basidium.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "dikaryotic",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-2-6",
+       "text": "Karyogamy and meiosis take place in the basidium producing four basidiospores.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "four basidiospores.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-2-7",
+       "text": "The basidiospores are exogenously produced on the basidium (pl.: basidia).",
+       "hl": null,
+       "marks": [
+        {
+         "text": "exogenously produced",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-2-8",
+       "text": "The basidia are arranged in fruiting bodies called basidiocarps.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "basidiocarps.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-2-9",
+       "text": "Some common members are Agaricus (mushroom) (Figure 2.5c), Ustilago (smut) and Puccinia (rust fungus).",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Agaricus (mushroom)",
+         "c": "green"
+        },
+        {
+         "text": "Ustilago (smut) and Puccinia (rust fungus).",
+         "c": "green"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.3.4",
+     "text": "Deuteromycetes",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "2.3.4",
+     "sentences": [
+      {
+       "id": "biological-classification-p18-4-0",
+       "text": "Commonly known as imperfect fungi because only the asexual or vegetative phases of these fungi are known.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "known as imperfect fungi because only the asexual or vegetative phases of these fungi are known.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-4-1",
+       "text": "When the sexual forms of these fungi were discovered they were moved into classes they rightly belong to.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p18-4-2",
+       "text": "It is also possible that the asexual and vegetative stage have been given one name (and placed under deuteromycetes) and the sexual stage another (and placed under another class).",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p18-4-3",
+       "text": "Later when the linkages were established, the fungi were correctly identified and moved out of deuteromycetes.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p18-4-4",
+       "text": "Once perfect (sexual) stages of members of dueteromycetes were discovered they were often moved to ascomycetes and basidiomycetes.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "moved to ascomycetes and basidiomycetes.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-4-5",
+       "text": "The deuteromycetes reproduce only by asexual spores known as conidia.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "only by asexual spores known as conidia.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-4-6",
+       "text": "The mycelium is septate and branched.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "mycelium is septate and branched.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-4-7",
+       "text": "Some members are saprophytes or parasites while a large number of them are decomposers of litter and help in mineral cycling.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Some members are saprophytes or parasites while a large number of them are decomposers of litter and help in mineral cycling.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p18-4-8",
+       "text": "Some examples are Alternaria, Colletotrichum and Trichoderma.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Alternaria,",
+         "c": "green"
+        },
+        {
+         "text": "Colletotrichum and Trichoderma.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 19,
+   "pdf": 10,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "2.3.4",
+     "sentences": [
+      {
+       "id": "biological-classification-p19-0-0",
+       "text": "B IOLOGICAL C LASSIFICATION",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.4",
+     "text": "Kingdom Plantae",
+     "level": 2
+    },
+    {
+     "type": "text",
+     "section": "2.4",
+     "sentences": [
+      {
+       "id": "biological-classification-p19-2-0",
+       "text": "Kingdom Plantae includes all eukaryotic chlorophyll-containing organisms commonly called plants.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "all eukaryotic chlorophyll-containing organisms",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-2-1",
+       "text": "A few members are partially heterotrophic such as the insectivorous plants or parasites.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "few members are partially heterotrophic such as the insectivorous plants or parasites.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-2-2",
+       "text": "Bladderwort and Venus fly trap are examples of insectivorous plants and Cuscuta is a parasite.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Bladderwort and Venus fly trap are examples of insectivorous plants and Cuscuta is a parasite.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-2-3",
+       "text": "The plant cells have an eukaryotic structure with prominent chloroplasts and cell wall mainly made of cellulose.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "cellulose.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-2-4",
+       "text": "You will study the eukaryotic cell structure in detail in Chapter 8. Plantae includes algae, bryophytes, pteridophytes, gymnosperms and angiosperms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p19-2-5",
+       "text": "Life cycle of plants has two distinct phases – the diploid sporophytic and the haploid gametophytic – that alternate with each other.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "two distinct phases",
+         "c": "yellow"
+        },
+        {
+         "text": "diploid sporophytic",
+         "c": "yellow"
+        },
+        {
+         "text": "haploid gametophytic",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-2-6",
+       "text": "The lengths of the haploid and diploid phases, and whether these phases are free– living or dependent on others, vary among different groups in plants.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p19-2-7",
+       "text": "This phenomenon is called alternation of generation.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "alternation of generation.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-2-8",
+       "text": "You will study further details of this kingdom in Chapter 3.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.5",
+     "text": "Kingdom Animalia",
+     "level": 2
+    },
+    {
+     "type": "text",
+     "section": "2.5",
+     "sentences": [
+      {
+       "id": "biological-classification-p19-4-0",
+       "text": "This kingdom is characterised by heterotrophic eukaryotic organisms that are multicellular and their cells lack cell walls.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "heterotrophic eukaryotic organisms",
+         "c": "yellow"
+        },
+        {
+         "text": "multicellular and their cells lack cell walls.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-4-1",
+       "text": "They directly or indirectly depend on plants for food.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p19-4-2",
+       "text": "They digest their food in an internal cavity and store food reserves as glycogen or fat.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "store food reserves as glycogen or fat.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-4-3",
+       "text": "Their mode of nutrition is holozoic – by ingestion of food.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "holozoic",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-4-4",
+       "text": "They follow a definite growth pattern and grow into adults that have a definite shape and size.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "definite growth pattern",
+         "c": "yellow"
+        },
+        {
+         "text": "have a definite shape and size.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-4-5",
+       "text": "Higher forms show elaborate sensory and neuromotor mechanism.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p19-4-6",
+       "text": "Most of them are capable of locomotion.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p19-4-7",
+       "text": "The sexual reproduction is by copulation of male and female followed by embryological development.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p19-4-8",
+       "text": "Salient features of various phyla are described in Chapter 4.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "2.6",
+     "text": "Viruses , Viroids , Prions And Lichens",
+     "level": 2
+    },
+    {
+     "type": "text",
+     "section": "2.6",
+     "sentences": [
+      {
+       "id": "biological-classification-p19-6-0",
+       "text": "In the five kingdom classification of Whittaker there is no mention of lichens and some acellular organisms like viruses, viroids and prions.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "five kingdom classification",
+         "c": "yellow"
+        },
+        {
+         "text": "no mention of lichens and some acellular organisms like viruses, viroids and prions.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-6-1",
+       "text": "These are briefly introduced here.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p19-6-2",
+       "text": "All of us who have suffered the ill effects of common cold or ‘flu’ know what effects viruses can have on us, even if we do not associate it with our condition.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "common cold or ‘flu’",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-6-3",
+       "text": "Viruses did not find a place in classification since they are not considered truly ‘living’, if we understand living as those organisms that have a cell structure.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Viruses did not find a place in classification",
+         "c": "yellow"
+        },
+        {
+         "text": "they are not considered truly ‘living’,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p19-6-4",
+       "text": "The viruses are non-cellular organisms that are characterised by having an inert crystalline structure outside the living cell.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "viruses are non-cellular organisms",
+         "c": "yellow"
+        },
+        {
+         "text": "characterised by having an inert crystalline structure outside the living cell.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 20,
+   "pdf": 11,
+   "blocks": [
+    {
+     "type": "caption",
+     "text": "Figure 2.6 (a) Tobacco Mosaic Virus (TMV) (b) Bacteriophage"
+    },
+    {
+     "type": "text",
+     "section": "2.6",
+     "sentences": [
+      {
+       "id": "biological-classification-p20-1-0",
+       "text": "Once they infect a cell they take over the machinery of the host cell to replicate themselves, killing the host.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Once they infect a cell they take over the machinery of the host cell to replicate themselves, killing the host.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-1",
+       "text": "Would you call viruses living or non-living?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p20-1-2",
+       "text": "Virus means venom or poisonous fluid.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Virus means venom or poisonous fluid.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-3",
+       "text": "Dmitri Ivanowsky (1892) recognised certain microbes as causal organism of the mosaic disease of tobacco (Figure 2.6a).",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Dmitri Ivanowsky (1892)",
+         "c": "green"
+        },
+        {
+         "text": "certain microbes as causal organism of the mosaic disease of tobacco",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-4",
+       "text": "These were found to be smaller than bacteria because they passed through bacteria-proof filters.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "smaller than bacteria",
+         "c": "green"
+        },
+        {
+         "text": "passed through bacteria-proof filters.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-5",
+       "text": "M.W. Beijerinek (1898) demonstrated that the extract of the infected plants of tobacco could cause infection in healthy plants and named the new pathogen “virus” and called the fluid as Contagium vivum fluidum (infectious living fluid).",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "M.W. Beijerinek (1898) demonstrated that the extract of the infected plants of tobacco could cause infection in healthy plants and named the new pathogen “virus”",
+         "c": "green"
+        },
+        {
+         "text": "called the fluid as Contagium vivum fluidum",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-6",
+       "text": "W.M. Stanley (1935) showed that viruses could be crystallised and crystals consist largely of proteins.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "W.M. Stanley (1935)",
+         "c": "green"
+        },
+        {
+         "text": "viruses could be crystallised",
+         "c": "green"
+        },
+        {
+         "text": "consist largely of proteins.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-7",
+       "text": "They are inert outside their specific host cell.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "They are inert outside their specific host cell.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-8",
+       "text": "Viruses are obligate parasites.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Viruses are obligate parasites.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-9",
+       "text": "In addition to proteins, viruses also contain genetic material, that could be either RNA or DNA.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "genetic material,",
+         "c": "yellow"
+        },
+        {
+         "text": "either RNA or DNA.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-10",
+       "text": "No virus contains both RNA and DNA.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "No virus contains both RNA and DNA.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-11",
+       "text": "A virus is a nucleoprotein and the genetic material is infectious.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "nucleoprotein",
+         "c": "yellow"
+        },
+        {
+         "text": "genetic material is infectious.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-12",
+       "text": "In general, viruses that infect plants have single stranded RNA and viruses that infect animals have either single or double stranded RNA or double stranded DNA.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "single stranded RNA and viruses that infect animals have either single or double stranded RNA or double stranded DNA.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-13",
+       "text": "Bacterial viruses or bacteriophages (viruses that infect the bacteria) are usually double stranded DNA viruses (Figure 2.6b).",
+       "hl": null,
+       "marks": [
+        {
+         "text": "bacteriophages",
+         "c": "yellow"
+        },
+        {
+         "text": "usually double stranded DNA viruses",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-14",
+       "text": "The protein coat called capsid made of small subunits called capsomeres, protects the nucleic acid.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "capsid",
+         "c": "yellow"
+        },
+        {
+         "text": "small subunits called capsomeres,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-15",
+       "text": "These capsomeres are arranged in helical or polyhedral geometric forms.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "capsomeres are arranged in helical or polyhedral geometric forms.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-16",
+       "text": "Viruses cause diseases like mumps, small pox, herpes and influenza.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "mumps, small pox, herpes and influenza.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-17",
+       "text": "AIDS in humans is also caused by a virus.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "AIDS",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p20-1-18",
+       "text": "In plants, the symptoms can be mosaic formation, leaf rolling and curling, yellowing and vein clearing, dwarfing and stunted growth.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "In plants,",
+         "c": "yellow"
+        },
+        {
+         "text": "symptoms can be mosaic formation, leaf rolling and curling, yellowing and vein clearing, dwarfing and stunted growth.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 21,
+   "pdf": 12,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "2.6",
+     "sentences": [
+      {
+       "id": "biological-classification-p21-0-0",
+       "text": "B IOLOGICAL C LASSIFICATION Viroids : In 1971, T.O. Diener discovered a new infectious agent that was smaller than viruses and caused potato spindle tuber disease.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "1971, T.O. Diener discovered",
+         "c": "yellow"
+        },
+        {
+         "text": "smaller than viruses",
+         "c": "green"
+        },
+        {
+         "text": "caused potato spindle tuber disease.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p21-0-1",
+       "text": "It was found to be a free RNA; it lacked the protein coat that is found in viruses, hence the name viroid.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "free RNA; it lacked the protein coat",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p21-0-2",
+       "text": "The RNA of the viroid was of low molecular weight.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "RNA of the viroid was of low molecular weight.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p21-0-3",
+       "text": "Prions : In modern medicine certain infectious neurological diseases were found to be transmitted by an agent consisting of abnormally folded protein.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "infectious neurological diseases",
+         "c": "yellow"
+        },
+        {
+         "text": "abnormally folded protein.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p21-0-4",
+       "text": "The agent was similar in size to viruses.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "similar in size to viruses.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p21-0-5",
+       "text": "These agents were called prions.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "prions.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p21-0-6",
+       "text": "The most notable diseases caused by prions are bovine spongiform encephalopathy (BSE) commonly called mad cow disease in cattle and its analogous variant Cr–Jacob disease (CJD) in humans.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "(BSE) commonly called mad cow disease in cattle",
+         "c": "yellow"
+        },
+        {
+         "text": "Cr–Jacob disease (CJD) in humans.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p21-0-7",
+       "text": "Lichens : Lichens are symbiotic associations i.e. mutually useful associations, between algae and fungi.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "symbiotic associations",
+         "c": "yellow"
+        },
+        {
+         "text": "between algae and fungi.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p21-0-8",
+       "text": "The algal component is known as phycobiont and fungal component as mycobiont, which are autotrophic and heterotrophic, respectively.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "phycobiont",
+         "c": "yellow"
+        },
+        {
+         "text": "mycobiont,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p21-0-9",
+       "text": "Algae prepare food for fungi and fungi provide shelter and absorb mineral nutrients and water for its partner.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Algae prepare food for fungi",
+         "c": "yellow"
+        },
+        {
+         "text": "fungi provide shelter and absorb mineral nutrients and water for its partner.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "biological-classification-p21-0-10",
+       "text": "So close is their association that if one saw a lichen in nature one would never imagine that they had two different organisms within them.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-0-11",
+       "text": "Lichens are very good pollution indicators – they do not grow in polluted areas.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "very good pollution indicators – they do not grow in polluted areas.",
+         "c": "green"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "Summary",
+     "text": "Summary",
+     "level": 1
+    },
+    {
+     "type": "text",
+     "section": "Summary",
+     "sentences": [
+      {
+       "id": "biological-classification-p21-2-0",
+       "text": "Biological classification of plants and animals was first proposed by Aristotle on the basis of simple morphological characters.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-1",
+       "text": "Linnaeus later classified all living organisms into two kingdoms – Plantae and Animalia.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-2",
+       "text": "Whittaker proposed an elaborate five kingdom classification – Monera, Protista, Fungi, Plantae and Animalia.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-3",
+       "text": "The main criteria of the five kingdom classification were cell structure, body organisation, mode of nutrition and reproduction, and phylogenetic relationships.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-4",
+       "text": "In the five kingdom classification, bacteria are included in Kingdom Monera.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-5",
+       "text": "Bacteria are cosmopolitan in distribution.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-6",
+       "text": "These organisms show the most extensive metabolic diversity.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-7",
+       "text": "Bacteria may be autotrophic or heterotrophic in their mode of nutrition.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-8",
+       "text": "Kingdom Protista includes all single-celled eukaryotes such as Chrysophytes, Dinoflagellates, Euglenoids, Slime-moulds and Protozoans.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-9",
+       "text": "Protists have defined nucleus and other membrane bound organelles.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-10",
+       "text": "They reproduce both asexually and sexually.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-11",
+       "text": "Members of Kingdom Fungi show a great diversity in structures and habitat.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-12",
+       "text": "Most fungi are saprophytic in their mode of nutrition.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-13",
+       "text": "They show asexual and sexual reproduction.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-14",
+       "text": "Phycomycetes, Ascomycetes, Basidiomycetes and Deuteromycetes are the four classes under this kingdom.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-15",
+       "text": "The plantae includes all eukaryotic chlorophyll-containing organisms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-16",
+       "text": "Algae, bryophytes, pteridophytes, gymnosperms and angiosperms are included in this group.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-17",
+       "text": "The life cycle of plants exhibit alternation of generations – gametophytic and sporophytic generations.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-18",
+       "text": "The heterotrophic eukaryotic, multicellular organisms lacking a cell wall are included in the Kingdom Animalia.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-19",
+       "text": "The mode of nutrition of these organisms is holozoic.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-20",
+       "text": "They reproduce mostly by the sexual mode.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p21-2-21",
+       "text": "Some acellular organisms like viruses and viroids as well as the lichens are not included in the five kingdom system of classification.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 22,
+   "pdf": 13,
+   "blocks": [
+    {
+     "type": "heading",
+     "section": "Exercises",
+     "text": "Exercises",
+     "level": 1
+    },
+    {
+     "type": "text",
+     "section": "Exercises",
+     "sentences": [
+      {
+       "id": "biological-classification-p22-1-0",
+       "text": "1. Discuss how classification systems have undergone several changes over a 2. State two economically important uses of: 3. What is the nature of cell-walls in diatoms?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p22-1-1",
+       "text": "4. Find out what do the terms ‘algal bloom’ and ‘red-tides’ signify.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p22-1-2",
+       "text": "5. How are viroids different from viruses?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p22-1-3",
+       "text": "6. Describe briefly the four major groups of Protozoa.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p22-1-4",
+       "text": "7. Plants are autotrophic.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p22-1-5",
+       "text": "Can you think of some plants that are partially 8. What do the terms phycobiont and mycobiont signify?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p22-1-6",
+       "text": "9. Give a comparative account of the classes of Kingdom Fungi under the following: (i) mode of nutrition (ii) mode of reproduction 10. What are the characteristic features of Euglenoids?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p22-1-7",
+       "text": "11. Give a brief account of viruses with respect to their structure and nature of genetic material.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p22-1-8",
+       "text": "Also name four common viral diseases.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "biological-classification-p22-1-9",
+       "text": "12. Organise a discussion in your class on the topic – Are viruses living or non-",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "exercises": [
+  {
+   "no": 1,
+   "text": "Discuss how classification systems have undergone several changes over a",
+   "page": 22
+  },
+  {
+   "no": 2,
+   "text": "State two economically important uses of:",
+   "page": 22
+  },
+  {
+   "no": 3,
+   "text": "What is the nature of cell-walls in diatoms?",
+   "page": 22
+  },
+  {
+   "no": 4,
+   "text": "Find out what do the terms ‘algal bloom’ and ‘red-tides’ signify.",
+   "page": 22
+  },
+  {
+   "no": 5,
+   "text": "How are viroids different from viruses?",
+   "page": 22
+  },
+  {
+   "no": 6,
+   "text": "Describe briefly the four major groups of Protozoa.",
+   "page": 22
+  },
+  {
+   "no": 7,
+   "text": "Plants are autotrophic. Can you think of some plants that are partially",
+   "page": 22
+  },
+  {
+   "no": 8,
+   "text": "What do the terms phycobiont and mycobiont signify?",
+   "page": 22
+  },
+  {
+   "no": 9,
+   "text": "Give a comparative account of the classes of Kingdom Fungi under the following: (i) mode of nutrition (ii) mode of reproduction",
+   "page": 22
+  },
+  {
+   "no": 10,
+   "text": "What are the characteristic features of Euglenoids?",
+   "page": 22
+  },
+  {
+   "no": 11,
+   "text": "Give a brief account of viruses with respect to their structure and nature of genetic material. Also name four common viral diseases.",
+   "page": 22
+  },
+  {
+   "no": 12,
+   "text": "Organise a discussion in your class on the topic – Are viruses living or non-",
+   "page": 22
+  }
+ ]
+}

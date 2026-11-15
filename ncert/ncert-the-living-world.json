@@ -1,0 +1,2716 @@
+{
+ "schema": 1,
+ "id": "the-living-world",
+ "book": "NCERT Biology Class XI",
+ "chapter": 1,
+ "title": "The Living World",
+ "sourcePdf": "The_Living_World_Annotated_NCERT.pdf",
+ "pageOffset": 0,
+ "legend": {
+  "yellow": "key line highlighted in the annotated PDF",
+  "green": "secondary highlight (names, examples, extra-important facts)"
+ },
+ "counts": {
+  "pages": 11,
+  "sections": 12,
+  "sentences": 245,
+  "highlightedSentences": 141,
+  "exercises": 0
+ },
+ "sections": [
+  {
+   "id": "1.1",
+   "title": "What Is ‘Living ’?",
+   "level": 2,
+   "page": 3
+  },
+  {
+   "id": "1.2",
+   "title": "Diversity In The Living World",
+   "level": 2,
+   "page": 6
+  },
+  {
+   "id": "1.3",
+   "title": "Taxonomic Categories",
+   "level": 2,
+   "page": 8
+  },
+  {
+   "id": "1.3.1",
+   "title": "Species",
+   "level": 3,
+   "page": 9
+  },
+  {
+   "id": "1.3.2",
+   "title": "Genus",
+   "level": 3,
+   "page": 9
+  },
+  {
+   "id": "1.3.3",
+   "title": "Family",
+   "level": 3,
+   "page": 9
+  },
+  {
+   "id": "1.3.4",
+   "title": "Order",
+   "level": 3,
+   "page": 10
+  },
+  {
+   "id": "1.3.5",
+   "title": "Class",
+   "level": 3,
+   "page": 10
+  },
+  {
+   "id": "1.3.6",
+   "title": "Phylum",
+   "level": 3,
+   "page": 10
+  },
+  {
+   "id": "1.3.7",
+   "title": "Kingdom",
+   "level": 3,
+   "page": 10
+  },
+  {
+   "id": "1.4",
+   "title": "Taxonomical Aids",
+   "level": 2,
+   "page": 11
+  },
+  {
+   "id": "1.4.1",
+   "title": "Herbarium",
+   "level": 3,
+   "page": 11
+  }
+ ],
+ "pages": [
+  {
+   "pg": 1,
+   "pdf": 1,
+   "blocks": [
+    {
+     "type": "text",
+     "section": null,
+     "sentences": [
+      {
+       "id": "the-living-world-p1-0-0",
+       "text": "DIVERSITY IN THE LIVING WORLD Biology is the science of life forms and living processes.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Biology is the science of life forms and living processes.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p1-0-1",
+       "text": "The living world comprises an amazing diversity of living organisms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "living world",
+         "c": "yellow"
+        },
+        {
+         "text": "amazing diversity of living organisms.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p1-0-2",
+       "text": "Early man could easily perceive the difference between inanimate matter and living organisms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p1-0-3",
+       "text": "Early man deified some of the inanimate matter (wind, sea, fire etc.)",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "inanimate matter (wind, sea, fire etc.)",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p1-0-4",
+       "text": "and some among the animals and plants.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p1-0-5",
+       "text": "A common feature of all such forms of inanimate and animate objects was the sense of awe or fear that they evoked.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p1-0-6",
+       "text": "The description of living organisms including human beings began much later in human history.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p1-0-7",
+       "text": "Societies which indulged in anthropocentric view of biology could register limited progress in biological knowledge.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "anthropocentric view of biology could register limited progress in biological knowledge.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p1-0-8",
+       "text": "Systematic and monumental description of life forms brought in, out of necessity, detailed systems of identification, nomenclature and classification.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p1-0-9",
+       "text": "The biggest spin off of such studies was the recognition of the sharing of similarities among living organisms both horizontally and vertically.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "sharing of similarities among living organisms both horizontally and vertically.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p1-0-10",
+       "text": "That all present day living organisms are related to each other and also to all organisms that ever lived on this earth, was a revelation which humbled man and led to cultural movements for conservation of biodiversity.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "all present day living organisms are related to each other and also to all organisms that ever lived on this earth,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p1-0-11",
+       "text": "In the following chapters of this unit, you will get a description, including classification, of animals and plants from a taxonomist’s perspective.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 2,
+   "pdf": 2,
+   "blocks": [
+    {
+     "type": "text",
+     "section": null,
+     "sentences": [
+      {
+       "id": "the-living-world-p2-0-0",
+       "text": "Born on 5 July 1904, in Kempten, Germany, E RNST M AYR , the Harvard University evolutionary biologist who has been called ‘The Darwin of the 20 th century’, was one of the 100 greatest scientists of all time.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "‘The Darwin of the 20 th century’,",
+         "c": "yellow"
+        },
+        {
+         "text": "one of the 100 greatest scientists of all time.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p2-0-1",
+       "text": "Mayr joined Harvard’s Faculty of Arts and Sciences in 1953 and retired in 1975, assuming the title Alexander Agassiz Professor of Zoology Emeritus.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Alexander Agassiz Professor of Zoology Emeritus.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p2-0-2",
+       "text": "Throughout his nearly 80-year career, his research spanned ornithology, taxonomy, zoogeography, evolution, systematics, and the history and philosophy of biology.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p2-0-3",
+       "text": "He almost single-handedly made the origin of species diversity the central question of evolutionary biology that it is today.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p2-0-4",
+       "text": "He also pioneered the currently accepted definition of a biological species.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "pioneered the currently accepted definition of a biological species.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p2-0-5",
+       "text": "Mayr was awarded the three prizes widely regarded as the triple crown of biology: the Balzan Prize in 1983, the International Prize for Biology in 1994, and the Crafoord Prize in 1999. Mayr died at the age of 100 in the year 2004. (1904 – 2004)",
+       "hl": null,
+       "marks": [
+        {
+         "text": "triple crown of",
+         "c": "yellow"
+        },
+        {
+         "text": "Balzan Prize in 1983, the International Prize for Biology in 1994,",
+         "c": "yellow"
+        },
+        {
+         "text": "Crafoord Prize in 1999.",
+         "c": "yellow"
+        },
+        {
+         "text": "(1904 – 2004)",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 3,
+   "pdf": 3,
+   "blocks": [
+    {
+     "type": "text",
+     "section": null,
+     "sentences": [
+      {
+       "id": "the-living-world-p3-0-0",
+       "text": "T HE L IVING W ORLD How wonderful is the living world !",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p3-0-1",
+       "text": "The wide range of living types is amazing.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "wide range of living types is amazing.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p3-0-2",
+       "text": "The extraordinary habitats in which we find living organisms, be it cold mountains, deciduous forests, oceans, fresh water lakes, deserts or hot springs, leave us speechless.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p3-0-3",
+       "text": "The beauty of a galloping horse, of the migrating birds, the valley of flowers or the attacking shark evokes awe and a deep sense of wonder.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p3-0-4",
+       "text": "The ecological conflict and cooperation among members of a population and among populations of a community or even the molecular traffic inside a cell make us deeply reflect on – what indeed is life?",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "ecological conflict and cooperation among members of a population and among populations of a community or even the molecular traffic inside a cell make us deeply reflect on – what indeed is life?",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p3-0-5",
+       "text": "This question has two implicit questions within it.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p3-0-6",
+       "text": "The first is a technical one and seeks answer to what living is as opposed to the non-living, and the second is a philosophical one, and seeks answer to what the purpose of life is.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p3-0-7",
+       "text": "As scientists, we shall not attempt answering the second question.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p3-0-8",
+       "text": "We will try to reflect on – what is living?",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "1.1",
+     "text": "What Is ‘Living ’?",
+     "level": 2
+    },
+    {
+     "type": "text",
+     "section": "1.1",
+     "sentences": [
+      {
+       "id": "the-living-world-p3-2-0",
+       "text": "When we try to define ‘living’, we conventionally look for distinctive characteristics exhibited by living organisms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p3-2-1",
+       "text": "Growth, reproduction, ability to sense environment and mount a suitable response come to our mind immediately as unique features of living organisms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Growth, reproduction, ability to sense environment and mount a suitable response come to our mind immediately as unique features of living organisms.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p3-2-2",
+       "text": "One can add a few more features like metabolism, ability to self-replicate, self-organise, interact and emergence to this list.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "One can add a few more features like metabolism, ability to self-replicate, self-organise, interact and emergence to this list.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p3-2-3",
+       "text": "Let us try to understand each of these.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p3-2-4",
+       "text": "All living organisms grow.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "All living organisms grow.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p3-2-5",
+       "text": "Increase in mass and increase in number of individuals are twin characteristics of growth.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Increase in mass and increase in number of individuals are twin characteristics of growth.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p3-2-6",
+       "text": "A multicellular organism",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 4,
+   "pdf": 4,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "1.1",
+     "sentences": [
+      {
+       "id": "the-living-world-p4-0-0",
+       "text": "grows by cell division.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "grows by cell division.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-1",
+       "text": "In plants, this growth by cell division occurs continuously throughout their life span.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "In plants,",
+         "c": "yellow"
+        },
+        {
+         "text": "growth",
+         "c": "yellow"
+        },
+        {
+         "text": "occurs continuously throughout their life span.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-2",
+       "text": "In animals, this growth is seen only up to a certain age.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "In animals,",
+         "c": "yellow"
+        },
+        {
+         "text": "growth is seen only up to a certain age.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-3",
+       "text": "However, cell division occurs in certain tissues to replace lost cells.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p4-0-4",
+       "text": "Unicellular organisms grow by cell division.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Unicellular organisms grow by cell division.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-5",
+       "text": "One can easily observe this in in vitro cultures by simply counting the number of cells under the microscope.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p4-0-6",
+       "text": "In majority of higher animals and plants, growth and reproduction are mutually exclusive events.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "In majority of higher animals and plants, growth and reproduction are mutually exclusive events.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-7",
+       "text": "One must remember that increase in body mass is considered as growth.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p4-0-8",
+       "text": "Non-living objects also grow if we take increase in body mass as a criterion for growth.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p4-0-9",
+       "text": "Mountains, boulders and sand mounds do grow.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Mountains, boulders and sand mounds do grow.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-10",
+       "text": "However, this kind of growth exhibited by non-living objects is by accumulation of material on the surface.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p4-0-11",
+       "text": "In living organisms, growth is from inside.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "In living organisms, growth is from inside.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-12",
+       "text": "Growth, therefore, cannot be taken as a defining property of living organisms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Growth,",
+         "c": "yellow"
+        },
+        {
+         "text": "cannot be taken as a defining property of living organisms.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-13",
+       "text": "Conditions under which it can be observed in all living organisms have to be explained and then we understand that it is a characteristic of living systems.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p4-0-14",
+       "text": "A dead organism does not grow.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "dead organism does not grow.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-15",
+       "text": "Reproduction, likewise, is a characteristic of living organisms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Reproduction,",
+         "c": "yellow"
+        },
+        {
+         "text": "is a characteristic of living organisms.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-16",
+       "text": "In multicellular organisms, reproduction refers to the production of progeny possessing features more or less similar to those of parents.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "production of progeny possessing features more or less similar to those of parents.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-17",
+       "text": "Invariably and implicitly we refer to sexual reproduction.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Invariably and implicitly we refer to sexual reproduction.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-18",
+       "text": "Organisms reproduce by asexual means also.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p4-0-19",
+       "text": "Fungi multiply and spread easily due to the millions of asexual spores they produce.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Fungi",
+         "c": "yellow"
+        },
+        {
+         "text": "millions of asexual spores",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-20",
+       "text": "In lower organisms like yeast and hydra, we observe budding.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "yeast and hydra,",
+         "c": "yellow"
+        },
+        {
+         "text": "budding.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-21",
+       "text": "In Planaria (flat worms), we observe true regeneration, i.e., a fragmented organism regenerates the lost part of its body and becomes, a new organism.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Planaria",
+         "c": "yellow"
+        },
+        {
+         "text": "true regeneration,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-22",
+       "text": "The fungi, the filamentous algae, the protonema of mosses, all easily multiply by fragmentation.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "fungi, the filamentous algae, the protonema of mosses, all easily multiply by fragmentation.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-23",
+       "text": "When it comes to unicellular organisms like bacteria, unicellular algae or Amoeba, reproduction is synonymous with growth, i.e., increase in number of cells.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "unicellular organisms like bacteria, unicellular algae or Amoeba, reproduction is synonymous with growth,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-24",
+       "text": "We have already defined growth as equivalent to increase in cell number or mass.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p4-0-25",
+       "text": "Hence, we notice that in single-celled organisms, we are not very clear about the usage of these two terms – growth and reproduction.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p4-0-26",
+       "text": "Further, there are many organisms which do not reproduce (mules, sterile worker bees, infertile human couples, etc).",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "there are many organisms which do not reproduce (mules, sterile worker bees, infertile human couples, etc).",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-27",
+       "text": "Hence, reproduction also cannot be an all-inclusive defining characteristic of living organisms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "reproduction also cannot be an all-inclusive defining characteristic of living organisms.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-28",
+       "text": "Of course, no non-living object is capable of reproducing or replicating by itself.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p4-0-29",
+       "text": "Another characteristic of life is metabolism.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Another characteristic of life is metabolism.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-30",
+       "text": "All living organisms are made of chemicals.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "All living organisms are made of chemicals.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-31",
+       "text": "These chemicals, small and big, belonging to various classes, sizes, functions, etc., are constantly being made and changed into some other biomolecules.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "constantly being made and changed into some other biomolecules.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-32",
+       "text": "These conversions are chemical reactions or metabolic reactions.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "metabolic reactions.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p4-0-33",
+       "text": "There are thousands of metabolic reactions occurring simultaneously inside all living organisms, be they",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 5,
+   "pdf": 5,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "1.1",
+     "sentences": [
+      {
+       "id": "the-living-world-p5-0-0",
+       "text": "T HE L IVING W ORLD unicellular or multicellular.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-1",
+       "text": "All plants, animals, fungi and microbes exhibit metabolism.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "All plants, animals, fungi and microbes exhibit metabolism.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-2",
+       "text": "The sum total of all the chemical reactions occurring in our body is metabolism.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "The sum total of all the chemical reactions occurring in our body is metabolism.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-3",
+       "text": "No non-living object exhibits metabolism.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-4",
+       "text": "Metabolic reactions can be demonstrated outside the body in cell-free systems.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-5",
+       "text": "An isolated metabolic reaction(s) outside the body of an organism, performed in a test tube is neither living nor non-living.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-6",
+       "text": "Hence, while metabolism is a defining feature of all living organisms without exception, isolated metabolic reactions in vitro are not living things but surely living reactions.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "isolated metabolic reactions in vitro are not living things but surely living reactions.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-7",
+       "text": "Hence, cellular organisation of the body is the defining feature of life forms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "cellular organisation of the body is the defining feature of life forms.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-8",
+       "text": "Perhaps, the most obvious and technically complicated feature of all living organisms is this ability to sense their surroundings or environment and respond to these environmental stimuli which could be physical, chemical or biological.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "most obvious and technically complicated feature of all living organisms is this ability to sense their surroundings or environment and respond to these environmental stimuli which could be physical, chemical or biological.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-9",
+       "text": "We sense our environment through our sense organs.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "We sense our environment through our sense organs.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-10",
+       "text": "Plants respond to external factors like light, water, temperature, other organisms, pollutants, etc. All organisms, from the prokaryotes to the most complex eukaryotes can sense and respond to environmental cues.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Plants respond to",
+         "c": "yellow"
+        },
+        {
+         "text": "light, water, temperature, other organisms, pollutants,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-11",
+       "text": "Photoperiod affects reproduction in seasonal breeders, both plants and animals.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Photoperiod affects reproduction in seasonal breeders, both plants and animals.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-12",
+       "text": "All organisms handle chemicals entering their bodies.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-13",
+       "text": "All organisms therefore, are ‘aware’ of their surroundings.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-14",
+       "text": "Human being is the only organism who is aware of himself, i.e., has self-consciousness.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-15",
+       "text": "Consciousness therefore, becomes the defining property of living organisms.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Consciousness therefore, becomes the defining property of living organisms.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-16",
+       "text": "When it comes to human beings, it is all the more difficult to define the living state.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-17",
+       "text": "We observe patients lying in coma in hospitals virtually supported by machines which replace heart and lungs.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "patients lying in coma",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-18",
+       "text": "The patient is otherwise brain-dead.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "brain-dead.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-19",
+       "text": "The patient has no self-consciousness.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "has no self-consciousness.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-20",
+       "text": "Are such patients who never come back to normal life, living or non-living?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-21",
+       "text": "In higher classes, you will come to know that all living phenomena are due to underlying interactions.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "all living phenomena are due to underlying interactions.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-22",
+       "text": "Properties of tissues are not present in the constituent cells but arise as a result of interactions among the constituent cells.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-23",
+       "text": "Similarly, properties of cellular organelles are not present in the molecular constituents of the organelle but arise as a result of interactions among the molecular components comprising the organelle.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-24",
+       "text": "These interactions result in emergent properties at a higher level of organisation.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "interactions result in emergent properties at a higher level of organisation.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-25",
+       "text": "This phenomenon is true in the hierarchy of organisational complexity at all levels.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-26",
+       "text": "Therefore, we can say that living organisms are self-replicating, evolving and self-regulating interactive systems capable of responding to external stimuli.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "living organisms are self-replicating, evolving and self-regulating interactive systems capable of responding to external stimuli.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-27",
+       "text": "Biology is the story of life on earth.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Biology is the story of life on earth.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p5-0-28",
+       "text": "Biology is the story of evolution of living organisms on earth.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p5-0-29",
+       "text": "All living organisms – present, past and future, are linked to one another by the sharing of the common genetic material, but to varying degrees.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "All living organisms – present, past and future, are linked to one another by the sharing of the common genetic material, but to varying degrees.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 6,
+   "pdf": 6,
+   "blocks": [
+    {
+     "type": "heading",
+     "section": "1.2",
+     "text": "Diversity In The Living World",
+     "level": 2
+    },
+    {
+     "type": "text",
+     "section": "1.2",
+     "sentences": [
+      {
+       "id": "the-living-world-p6-1-0",
+       "text": "If you look around you will see a large variety of living organisms, be it potted plants, insects, birds, your pets or other animals and plants.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "If you look around you will see a large variety of living organisms,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-1",
+       "text": "There are also several organisms that you cannot see with your naked eye but they are all around you.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "several organisms that you cannot see with your naked eye",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-2",
+       "text": "If you were to increase the area that you make observations in, the range and variety of organisms that you see would increase.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "increase the area that you make observations in, the range and variety of organisms that you see would increase.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-3",
+       "text": "Obviously, if you were to visit a dense forest, you would probably see a much greater number and kinds of living organisms in it.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p6-1-4",
+       "text": "Each different kind of plant, animal or organism that you see, represents a species.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Each different kind of plant, animal or organism that you see, represents a species.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-5",
+       "text": "The number of species that are known and described range between 1.7-1.8 million.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "number of species that are known and described range between 1.7-1.8 million.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-6",
+       "text": "This refers to biodiversity or the number and types of organisms present on earth.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "This refers to biodiversity or the number and types of organisms present on earth.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-7",
+       "text": "We should remember here that as we explore new areas, and even old ones, new organisms are continuously being identified.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "we explore new areas, and even old ones, new organisms are continuously being identified.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-8",
+       "text": "As stated earlier, there are millions of plants and animals in the world; we know the plants and animals in our own area by their local names.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "local names.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-9",
+       "text": "These local names would vary from place to place, even within a country.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "vary from place to place,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-10",
+       "text": "Probably you would recognise the confusion that would be created if we did not find ways and means to talk to each other, to refer to organisms we are talking about.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "confusion",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-11",
+       "text": "Hence, there is a need to standardise the naming of living organisms such that a particular organism is known by the same name all over the world.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "need to standardise the naming of living organisms",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-12",
+       "text": "This process is called nomenclature.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "nomenclature.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-13",
+       "text": "Obviously, nomenclature or naming is only possible when the organism is described correctly and we know to what organism the name is attached to.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "only possible when the organism is described correctly",
+         "c": "yellow"
+        },
+        {
+         "text": "we know to what organism the name is attached to.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-14",
+       "text": "This is identification.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "This is identification.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-15",
+       "text": "In order to facilitate the study, number of scientists have established procedures to assign a scientific name to each known organism.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "scientists have established procedures",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-16",
+       "text": "This is acceptable to biologists all over the world.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "acceptable to biologists all over the world.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-17",
+       "text": "For plants, scientific names are based on agreed principles and criteria, which are provided in International Code for Botanical Nomenclature (ICBN).",
+       "hl": null,
+       "marks": [
+        {
+         "text": "For plants,",
+         "c": "yellow"
+        },
+        {
+         "text": "International Code for Botanical Nomenclature (ICBN).",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-18",
+       "text": "You may ask, how are animals named?",
+       "hl": null,
+       "marks": [
+        {
+         "text": "animals",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-19",
+       "text": "Animal taxonomists have evolved International Code of Zoological Nomenclature (ICZN).",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "International Code of Zoological Nomenclature (ICZN).",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-20",
+       "text": "The scientific names ensure that each organism has only one name.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "scientific names ensure that each organism has only one name.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-21",
+       "text": "Description of any organism should enable the people (in any part of the world) to arrive at the same name.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p6-1-22",
+       "text": "They also ensure that such a name has not been used for any other known organism.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p6-1-23",
+       "text": "Biologists follow universally accepted principles to provide scientific names to known organisms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p6-1-24",
+       "text": "Each name has two components – the Generic name and the specific epithet.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Each name has two components – the Generic name and the specific epithet.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-25",
+       "text": "This system of providing a name with two components is called Binomial nomenclature.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "This system of providing a name with two components is called Binomial nomenclature.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-26",
+       "text": "This naming system given by Carolus Linnaeus is being practised by biologists all over the world.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "given by Carolus Linnaeus",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p6-1-27",
+       "text": "This naming system using a two word format was found convenient.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p6-1-28",
+       "text": "Let us take the example of mango to understand the way of",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 7,
+   "pdf": 7,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "1.2",
+     "sentences": [
+      {
+       "id": "the-living-world-p7-0-0",
+       "text": "T HE L IVING W ORLD providing scientific names better.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-1",
+       "text": "The scientific name of mango is written as Mangifera indica.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Mangifera indica.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-2",
+       "text": "Let us see how it is a binomial name.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-3",
+       "text": "In this name Mangifera represents the genus while indica, is a particular species, or a specific epithet.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-4",
+       "text": "Other universal rules of nomenclature are as follows: 1. Biological names are generally in Latin and written in italics.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "generally in Latin and written in italics.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-5",
+       "text": "They are Latinised or derived from Latin irrespective of their origin.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-6",
+       "text": "2. The first word in a biological name represents the genus while the second component denotes the specific epithet.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "first word",
+         "c": "yellow"
+        },
+        {
+         "text": "represents the genus",
+         "c": "yellow"
+        },
+        {
+         "text": "second component denotes",
+         "c": "yellow"
+        },
+        {
+         "text": "specific epithet.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-7",
+       "text": "3. Both the words in a biological name, when handwritten, are separately underlined, or printed in italics to indicate their Latin origin.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Both the words",
+         "c": "yellow"
+        },
+        {
+         "text": "when handwritten,",
+         "c": "yellow"
+        },
+        {
+         "text": "separately underlined,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-8",
+       "text": "4. The first word denoting the genus starts with a capital letter while the specific epithet starts with a small letter.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "first word denoting the genus starts with a capital letter",
+         "c": "yellow"
+        },
+        {
+         "text": "specific epithet starts with a small letter.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-9",
+       "text": "It can be illustrated with the example of Mangifera indica.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-10",
+       "text": "Name of the author appears after the specific epithet, i.e., at the end of the biological name and is written in an abbreviated form, e.g., Mangifera indica Linn. It indicates that this species was first described by Linnaeus.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "at the end of the biological name and is written in an abbreviated form,",
+         "c": "green"
+        },
+        {
+         "text": "Mangifera indica Linn.",
+         "c": "green"
+        },
+        {
+         "text": "first described by Linnaeus.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-11",
+       "text": "Since it is nearly impossible to study all the living organisms, it is necessary to devise some means to make this possible.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-12",
+       "text": "This process is classification.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "classification.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-13",
+       "text": "Classification is the process by which anything is grouped into convenient categories based on some easily observable characters.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "anything is grouped into convenient categories based on some easily observable characters.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-14",
+       "text": "For example, we easily recognise groups such as plants or animals or dogs, cats or insects.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-15",
+       "text": "The moment we use any of these terms, we associate certain characters with the organism in that group.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-16",
+       "text": "What image do you see when you think of a dog ?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-17",
+       "text": "Obviously, each one of us will see ‘dogs’ and not ‘cats’.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-18",
+       "text": "Now, if we were to think of ‘Alsatians’ we know what we are talking about.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-19",
+       "text": "Similarly, suppose we were to say ‘mammals’, you would, of course, think of animals with external ears and body hair.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-20",
+       "text": "Likewise, in plants, if we try to talk of ‘Wheat’, the picture in each of our minds will be of wheat plants, not of rice or any other plant.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-21",
+       "text": "Hence, all these - ‘Dogs’, ‘Cats’, ‘Mammals’, ‘Wheat’, ‘Rice’, ‘Plants’, ‘Animals’, etc., are convenient categories we use to study organisms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-22",
+       "text": "The scientific term for these categories is taxa.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "scientific term for these categories is taxa.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-23",
+       "text": "Here you must recognise that taxa can indicate categories at very different levels.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "taxa can indicate categories at very different levels.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-24",
+       "text": "‘Plants’ – also form a taxa.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-25",
+       "text": "‘Wheat’ is also a taxa.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-26",
+       "text": "Similarly, ‘animals’, ‘mammals’, ‘dogs’ are all taxa – but you know that a dog is a mammal and mammals are animals.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p7-0-27",
+       "text": "Therefore, ‘animals’, ‘mammals’ and ‘dogs’ represent taxa at different levels.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "‘animals’, ‘mammals’ and ‘dogs’ represent taxa at different levels.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-28",
+       "text": "Hence, based on characteristics, all living organisms can be classified into different taxa.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "based on characteristics, all living organisms can be classified into different taxa.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-29",
+       "text": "This process of classification is taxonomy.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "This process of classification is taxonomy.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p7-0-30",
+       "text": "External and internal structure, along with the structure of cell, development",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "External",
+         "c": "yellow"
+        },
+        {
+         "text": "internal structure, along with the structure of cell, development",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 8,
+   "pdf": 8,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "1.2",
+     "sentences": [
+      {
+       "id": "the-living-world-p8-0-0",
+       "text": "process and ecological information of organisms are essential and form the basis of modern taxonomic studies.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "process and ecological information of organisms",
+         "c": "yellow"
+        },
+        {
+         "text": "essential and form the basis of modern taxonomic studies.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-0-1",
+       "text": "Hence, characterisation, identification, classification and nomenclature are the processes that are basic to taxonomy.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "characterisation, identification, classification and nomenclature are the processes that are basic to taxonomy.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-0-2",
+       "text": "Taxonomy is not something new.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p8-0-3",
+       "text": "Human beings have always been interested in knowing more and more about the various kinds of organisms, particularly with reference to their own use.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Human beings have always been interested in knowing more and more about the various kinds of organisms, particularly with reference to their own use.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-0-4",
+       "text": "In early days, human beings needed to find sources for their basic needs of food, clothing and shelter.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p8-0-5",
+       "text": "Hence, the earliest classifications were based on the ‘uses’ of various organisms.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "based on the ‘uses’",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-0-6",
+       "text": "Human beings were, since long, not only interested in knowing more about different kinds of organisms and their diversities, but also the relationships among them.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p8-0-7",
+       "text": "This branch of study was referred to as systematics.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "systematics.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-0-8",
+       "text": "The word systematics is derived from the Latin word ‘systema’ which means systematic arrangement of organisms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "derived from the Latin word ‘systema’",
+         "c": "yellow"
+        },
+        {
+         "text": "means systematic arrangement of organisms.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-0-9",
+       "text": "Linnaeus used Systema Naturae as the title of his publication.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Linnaeus used Systema Naturae as the title of his publication.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-0-10",
+       "text": "The scope of systematics was later enlarged to include identification, nomenclature and classification.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "include identification, nomenclature and classification.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-0-11",
+       "text": "Systematics takes into account evolutionary relationships between organisms.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "takes into account evolutionary relationships between organisms.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "1.3",
+     "text": "Taxonomic Categories",
+     "level": 2
+    },
+    {
+     "type": "text",
+     "section": "1.3",
+     "sentences": [
+      {
+       "id": "the-living-world-p8-2-0",
+       "text": "Classification is not a single step process but involves hierarchy of steps in which each step represents a rank or category.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Classification is not a single step process but involves hierarchy of steps in which each step represents a rank or category.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-2-1",
+       "text": "Since the category is a part of overall taxonomic arrangement, it is called the taxonomic category and all categories together constitute the taxonomic hierarchy.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "taxonomic category",
+         "c": "yellow"
+        },
+        {
+         "text": "all categories together constitute the taxonomic hierarchy.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-2-2",
+       "text": "Each category, referred to as a unit of classification, in fact, represents a rank and is commonly termed as taxon (pl.: taxa).",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "category, referred to as a unit of classification, in fact, represents a rank and is commonly termed as taxon",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-2-3",
+       "text": "Taxonomic categories and hierarchy can be illustrated by an example.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p8-2-4",
+       "text": "Insects represent a group of organisms sharing common features like three pairs of jointed legs.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p8-2-5",
+       "text": "It means insects are recognisable concrete objects which can be classified, and thus were given a rank or category.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p8-2-6",
+       "text": "Can you name other such groups of organisms?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p8-2-7",
+       "text": "Remember, groups represent category.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p8-2-8",
+       "text": "Category further denotes rank.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Category further denotes rank.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-2-9",
+       "text": "Each rank or taxon, in fact, represents a unit of classification.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Each rank or taxon,",
+         "c": "yellow"
+        },
+        {
+         "text": "represents a unit of classification.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-2-10",
+       "text": "These taxonomic groups/ categories are distinct biological entities and not merely morphological aggregates.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "are distinct biological entities and not merely morphological aggregates.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-2-11",
+       "text": "Taxonomical studies of all known organisms have led to the development of common categories such as kingdom, phylum or division (for plants), class, order, family, genus and species.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "common categories such as kingdom, phylum or division (for plants), class, order, family, genus and species.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-2-12",
+       "text": "All organisms, including those in the plant and animal kingdoms have species as the lowest category.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "species as the lowest category.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p8-2-13",
+       "text": "Now the question you may ask is, how to place an",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 9,
+   "pdf": 9,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "1.3",
+     "sentences": [
+      {
+       "id": "the-living-world-p9-0-0",
+       "text": "T HE L IVING W ORLD organism in various categories?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p9-0-1",
+       "text": "The basic requirement is the knowledge of characters of an individual or group of organisms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p9-0-2",
+       "text": "This helps in identifying similarities and dissimilarities among the individuals of the same kind of organisms as well as of other kinds of organisms.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "1.3.1",
+     "text": "Species",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "1.3.1",
+     "sentences": [
+      {
+       "id": "the-living-world-p9-2-0",
+       "text": "Taxonomic studies consider a group of individual organisms with fundamental similarities as a species.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "fundamental similarities",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-2-1",
+       "text": "One should be able to distinguish one species from the other closely related species based on the distinct morphological differences.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "One should be able to distinguish one species from the other closely related species based on the distinct morphological differences.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-2-2",
+       "text": "Let us consider Mangifera indica, Solanum tuberosum (potato) and Panthera leo (lion).",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p9-2-3",
+       "text": "All the three names, indica, tuberosum and leo, represent the specific epithets, while the first words Mangifera, Solanum and Panthera are genera and represents another higher level of taxon or category.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "indica, tuberosum and leo, represent the specific epithets,",
+         "c": "yellow"
+        },
+        {
+         "text": "Mangifera, Solanum and Panthera are genera",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-2-4",
+       "text": "Each genus may have one or more than one specific epithets representing different organisms, but having morphological similarities.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Each genus may have one or more than one specific epithets",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-2-5",
+       "text": "For example, Panthera has another specific epithet called tigris and Solanum includes species like nigrum and melongena.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Panthera",
+         "c": "yellow"
+        },
+        {
+         "text": "tigris",
+         "c": "yellow"
+        },
+        {
+         "text": "Solanum",
+         "c": "yellow"
+        },
+        {
+         "text": "nigrum and melongena.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-2-6",
+       "text": "Human beings belong to the species sapiens which is grouped in the genus Homo.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p9-2-7",
+       "text": "The scientific name thus, for human being, is written as Homo sapiens.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Homo sapiens.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "1.3.2",
+     "text": "Genus",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "1.3.2",
+     "sentences": [
+      {
+       "id": "the-living-world-p9-4-0",
+       "text": "Genus comprises a group of related species which has more characters in common in comparison to species of other genera.",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "group of related species which has more characters in common in comparison to species of other genera.",
+         "c": "green"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-4-1",
+       "text": "We can say that genera are aggregates of closely related species.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p9-4-2",
+       "text": "For example, potato and brinjal are two different species but both belong to the genus Solanum.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "potato and brinjal",
+         "c": "yellow"
+        },
+        {
+         "text": "belong to the genus Solanum.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-4-3",
+       "text": "Lion (Panthera leo), leopard (P.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Lion (Panthera leo), leopard (P.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-4-4",
+       "text": "pardus) and tiger (P.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "pardus) and tiger (P.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-4-5",
+       "text": "tigris) with several common features, are all species of the genus Panthera.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "tigris)",
+         "c": "yellow"
+        },
+        {
+         "text": "species of the genus Panthera.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-4-6",
+       "text": "This genus differs from another genus Felis which includes cats.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "1.3.3",
+     "text": "Family",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "1.3.3",
+     "sentences": [
+      {
+       "id": "the-living-world-p9-6-0",
+       "text": "The next category, Family, has a group of related genera with still less number of similarities as compared to genus and species.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Family,",
+         "c": "yellow"
+        },
+        {
+         "text": "related genera with still less number of similarities",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-6-1",
+       "text": "Families are characterised on the basis of both vegetative and reproductive features of plant species.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "characterised on the basis of both vegetative and reproductive features",
+         "c": "yellow"
+        },
+        {
+         "text": "plant species.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-6-2",
+       "text": "Among plants for example, three different genera Solanum, Petunia and Datura are placed in the family Solanaceae.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Solanum, Petunia and Datura",
+         "c": "yellow"
+        },
+        {
+         "text": "placed in the family Solanaceae.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-6-3",
+       "text": "Among animals for example, genus Panthera, comprising lion, tiger, leopard is put along with genus, Felis (cats) in the family Felidae.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "genus Panthera, comprising lion, tiger, leopard is put along with genus, Felis (cats) in the family Felidae.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p9-6-4",
+       "text": "Similarly, if you observe the features of a cat and a dog, you will find some similarities and some differences as well.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p9-6-5",
+       "text": "They are separated into two different families – Felidae and Canidae, respectively.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Felidae and Canidae,",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 10,
+   "pdf": 10,
+   "blocks": [
+    {
+     "type": "heading",
+     "section": "1.3.4",
+     "text": "Order",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "1.3.4",
+     "sentences": [
+      {
+       "id": "the-living-world-p10-1-0",
+       "text": "You have seen earlier that categories like species, genus and families are based on a number of similar characters.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p10-1-1",
+       "text": "Generally, order and other higher taxonomic categories are identified based on the aggregates of characters.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "order and other higher taxonomic categories are identified based on the aggregates of characters.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p10-1-2",
+       "text": "Order being a higher category, is the assemblage of families which exhibit a few similar characters.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p10-1-3",
+       "text": "The similar characters are less in number as compared to different genera included in a family.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "similar characters are less in number",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p10-1-4",
+       "text": "Plant families like Convolvulaceae, Solanaceae are included in the order Polymoniales mainly based on the floral characters.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Convolvulaceae, Solanaceae are included in the order Polymoniales mainly based on the floral characters.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p10-1-5",
+       "text": "The animal order, Carnivora, includes families like Felidae and Canidae.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Carnivora, includes families like Felidae and Canidae.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "1.3.5",
+     "text": "Class",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "1.3.5",
+     "sentences": [
+      {
+       "id": "the-living-world-p10-3-0",
+       "text": "This category includes related orders.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "category includes related orders.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p10-3-1",
+       "text": "For example, order Primata comprising monkey, gorilla and gibbon is placed in class Mammalia along with order Carnivora that includes animals like tiger, cat and dog.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "order Primata comprising monkey, gorilla and gibbon is placed in class Mammalia along with order Carnivora",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p10-3-2",
+       "text": "Class Mammalia has other orders also.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "1.3.6",
+     "text": "Phylum",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "1.3.6",
+     "sentences": [
+      {
+       "id": "the-living-world-p10-5-0",
+       "text": "Classes comprising animals like fishes, amphibians, reptiles, birds along with mammals constitute the next higher category called Phylum.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Classes comprising animals like fishes, amphibians, reptiles, birds along with mammals constitute",
+         "c": "yellow"
+        },
+        {
+         "text": "Phylum.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p10-5-1",
+       "text": "All these, based on the common features like presence of notochord and dorsal hollow neural system, are included in phylum Chordata.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "common features like presence of notochord and dorsal hollow neural system,",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p10-5-2",
+       "text": "In case of plants, classes with a few similar characters are assigned to a higher category called Division.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "Division.",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "1.3.7",
+     "text": "Kingdom",
+     "level": 3
+    },
+    {
+     "type": "caption",
+     "text": "Figure 1.1 T a x o n o m i c"
+    },
+    {
+     "type": "text",
+     "section": "1.3.7",
+     "sentences": [
+      {
+       "id": "the-living-world-p10-8-0",
+       "text": "s h o w i n g All animals belonging to various phyla are assigned to the highest category called Kingdom Animalia in the classification system of animals.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "All animals belonging to various phyla are assigned to the highest category called Kingdom Animalia",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p10-8-1",
+       "text": "The Kingdom Plantae, on the other hand, is distinct, and comprises all plants from various divisions.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "Kingdom Plantae, on the other hand, is distinct, and comprises all plants from various divisions.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p10-8-2",
+       "text": "Henceforth, we will refer to these two groups as animal and plant kingdoms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p10-8-3",
+       "text": "The taxonomic categories from species to kingdom have been shown in ascending order starting with species in Figure 1.1.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p10-8-4",
+       "text": "These are broad categories.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p10-8-5",
+       "text": "However, taxonomists have also developed sub-categories in this hierarchy to facilitate more sound and scientific placement of various taxa.",
+       "hl": null,
+       "marks": [
+        {
+         "text": "sub-categories",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p10-8-6",
+       "text": "Look at the hierarchy in Figure 1.1.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p10-8-7",
+       "text": "Can you recall the basis of arrangement?",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p10-8-8",
+       "text": "Say, for example, as we go higher from species to kingdom, the number of common characteristics goes on",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "from species to kingdom, the number of common characteristics goes on",
+         "c": "yellow"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "pg": 11,
+   "pdf": 11,
+   "blocks": [
+    {
+     "type": "text",
+     "section": "1.3.7",
+     "sentences": [
+      {
+       "id": "the-living-world-p11-0-0",
+       "text": "T HE L IVING W ORLD decreasing. Lower the taxa, more are the characteristics that the members within the taxon share.",
+       "hl": "yellow",
+       "marks": [
+        {
+         "text": "decreasing. Lower the taxa, more are the characteristics that the members within the taxon share.",
+         "c": "yellow"
+        }
+       ]
+      },
+      {
+       "id": "the-living-world-p11-0-1",
+       "text": "Higher the category, greater is the difficulty of determining the relationship to other taxa at the same level.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p11-0-2",
+       "text": "Hence, the problem of classification becomes more complex.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "caption",
+     "text": "Table 1.1 indicates the taxonomic categories to which some common"
+    },
+    {
+     "type": "text",
+     "section": "1.3.7",
+     "sentences": [
+      {
+       "id": "the-living-world-p11-2-0",
+       "text": "organisms like housefly, man, mango and wheat belong.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "caption",
+     "text": "TABLE 1.1 Organisms with their Taxonomic Categories"
+    },
+    {
+     "type": "text",
+     "section": "1.3.7",
+     "sentences": [
+      {
+       "id": "the-living-world-p11-4-0",
+       "text": "Primata Muscidae Diptera Insecta Arthropoda Mangifera Anacardiaceae Sapindales Dicotyledonae",
+       "hl": "green",
+       "marks": [
+        {
+         "text": "Primata Muscidae Diptera Insecta Arthropoda",
+         "c": "green"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "1.4",
+     "text": "Taxonomical Aids",
+     "level": 2
+    },
+    {
+     "type": "text",
+     "section": "1.4",
+     "sentences": [
+      {
+       "id": "the-living-world-p11-6-0",
+       "text": "Taxonomic studies of various species of plants, animals and other organisms are useful in agriculture, forestry, industry and in general in knowing our bio-resources and their diversity.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p11-6-1",
+       "text": "These studies would require correct classification and identification of organisms.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p11-6-2",
+       "text": "Identification of organisms requires intensive laboratory and field studies.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p11-6-3",
+       "text": "The collection of actual specimens of plant and animal species is essential and is the prime source of taxonomic studies.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p11-6-4",
+       "text": "These are also fundamental to studies and essential for training in systematics.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p11-6-5",
+       "text": "It is used for classification of an organism, and the information gathered is also stored along with the specimens.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p11-6-6",
+       "text": "In some cases the specimen is preserved for future studies.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p11-6-7",
+       "text": "Biologists have established certain procedures and techniques to store and preserve the information as well as the specimens.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p11-6-8",
+       "text": "Some of these are explained to help you understand the usage of these aids.",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    },
+    {
+     "type": "heading",
+     "section": "1.4.1",
+     "text": "Herbarium",
+     "level": 3
+    },
+    {
+     "type": "text",
+     "section": "1.4.1",
+     "sentences": [
+      {
+       "id": "the-living-world-p11-8-0",
+       "text": "Herbarium is a store house of collected plant specimens that are dried, pressed and preserved on sheets.",
+       "hl": null,
+       "marks": []
+      },
+      {
+       "id": "the-living-world-p11-8-1",
+       "text": "Further, these sheets are arranged",
+       "hl": null,
+       "marks": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "exercises": []
+}
