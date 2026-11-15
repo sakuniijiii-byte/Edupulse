@@ -1,0 +1,5958 @@
+{
+ "meta": {
+  "schemaVersion": 3,
+  "subject": "Biology",
+  "chapter": "Diversity in the Living World",
+  "source": "EduPulse Recommended",
+  "section": "recommended",
+  "count": 180,
+  "description": "180 high-yield questions curated from all sources (PYQ-first, de-duplicated)",
+  "answerBase": 1,
+  "chapterKeys": {
+   "LW": "The Living World",
+   "BC": "Biological Classification",
+   "PK": "Plant Kingdom"
+  },
+  "curated": true
+ },
+ "qs": [
+  {
+   "id": "REC001",
+   "no": 1,
+   "q": "Nomenclature is governed by certain universal rules. Which one of the following is contrary to the rules of nomenclature?",
+   "o": [
+    "Biological names can be written in any language",
+    "The first word in a biological name represents the genus name and second is specific epithet",
+    "The names are written in latin and are italicized",
+    "When written by hand, the names are to be underlined"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Biological names can be written in any language.** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET-I-2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-3",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC002",
+   "no": 2,
+   "q": "Which of the following is against the rules of ICBN?",
+   "o": [
+    "Hand written scientific names should be underlined.",
+    "Every species should have a generic name and a specific epithet.",
+    "Scientific names are in Latin and should be italicized.",
+    "Generic and specific names should be written starting with small letters."
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Generic and specific names should be written starting with small letters..** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET–2020",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-10",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC003",
+   "no": 3,
+   "q": "Which of the following statements is incorrect?",
+   "o": [
+    "Infective constituent in viruses is the protein coat.",
+    "Prions consist of abnormally folded proteins.",
+    "Viroids lack a protein coat.",
+    "Viruses are obligate parasites."
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Infective constituent in viruses is the protein coat..** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET–2019",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-9",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC004",
+   "no": 4,
+   "q": "Match Column I with Column II for housefly classification and select the correct option using the codes given below:",
+   "o": [
+    "(a)–(iii), (b)–(ii), (c)–(iv), (d)–(i)",
+    "(a)–(iv), (b)–(iii), (c)–(ii), (d)–(i)",
+    "(a)–(iv), (b)–(ii), (c)–(i), (d)–(iii)",
+    "(a)–(iii), (b)–(i), (c)–(iv), (d)–(ii)"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — (a)–(iii), (b)–(i), (c)–(iv), (d)–(ii).** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET-I-2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": {
+    "headers": [
+     "",
+     "Column-I",
+     "",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(a)",
+      "Family",
+      "(i)",
+      "Dipetera"
+     ],
+     [
+      "(b)",
+      "Order",
+      "(ii)",
+      "Arthropoda"
+     ],
+     [
+      "(c)",
+      "Class",
+      "(iii)",
+      "Muscidae"
+     ],
+     [
+      "(d)",
+      "Phylum",
+      "(iv)",
+      "Insecta"
+     ]
+    ]
+   },
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-5",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC005",
+   "no": 5,
+   "q": "Study the four statements (A-D) given below and select the two correct ones out of them:\n(A) Definition of biological species was given by Ernst Mayr.\n(B) Photoperiod does not affect reproduction in plants.\n(C) Binomial nomenclature system was given by R.H. Whittaker.\n(D) In unicellular organisms, reproduction is synonymous with growth.\nThe two correct statements are",
+   "o": [
+    "A and D",
+    "A and B",
+    "B and C",
+    "C and D"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — A and D.** The question concerns the characteristics of living organisms or the basic principles of taxonomy and nomenclature. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "statement",
+   "topic": "LIVING WORLD",
+   "exam": "NEET-II 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "LW0480",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources",
+    "NEET-style format"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC006",
+   "no": 6,
+   "q": "The contrasting characteristics generally in a pair used for identification of animals in taxonomic key are referred to as:",
+   "o": [
+    "Lead",
+    "Couplet",
+    "Doublet",
+    "Alternate"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Couplet.** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET–2020",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-11",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC007",
+   "no": 7,
+   "q": "'X' and 'Y' are the components of Binomial nomenclature. This naming system was proposed by 'Z':",
+   "o": [
+    "X-Generic name, Y-Specific epithet, Z-Carolus Linnaeus",
+    "X-Specific epithet, Y-Generic name, Z-R.H. Whittaker",
+    "X-Specific epithet, Y-Generic name, Z-Carolus Linnaeus",
+    "X-Generic name, Y-Specific epithet, Z-R.H. Whittaker"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — X-Generic name, Y-Specific epithet, Z-Carolus Linnaeus.** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET–2022",
+   "year": "2023",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-14",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC008",
+   "no": 8,
+   "q": "Which one of the following belongs to the family muscidae?",
+   "o": [
+    "Fire fly",
+    "Grasshopper",
+    "Cockroach",
+    "House fly"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — House fly.** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET–2020",
+   "year": "2021",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-12",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC009",
+   "no": 9,
+   "q": "The label of a herbarium sheet does not carry information on:",
+   "o": [
+    "Name of collector",
+    "Local names",
+    "Height of the plant",
+    "Date of collection"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Height of the plant.** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET-I-2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-4",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC010",
+   "no": 10,
+   "q": "Select the correctly written scientific name of Mango which was first described by Carolus Linnaeus:",
+   "o": [
+    "Mangifera indica",
+    "Mangifera Indica",
+    "Mangifera indica Car. Linn.",
+    "Mangifera indica Linn."
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Mangifera indica Linn..** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET–2019",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-8",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC011",
+   "no": 11,
+   "q": "Match the items given in Column-I with those Column-II and select the Correct option given below:",
+   "o": [
+    "a–i, b–iv, c–iii, d–ii",
+    "a–iii, b–ii, c–i, d–iv",
+    "a–ii, b–iv, c–iii, d–i",
+    "a–iii, b–iv, c–i, d–ii"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — a–iii, b–iv, c–i, d–ii.** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET–2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": {
+    "headers": [
+     "",
+     "Column-I",
+     "",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(a)",
+      "Herbarium",
+      "(i)",
+      "It is a place having a collection of preserved plants and animals."
+     ],
+     [
+      "(b)",
+      "Key",
+      "(ii)",
+      "A list that enumerates methodically all the species found in an area with brief description aiding identification."
+     ],
+     [
+      "(c)",
+      "Museum",
+      "(iii)",
+      "Is a place where dried and pressed plant specimens mounted on sheets are kept."
+     ],
+     [
+      "(d)",
+      "Catalogue",
+      "(iv)",
+      "A booklet containing a list of characters and their alternates which are helpful in identification various taxa."
+     ]
+    ]
+   },
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-7",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC012",
+   "no": 12,
+   "q": "Match the plant with the kind of life cycle it exhibits:\nChoose the correct answer from the options given below:",
+   "o": [
+    "(a)-(ii), (b)-(iii), (c)-(iv), (d)-(i)",
+    "(a)-(iii), (b)-(iv), (c)-(i), (d)-(ii)",
+    "(a)-(ii), (b)-(iv), (c)-(i), (d)-(iii)",
+    "(a)-(iv), (b)-(i), (c)-(ii), (d)-(iii)"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — (a)-(ii), (b)-(iii), (c)-(iv), (d)-(i).** The question tests a concept from HISTORY OF TAXONOMY. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "match",
+   "topic": "HISTORY OF TAXONOMY",
+   "exam": "NEET(UG) 2022",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": {
+    "headers": [
+     "List-1",
+     "List-II"
+    ],
+    "rows": [
+     [
+      "(a) Spirogyra",
+      "(i) Dominant diploid sporophyte vascular plant, with highly reduced male or female gametophyte"
+     ],
+     [
+      "(b) Fern",
+      "(ii) Dominant haploid free-living gametophyte"
+     ],
+     [
+      "(c) Funaria",
+      "(iii) Dominant diploid sporophyte alternating with reduced gametophyte called prothallus"
+     ],
+     [
+      "(d) Cycas",
+      "(iv) Dominant haploid leafy gametophyte alternating with partially dependent multicellular sporophyte"
+     ]
+    ]
+   },
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1230",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "NEET-style format"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC013",
+   "no": 13,
+   "q": "Match List - I with List - II\nChoose the correct answer from the options given below :",
+   "o": [
+    "(a)-(iii), (b)-(i), (c)-(iv), (d)-(ii)",
+    "(a)-(ii), (b)-(i), (c)-(iv), (d)-(iii)",
+    "(a)-(iii), (b)-(iv), (c)-(ii), (d)-(i)",
+    "(a)-(ii), (b)-(iii), (c)-(i), (d)-(iv)"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — (a)-(ii), (b)-(i), (c)-(iv), (d)-(iii).** The question tests a concept from HISTORY OF TAXONOMY. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "match",
+   "topic": "HISTORY OF TAXONOMY",
+   "exam": "NEET(UG) 2022 (OVERSEAS)",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": {
+    "headers": [
+     "List-1",
+     "List - II"
+    ],
+    "rows": [
+     [
+      "(a) Cedrus",
+      "(i) Pteridophyte"
+     ],
+     [
+      "(b) Adiantum",
+      "(ii) Gymnosperm"
+     ],
+     [
+      "(c) Sphagnum",
+      "(iii) Liverwort"
+     ],
+     [
+      "(d) Marchantia",
+      "(iv) Moss"
+     ]
+    ]
+   },
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1235",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "NEET-style format"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC014",
+   "no": 14,
+   "q": "Which one of the following is not a correct statement?",
+   "o": [
+    "Key is taxonomic aid for identification of specimens",
+    "Herbarium houses dried, pressed and preserved plants specimen",
+    "Botanical gardens have collection of living plant for reference",
+    "A museum has collection of photographs of plants and animals"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — A museum has collection of photographs of plants and animals.** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET-UG-2013",
+   "year": "2013",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-1",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC015",
+   "no": 15,
+   "q": "In the taxonomic categories which hierarchial arrangement in ascending order is correct in case of animals ?",
+   "o": [
+    "Kingdom, Class, Phylum, Family, Order, Genus, Species",
+    "Kingdom, Order, Class, Phylum, Family, Genus, Species",
+    "Kingdom, Order, Phylum, Class, Family, Genus, Species",
+    "Kingdom, Phylum, Class, Order, Family, Genus, Species"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Kingdom, Phylum, Class, Order, Family, Genus, Species.** The question tests a concept from NOMENCLATURE, CLASSIFICATION, SPECIES CONCEPT (A). The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "NOMENCLATURE, CLASSIFICATION, SPECIES CONCEPT (A)",
+   "exam": "NEET(UG) 2022",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "DL1231",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC016",
+   "no": 16,
+   "q": "Select the mismatch :-",
+   "o": [
+    "Protists-Eukaryotes",
+    "Methanogens-Prokaryotes",
+    "Gas vacuoles-Green bacteria",
+    "Large central vacoules - Animal cells"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Large central vacoules - Animal cells.** The question tests a concept from HISTORY OF TAXONOMY. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "HISTORY OF TAXONOMY",
+   "exam": "NEET-II 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1043",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC017",
+   "no": 17,
+   "q": "Planaria possess high capacity of:",
+   "o": [
+    "Metamorphosis",
+    "Regeneration",
+    "Alternation of generation",
+    "Bioluminescence"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Regeneration.** The question tests the basic principles of taxonomy and the characteristics used to recognise, name, and classify living organisms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "The Living World",
+   "exam": "NEET-UG-2013",
+   "year": "2013",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "lw-ex4-2",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC018",
+   "no": 18,
+   "q": "Which one of the following living organisms completely lacks a cell wall?",
+   "o": [
+    "Cyanobacteria",
+    "Sea - fan(Gorgonia)",
+    "Saccharomyces",
+    "Blue-green algae"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Sea - fan(Gorgonia).** The question concerns the characteristics of living organisms or the basic principles of taxonomy and nomenclature. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "LIVING WORLD",
+   "exam": "AIPMT 2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1021",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "LW",
+   "chapter": ""
+  },
+  {
+   "id": "REC019",
+   "no": 19,
+   "q": "Select the wrong statement:",
+   "o": [
+    "Cell wall is present in members of Fungi and Plantae.",
+    "Mushrooms belong to Basidiomycetes.",
+    "Pseudopodia are locomotory and feeding structures in Sporozoans.",
+    "Mitochondria are the powerhouse of the cell in all kingdoms except Monera."
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Pseudopodia are locomotory and feeding structures in Sporozoans..** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET – 2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-45",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC020",
+   "no": 20,
+   "q": "Which of the following are found in extreme saline conditions ?",
+   "o": [
+    "Archaebacteria",
+    "Eubacteria",
+    "Cyanobacteria",
+    "Mycobacteria"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Archaebacteria.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET – 2017",
+   "year": "2017",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-40",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC021",
+   "no": 21,
+   "q": "Which of the following organisms are known as chief producers in the oceans ?",
+   "o": [
+    "Dinoflagellates",
+    "Diatoms",
+    "Cyanobacteria",
+    "Euglenoids"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Diatoms.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET – 2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-48",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC022",
+   "no": 22,
+   "q": "Which among the following is not a prokaryote?",
+   "o": [
+    "Saccharomyces",
+    "Mycobacterium",
+    "Nostoc",
+    "Oscillatoria"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Saccharomyces.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET – 2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-44",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC023",
+   "no": 23,
+   "q": "Which one is a wrong statement ?",
+   "o": [
+    "Brown algae have chlorophyll a, c and fucoxanthin",
+    "Archegonia are found in Bryophyta Pteridophyta and Gymnosperms",
+    "Mucor has biflagellate zoospores",
+    "Haploid endosperm is typical feature of gymnosperms"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Mucor has biflagellate zoospores.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-19",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC024",
+   "no": 24,
+   "q": "Which one of the following statements is wrong ?",
+   "o": [
+    "Cyanobacteria are also called blue- green algae",
+    "Golden algae are also called desmids",
+    "Eubacteria are also called false bacteria",
+    "Phycomycetes are also called algal fungi"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Eubacteria are also called false bacteria.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET-I – 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-32",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC025",
+   "no": 25,
+   "q": "Methanogens belong to:",
+   "o": [
+    "Archaebacteria",
+    "Dinoflagellates",
+    "Slime moulds",
+    "Eubacteria"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Archaebacteria.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET-II – 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-36",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC026",
+   "no": 26,
+   "q": "Viruses have :-",
+   "o": [
+    "DNA enclosed in a protein coat",
+    "Prokaryotic nucleus",
+    "Single chromosome",
+    "Both DNA and RNA"
+   ],
+   "a": 1,
+   "s": "Viruses are so primitive that many scientists consider them to be both living and non-living things. By itself, a virus is a lifeless particle that cannot reproduce. But inside a living cell, a virus becomes an active organism that can multiply hundreds of times",
+   "type": "mcq",
+   "topic": "VIRUS, VIROIDS, LICHEN, MYCORRHIZA",
+   "exam": "AIPMT 2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1020",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC027",
+   "no": 27,
+   "q": "Match the following columns",
+   "o": [
+    "A-1, B-4, C-3, D-2",
+    "A-2, B-1, C-4, D-3",
+    "A-4, B-3, C-2, D-1",
+    "A-3, B-2, C-1, D-4"
+   ],
+   "a": 3,
+   "s": "Phycomycetes – Mucor, Rhizopus, Pythium; Ascomycetes – Aspergillus, Claviceps, Neurospora; Basidiomycetes – Agaricus, Ustilago; Deuteromycetes – Alternaria, Trichoderma.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(A) Phycomycetes",
+      "(1) Alternaria and Trichoderma"
+     ],
+     [
+      "(B) Ascomycetes",
+      "(2) Agaricus and Ustilago"
+     ],
+     [
+      "(C) Basidiomycetes",
+      "(3) Aspergillus, Claviceps and Neurospora"
+     ],
+     [
+      "(D) Deuteromycetes",
+      "(4) Mucor, Rhizopus and Pythium"
+     ]
+    ]
+   },
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bcmm21",
+   "src": "seep-ex3",
+   "why": [
+    "repeated in 6 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC028",
+   "no": 28,
+   "q": "Match List - I with List - II\nChoose the correct answer from the options given below :",
+   "o": [
+    "(a)-(iii), (b)-(iv), (c)-(ii), (d)-(i)",
+    "(a)-(i), (b)-(ii), (c)-(iii), (d)-(iv)",
+    "(a)-(iv), (b)-(ii), (c)-(i), (d)-(iii)",
+    "(a)-(iii), (b)-(ii), (c)-(iv), (d)-(i)"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — (a)-(iii), (b)-(iv), (c)-(ii), (d)-(i).** The key concept is the characteristic organisation, nutrition, reproduction, or life cycle of fungi. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "match",
+   "topic": "KINGDOM - FUNGI",
+   "exam": "NEET(UG) 2022 (OVERSEAS)",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": {
+    "headers": [
+     "List - 1",
+     "List - II"
+    ],
+    "rows": [
+     [
+      "(a) Puccinia",
+      "(i) Parasitic fungus on mustard"
+     ],
+     [
+      "(b) Neurospora",
+      "(ii) Dead substrates"
+     ],
+     [
+      "(c) Saprophytes",
+      "(iii) Wheat rust"
+     ],
+     [
+      "(d) Albugo",
+      "(iv) Biochemical and Genetic work"
+     ]
+    ]
+   },
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1238",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources",
+    "NEET-style format"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC029",
+   "no": 29,
+   "q": "Which of the following are likely to be present in deep sea water ?",
+   "o": [
+    "Saprophytic fungi",
+    "Archaebacteria",
+    "Eubacteria",
+    "Blue-green algae"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Archaebacteria.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET-UG—2013",
+   "year": "2013",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-1",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC030",
+   "no": 30,
+   "q": "The guts of cow and buffalo possess:",
+   "o": [
+    "Chlorella spp.",
+    "Methanogens",
+    "Cyanobacteria",
+    "Fucus spp."
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Methanogens.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-18",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC031",
+   "no": 31,
+   "q": "Pigment - containing membranous extensions in some cyanobacteria are:",
+   "o": [
+    "Chromatophores",
+    "Heterocysts",
+    "Basal bodies",
+    "Pneumatophores"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Chromatophores.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET-UG—2013",
+   "year": "2013",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-5",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC032",
+   "no": 32,
+   "q": "Archaebacteria differ from eubacteria in:",
+   "o": [
+    "Cell membrane",
+    "Mode of nutrition",
+    "Cell shape",
+    "Mode of reproduction"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Cell membrane.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "AIPMT-2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-9",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC033",
+   "no": 33,
+   "q": "Choose the wrong statement:",
+   "o": [
+    "Yeast is unicellular and useful in fermentation",
+    "Penicillium is multicellular and produces antibiotics",
+    "Neurospora is used in the study of biochemical genetics",
+    "Morels and truffles are poisonous mushrooms"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Morels and truffles are poisonous mushrooms.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-21",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC034",
+   "no": 34,
+   "q": "True nucleus is absent in:",
+   "o": [
+    "Mucor",
+    "Vaucheria",
+    "Volvox",
+    "Anabaena"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Anabaena.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-16",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC035",
+   "no": 35,
+   "q": "Pick up the wrong statement:",
+   "o": [
+    "Nuclear membrane is present in Monera",
+    "Cell wall is absent in Animalia",
+    "Protista have photosynthetic and heterotrophic modes of nutrition",
+    "Some fungi are edible"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Nuclear membrane is present in Monera.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-28",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC036",
+   "no": 36,
+   "q": "The imperfect fungi which are decomposers of litter and help in mineral cycling belong to:",
+   "o": [
+    "Ascomycetes",
+    "Deuteromycetes",
+    "Basidiomycetes",
+    "Phycomycetes"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Deuteromycetes.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-27",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC037",
+   "no": 37,
+   "q": "After karyogamy followed by meiosis, spores are produced exogenously in",
+   "o": [
+    "Neurospora",
+    "Alternaria",
+    "Agaricus",
+    "Saccharomyces"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Agaricus.** The key concept is the characteristic organisation, nutrition, reproduction, or life cycle of fungi. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - FUNGI",
+   "exam": "NEET(UG) 2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1055",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC038",
+   "no": 38,
+   "q": "Which of the following is a correct statement?",
+   "o": [
+    "Cyanobacteria are a group of autotrophic organisms classified under Kingdom Monera.",
+    "Bacteria are exclusively heterotrophic organisms.",
+    "Slime moulds are saprophytic organisms classified under Kingdom Monera.",
+    "Mycoplasma have DNA, Ribosome and cell wall"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Cyanobacteria are a group of autotrophic organisms classified under Kingdom Monera..** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET–2022",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-60",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC039",
+   "no": 39,
+   "q": "Which of the following is incorrect about cynobacteria",
+   "o": [
+    "They are photoautotrophs",
+    "They lack heterocysts",
+    "They often form blooms in polluted water bodies",
+    "They have chlorophyll A similar to green plants"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — They lack heterocysts.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET–2020 (COVID-19)",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-54",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC040",
+   "no": 40,
+   "q": "Select the wrong statement:",
+   "o": [
+    "Diatoms are chief producers in the oceans",
+    "Diatoms are microscopic and float passively in water",
+    "The walls of diatoms are easily destructible",
+    "'Diatomaceous earth' is formed by the cell walls of diatoms."
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — The walls of diatoms are easily destructible.** The key concept is the eukaryotic organisation and diversity of protists. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PROTISTA",
+   "exam": "NEET-II 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1042",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC041",
+   "no": 41,
+   "q": "Which of the following statements is incorrect ?",
+   "o": [
+    "Conidia are produced exogenously and ascospores endogenously.",
+    "Yeasts have filamentous bodies with long thread-like hyphae.",
+    "Morels and truffles are edible delicacies.",
+    "Claviceps is a source of many alkaloids and LSD"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Yeasts have filamentous bodies with long thread-like hyphae..** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET – 2019",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-50",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC042",
+   "no": 42,
+   "q": "Which of the following sets of diseases is caused by bacteria ?",
+   "o": [
+    "Typhoid and smallpox",
+    "Tetanus and mumps",
+    "Herps and influenza",
+    "Cholera and tetanus"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Cholera and tetanus.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET-II – 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-38",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC043",
+   "no": 43,
+   "q": "Which among the following are the smallest living cells, known without a definite cell wall, pathogenic to plants as well as animals and can survive without oxygen ?",
+   "o": [
+    "Bacillus",
+    "Pseudomonas",
+    "Mycoplasma",
+    "Nostoc"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Mycoplasma.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET – 2017",
+   "year": "2017",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-39",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC044",
+   "no": 44,
+   "q": "Which of the following statements about methanogens is not correct?",
+   "o": [
+    "They can be used to produce biogas.",
+    "They are found in the rumen of cattle and their excreta",
+    "They grow aerobically and breakdown cellulose-rich food.",
+    "They produce methane gas."
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — They grow aerobically and breakdown cellulose-rich food..** The key concept is the prokaryotic organisation and characteristic features of monerans. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - MONERA",
+   "exam": "NEET(UG) 2019 (Odisha)",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1067",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC045",
+   "no": 45,
+   "q": "Select the mismatch:",
+   "o": [
+    "Frankia – Alnus",
+    "Rhodospirillum – Mycorrhiza",
+    "Anabaena – Nitrogen fixer",
+    "Rhizobium – Alfalfa"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Rhodospirillum – Mycorrhiza.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET – 2017",
+   "year": "2017",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-41",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC046",
+   "no": 46,
+   "q": "The primitive prokaryotes responsible for the production of biogas from the dung of ruminant animals, include the :-",
+   "o": [
+    "Halophiles",
+    "Thermoacidiophiles",
+    "Methanogens",
+    "Eubacteria"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Methanogens.** The key concept is the prokaryotic organisation and characteristic features of monerans. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - MONERA",
+   "exam": "NEET-I 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1040",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC047",
+   "no": 47,
+   "q": "Which of the following is correct about viroids?",
+   "o": [
+    "They have free DNA without protein coat.",
+    "They have RNA with protein coat.",
+    "They have free RNA without protein coat.",
+    "They have DNA with protein coat."
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — They have free RNA without protein coat..** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET–2020",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-56",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC048",
+   "no": 48,
+   "q": "Viroids differ from viruses in having;",
+   "o": [
+    "DNA molecules without protein coat",
+    "RNA molecules with protein coat",
+    "RNA molecules without protein coat",
+    "DNA molecules with protein coat"
+   ],
+   "a": 3,
+   "s": "Viroids were first studied in potato spindle tuber disease. Viroids have no protein coat and contain circular RNA only.",
+   "type": "mcq",
+   "topic": "VIRUS, VIROIDS, LICHEN, MYCORRHIZA",
+   "exam": "NEET(UG) 2017",
+   "year": "2017",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1050",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC049",
+   "no": 49,
+   "q": "Inclusion bodies of blue-green, purple and green-photosynthetic bacteria are:-",
+   "o": [
+    "Contractile vacuoles",
+    "Gas vacuoles",
+    "Centrioles",
+    "Microtubules"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Gas vacuoles.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET–2020 (COVID-19)",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-55",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC050",
+   "no": 50,
+   "q": "Oxygen is not produced during photosynthesis by:",
+   "o": [
+    "Green sulphur bacteria",
+    "Nostoc",
+    "Cycas",
+    "Chara"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Green sulphur bacteria.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET – 2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-47",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC051",
+   "no": 51,
+   "q": "Which one of the following is wrong for fungi ?",
+   "o": [
+    "All fungi possess a purely cellulosic cell wall",
+    "They are heterotrophic",
+    "They are both unicellular and multicellular",
+    "They are eukaryotic"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — All fungi possess a purely cellulosic cell wall.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET-II – 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "bc-ex4-35",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC052",
+   "no": 52,
+   "q": "Chrysophytes, Euglenoids, Dinoflagellates and Slime moulds are included in the kingdom :-",
+   "o": [
+    "Monera",
+    "Protista",
+    "Fungi",
+    "Animalia"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Protista.** The key concept is the eukaryotic organisation and diversity of protists. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PROTISTA",
+   "exam": "NEET-I 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1038",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC053",
+   "no": 53,
+   "q": "Thiobacillus is a group of bacteria helpful in carrying out:",
+   "o": [
+    "Nitrification",
+    "Denitrification",
+    "Nitrogen fixation",
+    "Chemoautotrophic fixation"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Denitrification.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET – 2019",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-51",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC054",
+   "no": 54,
+   "q": "Which of the following statements is wrong for viroids ?",
+   "o": [
+    "They lack a protein coat",
+    "They are smaller than viruses",
+    "They causes infections",
+    "Their RNA is of high molecular weight"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Their RNA is of high molecular weight.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET-I – 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-30",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC055",
+   "no": 55,
+   "q": "One of the major components of cell wall of most fungi is:",
+   "o": [
+    "Chitin",
+    "Peptidoglycan",
+    "Cellulose",
+    "Hemicellulose"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Chitin.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET-I – 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-31",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC056",
+   "no": 56,
+   "q": "Ciliates differ from all other protozoans in:",
+   "o": [
+    "Using flagella for locomotion",
+    "Having a contractile vacuole for removing excess water",
+    "Using pseudopodia for capturing prey",
+    "Having two types of nuclei"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Having two types of nuclei.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET – 2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-49",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC057",
+   "no": 57,
+   "q": "Which of the following statements is correct?",
+   "o": [
+    "Lichens do not grow in polluted areas.",
+    "Algal component of lichens is called mycobiont.",
+    "Fungal component of lichens is called phycobiont",
+    "Lichens are not good pollution indicators."
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Lichens do not grow in polluted areas..** The question concerns the defining structure, organisation, or biological relationship of viruses, viroids, lichens, or mycorrhiza. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "VIRUS, VIROIDS, LICHEN, MYCORRHIZA",
+   "exam": "NEET(UG) 2019 (Odisha)",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1064",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC058",
+   "no": 58,
+   "q": "Match the columns and find the correct option.",
+   "o": [
+    "a-ii, b-i, c-iv, d-iii",
+    "a-iv, b-iii, c-ii, d-i",
+    "a-ii, b-iv, c-i, d-iii",
+    "a-iii, b-iv, c-i, d-ii"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — a-ii, b-iv, c-i, d-iii.** The key concept is the characteristic organisation, nutrition, reproduction, or life cycle of fungi. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "match",
+   "topic": "KINGDOM - FUNGI",
+   "exam": "NEET(UG) 2021 (Paper-2)",
+   "year": "2021",
+   "difficulty": "Medium",
+   "table": {
+    "headers": [
+     "Column I",
+     "Column II"
+    ],
+    "rows": [
+     [
+      "a. Ascomycetes",
+      "i. Ustilago"
+     ],
+     [
+      "b. Phycomycetes",
+      "ii. Saccharomyces"
+     ],
+     [
+      "c. Basidiomycetes",
+      "iii. Trichoderma"
+     ],
+     [
+      "d. Deuteromycetes",
+      "iv. Albugo"
+     ]
+    ]
+   },
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1223",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "NEET-style format"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC059",
+   "no": 59,
+   "q": "Match the organisms in column-l with habitats in column-II\nSelect the correct answer from the options given below :-",
+   "o": [
+    "(a)-(iv), (b)-(i), (c)-(iii), (d)-(ii)",
+    "(a)-(i), (b)-(ii), (c)-(iii), (d)-(iv)",
+    "(a)-(iii), (b)-(iv), (c)-(ii), (d)-(i)",
+    "(a)-(ii), (b)-(iv), (c)-(iii), (d)-(i)"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — (a)-(iv), (b)-(i), (c)-(iii), (d)-(ii).** The key concept is the prokaryotic organisation and characteristic features of monerans. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "match",
+   "topic": "KINGDOM - MONERA",
+   "exam": "NEET(UG) 2019 (Odisha)",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(a) Halophiles",
+      "(i) Hot springs"
+     ],
+     [
+      "(b) Thermoacidophiles",
+      "(ii) Aquatic environment"
+     ],
+     [
+      "(c) Methanogens",
+      "(iii) Guts of ruminants"
+     ],
+     [
+      "(d) Cyanobacteria",
+      "(iv) Salty area"
+     ]
+    ]
+   },
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1062",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "NEET-style format"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC060",
+   "no": 60,
+   "q": "The structures that help some bacteria to attach to rocks and/or host tissues are:",
+   "o": [
+    "Holdfast",
+    "Rhizoids",
+    "Fimbriae",
+    "Mesosomes"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Fimbriae.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-26",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC061",
+   "no": 61,
+   "q": "Which one of the following is not an inclusion body found in prokaryotes ?",
+   "o": [
+    "Cyanophycean granule",
+    "Glycogen granule",
+    "Polysome",
+    "Phosphate granule"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Polysome.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-17",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC062",
+   "no": 62,
+   "q": "Chromatophores take part in:",
+   "o": [
+    "Respiration",
+    "Photosynthesis",
+    "Growth",
+    "Movement"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Photosynthesis.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-25",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC063",
+   "no": 63,
+   "q": "Given below are two statements:\nStatement I :-\nIn bacteria, the mesosomes are formed by the extensions of plasma membrane.\nStatement II :-\nThe mesosomes, in bacteria, help in DNA replication and cell wall formation.\nIn the light of the above statements, choose the most appropriate answer from the options given below:",
+   "o": [
+    "Statement I is correct but Statement II is incorrect.",
+    "Statement I is incorrect but Statement II is correct.",
+    "Both Statement I and Statement II are correct.",
+    "Both Statement I and Statement II are incorrect."
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Both Statement I and Statement II are correct..** The key concept is the prokaryotic organisation and characteristic features of monerans. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "statement",
+   "topic": "KINGDOM - MONERA",
+   "exam": "NEET(UG) 2023 (MANIPUR)",
+   "year": "2023",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC0269",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "NEET-style format"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC064",
+   "no": 64,
+   "q": "Five kingdom system of classification suggested by RH Whittaker is not based on:",
+   "o": [
+    "Presence or absence of a well defined nucleus",
+    "Mode of reproduction",
+    "Mode of nutrition",
+    "Complexity of body organisation"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Mode of reproduction.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "AIPMT-2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-7",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC065",
+   "no": 65,
+   "q": "Select the wrong statement:",
+   "o": [
+    "Chlamydomonas exhibits both isogamy and anisogamy and Fucus shows oogamy",
+    "Isogemetes are similar in structure, function and behaviour",
+    "Anisogametes differ either in structure, function or behaviour",
+    "In Oomycetes female gamete is smaller and motile, while male gamete is larger and non-motile"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — In Oomycetes female gamete is smaller and motile, while male gamete is larger and non-motile.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET-UG—2013",
+   "year": "2013",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "bc-ex4-3",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC066",
+   "no": 66,
+   "q": "Which of the following structures is not found in prokaryotic cells ?",
+   "o": [
+    "Plasma membrane",
+    "Nuclear envelope",
+    "Ribosome",
+    "Mesosome"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Nuclear envelope.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-20",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC067",
+   "no": 67,
+   "q": "Which of the following shows coiled RNA strand and capsomeres ?",
+   "o": [
+    "Polio virus",
+    "Tobacco mosaic virus",
+    "Measles virus",
+    "Retrovirus"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Tobacco mosaic virus.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "AIPMT-2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-11",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC068",
+   "no": 68,
+   "q": "Cell wall is absent in:",
+   "o": [
+    "Nostoc",
+    "Aspergillus",
+    "Funaria",
+    "Mycoplasma"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Mycoplasma.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-23",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC069",
+   "no": 69,
+   "q": "Given below are two statements :\nStatement I : Mycoplasma can pass through less than 1 micron filter size.\nStatement II: Mycoplasma are bacteria with cell wall In the light of the above statements, choose the most appropriate answer from the options given below:",
+   "o": [
+    "Both Statement I and Statement II are correct",
+    "Both Statement I and Statement II are incorrect",
+    "Statement I is correct but Statement II is incorrect",
+    "Statement I is incorrect but Statement II is correct"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Statement I is correct but Statement II is incorrect.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET–2022",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "bc-ex4-58",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC070",
+   "no": 70,
+   "q": "Anoxygenic photosynthesis is characteristic of:",
+   "o": [
+    "Rhodospirillum",
+    "Spirogyra",
+    "Chlamydomonas",
+    "Ulva"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Rhodospirillum.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "AIPMT-2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-10",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC071",
+   "no": 71,
+   "q": "In which group of organisms the cells walls form two thin overlapping shells which fit together ?",
+   "o": [
+    "Slime moulds",
+    "Chrysophytes",
+    "Euglenoids",
+    "Dinoflagellates"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Chrysophytes.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-24",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC072",
+   "no": 72,
+   "q": "Mad cow disease in cattle and Cr Jacob disease in humans are due to infection by",
+   "o": [
+    "Bacterium",
+    "Virus",
+    "Viroid",
+    "Prion"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Prion.** The question concerns the defining structure, organisation, or biological relationship of viruses, viroids, lichens, or mycorrhiza. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "VIRUS, VIROIDS, LICHEN, MYCORRHIZA",
+   "exam": "RE-NEET(UG) 2022",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1242",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC073",
+   "no": 73,
+   "q": "For the commercial and industrial production of Citric Acid, which of the following microbes is used ?",
+   "o": [
+    "Aspergillus niger",
+    "Lactobacillus sp",
+    "Saccharomyces cerevisiae",
+    "Clostridium butylicum"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Aspergillus niger.** The key concept is the characteristic organisation, nutrition, reproduction, or life cycle of fungi. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - FUNGI",
+   "exam": "NEET(UG) 2020 (COVID-19)",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1155",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC074",
+   "no": 74,
+   "q": "Identify the asexual reproductive structure associated with Penicillium:",
+   "o": [
+    "Zoospores",
+    "Conidia",
+    "Gemmules",
+    "Buds"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Conidia.** The question tests the distinguishing features and classification of organisms, including their cell organisation, nutrition, and reproduction. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Biological Classification",
+   "exam": "NEET–2022",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "bc-ex4-59",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC075",
+   "no": 75,
+   "q": "Which of the following bacteria reduce nitrate in soil into nitrogen ?",
+   "o": [
+    "Nitrobacter",
+    "Nitrococcus",
+    "Thiobacillus",
+    "Nitrosomonas"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Thiobacillus.** The key concept is the prokaryotic organisation and characteristic features of monerans. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - MONERA",
+   "exam": "NEET(UG) 2019 (Odisha)",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1065",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC076",
+   "no": 76,
+   "q": "Which of the following statements is correct?",
+   "o": [
+    "Fusion of two cells is called Karyogamy.",
+    "Fusion of protoplasms between two motile or non-motile gametes is called plasmogamy.",
+    "Organisms that depend on living plants are called saprophytes.",
+    "Some of the organisms can fix atmospheric nitrogen in specialized cells called sheath cells."
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Fusion of protoplasms between two motile or non-motile gametes is called plasmogamy..** The key concept is the characteristic organisation, nutrition, reproduction, or life cycle of fungi. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - FUNGI",
+   "exam": "NEET(UG) 2021",
+   "year": "2021",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1162",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC077",
+   "no": 77,
+   "q": "Select the wrong statement :-",
+   "o": [
+    "Cyanobacteria lack flagellated cells.",
+    "Mycoplasma is a wall-less microorganism",
+    "Bacterial cell wall is made up of peptidoglycan.",
+    "Pilli and fimbriae are mainly involved in motility of bacterial cells"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Pilli and fimbriae are mainly involved in motility of bacterial cells.** The key concept is the prokaryotic organisation and characteristic features of monerans. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - MONERA",
+   "exam": "NEET-II 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1044",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC078",
+   "no": 78,
+   "q": "Which of the following would appear as the pioneer organisms on bare rocks?",
+   "o": [
+    "Lichens",
+    "Liverworts",
+    "Mosses",
+    "Green algae"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Lichens.** The question concerns the defining structure, organisation, or biological relationship of viruses, viroids, lichens, or mycorrhiza. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "VIRUS, VIROIDS, LICHEN, MYCORRHIZA",
+   "exam": "NEET-I 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1037",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC079",
+   "no": 79,
+   "q": "Which one of the following process is responsible for the release of N_2 in the atmosphere?",
+   "o": [
+    "Ammonification",
+    "Denitrification",
+    "Biological nitrogen fixation",
+    "Industrial Nitrogen fixation"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Denitrification.** The key concept is the prokaryotic organisation and characteristic features of monerans. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - MONERA",
+   "exam": "NEET(UG) 2022 (OVERSEAS)",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1234",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC080",
+   "no": 80,
+   "q": "Which of the following characters belongs to the kingdom Protista ?",
+   "o": [
+    "Prokaryotic",
+    "Multicellular",
+    "All members have cell wall",
+    "Presence of nuclear membrane"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Presence of nuclear membrane.** The key concept is the eukaryotic organisation and diversity of protists. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PROTISTA",
+   "exam": "NEET(UG) 2021 (Paper-2)",
+   "year": "2021",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1224",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC081",
+   "no": 81,
+   "q": "Identify the fungi which do not belong to the group of other fungi among the following.",
+   "o": [
+    "Puffballs",
+    "Mushrooms",
+    "Bracket Fungi",
+    "Sac-fungi"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Sac-fungi.** The key concept is the characteristic organisation, nutrition, reproduction, or life cycle of fungi. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - FUNGI",
+   "exam": "NEET(UG) 2022 (OVERSEAS)",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1236",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC082",
+   "no": 82,
+   "q": "Which of the following statements about inclusion bodies is incorrect?",
+   "o": [
+    "These represent reserve material in cytoplasm.",
+    "They are not bound by any membrane.",
+    "These are involved in ingestion of food particles.",
+    "They lie free in the cytoplasm."
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — These are involved in ingestion of food particles..** The key concept is the prokaryotic organisation and characteristic features of monerans. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - MONERA",
+   "exam": "NEET(UG) 2020",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1149",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC083",
+   "no": 83,
+   "q": "Mad cow disease in catttle is caused by an organism which has :-",
+   "o": [
+    "inert crystalline structure",
+    "abnormally folded protein",
+    "free RNA without protein coat",
+    "free DNA without protein coat"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — abnormally folded protein.** The question concerns the defining structure, organisation, or biological relationship of viruses, viroids, lichens, or mycorrhiza. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "VIRUS, VIROIDS, LICHEN, MYCORRHIZA",
+   "exam": "NEET(UG) 2019 (Odisha)",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1063",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC084",
+   "no": 84,
+   "q": "Which of the following components provides sticky character to the bacterial cell ?",
+   "o": [
+    "Nuclear membrane",
+    "Plasma membrane",
+    "Glycocalyx",
+    "Cell wall"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Glycocalyx.** The key concept is the prokaryotic organisation and characteristic features of monerans. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM - MONERA",
+   "exam": "NEET(UG) 2017",
+   "year": "2017",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "BC1049",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "BC",
+   "chapter": ""
+  },
+  {
+   "id": "REC085",
+   "no": 85,
+   "q": "Which one of the following statements is wrong?",
+   "o": [
+    "Agar-agar is obtained from Gelidium and Gracilaria",
+    "Laminaria and Sargassum are used as food",
+    "Algae increase the level of dissolved oxygen in the immediate environment",
+    "Algin is obtained from red algae, and carrageenan from brown algae."
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Algin is obtained from red algae, and carrageenan from brown algae..** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET-II 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0474",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 4 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC086",
+   "no": 86,
+   "q": "Read the following five statements (A to E) and select the option with all correct statements:\n(A) Mosses and Lichens are the first organisms to colonise a bare rock.\n(B) Selaginella is a homosporous pteridophyte\n(C) Coralloid roots in Cycas have VAM\n(D) Main plant body in bryophytes is gametophytic. whereas in pteridophytes it is sporophytic\n(E) In gymnosperms male and female gametophytes are present within sporangia located on sporophyte",
+   "o": [
+    "(B), (C) and (D)",
+    "(A), (D) and (E)",
+    "(B), (C) and (E)",
+    "(A),(C) and (D)"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — (A), (D) and (E).** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-14",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 4 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC087",
+   "no": 87,
+   "q": "Which one is wrongly matched ?",
+   "o": [
+    "Uniflagellate gametes - Polysiphonia",
+    "Biflagellate zoospores - Brown algae",
+    "Gemma cups - Marchantia",
+    "Unicellular organism - Chlorella"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Uniflagellate gametes - Polysiphonia.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0508",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC088",
+   "no": 88,
+   "q": "An example of colonial alga is :",
+   "o": [
+    "Volvox",
+    "Ulothrix",
+    "Spirogyra",
+    "Chlorella"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Volvox.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2017",
+   "year": "2017",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0490",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC089",
+   "no": 89,
+   "q": "Select the correct statement:",
+   "o": [
+    "Gymonsperms are both homosporous and heterosporous",
+    "Salvinia, Ginkgo and Pinus all are gymnosperms",
+    "Sequoia is one of the tallest trees",
+    "The leaves of gymnosperms are not well adapted to extrems of climate"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Sequoia is one of the tallest trees.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET-I – 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "pk-ex4-20",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC090",
+   "no": 90,
+   "q": "Zygotic meiosis is characteristic of;",
+   "o": [
+    "Fucus",
+    "Funaria",
+    "Chlamydomonas",
+    "Marchantia"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Chlamydomonas.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2017",
+   "year": "2017",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0492",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC091",
+   "no": 91,
+   "q": "Select the mismatch:",
+   "o": [
+    "Pinus – Dioecious",
+    "Cycas – Dioecious",
+    "Salvinia – Heterosporous",
+    "Equisetum – Homosporous"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Pinus – Dioecious.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET – 2017",
+   "year": "2017",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-27",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC092",
+   "no": 92,
+   "q": "Winged pollen grains are present in:",
+   "o": [
+    "Mustard",
+    "Cycas",
+    "Mango",
+    "Pinus"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Pinus.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET – 2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-32",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC093",
+   "no": 93,
+   "q": "Life cycle of Ectocarpus and Fucus respectively are:",
+   "o": [
+    "Diplontic, Haplodiplontic",
+    "Haplodiplontic, Diplontic",
+    "Haplodiplontic, Haplontic",
+    "Haplontic, Diplontic"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Haplodiplontic, Diplontic.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2017",
+   "year": "2017",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0493",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC094",
+   "no": 94,
+   "q": "Which one of the following statements is wrong?",
+   "o": [
+    "Agar agar is obtained from Gelidium and Gracilaria",
+    "Chlorella and Spirulina are used as space food",
+    "Mannitol is stored food in Rhodophyceae",
+    "Algin and carragen are products of algae"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Mannitol is stored food in Rhodophyceae.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "AIPMT 2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0445",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC095",
+   "no": 95,
+   "q": "Which one of the following shows isogamy with non-flagellated gametes?",
+   "o": [
+    "Sargassum",
+    "Ectocarpus",
+    "Ulothrix",
+    "Spirogyra"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Spirogyra.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "AIPMT 2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0421",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC096",
+   "no": 96,
+   "q": "Which of the following is responsible for peat formation?",
+   "o": [
+    "Marchantia",
+    "Riccia",
+    "Funaria",
+    "Sphagnum"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Sphagnum.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "AIPMT-2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-8",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC097",
+   "no": 97,
+   "q": "In which of the following gametophyte is not independent free living:",
+   "o": [
+    "Marchantia",
+    "Pteris",
+    "Pinus",
+    "Funaria"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Pinus.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-13",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC098",
+   "no": 98,
+   "q": "Which of the following statements is correct?",
+   "o": [
+    "Ovules are not enclosed by ovary wall in gymnosperms.",
+    "Selaginella is heterosporous, while Salvinia is homosporous.",
+    "Horsetails are gymnosperms.",
+    "Stems are usually unbranched in both Cycas and Cedrus."
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Ovules are not enclosed by ovary wall in gymnosperms..** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET – 2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "pk-ex4-29",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC099",
+   "no": 99,
+   "q": "Which of the following is incorrectly matched ?",
+   "o": [
+    "Ulothrix - Mannitol",
+    "Porphyra - Floridian Starch",
+    "Volvox - Starch",
+    "Ectocarpus - Fucoxanthin"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Ulothrix - Mannitol.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2022",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1229",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC100",
+   "no": 100,
+   "q": "Hydrocolloid carrageen is obtained from:",
+   "o": [
+    "Phaeophyceae and Rhodophyceae",
+    "Rhodophyceae only",
+    "Phaeophyceae only",
+    "Chlorophyceae and Phaeophyceae"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Rhodophyceae only.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2022",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1228",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC101",
+   "no": 101,
+   "q": "Which of the following statements is incorrect about gymnosperms?",
+   "o": [
+    "They are heterosporous",
+    "Male and female gametophytes are free living",
+    "Most of them have narrow leaves with thick cuticle",
+    "Their seeds are not covered"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Male and female gametophytes are free living.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET(UG) 2020 (COVID-19)",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-38",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC102",
+   "no": 102,
+   "q": "Which of the following algae produce Carrageen?",
+   "o": [
+    "Green algae",
+    "Brown algae",
+    "Red algae",
+    "Blue-green algae"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Red algae.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2021",
+   "year": "2021",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1161",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC103",
+   "no": 103,
+   "q": "Phycoerythrin is the major pigment in:",
+   "o": [
+    "Red algae",
+    "Blue green algae",
+    "Green algae",
+    "Brown algae"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Red algae.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2020 (COVID-19)",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1150",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC104",
+   "no": 104,
+   "q": "Which of the following statements is true?",
+   "o": [
+    "All pteridophytes exhibit haplo- diplontic pattern.",
+    "Seed bearing plants follow haplontic pattern",
+    "Most algal genera are diplontic",
+    "Most bryophytes do not have haplodiplontic life cycle."
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — All pteridophytes exhibit haplo- diplontic pattern..** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET-2023",
+   "year": "2023",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-52",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC105",
+   "no": 105,
+   "q": "From evolutionary point of view, retention of the female gametophyte with developing young embryo on the parent sporophyte for some time, is first observed in:",
+   "o": [
+    "Liverworts",
+    "Mosses",
+    "Pteridophytes",
+    "Gymnosperms"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Pteridophytes.** The key concept is the vascular organisation and reproductive features of pteridophytes. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - PTERIDOPHYTA",
+   "exam": "NEET(UG) 2019",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0747",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC106",
+   "no": 106,
+   "q": "Which of the following plants is monoecious?",
+   "o": [
+    "Carica papaya",
+    "Chara",
+    "Marchantia polymorpha",
+    "Cycas circinalis"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Chara.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2021",
+   "year": "2021",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1159",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC107",
+   "no": 107,
+   "q": "In bryophytes and pteridophytes, transport of male gametes requires :-",
+   "o": [
+    "Wind",
+    "Insects",
+    "Birds",
+    "Water"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Water.** The key concept is the life cycle and distinguishing features of bryophytes. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - BRYOPHYTA",
+   "exam": "NEET-I 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0463",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC108",
+   "no": 108,
+   "q": "Male and female gametophytes do not have an independent free living existence in:-",
+   "o": [
+    "Pteriodophytes",
+    "Algae",
+    "Angiosperms",
+    "Bryophytes"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Angiosperms.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET(UG) 2020 (COVID-19)",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-39",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC109",
+   "no": 109,
+   "q": "Which classes of algae possess pigment fucoxanthin and pigment phycoerythrin, respectively ?",
+   "o": [
+    "Phaeophyceae and Chlorophyceae",
+    "Phaeophyceae and Rhodophyceae",
+    "Chlorophyceae and Rhodophyceae",
+    "Rhodophyceae and Phaeophyceae"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Phaeophyceae and Rhodophyceae.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2023 (MANIPUR)",
+   "year": "2023",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0265",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC110",
+   "no": 110,
+   "q": "Floridean starch has structure similar to:",
+   "o": [
+    "Laminarin and cellulose",
+    "Starch and cellulose",
+    "Amylopectin and glycogen",
+    "Mannitol and align"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Amylopectin and glycogen.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2020",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1144",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC111",
+   "no": 111,
+   "q": "Which of the following algae contains mannitol as reserve food material ?",
+   "o": [
+    "Ectocarpus",
+    "Gracilaria",
+    "Volvox",
+    "Ulothrix"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Ectocarpus.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2021",
+   "year": "2021",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1160",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC112",
+   "no": 112,
+   "q": "Genera like Selaginella and Salvinia produce two kinds of spores. Such plants are known as:",
+   "o": [
+    "Homosorus",
+    "Heterosorus",
+    "Homosporous",
+    "Heterosporous"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Heterosporous.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET(UG) – 2021",
+   "year": "2021",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-41",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC113",
+   "no": 113,
+   "q": "Strobili or cones are found in:",
+   "o": [
+    "Equisetum",
+    "Salvinia",
+    "Pteris",
+    "Marchantia"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Equisetum.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET(UG) – 2020",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-36",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC114",
+   "no": 114,
+   "q": "Which of the following pairs is of unicellular algae?",
+   "o": [
+    "Chlorella and Spirulina",
+    "Laminaria and Sargassum",
+    "Gelidium and Gracilaria",
+    "Anabaena and Volvox"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Chlorella and Spirulina.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "NEET(UG) 2020",
+   "year": "2020",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1147",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC115",
+   "no": 115,
+   "q": "Gemmae are present in:",
+   "o": [
+    "Mosses",
+    "Pteridophytes",
+    "Some Gymnosperms",
+    "Some Liverworts"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Some Liverworts.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET(UG) – 2021",
+   "year": "2021",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-40",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC116",
+   "no": 116,
+   "q": "Match List-I List-II.\nChoose the correct answer from the options given below :",
+   "o": [
+    "(A)-(II), (B)-(III), (C)-(I), (D)-(IV)",
+    "(A)-(III), (B)-(I), (C)-(IV), (D)-(II)",
+    "(A)-(II), (B)-(III), (C)-(IV), (D)-(I)",
+    "(A)-(III), (B)-(IV), (C)-(I), (D)-(II)"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — (A)-(III), (B)-(IV), (C)-(I), (D)-(II).** The key concept is the vascular organisation and reproductive features of pteridophytes. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "match",
+   "topic": "KINGDOM-PLANTAE - PTERIDOPHYTA",
+   "exam": "NEET(UG) 2023 (MANIPUR)",
+   "year": "2023",
+   "difficulty": "Medium",
+   "table": {
+    "headers": [
+     "List-1",
+     "List-II"
+    ],
+    "rows": [
+     [
+      "(A) Pteropsida",
+      "(1) Psilotum"
+     ],
+     [
+      "(B) Lycopsida",
+      "(II) Equisetum"
+     ],
+     [
+      "(C) Psilopsida",
+      "(III) Adiantum"
+     ],
+     [
+      "(D) Sphenopsida",
+      "(IV) Selaginella"
+     ]
+    ]
+   },
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0264",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "NEET-style format"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC117",
+   "no": 117,
+   "q": "Given below are two statement: One is labelled as Assertion A and the other is labelled as Reason R:\nAssertion A: The first stage of gametophyte in the life cycle of moss in protonema stage.\nReason R: Protonema develops directly from spores produced in capsule. In the light of the above statements, choose the most appropriate answer from the options given below:",
+   "o": [
+    "Both A and R are correct and R is the correct explanation of A.",
+    "Both A and R are correct but R is NOT the correct explanation of A.",
+    "A is true but R is false.",
+    "A is false but R is true."
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Both A and R are correct and R is the correct explanation of A..** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET-2023",
+   "year": "2023",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "pk-ex4-48",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC118",
+   "no": 118,
+   "q": "An alga which can be employed as food for human being is :-",
+   "o": [
+    "Ulothrix",
+    "Chlorella",
+    "Spirogyra",
+    "Polysiphonia"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Chlorella.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "AIPMT 2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0432",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC119",
+   "no": 119,
+   "q": "Isogamous condition with non-flagellated gametes is found in:",
+   "o": [
+    "Fucus",
+    "hlamydomonas",
+    "Spirogyra",
+    "Volvox"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Spirogyra.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET-UG—2013",
+   "year": "2013",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-2",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC120",
+   "no": 120,
+   "q": "Given below are two statements: One is labelled as Assertion A and the other is labelled as Reason R.\nAssertion A: In gymnosperms the pollen grains are released from the microsporangium and carried by air currents.\nReason R: Air currents carry the pollen grains to the mouth of the archegonia where the male gametes are discharged and pollen tube is not formed.\nIn the light of the above statements, choose the correct answer from the options given below:",
+   "o": [
+    "Both A and R are true but R is NOT the correct explanation of A.",
+    "A is true but R is false.",
+    "A is false but R is true",
+    "Both A and R are true and R is the correct explanation of A."
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — A is true but R is false..** The key concept is the naked-seed condition and reproductive features of gymnosperms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "assertion_reason",
+   "topic": "KINGDOM-PLANTAE-GYMNOSPERM",
+   "exam": "NEET(UG) 2023",
+   "year": "2023",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0263-2",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "NEET-style format"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC121",
+   "no": 121,
+   "q": "Male gemetes are flagellated in:",
+   "o": [
+    "Anabaena",
+    "Ectocarpus",
+    "Spirogyra",
+    "Polysiphonia"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Ectocarpus.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "AIPMT 2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1024",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC122",
+   "no": 122,
+   "q": "Read the following statements and identify the characters related to the alga shown in the diagram:\n(a) It is a member of Chlorophyceae\n(b) Food is stored in the form of starch\n(c) It is a monoecious plant showing oogonium and antheridium\n(d) Food is stored in the form of laminarin or mannitol\n(e) It shows dominance of pigments chlorophyll a, c and Fucoxanthin.\nChoose the correct answer from the options given below :",
+   "o": [
+    "(a) and (b) only",
+    "(a), (b) and (c) only",
+    "(a), (c) and (d) only",
+    "(c), (d) and (e) only"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — (a), (b) and (c) only.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "statement",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "RE-NEET(UG) 2022",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1240",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "NEET-style format"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC123",
+   "no": 123,
+   "q": "Which one of the following is wrong about Chara?",
+   "o": [
+    "Upper oogonium and lower round antheridium.",
+    "Globule and nucule present on the same plant.",
+    "Upper antheridium and lower oogonium",
+    "Globule is male reproductive structure"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Upper antheridium and lower oogonium.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "AIPMT 2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0425",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ",
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC124",
+   "no": 124,
+   "q": "Match the plant with the kind of life cycle if exhibits: Choose the correct answer from the options given below:",
+   "o": [
+    "(a)–(iv), (b)–(i), (c)–(ii), (d)–(iii)",
+    "(a)–(ii), (b)–(iii), (c)–(iv), (d)–(i)",
+    "(a)–(iii), (b)–(iv), (c)–(i), (d)–(ii)",
+    "(a)–(ii), (b)–(iv), (c)–(i), (d)–(iii)"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — (a)–(ii), (b)–(iii), (c)–(iv), (d)–(i).** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET(UG) 2022",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": {
+    "headers": [
+     "",
+     "List–I",
+     "",
+     "List–II"
+    ],
+    "rows": [
+     [
+      "(a)",
+      "Spirogyra",
+      "(i)",
+      "Dominant diploid sporophyte vascular plant. With highly reduced male or female gametophyte"
+     ],
+     [
+      "(b)",
+      "Fern",
+      "(ii)",
+      "Dominant haploid free–living gametophyte"
+     ],
+     [
+      "(c)",
+      "Funaria",
+      "(iii)",
+      "Dominant diploid sporophyte alternating with reduced gametophyte called prothallus"
+     ],
+     [
+      "(d)",
+      "Cycas",
+      "(iv)",
+      "Dominant haploid leafy gametophyte alternating with partially dependent multicellular sporophyte"
+     ]
+    ]
+   },
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-47",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC125",
+   "no": 125,
+   "q": "The ovule of an angiosperm is technically equivalent to :",
+   "o": [
+    "megaspore mother cell",
+    "megaspore",
+    "megasporangium",
+    "megasporophyll"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — megasporangium.** The key concept is the naked-seed condition and reproductive features of gymnosperms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE-GYMNOSPERM",
+   "exam": "NEET-II 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0469",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC126",
+   "no": 126,
+   "q": "Identify the pair of heterosporous pteridophytes among the following:",
+   "o": [
+    "Lycopodium and Seloginella",
+    "Selaginella and Solvinia",
+    "Psilotum and Solvinio",
+    "Equisetum and Solvinia"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Selaginella and Solvinia.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET-2023",
+   "year": "2023",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-49",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC127",
+   "no": 127,
+   "q": "Conifers are adapated to tolerate extreme environmental conditions because of:",
+   "o": [
+    "thick cuticle",
+    "presence of vessels",
+    "broad hardy leaves",
+    "superficial stomata"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — thick cuticle.** The key concept is the naked-seed condition and reproductive features of gymnosperms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE-GYMNOSPERM",
+   "exam": "NEET-II 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0473",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC128",
+   "no": 128,
+   "q": "Pinus seed cannot germinate and establish without fungal association. This is because.",
+   "o": [
+    "it has very hard seed coat.",
+    "its seeds contain inhibitors that prevent germination.",
+    "its embryo is immature.",
+    "it has obligate association with mycorrhaizae."
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — it has obligate association with mycorrhaizae..** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET – 2019",
+   "year": "2019",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-33",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC129",
+   "no": 129,
+   "q": "Which one of the following structures is haploid in its ploidy level?",
+   "o": [
+    "Microspore Mother Cell",
+    "Protonemal cell of a moss",
+    "Primary endosperm nucleus in dicot",
+    "Primary Endospore Nucleus"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Protonemal cell of a moss.** The key concept is the life cycle and distinguishing features of bryophytes. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - BRYOPHYTA",
+   "exam": "NEET(UG) 2022 (OVERSEAS)",
+   "year": "2022",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD1233",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC130",
+   "no": 130,
+   "q": "Which of the following is a characteristic feature of gymnosperms ?",
+   "o": [
+    "The development of pollen grains take place within the microsporangia.",
+    "Some gymnosperms are homosporous.",
+    "The ovules are borne on megasporophylls which may be clustered to form the male cones.",
+    "All of the above."
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — The development of pollen grains take place within the microsporangia..** The key concept is the naked-seed condition and reproductive features of gymnosperms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE-GYMNOSPERM",
+   "exam": "NEET(UG) 2021 (Paper-2)",
+   "year": "2021",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "PD1225",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC131",
+   "no": 131,
+   "q": "In bryophytes and pteriodophytes, transport of male gaemetes requires:",
+   "o": [
+    "Wind",
+    "Insects",
+    "Birds",
+    "Water"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Water.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET-I – 2016",
+   "year": "2016",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-21",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC132",
+   "no": 132,
+   "q": "Plants having little or no secondary growth are:",
+   "o": [
+    "Grasses",
+    "Deciduous angiosperms",
+    "Conifers",
+    "Cycads"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Grasses.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET – 2018",
+   "year": "2018",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-30",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC133",
+   "no": 133,
+   "q": "Match the column-I with column-II:\nColumn-I Column-II\n(i) Chlorophyceae (a) Ectocarpus\n(ii) Lycopsida (b) Chara\n(iii) Phaeophyceae (c) Selaginella\n(iv) Liverwort (d) Marchantia",
+   "o": [
+    "i-b. ii-c. iii-a. iv-d",
+    "i-b, ii-d. iii-a. iv-c",
+    "i-a. ii-d. iii-c. iv-b",
+    "i-c. ii-a. iii-b. iv-d"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — i-b. ii-c. iii-a. iv-d.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "AIIMS-2013",
+   "year": "2013",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-6",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC134",
+   "no": 134,
+   "q": "Algin can be obtained from:",
+   "o": [
+    "Rhodophyceace & chlorophyceae",
+    "Phaeophyceae & rhodophyceae",
+    "Rhodophyceae only",
+    "Phaeophyccae only"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Phaeophyccae only.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-18",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC135",
+   "no": 135,
+   "q": "Megasporangium is equivalent to:",
+   "o": [
+    "Ovule",
+    "Embryo sac",
+    "Fruit",
+    "Nucellus"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Ovule.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET-UG—2013",
+   "year": "2013",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-1",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC136",
+   "no": 136,
+   "q": "Read the following statements (A - E) and answer the question which follows them.\n(a) In liverworts, mosses and ferns gametophytes are free living\n(b) Gymnosperms and some ferns are heterosporous\n(c) Sexual reproduction in Fucus, Volvox and Allbugo is oogamous\n(d) The sporophyte in liverworts is more elaborate than that in mosses\n(e) Both Pinus and Marchantia are dioccious How many of the above statements are correct?",
+   "o": [
+    "Four",
+    "One",
+    "Two",
+    "Three"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Three.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET-UG—2013",
+   "year": "2013",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-5",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC137",
+   "no": 137,
+   "q": "Which of the following is not monoecious plant?",
+   "o": [
+    "Cycas",
+    "Pinus",
+    "Wheat",
+    "Mustard"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Cycas.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "AIIMS-2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-11",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC138",
+   "no": 138,
+   "q": "Which of the following is homosporous?",
+   "o": [
+    "Selaginella",
+    "Pinus",
+    "Cycas",
+    "Lycopodium"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Lycopodium.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "AIIMS-2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-10",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC139",
+   "no": 139,
+   "q": "In Pinus, endosperm cells have 30 chromosomes then how many chromosomes are present in sieve cells:",
+   "o": [
+    "30",
+    "60",
+    "10",
+    "15"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — 60.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "RE-AIPMT-2015",
+   "year": "2015",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-19",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC140",
+   "no": 140,
+   "q": "Male gametophyte with least number of cell is present in :",
+   "o": [
+    "Pteris",
+    "Funaria",
+    "Lilium",
+    "Pinus"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Lilium.** The key concept is the naked-seed condition and reproductive features of gymnosperms. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE-GYMNOSPERM",
+   "exam": "AIPMT 2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0428",
+   "src": "allen-ex2",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC141",
+   "no": 141,
+   "q": "Monoecious plant of Chara shows occurrence of:",
+   "o": [
+    "Upper oogonium and lower antheridium on the same plant",
+    "Antheridiophore and archegoniophore on the same plant",
+    "Stamen and carpel on the same plant",
+    "Upper antheridium and lower oogonium on the same plant"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Upper oogonium and lower antheridium on the same plant.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "NEET-UG—2013",
+   "year": "2013",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-3",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC142",
+   "no": 142,
+   "q": "Algae, used in preparation of ice-creams and jellies are:",
+   "o": [
+    "Gelidium and Chlorella",
+    "Gelidium and Gracilaria",
+    "Choara and Spirulina",
+    "Chlorella and Spiruline"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Gelidium and Gracilaria.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "AIIMS-2014",
+   "year": "2014",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex4-12",
+   "src": "unacademy-ex4",
+   "why": [
+    "PYQ"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC143",
+   "no": 143,
+   "q": "Archegoniophore is present in :-",
+   "o": [
+    "Marchantia",
+    "Chara",
+    "Adiantum",
+    "Funaria"
+   ],
+   "a": 1,
+   "s": "IN Marchantia a bryophyte, the archegonia (female sex organ) are borne on special branches called archegoniophore or female receptacles. Each archegoniophore has rows of archegonia protected by involucre or perichaetium.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - BRYOPHYTA",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0377",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC144",
+   "no": 144,
+   "q": "Mosses are gregarious because they –",
+   "o": [
+    "Have vascular tissue.",
+    "Have indirect germination of spores.",
+    "Have direct germination of spore.",
+    "Have S. M. C"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Have indirect germination of spores..** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk252",
+   "src": "dr-ali-ex1",
+   "why": [
+    "repeated in 3 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC145",
+   "no": 145,
+   "q": "\"Agar-agar\" is obtained from :-",
+   "o": [
+    "Green Algae",
+    "Red Algae",
+    "Brown Algae",
+    "Yellow green Algae"
+   ],
+   "a": 2,
+   "s": "Gelidium, Graccilaria and Pterocladia are red algae having industrial importance. They produce a jelly like substance agar-agar which used as culture medium with a number of different uses.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0182",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC146",
+   "no": 146,
+   "q": "In the prothallus of a vascular cryptogam, the antherozoids and eggs mature at different times. As a result:",
+   "o": [
+    "There is high degree of sterility",
+    "There is no change in success rate of fertilization",
+    "Self fertilization is prevented",
+    "One can conclude that the plant is apomictic"
+   ],
+   "a": 3,
+   "s": "In the prothallus of a vascular cryptogam, the antherozoids and eggs mature at different times. As a result, self-fertilization is prevented.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk197",
+   "src": "dr-ali-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC147",
+   "no": 147,
+   "q": "Algae have cell wall made up of:",
+   "o": [
+    "Cellulose, hemicellulose and pectins",
+    "Cellulose, galactans and mannans",
+    "Hemicellulose, pectins and proteins",
+    "Pectins, cellulose and proteins"
+   ],
+   "a": 2,
+   "s": "Like plants, algae have cell walls which contain either polysaccharides such as cellulose (glucan) or a variety of glycoproteins or both. The inclusion of additional polysaccharides in algal cell walls is used as a feature for algal taxonomy. Mannans form microfibrils in the cell walls of a number of marine green algae including those from the genera Codium, Acetabularia as well as in the walls of some red algae like Porphyra.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0358",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC148",
+   "no": 148,
+   "q": "Which of the following plants produces seeds but not flowers?",
+   "o": [
+    "Maize",
+    "Mint",
+    "Peepal",
+    "Pinus"
+   ],
+   "a": 4,
+   "s": "Pinus is a gymnospermic plant. Ovulves of Pinus are uncovered, which lie on the megasporophyll, hence this plant does not have flowers. However it produces seeds (from ovule after fertilization) like other three plants mentioned, all of the other three are angiosperms.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk89",
+   "src": "seep-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC149",
+   "no": 149,
+   "q": "Which one of the following is considered important in the development of seed habit ?",
+   "o": [
+    "Free-living gametophyte",
+    "Dependent sporophyte",
+    "Heterospory",
+    "Haplontic life cycle"
+   ],
+   "a": 3,
+   "s": "Heterospory is the production of spores of two different sizes and of two different developmental patterns. Heterospory is an expression of sex determining spores of the plant. It is the most important evolutionary development in the vascular plants because it has ultimately lead to seed development, e. g., Selaginella, Salvinia, Azolla, etc.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - PTERIDOPHYTA",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0350",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC150",
+   "no": 150,
+   "q": "In a moss the sporophyte",
+   "o": [
+    "Arises from a spore produced from the gametophyte",
+    "produces gametes that give rise to the gametophyte",
+    "is partially parasitic on the gametophyte",
+    "Manufactures food for itself, as well as for the gametophyte"
+   ],
+   "a": 3,
+   "s": "In mosses, the sporophyte developing from the embryo is a simple structure without rhizoids and is differentiated into foot, seta and capsule. It is parasitic (partially or wholly) on the gametophyte as it is organically attached and is nutritionally dependent upon the gametophyte.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk200",
+   "src": "dr-ali-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC151",
+   "no": 151,
+   "q": "A prokaryotic autotrophic nitrogen fixing symbiont is found in :-",
+   "o": [
+    "Alnus",
+    "Cycas",
+    "Cicer",
+    "Pisum"
+   ],
+   "a": 2,
+   "s": "The coralloid root of Cycas is symbiotically associated with nitrogen fixing blue-green algae, Anabaena cycadae and Nostoc puntiforme. These blue green-algae (cyanobacteria) are prokaryotic photosynthetic and autotrophic.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE-GYMNOSPERM",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0372",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC152",
+   "no": 152,
+   "q": "Male and female gametophytes are independent and free-living in :-",
+   "o": [
+    "Sphagnum",
+    "Mustard",
+    "Castor",
+    "Pinus"
+   ],
+   "a": 1,
+   "s": "In bryophytes, the most conspicuous phase in life cycle is the gametophyte. It is independent and concerned with reproduction. In Sphagnum, male and female gametophytes are independent and free living.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - BRYOPHYTA",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0356",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC153",
+   "no": 153,
+   "q": "Spores do not form protonema but directly grow into flat branching thallus in:",
+   "o": [
+    "Liverworts",
+    "Mosses",
+    "Ferns",
+    "Gymnosperms"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Liverworts.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-72",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC154",
+   "no": 154,
+   "q": "Statement 1: In Spirogyra, some cells in one of the two filaments become empty after conjugation.\nStatement 2: The aplanogametes from the cells of one filament pass through the conjugation tubes into the cells of the other filament.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 1,
+   "s": "In Spirogyra conjugation, one cell (gametangium) functions as female and receives the aplanogamete (non-flagellated mass of protoplasm) of the adjacent cell; this transfer leaves behind an empty cell.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Hard",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "pkar6",
+   "src": "seep-ex3",
+   "why": [],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC155",
+   "no": 155,
+   "q": "Spore producing part of pteridophytes is:",
+   "o": [
+    "Sporangia of gametophytes",
+    "Capsule of sporophytes",
+    "Sporangia of sporophytes",
+    "Capsule of gametophytes"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Sporangia of sporophytes.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-128",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC156",
+   "no": 156,
+   "q": "Female sex organ of algae is called :-",
+   "o": [
+    "Carpel",
+    "Oogonium",
+    "Archegonia",
+    "Oosphere"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Oogonium.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0195",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC157",
+   "no": 157,
+   "q": "Gymnosperm plants do not produce fruits because they do not have:",
+   "o": [
+    "Ovary",
+    "Gametes",
+    "Fertilization",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Ovary.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "pk-ex1-134",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC158",
+   "no": 158,
+   "q": "Statement 1: Both apospory and apogamy are observed in Pteris.\nStatement 2: They are evident by the production of haploid sporophyte by apospory and diploid gametophyte by apogamy.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 3,
+   "s": "Apospory is development of diploid gametophytes from vegetative parts of the diploid sporophyte without spores; apogamy is development of sporophyte directly from the gametophyte without sex organs and gametes. Statement 2 reverses these, so it is false.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Medium",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "pkar1",
+   "src": "seep-ex3",
+   "why": [],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC159",
+   "no": 159,
+   "q": "Gymnosperm plants lack:",
+   "o": [
+    "Vessels mostly",
+    "Fruits",
+    "Companion cells",
+    "All the above"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — All the above.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "pk-ex1-133",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC160",
+   "no": 160,
+   "q": "Statement 1: Conjugation is a temporary union between two ciliates belonging to two different mating types for the exchange and reconstitution of nuclear materials.\nStatement 2: Conjugation occurs between two inactive individuals which have gained their vigour and vitality due to chromosomal imbalance in their macronuclei, caused by repeated amitotic division.",
+   "o": [
+    "Statement 1 is True, Statement 2 is True; Statement 2 is correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is True; Statement 2 is not correct explanation for Statement 1",
+    "Statement 1 is True, Statement 2 is False",
+    "Statement 1 is False, Statement 2 is True"
+   ],
+   "a": 3,
+   "s": "In ciliates two individuals fuse temporarily, exchange micronuclear material and separate. Conjugation occurs between individuals that have LOST vigour, so Statement 2 is false.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Hard",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "pkar8",
+   "src": "seep-ex3",
+   "why": [],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC161",
+   "no": 161,
+   "q": "Sex organ in bryophytes are:",
+   "o": [
+    "Unicellular and jacketed",
+    "Unicellular and non-jacketed",
+    "Multicellular and jacketed",
+    "Multicellular and non-jacketed"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Multicellular and jacketed.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-87",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC162",
+   "no": 162,
+   "q": "In bryophytes fertilization takes place:",
+   "o": [
+    "At low temp.",
+    "In dry condition",
+    "In presence of water",
+    "In above all situation"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — In presence of water.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "pk-ex1-77",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC163",
+   "no": 163,
+   "q": "Which one of the following is wrongly matched?",
+   "o": [
+    "Cassia – Imbricate aestivation",
+    "Root pressure – Guttation",
+    "Puccinia – Smut",
+    "Root – Exarch protoxylem"
+   ],
+   "a": 3,
+   "s": "Pucciniais commonly called rust fungus. Smut is Ustilago. Both rust and smut belong to the class- Basidiomycetes.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk169",
+   "src": "dr-ali-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC164",
+   "no": 164,
+   "q": "Which pigment is found in phaeophyceae?",
+   "o": [
+    "Chl. a, c and fucoxanthin",
+    "Chl. a, d and violaxanthin",
+    "\beta Carotene and phycocyanin",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Chl. a, c and fucoxanthin.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "PD0165",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC165",
+   "no": 165,
+   "q": "The first cell of sporophytic generation in bryophyta is:",
+   "o": [
+    "Spore",
+    "Spore mother cell",
+    "Zygote",
+    "Protonema"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Zygote.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-98",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC166",
+   "no": 166,
+   "q": "Which one of the following pairs of plants are not seed producers?",
+   "o": [
+    "Fern and Funaria",
+    "Funaria and Ficus",
+    "Ficus and Chlamydomonas",
+    "Fern and Pinus"
+   ],
+   "a": 1,
+   "s": "Fern (Pteridophyta) and Funaria (Bryophyta) are on-seed producing plants, while Ficus and Pinus are seed producing plants.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk2",
+   "src": "seep-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC167",
+   "no": 167,
+   "q": "Bryophytes differ from thallophytes in having:",
+   "o": [
+    "Embryo",
+    "Rhizoids",
+    "Sterile jacket around sex organs",
+    "All the above"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — All the above.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": true,
+   "note": "",
+   "srcId": "pk-ex1-71",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC168",
+   "no": 168,
+   "q": "Photosynthetic pigments common to all algae :-",
+   "o": [
+    "Chlorophyll 'b' and carotene",
+    "Chlorophyll 'a' and 'b'",
+    "Chlorophyll 'a' and carotene",
+    "Chlorophyll and xanthophyll"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Chlorophyll 'a' and carotene.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0168",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC169",
+   "no": 169,
+   "q": "Gymnosperms differ from pteridophytes in having:",
+   "o": [
+    "Presence of tracheids",
+    "Presence of embryo",
+    "Presence of ovule",
+    "Companian cell"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Presence of ovule.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-153",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC170",
+   "no": 170,
+   "q": "The unique feature of Bryophytes compared to other green plant groups is that:",
+   "o": [
+    "They produce spores",
+    "They lack vascular tissue",
+    "They lack root",
+    "Their sporophyte is attached to gametophyte."
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Their sporophyte is attached to gametophyte..** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-62",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC171",
+   "no": 171,
+   "q": "In which of the following, all listed genera belong to the same class of algae",
+   "o": [
+    "Porphyra, Ectocarpus, Ulothrix",
+    "Volvox, Spirogyra, Chlamydomonas",
+    "Chara, Fucus, Polysiphonia",
+    "Sargassum, Laminaria, Gracilaria"
+   ],
+   "a": 2,
+   "s": "Volvox, Spirogyra and Chlamydomonas are all green algae belonging to class-Chlorophyceae.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk199",
+   "src": "dr-ali-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC172",
+   "no": 172,
+   "q": "Flagellated male gametes are present in all the three of which one of the following sets?",
+   "o": [
+    "Riccia, Dryopteris, and Cycas",
+    "Anthoceros, Funaria and Spirogyra",
+    "Fucus, Marsilea and Calotropis",
+    "Zygenema, Saprolegnia and Hydrilla"
+   ],
+   "a": 1,
+   "s": "Flagellated male gametes are present in Riccia, Dryopteris and Cycas.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk282",
+   "src": "dr-ali-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC173",
+   "no": 173,
+   "q": "The group bryophyta includes:",
+   "o": [
+    "Liverworts and ferns",
+    "Liverworts and club moss",
+    "Moss and ferns",
+    "Liverworts and moss"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Liverworts and moss.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-67",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC174",
+   "no": 174,
+   "q": "The \"endosperm\" of a gymnosperm represent:",
+   "o": [
+    "Gametophytic tissue",
+    "Sporophytic tissue",
+    "Tissue formed by double fertilization",
+    "Polyploid tissue"
+   ],
+   "a": 1,
+   "s": "**Correct answer: Option 1 — Gametophytic tissue.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-155",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC175",
+   "no": 175,
+   "q": "Mannitol is the stored food in :-",
+   "o": [
+    "Gracillaria",
+    "Chara",
+    "Porphyra",
+    "Fucus"
+   ],
+   "a": 4,
+   "s": "Fucus belongs to class-Phaeophyceae, in which reserve food is found in form of laminarian, mannitol and oil.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0346",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC176",
+   "no": 176,
+   "q": "Which statement is true about bryophytes?",
+   "o": [
+    "They are non-photosynthetic.",
+    "Zygote produces gametophyte on germination.",
+    "Spores form gametophyte plant on germination.",
+    "They have vascular tissues."
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Spores form gametophyte plant on germination..** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-78",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC177",
+   "no": 177,
+   "q": "In pteridophytes, reduction division takes place in:",
+   "o": [
+    "Zygote",
+    "Spore mother cells",
+    "Gametangia",
+    "Prothallus"
+   ],
+   "a": 2,
+   "s": "**Correct answer: Option 2 — Spore mother cells.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-129",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC178",
+   "no": 178,
+   "q": "In Bryophytes diploid number of chromosomes occur in:",
+   "o": [
+    "Gametes",
+    "Spores",
+    "Spore mother cells",
+    "Nuclei of gametes"
+   ],
+   "a": 3,
+   "s": "**Correct answer: Option 3 — Spore mother cells.** The question tests the characteristic features, life cycles, and relationships of plant groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk-ex1-63",
+   "src": "unacademy-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC179",
+   "no": 179,
+   "q": "In homosporous pteridophyte the gametophyte is –",
+   "o": [
+    "Vascular",
+    "Monoecious",
+    "Dioecious",
+    "Dependent on sporophyte"
+   ],
+   "a": 2,
+   "s": "The spores are homosporous and germinate to produce independent cushion-like monocious gametophyte",
+   "type": "mcq",
+   "topic": "Plant Kingdom",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "pk99",
+   "src": "dr-ali-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  },
+  {
+   "id": "REC180",
+   "no": 180,
+   "q": "Which of the following statement is true for algae ?",
+   "o": [
+    "Algae have root, stem and leaves",
+    "Algae have true roots but lack leaves",
+    "Algae have rhizoides and leaves",
+    "Body of algae is thallus"
+   ],
+   "a": 4,
+   "s": "**Correct answer: Option 4 — Body of algae is thallus.** The key concept is the thalloid organisation and reproductive features used to distinguish algal groups. The selected option is the statement that matches what the question asks; the remaining options do not provide the required answer.",
+   "type": "mcq",
+   "topic": "KINGDOM-PLANTAE - ALGAE",
+   "exam": "",
+   "year": "",
+   "difficulty": "Easy",
+   "table": null,
+   "img": "",
+   "optionImages": [],
+   "needsImage": false,
+   "lockOrder": false,
+   "note": "",
+   "srcId": "PD0191",
+   "src": "allen-ex1",
+   "why": [
+    "repeated in 2 sources"
+   ],
+   "chap": "PK",
+   "chapter": ""
+  }
+ ]
+}
