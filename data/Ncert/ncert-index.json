@@ -1,0 +1,47 @@
+{
+ "schema": 1,
+ "chapters": [
+  {
+   "id": "the-living-world",
+   "chapter": 1,
+   "title": "The Living World",
+   "file": "ncert-the-living-world.json",
+   "pdf": "The_Living_World_Annotated_NCERT.pdf",
+   "counts": {
+    "pages": 11,
+    "sections": 12,
+    "sentences": 245,
+    "highlightedSentences": 141,
+    "exercises": 0
+   }
+  },
+  {
+   "id": "biological-classification",
+   "chapter": 2,
+   "title": "Biological Classification",
+   "file": "ncert-biological-classification.json",
+   "pdf": "Biological_Classification_Annotated_NCERT.pdf",
+   "counts": {
+    "pages": 13,
+    "sections": 17,
+    "sentences": 282,
+    "highlightedSentences": 211,
+    "exercises": 12
+   }
+  },
+  {
+   "id": "plant-kingdom",
+   "chapter": 3,
+   "title": "Plant Kingdom",
+   "file": "ncert-plant-kingdom.json",
+   "pdf": "Plant_Kingdom_Annotated_NCERT.pdf",
+   "counts": {
+    "pages": 14,
+    "sections": 10,
+    "sentences": 252,
+    "highlightedSentences": 188,
+    "exercises": 11
+   }
+  }
+ ]
+}
