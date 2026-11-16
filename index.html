@@ -712,7 +712,7 @@ body.dark :is(input,select,textarea){color:var(--text-primary);background-color:
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover" />
 <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<title>EduPulse PRO — NEET Preparation Ecosystem</title>
+<title>EduPulse — NEET Study Workspace</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config = { darkMode: 'class' }</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -725,7 +725,7 @@ body.dark :is(input,select,textarea){color:var(--text-primary);background-color:
 <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
 <link rel="shortcut icon" href="icons/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-<meta name="description" content="EduPulse PRO — Padhai ki dhadkan. NEET practice, mock tests and instant AI explanations.">
+<meta name="description" content="Study for NEET with chapter practice, CBT-style tests, NCERT reading extracts, progress insights, and a focused daily planner.">
 <meta name="apple-mobile-web-app-title" content="EduPulse">
 <meta property="og:type" content="website">
 <meta property="og:title" content="EduPulse PRO — NEET Preparation">
@@ -5017,8 +5017,13 @@ let todos = StorageModule.get(STORAGE_KEYS.todos, [
 ]);
 
 // Focus timer state
-let focusTimeRemaining = 25 * 60;
-let focusTimerRunning = false;
+const FOCUS_TIMER_KEY = 'edupulse_focus_timer_v1';
+let savedFocusTimer = null;
+try { savedFocusTimer = JSON.parse(localStorage.getItem(FOCUS_TIMER_KEY) || 'null'); } catch (e) {}
+let focusTimerEndAt = savedFocusTimer?.running ? Number(savedFocusTimer.endAt) || 0 : 0;
+const savedFocusRemaining = Number(savedFocusTimer?.remaining);
+let focusTimeRemaining = focusTimerEndAt ? Math.max(0, Math.ceil((focusTimerEndAt - Date.now()) / 1000)) : Math.max(0, Number.isFinite(savedFocusRemaining) ? savedFocusRemaining : 25 * 60);
+let focusTimerRunning = !!focusTimerEndAt && focusTimeRemaining > 0;
 let focusTimerInterval = null;
 
 // Batch Test Hub State
@@ -5097,9 +5102,21 @@ function setMockSubTab(sub) {
   renderView();
 }
 
+function getTestAvailability(test) {
+  const schedule = String(test?.schedule || '').split('|')[0].trim();
+  const match = schedule.match(/\b\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4}\b/);
+  const scheduledAt = match ? Date.parse(match[0]) : NaN;
+  if (Number.isFinite(scheduledAt)) {
+    const scheduledDay = new Date(scheduledAt);
+    scheduledDay.setHours(23, 59, 59, 999);
+    if (scheduledDay.getTime() < Date.now()) return 'past';
+  }
+  return test?.status === 'available' ? 'available' : 'scheduled';
+}
+
 function scheduledTestItems() {
   return (batchTestsDatabase || []).flatMap(series => (series.tests || [])
-    .filter(test => test.status !== 'available')
+    .filter(test => getTestAvailability(test) === 'scheduled')
     .map(test => ({ series, test })));
 }
 
@@ -5112,7 +5129,7 @@ function completedTestAttempts() {
 
 function buildScheduledTestsView() {
   const items = scheduledTestItems();
-  if (!items.length) return '<div class="card p-8 text-center"><h3 class="text-base font-black">No scheduled tests</h3><p class="mt-2 text-sm text-slate-500">New batch papers will appear here when dates are announced.</p></div>';
+  if (!items.length) return '<div class="card p-8 text-center"><h3 class="text-base font-black">No upcoming scheduled tests</h3><p class="mt-2 text-sm text-slate-500">New future papers appear here when they are announced. Past papers remain available to practise from the series directory.</p><button type="button" class="mt-4 rounded-xl bg-teal-600 px-4 py-2 text-xs font-black text-white" onclick="setMockSubTab(\'batch\')">Browse practice papers</button></div>';
   return `<div class="space-y-4"><div class="card p-5"><h3 class="text-base font-black">Scheduled tests</h3><p class="mt-1 text-xs text-slate-500">Upcoming papers stay separate from tests you can start now.</p></div><div class="grid grid-cols-1 md:grid-cols-2 gap-4">${items.map(({ series, test }) => `<article class="card p-5 space-y-4"><div class="flex items-start justify-between gap-3"><div><p class="text-[10px] font-black uppercase tracking-wider text-teal-600">${escapeHtml(series.category || 'Batch series')}</p><h4 class="mt-1 font-black">${escapeHtml(test.title)}</h4><p class="mt-1 text-xs text-slate-500">${escapeHtml(series.title)}</p></div><span class="shrink-0 rounded-full bg-amber-500/10 px-2.5 py-1 text-[10px] font-black text-amber-700 dark:text-amber-300">Scheduled</span></div><div class="grid grid-cols-3 gap-2 rounded-xl bg-slate-50 p-3 text-center dark:bg-slate-800/60"><div><b class="block">${Number(test.questions) || '—'}</b><small class="text-[9px] uppercase text-slate-400">Questions</small></div><div><b class="block">${Number(test.marks) || '—'}</b><small class="text-[9px] uppercase text-slate-400">Marks</small></div><div><b class="block">${Number(test.timeMins) || '—'}m</b><small class="text-[9px] uppercase text-slate-400">Duration</small></div></div><div class="flex items-center justify-between gap-3"><span class="text-xs text-slate-500"><i class="fa-regular fa-calendar mr-1 text-teal-600"></i>${escapeHtml(test.schedule || 'Date to be announced')}</span><button type="button" class="rounded-xl border border-slate-200 px-3 py-2 text-xs font-bold dark:border-slate-700" onclick="openBatchSyllabusModal('${jsArg(test.title)}', ${JSON.stringify(test.syllabus || []).replace(/"/g, '&quot;')})">View syllabus</button></div></article>`).join('')}</div></div>`;
 }
 
@@ -5213,6 +5230,7 @@ async function startBatchTestAttempt(testObj, seriesTitle) {
 }
 
 // ===== Multi-Step Generator State =====
+let pendingWizardQuestions = null;
 let wizardState = {
   step: 1, 
   format: 'full_180',
@@ -5227,6 +5245,14 @@ let wizardState = {
 function wizardSetStep(s) {
   wizardState.step = s;
   renderView();
+}
+
+function launchGeneratedWizardTest() {
+  const questions = pendingWizardQuestions;
+  if (!Array.isArray(questions) || !questions.length) return showToast('Generate a test paper before starting.', 'warning');
+  pendingWizardQuestions = null;
+  closeModal();
+  launchTestSession(wizardState.selectedSubjects.join(' & '), `NEET Mock Simulation (${questions.length}Q)`, questions);
 }
 
 function wizardSelectFormat(fmt, count, mins) {
@@ -5245,6 +5271,7 @@ function wizardSelectFormat(fmt, count, mins) {
 function wizardSetQuestionCount(value) {
   const parsed = Number(value);
   wizardState.qCount = Number.isFinite(parsed) ? Math.max(1, Math.min(180, Math.round(parsed))) : 180;
+  wizardState.durationMins = wizardState.qCount;
   renderView();
 }
 
@@ -5393,10 +5420,14 @@ async function executeWizardTestGeneration() {
       if (rawQuestions.length > qCount) rawQuestions = rawQuestions.slice(0, qCount);
     }
 
+    if (rawQuestions.length > qCount) rawQuestions = rawQuestions.slice(0, qCount);
     if (!rawQuestions.length) throw new Error('No practice questions available for the selected choices.');
-    if (rawQuestions.length < qCount) showToast(`Only ${rawQuestions.length} questions matched those filters.`, 'info');
 
-    launchTestSession(selectedSubs.join(' & '), `NEET Mock Simulation (${rawQuestions.length}Q)`, rawQuestions);
+    pendingWizardQuestions = rawQuestions;
+    const bySubject = rawQuestions.reduce((counts, question) => { const name = question.subject || 'Mixed'; counts[name] = (counts[name] || 0) + 1; return counts; }, {});
+    const allocation = Object.entries(bySubject).map(([name, count]) => `${escapeHtml(name)}: ${count}`).join(' · ');
+    const selectedTopics = selectedSubs.flatMap(name => wizardState.selectedChapters[name]?.length ? wizardState.selectedChapters[name].map(chapter => `${name}: ${chapter}`) : []).join(' · ');
+    setModal('Review custom test', 'Confirm the paper before the timed attempt begins.', `<div class="space-y-3"><div class="rounded-2xl border border-teal-500/20 bg-teal-500/5 p-4"><b class="block text-2xl font-black text-teal-700 dark:text-teal-300">${rawQuestions.length} questions ready</b><span class="text-xs text-slate-500">${qCount} requested · the paper is capped to the matching questions actually available.</span></div><p class="text-xs"><b>Subjects:</b> ${escapeHtml(selectedSubs.join(', '))}</p><p class="text-xs"><b>Question mix:</b> ${allocation}</p>${selectedTopics ? `<p class="text-xs"><b>Selected chapters:</b> ${escapeHtml(selectedTopics)}</p>` : ''}<p class="text-xs"><b>Duration:</b> ${wizardState.durationMins} minutes · <b>Scoring:</b> +${Number((StorageModule.get(STORAGE_KEYS.settings, defaultSettings)||{}).marksCorrect)||4} / ${Number((StorageModule.get(STORAGE_KEYS.settings, defaultSettings)||{}).marksWrong??-1)} marks</p><p class="text-[11px] text-slate-500">You can still adjust the filters, or start this timed test now.</p></div>`, `<button type="button" onclick="pendingWizardQuestions=null;closeModal();wizardSetStep(2)" class="rounded-xl border border-slate-200 px-4 py-2.5 text-xs font-bold dark:border-slate-700">Adjust filters</button><button type="button" onclick="launchGeneratedWizardTest()" class="rounded-xl bg-teal-600 px-5 py-2.5 text-xs font-black text-white">Start ${rawQuestions.length}-question test</button>`);
   } catch (err) {
     showToast('Generation failed: ' + err.message, 'error');
     closeModal();
@@ -5899,12 +5930,12 @@ function setChapterFilter(f) { chapterFilter = f; renderView(); }
 function chapterMatchesFilter(subj, ch, f) {
   if (f === 'all') return true;
   const meta = readChapterMeta()[chapterKey(subj, ch)];
-  const att = StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => a.chapter === ch);
+  const att = StorageModule.get(STORAGE_KEYS.attempts, []).filter(a => a.subject === subj && a.chapter === ch);
   const acc = att.length ? att.reduce((n, a) => n + (a.accuracy || 0), 0) / att.length : null;
   if (f === 'progress') return !!meta && meta.answered > 0 && meta.answered < meta.total;
   if (f === 'todo') return !meta && !att.length;
   if (f === 'done') return !!userProgress[ch]?.completed;
-  if (f === 'weak') return acc !== null && acc < 60;
+  if (f === 'weak') return acc !== null && acc < 85;
   return true;
 }
 function buildChapterFilterChips() {
@@ -5967,7 +5998,7 @@ function buildDashboardInsights() {
 }
 function exportBackup() {
   const data = {};
-  for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && k.startsWith('edupulse')) data[k] = localStorage.getItem(k); }
+  for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && k.startsWith('edupulse') && k !== STORAGE_KEYS.geminiKey) data[k] = localStorage.getItem(k); }
   const blob = new Blob([JSON.stringify({ app: 'edupulse', version: 1, exportedAt: new Date().toISOString(), data })], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -5987,7 +6018,7 @@ function importBackupFile(file) {
       const good = {}; let skipped = 0;
       Object.keys(parsed.data).forEach(k => {
         const v = parsed.data[k];
-        if (!k.startsWith('edupulse') || typeof v !== 'string' || v.length > 5e6) { skipped++; return; }
+        if (!k.startsWith('edupulse') || k === STORAGE_KEYS.geminiKey || typeof v !== 'string' || v.length > 5e6) { skipped++; return; }
         if (/^\s*[\[{]/.test(v)) { try { JSON.parse(v); } catch (e) { skipped++; return; } }
         good[k] = v;
       });
@@ -7418,13 +7449,18 @@ function addTodoItem() {
   const titleInput = document.getElementById('new-todo-title');
   const subjSelect = document.getElementById('new-todo-subject');
   const prioritySelect = document.getElementById('new-todo-priority');
+  const estimateInput = document.getElementById('new-todo-estimate');
+  const dueInput = document.getElementById('new-todo-due');
   if (!titleInput || !titleInput.value.trim()) return showToast('Please enter a task title.', 'warning');
 
+  const estimate = estimateInput?.value.trim() ? Number(estimateInput.value) : 30;
   todos.unshift({
     id: 'td_' + Date.now(),
     title: titleInput.value.trim(),
     subject: subjSelect ? subjSelect.value : 'Biology',
     priority: prioritySelect ? prioritySelect.value : 'medium',
+    estimatedMinutes: Number.isInteger(estimate) ? Math.max(5, Math.min(240, Math.round(estimate / 5) * 5)) : 30,
+    dueDate: dueInput?.value || '',
     completed: false,
     createdAt: Date.now()
   });
@@ -7433,36 +7469,58 @@ function addTodoItem() {
   showToast('Task added to Planner!');
 }
 
+function formatTodoDueDate(value) {
+  if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return 'No due date';
+  if (value === getLocalStudyDateKey()) return 'Due today';
+  const date = new Date(value + 'T00:00:00');
+  if (Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== value) return 'No due date';
+  const label = date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+  return value < getLocalStudyDateKey() ? `Overdue · ${label}` : `Due ${label}`;
+}
+
 function deleteTodoItem(id) {
   todos = todos.filter(t => t.id !== id);
   saveToLocalStorage();
   renderView();
 }
 
+function saveFocusTimerState() {
+  try { localStorage.setItem(FOCUS_TIMER_KEY, JSON.stringify({ running: focusTimerRunning, remaining: focusTimeRemaining, endAt: focusTimerEndAt })); } catch (e) {}
+}
+
 function toggleFocusTimer() {
   if (focusTimerRunning) {
     clearInterval(focusTimerInterval);
+    focusTimeRemaining = Math.max(0, Math.ceil((focusTimerEndAt - Date.now()) / 1000));
     focusTimerRunning = false;
+    focusTimerEndAt = 0;
   } else {
+    if (focusTimeRemaining <= 0) focusTimeRemaining = 25 * 60;
     focusTimerRunning = true;
+    focusTimerEndAt = Date.now() + focusTimeRemaining * 1000;
     focusTimerInterval = setInterval(() => {
-      if (focusTimeRemaining > 0) {
-        focusTimeRemaining--;
-        updateFocusTimerDisplay();
-      } else {
+      focusTimeRemaining = Math.max(0, Math.ceil((focusTimerEndAt - Date.now()) / 1000));
+      updateFocusTimerDisplay();
+      if (!focusTimeRemaining) {
         clearInterval(focusTimerInterval);
         focusTimerRunning = false;
-        showToast('⏰ Focus session completed! Take a 5-minute break.', 'success');
+        focusTimerEndAt = 0;
+        saveFocusTimerState();
+        showToast('Focus session completed. Take a 5-minute break.', 'success');
       }
+      saveFocusTimerState();
     }, 1000);
   }
+  saveFocusTimerState();
   renderView();
 }
 
 function resetFocusTimer(mins = 25) {
   if (focusTimerInterval) clearInterval(focusTimerInterval);
   focusTimerRunning = false;
+  focusTimerEndAt = 0;
   focusTimeRemaining = mins * 60;
+  saveFocusTimerState();
   renderView();
 }
 
@@ -7476,17 +7534,18 @@ function updateFocusTimerDisplay() {
 }
 
 function updateSettingsFromForm() {
-  const marksCorrect = parseInt(document.getElementById('set-marks-correct')?.value || 4);
-  const marksWrong = parseInt(document.getElementById('set-marks-wrong')?.value || -1);
-  const dailyGoal = parseInt(document.getElementById('set-daily-goal')?.value || 30);
-  
+  const marksCorrect = Number(document.getElementById('set-marks-correct')?.value);
+  const marksWrong = Number(document.getElementById('set-marks-wrong')?.value);
+  const dailyGoal = Number(document.getElementById('set-daily-goal')?.value);
+  if (!Number.isInteger(marksCorrect) || marksCorrect < 1 || marksCorrect > 10) return showToast('Correct-answer marks must be a whole number from 1 to 10.', 'warning');
+  if (!Number.isInteger(marksWrong) || marksWrong > 0 || marksWrong < -10) return showToast('Wrong-answer marks must be a whole number from −10 to 0.', 'warning');
+  if (!Number.isInteger(dailyGoal) || dailyGoal < 1 || dailyGoal > 200) return showToast('Daily question goal must be a whole number from 1 to 200.', 'warning');
   const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
   settings.marksCorrect = marksCorrect;
   settings.marksWrong = marksWrong;
   settings.dailyGoalQuestions = dailyGoal;
-  
   StorageModule.set(STORAGE_KEYS.settings, settings);
-  showToast('Settings saved successfully!');
+  showToast('Settings saved successfully.');
 }
 
 
@@ -7561,8 +7620,8 @@ function buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccu
   const accuracyDelta = avgAccuracy - previousAccuracy;
   const stats = `
   <section class="dv2-stats" aria-label="Study insights">
-    ${stat('fa-bullseye', 'green', 'Recent accuracy', avgAccuracy + '%', `${accuracyDelta >= 0 ? '+' : ''}${accuracyDelta} pts vs earlier sessions`)}
-    ${stat('fa-circle-check', 'teal', 'Questions solved', totalSolved, 'Across all practice sessions')}
+    ${stat('fa-bullseye', 'green', 'Recent practice & test accuracy', avgAccuracy + '%', `${accuracyDelta >= 0 ? '+' : ''}${accuracyDelta} pts vs earlier sessions`)}
+    ${stat('fa-circle-check', 'teal', 'Questions attempted', totalSolved, 'Across practice and tests')}
     ${stat('fa-fire', 'amber', 'Study streak', dayStreak + ' days', `Personal best ${streak.best || 0} days`)}
     ${stat('fa-rotate', 'violet', 'Revision due', nDue, `${nWrong} questions missed`)}
   </section>`;
@@ -7792,6 +7851,14 @@ function buildPracticeHome() {
     ${discard}
   </section>`;
 
+  const savedSets = {
+    incorrect: getSavedQuestionKeys('incorrect').length,
+    bookmarked: getSavedQuestionKeys('bookmarked').length,
+    due: getDueRevisionKeys().length
+  };
+  const preset = (kind, icon, label, count, action) => `<button type="button" class="pc-preset" ${count ? `onclick="${action}"` : 'disabled'}><i class="fa-solid ${icon}" aria-hidden="true"></i><span><b>${label}</b><small>${count ? `${count} ready` : 'None yet'}</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>`;
+  const presets = `<section class="pc-presets" aria-label="Focused practice sets"><div><span class="study-overline">PICK A SET</span><h3>Targeted practice</h3></div><div class="pc-presets-grid">${preset('incorrect','fa-circle-xmark','Missed questions',savedSets.incorrect,"startSavedPractice('incorrect')")}${preset('bookmarked','fa-bookmark','Bookmarked',savedSets.bookmarked,"startSavedPractice('bookmarked')")}${preset('due','fa-rotate','Revision due',savedSets.due,"startSavedPractice('due')")}</div></section>`;
+
   // ---- Error notebook: only when there is something to revisit ----
   const nCount = Object.values(StorageModule.get(STORAGE_KEYS.errorNotebook, {})).length;
   const notes = nCount ? `
@@ -7881,6 +7948,7 @@ function buildPracticeHome() {
   return `
   <div class="pc">
     ${next}
+    ${presets}
     ${notes}
     ${window.epFlashStrip ? window.epFlashStrip(subject) : ''}
     <div class="pc-subjects" role="tablist" aria-label="Subject">${tabs}</div>
@@ -7914,62 +7982,37 @@ main.innerHTML = buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved,
 } else if (currentTab === 'about') {
 main.innerHTML = `
 <div class="space-y-6 animate-fadeIn max-w-4xl mx-auto">
-  <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-teal-900 via-slate-900 to-purple-950 p-6 sm:p-8 text-white shadow-2xl border border-teal-700/40 space-y-4">
-    <div class="flex items-center gap-3">
-      <span class="px-3 py-1 rounded-full bg-teal-400/20 text-teal-200 border border-teal-400/30 font-black text-[10px] uppercase tracking-widest">Hobby Project</span>
-      <span class="px-3 py-1 rounded-full bg-purple-400/20 text-purple-200 border border-purple-400/30 font-black text-[10px] uppercase tracking-widest">Vibe Coded with ❤</span>
-    </div>
-
-    <h2 class="text-2xl sm:text-4xl font-black text-white">About EduPulse PRO</h2>
-    <p class="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed max-w-2xl">
-      EduPulse PRO is a passion-driven, lightweight NEET entry preparation ecosystem crafted by a <strong>Vibe Coder</strong>. Built with single-file client-side simplicity, zero backend bloat, and total privacy in mind.
-    </p>
+  <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-teal-900 via-slate-900 to-indigo-950 p-6 sm:p-8 text-white shadow-2xl border border-teal-700/40 space-y-4">
+    <span class="inline-flex px-3 py-1 rounded-full bg-teal-400/20 text-teal-200 border border-teal-400/30 font-black text-[10px] uppercase tracking-widest">NEET preparation workspace</span>
+    <h2 class="text-2xl sm:text-4xl font-black text-white">About EduPulse</h2>
+    <p class="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed max-w-2xl">Study, practise, take CBT-style tests, and review your progress in one place. EduPulse combines chapter practice, selected NCERT reading extracts, revision tools, and links to external study resources.</p>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <div class="card p-6 space-y-3 border-l-4 border-l-teal-500">
-      <div class="flex items-center gap-2 text-teal-600 font-extrabold text-sm">
-        <i class="fa-solid fa-code"></i>
-        <span>Vibe Coder Philosophy</span>
-      </div>
-      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-        Designed for speed, offline usability, and seamless study flows. No intrusive tracking, no paywalls, and no subscription traps — just pure focus for NEET aspirants.
-      </p>
+      <div class="flex items-center gap-2 text-teal-600 font-extrabold text-sm"><i class="fa-solid fa-book-open" aria-hidden="true"></i><span>Study tools</span></div>
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">Use chapter filters, saved questions, mistake review, test history, and the focus planner to shape your own study routine. Question-bank and reader coverage varies by chapter; check availability before starting.</p>
     </div>
-
-    <div class="card p-6 space-y-3 border-l-4 border-l-purple-500">
-      <div class="flex items-center gap-2 text-purple-600 font-extrabold text-sm">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-        <span>Gemini AI Integration</span>
-      </div>
-      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-        Integrates Gemini 3.5 Flash to deliver live question explanations, structured 180Q test paper creation, YouTube one-shot lecture embeds, and custom adaptive study plans.
-      </p>
+    <div class="card p-6 space-y-3 border-l-4 border-l-indigo-500">
+      <div class="flex items-center gap-2 text-indigo-600 font-extrabold text-sm"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i><span>Optional AI assistance</span></div>
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">AI explanations and generated practice use the Gemini model configured in your browser. Prompts and attached images are sent to Google Gemini; verify study answers against trusted course materials.</p>
     </div>
   </div>
 
-  <div class="card p-6 space-y-4">
-    <h3 class="text-base font-black text-slate-900 dark:text-slate-100">Core Feature Highlights</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-semibold">
-      <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-1">
-        <span class="block font-black text-teal-600">🎯 79 NCERT Chapters</span>
-        <p class="text-[11px] text-slate-500">Full Botany, Zoology, Physics & Chemistry coverage.</p>
-      </div>
-      <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-1">
-        <span class="block font-black text-indigo-600">💻 NTA CBT Interface</span>
-        <p class="text-[11px] text-slate-500">Question palette drawer, time tracking & review flags.</p>
-      </div>
-      <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-1">
-        <span class="block font-black text-emerald-600">📚 20+ Vault Portals</span>
-        <p class="text-[11px] text-slate-500">Direct links to Allen, PW, Anna's Archive & Marks App.</p>
-      </div>
-    </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <section class="card p-6 space-y-3">
+      <h3 class="text-base font-black text-slate-900 dark:text-slate-100">Your data</h3>
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Without an account, progress stays in this browser. When you sign in, EduPulse can sync supported study data to your account. Use Settings to export a backup before changing devices or clearing browser data. Your Gemini API key is not included in backups.</p>
+    </section>
+    <section class="card p-6 space-y-3">
+      <h3 class="text-base font-black text-slate-900 dark:text-slate-100">External resources</h3>
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Resource Vault links lead to third-party sites. Some may require an account, use their own privacy policies, or block in-app viewing. EduPulse does not imply endorsement or guarantee that external schedules and content remain current.</p>
+    </section>
   </div>
 
   <div class="text-center py-4 text-xs font-bold text-slate-400 space-y-1">
-    <p>EduPulse PRO — Built for NEET Aspirants Everywhere 🚀</p>
-    <p><a href="https://edupulse.cc.cd" target="_blank" rel="noopener" class="font-black text-teal-600 hover:underline">edupulse.cc.cd</a></p>
-    <p class="text-[10px] text-slate-500">Keep vibing, keep practicing!</p>
+    <p>EduPulse — a study companion for NEET aspirants.</p>
+    <p><a href="https://edupulse.cc.cd" target="_blank" rel="noopener noreferrer" class="font-black text-teal-600 hover:underline">Visit EduPulse</a></p>
   </div>
 </div>`;
 } else if (currentTab === 'mock') {
@@ -8057,8 +8100,8 @@ main.innerHTML = `
                 <div>
                   <div class="flex items-start justify-between gap-3 mb-2">
                     <h4 class="font-black text-base text-slate-900 dark:text-slate-100 leading-snug">${escapeHtml(t.title)}</h4>
-                    ${t.status === 'available' ? `
-                      <span class="shrink-0 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-black text-[10px] flex items-center gap-1"><i class="fa-solid fa-circle text-[6px]"></i> Available</span>
+                    ${getTestAvailability(t) !== 'scheduled' ? `
+                      <span class="shrink-0 px-2.5 py-1 rounded-full ${getTestAvailability(t) === 'past' ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700' : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'} font-black text-[10px] flex items-center gap-1">${getTestAvailability(t) === 'past' ? '<i class="fa-regular fa-clock"></i> Past · practice anytime' : '<i class="fa-solid fa-circle text-[6px]"></i> Available now'}</span>
                     ` : `
                       <span class="shrink-0 px-2.5 py-1 rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 font-black text-[10px] flex items-center gap-1 border border-slate-200 dark:border-slate-700"><i class="fa-solid fa-lock text-[9px]"></i> Scheduled</span>
                     `}
@@ -8085,14 +8128,14 @@ main.innerHTML = `
                   <span class="text-[11px] text-slate-400 font-semibold"><i class="fa-regular fa-clock text-teal-500 mr-1"></i> ${t.schedule}</span>
                   <div class="flex items-center gap-2">
                     <button onclick="openBatchSyllabusModal('${jsArg(t.title)}', ${JSON.stringify(t.syllabus || []).replace(/"/g, '&quot;')})" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition">Syllabus</button>
-                    ${t.status === 'available' ? `
-                      <button onclick="startBatchTestAttempt(${JSON.stringify(t).replace(/"/g, '&quot;')}, '${jsArg(selectedBatchSeries.title)}')" class="px-4 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs shadow-md shadow-teal-600/20 transition flex items-center gap-1.5">
-                        <span>Attempt</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    ${getTestAvailability(t) !== 'scheduled' ? `
+                      <button type="button" onclick="startBatchTestAttempt(${JSON.stringify(t).replace(/"/g, '&quot;')}, '${jsArg(selectedBatchSeries.title)}')" class="px-4 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs shadow-md shadow-teal-600/20 transition flex items-center gap-1.5">
+                        <span>${getTestAvailability(t) === 'past' ? 'Practise paper' : 'Attempt'}</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
                       </button>
                     ` : `
-                      <button onclick="showToast('This test is scheduled for ${t.schedule}', 'warning')" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold text-xs border border-slate-200 dark:border-slate-700 cursor-not-allowed">
-                        <i class="fa-solid fa-lock text-[10px] mr-1"></i> Locked
-                      </button>
+                      <span class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 font-bold text-xs border border-slate-200 dark:border-slate-700">
+                        <i class="fa-solid fa-lock text-[10px] mr-1"></i> Opens ${escapeHtml(t.schedule || 'when announced')}
+                      </span>
                     `}
                   </div>
                 </div>
@@ -8283,8 +8326,8 @@ main.innerHTML = `
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20"><span class="text-[10px] font-black uppercase tracking-wider text-teal-600">Question Count</span><h4 class="text-2xl font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.qCount} Questions</h4></div>
-            <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20"><span class="text-[10px] font-black uppercase tracking-wider text-amber-600">Duration</span><h4 class="text-2xl font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.durationMins} Minutes</h4></div>
+            <div class="p-4 rounded-2xl bg-teal-500/10 border border-teal-500/20"><span class="text-[10px] font-black uppercase tracking-wider text-teal-600">Question Count</span><h4 class="text-2xl font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.qCount} ${wizardState.qCount === 1 ? 'Question' : 'Questions'}</h4></div>
+            <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20"><span class="text-[10px] font-black uppercase tracking-wider text-amber-600">Duration</span><h4 class="text-2xl font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.durationMins} ${wizardState.durationMins === 1 ? 'Minute' : 'Minutes'}</h4></div>
             <div class="p-4 rounded-2xl bg-purple-500/10 border border-purple-500/20"><span class="text-[10px] font-black uppercase tracking-wider text-purple-600">Subjects</span><h4 class="text-base font-black text-slate-900 dark:text-slate-100 mt-1">${wizardState.selectedSubjects.join(', ')}</h4></div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -8368,6 +8411,8 @@ main.innerHTML = `
 } else if (currentTab === 'directory') {
 if (window.epVault) { window.epVault.render(main); } else { main.innerHTML = '<div class="card p-6 text-sm">Vault is loading…</div>'; }
 } else if (currentTab === 'tools') {
+const priorityRank = { high: 0, medium: 1, low: 2 };
+const orderedTodos = [...todos].sort((a, b) => Number(!!a.completed) - Number(!!b.completed) || (priorityRank[a.priority] ?? 1) - (priorityRank[b.priority] ?? 1) || String(a.dueDate || '9999-12-31').localeCompare(String(b.dueDate || '9999-12-31')));
 main.innerHTML = `
 <div class="space-y-6 animate-fadeIn max-w-6xl mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -8395,29 +8440,38 @@ main.innerHTML = `
 
     <!-- Daily Planner -->
     <div class="card p-6 space-y-4">
-      <h3 class="text-lg font-black text-slate-900 dark:text-slate-100">Daily Study Planner</h3>
+      <div><h3 class="text-lg font-black text-slate-900 dark:text-slate-100">Daily Study Planner</h3><p class="text-xs text-slate-500 mt-1">Add a small goal, choose its subject and priority, then mark it done when you finish.</p></div>
       <div class="space-y-2">
-        <input type="text" id="new-todo-title" placeholder="Add study goal (e.g. Solve 30 Optics MCQs)..." onkeydown="if(event.key==='Enter') addTodoItem()" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold focus:outline-none focus:border-teal-500">
-        <div class="flex gap-2">
-          <select id="new-todo-subject" class="flex-1 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
+        <label class="sr-only" for="new-todo-title">Study goal</label>
+        <input type="text" id="new-todo-title" placeholder="Add a specific study goal (e.g. Solve 30 Optics MCQs)" onkeydown="if(event.key==='Enter'&&!event.isComposing&&event.keyCode!==229) addTodoItem()" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold focus:outline-none focus:border-teal-500">
+        <div class="flex flex-wrap gap-2">
+          <select id="new-todo-subject" aria-label="Task subject" class="min-w-0 flex-1 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
             <option value="Biology">Biology</option>
             <option value="Chemistry">Chemistry</option>
             <option value="Physics">Physics</option>
           </select>
-          <button onclick="addTodoItem()" class="px-5 py-2 rounded-xl bg-teal-600 text-white font-black text-xs shadow-md">Add Task</button>
+          <select id="new-todo-priority" aria-label="Task priority" class="min-w-0 flex-1 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
+            <option value="high">High priority</option><option value="medium" selected>Normal priority</option><option value="low">Low priority</option>
+          </select>
+          <label class="sr-only" for="new-todo-estimate">Estimated minutes</label>
+          <input id="new-todo-estimate" type="number" min="5" max="240" step="5" value="30" aria-label="Estimated minutes" class="w-24 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
+          <label class="sr-only" for="new-todo-due">Due date</label>
+          <input id="new-todo-due" type="date" aria-label="Due date (optional)" class="min-w-0 flex-1 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold">
+          <button type="button" onclick="addTodoItem()" class="px-5 py-2 rounded-xl bg-teal-600 text-white font-black text-xs shadow-md">Add Task</button>
         </div>
+        <p class="text-[10px] text-slate-500">Estimate the time needed and add an optional due date. Due-today and overdue tasks are labeled in your list.</p>
       </div>
 
       <div class="space-y-2 max-h-60 overflow-y-auto pr-1 pt-2">
-        ${todos.map(t => `
+        ${orderedTodos.length ? orderedTodos.map(t => `
           <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 flex items-center justify-between gap-3">
             <div class="flex items-center gap-2.5 flex-1 min-w-0">
               <input type="checkbox" ${t.completed ? 'checked' : ''} onchange="toggleTodoItem('${t.id}')" class="w-4 h-4 rounded text-teal-600">
-              <span class="text-xs font-semibold truncate ${t.completed ? 'line-through text-slate-400' : 'text-slate-800 dark:text-slate-200'}">${escapeHtml(t.title)}</span>
+              <span class="min-w-0 flex-1"><b class="block text-xs font-semibold truncate ${t.completed ? 'line-through text-slate-400' : 'text-slate-800 dark:text-slate-200'}">${escapeHtml(t.title)}</b><small class="block text-[10px] text-slate-500">${escapeHtml(t.subject || 'Biology')} · ${({high:'High',medium:'Normal',low:'Low'}[t.priority] || 'Normal')} priority · ${Number(t.estimatedMinutes) || 30} min · ${formatTodoDueDate(t.dueDate)}</small></span>
             </div>
-            <button onclick="deleteTodoItem('${t.id}')" class="text-slate-400 hover:text-rose-500 p-1 text-xs"><i class="fa-solid fa-trash"></i></button>
+            <button type="button" aria-label="Delete ${escapeHtml(t.title)}" onclick="epConfirm('Delete this study task?','Delete task').then(function(ok){if(ok)deleteTodoItem('${jsArg(t.id)}')})" class="text-slate-400 hover:text-rose-500 p-2 text-xs"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
           </div>
-        `).join('')}
+        `).join('') : '<p class="rounded-xl border border-dashed border-slate-300 p-4 text-center text-xs font-semibold text-slate-500 dark:border-slate-700">No tasks yet. Add one small, specific study goal to get started.</p>'}
       </div>
     </div>
   </div>
@@ -8427,7 +8481,7 @@ const settings = StorageModule.get(STORAGE_KEYS.settings, defaultSettings);
 main.innerHTML = `
 <div class="space-y-6 animate-fadeIn max-w-3xl mx-auto">
   <div class="card p-6 border-l-4 border-l-indigo-500 space-y-4">
-    <div><h2 class="text-xl font-black text-slate-900 dark:text-slate-100">Backup & restore</h2><p class="text-xs text-slate-500 mt-1">Your progress lives on this device only. Download a backup before clearing browser data or switching phones.</p></div>
+    <div><h2 class="text-xl font-black text-slate-900 dark:text-slate-100">Backup &amp; restore</h2><p class="text-xs text-slate-500 mt-1">Without an account, progress stays in this browser. Signed-in accounts sync supported study data. Export a backup before switching devices; API keys are never included.</p></div>
     <div class="flex flex-wrap gap-3">
       <button type="button" onclick="exportBackup()" class="rounded-xl bg-indigo-600 hover:bg-indigo-700 px-5 py-2.5 text-xs font-black text-white shadow-lg shadow-indigo-600/20"><i class="fa-solid fa-download mr-1.5"></i>Download backup</button>
       <button type="button" onclick="document.getElementById('backup-file').click()" class="rounded-xl border border-slate-200 dark:border-slate-700 px-5 py-2.5 text-xs font-black"><i class="fa-solid fa-upload mr-1.5"></i>Restore from file</button>
@@ -8437,24 +8491,24 @@ main.innerHTML = `
   <div class="card p-6 border-l-4 border-l-teal-500 space-y-6">
     <div>
       <h2 class="text-xl font-black text-slate-900 dark:text-slate-100">App & Marking Settings</h2>
-      <p class="text-xs text-slate-500 mt-1">Customize test scoring rules and daily question targets.</p>
+      <p class="text-xs text-slate-500 mt-1">Customize scoring and daily targets. Use a non-positive value for negative marks.</p>
     </div>
 
     <div class="space-y-4 text-xs font-semibold">
       <div class="grid grid-cols-2 gap-4">
         <div>
-          <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Marks per Correct Answer</label>
-          <input type="number" id="set-marks-correct" value="${settings.marksCorrect}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+          <label for="set-marks-correct" class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Marks per Correct Answer</label>
+          <input type="number" id="set-marks-correct" min="1" max="10" step="1" required value="${settings.marksCorrect}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
         </div>
         <div>
-          <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Negative Marks per Wrong Answer</label>
-          <input type="number" id="set-marks-wrong" value="${settings.marksWrong}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+          <label for="set-marks-wrong" class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Negative Marks per Wrong Answer</label>
+          <input type="number" id="set-marks-wrong" min="-10" max="0" step="1" required value="${settings.marksWrong}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
         </div>
       </div>
 
       <div>
-        <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Daily Question Goal</label>
-        <input type="number" id="set-daily-goal" value="${settings.dailyGoalQuestions}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+        <label for="set-daily-goal" class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Daily Question Goal</label>
+        <input type="number" id="set-daily-goal" min="1" max="200" step="1" required value="${settings.dailyGoalQuestions}" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
       </div>
 
       <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end">
@@ -9629,6 +9683,15 @@ body .quiz-session-layout .mb-1 h2{max-width:none!important}
 /* Layer: practice-home-v1 */
 /* ===== Practice home ===== */
 .pc{display:flex;flex-direction:column;gap:18px;max-width:1120px;margin:0 auto}
+.pc-presets{display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid var(--border-color);border-radius:20px;background:var(--card-bg)}
+.pc-presets h3{margin:2px 0 0;font-size:15px;font-weight:900;color:var(--text-primary)}
+.pc-presets-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pc-preset{display:flex;align-items:center;gap:10px;min-width:0;padding:12px;border:1px solid var(--border-color);border-radius:14px;text-align:left;background:var(--card-bg);color:var(--text-primary)}
+.pc-preset>i:first-child{color:var(--teal);font-size:14px}
+.pc-preset>i:last-child{margin-left:auto;color:var(--text-muted);font-size:10px}
+.pc-preset span{min-width:0}.pc-preset b,.pc-preset small{display:block}.pc-preset b{font-size:11px}.pc-preset small{margin-top:2px;color:var(--text-muted);font-size:10px}
+.pc-preset:hover:not(:disabled){border-color:var(--teal)}.pc-preset:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:520px){.pc-presets-grid{grid-template-columns:1fr}}
 .pc :focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .pc-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -10383,6 +10446,11 @@ body.dark .st-heat i.l4{background:#2dd4bf}
 .st-ins p i{margin-top:2px}
 .st-empty{padding:26px 8px;text-align:center;color:var(--text-muted);font-size:12.5px;font-weight:600}
 .st-att{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 14px;border-radius:14px;border:1px solid var(--border-color);background:rgba(148,163,184,.07);transition:border-color .15s,background .15s}
+.st-chapter-link{width:100%;grid-template-columns:minmax(70px,1fr) minmax(60px,2fr) 34px auto;border:0;text-align:left;color:inherit;cursor:pointer;background:transparent;padding:6px 4px;border-radius:9px}
+.st-chapter-link:hover{background:rgba(20,184,166,.08)}
+.st-chapter-link small{font-size:9px;font-weight:800;color:var(--teal,#0d9488)}
+.st-chapter-link:focus-visible{outline:2px solid var(--teal,#0d9488);outline-offset:2px}
+@media(max-width:520px){.st-chapter-link{grid-template-columns:minmax(60px,1fr) minmax(40px,1fr) 34px}.st-chapter-link small{display:none}}
 .st-att:hover{border-color:rgba(20,184,166,.45);background:rgba(20,184,166,.06)}
 .st-badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:800;background:rgba(20,184,166,.14);color:#0f766e;margin-right:6px}
 body.dark .st-badge{color:#5eead4}
@@ -10400,7 +10468,7 @@ function buildStatsPageV2(){
   const mc=Number(set.marksCorrect??4),mw=Math.abs(Number(set.marksWrong??-1));
   const range=window.__statsRange||'all',days=range==='all'?0:Number(range);
   const cutoff=days?Date.now()-days*864e5:0;
-  const every=S.get(K.attempts,[])||[],at=every.filter(a=>(a.finishedAt||0)>=cutoff);
+  const every=S.get(K.attempts,[])||[],at=every.filter(a=>(a.mode==='test'||a.mode==='mock')&&(a.finishedAt||0)>=cutoff);
   const sum=(arr,f)=>arr.reduce((s,a)=>s+(Number(f(a))||0),0);
   const att=sum(at,a=>a.attempted),cor=sum(at,a=>a.correct),wr=sum(at,a=>a.wrong),sk=sum(at,a=>a.skipped);
   const acc=cor+wr?Math.round(cor/(cor+wr)*100):0;
@@ -10408,7 +10476,7 @@ function buildStatsPageV2(){
   const avgPct=pcts.length?Math.round(sum(pcts,x=>x)/pcts.length):0;
   const bestIdx=pcts.length?pcts.indexOf(Math.max(...pcts)):-1,best=bestIdx>=0?at[bestIdx]:null;
   const gained=cor*mc,lost=wr*mw,net=gained-lost,projected=Math.round(avgPct/100*720);
-  const band=!at.length?'Take a test to get your estimate':projected>=600?'Top-tier zone 🏆':projected>=450?'Government-seat range 🎯':projected>=300?'Building momentum 📈':'Foundation phase — keep going 💪';
+  const band=!at.length?'Complete a test to see an early estimate':at.length<3?'Early signal · build a larger sample':projected>=600?'Strong current test average':projected>=450?'Developing test average':projected>=300?'Early test average':'Early test average · keep practising';
   const streak=S.get(K.streak,{current:0,best:0,dailyCounts:{}})||{};const counts=streak.dailyCounts||{};
   const ring=(p,c,s=64)=>{const r=s/2-6,C=2*Math.PI*r;return `<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}" style="flex:none"><circle cx="${s/2}" cy="${s/2}" r="${r}" fill="none" stroke="rgba(148,163,184,.25)" stroke-width="6"/><circle cx="${s/2}" cy="${s/2}" r="${r}" fill="none" stroke="${c}" stroke-width="6" stroke-linecap="round" stroke-dasharray="${(C*p/100).toFixed(1)} ${C}" transform="rotate(-90 ${s/2} ${s/2})"/></svg>`;};
   /* trend */
@@ -10426,7 +10494,7 @@ function buildStatsPageV2(){
   const subRows=Object.entries(subj).map(([n,v])=>({n,p:Math.round(v.c/(v.c+v.w)*100),t:v.c+v.w})).sort((a,b)=>b.t-a.t);
   const subHtml=subRows.length?subRows.map(r=>`<div class="st-row"><span>${escapeHtml(r.n)}</span><div class="st-bar"><i style="width:${r.p}%;background:${sc[r.n]||'#14b8a6'}"></i></div><b>${r.p}%</b></div>`).join(''):'<div class="st-empty">Practice a few chapters to unlock subject analysis.</div>';
   const chs=Object.values(chap).filter(h=>h.c+h.w>=3).map(h=>({...h,p:Math.round(h.c/(h.c+h.w)*100)}));
-  const row=h=>`<div class="st-row"><span title="${escapeHtml(h.n)}">${escapeHtml(h.n)}</span><div class="st-bar"><i style="width:${h.p}%;background:${h.p>=70?'#10b981':h.p>=45?'#f59e0b':'#ef4444'}"></i></div><b>${h.p}%</b></div>`;
+  const row=h=>`<button type="button" class="st-row st-chapter-link" title="Practise ${escapeHtml(h.n)}" onclick="openPracticeSetup('${jsArg(['Botany','Zoology'].includes(h.s)?'Biology':(h.s||'Biology'))}','${jsArg(h.n)}')"><span>${escapeHtml(h.n)}</span><div class="st-bar"><i style="width:${h.p}%;background:${h.p>=70?'#10b981':h.p>=45?'#f59e0b':'#ef4444'}"></i></div><b>${h.p}%</b><small>Practise</small></button>`;
   const weak=[...chs].sort((a,b)=>a.p-b.p).slice(0,4),strong=[...chs].sort((a,b)=>b.p-a.p).slice(0,3).filter(h=>h.p>=60);
   const chHtml=chs.length?`<p class="st-lbl" style="margin-top:10px;color:#ef4444">Needs work</p>${weak.map(row).join('')}${strong.length?`<p class="st-lbl" style="margin-top:16px;color:#10b981">Strongest</p>${strong.map(row).join('')}`:''}`:'<div class="st-empty">Answer 3+ questions in a chapter to see strengths &amp; weak spots.</div>';
   /* heatmap: 14 weeks */
@@ -10446,9 +10514,9 @@ function buildStatsPageV2(){
     return `<div class="st-att"><div style="min-width:0"><h4 style="font-weight:800;font-size:13.5px;color:var(--text-primary);overflow:hidden;text-overflow:ellipsis">${escapeHtml(a.chapter)}</h4><p style="font-size:11px;color:var(--text-muted);margin-top:3px"><span class="st-badge">${escapeHtml(a.mode||'test')}</span>${escapeHtml(a.subject||'')} • ${new Date(a.finishedAt).toLocaleDateString()} ${new Date(a.finishedAt).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</p><div class="st-bar" style="margin-top:9px;max-width:260px"><i style="width:${a.total?(a.correct/a.total*100):0}%;background:#10b981"></i><i style="width:${a.total?(a.wrong/a.total*100):0}%;background:#ef4444"></i><i style="width:${a.total?(a.skipped/a.total*100):0}%;background:#94a3b8"></i></div></div><div style="display:flex;align-items:center;gap:12px;text-align:right;flex:none"><div><b style="display:block;font-size:16px;font-weight:900;color:${col};font-variant-numeric:tabular-nums">${a.score}<span style="font-size:11px;color:var(--text-muted)">/${a.maxScore}</span></b><span style="font-size:10.5px;font-weight:800;color:var(--text-muted)">${a.accuracy||0}% acc · ${a.correct||0}✓ ${a.wrong||0}✗</span></div><button onclick="generateAiTestPerformanceFeedback(${JSON.stringify(a).replace(/"/g,'&quot;')})" class="p-2.5 rounded-xl bg-purple-500/10 text-purple-600 hover:bg-purple-500/20 transition text-xs font-bold" title="AI Feedback"><i class="fa-solid fa-wand-magic-sparkles"></i></button></div></div>`;}).join('')}</div>`:'<div class="st-empty">No attempts in this period. Take a test from the Test Hub!</div>';
   const pill=(v,l)=>`<button class="${range===v?'on':''}" onclick="window.__statsRange='${v}';renderView()">${l}</button>`;
   return `<div class="st">
-  <div class="st-head"><div><h2>Performance Analytics</h2><p>Marks, accuracy and time-tested trends — based on +${mc} / −${mw} NEET marking.</p></div><div class="st-pills">${pill('7','7 days')}${pill('30','30 days')}${pill('all','All time')}</div></div>
+  <div class="st-head"><div><h2>Performance Analytics</h2><p>Completed tests in this date range · +${mc} / −${mw} marking. Practice-question insights are shown separately.</p></div><div class="st-pills">${pill('7','7 days')}${pill('30','30 days')}${pill('all','All time')}</div></div>
   <div class="st-grid st-k4">
-    <div class="st-c st-hero"><span class="st-lbl">Projected NEET score</span><div class="st-big" style="margin-top:10px">${at.length?projected:'—'}<sub>/ 720</sub></div><span class="st-band">${band}</span></div>
+    <div class="st-c st-hero"><span class="st-lbl">Test-score estimate</span><div class="st-big" style="margin-top:10px">${at.length?projected:'—'}<sub>/ 720</sub></div><span class="st-band">${band}</span><small class="st-sub" style="display:block;margin-top:8px">Simple average of ${at.length} completed test${at.length===1?'':'s'} in this date range; not a prediction. Practice-only sessions are excluded.</small></div>
     <div class="st-c st-kpi"><div><span class="st-lbl">Avg test score</span><div class="st-big" style="margin-top:10px">${avgPct}<sub>%</sub></div><div class="st-sub">${best?`Best ${best.score}/${best.maxScore}`:'No tests yet'}</div></div>${ring(avgPct,'#14b8a6')}</div>
     <div class="st-c st-kpi"><div><span class="st-lbl">Accuracy</span><div class="st-big" style="margin-top:10px">${acc}<sub>%</sub></div><div class="st-sub">${cor} right · ${wr} wrong</div></div>${ring(acc,'#10b981')}</div>
     <div class="st-c st-kpi"><div><span class="st-lbl">Day streak</span><div class="st-big" style="margin-top:10px">${streak.current||0}<sub>days</sub></div><div class="st-sub">Best ${streak.best||0} · ${att} solved</div></div><span style="font-size:34px">🔥</span></div>
@@ -13506,7 +13574,7 @@ body:has(.vt-viewer.open) #toast-container{z-index:80!important}
     <div>
       <span class="vt-eyebrow"><i class="fa-solid fa-book-bookmark"></i> Resource Vault</span>
       <h2>Every study portal, <em>right inside EduPulse.</em></h2>
-      <p>Batches, test series, books and PYQs in one place. Tap any card and it opens here in the app, no tab-hopping.</p>
+      <p>Browse batches, test series, books and PYQs in one place. These are third-party portals; some require sign-in or open only in a new browser tab.</p>
     </div>
     <div class="vt-stats">
       <div><b>${all.length}</b><span>Portals</span></div>
@@ -13564,7 +13632,7 @@ body:has(.vt-viewer.open) #toast-container{z-index:80!important}
     <button type="button" class="vt-pin ${on ? 'on' : ''}" data-pin="${it.id}" aria-pressed="${on}" aria-label="${on ? 'Unpin' : 'Pin'} ${esc(it.title)}" onclick="event.stopPropagation();epVault.pin('${it.id}')"><i class="fa-${on ? 'solid' : 'regular'} fa-star"></i></button>
   </div>
   <h4>${esc(it.title)}</h4>
-  <p class="vt-host"><i class="fa-solid fa-link"></i>${esc(host(it.url))}</p>
+  <p class="vt-host"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>External · ${esc(host(it.url))}</p>
   <div class="vt-meta"><span class="vt-tag">${esc(it.subtag)}</span><span class="vt-badge">${esc(it.badge)}</span></div>
   <div class="vt-actions">
     <button type="button" class="vt-open" tabindex="-1"><span>Open in app</span><i class="fa-solid fa-arrow-right text-[11px]"></i></button>
@@ -14331,57 +14399,70 @@ ${opt('gemini', 'Google via Gemini', 'Gemini\'s own search. Only works on paid G
 .ep-ncert-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:12px;border:1px solid #10b981;color:#047857;background:rgba(16,185,129,.08);font-size:11px;font-weight:800;cursor:pointer}
 .ep-ncert-btn small{opacity:.7;font-weight:700}
 html.dark .ep-ncert-btn{color:#6ee7b7}
-#ep-ncert{position:fixed;inset:0;z-index:100000;display:none;align-items:stretch;justify-content:center;background:rgba(2,6,23,.6);backdrop-filter:blur(3px)}
+#ep-ncert{position:fixed;inset:0;z-index:100000;display:none;align-items:stretch;justify-content:center;background:rgba(2,6,23,.68);backdrop-filter:blur(4px)}
 #ep-ncert.on{display:flex}
-#ep-ncert .nb{width:min(760px,100%);margin:auto;height:min(92vh,100%);display:flex;flex-direction:column;background:#fff;color:#0f172a;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+#ep-ncert .nb{width:min(900px,100%);margin:auto;height:min(92vh,100%);display:flex;flex-direction:column;background:#fff;color:#0f172a;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 html.dark #ep-ncert .nb{background:#0f172a;color:#e2e8f0}
 #ep-ncert header{padding:12px 14px;border-bottom:1px solid rgba(148,163,184,.3);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-#ep-ncert header b{font-size:13px;flex:1;min-width:120px}
-#ep-ncert select,#ep-ncert button.nbtn,#ep-ncert a.nbtn{font-size:11px;font-weight:700;padding:6px 10px;border-radius:10px;border:1px solid rgba(148,163,184,.5);background:transparent;color:inherit;text-decoration:none;cursor:pointer}
-#ep-ncert .body{flex:1;overflow:auto;padding:18px 20px;font-family:Georgia,'Times New Roman',serif;font-size:15.5px;line-height:1.75}
-#ep-ncert .body p{margin:0}
-#ep-ncert mark.ep-hl{background:#fde68a;color:#1e293b;border-radius:4px;padding:1px 2px;box-shadow:0 0 0 2px rgba(251,191,36,.35)}
-#ep-ncert footer{padding:10px 14px;border-top:1px solid rgba(148,163,184,.3);display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px}
+#ep-ncert header b{font-size:13px;flex:1 1 170px;min-width:120px}
+#ep-ncert select,#ep-ncert input,#ep-ncert button.nbtn,#ep-ncert a.nbtn{font:700 11px system-ui;padding:8px 10px;border-radius:10px;border:1px solid rgba(148,163,184,.5);background:transparent;color:inherit;text-decoration:none;cursor:pointer}
+#ep-ncert input{min-width:160px;flex:1}
+#ep-ncert button:disabled{opacity:.45;cursor:not-allowed}
+#ep-ncert .epn-progress{height:4px;background:rgba(148,163,184,.2)}
+#ep-ncert .epn-progress i{display:block;height:100%;background:#10b981;transition:width .2s}
+#ep-ncert .epn-status{padding:6px 16px;font:700 10px system-ui;color:#64748b;border-bottom:1px solid rgba(148,163,184,.18)}
+#ep-ncert .body{flex:1;overflow:auto;padding:clamp(18px,4vw,34px);font:16px/1.8 Georgia,'Times New Roman',serif;scroll-behavior:smooth}
+#ep-ncert .body p{margin:0 0 1em}
+#ep-ncert .body h3{margin:1.5em 0 .55em;font:800 18px/1.35 system-ui;color:#0f766e}
+html.dark #ep-ncert .body h3{color:#5eead4}
+#ep-ncert mark.ep-hl{background:#fde68a;color:#1e293b;border-radius:4px;padding:1px 2px;box-shadow:0 0 0 2px rgba(251,191,36,.25)}
+#ep-ncert mark.ep-search{background:#a7f3d0;color:#064e3b;border-radius:3px}
+#ep-ncert footer{padding:10px 14px;border-top:1px solid rgba(148,163,184,.3);display:flex;justify-content:space-between;align-items:center;gap:8px;font:700 11px system-ui}
+@media(max-width:560px){#ep-ncert .nb{height:100%;border-radius:0}#ep-ncert header{gap:6px}#ep-ncert header b{flex-basis:calc(100% - 48px)}#epn-practice,#epn-source{flex:1;justify-content:center}}
+@media(prefers-reduced-motion:reduce){#ep-ncert .body{scroll-behavior:auto}#ep-ncert .epn-progress i{transition:none}}
 </style>
 <div id="ep-ncert" role="dialog" aria-modal="true" aria-label="NCERT reader"><div class="nb">
-<header><b id="epn-title">NCERT</b><select id="epn-book" aria-label="Chapter"></select><a id="epn-pdf" class="nbtn" target="_blank" rel="noopener">Open original PDF</a><button class="nbtn" onclick="epCloseNcert()" aria-label="Close">✕</button></header>
-<div class="body" id="epn-body"></div>
-<footer><button class="nbtn" id="epn-prev">← Prev</button><span id="epn-pg"></span><button class="nbtn" id="epn-next">Next →</button></footer>
+<header><b id="epn-title">NCERT reader</b><button type="button" class="nbtn" id="epn-practice"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Practise chapter</button><a id="epn-source" class="nbtn" href="https://ncert.nic.in/textbook.php" target="_blank" rel="noopener noreferrer">NCERT source</a><select id="epn-book" aria-label="NCERT chapter"></select><input type="search" id="epn-search" placeholder="Find in this chapter" aria-label="Search this chapter"><button type="button" class="nbtn" id="epn-find-prev" aria-label="Previous search result" title="Previous match">↑</button><button type="button" class="nbtn" id="epn-find-next" aria-label="Next search result" title="Next match">↓</button><span id="epn-match-count" aria-live="polite"></span><button type="button" class="nbtn" id="epn-close" aria-label="Close NCERT reader">Close</button></header>
+<div class="epn-progress" role="progressbar" id="epn-progress" aria-label="Chapter reading progress" aria-valuemin="0" aria-valuemax="100"><i id="epn-progress-bar" style="width:0%"></i></div><div class="epn-status" id="epn-status" aria-live="polite"></div>
+<div class="body" id="epn-body" tabindex="0"></div>
+<footer><button type="button" class="nbtn" id="epn-prev">← Previous page</button><span id="epn-pg" aria-live="polite"></span><button type="button" class="nbtn" id="epn-next">Next page →</button></footer>
 </div></div>
 <script id="ep-ncert-js">
 (function(){
-var DATA=null,cur={b:'PK',idx:0,hl:-1};
-var BASES=['/ncert/','./ncert/','ncert/'];
-function load(){ if(DATA) return Promise.resolve(DATA);
-  var i=0; return (function next(){ if(i>=BASES.length) return Promise.reject(new Error('ncert-text.json not found'));
-    return fetch(BASES[i++]+'ncert-text.json').then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(j){ DATA=j; return j; }).catch(next); })(); }
-function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
-function render(){
-  var bk=DATA[cur.b], pg=bk.pages[cur.idx], body=document.getElementById('epn-body');
-  document.getElementById('epn-title').textContent='NCERT Biology · '+bk.title;
-  document.getElementById('epn-pg').textContent='Page '+pg.pg+' ('+(cur.idx+1)+'/'+bk.pages.length+')';
-  document.getElementById('epn-pdf').href=BASES[0]+bk.file+'#page='+pg.pdf;
-  body.innerHTML='<p>'+pg.s.map(function(t,i){ return i===cur.hl?'<mark class="ep-hl" id="epn-hl">'+esc(t)+'</mark>':esc(t); }).join(' ')+'</p>';
-  var h=document.getElementById('epn-hl'); if(h) h.scrollIntoView({block:'center'}); else body.scrollTop=0;
-  document.getElementById('epn-prev').disabled=cur.idx===0; document.getElementById('epn-next').disabled=cur.idx===bk.pages.length-1;
+'use strict';
+var DATA=null,cur={b:'plant-kingdom',idx:0,hl:-1,q:'',matchIndex:0},lastFocus=null,STORE='edupulse_ncert_reader_v1';
+function esc(s){return String(s==null?'':s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c];});}
+function load(){if(DATA)return Promise.resolve(DATA);return fetch('/ncert/ncert-index.json',{cache:'force-cache'}).then(function(r){if(!r.ok)throw new Error('Chapter list unavailable');return r.json();}).then(function(index){return Promise.all((index.chapters||[]).map(function(item){return fetch('/ncert/'+encodeURIComponent(item.file),{cache:'force-cache'}).then(function(r){if(!r.ok)throw new Error('Chapter unavailable');return r.json();}).then(function(book){return [item.id,book];});})).then(function(entries){DATA=Object.fromEntries(entries);if(!Object.keys(DATA).length)throw new Error('No chapters are available');return DATA;});});}
+function getBook(){return DATA&&DATA[cur.b];}
+function getSentences(book){return (book.pages||[]).map(function(page){return (page.blocks||[]).flatMap(function(block){return block.sentences||[];});});}
+function searchPages(){var book=getBook(),q=cur.q.trim().toLowerCase();if(!book||!q)return [];return getSentences(book).map(function(sentences,i){return sentences.some(function(s){return String(s.text||'').toLowerCase().includes(q);})?i:-1;}).filter(function(i){return i>=0;});}
+function safeText(text){var html=esc(text),q=cur.q.trim();if(!q)return html;try{return html.replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),'<mark class="ep-search">$&</mark>');}catch(e){return html;}}
+function sentenceHtml(sentence,index){var html=safeText(sentence.text||'');return index===cur.hl?'<mark class="ep-hl">'+html+'</mark>':sentence.hl?'<mark class="ep-hl">'+html+'</mark>':html;}
+function saveLocation(){try{localStorage.setItem(STORE,JSON.stringify({book:cur.b,page:cur.idx}));}catch(e){}}
+function fillBooks(){var sel=document.getElementById('epn-book');sel.innerHTML=Object.keys(DATA).map(function(k){return '<option value="'+esc(k)+'">'+esc(DATA[k].title)+'</option>';}).join('');sel.value=cur.b;}
+function render(){var book=getBook();if(!book)return;var page=book.pages[cur.idx],body=document.getElementById('epn-body'),sentenceIndex=0;
+ document.getElementById('epn-title').textContent='NCERT Biology · '+book.title;
+ document.getElementById('epn-pg').textContent='Page '+page.pg+' ('+(cur.idx+1)+'/'+book.pages.length+')';
+ document.getElementById('epn-status').textContent='Selected text extract · '+(book.counts&&book.counts.pages||book.pages.length)+' pages indexed in this chapter';
+ var pct=Math.round((cur.idx+1)/book.pages.length*100),bar=document.getElementById('epn-progress-bar'),progress=document.getElementById('epn-progress');bar.style.width=pct+'%';progress.setAttribute('aria-valuenow',String(pct));
+ var content=(page.blocks||[]).map(function(block){if(block.type==='heading')return '<h3>'+safeText(block.text||'')+'</h3>';var sentences=block.sentences||[];if(!sentences.length)return '';return '<p>'+sentences.map(function(sentence){var html=sentenceHtml(sentence,sentenceIndex++);return html;}).join(' ')+'</p>';}).join('');
+ body.innerHTML=content||'<p>This page has no readable text in the current extract.</p>';
+ var matches=searchPages(),counter=document.getElementById('epn-match-count');counter.textContent=cur.q.trim()?(matches.length?((matches.indexOf(cur.idx)+1)+'/'+matches.length):'0 matches'):'';
+ document.getElementById('epn-find-prev').disabled=!matches.length;document.getElementById('epn-find-next').disabled=!matches.length;
+ document.getElementById('epn-prev').disabled=cur.idx===0;document.getElementById('epn-next').disabled=cur.idx===book.pages.length-1;
+ document.getElementById('epn-practice').onclick=function(){if(typeof openPracticeSetup==='function')openPracticeSetup('Biology',book.title);};
+ saveLocation();
 }
-function fillBooks(){ var sel=document.getElementById('epn-book'); sel.innerHTML=Object.keys(DATA).map(function(k){return '<option value="'+k+'">'+esc(DATA[k].title)+'</option>';}).join(''); sel.value=cur.b; }
-window.epOpenNcert=function(b,pg,i){
-  var box=document.getElementById('ep-ncert'); box.classList.add('on');
-  if(typeof toggleMobileNav==='function'){ try{toggleMobileNav(false);}catch(e){} }
-  document.getElementById('epn-body').textContent='Loading…';
-  load().then(function(){
-    cur.b=(b&&DATA[b])?b:(cur.b||'PK'); fillBooks();
-    var pages=DATA[cur.b].pages, k=0; if(pg!=null){ k=pages.findIndex(function(p){return p.pg===+pg;}); if(k<0)k=0; }
-    cur.idx=k; cur.hl=(i==null?-1:+i); render();
-  }).catch(function(){ document.getElementById('epn-body').innerHTML='<p>NCERT text could not be loaded. Upload <code>ncert/ncert-text.json</code> to your site (see backend steps).</p>'; });
-};
-window.epCloseNcert=function(){ document.getElementById('ep-ncert').classList.remove('on'); };
-document.getElementById('epn-book').addEventListener('change',function(e){ cur.b=e.target.value; cur.idx=0; cur.hl=-1; render(); });
-document.getElementById('epn-prev').onclick=function(){ if(cur.idx>0){cur.idx--;cur.hl=-1;render();} };
-document.getElementById('epn-next').onclick=function(){ if(cur.idx<DATA[cur.b].pages.length-1){cur.idx++;cur.hl=-1;render();} };
-document.addEventListener('keydown',function(e){ if(e.key==='Escape') epCloseNcert(); });
-document.getElementById('ep-ncert').addEventListener('click',function(e){ if(e.target.id==='ep-ncert') epCloseNcert(); });
+function moveMatch(delta){var matches=searchPages();if(!matches.length)return;var current=matches.indexOf(cur.idx);cur.matchIndex=(current<0?0:(current+delta+matches.length)%matches.length);cur.idx=matches[cur.matchIndex];cur.hl=-1;render();}
+window.epOpenNcert=function(b,pg,i){var box=document.getElementById('ep-ncert');lastFocus=document.activeElement;box.classList.add('on');if(typeof toggleMobileNav==='function'){try{toggleMobileNav(false);}catch(e){}}document.getElementById('epn-body').textContent='Loading chapter extracts…';document.getElementById('epn-close').focus();load().then(function(){var saved={};try{saved=JSON.parse(localStorage.getItem(STORE)||'{}')||{};}catch(e){}var requested=b==='PK'?'plant-kingdom':b;cur.b=DATA[requested]?requested:(DATA[saved.book]?saved.book:Object.keys(DATA)[0]);fillBooks();cur.q='';document.getElementById('epn-search').value='';var pages=DATA[cur.b].pages||[],target=pg!=null?pages.findIndex(function(p){return p.pg===Number(pg);}):-1;cur.idx=target>=0?target:(b&&DATA[requested]?0:Math.min(Number(saved.page)||0,pages.length-1));cur.hl=i==null?-1:Number(i);render();}).catch(function(){document.getElementById('epn-body').innerHTML='<p>NCERT chapter extracts could not be loaded. Check your connection and try again.</p>';});};
+window.epCloseNcert=function(){document.getElementById('ep-ncert').classList.remove('on');if(lastFocus&&lastFocus.isConnected)lastFocus.focus();};
+document.getElementById('epn-book').addEventListener('change',function(e){cur.b=e.target.value;cur.idx=0;cur.hl=-1;cur.q='';document.getElementById('epn-search').value='';render();});
+document.getElementById('epn-search').addEventListener('input',function(e){cur.q=e.target.value;cur.matchIndex=0;var matches=searchPages();if(matches.length)cur.idx=matches[0];cur.hl=-1;render();});
+document.getElementById('epn-find-prev').onclick=function(){moveMatch(-1);};document.getElementById('epn-find-next').onclick=function(){moveMatch(1);};
+document.getElementById('epn-prev').onclick=function(){if(cur.idx>0){cur.idx--;cur.hl=-1;render();}};document.getElementById('epn-next').onclick=function(){var book=getBook();if(book&&cur.idx<book.pages.length-1){cur.idx++;cur.hl=-1;render();}};
+document.getElementById('epn-close').onclick=window.epCloseNcert;
+document.addEventListener('keydown',function(e){var box=document.getElementById('ep-ncert');if(!box.classList.contains('on'))return;if(e.key==='Escape'){e.stopPropagation();window.epCloseNcert();}if(e.key==='Tab'){var focusable=Array.from(box.querySelectorAll('button:not(:disabled),a[href],input,select')).filter(function(el){return el.offsetParent!==null;});if(!focusable.length)return;var first=focusable[0],last=focusable[focusable.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}},true);
+document.getElementById('ep-ncert').addEventListener('click',function(e){if(e.target.id==='ep-ncert')window.epCloseNcert();});
 })();
 </script>
 <style id="ep-v50">
@@ -14396,9 +14477,12 @@ body.dark .text-slate-400,body.dark .text-slate-500{color:#a9b4c6!important}
 #ep50-strip{position:fixed;top:0;left:0;right:0;height:4px;z-index:100000;background:rgba(148,163,184,.25);display:none}
 #ep50-strip i{display:block;height:100%;width:0;background:linear-gradient(90deg,#14b8a6,#0d9488);transition:width .3s}
 #ep50-tm{position:fixed;top:8px;right:10px;z-index:100000;font:800 11px system-ui;padding:3px 8px;border-radius:99px;background:rgba(15,23,42,.7);color:#fff;display:none}
-#ep50-fab{position:fixed;left:10px;bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:100000;width:38px;height:38px;border-radius:50%;border:1px solid #cbd5e1;background:var(--card-bg,#fff);color:#0d9488;font-size:16px;box-shadow:0 4px 14px rgba(0,0,0,.2)}
-#ep50-menu{position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom,0px));z-index:100000;display:none;flex-direction:column;gap:6px;padding:10px;border-radius:16px;background:var(--card-bg,#fff);color:var(--text-primary,#0f172a);border:1px solid #cbd5e1;box-shadow:0 12px 30px rgba(0,0,0,.3);width:210px}
-#ep50-menu button{font:700 12px system-ui;text-align:left;padding:8px 10px;border-radius:10px;border:1px solid #e2e8f0;background:transparent;color:inherit}
+#ep50-fab{position:fixed;left:12px;bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:100000;width:42px;height:42px;border-radius:15px;border:1px solid rgba(255,255,255,.4);background:linear-gradient(145deg,#14b8a6,#0f766e);color:#fff;font-size:17px;box-shadow:0 8px 22px rgba(13,148,136,.3);display:grid;place-items:center;transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+#ep50-fab:hover{transform:translateY(-2px);box-shadow:0 11px 26px rgba(13,148,136,.38);filter:saturate(1.08)}
+#ep50-fab:focus-visible{outline:3px solid rgba(20,184,166,.38);outline-offset:3px}
+#ep50-menu{position:fixed;left:12px;bottom:calc(190px + env(safe-area-inset-bottom,0px));z-index:100000;display:none;flex-direction:column;gap:6px;padding:10px;border-radius:18px;background:var(--card-bg,#fff);color:var(--text-primary,#0f172a);border:1px solid var(--border-color,#cbd5e1);box-shadow:0 16px 38px rgba(2,6,23,.22);width:min(230px,calc(100vw - 24px));max-height:min(60dvh,420px);overflow-y:auto;overscroll-behavior:contain}
+#ep50-menu button{font:700 12px system-ui;text-align:left;padding:8px 10px;border-radius:10px;border:1px solid var(--border-color,#e2e8f0);background:transparent;color:inherit;min-height:40px}
+@media(max-width:640px) and (max-height:520px){#ep50-fab,#ep50-menu{display:none!important}}
 #ep50-off{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:100001;padding:4px 12px;border-radius:99px;background:#f59e0b;color:#111;font:800 11px system-ui;display:none}
 .ep-why{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}.ep-why b{font:800 10px system-ui;padding:3px 8px;border-radius:99px;background:rgba(20,184,166,.14);color:#0f766e}
 #ep50-zoom{position:fixed;inset:0;z-index:100002;background:rgba(0,0,0,.9);overflow:auto;touch-action:pinch-zoom pan-x pan-y;display:flex}
