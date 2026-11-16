@@ -7491,9 +7491,22 @@ function updateSettingsFromForm() {
 
 
 // ===== Dashboard v2 =====
+function getLocalStudyDateKey(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+function startDashboardFocusBlock() {
+  resetFocusTimer(25);
+  switchTab('tools');
+  if (!focusTimerRunning) toggleFocusTimer();
+}
+
 function toggleStudyPlanTask(taskId) {
   const key = 'edupulse_study_plan_v1';
-  const todayKey = new Date().toISOString().slice(0, 10);
+  const todayKey = getLocalStudyDateKey();
   let state = {};
   try { state = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) {}
   if (state.date !== todayKey) state = { date: todayKey, done: [] };
@@ -7563,7 +7576,8 @@ function buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccu
       ${act("switchTab('mock'); setMockSubTab('batch');", 'fa-desktop', 'teal', 'Batch mocks')}
       ${act("switchTab('mock'); setMockSubTab('generate');", 'fa-wand-magic-sparkles', 'violet', '180Q mock')}
       ${act("switchTab('directory')", 'fa-book-bookmark', 'amber', 'Vault')}
-      ${act("switchTab('tools')", 'fa-stopwatch', 'sky', 'Focus clock')}
+      ${act("startDashboardFocusBlock()", 'fa-stopwatch', 'sky', 'Start 25-min focus')}
+      ${act("switchTab('tools')", 'fa-clock', 'teal', 'Focus tools')}
       ${act("toggleAiChatbotWindow()", 'fa-robot', 'rose', 'Ask AI')}
     </div>
   </section>`;
@@ -7641,7 +7655,7 @@ function buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccu
     const chapter = getWeakChapters(10).find(item => item.subject === name);
     return `<article class="study-subject ${tone}"><div class="study-subject-head"><span class="study-subject-icon"><i class="fa-solid ${icon}" aria-hidden="true"></i></span><span><b>${name}</b><small>${attempts} questions attempted</small></span></div><div class="study-subject-score"><strong>${accuracy}%</strong><span>accuracy</span></div><div class="study-meter" role="progressbar" aria-label="${name} accuracy" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${accuracy}"><i style="width:${accuracy}%"></i></div>${chapter ? `<button type="button" class="study-subject-tip" onclick="openPracticeSetup('${jsArg(chapter.subject)}','${jsArg(chapter.chapter)}')">Focus next: ${escapeHtml(chapter.chapter)} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>` : `<p class="study-subject-tip">Complete a practice set to unlock a chapter focus.</p>`}</article>`;
   }).join('');
-  const todayKey = new Date().toISOString().slice(0, 10);
+  const todayKey = getLocalStudyDateKey();
   const planKey = 'edupulse_study_plan_v1';
   let planState = {};
   try { planState = JSON.parse(localStorage.getItem(planKey) || '{}'); } catch (e) {}
@@ -7667,6 +7681,7 @@ function buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccu
     <div class="study-section-head"><div><span class="study-overline">YOUR PREPARATION</span><h3>Subject performance</h3></div><span>Based on practice history</span></div>
     <section class="study-subject-grid" aria-label="Subject performance">${subjectCards}</section>
     <div class="study-section-head study-plan-heading"><div><span class="study-overline">A LITTLE EVERY DAY</span><h3>Today&apos;s study plan</h3></div><span>${planState.done.length}/${planCandidates.length} complete</span></div>
+    <div class="study-plan-progress" role="progressbar" aria-label="Daily study plan progress" aria-valuemin="0" aria-valuemax="${planCandidates.length}" aria-valuenow="${planState.done.length}"><i style="width:${Math.round(planState.done.length / planCandidates.length * 100)}%"></i></div>
     <section class="study-plan-card" aria-label="Today's study plan">${plan}</section>
     ${actions}
     <div class="dv2-grid">
@@ -15038,5 +15053,66 @@ window.epQa=function(action,btn){if(action==='report'){try{epQaClose()}catch(e){
 document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-action="report"]');if(b&&b.closest('#normal-practice-toolkit')){e.preventDefault();e.stopImmediatePropagation();open()}},true);
 })();
 </script>
+<style id="edupulse-dashboard-finish">
+  .dv2 { gap: 22px; }
+  .dv2-hero {
+    isolation: isolate;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255,255,255,.16);
+    background-image: radial-gradient(circle at 88% 18%, rgba(255,255,255,.18), transparent 28%), linear-gradient(120deg, #0b766e 0%, #0f9f91 48%, #4169c9 100%) !important;
+    box-shadow: 0 24px 54px -34px rgba(15,118,110,.65) !important;
+  }
+  .dv2-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 250px;
+    height: 250px;
+    right: -90px;
+    bottom: -150px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 50%;
+    box-shadow: 0 0 0 28px rgba(255,255,255,.045), 0 0 0 58px rgba(255,255,255,.035);
+    pointer-events: none;
+  }
+  .dv2-hero-text h2 { max-width: 17ch; font-size: clamp(27px, 4vw, 42px); line-height: 1.08; letter-spacing: -.055em; }
+  .dv2-hero-text .dv2-sub { max-width: 54ch; }
+  .dv2-btn, .dv2-act, .study-plan-task, .study-check, .dv2-ring { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .dv2-btn:hover, .dv2-act:hover, .study-plan-task:hover { transform: translateY(-2px); }
+  .dv2-stat, .study-subject, .dv2-card, .study-plan-card, .study-recommendation {
+    border: 1px solid var(--border-color, rgba(148,163,184,.2));
+    box-shadow: 0 12px 32px -26px rgba(15,23,42,.42);
+  }
+  .dv2-stat:hover, .study-subject:hover, .dv2-card:hover { border-color: color-mix(in srgb, var(--teal,#0f9f91) 30%, var(--border-color)); }
+  .study-plan-progress {
+    height: 6px;
+    margin: -4px 2px 10px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--teal,#0f9f91) 11%, var(--border-color));
+  }
+  .study-plan-progress i {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #0f9f91, #56c5b4);
+    transition: width .35s ease;
+  }
+  .study-plan-heading > span { padding: 5px 9px; border: 1px solid var(--border-color); border-radius: 999px; background: var(--card-bg); }
+  .dv2-ring:hover { transform: scale(1.035); }
+  body.dark .dv2-hero { border-color: rgba(255,255,255,.13); }
+  @media (max-width: 640px) {
+    .dv2 { gap: 16px; }
+    .dv2-hero { padding: 22px !important; border-radius: 24px !important; }
+    .dv2-hero-text h2 { font-size: clamp(27px, 8vw, 36px); }
+    .dv2-acts { gap: 9px !important; }
+    .study-plan-heading { align-items: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dv2-btn, .dv2-act, .study-plan-task, .study-check, .dv2-ring, .study-plan-progress i { transition: none; }
+  }
+</style>
 </body>
 </html>
