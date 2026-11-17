@@ -2684,6 +2684,8 @@ html body #normal-practice-toolkit details>.tk-group,html body #normal-practice-
 <button onclick="switchTab('progress')" id="nav-progress"><i class="fa-solid fa-chart-line w-5"></i> Performance Stats</button>
 <button onclick="epOpenNcert()" id="nav-ncert"><i class="fa-solid fa-book-open w-5 text-emerald-500"></i> NCERT Reader</button>
 <button onclick="switchTab('directory')" id="nav-directory"><i class="fa-solid fa-book-bookmark w-5"></i> Resource Vault</button>
+<button onclick="switchTab('communities')" id="nav-communities"><i class="fa-solid fa-people-group w-5"></i> Communities</button>
+<button onclick="switchTab('profile')" id="nav-profile"><i class="fa-solid fa-user w-5"></i> My Profile</button>
 <button onclick="switchTab('tools')" id="nav-tools"><i class="fa-solid fa-stopwatch w-5"></i> Focus & Planner</button>
 <button onclick="switchTab('about')" id="nav-about"><i class="fa-solid fa-heart w-5"></i> About</button>
 <button onclick="switchTab('settings')" id="nav-settings"><i class="fa-solid fa-gear w-5"></i> Settings</button>
@@ -7979,6 +7981,10 @@ const totalSolved = attemptsArr.reduce((s, a) => s + (a.attempted || 0), 0);
 const avgAccuracy = attemptsArr.length > 0 ? Math.round(attemptsArr.reduce((s, a) => s + (a.accuracy || 0), 0) / attemptsArr.length) : 0;
 
 main.innerHTML = buildDashboardV2({ streak, done, pct, attemptsArr, totalSolved, avgAccuracy });
+} else if (currentTab === 'communities') {
+main.innerHTML = window.communitiesMarkup();
+} else if (currentTab === 'profile') {
+main.innerHTML = window.renderCommunityProfile();
 } else if (currentTab === 'about') {
 main.innerHTML = `
 <div class="space-y-6 animate-fadeIn max-w-4xl mx-auto">
@@ -11149,6 +11155,8 @@ window.__bz={
 var SYNC_META_KEY='edupulse_sync_meta_v1';
 var lastHash='', ov=null, mode='signup', busy=false, pendingCloud=null, recoverySess=null, cooldown=0, cdTimer=null, sentInfo={kind:'confirm',email:''}, syncStatus=navigator.onLine?'idle':'offline';
 var supabaseClient=null, currentSession=null, supabaseRedirectUrl=location.origin+'/auth/callback', supabaseReady=null, syncInitError=false;
+var COMMUNITY_PROFILE_FIELDS='id,username,display_name,bio,avatar_url,created_at';
+var communityProfileState={status:'idle',data:null,error:'',userId:null};
 function normalizeSession(session){
   if(!session)return null;
   var user=Object.assign({},session.user||{});
@@ -11174,8 +11182,9 @@ function initializeSupabase(){
           recoverySess=currentSession;mode='reset';
           if(!ov)openAuth('reset');else draw();
         }
-        if(event==='SIGNED_OUT'){lastHash='';pendingCloud=null;}
+        if(event==='SIGNED_OUT'){lastHash='';pendingCloud=null;communityProfileState={status:'idle',data:null,error:'',userId:null};}
         rerender();
+        if(typeof currentTab!=='undefined'&&currentTab==='profile'&&typeof renderView==='function')renderView();
       });
       return supabaseClient.auth.getSession().then(function(result){
         if(result.error)throw result.error;
@@ -11190,6 +11199,46 @@ function startSupabase(){
   supabaseReady.then(function(){syncInitError=false;rerender();if(auth()&&mode!=='reset')afterLogin();},function(){syncInitError=true;rerender();});
 }
 startSupabase();
+function communitiesMarkup(){
+  return '<div class="space-y-6 animate-fadeIn max-w-4xl mx-auto"><section class="relative overflow-hidden rounded-3xl border border-teal-500/20 bg-gradient-to-br from-slate-950 via-teal-950 to-indigo-950 p-6 sm:p-8 text-white shadow-xl"><span class="inline-flex rounded-full border border-teal-300/20 bg-teal-300/10 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-teal-200">Study together</span><h2 class="mt-4 text-2xl sm:text-3xl font-black">Communities</h2><p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-300">Find your study circle, share useful resources, and learn alongside other NEET aspirants.</p></section><section class="card flex flex-col items-start gap-4 p-6 sm:flex-row sm:items-center sm:justify-between"><div class="flex items-start gap-4"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-teal-500/10 text-xl text-teal-600 dark:text-teal-300"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span><div><h3 class="font-black text-slate-900 dark:text-slate-100">Community spaces arrive in Phase 2</h3><p class="mt-1 max-w-xl text-sm leading-relaxed text-slate-500 dark:text-slate-400">Your practice, flashcards, Pulse AI, Resource Vault, and offline study tools continue to work as usual. Community discussions are not enabled yet.</p></div></div><span class="shrink-0 rounded-full border border-slate-200 px-3 py-1.5 text-xs font-bold text-slate-500 dark:border-slate-700 dark:text-slate-400">Coming next</span></section></div>';
+}
+function profileMarkup(){
+  var session=auth();
+  if(!session||!session.user)return '<div class="mx-auto max-w-3xl space-y-5 animate-fadeIn"><section class="card p-6 sm:p-8"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-500/10 text-xl text-indigo-500"><i class="fa-solid fa-user" aria-hidden="true"></i></span><h2 class="mt-4 text-2xl font-black text-slate-900 dark:text-slate-100">Your profile</h2><p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Create a free account to set up your community username and profile. You can keep studying offline or while signed out.</p><div class="mt-5 flex flex-wrap gap-3"><button type="button" class="rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-bold text-white" onclick="__bzAcc.open(\'signup\')">Create account</button><button type="button" class="rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-bold dark:border-slate-700" onclick="__bzAcc.open(\'login\')">Log in</button></div></section></div>';
+  if(communityProfileState.status==='loading'||communityProfileState.status==='idle')return '<div class="mx-auto max-w-3xl space-y-4 animate-fadeIn"><div class="card h-36 animate-pulse bg-slate-100 dark:bg-slate-800" aria-label="Loading profile"></div><div class="card h-64 animate-pulse bg-slate-100 dark:bg-slate-800" aria-hidden="true"></div></div>';
+  if(communityProfileState.status==='error')return '<div class="mx-auto max-w-3xl card p-6"><h2 class="text-xl font-black">Profile unavailable</h2><p class="mt-2 text-sm text-slate-500 dark:text-slate-400" role="status">'+escapeHtml(communityProfileState.error)+'</p><button type="button" class="mt-4 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-bold text-white" onclick="loadCommunityProfile(true)">Try again</button></div>';
+  var profile=communityProfileState.data||{},name=profile.display_name||session.user.name||'Student',avatar=profile.avatar_url?'<img src="'+escapeHtml(profile.avatar_url)+'" alt="Profile avatar" referrerpolicy="no-referrer" class="h-full w-full rounded-2xl object-cover">':'<span aria-hidden="true">'+escapeHtml(initials(name,session.user.email))+'</span>';
+  return '<div class="mx-auto max-w-3xl space-y-5 animate-fadeIn"><section class="card flex items-center gap-4 p-5 sm:p-6"><div class="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-teal-500 to-indigo-600 text-xl font-black text-white">'+avatar+'</div><div class="min-w-0"><p class="text-[10px] font-black uppercase tracking-widest text-teal-600 dark:text-teal-300">My profile</p><h2 class="mt-1 truncate text-xl font-black text-slate-900 dark:text-slate-100">'+escapeHtml(name)+'</h2><p class="text-sm text-slate-500 dark:text-slate-400">@'+escapeHtml(profile.username||'choose-a-username')+'</p></div></section><section class="card p-5 sm:p-6"><div class="mb-5"><h3 class="text-lg font-black text-slate-900 dark:text-slate-100">Profile details</h3><p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Choose a unique username. Your study progress stays private and separate.</p></div>'+(communityProfileState.error?'<p class="mb-4 rounded-xl border border-rose-500/20 bg-rose-500/10 p-3 text-sm font-semibold text-rose-700 dark:text-rose-300" role="alert">'+escapeHtml(communityProfileState.error)+'</p>':'')+'<form id="community-profile-form" class="space-y-4" onsubmit="return saveCommunityProfile(event)"><div><label for="community-profile-name" class="mb-1.5 block text-sm font-bold">Display name</label><input id="community-profile-name" name="display_name" type="text" maxlength="40" autocomplete="nickname" value="'+escapeHtml(profile.display_name||session.user.name||'')+'" class="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm dark:border-slate-700 dark:bg-slate-800" placeholder="How other students see you"></div><div><label for="community-profile-username" class="mb-1.5 block text-sm font-bold">Username</label><div class="flex items-center rounded-xl border border-slate-200 bg-slate-50 px-3 dark:border-slate-700 dark:bg-slate-800"><span class="text-sm text-slate-400">@</span><input id="community-profile-username" name="username" type="text" required minlength="3" maxlength="20" pattern="[a-z0-9_]{3,20}" autocapitalize="none" spellcheck="false" autocomplete="username" value="'+escapeHtml(profile.username||'')+'" class="min-w-0 flex-1 bg-transparent p-3 text-sm outline-none" placeholder="ananya_neet"><span class="sr-only">Use 3–20 lowercase letters, numbers, or underscores.</span></div><p class="mt-1 text-xs text-slate-500">3–20 lowercase letters, numbers, or underscores.</p></div><div><label for="community-profile-bio" class="mb-1.5 block text-sm font-bold">Bio</label><textarea id="community-profile-bio" name="bio" maxlength="200" rows="3" class="w-full resize-y rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm dark:border-slate-700 dark:bg-slate-800" placeholder="What are you studying right now?">'+escapeHtml(profile.bio||'')+'</textarea></div><div><label for="community-profile-avatar" class="mb-1.5 block text-sm font-bold">Avatar image URL <span class="font-normal text-slate-500">(optional, HTTPS)</span></label><input id="community-profile-avatar" name="avatar_url" type="url" inputmode="url" maxlength="500" value="'+escapeHtml(profile.avatar_url||'')+'" class="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm dark:border-slate-700 dark:bg-slate-800" placeholder="https://example.com/avatar.jpg"></div><div class="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-4 dark:border-slate-700"><p class="text-xs text-slate-500">Account created '+(profile.created_at?escapeHtml(new Date(profile.created_at).toLocaleDateString()):'recently')+'</p><button type="submit" class="rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-teal-700">Save profile</button></div></form></section></div>';
+}
+function loadCommunityProfile(retry){
+  var session=auth();
+  if(!session||!session.user)return Promise.resolve(null);
+  if(!navigator.onLine){communityProfileState={status:'error',data:null,error:'You are offline. Your study tools are still available; reconnect to load your profile.',userId:session.user.id};if(currentTab==='profile')renderView();return Promise.resolve(null);}
+  if(communityProfileState.status==='loading'&&!retry)return Promise.resolve(null);
+  communityProfileState={status:'loading',data:null,error:'',userId:session.user.id};
+  if(currentTab==='profile')renderView();
+  return supabaseReady.then(function(context){return context.client.from('profiles').select(COMMUNITY_PROFILE_FIELDS).eq('id',session.user.id).maybeSingle();}).then(function(result){if(result.error)throw result.error;communityProfileState={status:'ready',data:result.data,error:'',userId:session.user.id};}).catch(function(error){var missing=error&&(error.code==='42P01'||error.code==='PGRST205'||/profiles.*(schema cache|does not exist)/i.test(error.message||''));communityProfileState={status:'error',data:null,error:!navigator.onLine?'You are offline. Reconnect to load your profile.':missing?'Profile storage is not set up yet. Review and run supabase-phase-1.sql, then try again.':'Could not load your profile. Please try again.',userId:session.user.id};}).then(function(){if(currentTab==='profile')renderView();return communityProfileState.data;});
+}
+function saveCommunityProfile(event){
+  event.preventDefault();
+  var session=auth();if(!session||!session.user){toast('Log in to save your profile.','info');return false;}
+  if(!navigator.onLine){communityProfileState.error='You are offline. Reconnect to save your profile.';renderView();return false;}
+  var username=(document.getElementById('community-profile-username').value||'').trim().toLowerCase();
+  var displayName=(document.getElementById('community-profile-name').value||'').trim();
+  var bio=(document.getElementById('community-profile-bio').value||'').trim();
+  var avatarUrl=(document.getElementById('community-profile-avatar').value||'').trim();
+  if(!/^[a-z0-9_]{3,20}$/.test(username)){toast('Use 3–20 lowercase letters, numbers, or underscores for your username.','warning');return false;}
+  if(displayName.length>40||bio.length>200||avatarUrl.length>500){toast('One of your profile fields is too long.','warning');return false;}
+  if(avatarUrl){try{if(new URL(avatarUrl).protocol!=='https:')throw new Error('https required');}catch(error){toast('Avatar URL must be a valid HTTPS address.','warning');return false;}}
+  var values={username:username,display_name:displayName,bio:bio,avatar_url:avatarUrl||null};
+  var button=document.querySelector('#community-profile-form button[type="submit"]');if(button){button.disabled=true;button.textContent='Saving…';}
+  communityProfileState.error='';
+  return supabaseReady.then(function(context){var table=context.client.from('profiles');if(communityProfileState.data)return table.update(values).eq('id',session.user.id).select(COMMUNITY_PROFILE_FIELDS).single();return table.insert(Object.assign({id:session.user.id},values)).select(COMMUNITY_PROFILE_FIELDS).single();}).then(function(result){if(result.error)throw result.error;communityProfileState={status:'ready',data:result.data,error:'',userId:session.user.id};toast('Profile saved.','success');}).catch(function(error){var duplicate=error&&error.code==='23505';communityProfileState.error=duplicate?'That username is already taken. Choose another one.':!navigator.onLine?'You are offline. Reconnect to save your profile.':'Could not save your profile. Please check your details and try again.';toast(communityProfileState.error,'error');}).then(function(){if(currentTab==='profile')renderView();return false;});
+}
+window.communitiesMarkup=communitiesMarkup;
+window.renderCommunityProfile=function(){var session=auth();if(session&&session.user&&communityProfileState.userId!==session.user.id)communityProfileState={status:'idle',data:null,error:'',userId:session.user.id};if(session&&communityProfileState.status==='idle')loadCommunityProfile();return profileMarkup();};
+window.loadCommunityProfile=loadCommunityProfile;
+window.saveCommunityProfile=saveCommunityProfile;
 function syncMeta(){try{var value=JSON.parse(localStorage.getItem(SYNC_META_KEY)||'{}');return value&&typeof value==='object'?value:{};}catch(e){return {};}}
 function getSyncRevision(userId){var a=auth(),id=userId||(a&&a.user&&a.user.id),value=id?Number(syncMeta()[id]):0;return Number.isInteger(value)&&value>=0?value:0;}
 function setSyncRevision(revision,userId){
@@ -11496,7 +11545,7 @@ function accountHtml(){
   var a=auth();
   if(a){var u=a.user||{};
     return '<div class="bz-acct"><div class="bz-av">'+esc(initials(u.name,u.email))+'</div><div class="bz-acct-t"><b>'+esc(u.name||'Your account')+'</b><small>'+esc(u.email||'')+'</small><span class="bz-ok" id="bz-sync-status" role="status" aria-live="polite" data-state="'+esc(syncStatus)+'"><i aria-hidden="true"></i><em id="bz-last">'+esc(syncLabel())+'</em> · automatic</span></div></div>'
-      +'<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="bz-btn" onclick="__bzAcc.now()"><i class="fa-solid fa-cloud-arrow-up"></i> Back up now</button><button class="bz-btn alt" onclick="__bzAcc.restore()"><i class="fa-solid fa-cloud-arrow-down"></i> Restore</button><button class="bz-btn alt" onclick="__bzAcc.logout()"><i class="fa-solid fa-right-from-bracket"></i> Log out</button></div>';}
+      +'<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="bz-btn alt" onclick="switchTab(\'profile\')"><i class="fa-solid fa-user"></i> Edit profile</button><button class="bz-btn" onclick="__bzAcc.now()"><i class="fa-solid fa-cloud-arrow-up"></i> Back up now</button><button class="bz-btn alt" onclick="__bzAcc.restore()"><i class="fa-solid fa-cloud-arrow-down"></i> Restore</button><button class="bz-btn alt" onclick="__bzAcc.logout()"><i class="fa-solid fa-right-from-bracket"></i> Log out</button></div>';}
   return '<div class="bz-acct off"><div class="bz-av"><i class="fa-solid fa-cloud"></i></div><div class="bz-acct-t"><b>Not backed up yet</b><small>Create a free account to keep your progress safe and available on any device.</small></div></div>'
     +'<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="bz-btn" onclick="__bzAcc.open(\'signup\')"><i class="fa-solid fa-user-plus"></i> Create free account</button><button class="bz-btn alt" onclick="__bzAcc.open(\'login\')"><i class="fa-solid fa-right-to-bracket"></i> Log in</button></div>';
 }
