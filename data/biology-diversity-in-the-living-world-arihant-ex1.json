@@ -1,0 +1,653 @@
+{
+  "sourceId": "arihant",
+  "sourceLabel": "Arihant",
+  "exercise": "ex1",
+  "exerciseLabel": "NCERT Exemplar MCQs",
+  "chapter": "Diversity in the Living World",
+  "subject": "Biology",
+  "questions": [
+    {
+      "id": "dlw-arihant-ex1-q1",
+      "no": 1,
+      "q": "As we go from species to kingdom in a taxonomic hierarchy, the number of common characteristics",
+      "o": [
+        "will decrease",
+        "will increase",
+        "remain same",
+        "may increase or decrease"
+      ],
+      "a": 1,
+      "s": "Higher taxa include more diverse organisms, so the number of shared characteristics decreases as we move from species towards kingdom.",
+      "c": "Diversity in the Living World",
+      "topic": "The Living World",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · The Living World · Q1",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q2",
+      "no": 2,
+      "q": "Which of the following suffixes used for units of classification in plants indicates the taxonomic category of family?",
+      "o": [
+        "-Ales",
+        "-Onae",
+        "-Aceae",
+        "-Ae"
+      ],
+      "a": 3,
+      "s": "The names of plant families commonly end in the suffix -aceae, for example Solanaceae and Poaceae.",
+      "c": "Diversity in the Living World",
+      "topic": "The Living World",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · The Living World · Q2",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q3",
+      "no": 3,
+      "q": "The term ‘systematics’ refers to",
+      "o": [
+        "identification and study of organ systems",
+        "identification and preservation of plants and animals",
+        "diversity of kinds of organisms and their relationship",
+        "study of habitats of organisms and their classification"
+      ],
+      "a": 3,
+      "s": "Systematics deals with the diversity of organisms and their relationships at every level of classification.",
+      "c": "Diversity in the Living World",
+      "topic": "The Living World",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · The Living World · Q3",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q4",
+      "no": 4,
+      "q": "Genus represents",
+      "o": [
+        "an individual plant or animal",
+        "a collection of plants or animals",
+        "a group of closely related species of plants or animals",
+        "none of the above"
+      ],
+      "a": 3,
+      "s": "A genus comprises closely related species that share more characters with one another than with species of other genera.",
+      "c": "Diversity in the Living World",
+      "topic": "The Living World",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · The Living World · Q4",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q5",
+      "no": 5,
+      "q": "The taxonomic unit ‘Phylum’ in the classification of animals is equivalent to which hierarchical level in the classification of plants?",
+      "o": [
+        "Class",
+        "Order",
+        "Division",
+        "Family"
+      ],
+      "a": 3,
+      "s": "Division is the corresponding taxonomic category in plants; phylum is used for animals.",
+      "c": "Diversity in the Living World",
+      "topic": "The Living World",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · The Living World · Q5",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q6",
+      "no": 6,
+      "q": "Botanical gardens and zoological parks have",
+      "o": [
+        "a collection of endemic living species only",
+        "a collection of exotic living species only",
+        "a collection of endemic and exotic living species",
+        "a collection of only local plants and animals"
+      ],
+      "a": 3,
+      "s": "Botanical gardens and zoological parks maintain both endemic and exotic living species.",
+      "c": "Diversity in the Living World",
+      "topic": "The Living World",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · The Living World · Q6",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q7",
+      "no": 7,
+      "q": "A taxonomic key is one of the taxonomic tools used in the identification and classification of plants and animals. It is used in the preparation of",
+      "o": [
+        "monographs",
+        "flora",
+        "both (a) and (b)",
+        "none of these"
+      ],
+      "a": 3,
+      "s": "Taxonomic keys help identify organisms from their characters and are used in taxonomic works such as flora and monographs.",
+      "c": "Diversity in the Living World",
+      "topic": "The Living World",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Medium",
+      "note": "MCQ · The Living World · Q7",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q8",
+      "no": 8,
+      "q": "All living organisms are linked to one another because",
+      "o": [
+        "they have common genetic material of the same type",
+        "they share common genetic material but to varying degrees",
+        "all have common cellular organisation",
+        "all of the above"
+      ],
+      "a": 2,
+      "s": "Living organisms share genetic material, such as DNA, but its form and sequence vary among groups.",
+      "c": "Diversity in the Living World",
+      "topic": "The Living World",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Medium",
+      "note": "MCQ · The Living World · Q8",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q9",
+      "no": 9,
+      "q": "Which of the following is a defining characteristic of living organisms?",
+      "o": [
+        "Growth",
+        "Ability to make sound",
+        "Reproduction",
+        "Response to external stimuli"
+      ],
+      "a": 4,
+      "s": "Response to external stimuli or to the environment is a defining property of living organisms.",
+      "c": "Diversity in the Living World",
+      "topic": "The Living World",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · The Living World · Q9",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q10",
+      "no": 10,
+      "q": "Match Column I with Column II and choose the correct option.\n\nColumn I: A. Family; B. Kingdom; C. Order; D. Species; E. Genus\nColumn II: 1. Tuberosum; 2. Polymoniales; 3. Solanum; 4. Plantae; 5. Solanaceae",
+      "o": [
+        "A-4, B-3, C-5, D-2, E-1",
+        "A-5, B-4, C-2, D-1, E-3",
+        "A-4, B-5, C-2, D-1, E-3",
+        "A-5, B-3, C-2, D-1, E-4"
+      ],
+      "a": 2,
+      "s": "The potato classification is Family—Solanaceae, Kingdom—Plantae, Order—Polymoniales, Species—tuberosum and Genus—Solanum.",
+      "c": "Diversity in the Living World",
+      "topic": "The Living World",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Medium",
+      "note": "MCQ · The Living World · Q10",
+      "conf": "high",
+      "lockOrder": true
+    },
+    {
+      "id": "dlw-arihant-ex1-q11",
+      "no": 11,
+      "q": "All eukaryotic unicellular organisms belong to",
+      "o": [
+        "Monera",
+        "Protista",
+        "Fungi",
+        "Bacteria"
+      ],
+      "a": 2,
+      "s": "Protista includes unicellular eukaryotic organisms; Monera contains prokaryotes.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Biological Classification · Q11",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q12",
+      "no": 12,
+      "q": "The five-kingdom classification was proposed by",
+      "o": [
+        "R. H. Whittaker",
+        "C. Linnaeus",
+        "A. Roxberg",
+        "Virchow"
+      ],
+      "a": 1,
+      "s": "R. H. Whittaker proposed the five-kingdom classification in 1969.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Biological Classification · Q12",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q13",
+      "no": 13,
+      "q": "Organisms living in salty areas are called",
+      "o": [
+        "methanogens",
+        "halophiles",
+        "heliophytes",
+        "thermoacidophiles"
+      ],
+      "a": 2,
+      "s": "Halophiles are organisms adapted to habitats with high salt concentrations.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Biological Classification · Q13",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q14",
+      "no": 14,
+      "q": "Naked cytoplasm, multinucleate condition and saprophytic nutrition are characteristics of",
+      "o": [
+        "Monera",
+        "Protista",
+        "Fungi",
+        "slime moulds"
+      ],
+      "a": 4,
+      "s": "Slime moulds are saprophytic protists; their vegetative stage can be multinucleate and lacks a cell wall.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Medium",
+      "note": "MCQ · Biological Classification · Q14",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q15",
+      "no": 15,
+      "q": "An association between roots of higher plants and fungi is called",
+      "o": [
+        "lichen",
+        "fern",
+        "mycorrhiza",
+        "BGA"
+      ],
+      "a": 3,
+      "s": "Mycorrhiza is the symbiotic association between a fungus and the roots of a higher plant.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Biological Classification · Q15",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q16",
+      "no": 16,
+      "q": "A dikaryon is formed when",
+      "o": [
+        "meiosis is arrested",
+        "the two haploid cells do not fuse immediately",
+        "cytoplasm does not fuse",
+        "none of the above"
+      ],
+      "a": 2,
+      "s": "After plasmogamy, the two nuclei may remain unfused for a period, producing a dikaryotic condition.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Medium",
+      "note": "MCQ · Biological Classification · Q16",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q17",
+      "no": 17,
+      "q": "‘Contagium vivum fluidum’ was proposed by",
+      "o": [
+        "D. J. Ivanowsky",
+        "M. W. Beijerinck",
+        "Stanley",
+        "Robert Hooke"
+      ],
+      "a": 2,
+      "s": "M. W. Beijerinck used the term ‘contagium vivum fluidum’ for the infectious agent now recognised as a virus.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Medium",
+      "note": "MCQ · Biological Classification · Q17",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q18",
+      "no": 18,
+      "q": "Association between mycobiont and phycobiont is found in",
+      "o": [
+        "mycorrhiza",
+        "root",
+        "lichens",
+        "BGA"
+      ],
+      "a": 3,
+      "s": "In lichens, the fungal partner is the mycobiont and the algal partner is the phycobiont.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Biological Classification · Q18",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q19",
+      "no": 19,
+      "q": "The difference between a virus and a viroid is",
+      "o": [
+        "absence of a protein coat in viroid, but its presence in virus",
+        "presence of low-molecular-weight RNA in virus, but its absence in viroid",
+        "both (a) and (b)",
+        "none of the above"
+      ],
+      "a": 1,
+      "s": "Viroids consist of RNA without a protein coat, whereas viruses possess a protein coat.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Medium",
+      "note": "MCQ · Biological Classification · Q19",
+      "conf": "high",
+      "lockOrder": true
+    },
+    {
+      "id": "dlw-arihant-ex1-q20",
+      "no": 20,
+      "q": "With respect to the fungal sexual cycle, choose the correct sequence of events.",
+      "o": [
+        "Karyogamy, plasmogamy and meiosis",
+        "Meiosis, plasmogamy and karyogamy",
+        "Plasmogamy, karyogamy and meiosis",
+        "Meiosis, karyogamy and plasmogamy"
+      ],
+      "a": 3,
+      "s": "The sequence is plasmogamy (cytoplasmic fusion), karyogamy (nuclear fusion), and then meiosis.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Biological Classification · Q20",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q21",
+      "no": 21,
+      "q": "Viruses are non-cellular organisms, but replicate themselves once they infect a host cell. To which kingdom do viruses belong?",
+      "o": [
+        "Monera",
+        "Protista",
+        "Fungi",
+        "None of these"
+      ],
+      "a": 4,
+      "s": "Viruses are acellular and are not placed in any of Whittaker’s five kingdoms.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Biological Classification · Q21",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q22",
+      "no": 22,
+      "q": "Members of Phycomycetes are found in the following habitats or conditions:\n(i) Aquatic habitats\n(ii) On decaying wood\n(iii) Moist and damp places\n(iv) As obligate parasites on plants\nChoose the correct option.",
+      "o": [
+        "(i) and (iv)",
+        "(ii) and (iii)",
+        "All of these",
+        "None of these"
+      ],
+      "a": 4,
+      "s": "The source’s answer key marks ‘None of these’, but its accompanying explanation states that members occur on decaying wood, in moist and damp places, and as plant parasites. The answer and explanation therefore conflict; verify against the prescribed NCERT edition before using this item for scoring.",
+      "c": "Diversity in the Living World",
+      "topic": "Biological Classification",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Medium",
+      "note": "MCQ · Biological Classification · Q22",
+      "conf": "low",
+      "lockOrder": true
+    },
+    {
+      "id": "dlw-arihant-ex1-q23",
+      "no": 23,
+      "q": "Cyanobacteria are classified under",
+      "o": [
+        "Protista",
+        "Plantae",
+        "Monera",
+        "Algae"
+      ],
+      "a": 3,
+      "s": "Cyanobacteria are prokaryotes and are classified under Kingdom Monera.",
+      "c": "Diversity in the Living World",
+      "topic": "Plant Kingdom",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Plant Kingdom · Q23",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q24",
+      "no": 24,
+      "q": "Fusion of two motile gametes that are dissimilar in size is termed",
+      "o": [
+        "oogamy",
+        "isogamy",
+        "anisogamy",
+        "zoogamy"
+      ],
+      "a": 3,
+      "s": "Anisogamy is the fusion of gametes that differ in size; isogamy involves similar gametes.",
+      "c": "Diversity in the Living World",
+      "topic": "Plant Kingdom",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Plant Kingdom · Q24",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q25",
+      "no": 25,
+      "q": "Holdfast, stipe and frond constitute the plant body in",
+      "o": [
+        "Rhodophyceae",
+        "Chlorophyceae",
+        "Phaeophyceae",
+        "all of these"
+      ],
+      "a": 3,
+      "s": "Members of Phaeophyceae typically have a holdfast, a stipe and a leaf-like frond.",
+      "c": "Diversity in the Living World",
+      "topic": "Plant Kingdom",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Plant Kingdom · Q25",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q26",
+      "no": 26,
+      "q": "A plant shows a thallus level of organisation, has rhizoids and is haploid. It needs water to complete its life cycle because the male gametes are motile. Identify the group.",
+      "o": [
+        "pteridophytes",
+        "gymnosperms",
+        "monocots",
+        "bryophytes"
+      ],
+      "a": 4,
+      "s": "Bryophytes have a haploid gametophytic plant body, and their motile male gametes require water to reach the archegonium.",
+      "c": "Diversity in the Living World",
+      "topic": "Plant Kingdom",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Medium",
+      "note": "MCQ · Plant Kingdom · Q26",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q27",
+      "no": 27,
+      "q": "A prothallus is",
+      "o": [
+        "a structure in pteridophytes formed before the thallus develops",
+        "a sporophytic free-living structure formed in pteridophytes",
+        "a gametophytic free-living structure formed in pteridophytes",
+        "a primitive structure formed after fertilisation in pteridophytes"
+      ],
+      "a": 3,
+      "s": "The prothallus is the free-living gametophyte of pteridophytes, usually formed after spore germination.",
+      "c": "Diversity in the Living World",
+      "topic": "Plant Kingdom",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Plant Kingdom · Q27",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q28",
+      "no": 28,
+      "q": "Plants of this group are diploid and well adapted to extreme conditions. They bear sporophylls in compact structures called cones. The group is",
+      "o": [
+        "monocots",
+        "dicots",
+        "pteridophytes",
+        "gymnosperms"
+      ],
+      "a": 4,
+      "s": "Gymnosperms are adapted to a range of extreme conditions and bear reproductive structures in cones or strobili.",
+      "c": "Diversity in the Living World",
+      "topic": "Plant Kingdom",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Medium",
+      "note": "MCQ · Plant Kingdom · Q28",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q29",
+      "no": 29,
+      "q": "The embryo sac of an angiosperm is made up of",
+      "o": [
+        "8 cells",
+        "7 cells and 8 nuclei",
+        "8 nuclei",
+        "7 cells and 7 nuclei"
+      ],
+      "a": 2,
+      "s": "The typical mature angiosperm embryo sac is 7-celled and 8-nucleate.",
+      "c": "Diversity in the Living World",
+      "topic": "Plant Kingdom",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Plant Kingdom · Q29",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q30",
+      "no": 30,
+      "q": "If the diploid number of a flowering plant is 36, what is the chromosome number in its endosperm?",
+      "o": [
+        "36",
+        "18",
+        "54",
+        "72"
+      ],
+      "a": 3,
+      "s": "The endosperm is typically triploid (3n); if 2n = 36, then n = 18 and 3n = 54.",
+      "c": "Diversity in the Living World",
+      "topic": "Plant Kingdom",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Plant Kingdom · Q30",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q31",
+      "no": 31,
+      "q": "Protonema is",
+      "o": [
+        "haploid and is found in mosses",
+        "diploid and is found in liverworts",
+        "diploid and is found in pteridophytes",
+        "haploid and is found in pteridophytes"
+      ],
+      "a": 1,
+      "s": "In mosses, a haploid spore germinates to form the protonema, which develops into the gametophyte.",
+      "c": "Diversity in the Living World",
+      "topic": "Plant Kingdom",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Plant Kingdom · Q31",
+      "conf": "high"
+    },
+    {
+      "id": "dlw-arihant-ex1-q32",
+      "no": 32,
+      "q": "The giant redwood tree (Sequoia sempervirens) is a/an",
+      "o": [
+        "angiosperm",
+        "tree fern",
+        "pteridophyte",
+        "gymnosperm"
+      ],
+      "a": 4,
+      "s": "Sequoia sempervirens is a gymnosperm.",
+      "c": "Diversity in the Living World",
+      "topic": "Plant Kingdom",
+      "source": "arihant",
+      "section": "ex1",
+      "difficulty": "Easy",
+      "note": "MCQ · Plant Kingdom · Q32",
+      "conf": "high"
+    }
+  ]
+}
