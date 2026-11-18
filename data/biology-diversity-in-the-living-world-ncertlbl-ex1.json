@@ -1,0 +1,7689 @@
+{
+ "sourceId": "ncertlbl",
+ "sourceLabel": "NCERT Line by Line (Botany)",
+ "exercise": "ex1",
+ "exerciseLabel": "MCQs (NCERT Line by Line – Chapters 1–3)",
+ "chapter": "Diversity in the Living World",
+ "subject": "Biology",
+ "questions": [
+  {
+   "id": "lw-ex1-q1",
+   "no": 1,
+   "q": "The characteristics of growth include",
+   "o": [
+    "increase in mass",
+    "increase in number",
+    "increase in length",
+    "both A. and B."
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q1",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q2",
+   "no": 2,
+   "q": "Unicellular organisms grow by",
+   "o": [
+    "cell elongation",
+    "cell division",
+    "accumulation of material on the surface",
+    "none of these"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q2",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q3",
+   "no": 3,
+   "q": "Mountains, boulders and sand mounds also grow, but they are not considered as living organisms because they grow by",
+   "o": [
+    "Accumulation of material on their inner surface.",
+    "the division of their particles.",
+    "accumulation of material on their outer surface.",
+    "both A. and B."
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q3",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q4",
+   "no": 4,
+   "q": "Choose the correct statement about growth in plants.",
+   "o": [
+    "Growth occurs continuously throughout their lifespan by cell division.",
+    "The growth is seen only upto a certain age.",
+    "Growth occurs by the accumulation of material on the upper surface of their cells.",
+    "Growth occurs only in certain cells."
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q4",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q5",
+   "no": 5,
+   "q": "In yeast and Hydra, reproduction occurs by",
+   "o": [
+    "conjugation",
+    "sporulation",
+    "budding",
+    "none of these"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q5",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q6",
+   "no": 6,
+   "q": "The organism(s) that can multiply by fragmentation is/are",
+   "o": [
+    "fungi",
+    "filamentous algae",
+    "protonema of moss",
+    "all of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q6",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q7",
+   "no": 7,
+   "q": "In Amoeba, reproduction is synonymous with ee",
+   "o": [
+    "digestion",
+    "growth",
+    "locomotion",
+    "none of these"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q7",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q8",
+   "no": 8,
+   "q": "Living organisms that do not reproduce are",
+   "o": [
+    "mule",
+    "worker bees",
+    "infertile human couples",
+    "all of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q8",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q9",
+   "no": 9,
+   "q": "Match Column-I (Organism) with Column-II (Method of reproduction) and choose the correct option from the codes given below.",
+   "o": [
+    "a–2, b–4, c–1, d–3",
+    "a–4, b–2, c–3, d–1",
+    "a–3, b–1, c–4, d–2",
+    "a–1, b–3, c–2, d–4"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I (Organism)",
+     "Column-II (Method of reproduction)"
+    ],
+    "rows": [
+     [
+      "a. Planaria",
+      "(1) Fragmentation"
+     ],
+     [
+      "b. Hydra",
+      "(2) Regeneration"
+     ],
+     [
+      "c. Fungi",
+      "(3) Binary fission"
+     ],
+     [
+      "d. Amoeba",
+      "(4) Budding"
+     ]
+    ]
+   },
+   "note": "The Living World · Q9",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q10",
+   "no": 10,
+   "q": "The sum total of all the chemical reactions occurring in our body is",
+   "o": [
+    "anabolism",
+    "catabolism",
+    "metabolism",
+    "none of these"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q10",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q11",
+   "no": 11,
+   "q": "An isolated metabolic reaction outside the body of an organism, performed in a test-tube is",
+   "o": [
+    "living",
+    "non-living",
+    "neither living nor non-living",
+    "sometimes living and sometimes non-living depending upon environmental factors"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q11",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q12",
+   "no": 12,
+   "q": "Choose the incorrect statement from the following:",
+   "o": [
+    "All living organisms exhibit metabolism.",
+    "Metabolism is the sum total of all chemical reactions occurring in our body.",
+    "Metabolism is a defining feature of all living organisms.",
+    "Metabolic reactions cannot be demonstrated outside the body in cell-free systems."
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q12",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q13",
+   "no": 13,
+   "q": "Isolated metabolic reactions occurring in-vitro are not living things, but surely living reactions. It proves that ‘A’ of the body is the defining feature of life forms. Here ‘A’ is",
+   "o": [
+    "reproduction",
+    "cellular organization",
+    "metabolic reactions",
+    "growth"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q13",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q14",
+   "no": 14,
+   "q": "Identify the defining characteristics of living organisms from the following.",
+   "o": [
+    "Growth",
+    "Ability to make sound",
+    "Reproduction",
+    "Response to external stimuli"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q14",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q15",
+   "no": 15,
+   "q": "Photoperiod affects",
+   "o": [
+    "reproduction",
+    "metabolism",
+    "growth",
+    "cellular organization"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q15",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q16",
+   "no": 16,
+   "q": "Living organisms respond to environmental stimuli which could be",
+   "o": [
+    "physical",
+    "chemical",
+    "biological",
+    "all of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q16",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q17",
+   "no": 17,
+   "q": "Match Column-I with Column-II and choose the correct option from the codes given below.",
+   "o": [
+    "a–3, b–2, c–4, d–1",
+    "a–4, b–1, c–2, d–3",
+    "a–1, b–3, c–2, d–4",
+    "a–2, b–4, c–3, d–1"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "a. Growth",
+      "(1) Production of progeny"
+     ],
+     [
+      "b. Reproduction",
+      "(2) Sum of all chemical reactions occurring in body"
+     ],
+     [
+      "c. Metabolism",
+      "(3) Sense and respond to environmental stimuli"
+     ],
+     [
+      "d. Consciousness",
+      "(4) Increase in mass and number"
+     ]
+    ]
+   },
+   "note": "The Living World · Q17",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q18",
+   "no": 18,
+   "q": "All living organisms are linked to each other because",
+   "o": [
+    "they show a common cellular organization.",
+    "they possess common genetic material of the same type.",
+    "they share common genetic material but to varying degrees.",
+    "all of these."
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q18",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q22",
+   "no": 19,
+   "q": "The process of naming of living organisms is called rad",
+   "o": [
+    "systematics",
+    "taxonomy",
+    "nomenclature",
+    "none of these"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q22",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q23",
+   "no": 20,
+   "q": "Identification of an organism means",
+   "o": [
+    "its correct description",
+    "its correct classification",
+    "its correct nomenclature",
+    "all of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q23",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q24",
+   "no": 21,
+   "q": "ICBN stands for",
+   "o": [
+    "International Code for Biological Naming",
+    "International Centre for Botanical Nomenclature",
+    "Indian Code for Biological Nomenclature",
+    "International Code for Botanical Nomenclature"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q24",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q25",
+   "no": 22,
+   "q": "Choose the correct statement about scientific names.",
+   "o": [
+    "They ensure that each organism has only one name.",
+    "Description of any organism should enable the people to arrive at the same name.",
+    "They ensure that such a name has not been used for any other organism.",
+    "All of these."
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q25",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q26",
+   "no": 23,
+   "q": "The system of providing a name with two components is called",
+   "o": [
+    "trinomial nomenclature",
+    "binomial nomenclature",
+    "uninominal nomenclature",
+    "none of these"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q26",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q27",
+   "no": 24,
+   "q": "The naming system, which is practised by biologists all over the world, was given by",
+   "o": [
+    "Carolus Linnaeus",
+    "Whittaker",
+    "Haeckel",
+    "Woese"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q27",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q28",
+   "no": 25,
+   "q": "Match Column-I with Column-II and choose the correct option from the codes given below.",
+   "o": [
+    "a–2, b–4, c–1, d–3",
+    "a–4, b–3, c–2, d–1",
+    "a–1, b–2, c–4, d–3",
+    "a–3, b–1, c–4, d–2"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "a. Biodiversity",
+      "(1) Correct description of an organism"
+     ],
+     [
+      "b. Nomenclature",
+      "(2) The variety of living organisms"
+     ],
+     [
+      "c. Identification",
+      "(3) A system of providing a name with two components"
+     ],
+     [
+      "d. Binomial nomenclature",
+      "(4) Naming of living organisms"
+     ]
+    ]
+   },
+   "note": "The Living World · Q28",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q29",
+   "no": 26,
+   "q": "Select correctly written scientific name of mango which was first described by Carolus Linnaeus.",
+   "o": [
+    "Mangifera indica Car Linn.",
+    "Mangifera indica Linn.",
+    "Mangifera indica",
+    "Mangifera Indica"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q29",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q30",
+   "no": 27,
+   "q": "In Mangifera indica Linn., the specific epithet is",
+   "o": [
+    "Mangifera",
+    "indica",
+    "Linn.",
+    "Both A. and B."
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q30",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q31",
+   "no": 28,
+   "q": "Choose the incorrect statement about rules of nomenclature.",
+   "o": [
+    "Biological names are generally given in Latin.",
+    "The first word in biological name represents the genus while the second component denotes. the specific epithet.",
+    "When hand written, both words of biological names are separately underlined.",
+    "Both the words of biological name start with capital letter."
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q31",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q32",
+   "no": 29,
+   "q": "Which of the following is against the rules of ICBN?",
+   "o": [
+    "Handwritten scientific names should be underlined.",
+    "Every species should have a generic name and a specific epithet.",
+    "Scientific names are in latin and should be italized.",
+    "Generic and specific names should be written starting with small letters."
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q32",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q33",
+   "no": 30,
+   "q": "Biological names are generally written in",
+   "o": [
+    "Greek language",
+    "Latin language",
+    "English language",
+    "Hindi language"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q33",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q34",
+   "no": 31,
+   "q": "The process by which organisms are grouped into convenient categories based on some easily observable characters, is called",
+   "o": [
+    "taxonomy",
+    "identification",
+    "classification",
+    "nomenclature"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q34",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q35",
+   "no": 32,
+   "q": "The scientific term used for the categories of organisms to study them is",
+   "o": [
+    "taxa",
+    "biological name",
+    "systematics",
+    "none of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q35",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q36",
+   "no": 33,
+   "q": "The process of classification is called",
+   "o": [
+    "systematics",
+    "taxonomy",
+    "nomenclature",
+    "identification"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q36",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q37",
+   "no": 34,
+   "q": "The modern taxonomic studies are based on",
+   "o": [
+    "cell structures",
+    "external and internal structure",
+    "development process",
+    "all of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q37",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q38",
+   "no": 35,
+   "q": "Among the following process which one is not the basic to taxonomy?",
+   "o": [
+    "Identification",
+    "Classification",
+    "Collection of specimen",
+    "Nomenclature"
+   ],
+   "a": 3,
+   "s": "Identification, classification and nomenclature are basic to taxonomy; collection of specimens is only a taxonomic aid/step.",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q38 · Book key says B; corrected to C",
+   "conf": "low"
+  },
+  {
+   "id": "lw-ex1-q39",
+   "no": 36,
+   "q": "Systematics refers to",
+   "o": [
+    "diversities of different kinds of organisms and their relationship.",
+    "identification and study of organ systems of organisms.",
+    "identification and preservation of organisms.",
+    "study of habitat of organisms and their classification."
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q39",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q40",
+   "no": 37,
+   "q": "Match Column-I with Column-II and choose the correct option from the codes given below.",
+   "o": [
+    "a–3, b–4, c–1, d–2",
+    "a–2, b–1, c–3, d–4",
+    "a–1, b–2, c–4, d–3",
+    "a–4, b–3, c–2, d–1"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "a. Mammalia",
+      "(1) Specific epithet"
+     ],
+     [
+      "b. Mangifera",
+      "(2) Branch of study"
+     ],
+     [
+      "c. indica",
+      "(3) Taxa"
+     ],
+     [
+      "d. Systematics",
+      "(4) Generic name"
+     ]
+    ]
+   },
+   "note": "The Living World · Q40",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q44",
+   "no": 38,
+   "q": "All the taxonomic categories together constitute the",
+   "o": [
+    "taxon",
+    "family",
+    "kingdom",
+    "hierarchy"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q44",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q45",
+   "no": 39,
+   "q": "The lowest taxonomic category is",
+   "o": [
+    "genus",
+    "species",
+    "class",
+    "family"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q45",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q46",
+   "no": 40,
+   "q": "The basic requirement for placing an organism in various categories is the knowledge of",
+   "o": [
+    "characters of an individual",
+    "characters of group of organisms",
+    "binomial nomenclature",
+    "both A and B"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q46",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q47",
+   "no": 41,
+   "q": "Solanum includes species",
+   "o": [
+    "nigrum",
+    "melongena",
+    "tuberosum",
+    "all of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q47",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q48",
+   "no": 42,
+   "q": "The taxonomic category, genus represents",
+   "o": [
+    "an individual organism",
+    "a collection of organisms",
+    "a group of closely related species of organisms",
+    "none of these"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q48",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q49",
+   "no": 43,
+   "q": "Match Column-I and Column-II and choose the correct option from the codes given below.",
+   "o": [
+    "a–2, b–4, c–1, d–3",
+    "a–4, b–2, c–1, d–3",
+    "a–1, b–2, c–4, d–3",
+    "a–3, b–4, c–2, d–1"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I (Organism name)",
+     "Column-II (Scientific name)"
+    ],
+    "rows": [
+     [
+      "a. Lion",
+      "(1) Panthera tigris"
+     ],
+     [
+      "b. Leopard",
+      "(2) Panthera leo"
+     ],
+     [
+      "c. Tiger",
+      "(3) Solanum nigrum"
+     ],
+     [
+      "d. Potato",
+      "(4) Panthera pardus"
+     ]
+    ]
+   },
+   "note": "The Living World · Q49",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q50",
+   "no": 44,
+   "q": "‘Suffix’ used for a unit of classification in plants to indicate ‘family’ taxonomic category is",
+   "o": [
+    "-ales",
+    "-onae",
+    "-aceae",
+    "ae"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q50",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q51",
+   "no": 45,
+   "q": "The taxonomic category ‘order’ lies between",
+   "o": [
+    "Genus and species",
+    "Genus and family",
+    "Family and class",
+    "Class and phylum"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q51",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q52",
+   "no": 46,
+   "q": "Choose the incorrect statement from the following.",
+   "o": [
+    "Each genus may have one or more than one specific epithets representing different organisms.",
+    "Potato and brinjal are two different species but both belong to the genus Solanum.",
+    "‘Families’ are characterized on the basis of merely reproductive features of plant species.",
+    "‘Order’ is a higher taxonomic category and is identified on the basis of aggregates of characteristics."
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q52",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q53",
+   "no": 47,
+   "q": "Fishes, amphibians, reptiles and birds represent which taxonomic category?",
+   "o": [
+    "Class",
+    "Phylum",
+    "Order",
+    "Kingdom"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q53",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q54",
+   "no": 48,
+   "q": "The ‘phylum’ taxon of animal classification is equivalent to which taxon of plant classification?",
+   "o": [
+    "Class",
+    "Division",
+    "Order",
+    "Family"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q54",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q55",
+   "no": 49,
+   "q": "Refer to the given figure showing the hierarchical arrangement of taxonomic categories in the ascending order. In the figure some taxa are labelled as A, B, C and D. Which taxon will show maximum similar characters among its members? Identify it.",
+   "o": [
+    "B",
+    "A",
+    "C",
+    "D"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q49",
+   "note": "The Living World · Q55",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q56",
+   "no": 50,
+   "q": "The kingdom that comprises all plants from various divisions is",
+   "o": [
+    "Plantae",
+    "Animalia",
+    "Chordata",
+    "Mammal"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q56",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q57",
+   "no": 51,
+   "q": "Match Column-I with Column-II and choose the correct option from the codes given below.",
+   "o": [
+    "a–5, b–3, c–2, d–1, e–4",
+    "a–4, b–2, c–5, d–3, e–1",
+    "a–1, b–5, c–3, d–4, e–2",
+    "a–3, b–4, c–1, d–5, e–2"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "a. Order",
+      "(1) Solanum"
+     ],
+     [
+      "b. Kingdom",
+      "(2) Solanaceae"
+     ],
+     [
+      "c. Family",
+      "(3) Plantae"
+     ],
+     [
+      "d. Genus",
+      "(4) tuberosum"
+     ],
+     [
+      "e. Species",
+      "(5) Polymoniales"
+     ]
+    ]
+   },
+   "note": "The Living World · Q57",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q58",
+   "no": 52,
+   "q": "In a taxonomic hierarchy, on moving from species to kingdom, the number of common characteristics",
+   "o": [
+    "will increase",
+    "remain same",
+    "will decrease",
+    "may increase or decrease"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "The Living World · Q58",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q59",
+   "no": 53,
+   "q": "Choose the correct statements from the following:\nI. In case of plants, classes with a few similar characters are aligned to a higher category called phylum.\nII. Sub-categories have also been developed in the taxonomic hierarchy to facilitate more sound and scientific placement of various taxa.\nIII. Class includes related orders.\nIV. Convolvulaceae family is included in Polymoniales order on the basis of its floral characters.\nSelect the correct option.",
+   "o": [
+    "I and IV",
+    "II and III",
+    "II, III and IV",
+    "All of these"
+   ],
+   "a": 3,
+   "s": "Statement I is wrong (in plants the higher category is division); II, III and IV are correct.",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q59 · Book key says B; corrected to C",
+   "conf": "low"
+  },
+  {
+   "id": "lw-ex1-q60",
+   "no": 54,
+   "q": "Match Column-I with Column-II for housefly classification and select the correct option using the codes given below.",
+   "o": [
+    "a–4, b–3, c–2, d–1",
+    "a–4, b–2, c–1, d–3",
+    "a–3, b–1, c–4, d–2",
+    "a–3, b–2, c–4, d–1"
+   ],
+   "a": 3,
+   "s": "Housefly: Family Muscidae (3), Order Diptera (1), Class Insecta (4), Phylum Arthropoda (2).",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "a. Family",
+      "(1) Diptera"
+     ],
+     [
+      "b. Order",
+      "(2) Arthropoda"
+     ],
+     [
+      "c. Class",
+      "(3) Muscidae"
+     ],
+     [
+      "d. Phylum",
+      "(4) Insecta"
+     ]
+    ]
+   },
+   "note": "The Living World · Q60 · Book key says A; corrected to C",
+   "conf": "low"
+  },
+  {
+   "id": "lw-ex1-q64",
+   "no": 55,
+   "q": "Which of the following options represents the correct classification for the given animal? (Phylum – Class – Order – Family – Genus – Species)",
+   "o": [
+    "Chordata – Vertebrata – Chiroptera – Felidae – Canis – Tigris",
+    "Chordata – Mammalia – Carnivora – Felidae – Panthera – Tigris",
+    "Vertebrata – Mammalia – Carnivora – Felidae – Panthera – Tigris",
+    "Mammalia – Felidae – Carnivora – Feliacae – Panthera – Leo"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q55",
+   "note": "The Living World · Q64",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q65",
+   "no": 56,
+   "q": "Taxonomic studies of various organisms are useful in",
+   "o": [
+    "agriculture",
+    "forestry",
+    "industry",
+    "all of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q65",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q66",
+   "no": 57,
+   "q": "Taxonomic studies require",
+   "o": [
+    "correct classification",
+    "correct identification of organisms",
+    "intensive laboratory and field studies",
+    "all of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q66",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q67",
+   "no": 58,
+   "q": "A store house of collected plant specimens that are dried, pressed and preserved on sheets is a",
+   "o": [
+    "herbarium",
+    "botanical garden",
+    "zoological park",
+    "catalogue"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q67",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q68",
+   "no": 59,
+   "q": "Among the following, which information is not provided by the herbarium sheet about a plant?",
+   "o": [
+    "Collector’s name",
+    "Place of collection",
+    "Economic importance of plant species",
+    "Botanical name of the plant"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q68",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q69",
+   "no": 60,
+   "q": "The specialized gardens having collections of living plants for reference are",
+   "o": [
+    "Herbarium",
+    "Botanical gardens",
+    "Zoological parks",
+    "Museum"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q69",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q70",
+   "no": 61,
+   "q": "Match Column-I and Column-II and choose the correct option from the codes given below.",
+   "o": [
+    "a–3, b–4, c–2, d–1",
+    "a–4, b–2, c–3, d–1",
+    "a–1, b–3, c–4, d–2",
+    "a–2, b–1, c–3, d–4"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "a. Kew Botanical Garden",
+      "(1) Dehradun"
+     ],
+     [
+      "b. Indian Botanical Garden",
+      "(2) Lucknow"
+     ],
+     [
+      "c. National Botanical Research Institute",
+      "(3) England"
+     ],
+     [
+      "d. Forest Research Institute",
+      "(4) Howrah"
+     ]
+    ]
+   },
+   "note": "The Living World · Q70",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q71",
+   "no": 62,
+   "q": "National Botanical Research Institute is situated at",
+   "o": [
+    "Howrah",
+    "Lucknow",
+    "Dehradun",
+    "Delhi"
+   ],
+   "a": 2,
+   "s": "The National Botanical Research Institute (NBRI) is at Lucknow.",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q71 · Book key says A; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "lw-ex1-q72",
+   "no": 63,
+   "q": "Choose the incorrect statement from the following:",
+   "o": [
+    "Herbarium is a storehouse of collected plant specimens that are dried, pressed and preserved on sheets.",
+    "Herbaria serve as quick referral systems in taxonomical studies.",
+    "Botanical gardens have collection of preserved plant materials also.",
+    "Indian Botanical Garden is situated at Howrah, India."
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q72",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q73",
+   "no": 64,
+   "q": "Biological museums have collection of",
+   "o": [
+    "preserved plant specimens",
+    "preserved animal specimens",
+    "live plants and animals",
+    "both A and B"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q73",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q74",
+   "no": 65,
+   "q": "Insects are preserved in insect boxes",
+   "o": [
+    "in preservative solutions",
+    "after stuffing",
+    "after collecting, killing and pinning",
+    "as skeletons"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q74",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q75",
+   "no": 66,
+   "q": "Match Column-I with Column-II and choose the correct option from the codes given below.",
+   "o": [
+    "a–3, b–1, c–4, d–2",
+    "a–4, b–3, c–2, d–1",
+    "a–1, b–2, c–3, d–4",
+    "a–2, b–4, c–1, d–3"
+   ],
+   "a": 1,
+   "s": "Birds – stuffing (3), human – skeleton (1), insects – boxes after pinning (4), small animals – preservative solution (2).",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I (Organism)",
+     "Column-II (Method of preservation)"
+    ],
+    "rows": [
+     [
+      "a. Birds",
+      "(1) Skeleton"
+     ],
+     [
+      "b. Human",
+      "(2) Preservative solution"
+     ],
+     [
+      "c. Insects",
+      "(3) Stuffing"
+     ],
+     [
+      "d. Small animals",
+      "(4) In boxes after killing and pinning"
+     ]
+    ]
+   },
+   "note": "The Living World · Q75 · Book key says C; corrected to A",
+   "conf": "low"
+  },
+  {
+   "id": "lw-ex1-q76",
+   "no": 67,
+   "q": "The place where wild animals are kept in protected environment is",
+   "o": [
+    "botanical garden",
+    "zoological park",
+    "museum",
+    "herbarium"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q76",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q77",
+   "no": 68,
+   "q": "Zoological parks are commonly known as",
+   "o": [
+    "museum",
+    "garden",
+    "zoo",
+    "none of these"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q77",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q78",
+   "no": 69,
+   "q": "Zoological parks and botanical gardens have a collection of",
+   "o": [
+    "exotic living species only",
+    "endemic living species only",
+    "both A and B",
+    "only local plants and animals"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q78",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q79",
+   "no": 70,
+   "q": "Plants and animals are identified by key on the basis of their",
+   "o": [
+    "morphology",
+    "anatomy",
+    "similarities and dissimilarities",
+    "all of these"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q79",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q80",
+   "no": 71,
+   "q": "The keys are based on contrasting characters generally in a pair called",
+   "o": [
+    "couplet",
+    "doublet",
+    "triplet",
+    "all of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q80",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q81",
+   "no": 72,
+   "q": "The contrasting characteristics generally in a pair used for identification of animals in Taxonomic key are referred to as",
+   "o": [
+    "Lead",
+    "Couplet",
+    "Doublet",
+    "Alternate"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q81",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q82",
+   "no": 73,
+   "q": "Taxonomic key is used in the preparation of the",
+   "o": [
+    "monographs",
+    "flora",
+    "both A and B",
+    "none of these"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q82",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q83",
+   "no": 74,
+   "q": "Each statement of the key is called a",
+   "o": [
+    "couplet",
+    "lead",
+    "monograph",
+    "none of these"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q83",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q84",
+   "no": 75,
+   "q": "Match items given in Column-I with those in Column-II and select the correct option given below.",
+   "o": [
+    "a–1, b–4, c–3, d–2",
+    "a–3, b–2, c–1, d–4",
+    "a–2, b–4, c–3, d–1",
+    "a–3, b–4, c–1, d–2"
+   ],
+   "a": 4,
+   "s": "Herbarium–3, Key–4, Museum–1, Catalogue–2.",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "a. Herbarium",
+      "(1) It is a place having a collection of preserved plants and animals."
+     ],
+     [
+      "b. Key",
+      "(2) A list that enumerates methodically all the species found in an area with brief description aiding identification."
+     ],
+     [
+      "c. Museum",
+      "(3) It is a place where dried and pressed plant specimens mounted on sheets are kept."
+     ],
+     [
+      "d. Catalogue",
+      "(4) A booklet containing a list of characters and their alternates which are helpful in identification of various taxa."
+     ]
+    ]
+   },
+   "note": "The Living World · Q84 · Book key says B; corrected to D",
+   "conf": "low"
+  },
+  {
+   "id": "lw-ex1-q85",
+   "no": 76,
+   "q": "Choose the correct statements about taxonomic keys.\nI. It is used for the identification of only plants.\nII. Each statement in the key is called a lead.\nIII. No separate taxonomic keys are required for different taxonomic categories.",
+   "o": [
+    "II and III",
+    "I and II",
+    "III and I",
+    "II only"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "The Living World · Q85",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q86",
+   "no": 77,
+   "q": "Among the following which one is not a taxonomic aid?",
+   "o": [
+    "Flora",
+    "Manual",
+    "Taxon",
+    "Key"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q86",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1-q87",
+   "no": 78,
+   "q": "Among the following which one contains information on any one taxon?",
+   "o": [
+    "Flora",
+    "Monograph",
+    "Manual",
+    "Catalogue"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "The Living World · Q87",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q1",
+   "no": 79,
+   "q": "Choose the correct with respect to earliest for scientific basis of classification",
+   "o": [
+    "It was proposed by Aristotle",
+    "Plants were divided as trees, shrubs & herbs on the basis. of their morphological characters",
+    "Animals were classified into two groups that are those which have red blood and those that did not",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q1",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q2",
+   "no": 80,
+   "q": "Linnaeus system of classification did not deal with -",
+   "o": [
+    "Eukaryotes and prokaryotes",
+    "Unicellular & multicellular",
+    "Photosynthetic & non – photosynthetic",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q2",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q3",
+   "no": 81,
+   "q": "How many kingdom according to five kingdom classification and Linnaeus system of classification is/are dedicated for prokaryotes exclusively",
+   "o": [
+    "1, 0",
+    "1, 1",
+    "2, 0",
+    "3, 1"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q3",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q4",
+   "no": 82,
+   "q": "Moneran cell wall is composed by-",
+   "o": [
+    "Polysaccharide (Non cellulose) only",
+    "Polysaccharide (cellulose)",
+    "Polysaccharide (chitin)",
+    "Amino acid and Non cellulosic polysaccharide"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q4",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q5",
+   "no": 83,
+   "q": "Chemosynthetic mode of nutrition is found is -",
+   "o": [
+    "Monera",
+    "Protist",
+    "Plantae",
+    "Fungi"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q5",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q6",
+   "no": 84,
+   "q": "R.H Whittaker classification is/are based upon –",
+   "o": [
+    "Cell structure & body organisation",
+    "Mode of nutrition & reproduction",
+    "Phylogentic relationship",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q6",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q7",
+   "no": 85,
+   "q": "Five kingdom classification was proposed in -",
+   "o": [
+    "1969",
+    "1996",
+    "1699",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q7",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q8",
+   "no": 86,
+   "q": "Choose the correct about 3 - domain system",
+   "o": [
+    "Two domain are dedicated for prokaryotic while one domain is dedicated for eukaryotic",
+    "One domain is_~ dedicated for prokaryotic while two domains are for eukarvotic",
+    "It has seven kingdom which are categorised in 3 –- domain",
+    "It has six kingdom of which one kingdom is in first and third domain while 5 - kingdom is second domain."
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q8",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q9",
+   "no": 87,
+   "q": "Earlier classification system included bacteria, BGA (blue green algae) fungi, mosses, ferns under Plants’ on basis of-",
+   "o": [
+    "Mode of nutrition",
+    "Body organisation & nuclear structure",
+    "Presence of cell wall",
+    "Nature of cell wall."
+   ],
+   "a": 4,
+   "s": "NCERT: the older system put all these organisms under plants on the basis of the presence of a cell wall; book key is D.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q9",
+   "conf": "medium"
+  },
+  {
+   "id": "bc-ex1-q10",
+   "no": 88,
+   "q": "How many of following are prokaryotes: Bacteria, Mosses, ferns, fungi, pteridophyta, blue green algae, gymnosperms angiosperm",
+   "o": [
+    "1",
+    "2",
+    "3",
+    "More than 4"
+   ],
+   "a": 2,
+   "s": "Only bacteria and blue-green algae are prokaryotes in the list.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q10 · Book key says A; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q11",
+   "no": 89,
+   "q": "Fungi has cell wall composed of-",
+   "o": [
+    "Cellulose",
+    "Non - cellulosic + amino acid",
+    "Chitin",
+    "Absence of cell wall"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q11",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q12",
+   "no": 90,
+   "q": "How many kingdom from R.H. Whittaker system does have exclusive autotrophic mode of nutrition",
+   "o": [
+    "Zero",
+    "One",
+    "Two",
+    "Three"
+   ],
+   "a": 2,
+   "s": "Only Plantae is exclusively autotrophic in Whittaker's system.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q12 · Book key says D; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q13",
+   "no": 91,
+   "q": "Unicellular eukaryotic are categorised in-",
+   "o": [
+    "Monera",
+    "Protista",
+    "Plantae",
+    "Animalia"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q13",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q14",
+   "no": 92,
+   "q": "How many of the following does belong to Protista Amoeba, Spirogyra, Chlamydomonas, Chlorella, Paramecium",
+   "o": [
+    "5",
+    "4",
+    "3",
+    "2"
+   ],
+   "a": 2,
+   "s": "Spirogyra is a multicellular filamentous alga (Plantae); the other four are Protista.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q14 · Book key says A; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q15",
+   "no": 93,
+   "q": "In five kingdom classification multicellularity began from -",
+   "o": [
+    "Animalia",
+    "Plantae",
+    "Protista",
+    "Fungi"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q15",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q16",
+   "no": 94,
+   "q": "Identify shape of bacteria Ps x R ie #% pL S AY &o if (a rt) ff J b",
+   "o": [
+    "a=cocci, b = rod – shaped, c = bacilli, d = comma - shaped",
+    "a = spherical coccus, B = Bacilli, c = spirilla, d = vibrio",
+    "a = cocci, b = spirilla, c = vibrio, d = Bacilli",
+    "a = vibrio, b = spirilla, c = bacilli, d = coccus"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q94",
+   "note": "Biological Classification · Q16",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q17",
+   "no": 95,
+   "q": "choose the correct statement:",
+   "o": [
+    "Bacteria are sole members of kingdom monera.",
+    "Bacteria are abundant macro - organism",
+    "Bacteria occurrence is limited to some area.",
+    "Bacteria can’t live in extreme habitat like desert"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q17",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q18",
+   "no": 96,
+   "q": "On the basis of shape; bacteria are grouped under categories",
+   "o": [
+    "Four",
+    "Five",
+    "Three",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q18",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q19",
+   "no": 97,
+   "q": "Choose the correctly stated statement",
+   "o": [
+    "Bacterial structure and behaviour are complex.",
+    "Bacterial structure and behaviour are simple",
+    "Bacterial structure is complex while behaviour is simple",
+    "Bacterial structure is simple while behaviour is complex"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q19",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q20",
+   "no": 98,
+   "q": "Synthesis of own food from inorganic substrate is occur in –",
+   "o": [
+    "Autotrophic nutrition",
+    "Chemosynthetic autotroph",
+    "Photosynthetic autotroph",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q20",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q21",
+   "no": 99,
+   "q": "Match Column-I and Column-II.",
+   "o": [
+    "(i)–c, (ii)–b, (iii)–a",
+    "(i)–c, (ii)–a, (iii)–b",
+    "(i)–b, (ii)–c, (iii)–a",
+    "(i)–b, (ii)–a, (iii)–c"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "(i) Halophiles",
+      "(a) Marshy area"
+     ],
+     [
+      "(ii) Thermoacidophiles",
+      "(b) Salty area"
+     ],
+     [
+      "(iii) Methanogens",
+      "(c) Hot springs"
+     ]
+    ]
+   },
+   "note": "Biological Classification · Q21",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q22",
+   "no": 100,
+   "q": "Archaebacteria differ from other bacteria in having -",
+   "o": [
+    "Definite nuclear structure",
+    "Cell wall structure",
+    "Adaptability cytoplasmic concentration",
+    "Some membranous cell organelles"
+   ],
+   "a": 3,
+   "s": "Archaebacteria differ from other bacteria in cell-wall structure; the printed options are poorly worded. Book key C kept.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q22",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q23",
+   "no": 101,
+   "q": "Survival of archaebacteria in extreme condition is achieved by",
+   "o": [
+    "Cell wall structure",
+    "Some membranous cell organelles",
+    "Adaptability & cytoplasm",
+    "All of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q23",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q24",
+   "no": 102,
+   "q": "Which of following statement is/are false",
+   "o": [
+    "Methanogens are present in alimentary canal of several ruminant animals like cow & buffaloes",
+    "Methanogens are_ responsible for production of biogas from dung of ruminant animals",
+    "Methanogens are present in gut of several non - ruminant like cow & buffaloes",
+    "A&B"
+   ],
+   "a": 3,
+   "s": "Methanogens occur in the gut of ruminants (cow, buffalo) – not non-ruminants – so only C is false.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "Biological Classification · Q24 · Book key says D; corrected to C",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q25",
+   "no": 103,
+   "q": "Label A, B and identify organism (C).",
+   "o": [
+    "A = Heterocyst B = Mucilagenous sheath C = Nostoc, an archaebacteria",
+    "A = Heterocyst B = Mucilagenous sheath C = Nostoc",
+    "A = Mucilagenous, B = Heterocyst, C = Nostoc",
+    "A = heterocyst, B = Mucilagenous sheath, C = Nostoc, a filamentous algae"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q103",
+   "note": "Biological Classification · Q25",
+   "conf": "medium"
+  },
+  {
+   "id": "bc-ex1-q26",
+   "no": 104,
+   "q": "Choose the correct about blue green algae\ni. Also known as cyanobacteria\nii. Presence of chlorophyll a, b similar to green plants\niii. Photosynthetic autotroph\niv) May be unicellular, colonial or filamentous\nv. Occur in aquatic as well as terrestrial",
+   "o": [
+    "i), iii), iv), v)",
+    "i), ii), iii), iv), v)",
+    "i), ii), iv), v)",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "Biological Classification · Q26",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q27",
+   "no": 105,
+   "q": "Nitrogen fixation is done by –",
+   "o": [
+    "Specialised vegetative cell 1.6. Heterocyst of Nostoc & Anabaena",
+    "Specialised reproductive cell i.e. Heterocyst of Nostac & Anabaena",
+    "Specialised vegetative as well as reproductive cell i.e. Heterocyst of Nostoc & Anabaena",
+    "None"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q27",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q28",
+   "no": 106,
+   "q": "Choose the wrong_ statement for chemosynthetic autotroph bacteria",
+   "o": [
+    "They’ oxidise various’ inorganic substrate such as nitrates, nitrites & ammonia and use the released energy for their ATP production",
+    "They play great role in recycling nutrient like nitrogen phosphorous, iron & sulphur",
+    "For their energy production they utilize solar energy",
+    "They can prepare their food from inorganic substrate."
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q28",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q29",
+   "no": 107,
+   "q": "Citrus canker is -",
+   "o": [
+    "Plant disease cause by bacteria",
+    "Human disease cause by bacteria",
+    "Pet disease cause by bacteria",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "Citrus canker is a plant disease caused by the bacterium Xanthomonas.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q29 · Book key says B; corrected to A",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q30",
+   "no": 108,
+   "q": "Which of following is not economic importance of heterotrophic bacteria",
+   "o": [
+    "Making curd from milk",
+    "Antibiotic production",
+    "N. fixing in leoumes root",
+    "Nz fixing in Anabaena"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q30",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q31",
+   "no": 109,
+   "q": "Choose the incorrect option about bacterial reproduction -",
+   "o": [
+    "Bacteria reproduce mainly by fission",
+    "Under unfavourable condition they produce spores",
+    "They also reproduce by _– sexual reproduction",
+    "They show a= sort of sexual reproduction"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q31",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q32",
+   "no": 110,
+   "q": "Here are few statement given below, Identify organism on basis of statement\ni. Lack cell wall\nii. Smallest living cell known\niii. Can survive without oxygen\niv. Pathogenic in animal & plants.",
+   "o": [
+    "Nostoc",
+    "Anabaena",
+    "Mycoplasma",
+    "Chlorella"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "Biological Classification · Q32",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q33",
+   "no": 111,
+   "q": "Protista includes -",
+   "o": [
+    "Unicellular prokaryotes",
+    "Bacteriophages",
+    "Unicellular eukaryotes",
+    "B.G.A"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q33",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q34",
+   "no": 112,
+   "q": "Which of the following kingdoms has no well defined boundaries?",
+   "o": [
+    "Monera",
+    "Protista",
+    "Fungi",
+    "Metaphyta and Metazoa"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q34",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q35",
+   "no": 113,
+   "q": "Members of Protista are primarily",
+   "o": [
+    "Parasites",
+    "Terrestrial",
+    "Aquatic",
+    "Photosynthetic"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q35",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q36",
+   "no": 114,
+   "q": "Nearly all protists are -",
+   "o": [
+    "Aerobic",
+    "Anaerobic",
+    "Aerobic or anaerobic",
+    "Photosynthetic"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q36",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q37",
+   "no": 115,
+   "q": "Nutritionally, protists are-",
+   "o": [
+    "Photoautotrophs",
+    "Heterotrophs",
+    "Saprotrophs",
+    "Photoautotrophs, heterotrophs'- or autotrophs"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q37",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q38",
+   "no": 116,
+   "q": "Based upon the modes of nutrition, protists are grouped into-",
+   "o": [
+    "Plant-like protists (algae) and ingestive, animal-like protists (protozoa); and absorptive, fungus like protists",
+    "Chrysophytes, Dinoflagellates and Euglenoids only",
+    "Slime moulds and fungi only",
+    "Flagellated protozoans and sporozoans only"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q38",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q39",
+   "no": 117,
+   "q": "Which of the following are placed under Protista-?",
+   "o": [
+    "Chryosophytes and Dinoflagellates",
+    "Euglenoids",
+    "Slime moulds and protozoans",
+    "All"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q39",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q40",
+   "no": 118,
+   "q": "Locomotory structures in protists are –",
+   "o": [
+    "Flagella",
+    "Cilia",
+    "Pseudopodia",
+    "All"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q40",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q41",
+   "no": 119,
+   "q": "Protistaform alink with-",
+   "o": [
+    "Plants only",
+    "Animals only",
+    "Fungi only",
+    "Plants, animals and fungi"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q41",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q42",
+   "no": 120,
+   "q": "Chrysophytes include –",
+   "o": [
+    "Diatoms and desmids (golden algae)",
+    "Euglenoids",
+    "Dinoflagellates",
+    "Slime moulds"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q42",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q43",
+   "no": 121,
+   "q": "Which of the following modes of reproduction can be found in at least some protists?",
+   "o": [
+    "Binary fission",
+    "Sexual reproduction",
+    "Spore formation",
+    "All"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q43",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q44",
+   "no": 122,
+   "q": "Select the following statement that does not apply to diatoms –",
+   "o": [
+    "Diatom cell wall may be impregnated with silicon",
+    "Cell wall is made up of 2 half-shells fit tightly together",
+    "Diatom is a chrysophyte",
+    "Diatom is multiflagellate"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q44",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q45",
+   "no": 123,
+   "q": "Silica gel (Keieselghur) /Diatomite/Diatomaceous earth is obtained by –",
+   "o": [
+    "Diatoms",
+    "Dinoflagellates",
+    "Euglenoids",
+    "Brown algae"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q45",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q46",
+   "no": 124,
+   "q": "The diatoms do not easily decay like most of the other algae because -",
+   "o": [
+    "They have highly siliceous wall",
+    "They have water proof cells",
+    "Their cell wall are mucilaginous",
+    "Cell wall is virus-resistant"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q46",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q47",
+   "no": 125,
+   "q": "Diatomaceous earth is used for all except -",
+   "o": [
+    "Polishing",
+    "Filtration of oils and syrups",
+    "Sound and fire proof room",
+    "Biogas"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q47",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q48",
+   "no": 126,
+   "q": "Chrysophytes are -",
+   "o": [
+    "Planktons",
+    "Nektons",
+    "Benthonic",
+    "Active swimmers"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q48",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q49",
+   "no": 127,
+   "q": "Chief producers in ocean are -",
+   "o": [
+    "Dinoflagellates",
+    "Diatoms",
+    "Euglenoids",
+    "Green algae"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q49",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q50",
+   "no": 128,
+   "q": "Photosynthetic protists are -",
+   "o": [
+    "Euglenoids, Diatoms and Dinoflagellates",
+    "Euglenoids and slime moulds",
+    "Diatoms and Zooflagellates",
+    "Desmids +Ciliates"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q50",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q51",
+   "no": 129,
+   "q": "Dinoflagellates are mostly-",
+   "o": [
+    "Marine",
+    "Fresh water",
+    "terrestrial",
+    "Saprophytes"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q51",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q52",
+   "no": 130,
+   "q": "Red tides in warm coastal water develop due to super abundance of-",
+   "o": [
+    "Dinoflagellates",
+    "Euglenoid forms",
+    "Diatoms and desmids",
+    "Chlamydomonas nivalis"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q52",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q53",
+   "no": 131,
+   "q": "Red tide is caused by –",
+   "o": [
+    "Ceretium",
+    "Noctiluca",
+    "Gonyaulax",
+    "All of these"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q53",
+   "conf": "medium"
+  },
+  {
+   "id": "bc-ex1-q54",
+   "no": 132,
+   "q": "Dinoflagellates have –",
+   "o": [
+    "A single flagellum in the transverse groove between the cell plates",
+    "A single flagellum in the longitudinal groove between the cell plates",
+    "Two flagella one lies longitudinally and the other transversely in a furrow between the wall plates",
+    "No flagella"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q54",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q55",
+   "no": 133,
+   "q": "In which of the following the cell wall has stiff cellulose plate on the outer surface -",
+   "o": [
+    "Dinoflagellates",
+    "Desmids",
+    "Diatoms",
+    "Euglenoids"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q55",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q56",
+   "no": 134,
+   "q": "Which of the following releases toxins that may even kill other marine animals like fishes –",
+   "o": [
+    "Gonyaulax",
+    "Paramecium",
+    "Euglenoids",
+    "Sporozoans"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q56",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q57",
+   "no": 135,
+   "q": "Euglenoids e.g. Euglena are found –",
+   "o": [
+    "In fresh running water",
+    "In fresh stagnant water",
+    "In marine environment",
+    "In both fresh and marine water"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q57",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q58",
+   "no": 136,
+   "q": "Which of the following statements about Euglena is true?",
+   "o": [
+    "Euglenoids are flagellates",
+    "Euglena placed in continuous darkness loses their photosynthetic activity and die",
+    "The pigments of Euglena are quite different from those of green plants",
+    "Euglena is a marine protist"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q58",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q59",
+   "no": 137,
+   "q": "Which of the following statement is true about Euglena?",
+   "o": [
+    "They show flagellar locomotion",
+    "They have a rigid cell wall",
+    "They have no chloroplast",
+    "They are obligate autotroph"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q59",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q60",
+   "no": 138,
+   "q": "i. Instead of a cell wall they have a protein rich pellicle making their body flexible.\nii. They have 2 flagella, a short and a long one.\niii. They have mixotrophic nutrition\niv. In light they are photosynthetic, but act as heterotroph (predating other smaller organism) when they are in dark.\nv. They are connecting link between plants and animals. The above statements are assigned to –",
+   "o": [
+    "Dinoflagellates",
+    "Slime mould",
+    "Desmids and Diatoms",
+    "Euglena"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q60",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q61",
+   "no": 139,
+   "q": "Slime moulds -",
+   "o": [
+    "Are parasite",
+    "Do not produce fruiting bodies",
+    "Do not produce spores",
+    "Saprophytic protists"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q61",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q62",
+   "no": 140,
+   "q": "The slimy mass of protoplasm with nuclei forms the body of slime moulds is called –",
+   "o": [
+    "Plasmodium",
+    "Myxamoeba",
+    "Sporocytes",
+    "Periplasmodium"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q62",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q63",
+   "no": 141,
+   "q": "Which of the following is correct about the slime mould?\nI. Its thalloid body, plasmodium, has pseudopodia for locomotion and engulfing organic matter\nII. During unfavourable conditions plasmodium differentiates and produces fruiting bodies, sporangium\nIII. Spores possess no true cell wall.\nIV. They are dispersed by air current.\nV. Being extremely resistant, spores survive for many years\nVI. Plasmodium can grow up to several feet.",
+   "o": [
+    "I, II, IV, V, VI",
+    "I, II, III",
+    "I, II, III, VI",
+    "II, III, VI"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q63",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q64",
+   "no": 142,
+   "q": "Protozoans are not included in kingdom Animalia because –",
+   "o": [
+    "Mostly asymmetrical",
+    "Unicellular eukaryotes",
+    "Heterotrophic nature",
+    "Multicellular prokaryotes"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q64",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q65",
+   "no": 143,
+   "q": "All protozoans are –",
+   "o": [
+    "Saprophytes only",
+    "Parasites only",
+    "Predators only",
+    "Heterotrophs (parasites or predator) only"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q65",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q66",
+   "no": 144,
+   "q": "Which of the following is considered to be primitive relatives of animals -?",
+   "o": [
+    "Dinoflagellates",
+    "Slime moulds",
+    "Protozoa",
+    "Protochordata"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q66",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q67",
+   "no": 145,
+   "q": "How many major groups protozoan have?",
+   "o": [
+    "3",
+    "4",
+    "2",
+    "8"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q67",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q68",
+   "no": 146,
+   "q": "Which of the following are protozoans?",
+   "o": [
+    "Diatoms, flagellates, ciliates",
+    "Desmids, flagellates, ciliates",
+    "Amoeboid, flagellates, ciliates, sporozoans",
+    "Amoeba, -Paramecium, dinoflagellates, Plasmodium"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q68",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q69",
+   "no": 147,
+   "q": "Which of the following statements is wrong about the amoeboid protozoans?",
+   "o": [
+    "They live in freshwater, sea water or moist soil",
+    "Amoeba has pseudopodia for locomotion and capture prey",
+    "Entamoeba show holozoic nutrition",
+    "Marine forms are shelled with silica"
+   ],
+   "a": 3,
+   "s": "Entamoeba is a parasite (not holozoic free-living); NCERT states marine amoeboid forms have silica shells.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "Biological Classification · Q69 · Book key says D; corrected to C",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q70",
+   "no": 148,
+   "q": "Flagellated protozoans are –",
+   "o": [
+    "Free living",
+    "Parasites",
+    "Either free living or parasites",
+    "Pseudopodia"
+   ],
+   "a": 3,
+   "s": "Flagellated protozoans are either free-living or parasitic.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q70 · Book key says A; corrected to C",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q71",
+   "no": 149,
+   "q": "Which one is correct about Trypanosoma?",
+   "o": [
+    "They are flagellated protozoan",
+    "They are parasite",
+    "They cause sleeping sickness",
+    "All"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q71",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q72",
+   "no": 150,
+   "q": "Paramecium-",
+   "o": [
+    "Is a ciliated protozoan",
+    "Shows water current movement by cilia which helps the food to be steered into gullet",
+    "Has a cavity (gullet) that opens to the outside of the cell surface",
+    "All"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q72",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q73",
+   "no": 151,
+   "q": "Plasmodium (malarial parasite)",
+   "o": [
+    "Is a ciliated protozoan",
+    "Shows water current movement by cilia which helps the food to be steered into gullet",
+    "Causes malaria",
+    "All"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q73",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q74",
+   "no": 152,
+   "q": "Which of the following always produce an infectious spore like stage in their life cycles?",
+   "o": [
+    "Ciliated protozoans",
+    "Flagellated protozoans",
+    "Sporozoans",
+    "None"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q74",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q75",
+   "no": 153,
+   "q": "Mode of nutrition in fungi is not –",
+   "o": [
+    "Parasitic",
+    "Saprophytic",
+    "Autotrophic",
+    "Heterotrophic"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q75",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q76",
+   "no": 154,
+   "q": "All of the following are fungi except -",
+   "o": [
+    "Yeast",
+    "Penicillium",
+    "Plasmodium",
+    "Puccinia"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q76",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q77",
+   "no": 155,
+   "q": "Which of the following is odd?",
+   "o": [
+    "Toad stool",
+    "Puccinia",
+    "Alternaria",
+    "Mushroom"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q77",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q78",
+   "no": 156,
+   "q": "Cell walls of all fungi consist of the polysaccharide –",
+   "o": [
+    "Chitin",
+    "Cellulose",
+    "Silica",
+    "Pectin"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q78",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q79",
+   "no": 157,
+   "q": "The body of multicellular fungus is called a-",
+   "o": [
+    "Monokaryon",
+    "Hyphae",
+    "Rhizoids",
+    "Dikaryon"
+   ],
+   "a": 4,
+   "s": "'Mycelium' is not among the options; book key D (Dikaryon) kept. Question is flawed.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q79",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q80",
+   "no": 158,
+   "q": "The cells of the body of a multicellular fungus are organised into rapidly growing individual filaments called –",
+   "o": [
+    "Mycelium",
+    "Rhizoids",
+    "Hyphae",
+    "Dikaryon"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q80",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q81",
+   "no": 159,
+   "q": "Which one is unicellular fungus?",
+   "o": [
+    "Puccinia",
+    "Toad stool",
+    "Penicillium",
+    "Yeast"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q81",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q82",
+   "no": 160,
+   "q": "Coenocytic hypha is –",
+   "o": [
+    "Uninucleate hypha",
+    "Multicellular hypha",
+    "Multinucleate hypha without septae",
+    "Hypha in coelom"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q82",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q83",
+   "no": 161,
+   "q": "Many fungi are in ___ association with photosynthetic organisms to form mycorrhizae or lichens –",
+   "o": [
+    "Parasitic",
+    "Symbiotic",
+    "Photosynthetic",
+    "Saprobic"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q83",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q84",
+   "no": 162,
+   "q": "Fungican be parasites on –",
+   "o": [
+    "Animals",
+    "Human being",
+    "Plants",
+    "All"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q84",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q85",
+   "no": 163,
+   "q": "Fungi prefer to grow in –",
+   "o": [
+    "Cold and dry places",
+    "Hot and dry places",
+    "Sea water",
+    "Warm and humid places"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q85",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q86",
+   "no": 164,
+   "q": "Fungi occur-",
+   "o": [
+    "In air and soil",
+    "In water",
+    "On plants and animals",
+    "All"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q86",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q87",
+   "no": 165,
+   "q": "Fungi show a great diversity in -",
+   "o": [
+    "Morphology",
+    "Habitat",
+    "Both a and b",
+    "Nutrition"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q87",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q88",
+   "no": 166,
+   "q": "Reproduction in fungi can take place by all of the following vegetative methods except-",
+   "o": [
+    "Gemmae",
+    "Fragmentation",
+    "Fission",
+    "Budding"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q88",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q89",
+   "no": 167,
+   "q": "Fungi show asexual reproduction by all of the following spores except-",
+   "o": [
+    "Conidia",
+    "Oospore",
+    "Sporangiospore",
+    "Zoospores"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q89",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q90",
+   "no": 168,
+   "q": "Sexual reproduction in fungi is by all of the following except-",
+   "o": [
+    "Oospores",
+    "Ascopores",
+    "Zoospores",
+    "Basidiospores"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q90",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q91",
+   "no": 169,
+   "q": "Select the correct statements below that correctly apply to the Kingdom Fungi-",
+   "o": [
+    "Some fungi form beneficial interrelationships with plants",
+    "Certain fungi are natural sources of antibiotics",
+    "The fungal life cycle typically includes a spore stage",
+    "All"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q91",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q94",
+   "no": 170,
+   "q": "Which of the following is the correct sequence of 3 steps in the sexual cycle of fungi-",
+   "o": [
+    "Mitosis . Meiosis . Fertilization",
+    "Plasmogamy. Karyogamy. Meiosis",
+    "Meiosis . Plasmogamy~ . Karyogamy",
+    "Karyogamy. Plasmogamy. Meiosis"
+   ],
+   "a": 2,
+   "s": "Sexual cycle of fungi: plasmogamy → karyogamy → meiosis.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q94 · Book key says D; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q95",
+   "no": 171,
+   "q": "Fungi are classified on the basis of –",
+   "o": [
+    "Morphology of mycelium",
+    "Development of fruiting bodies",
+    "Mode of spore formation",
+    "All"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q95",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q96",
+   "no": 172,
+   "q": "Dikaryophase (dikaryon formation) is a specific characteristic of –",
+   "o": [
+    "All fungi",
+    "Phycomycetes and ascomycetes",
+    "Only basidiomycetes",
+    "Ascomycetes and basidiomycetes"
+   ],
+   "a": 4,
+   "s": "Dikaryotic phase occurs in Ascomycetes and Basidiomycetes.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q96 · Book key says B; corrected to D",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q97",
+   "no": 173,
+   "q": "Coenocytic, multinucleate and branched mycelial habit is found in-",
+   "o": [
+    "Basidiomycetes",
+    "Phycomycetes",
+    "Ascomycetes",
+    "Deuteromycetes"
+   ],
+   "a": 2,
+   "s": "Coenocytic, multinucleate mycelium is typical of Phycomycetes.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q97 · Book key says A; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q98",
+   "no": 174,
+   "q": "Match Column I with Column II. The correct matching is –",
+   "o": [
+    "A-II, B-I, C-IV, D-III",
+    "A-II, B-IV, C-I, D-III",
+    "A-IV, B-I, C-II, D-III",
+    "A-IV, B-III, C-II, D-I"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column I",
+     "Column II"
+    ],
+    "rows": [
+     [
+      "A. Phycomycetes",
+      "I. Sac fungi"
+     ],
+     [
+      "B. Ascomycetes",
+      "II. Algal fungi"
+     ],
+     [
+      "C. Basidiomycetes",
+      "III. Fungi imperfecti"
+     ],
+     [
+      "D. Deuteromycetes",
+      "IV. Club fungi"
+     ]
+    ]
+   },
+   "note": "Biological Classification · Q98",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q99",
+   "no": 175,
+   "q": "Members of phycomycetes are found- I. In aquatic habitat\nII. On decaying wood\nIII. On moist and damp places\nIV. As obligate parasite on plants",
+   "o": [
+    "None of the above",
+    "I and IV",
+    "II and III",
+    "All of the above"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q99",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q100",
+   "no": 176,
+   "q": "In phycomycetes asexual reproduction occurs by-",
+   "o": [
+    "Zoospores (motile)",
+    "Aplanospores (non-motile)",
+    "Both",
+    "Aplanogamete"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q100",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q101",
+   "no": 177,
+   "q": "Which of the following spores are produced endogenously?",
+   "o": [
+    "Zoospores and Conidia",
+    "Conidia and aplanospores",
+    "Aplanospores and zoospores",
+    "Aplanospore, zoospores and conidia"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q101",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q102",
+   "no": 178,
+   "q": "In Phycomycetes sexual reproduction occurs by",
+   "o": [
+    "Isogamy and anisogamy",
+    "lsogamy, oogamy",
+    "Isogamy, anisogamy and oogamy",
+    "Oogamy and anisogamy"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q102",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q103",
+   "no": 179,
+   "q": "All the following belong to phycomycetes except –",
+   "o": [
+    "Penicillium",
+    "Rhizopus (bread mould)",
+    "Mucor",
+    "Albugo"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q103",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q104",
+   "no": 180,
+   "q": "Which of the following is parasite on mustard?",
+   "o": [
+    "Albugo",
+    "Puccinia",
+    "Yeast",
+    "Ustilago"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q104",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q105",
+   "no": 181,
+   "q": "Which of the following is false about ascomycetes?",
+   "o": [
+    "Mode of nutrition saprophytic, decomposer, coprophilous (growing on dung) and parasitic",
+    "Includes unicellular (e.g. yeast) and multicellular forms",
+    "Mycelium is coenocytic",
+    "Aspergillus, Claviceps, Neurospora are important members of Ascomycetes"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q105",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q106",
+   "no": 182,
+   "q": "I. It includes unicellular as well as multicellular fungi\nII. In multicellular forms hyphae are branched and septate\nIII. Conidiophore produces conidia (spores) exogenously in chain\nIV. Sexual spores are ascospores produced endogenously in ascus\nV. Fruiting body is called ascocarp\nWhich of the above characters are shown by –",
+   "o": [
+    "Phycomycetes",
+    "Sac fungi",
+    "Club fungi",
+    "Fungi imperfecti"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q106",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q107",
+   "no": 183,
+   "q": "Which of the following are_ edible ascomycete’s delicacies?",
+   "o": [
+    "Morels+ Mushroom",
+    "Truffles+ Toadstool",
+    "Morels+ Truffles",
+    "Puffball+ Mushroom"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q107",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q108",
+   "no": 184,
+   "q": "Which of the following is used extensively in biochemical and genetical work?",
+   "o": [
+    "Agaricus",
+    "Alternaria",
+    "Neurospora",
+    "Mucor"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q108",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q109",
+   "no": 185,
+   "q": "Which of the following ascomycetes is the source of antibiotic?",
+   "o": [
+    "Neurospora",
+    "Penicillium",
+    "Claviceps",
+    "None"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q109",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q110",
+   "no": 186,
+   "q": "Basidiomycetes include -",
+   "o": [
+    "Mushroom, Toadstool, Puffball and bracket fungi",
+    "Smut fungi and rust fungi",
+    "Both a and b",
+    "Bread mould, sac fungi and algal fungi"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q110",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q111",
+   "no": 187,
+   "q": "Which of the following are common parasite basidiomycetes",
+   "o": [
+    "Puccinia (rust) and Ustilago (smut)",
+    "Sac fungi",
+    "Puffballs",
+    "Agaricus (mushroom)"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q111",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q112",
+   "no": 188,
+   "q": "Where does meiosis occur in mushroom?",
+   "o": [
+    "Basidiospore",
+    "Basidium",
+    "Basidiocarp",
+    "Ascus mother cell"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q112",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q113",
+   "no": 189,
+   "q": "I. Mycelium is branched and septate\nII. No asexual spores are generally formed\nIII. Vegetative reproduction by fragmentation is common\nIV. Sex organs are absent but sexual reproduction takes place by somatogamy\nV. Karyogamy and meiosis occur in basidium to form haploid exogenous 4 basidiospores\nVI. Basidia are arranged in basidiocarp\nThe above characters are assigned to –",
+   "o": [
+    "Sac fungi",
+    "Club fungi",
+    "Algal fungi",
+    "Fungi imperfecti"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q113",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q114",
+   "no": 190,
+   "q": "Plasmogamy in fungi is the fusion of-",
+   "o": [
+    "Two haploid gamete cells and their nuclei at once",
+    "Two haploid nuclei",
+    "Two haploid gamete cells",
+    "Two diploid vegetative cells with nuclei"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q114",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q115",
+   "no": 191,
+   "q": "Karyogamy is -",
+   "o": [
+    "Fusion of two protoplasts",
+    "Fusion of two nuclei",
+    "Fusion of two plasma membranes",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q115",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q116",
+   "no": 192,
+   "q": "Which of the following is false about deuteromycetes?",
+   "o": [
+    "They reproduce only by asexual spores (conidia)",
+    "Mycelium is branched and septate",
+    "They have only parasitic forms",
+    "They have no sexual stage (perfect stage)"
+   ],
+   "a": 3,
+   "s": "Deuteromycetes include both saprophytic and parasitic forms, so 'only parasitic' is false.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q116 · Book key says D; corrected to C",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q117",
+   "no": 193,
+   "q": "Which of the following is correct about class Deuteromycetes?",
+   "o": [
+    "Some members are saprophytes or parasites",
+    "A large number of members are decomposers of litter and help in mineral cycling",
+    "Alternaria, Colletotrichum and Trichoderma are deuteromycetes",
+    "All"
+   ],
+   "a": 4,
+   "s": "A, B and C are all correct statements about Deuteromycetes.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q117 · Book key says A; corrected to D",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q118",
+   "no": 194,
+   "q": "Sexual reproduction is found in all except -",
+   "o": [
+    "Deuteromycetes",
+    "Ascomycetes",
+    "Phycomycetes",
+    "Basidiomycetes"
+   ],
+   "a": 1,
+   "s": "Deuteromycetes lack a sexual (perfect) stage.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q118 · Book key says D; corrected to A",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q119",
+   "no": 195,
+   "q": "If sexual stage is discovered in a member of deuteromycetes, it is moved to-",
+   "o": [
+    "Phycomycetes",
+    "Basidiomycetes",
+    "Ascomycetes",
+    "Both band c"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q119",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q120",
+   "no": 196,
+   "q": "Identify the diagram. (i), (ii), (iii)",
+   "o": [
+    "(i) Mucor, (ii) Aspergillus, (iii) Agaricus",
+    "(i) Aspergillus, (ii) Mucor, (iii) Agaricus",
+    "(i) Agaricus, (ii) Aspergillus, (iii) Mucor",
+    "(i) Agaricus, (ii) Mucor, (iii) Aspergillus"
+   ],
+   "a": 3,
+   "s": "(i) mushroom = Agaricus, (ii) Aspergillus conidiophore, (iii) Mucor mycelium.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q196",
+   "note": "Biological Classification · Q120 · Book key says B; corrected to C",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q121",
+   "no": 197,
+   "q": "Identify the diagram. (i), (ii)",
+   "o": [
+    "(i) Dinoflagellates, (ii) Euglena",
+    "(i) Dinoflagellates, (ii) Paramoecium",
+    "(i) Euglena, (ii) Dinoflagellates",
+    "(i) Slime mould, (ii) Paramecium"
+   ],
+   "a": 1,
+   "s": "Figure labels are ambiguous in the scan; book key A kept.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q197",
+   "note": "Biological Classification · Q121",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q122",
+   "no": 198,
+   "q": "Kingdom Plantae includes –\ni. All eukaryotic chlorophyllous organisms\nii. Some prokaryotic chlorophyllous organisms\niii. Few eukaryotic partial heterotrophic plants\niv. Few prokaryotic partial heterotrophic plants",
+   "o": [
+    "i, iii",
+    "ii, iv",
+    "i, ii, iii",
+    "i, iii, iv"
+   ],
+   "a": 1,
+   "s": "Plantae = eukaryotic chlorophyllous organisms plus a few partial heterotrophs (insectivorous/parasitic plants).",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q122 · Book key says C; corrected to A",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q123",
+   "no": 199,
+   "q": "Plantae does not includes how many of following- Algae, Fungi, Bryophyte, Bladderwort, Pteridophyta, Gymnosperm, Angiosperm",
+   "o": [
+    "Zero",
+    "One",
+    "Two",
+    "Three"
+   ],
+   "a": 2,
+   "s": "Only fungi are excluded from Plantae in the list (algae, bryophytes, bladderwort, pteridophytes, gymnosperms, angiosperms are plants).",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q123 · Book key says C; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q124",
+   "no": 200,
+   "q": "Life cycle of angiosperms plant have-",
+   "o": [
+    "Diploid sporophyte & diploid gametophyte",
+    "Diploid gametophyte & haploid sporophyte",
+    "Diploid sporophyte & haploid gametophyte",
+    "Haploid sporophyte & haploid gametophyte"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q124",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q125",
+   "no": 201,
+   "q": "How many of following enlisted are correct about plantae- I. Cells have eukaryotic structure\nII. Prominent chloroplast\nIII. Cellulosic cell wall\nIV. Life cycle has three distinct phase\nV. Show alteration of generation",
+   "o": [
+    "One",
+    "Two",
+    "Three",
+    "Four"
+   ],
+   "a": 4,
+   "s": "Statement IV is wrong (two distinct phases, not three); I, II, III, V are correct.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q125 · Book key says C; corrected to D",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q126",
+   "no": 202,
+   "q": "Kingdom Animalia are characterized by-",
+   "o": [
+    "Heterotrophic eukaryotic unicellular & multicellular organism that lack cell wall",
+    "Holozoic ,digest food in an internal cavity and store food as complex carbohydrates or fat",
+    "Higher as well as lower forms show elaborate sensory mechanisms",
+    "All of the above"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q126",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q127",
+   "no": 203,
+   "q": "How many of following term is correct about Animalia- Heterotroph, eukaryotic, prokaryotic, unicellular, multicellular, store food as_ glycogen, presence of elaborated neuromotor mechanism without any exception, embryological development",
+   "o": [
+    "6",
+    "More than 6",
+    "5",
+    "Less than 3"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q127",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q128",
+   "no": 204,
+   "q": "In R.H. Whittaker's system, viroids, prions and lichens are grouped into –",
+   "o": [
+    "Monera",
+    "Protista",
+    "Protista and fungi",
+    "None of these"
+   ],
+   "a": 4,
+   "s": "Viruses, viroids, prions and lichens are not placed in the five-kingdom system.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q128 · Book key says A; corrected to D",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q129",
+   "no": 205,
+   "q": "Viruses did not place in classification due to-",
+   "o": [
+    "Lack in study of viruses",
+    "They are not considered truly ‘living’",
+    "Lack of genetic material",
+    "All of these"
+   ],
+   "a": 2,
+   "s": "Viruses are not placed because they are not considered truly 'living'.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q129 · Book key says C; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q130",
+   "no": 206,
+   "q": "Viruses are not-",
+   "o": [
+    "Non-cellular organism",
+    "Inert crystalline structure outside the living cell",
+    "Active crystalline structure outside the living cell",
+    "Once they infect a cell they take over the machinery of host cell to replicate themselves, killing the host"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q130",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q131",
+   "no": 207,
+   "q": "The name 'virus' (meaning venom) was given by –",
+   "o": [
+    "Dmitri Ivanowsky",
+    "M.W. Beijerinck",
+    "Stanley",
+    "Pasteur"
+   ],
+   "a": 4,
+   "s": "Louis Pasteur gave the name 'virus' (meaning venom/poisonous fluid).",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q131 · Book key says A; corrected to D",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q132",
+   "no": 208,
+   "q": "Identify a, b and organism (c).",
+   "o": [
+    "a = DNA, b = capsid, c = TMV",
+    "a = RNA, b = capsid, c = TMV",
+    "a = capsid, b = DNA, c = bacteriophage",
+    "a = capsid, b = RNA, c = bacteriophage"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q208",
+   "note": "Biological Classification · Q132",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q133",
+   "no": 209,
+   "q": "choose the correct statement –",
+   "o": [
+    "genetic material of mosaic disease of tobacco causing organism is DNA",
+    "Viruses were found to be smaller than bacteria but they can passed through bacteria proof filters",
+    "M.W Beijerinek (1898) demonstrated that the extract of infected plant of tobacco could cause infection in healthy plants",
+    "Viruses were found to be smaller than bacteria and they can passed through bacteria proof filters."
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q133",
+   "conf": "medium"
+  },
+  {
+   "id": "bc-ex1-q134",
+   "no": 210,
+   "q": "Contagium vivum fluidum was stated by -",
+   "o": [
+    "Dmitri lavanowsky (1898)",
+    "M.W. Beijerinek (1892)",
+    "W.M. Stanley (1935)",
+    "None of these"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q134",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q135",
+   "no": 211,
+   "q": "Who showed that viruses could be crystallized & crystals outside host-",
+   "o": [
+    "W.M. Stanley(1935)",
+    "M.W.Beijerinek (1898)",
+    "Dmitri lvanowsky (1892)",
+    "M.W. Stanley (1898)"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q135",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q136",
+   "no": 212,
+   "q": "Which of following is major constituent in crystallined virus structure –",
+   "o": [
+    "Carbohydrate",
+    "Protein",
+    "Fat",
+    "Nucleic acid"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q136",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q137",
+   "no": 213,
+   "q": "Viruses are",
+   "o": [
+    "Autotroph",
+    "Obligate parasite",
+    "Saprotroph",
+    "Holozoic"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q137",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q138",
+   "no": 214,
+   "q": "Genetic material of viruses are/is –",
+   "o": [
+    "DNA",
+    "RNA",
+    "DNA and RNA both in an individual virus",
+    "DNA or RNA in an individual virus"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q138",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q139",
+   "no": 215,
+   "q": "The infection material of viruses is/are",
+   "o": [
+    "Protein coat",
+    "Genetic material",
+    "Nucleoprotein",
+    "All of these"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q139",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q140",
+   "no": 216,
+   "q": "In general viruses that infect plants have-",
+   "o": [
+    "ds RNA",
+    "ss RNA",
+    "ds DNA",
+    "ss DNA"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q140",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q141",
+   "no": 217,
+   "q": "Animal infection viruses are not generally -",
+   "o": [
+    "ss RNA",
+    "ds RNA",
+    "ds DNA",
+    "ss DNA"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q141",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q142",
+   "no": 218,
+   "q": "genetic material of bacteriophage is -",
+   "o": [
+    "ds DNA",
+    "ss RNA",
+    "ds RNA",
+    "ssDNA"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q142",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q143",
+   "no": 219,
+   "q": "bacteriophage is –",
+   "o": [
+    "bacteria that infect virus",
+    "virus that infect bacteria",
+    "bacteria that infect cellular organism",
+    "virus that infect other than bacteria"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q143",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q144",
+   "no": 220,
+   "q": "The protein coat called __(A)___ made of small subunit called __(B)_stthat protect __(C)__ of virus",
+   "o": [
+    "A = capsomere, B = capsid, C= genetic material",
+    "A= capsid, B = capsomere, C = genetic material",
+    "A=capsid, B = capsomere, C = enzyme and mineral",
+    "A = capsomere, B = capsid, C = enzyme and mineral"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q144",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q145",
+   "no": 221,
+   "q": "Head of bacteriophage is–",
+   "o": [
+    "Helical",
+    "Polyhedral",
+    "Icosahedral",
+    "A & B"
+   ],
+   "a": 3,
+   "s": "Bacteriophage head is polyhedral (icosahedral), not helical.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q145 · Book key says D; corrected to C",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q146",
+   "no": 222,
+   "q": "Identify the labelled parts (A–D) of the bacteriophage shown.",
+   "o": [
+    "A = head, B = sheath, C = tail fibers, D = collar",
+    "A = head, B = collar, C = sheath, D = tail fibers",
+    "A = collar, B = head, C = tail fibers, D = sheath",
+    "A = tail fibers, B = sheath, C = head, D = collar"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q222",
+   "note": "Biological Classification · Q146",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q147",
+   "no": 223,
+   "q": "Viroid was discovered by -",
+   "o": [
+    "T.O. Diener (1971)",
+    "W.M. Stanley (1935)",
+    "T.O diener (1935)",
+    "W.M. Stanley (1971)"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q147",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q148",
+   "no": 224,
+   "q": "Choose the correct on basis of size :",
+   "o": [
+    "Bacteria<virus<viroid",
+    "Viroid<virus<bacteria",
+    "Viroid>bacteria<virus",
+    "Bacteria>viroid>virus"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q148",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q149",
+   "no": 225,
+   "q": "Given below are statements (i–vi). Choose the correct set.\ni. Viroid = virus – capsid\nii. Potato spindle tuber disease is caused by prions\niii. Viroid has free DNA\niv. Viroid has free RNA\nv. DNA of viroid was of low molecular weight\nvi. RNA of viroid was of low molecular weight",
+   "o": [
+    "i, iv only",
+    "i, vi, iii",
+    "i, iv, vi",
+    "i, iii, v"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q149",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q150",
+   "no": 226,
+   "q": "Prion cause-",
+   "o": [
+    "BSE in cattle and CJD in human",
+    "BSE in human and CJD in cattle",
+    "BSE and CJD cause in cattle",
+    "BSE and CJD cause in human"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q150",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q151",
+   "no": 227,
+   "q": "Prions are-",
+   "o": [
+    "Smaller than virus",
+    "Larger than virus",
+    "Smaller than viroid",
+    "Similar in size to viruses"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q151",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q152",
+   "no": 228,
+   "q": "Choose the incorrect about BSE",
+   "o": [
+    "It expanded as Bovine spongiform encephalophathy",
+    "Caused by prion",
+    "Its analogous variant is CUD",
+    "Its homologous variant is CJD"
+   ],
+   "a": 4,
+   "s": "Option wording is confusing in the book (CJD is the human analogue of BSE); book key D kept.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q152",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q153",
+   "no": 229,
+   "q": "Lichen are –",
+   "o": [
+    "Saprotroph only",
+    "Symbiotic",
+    "Parasitic only",
+    "A&C"
+   ],
+   "a": 2,
+   "s": "Lichens are symbiotic associations of algae and fungi.",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q153 · Book key says D; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "bc-ex1-q154",
+   "no": 230,
+   "q": "Lichen are mutual association of-",
+   "o": [
+    "Mycobiont (fungal) and phycobiont (algae)",
+    "Gymnosperm root & fungi",
+    "Algae & gymnosperm root",
+    "All of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q154",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q155",
+   "no": 231,
+   "q": "Mycobiont and phycobiout are __& respectively",
+   "o": [
+    "Autotrophic & heterotrophic",
+    "Autotrophic & autotrophic",
+    "Heterotrophic & autotrophic",
+    "Heterotrophic & heterotrophic"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Biological Classification · Q155",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q156",
+   "no": 232,
+   "q": "The function of fungal part is lichen is/are -",
+   "o": [
+    "Water absorption",
+    "Mineral absorption",
+    "Provide shelter",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q156",
+   "conf": "high"
+  },
+  {
+   "id": "bc-ex1-q157",
+   "no": 233,
+   "q": "Lichen cannot grow in -",
+   "o": [
+    "Polluted area",
+    "Area where there is no pollution",
+    "Association between fungi and algae is unpolluted region",
+    "All of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Biological Classification · Q157",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q1",
+   "no": 234,
+   "q": "Artificial classification system is based on -",
+   "o": [
+    "Mainly on vegetative character and on the androecium structure",
+    "Ultrastructure, anatomical, embryological characters",
+    "External and internal features",
+    "Chromosome number."
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q1",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q2",
+   "no": 235,
+   "q": "George Bentham and Joseph Dalton Hooker gave",
+   "o": [
+    "Artificial classification system",
+    "Phylogenetic classification",
+    "Natural classification system",
+    "A and B respectively"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q2",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q3",
+   "no": 236,
+   "q": "Choose incorrectly match option",
+   "o": [
+    "Numerical taxonomy –- Number and code are assigned to all the character and the data are then processed",
+    "Cytotaxonomy - Based on cytological information",
+    "Chemotaxonomy - Based on phytochemistry",
+    "Natural classification - Linnaeus"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q3",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q4",
+   "no": 237,
+   "q": "Phylogenetic classification –",
+   "o": [
+    "Based on evolutionary relationship",
+    "This assume that organism belonging to some taxa haven’t a common ancestor",
+    "Gave equal weightage to vegetative & sexual character but not-on evolutionary relationship",
+    "A and B both"
+   ],
+   "a": 1,
+   "s": "Phylogenetic classification is based on evolutionary relationships and assumes a common ancestor; statement B is wrong.",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q4 · Book key says D; corrected to A",
+   "conf": "low"
+  },
+  {
+   "id": "pk-ex1-q5",
+   "no": 238,
+   "q": "Blue - green algae placed in which kingdom according to R.H. Whittaker",
+   "o": [
+    "Monera",
+    "Protista",
+    "Fungi",
+    "Plantae"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q5",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q6",
+   "no": 239,
+   "q": "Choose the correct statement algae:",
+   "o": [
+    "Algae are chlorophyllous, autotrophic member of Plantae",
+    "Some algae occur in association with fungi and on sloth bear",
+    "The plant body of algae lack root, stem, leaf",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q6",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q7",
+   "no": 240,
+   "q": "Colonial form alga is -",
+   "o": [
+    "Ulothrix",
+    "Volvox",
+    "Kelp",
+    "Spirogyra"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q7",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q8",
+   "no": 241,
+   "q": "Zoospore is –",
+   "o": [
+    "Sexual spore in algae",
+    "Asexual spore in algae",
+    "Develop in zoosporangium in number of four",
+    "Non flagellated spore"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q8",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q9",
+   "no": 242,
+   "q": "Fusion between one large static female gametes and smaller motile male gamete is termed as___ as seenis__",
+   "o": [
+    "Isogamous, Spirogyra",
+    "Oogamous, Volvox",
+    "Anisogamous, Fucus",
+    "Oogamous, Ulothrix"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q9",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q10",
+   "no": 243,
+   "q": "Eudorina show -",
+   "o": [
+    "Fusion of flagellate similar size gamete",
+    "Fusion of non - flagellate similar size gamete",
+    "Oogamous",
+    "Anisogamous"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q10",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q11",
+   "no": 244,
+   "q": "How many of following is an example of isogamous Ulothrix, Spirogyra, Volvox, fucus, Polysiphonia",
+   "o": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Plant Kingdom · Q11",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q12",
+   "no": 245,
+   "q": "Identify the organism and label A, B, C, D.",
+   "o": [
+    "Laminaria A = leaf B = air bladder C = stipe D = holdfast",
+    "Fucus A = frond B = air bladder C = stipe D = Hold fast",
+    "Fucus A = air bladder B = frond, C = midrib D = holdfast",
+    "Laminaria A = leaf C = midrib D = petiole"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q245",
+   "note": "Plant Kingdom · Q12",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q13",
+   "no": 246,
+   "q": "Algae are usefultomanin-",
+   "o": [
+    "Fixation of almost half of total CO2 on earth",
+    "Primary producer",
+    "Increase level of oxygen",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q13",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q14",
+   "no": 247,
+   "q": "Hydrocolloids are produced by –",
+   "o": [
+    "Brown algae (algin), carrageen (red algae), Agar (brown algae)",
+    "Brown algae (algin), Red algae (carrageen)",
+    "Brown algae (algin, agar), Red algae (carrageen)",
+    "None of these"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q14",
+   "conf": "medium"
+  },
+  {
+   "id": "pk-ex1-q15",
+   "no": 248,
+   "q": "Choose correct statement-",
+   "o": [
+    "Chlorella, a multicellular alga rich in protein",
+    "Chlorella & Spirulina are astronaut food because of their high carbohydrate, vitamin mineral but less protein",
+    "The product obtained by Gracilaria are used to grow microbes",
+    "Laminaria, Sargassum a member of Rhodophyceae are among 70 species of marine algae used as food"
+   ],
+   "a": 3,
+   "s": "Agar from Gracilaria/Gelidium is used to grow microbes; Sargassum/Laminaria are brown, not Rhodophyceae.",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q15 · Book key says D; corrected to C",
+   "conf": "low"
+  },
+  {
+   "id": "pk-ex1-q16",
+   "no": 249,
+   "q": "Chlorophyceae are commonly called as-",
+   "o": [
+    "Green algae",
+    "Blue - green algae",
+    "Brown algae",
+    "Red algae"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q16",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q17",
+   "no": 250,
+   "q": "Major pigment of Chlamydomonas –",
+   "o": [
+    "Chlorophyll a, b",
+    "Chlorophyll a, c",
+    "Chlorophyll a, d",
+    "Fucoxanthin, phycoerythrin"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q17",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q18",
+   "no": 251,
+   "q": "Choose incorrect statement about green alga-",
+   "o": [
+    "The chlorophyll localised in definite chloroplast",
+    "Spirogyra have spiral chloroplast",
+    "Most member have one or more storage bodies i.e. pyrenoid localised in chloroplast",
+    "The cell wall is made of outer layer that is of cellulose and inner layer of pectose"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q18",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q19",
+   "no": 252,
+   "q": "Reproduction in green algae is/are –",
+   "o": [
+    "Isogamous",
+    "Anisogamous",
+    "Oogamous",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q19",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q20",
+   "no": 253,
+   "q": "Chara is",
+   "o": [
+    "Common stonewort",
+    "Marine green algae",
+    "Unisexual algae",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q20",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q21",
+   "no": 254,
+   "q": "Flagellation in green algae is –",
+   "o": [
+    "2–8, equal, apical",
+    "2, unequal, lateral",
+    "2–8, unequal, lateral",
+    "Absent"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q21",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q22",
+   "no": 255,
+   "q": "Phaeophyceae is commonly named as –",
+   "o": [
+    "Green alga",
+    "Brown alga",
+    "Red algae",
+    "None"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q22",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q23",
+   "no": 256,
+   "q": "Choose the correct statement from following –",
+   "o": [
+    "Ectocarpus is filamentous forms while kelps is profusely branched from",
+    "Kelps may reach a height of average 100cm",
+    "The plant body of brown algae is attached to substratum by stipe",
+    "Leaf - like photosynthetic organ of brown algae is stipe"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q23",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q24",
+   "no": 257,
+   "q": "Major pigment found in Fucus is/are",
+   "o": [
+    "Chlorophyll a, c",
+    "Chlorophyll a, d",
+    "Chlorophyll a, b",
+    "Fucoxanthin and phycoerythrin"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q24",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q25",
+   "no": 258,
+   "q": "The color of brown algae depend upon",
+   "o": [
+    "Amount of xanthophyll",
+    "Fucoxanthin present in them",
+    "Phycoerythrin and fucoxanthin ratio",
+    "A&B both"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q25",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q26",
+   "no": 259,
+   "q": "Choose the correct about cell of brown algae –",
+   "o": [
+    "Cellulosic cell wall cover outside by align",
+    "Cellulosic cell wall with pectin and polysulphate esters",
+    "They have two flagella, equal sized and laterally inserted",
+    "A and C both"
+   ],
+   "a": 1,
+   "s": "Brown algae have two UNEQUAL laterally attached flagella, so C is false.",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q26 · Book key says D; corrected to A",
+   "conf": "low"
+  },
+  {
+   "id": "pk-ex1-q27",
+   "no": 260,
+   "q": "Dictyota is member of -–",
+   "o": [
+    "Same member of Ectocarpus, Gelidium, fucus",
+    "Same member those having Laminaria or mannitol as stored food",
+    "Same member of Laminaria, Porphyra, fucus",
+    "Same member those having phycoerythrin as accessory pigment"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q27",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q28",
+   "no": 261,
+   "q": "Gametes of Sargassum are-",
+   "o": [
+    "Pyriform",
+    "Cup - shaped",
+    "Ribbon - shaped",
+    "Discoid"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q28",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q29",
+   "no": 262,
+   "q": "Rhodophyceae is called red algae because of –",
+   "o": [
+    "Predominance of red pigment",
+    "Abundance of d-phycoerythrin (as printed)",
+    "A & B both",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q29",
+   "conf": "medium"
+  },
+  {
+   "id": "pk-ex1-q30",
+   "no": 263,
+   "q": "The stored food in Polysiphoniais___A___ which is very similar to B and C____ in structure",
+   "o": [
+    "A = floridean starch B = amylopectin C = glycogen",
+    "A = floridean starch B = chitin C = glycogen",
+    "A = mannitol B = floridean starch C = amylopectin",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q30",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q31",
+   "no": 264,
+   "q": "Member of Rhodophyceae reproduce by-",
+   "o": [
+    "Non - motile asexual spore and motile sexual gametes",
+    "motile asexual spore and motile sexual gametes",
+    "Non - motile asexual spore and non – motile sexual gametes",
+    "motile asexual spore and non - motile sexual gametes"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q31",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q32",
+   "no": 265,
+   "q": "Porphyra show -",
+   "o": [
+    "Isogamous",
+    "Anisogamous",
+    "Oogamous",
+    "All of these"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q32",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q33",
+   "no": 266,
+   "q": "Bryophyta include -–",
+   "o": [
+    "Hornwort",
+    "Liverwort",
+    "Mosses",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q33",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q34",
+   "no": 267,
+   "q": "Identify the given plant diagram and label its parts:",
+   "o": [
+    "Funaria, A = gametophyte, B = sporophyte",
+    "Sphagnum, A = gametophyte, B = sporophyte",
+    "Funaria, A = sporophyte, B = gametophyte",
+    "Sphagnum, A = sporophyte, B = gametophyte"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q267",
+   "note": "Plant Kingdom · Q34",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q35",
+   "no": 268,
+   "q": "Bryophytes are –",
+   "o": [
+    "Amphibians of plant kingdom",
+    "Reptilians of plant kingdom",
+    "First vascular bundle containing plants",
+    "A & C both"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q35",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q36",
+   "no": 269,
+   "q": "The body organization of bryophytes have =",
+   "o": [
+    "Unicellular or multicellular rhizoid",
+    "Less differentiation than algae",
+    "They have true root stem and leaves",
+    "A&C both"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q36",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q37",
+   "no": 270,
+   "q": "The main plant body of bryophyte is __A that produce___B _",
+   "o": [
+    "A= diploid B = gametes",
+    "A = haploid B = gametes",
+    "A = haploid B = spores",
+    "A = diploid B = spores"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q37",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q38",
+   "no": 271,
+   "q": "Choose the correct statement",
+   "o": [
+    "Sex organs in bryophytes are unicellular and jacketed",
+    "Male sex organ is antheridium that produce flagellate (four flagella) antherozoids",
+    "Female sex organ is archegonium i.e. flask – shaped and produce single egg",
+    "Water is required for travelling of egg from archegonium to antheridium"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q38",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q39",
+   "no": 272,
+   "q": "In bryophyta, meiosis occur –",
+   "o": [
+    "During development of gametes",
+    "Immediately after zygote formation",
+    "After sometime of zygote formation",
+    "In gametophytic stage"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q39",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q40",
+   "no": 273,
+   "q": "Identify the given diagram and label (A) and (B).",
+   "o": [
+    "Sphagnum, a liverwort A = archegonia branch B = antheridial branch",
+    "Sphagnum, a moss A = archegonia branch B = antheridial branch",
+    "Funaria, a moss A = antheridial branch B = archegonia branch",
+    "Sphagnum, a liverwort A = antheridial branch B = archegonia branch"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q273",
+   "note": "Plant Kingdom · Q40",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q41",
+   "no": 274,
+   "q": "Choose the correct statement with regard to bryophyta.",
+   "o": [
+    "Sporophyte is free-living but attached to photosynthetic gametophyte and derives nourishment from it",
+    "Sporophyte is not free-living but attached to photosynthetic gametophyte and derives nourishment from it",
+    "Gametophyte is not free-living but attached to photosynthetic sporophyte and derives nourishment from it",
+    "Gametophyte is free-living but attached to photosynthetic sporophyte and derives nourishment from it"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q41",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q42",
+   "no": 275,
+   "q": "First organism to colonize rock are –",
+   "o": [
+    "Mosses",
+    "Lichen",
+    "Liverwort",
+    "A&B both"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q42",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q43",
+   "no": 276,
+   "q": "For trans - shipment of living material which of following is more suitable to use",
+   "o": [
+    "Marchantia",
+    "Funaria",
+    "Sphagnum",
+    "Riccia"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q43",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q44",
+   "no": 277,
+   "q": "Which of the following is obtained from Sphagnum as coal:",
+   "o": [
+    "Bituminous",
+    "Peat",
+    "Lignite",
+    "Anthracite"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q44",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q45",
+   "no": 278,
+   "q": "Choose the correct statement :",
+   "o": [
+    "The thalloid plant body of liverwort is dorsiventrally appressed closely to substrate",
+    "The leafy members have tiny true leaf in two rows on the stem like structure",
+    "The leafy membrane have tiny leaf like appendage in four rows on the stem like structure",
+    "The thalloid plant body of liverwort is isobilaterally appressed closely to substrate"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q45",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q46",
+   "no": 279,
+   "q": "Asexual reproduction in bryophytes is not take place by -",
+   "o": [
+    "Fragmentation",
+    "Gemmae",
+    "Budding in secondary protonema",
+    "Oogamous"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q46",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q47",
+   "no": 280,
+   "q": "Gemmae are –",
+   "o": [
+    "Green, unicellular, asexual bud, develop in small receptacles i.e. gemma cup",
+    "Green, multicellular, asexual bud, develop in small receptacles i.e. gemma cup",
+    "Non-green, unicellular, asexual bud, develop in small receptacles i.e. gemma cup",
+    "Green, multicellular, sexual bud, develop in small receptacles i.e. gemma cup"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q47",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q48",
+   "no": 281,
+   "q": "In Marchantia",
+   "o": [
+    "Male and Female sex organs are produced on same thalli",
+    "Male and female sex organs are produced on different thalli",
+    "Gametophytes is differentiated into foot seta and capsule",
+    "Spores geminates to form free – living sporophyte"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q48",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q49",
+   "no": 282,
+   "q": "The predominant stage of life cycle of a moss is-",
+   "o": [
+    "Gametophytes",
+    "Sporophytes",
+    "Protonema stage",
+    "Prothallus stage"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q49",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q50",
+   "no": 283,
+   "q": "The gametophyte of moss is divided into-",
+   "o": [
+    "Two stage, first protonema stage which develops directly from gamete.",
+    "Two stage, second leafy stage which develop from secondary protonema as a lateral bud.",
+    "Two stage, first leafy stage and second protonema stage",
+    "Two stage, first protonema stage which develops directly from spore and second leafy stage which develop from spore germination as terminal bud."
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q50",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q51",
+   "no": 284,
+   "q": "Protonema stage is –",
+   "o": [
+    "Creeping, green unbranched and frequently filamentous stage",
+    "Prostate, green, branched = and frequently filamentous stage",
+    "Creeping, green, branched = and frequently filamentous stage",
+    "Prostate, non – green, unbranched and frequently stage"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q51",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q52",
+   "no": 285,
+   "q": "Choose the correct statement about leafy stage of mosses",
+   "o": [
+    "They consist of upright, slender axes bearing spirally arranged leaves.",
+    "They are attached to soil through multicellular and branched rhizoids.",
+    "This stage bears sex organs.",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q52",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q53",
+   "no": 286,
+   "q": "In sexual reproduction, which of the following is not seen in mosses?",
+   "o": [
+    "Sex organs are produced at apex of leafy stage",
+    "After fertilization zygote develops into sporophyte",
+    "Development of embryo",
+    "All of these"
+   ],
+   "a": 3,
+   "s": "Flawed question: all listed events occur in mosses; book key C kept.",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q53",
+   "conf": "low"
+  },
+  {
+   "id": "pk-ex1-q54",
+   "no": 287,
+   "q": "The sporophyte of mosses –\nI) Is more elaborate than that of liverwort\nII) Consists of foot, seta and capsule\nIII) Spores are present in capsule\nIV) Spores are produced after meiosis\nV) Has an elaborate mechanism of spore dispersal\nVI) Has peristomial teeth",
+   "o": [
+    "All are correct",
+    "I, II, III only",
+    "IV, V, VI only",
+    "I, III, V only"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q54",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q55",
+   "no": 288,
+   "q": "Choose the incorrectly matched pair (Column-A – Column-B):",
+   "o": [
+    "Hornwort – Marchantia",
+    "Bryopsida – Polytrichum",
+    "Liverwort – Marchantia",
+    "Mosses – Sphagnum"
+   ],
+   "a": 1,
+   "s": "Hornwort is Anthoceros, not Marchantia (a liverwort).",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Plant Kingdom · Q55",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q56",
+   "no": 289,
+   "q": "Pteridophytes includes –",
+   "o": [
+    "Horsetail",
+    "Ferns",
+    "Polytrichum",
+    "A&B both"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q56",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q57",
+   "no": 290,
+   "q": "First terrestrial vascular plant is –",
+   "o": [
+    "Algae",
+    "Bryophyta (liverwort & hornwort)",
+    "Pteridophyta",
+    "Bryophyta (Mosses)"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q57",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q58",
+   "no": 291,
+   "q": "Choose the correct statement from following",
+   "o": [
+    "The plant body is differentiated into true root, only true prostrate stem as in Selaginella and true leaf",
+    "The leaves of pteridophytes are small as in Selaginella or macrophyll in ferns.",
+    "Pteridophytes possess xylem, phloem",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q58",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q59",
+   "no": 292,
+   "q": "In pteridophyta –",
+   "o": [
+    "The main plant body is a sporophyte",
+    "The main plant body is a gametophyte",
+    "The main plant body is a gametophyte on which sporophytic phase is partially dependent",
+    "A & C"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q59",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q60",
+   "no": 293,
+   "q": "Choose the correct statement with regard to reproduction in pteridophytes",
+   "o": [
+    "Sporophyte bears sporangia that are subtended by sporophylls",
+    "Gametophyte bears sporangia that are subtended by sporophylls",
+    "Sporophylls compact to form strobili as in ferns",
+    "The sporangia produce spores by mitosis in spore mother cell"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q60",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q61",
+   "no": 294,
+   "q": "Gametophyte of pteridophyte is –",
+   "o": [
+    "Small but multicellular, free-living, mostly photosynthetic, differentiated into root, stem and leaf",
+    "Small inconspicuous but multicellular, dependent, mostly photosynthetic thalloid body",
+    "Small but multicellular, free-living, mostly photosynthetic thalloid structure",
+    "Small inconspicuous but multicellular, free-living, mostly non-photosynthetic thalloid body"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q61",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q62",
+   "no": 295,
+   "q": "Water needed for fertilization in -",
+   "o": [
+    "Eucalyptus",
+    "Bryophytes",
+    "Pteridophyptes",
+    "B&C both"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q62",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q63",
+   "no": 296,
+   "q": "Sex organ bear on -",
+   "o": [
+    "Sporophytes",
+    "Gametophyte",
+    "On both gametophytes & sporophyte",
+    "None"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q63",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q64",
+   "no": 297,
+   "q": "Heterosporous pteridophytes is/are-",
+   "o": [
+    "Selaginella",
+    "Salvinia",
+    "Psilotum",
+    "A&B both"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q64",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q65",
+   "no": 298,
+   "q": "Pteridophytes with all similar kind of spores is in",
+   "o": [
+    "Terror of Kashmir",
+    "Psilotum",
+    "Selaginella",
+    "A&B both"
+   ],
+   "a": 2,
+   "s": "Psilotum is homosporous; Selaginella and Salvinia are heterosporous.",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q65 · Book key says D; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "pk-ex1-q66",
+   "no": 299,
+   "q": "Seed habit reported for first time is",
+   "o": [
+    "Blue - green algae",
+    "Pteridophyte",
+    "Angiosperm",
+    "Bryophyta"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q66",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q67",
+   "no": 300,
+   "q": "Pteridophyte classification into –",
+   "o": [
+    "4 classes",
+    "4 orders",
+    "4 families",
+    "All of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q67",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q68",
+   "no": 301,
+   "q": "Adiantum is member with –-",
+   "o": [
+    "Pteris",
+    "Equisetum",
+    "Lycopodium",
+    "Selaginella"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q68",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q69",
+   "no": 302,
+   "q": "Match the following:",
+   "o": [
+    "A–iv, B–ii, C–iii, D–i",
+    "A–iii, B–ii, C–iv, D–i",
+    "A–ii, B–iii, C–i, D–iv",
+    "A–i, B–iv, C–ii, D–iii"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "Column-I",
+     "Column-II"
+    ],
+    "rows": [
+     [
+      "i) Sphenopsida",
+      "A) Dryopteris"
+     ],
+     [
+      "ii) Lycopsida",
+      "B) Selaginella"
+     ],
+     [
+      "iii) Psilopsida",
+      "C) Psilotum"
+     ],
+     [
+      "iv) Pteropsida",
+      "D) Equisetum"
+     ]
+    ]
+   },
+   "note": "Plant Kingdom · Q69",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q70",
+   "no": 303,
+   "q": "Identify the following pteridophytes (A–D).",
+   "o": [
+    "A = Salvinia, B = horsetail, C = fern, D = Selaginella",
+    "A = Selaginella, B = Salvinia, C = fern, D = horsetail",
+    "A = Equisetum, B = fern, C = Selaginella, D = horsetail",
+    "A = Selaginella, B = Salvia, C = Dryopteris, D = Equisetum"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q303",
+   "note": "Plant Kingdom · Q70",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q71",
+   "no": 304,
+   "q": "Label A, B, C, D, E in the following diagram:",
+   "o": [
+    "A = strobilus, B = rhizome,",
+    "A = cone, C = node, D = internode",
+    "A = strobilus, B = rhizome, C = node, D = internode, E = branch",
+    "None of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q304",
+   "note": "Plant Kingdom · Q71",
+   "conf": "medium"
+  },
+  {
+   "id": "pk-ex1-q72",
+   "no": 305,
+   "q": "Gymnosperms are plants in which –",
+   "o": [
+    "Ovules are enclosed by any ovary wall both before and after fertilization",
+    "Ovules are not enclosed by any ovary wall both before and after fertilization",
+    "Ovules are enclosed by any ovary wall before fertilization but not after fertilization",
+    "Ovules are not enclosed by any ovary wall before fertilization but after fertilization"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q72",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q73",
+   "no": 306,
+   "q": "Tallest tree species belongs to –",
+   "o": [
+    "Angiosperm",
+    "Gymnosperm",
+    "Pteridophyte",
+    "Algae"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q73",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q74",
+   "no": 307,
+   "q": "Fungi show symbiotic association with gymnosperm in form of -",
+   "o": [
+    "Mycorrhiza in Pinus",
+    "Mycorrhiza in cycas",
+    "Coralloid rest in Pinus",
+    "Coralloid rest in cycas"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q74",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q75",
+   "no": 308,
+   "q": "The stem of -",
+   "o": [
+    "Cycas is unbranched",
+    "Pinus is branched",
+    "Cedrus is branched",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q75",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q76",
+   "no": 309,
+   "q": "Needle-like leaves, thick cuticle, sunken stomata are character of –",
+   "o": [
+    "Cycas",
+    "Pinus",
+    "Gnetum",
+    "Ginkgo"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q76",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q77",
+   "no": 310,
+   "q": "Gymnosperms are –",
+   "o": [
+    "Heterosporous, haploid microspores and haploid megaspore",
+    "Homosporous, both spores are haploid",
+    "Heterosporous, both spores(microspores & megaspores) are diploid",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q77",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q78",
+   "no": 311,
+   "q": "Choose the correct statement –",
+   "o": [
+    "The male and female cones borne on same plant as in Cycas",
+    "The male and female cones borne on different plant as in Cycas",
+    "The male and female cones borne on same plant as in Pinus",
+    "BothA&C"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q78",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q79",
+   "no": 312,
+   "q": "Choose the correct statement about female cone of gymnosperm:",
+   "o": [
+    "The nucellus is protected by bitegmic structure",
+    "The megaspore mother cell divides mitotically to form four megaspores",
+    "One of four megaspores, enclosed within the megasporangium, develops into a multicellular female gametophyte that bears one archegonium",
+    "Ovule is unitegmic"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q79",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q80",
+   "no": 313,
+   "q": "Statement-I: The cones bearing megasporophylls with ovules are female cones.\nStatement-II: The strobili bearing microsporangia are called male cones.",
+   "o": [
+    "Both stated statements are correct",
+    "Both stated statements are incorrect",
+    "Statement-I is correct while Statement-II is incorrect",
+    "Statement-I is incorrect while Statement-II is correct"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q80",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q81",
+   "no": 314,
+   "q": "Identify given plant diagram and choose correct response",
+   "o": [
+    "Ginkgo, a living fossil",
+    "Cycas, a living fossil",
+    "Taxus",
+    "Gnetum"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q314",
+   "note": "Plant Kingdom · Q81",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q82",
+   "no": 315,
+   "q": "What is difference between bryophytic and gymnospermous & gametophytes",
+   "o": [
+    "Bryophytic gametophytes is independent free-living structure while gametophytes of gymnosperm is dependent",
+    "Gametophyte of gymnosperm remain within the sporangia retained on sporophytes",
+    "BothA&B",
+    "None of these"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q82",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q83",
+   "no": 316,
+   "q": "Choose the correct set about the given figure:\ni) Pinnate leaves\nii) Palmate leaf\niii) Branched stem\niv) Branching is same as in Cedrus\nv) Unbranched stem\nvi) Bears male cone and female cone on same plant\nvii) Bears male cone and female cone on different plants\nviii) It is a living fossil along with Ginkgo",
+   "o": [
+    "i, iii, vi, viii",
+    "i, v, vii, viii",
+    "ii, v, vi",
+    "i, iv, vii, viii"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q316",
+   "note": "Plant Kingdom · Q83",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q84",
+   "no": 317,
+   "q": "Anthoceros thallus and coralloid root of Cycas are",
+   "o": [
+    "Similar in morphological structure",
+    "Performing N>-fixing",
+    "Presence of vascular bundle",
+    "B&C"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q84",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q85",
+   "no": 318,
+   "q": "Gametophytes is parasitic over sporophytes is",
+   "o": [
+    "Cycadales",
+    "Coniferales",
+    "Monocot",
+    "All of these"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q85",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q86",
+   "no": 319,
+   "q": "The endosperm of gymnosperm represent",
+   "o": [
+    "Female gametophyte",
+    "Triploid structure",
+    "Diploid structure",
+    "A&C"
+   ],
+   "a": 1,
+   "s": "Gymnosperm endosperm is the female gametophyte (haploid), not triploid or diploid.",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q86 · Book key says D; corrected to A",
+   "conf": "low"
+  },
+  {
+   "id": "pk-ex1-q87",
+   "no": 320,
+   "q": "Read the following statements and choose the incorrect response with respect to gymnospermous reproduction",
+   "o": [
+    "Pollen grains are carried by air currents",
+    "Pollen tube carries the male gametes to archegonia",
+    "Following fertilization, zygote develop but embryo stage is lacking",
+    "Ovule develops into seed"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q87",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q88",
+   "no": 321,
+   "q": "All the given structure of Pinus and Cycas are haploid, except",
+   "o": [
+    "Pollen grain",
+    "Egg",
+    "Nucellus",
+    "Endosperm"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q88",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q89",
+   "no": 322,
+   "q": "Gymnosperm is example of -",
+   "o": [
+    "Vascular, embryophyte with ovule enclosed is ovary",
+    "Vascular, non-embryophyte",
+    "Non-vascular, non-embryophyte",
+    "Vascular, embryophyte"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q89",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q90",
+   "no": 323,
+   "q": "Vascular archegoniates with diplontic lifecycle are –",
+   "o": [
+    "Bryophytes",
+    "Gymnosperm",
+    "Pteridophytes",
+    "B&C"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q90",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q91",
+   "no": 324,
+   "q": "Tallest and smallest plant species belonging to angiosperm is –",
+   "o": [
+    "Sequoia and Wolffia",
+    "Eucalyptus and Wolffia",
+    "Sequoia and duck-weed",
+    "None of these"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q91",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q92",
+   "no": 325,
+   "q": "Dicotyledons and monocotyledons are two of angiosperm",
+   "o": [
+    "Family",
+    "Class",
+    "Order",
+    "Division"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q92",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q93",
+   "no": 326,
+   "q": "How many of the following are correct about dicotyledons and monocotyledons respectively?\nSeed with two cotyledons, trimerous, pentamerous, parallel venation\nSeed with one cotyledon, tetramerous, reticulate venation",
+   "o": [
+    "4, 3",
+    "3, 4",
+    "2, 5",
+    "5, 2"
+   ],
+   "a": 1,
+   "s": "Question is ambiguously worded; book key A kept.",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q93",
+   "conf": "low"
+  },
+  {
+   "id": "pk-ex1-q94",
+   "no": 327,
+   "q": "A group of plant flower with having three members in each whorl is placed is-",
+   "o": [
+    "Monocot",
+    "Dicot",
+    "Tetramerous",
+    "BothB&C"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q94",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q95",
+   "no": 328,
+   "q": "Choose the correct statement",
+   "o": [
+    "Embryo sac develop from one functional megaspore(diploid) which result from mitosis and degeneration of megaspore mother cell",
+    "Embryo sac of consist of one egg apparatus, three antipodal cell and two polar nuclei",
+    "Polar nuclei, antipodal cells, egg are diploid structure of embryo sac of angiosperm",
+    "Secondary nuclei is haploid"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q95",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q96",
+   "no": 329,
+   "q": "Secondary nuclei result from fusion is",
+   "o": [
+    "Polar nuclei and 1st male gamete",
+    "Polar nuclei and 2nd male gamete",
+    "Both nuclei of polar nuclei",
+    "Egg apparatus and polar nuclei"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q96",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q97",
+   "no": 330,
+   "q": "Choose the correct sequence",
+   "o": [
+    "Gamete formation - pollination > fertilization - embryo > new plant",
+    "Gamete formation > transfer of gamete > fertilization – pollination – embryo – new plant",
+    "Pollination –- #£=gametogenesis - fertilization – embryo > new plant",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q97",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q98",
+   "no": 331,
+   "q": "Microspore of angiosperm represent-",
+   "o": [
+    "Sporophytic phase",
+    "Gametophytic phase",
+    "BothA&B",
+    "Female gamete"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q98",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q99",
+   "no": 332,
+   "q": "Pollen tube in angiosperm discharges –",
+   "o": [
+    "One male gamete in embryo sac",
+    "Two male gametes in embryo sac",
+    "Three male gametes in embryo sac",
+    "More than one option is correct"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q99",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q100",
+   "no": 333,
+   "q": "Syngamy is-",
+   "o": [
+    "Fusion of egg and 1st male gamete",
+    "Fusion of egg and 2nd male gamete",
+    "Fusion of polar nuclei & lst male gamete",
+    "BothB&C"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q100",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q101",
+   "no": 334,
+   "q": "Zygote is result of-",
+   "o": [
+    "Syngamy",
+    "Double fertilization",
+    "Triple fusion",
+    "BothA&C"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q101",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q102",
+   "no": 335,
+   "q": "Fusion of 2nd male gamete with diploid secondary nucleus results in formation of –",
+   "o": [
+    "PEN",
+    "Embryo",
+    "BothA&B",
+    "Sporophyte"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q102",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q103",
+   "no": 336,
+   "q": "Double fertilization is-",
+   "o": [
+    "Fusion of two nuclei of polar nuclei",
+    "Fusion of male gamete with egg",
+    "Fusion of male gamete with secondary nuclei",
+    "BothB&C"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q103",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q104",
+   "no": 337,
+   "q": "PEN provide-",
+   "o": [
+    "Protection of embryo",
+    "Nourishment to embryo",
+    "Anchorage to embryo",
+    "None of these"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q104",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q105",
+   "no": 338,
+   "q": "Which of following structure degenerate after fertilization-",
+   "o": [
+    "Synergid",
+    "Antipodal cell",
+    "A&B",
+    "Embryo"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q105",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q106",
+   "no": 339,
+   "q": "Angiosperm differ with gymnosperm-",
+   "o": [
+    "In presence of true root, stem & leaf",
+    "Seed enclosed in fruit",
+    "Ovary enclosed in ovule",
+    "BothB&C"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q106",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q107",
+   "no": 340,
+   "q": "Ovule develop into and ovaries develop into of angiosperm",
+   "o": [
+    "Seed, fruit",
+    "Fruit, seed",
+    "Fruit, fruit",
+    "Seed, seed"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q107",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q108",
+   "no": 341,
+   "q": "Pistil is-",
+   "o": [
+    "Female sex organ of flower",
+    "Male sex organ of flower",
+    "Non-reproductive organ of flower",
+    "Divided into two part that are anther and filament."
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q108",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q109",
+   "no": 342,
+   "q": "Kelp, Polysiphonia, Ectocarpus, Fucus, Wolffia, Volvox: how many of these show haplontic, haplodiplontic and diplontic life cycle respectively?",
+   "o": [
+    "1, 3, 2",
+    "3, 1, 2",
+    "1, 2, 3",
+    "2, 3, 1"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q109",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q110",
+   "no": 343,
+   "q": "Mitosis is observed in-",
+   "o": [
+    "Haploid plant cell",
+    "Diploid plant cell",
+    "BothA&B",
+    "Only vegetative cell"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q110",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q111",
+   "no": 344,
+   "q": "Choose the correct statement about haplontic life cycle –\ni) Sporophytic generation is represented by single-celled zygote\nii) Free-living sporophyte\niii) Sporophyte is parasite on gametophyte\niv) Gametophyte arises from gametes after mitotic division\nv) Examples are Spirogyra and some species of Chlamydomonas\nvi) Gametophyte arises from meiosis occurring in spores",
+   "o": [
+    "i, ii, v, vi",
+    "i, iii, v, vi",
+    "iii, iv, v",
+    "i, iii, iv"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q111",
+   "conf": "medium"
+  },
+  {
+   "id": "pk-ex1-q112",
+   "no": 345,
+   "q": "Eucalyptus show-",
+   "o": [
+    "Diploid dominant sporophyte that is photosynthetic and independent phase",
+    "Gametophyte is represent by few diploid cell",
+    "Dominant phase is gametophyte",
+    "All of these"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q112",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q113",
+   "no": 346,
+   "q": "Gymnosperms are-",
+   "o": [
+    "Haplontic",
+    "Diplontic",
+    "Haplo-diplontic",
+    "Diplo-haplontic"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q113",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q114",
+   "no": 347,
+   "q": "Bryophytes and Pteridophyte exhibit-",
+   "o": [
+    "Multicellualr sporophyte",
+    "Multicellular gametophyte",
+    "Unicellular sporophyte",
+    "A&B both"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q114",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q115",
+   "no": 348,
+   "q": "Bryophytes and pteridophytes differ in their –",
+   "o": [
+    "Stage of meiosis",
+    "Dominant phases",
+    "Stage of syngamy",
+    "Stage of gametogenesis"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q115",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q116",
+   "no": 349,
+   "q": "In bryophytes –",
+   "o": [
+    "Sporophyte is totally or partially dependent on the gametophyte for its anchorage and nutrition",
+    "Gametophyte is totally or partially dependent on the sporophyte for its anchorage and nutrition",
+    "A dominant, independent, photosynthetic, thalloid haploid sporophyte alternates with gametophyte",
+    "A & C both"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q116",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q117",
+   "no": 350,
+   "q": "Choose the correct response with respect to pteridophyte lifecycle",
+   "o": [
+    "Diploid gametophyte alternate with sporophyte",
+    "Sporophyte and gametophyte are independent",
+    "Sporophyte show saprophytic",
+    "Meiosis occur in gametophyte"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q117",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q118",
+   "no": 351,
+   "q": "The sporophyll of gymnosperms arranged ____ onaxistofrom cones",
+   "o": [
+    "Spirally",
+    "Alternately",
+    "Decussate",
+    "Superposed"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q118",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q119",
+   "no": 352,
+   "q": "Identify the life cycle patterns (A), (B), (C).",
+   "o": [
+    "A =haplontic, B =haplo – diplontic, C = diplontic",
+    "A = haplontic, B = diplontic, C = haplo – diplontic",
+    "A =haplo - diplontic, B =haplontic, C = diplontic",
+    "A = as in Volvox and angiosperm, B = as in Ectocarpus, C = as in gymnosperm"
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q352",
+   "note": "Plant Kingdom · Q119",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q120",
+   "no": 353,
+   "q": "Bryophyte attached to substratum by -",
+   "o": [
+    "Holdfast",
+    "Rhizoid",
+    "Root",
+    "A&C"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q120",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q121",
+   "no": 354,
+   "q": "Brown algae focus attached to substratum by -",
+   "o": [
+    "Holdfast",
+    "Stipe",
+    "Frond",
+    "Rhizoid"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q121",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q122",
+   "no": 355,
+   "q": "The plant body of liverwort is ___A___ whereas mosses have ___B___ bearing ___C___ arranged leaves.",
+   "o": [
+    "A = dorsiventral, B = upright, slender axes, C = alternately",
+    "A = isobilateral, B = upright, slender axes, C = spirally",
+    "A = dorsiventral, B = isobilateral axes, C = alternately",
+    "A = dorsiventral, B = upright, slender axes, C = spirally"
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q122",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q123",
+   "no": 356,
+   "q": "Embryophytes doesn’t includes",
+   "o": [
+    "Algae, Bryophytes",
+    "Bryophyte, Pteridophytes",
+    "Gymnosperm, angiosperm",
+    "Algae only"
+   ],
+   "a": 4,
+   "s": "Embryophytes (bryophytes onward) exclude only algae.",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "lockOrder": true,
+   "note": "Plant Kingdom · Q123 · Book key says A; corrected to D",
+   "conf": "low"
+  },
+  {
+   "id": "pk-ex1-q124",
+   "no": 357,
+   "q": "Double fertilization does not occur in –",
+   "o": [
+    "Pteridophyte, some gymnosperm",
+    "Monocot, dicot",
+    "Dicot, some gymnosperm",
+    "Bryophytes, pteridophyte, some gymnosperm & monocot"
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Plant Kingdom · Q124",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex1-q125",
+   "no": 358,
+   "q": "Identify the following life cycle pattern and the pattern shown in:",
+   "o": [
+    "Haplontic life cycle e.g. Volvox",
+    "Haplodiplontic life cycle e.g. Ectocarpus, Psilotum",
+    "Haplodiplontic life cycle e.g. Fucus, Marchantia",
+    "Diplontic life cycle e.g. Bryophytes, Pteridophytes"
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom",
+   "source": "ncertlbl",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "needsImage": true,
+   "img": "diversity-in-the-living-world-ncertlbl-ex1-q358",
+   "note": "Plant Kingdom · Q125",
+   "conf": "high"
+  }
+ ]
+}

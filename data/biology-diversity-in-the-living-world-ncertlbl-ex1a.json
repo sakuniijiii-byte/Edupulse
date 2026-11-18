@@ -1,0 +1,262 @@
+{
+ "sourceId": "ncertlbl",
+ "sourceLabel": "NCERT Line by Line (Botany)",
+ "exercise": "ex1a",
+ "exerciseLabel": "Assertion–Reason (NCERT Line by Line – Chapters 1–3)",
+ "chapter": "Diversity in the Living World",
+ "subject": "Biology",
+ "questions": [
+  {
+   "id": "lw-ex1a-q19",
+   "no": 1,
+   "q": "Assertion (A): Non-living objects also grow.\nReason (R): They grow by accumulation of material on the surface.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is the correct explanation of Assertion.",
+    "Both Assertion and Reason are true but Reason is not the correct explanation of Assertion.",
+    "Assertion is true but Reason is false.",
+    "Both Assertion and Reason are false."
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q19",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1a-q20",
+   "no": 2,
+   "q": "Assertion (A): Reproduction is not a defining property of living organisms.\nReason (R): Mules do not reproduce.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is the correct explanation of Assertion.",
+    "Both Assertion and Reason are true but Reason is not the correct explanation of Assertion.",
+    "Assertion is true but Reason is false.",
+    "Both Assertion and Reason are false."
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q20",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1a-q21",
+   "no": 3,
+   "q": "Assertion (A): Non-living objects also exhibit metabolism.\nReason (R): Isolated metabolic reactions occurring, invitro are living things.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is the correct explanation of Assertion.",
+    "Both Assertion and Reason are true but Reason is not the correct explanation of Assertion.",
+    "Assertion is true but Reason is false.",
+    "Both Assertion and Reason are false."
+   ],
+   "a": 4,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q21",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1a-q41",
+   "no": 4,
+   "q": "Assertion (A): Binomial nomenclature given by Linnaeus is' being practiced by biologists all over the world.\nReason (R): Each name of this system has two components, the generic name and the specific epithet.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is correct explanation of Assertion.",
+    "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion.",
+    "Assertion is true, but Reason is false.",
+    "Assertion is false, but Reason is true."
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q41",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1a-q42",
+   "no": 5,
+   "q": "Assertion (A): The process of classification of organisms is taxonomy.\nReason (R): It is merely based on the external features of organisms.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is correct explanation of Assertion.",
+    "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion.",
+    "Assertion is true, but Reason is false.",
+    "Assertion is false, but Reason is true."
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q42",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1a-q43",
+   "no": 6,
+   "q": "Assertion (A): Systematics is the study of organisms, their diversities but not the relationships among them.\nReason (R): Systematics is derived from a English word ‘systema’.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is correct explanation of Assertion.",
+    "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion.",
+    "Assertion is true, but Reason is false.",
+    "Assertion is false, but Reason is true."
+   ],
+   "a": 4,
+   "s": "Both statements are actually false (systematics includes relationships; 'systema' is a Latin word); book key is D.",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q43",
+   "conf": "low"
+  },
+  {
+   "id": "lw-ex1a-q61",
+   "no": 7,
+   "q": "Assertion (A): Genus may have one or more than one species epithets.\nReason (R): Genus comprises a group of related species.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is correct explanation of Assertion.",
+    "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion.",
+    "Assertion is true, but Reason is false.",
+    "Assertion is false, but Reason is true."
+   ],
+   "a": 1,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q61",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1a-q62",
+   "no": 8,
+   "q": "Assertion (A): Order is the assemblage of families which exhibit a few similar characters.\nReason (R): Plant family polymoniales is included in the order solanaceae based on the floral characters.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is correct explanation of Assertion.",
+    "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion.",
+    "Assertion is true, but Reason is false.",
+    "Assertion is false, but Reason is true."
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q62",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1a-q63",
+   "no": 9,
+   "q": "Assertion (A): Wheat belongs to the family poaceae.\nReason (R): Wheat is a member of order poales.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is correct explanation of Assertion.",
+    "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion.",
+    "Assertion is true, but Reason is false.",
+    "Assertion is false, but Reason is true."
+   ],
+   "a": 2,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q63",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex1a-q88",
+   "no": 10,
+   "q": "Assertion (A): Herbarium is a storehouse of collected plant specimens that are dried, pressed and preserved on sheets.\nReason (R): Herbaria serve as quick referral systems in taxonomical studies.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is correct explanation of Assertion.",
+    "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion.",
+    "Assertion is true, but Reason is false.",
+    "Assertion is false, but Reason is true."
+   ],
+   "a": 2,
+   "s": "Both statements are true, but the reason (herbaria as quick referral systems) does not explain the definition of a herbarium.",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q88 · Book key says D; corrected to B",
+   "conf": "low"
+  },
+  {
+   "id": "lw-ex1a-q89",
+   "no": 11,
+   "q": "Assertion (A): Museums have collection of live plants and animals.\nReason (R): In museums, as far as possible, conditions similar to their natural habitat are provided.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is correct explanation of Assertion.",
+    "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion.",
+    "Assertion is true, but Reason is false.",
+    "Assertion is false, but Reason is true."
+   ],
+   "a": 4,
+   "s": "Museums have preserved specimens, not live ones; the reason is a true statement (about zoos/botanical gardens).",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q89 · Book key says C; corrected to D",
+   "conf": "low"
+  },
+  {
+   "id": "lw-ex1a-q90",
+   "no": 12,
+   "q": "Assertion (A): The taxonomical keys are based on the contrasting characters.\nReason (R): Each statement in the key is called a couplet.",
+   "o": [
+    "Both Assertion and Reason are true and Reason is correct explanation of Assertion.",
+    "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion.",
+    "Assertion is true, but Reason is false.",
+    "Assertion is false, but Reason is true."
+   ],
+   "a": 3,
+   "s": "",
+   "c": "Diversity in the Living World",
+   "topic": "The Living World",
+   "source": "ncertlbl",
+   "section": "ex1a",
+   "difficulty": "Medium",
+   "lockOrder": true,
+   "note": "The Living World · Q90",
+   "conf": "high"
+  }
+ ]
+}
