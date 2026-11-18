@@ -1,4 +1,4 @@
-const VERSION = 'edupulse-v9';
+const VERSION = 'edupulse-v11';
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
 const SHELL_FILES = ['./', './index.html', './manifest.json'];
