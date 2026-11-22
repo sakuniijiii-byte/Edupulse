@@ -1,63 +1,98 @@
-const VERSION = 'edupulse-v11';
-const SHELL = `${VERSION}-shell`;
-const RUNTIME = `${VERSION}-runtime`;
-const SHELL_FILES = ['./', './index.html', './manifest.json'];
+/* EduPulse PRO service worker — preserves the single-file app and offline content. */
+'use strict';
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(SHELL).then((c) => Promise.all(SHELL_FILES.map((f) => c.add(f).catch(() => null)))).then(() => self.skipWaiting())
-  );
+const VERSION = 'edupulse-v12-android';
+const SHELL = VERSION + '-shell';
+const RUNTIME = VERSION + '-runtime';
+const SHELL_FILES = [
+  './',
+  './index.html',
+  './manifest.json',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  './icons/maskable-512.png'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil((async () => {
+    const cache = await caches.open(SHELL);
+    await Promise.all(SHELL_FILES.map(async file => {
+      try { await cache.add(file); } catch (error) { console.warn('[EduPulse SW] shell asset skipped:', file, error); }
+    }));
+    await self.skipWaiting();
+  })());
 });
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => !k.startsWith(VERSION)).map((k) => caches.delete(k))))
-      .then(() => self.clients.claim())
-  );
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    // Delete only older EduPulse caches. Never clear caches belonging to other apps.
+    await Promise.all(keys.filter(key => key.startsWith('edupulse-') && !key.startsWith(VERSION)).map(key => caches.delete(key)));
+    await self.clients.claim();
+  })());
 });
 
-async function networkFirst(request, cacheName) {
+async function networkFirst(request, cacheName, cacheKey = request) {
   const cache = await caches.open(cacheName);
   try {
-    const fresh = await fetch(request);
-    if (fresh && (fresh.ok || fresh.type === 'opaque')) cache.put(request, fresh.clone());
-    return fresh;
-  } catch (err) {
-    const cached = await cache.match(request);
+    const response = await fetch(request);
+    if (response && (response.ok || response.type === 'opaque')) await cache.put(cacheKey, response.clone());
+    return response;
+  } catch (error) {
+    const cached = await cache.match(cacheKey);
     if (cached) return cached;
-    throw err;
+    throw error;
   }
 }
 
 async function staleWhileRevalidate(request, cacheName) {
   const cache = await caches.open(cacheName);
   const cached = await cache.match(request);
-  const network = fetch(request)
-    .then((res) => {
-      if (res && (res.ok || res.type === 'opaque')) cache.put(request, res.clone());
-      return res;
-    })
-    .catch(() => cached);
+  const network = fetch(request).then(async response => {
+    if (response && (response.ok || response.type === 'opaque')) await cache.put(request, response.clone());
+    return response;
+  }).catch(() => cached);
   return cached || network;
 }
 
-self.addEventListener('fetch', (event) => {
-  const req = event.request;
-  if (req.method !== 'GET') return;
-  const url = new URL(req.url);
-  if (url.origin === self.location.origin && (url.pathname.startsWith('/api/') || url.pathname === '/auth/callback')) return;
+self.addEventListener('fetch', event => {
+  const request = event.request;
+  if (request.method !== 'GET') return;
 
-  if (req.mode === 'navigate') {
-    event.respondWith(
-      networkFirst(req, SHELL)
-        .catch(() => caches.match('./index.html'))
-    );
+  const url = new URL(request.url);
+  const sameOrigin = url.origin === self.location.origin;
+
+  // Never cache authentication, Supabase data, AI prompts/responses, or API calls.
+  if (/supabase\.co$/.test(url.hostname) ||
+      /generativelanguage\.googleapis\.com$/.test(url.hostname) ||
+      /api\.tavily\.com$/.test(url.hostname) ||
+      (sameOrigin && (/^\/(api|auth|rest|storage|functions)(\/|$)/.test(url.pathname)))) return;
+
+  if (request.mode === 'navigate' && sameOrigin) {
+    event.respondWith(networkFirst(request, SHELL, './index.html').catch(async () => {
+      const cache = await caches.open(SHELL);
+      return (await cache.match('./index.html')) || (await cache.match('./')) || Response.error();
+    }));
     return;
   }
+
+  // The app's question/content loader uses raw GitHub files; retain these for offline study.
   if (url.hostname === 'raw.githubusercontent.com') {
-    event.respondWith(networkFirst(req, RUNTIME));
+    event.respondWith(networkFirst(request, RUNTIME));
     return;
   }
-  event.respondWith(staleWhileRevalidate(req, RUNTIME));
+
+  // Cache only known static CDNs, not arbitrary third-party API traffic.
+  const staticHosts = new Set([
+    'cdn.tailwindcss.com',
+    'cdnjs.cloudflare.com',
+    'fonts.googleapis.com',
+    'fonts.gstatic.com',
+    'esm.sh'
+  ]);
+  if (!sameOrigin && !staticHosts.has(url.hostname)) return;
+
+  if (sameOrigin || staticHosts.has(url.hostname)) {
+    event.respondWith(staleWhileRevalidate(request, RUNTIME));
+  }
 });
