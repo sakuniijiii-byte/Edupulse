@@ -26,6 +26,7 @@ The uploaded `index.html` snapshot needs a separate structural review before any
 
    ```bash
    npm install -g @bubblewrap/cli
+   rm android/README.md
    bubblewrap init --manifest=https://edupulse.cc.cd/manifest.json --directory=android
    ```
 
