@@ -1,12 +1,17 @@
-const VERSION = 'edupulse-v11';
+const VERSION = 'edupulse-v12';
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
 const SHELL_FILES = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(SHELL).then((c) => Promise.all(SHELL_FILES.map((f) => c.add(f).catch(() => null)))).then(() => self.skipWaiting())
+    caches.open(SHELL).then((c) => Promise.all(SHELL_FILES.map((f) => c.add(f).catch(() => null))))
   );
+});
+
+/* A new worker now waits until the page asks for it (Update button) instead of taking over and force-reloading every open tab. */
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
