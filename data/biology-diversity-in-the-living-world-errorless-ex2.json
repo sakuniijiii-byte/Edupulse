@@ -1,0 +1,494 @@
+{
+ "sourceId": "errorless",
+ "sourceLabel": "Errorless",
+ "exercise": "ex2",
+ "exerciseLabel": "NCERT Exemplar Questions (Errorless Biology)",
+ "chapter": "Diversity in the Living World",
+ "subject": "Biology",
+ "questions": [
+  {
+   "id": "lw-ex1",
+   "no": 1,
+   "q": "As we go from species to kingdom in a taxonomic hierarchy, the number of common characteristics",
+   "o": [
+    "Will decrease",
+    "Will increase",
+    "Remain same",
+    "May increase or decrease"
+   ],
+   "a": 1,
+   "c": "Diversity in the Living World",
+   "topic": "The Living World · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q1",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex2",
+   "no": 2,
+   "q": "Which of the following 'suffixes' used for units of classification in plants indicates a taxonomic category of 'family'",
+   "o": [
+    "-Ales",
+    "-Onae",
+    "-Aceae",
+    "-Ae"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "The Living World · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q2",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex3",
+   "no": 3,
+   "q": "The term 'systematics' refers to",
+   "o": [
+    "Identification and classification of plants and animals",
+    "Nomenclature and identification of plants and animals",
+    "Diversity of kinds of organisms and their relationship",
+    "Different kinds of organisms and their classification"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "The Living World · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q3",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex4",
+   "no": 4,
+   "q": "Genus represents",
+   "o": [
+    "An individual plant or animal",
+    "A collection of plants or animals",
+    "Group of closely related species of plants or animals",
+    "None of these"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "The Living World · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q4",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "lw-ex5",
+   "no": 5,
+   "q": "The taxonomic unit 'Phylum' in the classification of animals is equivalent to which hierarchial level in classification of plants",
+   "o": [
+    "Class",
+    "Order",
+    "Division",
+    "Family ; a clantea kh ;"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "The Living World · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q5",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex6",
+   "no": 6,
+   "q": "Botanical gardens and zoological parks have",
+   "o": [
+    "Collection of endemic living species only",
+    "Collection of exotic living species only",
+    "Collection of endemic and exotic living species",
+    "Collection of only local plants and animals"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "The Living World · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q6",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex7",
+   "no": 7,
+   "q": "Taxonomic key is one of the taxonomic tools in the identification and classification of plants and animals. It is used in the preparation of",
+   "o": [
+    "Monographs",
+    "Flora",
+    "Both (a) and (b)",
+    "None of these"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "The Living World · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q7",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "lw-ex8",
+   "no": 8,
+   "q": "All living organisms are linked to one another because",
+   "o": [
+    "They have common genetic material of the same type",
+    "They share common genetic material but to varying degrees",
+    "All have common cellular organization",
+    "All of above"
+   ],
+   "a": 4,
+   "c": "Diversity in the Living World",
+   "topic": "The Living World · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q8",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex9",
+   "no": 9,
+   "q": "Which of the following is a defining characteristic of living organisms",
+   "o": [
+    "Growth",
+    "Ability to make sound",
+    "Reproduction",
+    "Response to external stimuli"
+   ],
+   "a": 4,
+   "c": "Diversity in the Living World",
+   "topic": "The Living World · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q9",
+   "conf": "high"
+  },
+  {
+   "id": "lw-ex10",
+   "no": 10,
+   "q": "Match the following and choose the correct option A. Family i, tuberosum B. Kingdom ii. Polymoniales C. Order iii. Solanum D. Species iv. Plantae E. Genus v. Solanacea",
+   "o": [
+    "i-D, ii-C, ii-E, iv-B, v-A",
+    "i-E, ii-D, ii-B, iv-A, v-C",
+    "i-D, ii-E, iii-B, iv-A, v-C",
+    "i-E, ii-C, iii-B, iv-A, v-D"
+   ],
+   "a": 1,
+   "c": "Diversity in the Living World",
+   "topic": "The Living World · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q10",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "fu-ex1",
+   "no": 11,
+   "q": "Exemplar Questions Naked 'cytoplasm, multinucleated and saprophytic are the characteristics of",
+   "o": [
+    "Monera",
+    "Protista",
+    "Fungi",
+    "Slime molds rss An association between roots of higher plants and fungi is called"
+   ],
+   "a": 4,
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification · Fungi · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q1",
+   "conf": "high"
+  },
+  {
+   "id": "fu-ex2",
+   "no": 12,
+   "q": "The symbiotic association of fungi and algae is called",
+   "o": [
+    "Lichen",
+    "Fern",
+    "Mycorrhiza",
+    "BGA"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification · Fungi · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Easy",
+   "note": "NCERT Exemplar · Q2",
+   "conf": "high"
+  },
+  {
+   "id": "fu-ex3",
+   "no": 13,
+   "q": "A dikaryon is formed when",
+   "o": [
+    "Meiosis is arrested",
+    "The two haploid cells do not fuse immediately",
+    "Cytoplasm does not fuse",
+    "None of the above"
+   ],
+   "a": 2,
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification · Fungi · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q3",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "fu-ex4",
+   "no": 14,
+   "q": "Mycobiont and Phycobiont are found in",
+   "o": [
+    "Mycorrhiza",
+    "Root",
+    "Lichens",
+    "BGA"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification · Fungi · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Easy",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q4",
+   "conf": "high"
+  },
+  {
+   "id": "fu-ex5",
+   "no": 15,
+   "q": "With respect to fungal sexual cycle, choose the correct sequence of events",
+   "o": [
+    "Karyogamy, Plasmogamy and Meiosis",
+    "Meiosis, Plasmogamy and Karyogamy",
+    "Plasmogamy, Karyogamy and Meiosis",
+    "Meiosis, Karyogamy and Plasmogamy"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification · Fungi · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q5",
+   "conf": "high"
+  },
+  {
+   "id": "fu-ex6",
+   "no": 16,
+   "q": "Members of phycomycetes are found in i. Aquatic habitats ii. On decaying wood iii. Moist and damp places iv. As obligate parasites on plants Choose from the following options",
+   "o": [
+    "None of the above",
+    "i and iv",
+    "ii and i iii Wk All of the above : Critical Thinking —"
+   ],
+   "a": 4,
+   "c": "Diversity in the Living World",
+   "topic": "Biological Classification · Fungi · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q6",
+   "conf": "low",
+   "lockOrder": true
+  },
+  {
+   "id": "pk-ex1",
+   "no": 17,
+   "q": "Exemplar Questions: 13 Fusion of two gametes which are dissimilar in size is termed as",
+   "o": [
+    "Oogamy",
+    "Isogamy",
+    "Anisogamy",
+    "Zoogamy"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q1",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex2",
+   "no": 18,
+   "q": "CaS Holdfast, stipe and frond constitutes the plant body in case of",
+   "o": [
+    "Rhodophyceae",
+    "Chlorophyceae",
+    "Phaeophyceae",
+    "All of the above"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q2",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "pk-ex3",
+   "no": 19,
+   "q": "A plant shows thallus level of organization. It shows rhizoids and is haploid. It needs water to complete its life cycle because the male gametes are motile. Identify the group to which it belongs to",
+   "o": [
+    "Pteridophytes",
+    "Gymnosperms",
+    "Monocots",
+    "Bryophytes"
+   ],
+   "a": 4,
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q3",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex4",
+   "no": 20,
+   "q": "A Prothallus is",
+   "o": [
+    "A structure in pteridophytes formed before the thallus develops",
+    "A sporophytic free living structure formed in pteridophytes",
+    "A gametophyte free living structure formed in pteridophytes",
+    "A primitive structure formed after fertilization in pteridophytes oe a"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q4",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex5",
+   "no": 21,
+   "q": "Plants of this group are diploid and well adapted to extreme conditions, They grow bearing sporophylls in compact structures called cones. The group in reference is",
+   "o": [
+    "Monocots",
+    "Dicots",
+    "Pteridophytes",
+    "Gymnosperms"
+   ],
+   "a": 4,
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q5",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex6",
+   "no": 22,
+   "q": "If the diploid number of a flowering plant is 36. What would be the chromosome number in its endosperm",
+   "o": [
+    "36",
+    "18",
+    "54",
+    "72 i fi Protonema is (NCERT]"
+   ],
+   "a": 3,
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q6",
+   "conf": "high"
+  },
+  {
+   "id": "pk-ex7",
+   "no": 23,
+   "q": "Protonema is",
+   "o": [
+    "Haploid and is found in mosses",
+    "Diploid and is found in liverworts",
+    "Diploid and is found in pteridophytes",
+    "Haploid and is found in pteridophytes"
+   ],
+   "a": 1,
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "NCERT Exemplar · Q7",
+   "conf": "high",
+   "exam": "NCERT"
+  },
+  {
+   "id": "pk-ex8",
+   "no": 24,
+   "q": "The giant Redwood tree (Sequoia sempervirens) is a/an",
+   "o": [
+    "Angiosperm",
+    "Free fern",
+    "Pteridophyte",
+    "Gymnosperm"
+   ],
+   "a": 4,
+   "c": "Diversity in the Living World",
+   "topic": "Plant Kingdom · NCERT Exemplar",
+   "source": "errorless",
+   "section": "ex2",
+   "difficulty": "Easy",
+   "exam": "NCERT",
+   "note": "NCERT Exemplar · Q8",
+   "conf": "high"
+  }
+ ]
+}
