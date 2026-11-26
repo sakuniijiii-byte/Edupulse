@@ -1,15 +1,21 @@
-const VERSION = 'edupulse-v12';
+/* The page registers this worker as ./sw.js?v=<EP_BUILD>, so every new build gets its own cache
+   and the old one is deleted on activate. Falls back to a fixed name if no build id is given. */
+const BUILD = (() => { try { return new URL(self.location.href).searchParams.get('v') || ''; } catch (e) { return ''; } })();
+const VERSION = 'edupulse-' + (BUILD ? BUILD.replace(/[^a-zA-Z0-9._-]/g, '') : 'v12');
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
 const SHELL_FILES = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(SHELL).then((c) => Promise.all(SHELL_FILES.map((f) => c.add(f).catch(() => null))))
+    caches.open(SHELL).then((c) => Promise.all(
+      /* cache: 'reload' skips the browser/CDN HTTP cache so the shell is never an old copy */
+      SHELL_FILES.map((f) => c.add(new Request(f, { cache: 'reload' })).catch(() => null))
+    ))
   );
 });
 
-/* A new worker now waits until the page asks for it (Update button) instead of taking over and force-reloading every open tab. */
+/* A new worker waits until the page asks for it (Update button) instead of force-reloading every open tab. */
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
@@ -21,6 +27,18 @@ self.addEventListener('activate', (event) => {
       .then(() => self.clients.claim())
   );
 });
+
+/* Page loads: always ask the server first (revalidating past the HTTP cache); use the cached copy only when offline. */
+async function pageNetworkFirst(request) {
+  const cache = await caches.open(SHELL);
+  try {
+    const fresh = await fetch(request, { cache: 'no-cache' });
+    if (fresh && fresh.ok) cache.put(request, fresh.clone());
+    return fresh;
+  } catch (err) {
+    return (await cache.match(request)) || (await cache.match('./index.html')) || (await cache.match('./'));
+  }
+}
 
 async function networkFirst(request, cacheName) {
   const cache = await caches.open(cacheName);
@@ -54,10 +72,7 @@ self.addEventListener('fetch', (event) => {
   if (url.origin === self.location.origin && (url.pathname.startsWith('/api/') || url.pathname === '/auth/callback')) return;
 
   if (req.mode === 'navigate') {
-    event.respondWith(
-      networkFirst(req, SHELL)
-        .catch(() => caches.match('./index.html'))
-    );
+    event.respondWith(pageNetworkFirst(req));
     return;
   }
   if (url.hostname === 'raw.githubusercontent.com') {
