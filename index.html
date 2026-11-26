@@ -3556,9 +3556,10 @@ function epDrawQR(ctx, qr, x, y, size, ink) {
 /* ---------- Card design system ---------- */
 const EP_FONT = '"Plus Jakarta Sans","Poppins","Inter",system-ui,-apple-system,"Segoe UI",sans-serif';
 const EP_THEMES = {
+  practice: { label: 'Practice', swatch: ['#f4f5f2', '#0f766e'], bg: ['#f5f6f3', '#eceee9'], glow: [['#14b8a6', .10], ['#0f766e', .05], ['#a3e635', .08]], dots: 'rgba(15,23,42,.045)', ink: '#0f172a', sub: '#64748b', card: '#ffffff', cardLine: '#e5e7eb', shadow: true, qInk: '#111827', oInk: '#1f2937', opt: '#ffffff', optLine: '#e5e7eb', letter: '#f3f4f6', letterInk: '#4b5563', chip: '#ffffff', chipLine: '#e5e7eb', chipInk: '#374151', good: '#059669', goodFill: '#ecfdf5', strip: '#ffffff', stripLine: '#e5e7eb', stripInk: '#0f172a', stripSub: '#64748b', cta: ['#0f766e', '#134e4a'], subjOn: 2, lite: true, session: true },
   midnight: { label: 'Midnight', swatch: ['#0a1124', '#14b8a6'], bg: ['#04060f', '#0b1328'], glow: [['#14b8a6', .34], ['#6366f1', .30], ['#a3e635', .10]], dots: 'rgba(255,255,255,.055)', ink: '#f8fafc', sub: '#94a3b8', card: 'rgba(255,255,255,.065)', cardLine: 'rgba(255,255,255,.15)', shadow: false, qInk: '#f8fafc', oInk: '#e2e8f0', opt: 'rgba(255,255,255,.055)', optLine: 'rgba(255,255,255,.13)', letter: 'rgba(255,255,255,.12)', letterInk: '#e2e8f0', chip: 'rgba(255,255,255,.08)', chipLine: 'rgba(255,255,255,.16)', chipInk: '#e2e8f0', good: '#34d399', goodFill: 'rgba(52,211,153,.16)', strip: 'rgba(163,230,53,.10)', stripLine: 'rgba(163,230,53,.35)', stripInk: '#f8fafc', stripSub: '#a8b5c8', cta: ['#0f766e', '#4f46e5'], subjOn: 0 },
   aurora: { label: 'Aurora', swatch: ['#0d9488', '#4f46e5'], bg: ['#0d9488', '#312e81'], glow: [['#a3e635', .26], ['#6366f1', .45], ['#2dd4bf', .30]], dots: 'rgba(255,255,255,.07)', ink: '#ffffff', sub: 'rgba(255,255,255,.78)', card: '#ffffff', cardLine: 'rgba(255,255,255,.0)', shadow: true, qInk: '#0f172a', oInk: '#1e293b', opt: '#f8fafc', optLine: '#e2e8f0', letter: '#e6fffb', letterInk: '#0f766e', chip: 'rgba(255,255,255,.16)', chipLine: 'rgba(255,255,255,.3)', chipInk: '#ffffff', good: '#059669', goodFill: '#d1fae5', strip: 'rgba(255,255,255,.14)', stripLine: 'rgba(255,255,255,.34)', stripInk: '#ffffff', stripSub: 'rgba(255,255,255,.86)', cta: ['#0b1226', '#111c3a'], subjOn: 1 },
-  light: { label: 'Light', swatch: ['#f1f5f9', '#0d9488'], bg: ['#f8fafc', '#e5edff'], glow: [['#2dd4bf', .30], ['#818cf8', .26], ['#bef264', .30]], dots: 'rgba(15,23,42,.05)', ink: '#0f172a', sub: '#64748b', card: '#ffffff', cardLine: '#e2e8f0', shadow: true, qInk: '#0f172a', oInk: '#1e293b', opt: '#f8fafc', optLine: '#e2e8f0', letter: '#ccfbf1', letterInk: '#0f766e', chip: '#ffffff', chipLine: '#e2e8f0', chipInk: '#334155', good: '#059669', goodFill: '#d1fae5', strip: '#f0fdfa', stripLine: '#99f6e4', stripInk: '#0f172a', stripSub: '#475569', cta: ['#0f766e', '#4f46e5'], subjOn: 2 }
+  light: { label: 'Light', swatch: ['#f1f5f9', '#0d9488'], bg: ['#f8fafc', '#e5edff'], glow: [['#2dd4bf', .30], ['#818cf8', .26], ['#bef264', .30]], dots: 'rgba(15,23,42,.05)', ink: '#0f172a', sub: '#64748b', card: '#ffffff', cardLine: '#e2e8f0', shadow: true, qInk: '#0f172a', oInk: '#1e293b', opt: '#f8fafc', optLine: '#e2e8f0', letter: '#ccfbf1', letterInk: '#0f766e', chip: '#ffffff', chipLine: '#e2e8f0', chipInk: '#334155', good: '#059669', goodFill: '#d1fae5', strip: '#f0fdfa', stripLine: '#99f6e4', stripInk: '#0f172a', stripSub: '#475569', cta: ['#0f766e', '#4f46e5'], subjOn: 2, lite: true }
 };
 const EP_SUBJ = { Physics: ['#38bdf8', '#0369a1'], Chemistry: ['#a78bfa', '#6d28d9'], Biology: ['#34d399', '#047857'], NEET: ['#2dd4bf', '#0f766e'] };
 const EP_FORMATS = { post: { label: 'Post', ratio: '4:5', h: 1350 }, story: { label: 'Story', ratio: '9:16', h: 1920 }, auto: { label: 'Fit', ratio: 'auto', h: 0 } };
@@ -3672,7 +3673,8 @@ function epRenderCard(q, info, o, A, px) {
       return { lines, im, iw, ih, h: Math.max(rowMin, textH + u(34)) + (ih ? ih + u(26) : 0), textH };
     });
     const optsH = rows.reduce((a, r) => a + r.h, 0) + rowGap * Math.max(0, rows.length - 1);
-    const cardH = pad + qLines.length * qLH + (fig ? gapI + fig.total : 0) + (note ? u(14) + note.h : 0) + (tb ? gapI + tb.h : 0) + gapI + optsH + pad;
+    const kick = th.session ? u(48) : 0;
+    const cardH = pad + kick + qLines.length * qLH + (fig ? gapI + fig.total : 0) + (note ? u(14) + note.h : 0) + (tb ? gapI + tb.h : 0) + gapI + optsH + pad;
     // what sits under the card: teaser (challenge) or the explanation (answer)
     let ex = null;
     if (ans) {
@@ -3684,7 +3686,7 @@ function epRenderCard(q, info, o, A, px) {
     const it = fmt === 'story' ? 88 : 0, ib = fmt === 'story' ? 130 : 0;   // Story UI covers the top and bottom of the frame: keep the logo and QR clear of it
     const head = 136, hookH = fmt === 'story' ? 196 : 170;
     const total = it + head + hookH + cardH + gap + stripH + gap + blipRoom + ctaH + ib;
-    return { sc, u, it, ib, cta, rowMin, rowGap, maxL, pad, inW, gapI, qF, qLH, oF, oLH, qLines, fig, note, tb, rows, rowPad, letterR, cardH, ex, stripH, ctaH, gap, blipRoom, head, hookH, total };
+    return { kick, sc, u, it, ib, cta, rowMin, rowGap, maxL, pad, inW, gapI, qF, qLH, oF, oLH, qLines, fig, note, tb, rows, rowPad, letterR, cardH, ex, stripH, ctaH, gap, blipRoom, head, hookH, total };
   };
 
   /* ---- 2. pick the biggest text size that fits the chosen format (or grow the card if it can't) ---- */
@@ -3707,13 +3709,13 @@ function epRenderCard(q, info, o, A, px) {
   let g = ctx.createLinearGradient(0, 0, W * .4, H); g.addColorStop(0, th.bg[0]); g.addColorStop(1, th.bg[1]); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
   [[W * .08, 150, 640], [W * 1.0, H * .48, 720], [W * .15, H * .9, 520]].forEach(([x, y, r], i) => { const rg = ctx.createRadialGradient(x, y, 0, x, y, r); rg.addColorStop(0, epHexA(th.glow[i][0], th.glow[i][1])); rg.addColorStop(1, epHexA(th.glow[i][0], 0)); ctx.fillStyle = rg; ctx.fillRect(0, 0, W, H); });
   ctx.fillStyle = th.dots; for (let y = 22; y < H; y += 40) for (let x = 22; x < W; x += 40) { ctx.beginPath(); ctx.arc(x, y, 1.7, 0, 7); ctx.fill(); }
-  ctx.save(); ctx.strokeStyle = o.theme === 'light' ? 'rgba(13,148,136,.07)' : 'rgba(255,255,255,.04)'; ctx.lineWidth = 12; ctx.lineJoin = ctx.lineCap = 'round'; epBeatPath(ctx, -140, W, H * .5, 280, 720); ctx.stroke(); ctx.restore();
+  ctx.save(); ctx.strokeStyle = th.lite ? 'rgba(13,148,136,.07)' : 'rgba(255,255,255,.04)'; ctx.lineWidth = 12; ctx.lineJoin = ctx.lineCap = 'round'; epBeatPath(ctx, -140, W, H * .5, 280, 720); ctx.stroke(); ctx.restore();
 
   /* ---- 4. header: logo, wordmark, subject pill ---- */
   ctx.save(); ctx.translate(0, pl.it - 6);
   epDrawMark(ctx, P, 44, 78);
-  const wmX = P + 98; ctx.font = `800 46px ${F}`; ctx.fillStyle = o.theme === 'light' ? '#0f172a' : '#f8fafc';
-  ctx.fillText('Edu', wmX, 92); const eW = ctx.measureText('Edu').width; ctx.fillStyle = o.theme === 'light' ? '#0d9488' : '#2dd4bf'; ctx.fillText('Pulse', wmX + eW, 92);
+  const wmX = P + 98; ctx.font = `800 46px ${F}`; ctx.fillStyle = th.lite ? '#0f172a' : '#f8fafc';
+  ctx.fillText('Edu', wmX, 92); const eW = ctx.measureText('Edu').width; ctx.fillStyle = th.lite ? '#0d9488' : '#2dd4bf'; ctx.fillText('Pulse', wmX + eW, 92);
   const pW = ctx.measureText('Pulse').width; epRoundRect(ctx, wmX + eW + pW + 14, 58, 62, 32, 16); ctx.fillStyle = '#a3e635'; ctx.fill();
   T('PRO', wmX + eW + pW + 14 + 31, 81, `800 18px ${F}`, '#1a2e05', 'center');
   T(EP_BRAND.motto, wmX, 122, `600 22px ${F}`, th.sub);
@@ -3729,12 +3731,12 @@ function epRenderCard(q, info, o, A, px) {
     let f = hs; const lw = () => meas(`800 ${f}px ${F}`, lead + ' ') + meas(`800 ${f}px ${F}`, acc); while (lw() > maxW && f > 38) f -= 2;
     ctx.font = `800 ${f}px ${F}`; const leadW = ctx.measureText(lead + ' ').width, accW = ctx.measureText(acc).width;
     ctx.fillStyle = th.ink; ctx.fillText(lead + ' ', P, hy);
-    const ag = ctx.createLinearGradient(P + leadW, 0, P + leadW + accW, 0); if (ans) { ag.addColorStop(0, th.good === '#059669' && o.theme !== 'light' ? '#a7f3d0' : th.good); ag.addColorStop(1, o.theme === 'light' ? '#059669' : '#a3e635'); } else { ag.addColorStop(0, o.theme === 'light' ? '#0d9488' : '#5eead4'); ag.addColorStop(1, o.theme === 'light' ? '#4f46e5' : '#bef264'); }
+    const ag = ctx.createLinearGradient(P + leadW, 0, P + leadW + accW, 0); if (ans) { ag.addColorStop(0, th.good === '#059669' && o.theme !== 'light' ? '#a7f3d0' : th.good); ag.addColorStop(1, th.lite ? '#059669' : '#a3e635'); } else { ag.addColorStop(0, th.lite ? '#0d9488' : '#5eead4'); ag.addColorStop(1, th.lite ? '#4f46e5' : '#bef264'); }
     ctx.fillStyle = ag; ctx.fillText(acc, P + leadW, hy);
     // ring
     const rx = W - P - 58, ry = pl.head + hs * .5 + 8;
     if (ans) { ctx.fillStyle = epHexA('#10b981', .2); ctx.beginPath(); ctx.arc(rx, ry, 58, 0, 7); ctx.fill(); ctx.fillStyle = '#10b981'; ctx.beginPath(); ctx.arc(rx, ry, 44, 0, 7); ctx.fill(); EP_ICO.check(ctx, rx, ry, 30, '#fff'); }
-    else { ctx.lineWidth = 11; ctx.lineCap = 'round'; ctx.strokeStyle = o.theme === 'light' ? 'rgba(15,23,42,.1)' : 'rgba(255,255,255,.16)'; ctx.beginPath(); ctx.arc(rx, ry, 48, 0, 7); ctx.stroke();
+    else { ctx.lineWidth = 11; ctx.lineCap = 'round'; ctx.strokeStyle = th.lite ? 'rgba(15,23,42,.1)' : 'rgba(255,255,255,.16)'; ctx.beginPath(); ctx.arc(rx, ry, 48, 0, 7); ctx.stroke();
       const rg = ctx.createLinearGradient(rx - 48, ry - 48, rx + 48, ry + 48); rg.addColorStop(0, '#2dd4bf'); rg.addColorStop(1, '#a3e635'); ctx.strokeStyle = rg; ctx.beginPath(); ctx.arc(rx, ry, 48, -Math.PI / 2, Math.PI * 1.0); ctx.stroke();
       T('30', rx, ry + 12, `800 38px ${F}`, th.ink, 'center'); T('SEC', rx, ry + 34, `700 15px ${F}`, th.sub, 'center'); }
     // chips
@@ -3742,29 +3744,35 @@ function epRenderCard(q, info, o, A, px) {
     const chip = (label, { dot, icon, tint } = {}) => {
       const font = `700 22px ${F}`, lead = (dot || icon) ? 22 : 0, maxLab = Math.min(430, limit - cx - 36 - lead - 6); if (maxLab < 60) return;
       label = fit(font, label, maxLab); const w = meas(font, label) + 36 + lead;
-      epRoundRect(ctx, cx, cy, w, chH, chH / 2); ctx.fillStyle = tint ? epHexA(tint, o.theme === 'light' ? .14 : .16) : th.chip; ctx.fill(); ctx.lineWidth = 1.5; ctx.strokeStyle = tint ? epHexA(tint, .5) : th.chipLine; ctx.stroke();
+      epRoundRect(ctx, cx, cy, w, chH, chH / 2); ctx.fillStyle = tint ? epHexA(tint, th.lite ? .14 : .16) : th.chip; ctx.fill(); ctx.lineWidth = 1.5; ctx.strokeStyle = tint ? epHexA(tint, .5) : th.chipLine; ctx.stroke();
       let tx = cx + 18;
       if (dot) { ctx.fillStyle = dot; ctx.beginPath(); ctx.arc(tx + 7, cy + chH / 2, 7, 0, 7); ctx.fill(); tx += lead; }
       if (icon) { icon(ctx, tx + 8, cy + chH / 2, 11); tx += lead; }
       T(label, tx, cy + 31, font, th.chipInk); cx += w + 12;
     };
     if (o.streak > 0) chip(`${o.streak}-day streak`, { icon: (c, x, y, r) => EP_ICO.flame(c, x, y, r, '#f59e0b'), tint: '#f59e0b' });
-    if (info.year) chip(`${info.exam || 'NEET'} ${info.year}`, { tint: o.theme === 'light' ? '#4f46e5' : '#a5b4fc' });
+    if (info.year) chip(`${info.exam || 'NEET'} ${info.year}`, { tint: th.lite ? '#4f46e5' : '#a5b4fc' });
     if (info.difficulty && info.difficulty !== '?') chip(info.difficulty, { dot: epDiffColor(info.difficulty) });
-    if (info.chapter) chip(info.chapter, { icon: (c, x, y, r) => EP_ICO.book(c, x, y, r * .8, o.theme === 'light' ? '#475569' : '#94a3b8') });
+    if (info.chapter) chip(info.chapter, { icon: (c, x, y, r) => EP_ICO.book(c, x, y, r * .8, th.lite ? '#475569' : '#94a3b8') });
   }
 
   ctx.restore();
 
   /* ---- 6. question card ---- */
   const top = pl.it + pl.head + pl.hookH + extra / 2, cX = P, cW = W - 2 * P, u = pl.u;
-  ctx.save(); if (th.shadow) { ctx.shadowColor = o.theme === 'light' ? 'rgba(15,23,42,.14)' : 'rgba(2,6,23,.4)'; ctx.shadowBlur = 50; ctx.shadowOffsetY = 18; }
+  ctx.save(); if (th.shadow) { ctx.shadowColor = th.lite ? 'rgba(15,23,42,.14)' : 'rgba(2,6,23,.4)'; ctx.shadowBlur = 50; ctx.shadowOffsetY = 18; }
   epRoundRect(ctx, cX, top, cW, pl.cardH, 44); ctx.fillStyle = th.card; ctx.fill(); ctx.restore();
   if (th.cardLine && th.cardLine !== 'rgba(255,255,255,.0)') { epRoundRect(ctx, cX, top, cW, pl.cardH, 44); ctx.lineWidth = 2; ctx.strokeStyle = th.cardLine; ctx.stroke(); }
   let y = top + pl.pad; const ix = cX + pl.pad;
+  if (pl.kick) {   // mirrors the "QUESTION" label + top progress line of the practice session
+    ctx.save(); epRoundRect(ctx, cX, top, cW, pl.cardH, 44); ctx.clip(); ctx.fillStyle = '#e5e7eb'; ctx.fillRect(cX, top, cW, 6);
+    const pg = ctx.createLinearGradient(cX, 0, cX + cW * .42, 0); pg.addColorStop(0, '#0f766e'); pg.addColorStop(1, '#14b8a6'); ctx.fillStyle = pg; ctx.fillRect(cX, top, cW * .42, 6); ctx.restore();
+    ctx.save(); try { ctx.letterSpacing = '3px'; } catch (e) {} T('QUESTION', ix, y + u(22), `800 ${u(24)}px ${F}`, '#0f766e'); ctx.restore();
+    y += pl.kick;
+  }
   pl.qLines.forEach((l, i) => T(l, ix, y + pl.qF + i * pl.qLH - 4, `800 ${pl.qF}px ${F}`, th.qInk)); y += pl.qLines.length * pl.qLH;
   if (pl.fig) { y += pl.gapI; const fw = figs.reduce((a, im, i) => a + pl.fig.ars[i] * pl.fig.h + 2 * pl.fig.fp, 0) + pl.fig.gap * (figs.length - 1); let fx = ix + Math.max(0, (pl.inW - fw) / 2); figs.forEach((im, i) => { const w = pl.fig.ars[i] * pl.fig.h; epRoundRect(ctx, fx, y, w + 2 * pl.fig.fp, pl.fig.total, 18); ctx.fillStyle = '#fff'; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = o.theme === 'midnight' ? 'rgba(255,255,255,.25)' : '#e2e8f0'; ctx.stroke(); ctx.drawImage(im, fx + pl.fig.fp, y + pl.fig.fp, w, pl.fig.h); fx += w + 2 * pl.fig.fp + pl.fig.gap; }); y += pl.fig.total; }
-  if (pl.note) { y += u(14); epRoundRect(ctx, ix, y, pl.inW, pl.note.h, 18); ctx.fillStyle = 'rgba(245,158,11,.14)'; ctx.fill(); ctx.setLineDash([8, 6]); ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(245,158,11,.6)'; ctx.stroke(); ctx.setLineDash([]); T(fit(`700 ${u(25)}px ${F}`, 'This question has a diagram. Open it in EduPulse to see it.', pl.inW - 40), ix + 24, y + pl.note.h / 2 + u(9), `700 ${u(25)}px ${F}`, o.theme === 'light' ? '#b45309' : '#fbbf24'); y += pl.note.h; }
+  if (pl.note) { y += u(14); epRoundRect(ctx, ix, y, pl.inW, pl.note.h, 18); ctx.fillStyle = 'rgba(245,158,11,.14)'; ctx.fill(); ctx.setLineDash([8, 6]); ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(245,158,11,.6)'; ctx.stroke(); ctx.setLineDash([]); T(fit(`700 ${u(25)}px ${F}`, 'This question has a diagram. Open it in EduPulse to see it.', pl.inW - 40), ix + 24, y + pl.note.h / 2 + u(9), `700 ${u(25)}px ${F}`, th.lite ? '#b45309' : '#fbbf24'); y += pl.note.h; }
   if (pl.tb) { y += pl.gapI; const t = pl.tb; epRoundRect(ctx, ix, y, pl.inW, t.h, 16); ctx.save(); ctx.clip(); ctx.fillStyle = o.theme === 'midnight' ? 'rgba(255,255,255,.04)' : '#fff'; ctx.fillRect(ix, y, pl.inW, t.h);
     let ty = y; t.cells.forEach((row, ri) => { if (t.hasH && ri === 0) { ctx.fillStyle = o.theme === 'midnight' ? 'rgba(45,212,191,.18)' : '#ccfbf1'; ctx.fillRect(ix, ty, pl.inW, row.h); } else if (ri % 2 === 0) { ctx.fillStyle = o.theme === 'midnight' ? 'rgba(255,255,255,.04)' : '#f8fafc'; ctx.fillRect(ix, ty, pl.inW, row.h); }
       let tx = ix; row.ls.forEach((ls, c) => { ls.forEach((l, k) => T(l, tx + t.cp, ty + t.cp + t.f + k * t.lh - 4, row.font, th.oInk)); tx += t.cw[c]; });
@@ -3776,7 +3784,8 @@ function epRenderCard(q, info, o, A, px) {
     ctx.save(); if (dim) ctx.globalAlpha = .62;
     epRoundRect(ctx, ix, y, pl.inW, r.h, 24); ctx.fillStyle = isC ? th.goodFill : th.opt; ctx.fill(); ctx.lineWidth = isC ? 4 : 2; ctx.strokeStyle = isC ? (o.theme === 'midnight' ? '#34d399' : '#10b981') : th.optLine; ctx.stroke();
     const lx = ix + pl.rowPad + pl.letterR, ly = y + Math.max(pl.rowMin, r.textH + u(34)) / 2;
-    ctx.beginPath(); ctx.arc(lx, ly, pl.letterR, 0, 7); ctx.fillStyle = isC ? '#10b981' : th.letter; ctx.fill();
+    if (th.session) { epRoundRect(ctx, lx - pl.letterR, ly - pl.letterR, pl.letterR * 2, pl.letterR * 2, u(12)); ctx.fillStyle = isC ? '#10b981' : th.letter; ctx.fill(); if (!isC) { ctx.lineWidth = 2; ctx.strokeStyle = th.optLine; ctx.stroke(); } }
+    else { ctx.beginPath(); ctx.arc(lx, ly, pl.letterR, 0, 7); ctx.fillStyle = isC ? '#10b981' : th.letter; ctx.fill(); }
     if (isC) EP_ICO.check(ctx, lx, ly, pl.letterR * .78, '#fff'); else T(String.fromCharCode(65 + i), lx, ly + u(11), `800 ${u(30)}px ${F}`, th.letterInk, 'center');
     const tx = lx + pl.letterR + u(22), th0 = ly - r.lines.length * pl.oLH / 2 + pl.oF * .86;
     r.lines.forEach((l, k) => T(l, tx, th0 + k * pl.oLH, `${isC ? 700 : 600} ${pl.oF}px ${F}`, th.oInk));
@@ -3788,7 +3797,7 @@ function epRenderCard(q, info, o, A, px) {
   let sy = top + pl.cardH + pl.gap;
   const sx = P, sw = W - 2 * P;
   if (ans && pl.ex) {
-    const e = pl.ex; epRoundRect(ctx, sx, sy, sw, e.h, 32); ctx.fillStyle = o.theme === 'light' ? '#ecfdf5' : o.theme === 'aurora' ? 'rgba(255,255,255,.96)' : 'rgba(16,185,129,.10)'; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = o.theme === 'light' || o.theme === 'aurora' ? '#a7f3d0' : 'rgba(52,211,153,.4)'; ctx.stroke();
+    const e = pl.ex; epRoundRect(ctx, sx, sy, sw, e.h, 32); ctx.fillStyle = th.lite ? '#ecfdf5' : o.theme === 'aurora' ? 'rgba(255,255,255,.96)' : 'rgba(16,185,129,.10)'; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = th.lite || o.theme === 'aurora' ? '#a7f3d0' : 'rgba(52,211,153,.4)'; ctx.stroke();
     EP_ICO.spark(ctx, sx + e.ip + 12, sy + pl.u(26) + 18, 15, '#10b981');
     T('WHY IT’S RIGHT', sx + e.ip + 38, sy + pl.u(26) + 26, `800 ${pl.u(22)}px ${F}`, o.theme === 'midnight' ? '#6ee7b7' : '#047857');
     e.ls.forEach((l, i) => T(l, sx + e.ip, sy + pl.u(26) + pl.u(58) + e.f + i * e.lh - 4, `500 ${e.f}px ${F}`, o.theme === 'midnight' ? '#e2e8f0' : '#064e3b'));
@@ -3858,7 +3867,7 @@ async function epCardBlob(q, info, o, A) {
 }
 
 /* ---------- Share Studio ---------- */
-const EP_SS_PREFS = 'edupulse_share_prefs_v1';
+const EP_SS_PREFS = 'edupulse_share_prefs_v2';
 function epStreakDays() {
   try {
     const s = StorageModule.get(STORAGE_KEYS.streak, null); if (!s || !s.current) return 0;
@@ -3870,7 +3879,7 @@ function epShareStudio(q, info) {
   document.getElementById('epss')?.remove();
   let prefs = {}; try { prefs = JSON.parse(localStorage.getItem(EP_SS_PREFS) || '{}'); } catch (e) {}
   const streakN = epStreakDays();
-  const st = { mode: 'challenge', format: EP_FORMATS[prefs.format] ? prefs.format : 'post', theme: EP_THEMES[prefs.theme] ? prefs.theme : 'midnight', streak: streakN >= 2 && prefs.streak !== false, A: null, token: 0, blob: null, blobKey: '', blobP: null, tainted: false };
+  const st = { mode: 'challenge', format: EP_FORMATS[prefs.format] ? prefs.format : 'post', theme: EP_THEMES[prefs.theme] ? prefs.theme : 'practice', streak: streakN >= 2 && prefs.streak !== false, A: null, token: 0, blob: null, blobKey: '', blobP: null, tainted: false };
   const prevFocus = document.activeElement, htmlOv = document.documentElement.style.overflow;
   const I = {
     x: '<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
@@ -7535,9 +7544,10 @@ function buildPracticeHome() {
     // Always route a chapter click through its own setup flow. The question
     // index loads asynchronously; using m.bank here caused early clicks to
     // open a generic AI screen (or the wrong flow) before the index arrived.
-    const open = `openPracticeSetup('${sArg}','${jsArg(m.ch)}')`;
     const checking = m.bank === null;
     const hasBank = (m.bank || 0) > 0;
+    // A card labelled "Resume" must continue the saved attempt directly, not reopen setup.
+    const open = hasBank && m.inProgress ? `resumeChapterSession('${sArg}','${jsArg(m.ch)}')` : `openPracticeSetup('${sArg}','${jsArg(m.ch)}')`;
     const verb = !hasBank ? 'Open practice options for' : m.inProgress ? 'Resume' : 'Practise';
     const cta = checking ? 'Checking question bank…' : !hasBank ? 'Generate with AI' : m.inProgress ? `Resume · ${m.answered}/${m.total}` : (m.finished || m.done) ? 'Practise again' : 'Start practice';
     const ctaIcon = checking ? 'fa-rotate fa-spin' : !hasBank ? 'fa-wand-magic-sparkles' : 'fa-play';
@@ -21279,6 +21289,23 @@ body.ep-practicing .bottom-nav,body.ep-practicing #bottom-nav{display:none!impor
 #epq .tm{display:inline-flex;align-items:center;gap:5px;height:32px;padding:0 10px;border-radius:8px;background:var(--bg);border:1px solid var(--line);font-size:12.5px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--mut)}
 #epq .pill{height:32px;padding:0 12px;border-radius:8px;background:var(--bg);border:1px solid var(--line);font-size:12.5px;font-weight:800;transition:color .15s,border-color .15s}
 @media (hover:hover){#epq .pill:hover{color:var(--bad);border-color:var(--bad)}#epq .ib:hover{border-color:var(--line2)}}
+/* accuracy + streak meters under the header */
+#epq .mt{display:flex;gap:8px;padding:0 max(14px,calc((100% - 760px)/2)) 10px;background:var(--card)}
+#epq[data-m=practice] .sb .ac,#epq[data-m=practice] .sb .sx{display:none}
+#epq .mi{flex:1;min-width:0;display:flex;align-items:center;gap:8px;height:32px;padding:0 10px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font-size:11.5px;font-weight:800;color:var(--mut);font-variant-numeric:tabular-nums;transition:background-color .2s,border-color .2s,color .2s}
+#epq .mi .ml{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em;font-size:10.5px}
+#epq .mi .ml svg{width:13px;height:13px}
+#epq .mi b{min-width:30px;text-align:right;white-space:nowrap;font-size:12.5px}
+#epq .mtk{flex:1;min-width:24px;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+#epq .mtk i{display:block;height:100%;width:100%;border-radius:inherit;transform-origin:0 50%;transform:scaleX(0);background:var(--mut);transition:transform .45s var(--ease),background-color .2s}
+#epq .ma.hi{color:var(--ok)}#epq .ma.hi .mtk i{background:var(--ok)}
+#epq .ma.mid{color:var(--amb)}#epq .ma.mid .mtk i{background:var(--amb)}
+#epq .ma.lo{color:var(--bad)}#epq .ma.lo .mtk i{background:var(--bad)}
+#epq .ms.on{color:var(--amb);background:var(--ambb);border-color:transparent}
+#epq .ms.on .mtk{background:rgba(245,158,11,.18)}
+#epq .ms.on .mtk i{background:linear-gradient(90deg,#f59e0b,#f97316)}
+#epq .ms.hot .mtk i{background:linear-gradient(90deg,#f97316,#ef4444)}
+@media (max-width:519px){#epq .mi .ml>span{display:none}#epq .mi{padding:0 8px;gap:6px}}
 #epq .bar{height:3px;background:var(--line);overflow:hidden}
 #epq .bar i{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--acc),var(--acc2));transition:transform .45s var(--ease)}
 /* palette: square tiles */
@@ -21466,6 +21493,7 @@ function head(){var c=counts(),t=quizState.questions.length,inf=quizState.infini
  var b=$('epq-bar');if(b)b.style.transform='scaleX('+(t?c.n/t:0)+')';
  var ac=$('epq-ac');if(ac){var pc=c.n?Math.round(c.r/c.n*100):-1;ac.className='ac'+(pc<0?'':pc>=75?' hi':pc>=50?' mid':' lo');ac.innerHTML=I.target+(pc<0?'\u2013':pc+'%');ac.title=c.n?('Accuracy: '+c.r+' of '+c.n+' correct'):'Accuracy (answer a question to start)'}
  var sx=$('epq-sx'),run=streak();if(sx){sx.classList.toggle('on',run>=1);sx.innerHTML=I.flame+run;sx.title=run+' correct in a row'}
+ var mt=$('epq-mt');if(mt){var mp=c.n?Math.round(c.r/c.n*100):-1,ma=mt.querySelector('.ma'),ms=mt.querySelector('.ms');ma.className='mi ma'+(mp<0?'':mp>=75?' hi':mp>=50?' mid':' lo');ma.setAttribute('aria-valuenow',mp<0?0:mp);ma.title=c.n?('Accuracy: '+c.r+' of '+c.n+' correct'):'Answer a question to see accuracy';ma.querySelector('.mtk i').style.transform='scaleX('+(mp<0?0:mp/100)+')';ma.querySelector('b').textContent=mp<0?'\u2013':mp+'%';ms.classList.toggle('on',run>=1);ms.classList.toggle('hot',run>=5);ms.setAttribute('aria-valuenow',Math.min(run,10));ms.title=run+' correct in a row';ms.querySelector('.mtk i').style.transform='scaleX('+Math.min(run,10)/10+')';ms.querySelector('b').textContent=run+(run>=10?'+':'')}
  if(inf)infRow();palette()}
 function resultHtml(i,fx){var q=quizState.questions[i],a=quizState.userAnswers[i],right=a===q.correct,ex=q.explanation&&q.explanation!=='NCERT Concept.',rs=quizState.wrongReasons&&quizState.wrongReasons[i],rv='';
  if(!right){try{rv=window.EP&&EP.review?EP.review.statusHtml(q):''}catch(e){}}
@@ -21548,6 +21576,7 @@ function key(e){var r=$('epq');if(!r){document.removeEventListener('keydown',key
 function mount(){
  setModal('','','<div id="epq" data-m="practice" role="dialog" aria-label="Practice session"><div class="hd"><button class="ib" data-a="back" aria-label="Exit session">'+I.back+'</button><div class="tt"><h2>'+E(quizState.title)+'</h2><div class="sb"><span id="epq-cnt"></span><span id="epq-st"></span><span class="ac" id="epq-ac" title="Accuracy"></span><span class="sx" id="epq-sx" title="Correct in a row"></span></div></div>'+
  '<button class="ib auto" data-a="auto" aria-pressed="'+autoOn()+'" aria-label="Auto-advance after a correct answer" title="Auto-advance after a correct answer">'+I.bolt+'</button><span class="tm" title="Time on this question">'+I.clock+'<b id="epq-tm">0:00</b></span><button class="pill" data-a="end" aria-label="End session">End</button></div>'+
+ '<div class="mt" id="epq-mt"><div class="mi ma" role="meter" aria-label="Accuracy" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="ml">'+I.target+'<span>Accuracy</span></span><span class="mtk"><i></i></span><b>\u2013</b></div><div class="mi ms" role="meter" aria-label="Streak, correct in a row" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><span class="ml">'+I.flame+'<span>Streak</span></span><span class="mtk"><i></i></span><b>0</b></div></div>'+
  '<div class="bar"><i id="epq-bar"></i></div><div class="infr" id="epq-inf"></div>'+
  '<div class="palw"><button type="button" class="gb" data-a="grid" aria-label="Open question palette" title="Question palette (P)">'+I.grid+'</button><div class="palx"><div class="pal" id="epq-pal" role="group" aria-label="Questions"></div></div></div>'+
  '<div class="bd" id="epq-body"></div><div class="sr" id="epq-live" aria-live="polite"></div>'+
@@ -21657,7 +21686,8 @@ function head(){var r=$('epq');if(!r)return;var t=Qs().length,c=counts();
  var st=$('epq-st');if(st)st.innerHTML='<span class="ans">'+c.n+' answered</span>';
  var b=$('epq-bar');if(b)b.style.transform='scaleX('+(t?c.n/t:0)+')';
  var ac=$('epq-ac');if(ac){var pc=c.n?Math.round(c.r/c.n*100):-1;ac.className='ac'+(pc<0?'':pc>=75?' hi':pc>=50?' mid':' lo');ac.innerHTML=I.target+(pc<0?'\u2013':pc+'%');ac.title=c.n?('Accuracy: '+c.r+' of '+c.n+' correct'):'Accuracy (answer a question to start)'}
- var sx=$('epq-sx'),run=streak();if(sx){sx.classList.toggle('on',run>=1);sx.innerHTML=I.flame+run;sx.title=run+' correct in a row'}}
+ var sx=$('epq-sx'),run=streak();if(sx){sx.classList.toggle('on',run>=1);sx.innerHTML=I.flame+run;sx.title=run+' correct in a row'}
+ var mt=$('epq-mt');if(mt){var mp=c.n?Math.round(c.r/c.n*100):-1,ma=mt.querySelector('.ma'),ms=mt.querySelector('.ms');ma.className='mi ma'+(mp<0?'':mp>=75?' hi':mp>=50?' mid':' lo');ma.setAttribute('aria-valuenow',mp<0?0:mp);ma.title=c.n?('Accuracy: '+c.r+' of '+c.n+' correct'):'Answer a question to see accuracy';ma.querySelector('.mtk i').style.transform='scaleX('+(mp<0?0:mp/100)+')';ma.querySelector('b').textContent=mp<0?'\u2013':mp+'%';ms.classList.toggle('on',run>=1);ms.classList.toggle('hot',run>=5);ms.setAttribute('aria-valuenow',Math.min(run,10));ms.title=run+' correct in a row';ms.querySelector('.mtk i').style.transform='scaleX('+Math.min(run,10)/10+')';ms.querySelector('b').textContent=run+(run>=10?'+':'')}}
 function footer(i){var t=Qs().length,last=i===t-1,n=$('epq-nx');if(!n)return;
  n.querySelector('.lb').textContent=last?'Review & submit':'Next';n.dataset.s=last?'flag':'arr';
  var c=$('epq-sk');if(c)c.disabled=quizState.userAnswers[i]===undefined;var p=$('epq-pv');if(p)p.disabled=i===0}
