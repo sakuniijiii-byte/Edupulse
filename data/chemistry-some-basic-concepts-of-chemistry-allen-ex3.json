@@ -1,0 +1,563 @@
+{
+ "sourceId": "allen",
+ "sourceLabel": "Allen",
+ "exercise": "ex3",
+ "exerciseLabel": "Previous Year Questions",
+ "chapter": "Some Basic Concepts of Chemistry",
+ "subject": "Chemistry",
+ "questions": [
+  {
+   "id": "sbcc-allen-ex3-001",
+   "no": 1,
+   "q": "Equal masses of $\\text{H}_{2}$, $\\text{O}_{2}$ and methane have been taken in a container of volume V at temperature 27°C in identical conditions. The ratio of the volumes of gases $\\text{H}_{2}$ : $\\text{O}_{2}$ : $\\text{CH}_{4}$ would be :",
+   "o": [
+    "8 : 16 : 1",
+    "16 : 8 : 1",
+    "16 : 1 : 2",
+    "8 : 1 : 2"
+   ],
+   "a": 3,
+   "s": "At the same temperature and pressure, volume is proportional to moles. For equal mass m, moles are m/2 : m/32 : m/16. Multiplying by 32/m gives 16 : 1 : 2.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "AIPMT",
+   "year": "2014",
+   "note": "Exercise-II · Q1 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-002",
+   "no": 2,
+   "q": "When 22.4 litres of $\\text{H}_{2}$(g) is mixed with 11.2 litres of $\\text{Cl}_{2}$(g), each at S.T.P., the moles of HCl (g) formed is equal to :-",
+   "o": [
+    "1 mol of HCl (g)",
+    "2 mol of HCl (g)",
+    "0.5 mol of HCl (g)",
+    "1.5 mol of HCl (g)"
+   ],
+   "a": 1,
+   "s": "22.4 L of $\\text{H}_{2}$ is 1 mol and 11.2 L of $\\text{Cl}_{2}$ is 0.5 mol. $\\text{H}_{2}$ + $\\text{Cl}_{2}$ → 2HCl, so chlorine runs out first. 0.5 mol of $\\text{Cl}_{2}$ gives 1 mol of HCl.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Limiting Reagent",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "AIPMT",
+   "year": "2014",
+   "note": "Exercise-II · Q2 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-003",
+   "no": 3,
+   "q": "1.0 g of magnesium is burnt with 0.56 g $\\text{O}_{2}$ in a closed vessel. Which reactant is left in excess and how much?\n(At. wt. Mg = 24 ; O = 16)",
+   "o": [
+    "Mg, 0.16 g",
+    "$\\text{O}_{2}$, 0.16 g",
+    "Mg, 0.44 g",
+    "$\\text{O}_{2}$, 0.28 g"
+   ],
+   "a": 1,
+   "s": "2Mg + $\\text{O}_{2}$ → 2MgO. Oxygen = 0.56/32 = 0.0175 mol needs 0.035 mol Mg = 0.84 g. Mg left = 1.0 − 0.84 = 0.16 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Limiting Reagent",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "AIPMT",
+   "year": "2014",
+   "note": "Exercise-II · Q3 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-004",
+   "no": 4,
+   "q": "A mixture of gases contains $\\text{H}_{2}$ and $\\text{O}_{2}$ gases in the ratio of 1 : 4 (w/w). What is the molar ratio of the two gases in the mixture ?",
+   "o": [
+    "4 : 1",
+    "16 : 1",
+    "2 : 1",
+    "1 : 4"
+   ],
+   "a": 1,
+   "s": "Moles = mass/molar mass. $\\text{H}_{2}$: 1/2 = 0.5 and $\\text{O}_{2}$: 4/32 = 0.125. The ratio is 0.5 : 0.125 = 4 : 1.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "AIPMT",
+   "year": "2015",
+   "note": "Exercise-II · Q4 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-005",
+   "no": 5,
+   "q": "The number of water molecules is maximum in :-",
+   "o": [
+    "18 gram of water",
+    "18 moles of water",
+    "18 molecules of water",
+    "1.8 gram of water"
+   ],
+   "a": 2,
+   "s": "18 moles of water has 18 × $6.02\\times10^{23}$ molecules. 18 g is only 1 mole, 1.8 g is 0.1 mole and 18 molecules is almost nothing. So 18 moles has the most.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "Re-AIPMT",
+   "year": "2015",
+   "note": "Exercise-II · Q5 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-006",
+   "no": 6,
+   "q": "If avogadro number $N_A$, is changed from $6.022\\times10^{23}\\text{ mol}^{-1}$ to $6.022\\times10^{20}\\text{ mol}^{-1}$, this would change :",
+   "o": [
+    "the ratio of chemical species to each other in a balanced equation",
+    "the ratio of elements to each other in a compound",
+    "the definition of mass in units of grams",
+    "the mass of one mole of carbon"
+   ],
+   "a": 4,
+   "s": "One mole is $N_A$ particles. If $N_A$ becomes smaller, one mole holds fewer atoms, so one mole of carbon would weigh less than 12 g. Ratios in equations and compounds depend only on relative numbers, so they stay the same.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "Re-AIPMT",
+   "year": "2015",
+   "note": "Exercise-II · Q6 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-007",
+   "no": 7,
+   "q": "20.0 g of a magnesium carbonate sample decomposes on heating to give carbon dioxide and 8.0g magnesium oxide. What will be the percentage purity of magnesium carbonate in the sample?\n(At. Wt. : Mg = 24)",
+   "o": [
+    "60",
+    "84",
+    "75",
+    "96"
+   ],
+   "a": 2,
+   "s": "$\\text{MgCO}_{3}$ → MgO + $\\text{CO}_{2}$. 8.0 g of MgO = 8/40 = 0.2 mol, so 0.2 mol of $\\text{MgCO}_{3}$ reacted = 0.2 × 84 = 16.8 g. Purity = 16.8/20 × 100 = 84%.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "Re-AIPMT",
+   "year": "2015",
+   "note": "Exercise-II · Q7 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-008",
+   "no": 8,
+   "q": "What is the mole fraction of the solute in a 1.00 m aqueous solution?",
+   "o": [
+    "0.0354",
+    "0.0177",
+    "0.177",
+    "1.770"
+   ],
+   "a": 2,
+   "s": "1.00 m means 1 mol of solute in 1000 g of water. Moles of water = 1000/18 = 55.5. Mole fraction of solute = 1/(1 + 55.5) = 0.0177.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Concentration Terms",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "Re-AIPMT",
+   "year": "2015",
+   "note": "Exercise-II · Q8 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-009",
+   "no": 9,
+   "q": "Suppose the elements X and Y combine to form two compounds $\\text{XY}_{2}$ and $\\text{X}_{3}\\text{Y}_{2}$. When 0.1 mole of $\\text{XY}_{2}$ weighs 10 g and 0.05 mole of $\\text{X}_{3}\\text{Y}_{2}$ weighs 9 g, the atomic weights of X and Y are",
+   "o": [
+    "20,30",
+    "30,20",
+    "40,30",
+    "60,40"
+   ],
+   "a": 3,
+   "s": "Molar masses: $\\text{XY}_{2}$ = 10/0.1 = 100 and $\\text{X}_{3}\\text{Y}_{2}$ = 9/0.05 = 180. So X + 2Y = 100 and 3X + 2Y = 180. Subtracting gives 2X = 80, so X = 40 and Y = 30.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "NEET-II",
+   "year": "2016",
+   "note": "Exercise-II · Q9 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-010",
+   "no": 10,
+   "q": "A mixture of 2.3 g formic acid and 4.5 g oxalic acid is treated with conc. $\\text{H}_{2}\\text{SO}_{4}$. The evolved gaseous mixture is passed through KOH pellets. Weight (in g) of the remaining product at STP will be\n(i) HCOOH → CO + $\\text{H}_{2}\\text{O}$ (conc. $\\text{H}_{2}\\text{SO}_{4}$; $\\text{H}_{2}\\text{O}$ absorbed by $\\text{H}_{2}\\text{SO}_{4}$)\n(ii) $\\text{H}_{2}\\text{C}_{2}\\text{O}_{4}$ → CO + $\\text{CO}_{2}$ + $\\text{H}_{2}\\text{O}$ (conc. $\\text{H}_{2}\\text{SO}_{4}$; $\\text{H}_{2}\\text{O}$ absorbed by $\\text{H}_{2}\\text{SO}_{4}$)\n(iii) $\\text{CO}_{2}$ is absorbed by KOH",
+   "o": [
+    "1.4",
+    "3.0",
+    "2.8",
+    "4.4"
+   ],
+   "a": 3,
+   "s": "Formic acid 2.3 g = 0.05 mol gives 0.05 mol CO. Oxalic acid 4.5 g = 0.05 mol gives 0.05 mol CO and 0.05 mol $\\text{CO}_{2}$. KOH absorbs $\\text{CO}_{2}$, so 0.1 mol CO is left = 0.1 × 28 = 2.8 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "NEET (UG)",
+   "year": "2018",
+   "note": "Exercise-II · Q10 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-011",
+   "no": 11,
+   "q": "In which case the number of molecules of water is maximum?",
+   "o": [
+    "18 mL of water",
+    "0.18 g of water",
+    "0.00224 L of water vapours at 1 atm and 273 K",
+    "$10^{-3}$ mol of water"
+   ],
+   "a": 1,
+   "s": "18 mL of water weighs 18 g (density 1 g/mL), which is 1 mol. The others are 0.01 mol, 0.0001 mol and 0.001 mol. So 18 mL has the most molecules.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET (UG)",
+   "year": "2018",
+   "note": "Exercise-II · Q11 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-012",
+   "no": 12,
+   "q": "The number of moles of hydrogen molecules required to produce 20 moles of ammonia through Haber's process is :-",
+   "o": [
+    "10",
+    "20",
+    "30",
+    "40"
+   ],
+   "a": 3,
+   "s": "$\\text{N}_{2}$ + 3$\\text{H}_{2}$ → 2$\\text{NH}_{3}$. 3 mol of $\\text{H}_{2}$ give 2 mol of $\\text{NH}_{3}$. So 20 mol of $\\text{NH}_{3}$ needs 20 × 3/2 = 30 mol of $\\text{H}_{2}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "NEET (UG)",
+   "year": "2019",
+   "note": "Exercise-II · Q12 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-013",
+   "no": 13,
+   "q": "The volume occupied by 1.8 g of water vapour at 374 °C and 1 bar pressure will be :-\n[Use R = 0.083 bar L $K^{-1}$$mol^{-1}$]",
+   "o": [
+    "96.66 L",
+    "55.87 L",
+    "3.10 L",
+    "5.37 L"
+   ],
+   "a": 4,
+   "s": "1.8 g of water is 0.1 mol. T = 374 + 273 = 647 K. Using V = nRT/P = 0.1 × 0.083 × 647/1 = 5.37 L.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET (UG) (Odisha)",
+   "year": "2019",
+   "note": "Exercise-II · Q13 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-014",
+   "no": 14,
+   "q": "Which one of the following has maximum number of atoms?",
+   "o": [
+    "1g of Li(s) [Atomic mass of Li = 7]",
+    "1g of Ag(s) [Atomic mass of Ag = 108]",
+    "1g of Mg(s) [Atomic mass of Mg = 24]",
+    "1g of $\\text{O}_{2}$(g) [Atomic mass of O = 16]"
+   ],
+   "a": 1,
+   "s": "For the same mass, the lightest atoms give the most atoms. Moles of atoms: Li = 1/7, Mg = 1/24, Ag = 1/108, and $\\text{O}_{2}$ = 1/16 (as atoms). So lithium has the most.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET (UG)",
+   "year": "2020",
+   "note": "Exercise-II · Q14 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-015",
+   "no": 15,
+   "q": "One mole of carbon atom weighs 12 g, the number of atoms in it is equal to, (Mass of carbon – 12 is $1.9926\\times10^{-23}$ g)",
+   "o": [
+    "$1.2\\times10^{23}$",
+    "$6.022\\times10^{22}$",
+    "$12\\times10^{22}$",
+    "$6.022\\times10^{23}$"
+   ],
+   "a": 4,
+   "s": "Number of atoms = 12 g / mass of one atom = 12/$1.9926\\times10^{-23}$ = $6.022\\times10^{23}$. This count is Avogadro's number.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "NEET (UG) (COVID-19)",
+   "year": "2020",
+   "note": "Exercise-II · Q15 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-016",
+   "no": 16,
+   "q": "An organic comopound contains 78% (by wt.) carbon and remaining percentage of hydrogen. The right option for the empirical formula of this compound is [Atomic wt. of C is 12, H is 1]",
+   "o": [
+    "CH",
+    "$\\text{CH}_{2}$",
+    "$\\text{CH}_{3}$",
+    "$\\text{CH}_{4}$"
+   ],
+   "a": 3,
+   "s": "C = 78/12 = 6.5 and H = 22/1 = 22. The ratio C : H is about 1 : 3.4. The numbers are not exact, but $\\text{CH}_{3}$ is the closest choice.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET (UG)",
+   "year": "2021",
+   "note": "Exercise-II · Q16 · p.8",
+   "conf": "medium"
+  },
+  {
+   "id": "sbcc-allen-ex3-017",
+   "no": 17,
+   "q": "An organic compound on analysis gave C = 54.5%, H = 9.1% by mass. Its empirical formula is",
+   "o": [
+    "$\\text{CHO}_{2}$",
+    "$\\text{CH}_{2}\\text{O}$",
+    "$\\text{C}_{2}\\text{H}_{4}\\text{O}$",
+    "$\\text{C}_{3}\\text{H}_{4}\\text{O}$"
+   ],
+   "a": 3,
+   "s": "O = 100 − 54.5 − 9.1 = 36.4%. Moles: C = 4.54, H = 9.1, O = 2.275. Dividing by 2.275 gives 2 : 4 : 1, so the formula is $\\text{C}_{2}\\text{H}_{4}\\text{O}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET (UG) (Paper-2)",
+   "year": "2021",
+   "note": "Exercise-II · Q17 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-018",
+   "no": 18,
+   "q": "If 1 mL of water contains 20 drops then number of molecules in a drop of water is",
+   "o": [
+    "$6.023\\times10^{23}$",
+    "$1.673\\times10^{21}$",
+    "$1.344\\times10^{18}$",
+    "$4.346\\times10^{20}$"
+   ],
+   "a": 2,
+   "s": "One drop = 1/20 mL = 0.05 mL, which is 0.05 g of water. Moles = 0.05/18 = $2.78\\times10^{-3}$. Molecules = $2.78\\times10^{-3}\\times6.023\\times10^{23} = 1.673\\times10^{21}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "NEET (UG) (Paper-2)",
+   "year": "2021",
+   "note": "Exercise-II · Q18 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-019",
+   "no": 19,
+   "q": "A sample of phosphorous trichloride ($\\text{PCl}_{3}$) contains 1.4 moles of the substance. How many atoms are there in the sample?",
+   "o": [
+    "4",
+    "5.6",
+    "$8.431\\times10^{23}$",
+    "$3.372\\times10^{24}$"
+   ],
+   "a": 4,
+   "s": "Each $\\text{PCl}_{3}$ molecule has 4 atoms (1 P and 3 Cl). So 1.4 mol has 1.4 × 4 = 5.6 mol of atoms. Atoms = 5.6 × $6.022\\times10^{23}$ = $3.372\\times10^{24}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET (UG) (Paper-2)",
+   "year": "2021",
+   "note": "Exercise-II · Q19 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-020",
+   "no": 20,
+   "q": "In one molal solution that contains 0.5 mole of a solute, there is",
+   "o": [
+    "500 g of solvent",
+    "100 mL of solvent",
+    "1000 g of solvent",
+    "500 mL of solvent"
+   ],
+   "a": 1,
+   "s": "Molality is moles of solute per kg of solvent. A 1 molal solution with 0.5 mol of solute needs 0.5 kg = 500 g of solvent.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Concentration Terms",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "NEET (UG)",
+   "year": "2022",
+   "note": "Exercise-II · Q20 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-021",
+   "no": 21,
+   "q": "What mass of 95% pure $\\text{CaCO}_{3}$ will be required to neutralise 50 mL of 0.5 M HCl solution according to the following reaction ?\n$\\text{CaCO}_{3}$(s) + 2HCl(aq) → $\\text{CaCl}_{2}$(aq) + $\\text{CO}_{2}$(g) + 2$\\text{H}_{2}\\text{O}$(l)\n[Calculate upto second place of decimal point]",
+   "o": [
+    "1.32 g",
+    "3.65 g",
+    "9.50 g",
+    "1.25 g"
+   ],
+   "a": 1,
+   "s": "HCl = 0.05 L × 0.5 M = 0.025 mol. $\\text{CaCO}_{3}$ needed = 0.025/2 = 0.0125 mol = 1.25 g (pure). Sample mass = 1.25/0.95 = 1.32 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "NEET (UG)",
+   "year": "2022",
+   "note": "Exercise-II · Q21 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-022",
+   "no": 22,
+   "q": "Match List-I with List-II :\n(Given : Molar volume of a gas at STP=22.4 L)\nChoose the correct answer from the options given below :",
+   "o": [
+    "(a)-(iii), (b)-(i), (c)-(iv), (d)-(ii)",
+    "(a)-(iv), (b)-(i), (c)-(ii), (d)-(iii)",
+    "(a)-(iii), (b)-(i), (c)-(ii), (d)-(iv)",
+    "(a)-(i), (b)-(iii), (c)-(iv), (d)-(ii)"
+   ],
+   "a": 1,
+   "s": "(a) 4.48 L of $\\text{O}_{2}$ is 0.2 mol, which is 6.4 g. (b) $12.022\\times10^{22}$ molecules of water is 0.2 mol. (c) 96 g of $\\text{O}_{2}$ is 3 mol, which is 67.2 L. (d) 88 g of $\\text{CO}_{2}$ is 2 mol, which is $12.044\\times10^{23}$ molecules.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "NEET (UG) (Overseas)",
+   "year": "2022",
+   "note": "Exercise-II · Q22 · p.8",
+   "conf": "high",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "List-I",
+     "List-II"
+    ],
+    "rows": [
+     [
+      "(a) 4.48 litres of $\\text{O}_{2}$ at STP",
+      "(i) 0.2 moles"
+     ],
+     [
+      "(b) $12.022\\times10^{22}$ molecules of $\\text{H}_{2}\\text{O}$",
+      "(ii) $12.044\\times10^{23}$ molecules"
+     ],
+     [
+      "(c) 96 g of $\\text{O}_{2}$",
+      "(iii) 6.4 g"
+     ],
+     [
+      "(d) 88 g of $\\text{CO}_{2}$",
+      "(iv) 67.2 litres at STP"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "sbcc-allen-ex3-023",
+   "no": 23,
+   "q": "The density of the solution is 2.15 g $mL^{-1}$, then mass of 2.5 mL solution in correct significant figures is",
+   "o": [
+    "$5375\\times10^{-3}$ g",
+    "5.4 g",
+    "5.38 g",
+    "53.75 g"
+   ],
+   "a": 2,
+   "s": "Mass = 2.15 × 2.5 = 5.375 g. In multiplication, the answer keeps as many significant figures as the least precise number. 2.5 has 2, so the answer is 5.4 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Significant Figures",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "Re-NEET (UG)",
+   "year": "2022",
+   "note": "Exercise-II · Q23 · p.9",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex3-024",
+   "no": 24,
+   "q": "The right option for the mass of $\\text{CO}_{2}$ produced by heating 20 g of 20% pure limestone is\n(Atomic mass of Ca = 40)\n[$\\text{CaCO}_{3}$ → $\\text{CaO}$ + $\\text{CO}_{2}$ (1200 K)]",
+   "o": [
+    "1.76 g",
+    "2.64 g",
+    "1.32 g",
+    "1.12 g"
+   ],
+   "a": 1,
+   "s": "Pure $\\text{CaCO}_{3}$ = 20% of 20 g = 4 g = 0.04 mol (molar mass 100). $\\text{CaCO}_{3}$ → CaO + $\\text{CO}_{2}$, so $\\text{CO}_{2}$ = 0.04 mol × 44 = 1.76 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET (UG)",
+   "year": "2023",
+   "note": "Exercise-II · Q24 · p.9",
+   "conf": "high"
+  }
+ ]
+}

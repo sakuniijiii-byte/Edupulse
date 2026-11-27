@@ -1,0 +1,553 @@
+{
+ "sourceId": "allen",
+ "sourceLabel": "Allen",
+ "exercise": "ex2",
+ "exerciseLabel": "NEET / AIIMS Objective",
+ "chapter": "Some Basic Concepts of Chemistry",
+ "subject": "Chemistry",
+ "questions": [
+  {
+   "id": "sbcc-allen-ex2-001",
+   "no": 1,
+   "q": "Air contains nearly 20% oxygen by volume. The volume of air needed for complete combustion of 100 mL of acetylene will be :",
+   "o": [
+    "500 mL",
+    "100 mL",
+    "250 mL",
+    "1250 mL"
+   ],
+   "a": 4,
+   "s": "$\\text{C}_{2}\\text{H}_{2}$ + 5/2 $\\text{O}_{2}$ → 2$\\text{CO}_{2}$ + $\\text{H}_{2}\\text{O}$. So 100 mL of $\\text{C}_{2}\\text{H}_{2}$ needs 250 mL of oxygen. Air is 20% oxygen, so air needed = 250 × 5 = 1250 mL.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q1 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-002",
+   "no": 2,
+   "q": "Elements A and B form two compounds $\\text{B}_{2}\\text{A}_{3}$ and $\\text{B}_{2}\\text{A}$. 0.05 moles of $\\text{B}_{2}\\text{A}_{3}$ weigh 9.0 g and 0.10 mole of $\\text{B}_{2}\\text{A}$ weigh 10 g. Atomic weight of A and B are-",
+   "o": [
+    "20 and 30",
+    "30 and 40",
+    "40 and 30",
+    "30 and 20"
+   ],
+   "a": 3,
+   "s": "Molar masses: $\\text{B}_{2}\\text{A}_{3}$ = 9.0/0.05 = 180 and $\\text{B}_{2}\\text{A}$ = 10/0.10 = 100. So 2B + 3A = 180 and 2B + A = 100. Subtracting gives 2A = 80, so A = 40 and B = 30.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Hard",
+   "note": "Exercise-III · Q2 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-003",
+   "no": 3,
+   "q": "If $3.01\\times10^{20}$ molecules are removed from 98 mg of $\\text{H}_{2}\\text{SO}_{4}$, then the number of moles of $\\text{H}_{2}\\text{SO}_{4}$ left are :–",
+   "o": [
+    "$0.1\\times10^{-3}$",
+    "$0.5\\times10^{-3}$",
+    "$1.66\\times10^{-3}$",
+    "$9.95\\times10^{-2}$"
+   ],
+   "a": 2,
+   "s": "98 mg = 0.098 g = 0.001 mol. Removed moles = $3.01\\times10^{20}/6.02\\times10^{23}$ = 0.0005. Left = 0.001 − 0.0005 = $0.5\\times10^{-3}$ mol.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q3 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-004",
+   "no": 4,
+   "q": "Which of the following has the highest mass ?",
+   "o": [
+    "1 g atom of C",
+    "1/2 mole of $\\text{CH}_{4}$",
+    "10 mL of water",
+    "$3.011\\times10^{23}$ atoms of oxygen"
+   ],
+   "a": 1,
+   "s": "Masses: 1 g atom of C = 12 g, half a mole of $\\text{CH}_{4}$ = 8 g, 10 mL of water = 10 g, and $3.011\\times10^{23}$ oxygen atoms (0.5 mol) = 8 g. So carbon is the heaviest.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q4 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-005",
+   "no": 5,
+   "q": "An oxide of metal M has 40% by mass of oxygen. Metal M has atomic mass of 24. The empirical formula of the oxide is",
+   "o": [
+    "$\\text{M}_{2}\\text{O}$",
+    "$\\text{M}_{2}\\text{O}_{3}$",
+    "MO",
+    "$\\text{M}_{3}\\text{O}_{4}$"
+   ],
+   "a": 3,
+   "s": "In 100 g: O = 40/16 = 2.5 mol and M = 60/24 = 2.5 mol. The ratio is 1 : 1, so the formula is MO.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q5 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-006",
+   "no": 6,
+   "q": "A compound contains 38.8% C, 16.0% H and 45.2% N. The formula of the compound would be",
+   "o": [
+    "$\\text{CH}_{3}\\text{NH}_{2}$",
+    "$\\text{CH}_{3}\\text{CN}$",
+    "$\\text{C}_{2}\\text{H}_{5}\\text{CN}$",
+    "$\\text{CH}_{2}\\text{(NH)}_{2}$"
+   ],
+   "a": 1,
+   "s": "Moles: C = 38.8/12 = 3.23, H = 16/1 = 16, N = 45.2/14 = 3.23. The ratio C : H : N is 1 : 5 : 1, which is $\\text{CH}_{5}\\text{N}$, written as $\\text{CH}_{3}\\text{NH}_{2}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q6 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-007",
+   "no": 7,
+   "q": "10 mL of gaseous hydrocarbon on combustion give 40 mL of $\\text{CO}_{2}$(g) and 50 mL of $\\text{H}_{2}\\text{O}$ (vap.). The hydrocarbon is -",
+   "o": [
+    "$\\text{C}_{4}\\text{H}_{5}$",
+    "$\\text{C}_{8}\\text{H}_{10}$",
+    "$\\text{C}_{4}\\text{H}_{8}$",
+    "$\\text{C}_{4}\\text{H}_{10}$"
+   ],
+   "a": 4,
+   "s": "Each molecule gives 40/10 = 4 $\\text{CO}_{2}$, so it has 4 carbon atoms. It gives 50/10 = 5 $\\text{H}_{2}\\text{O}$, so it has 10 hydrogen atoms. The formula is $\\text{C}_{4}\\text{H}_{10}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q7 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-008",
+   "no": 8,
+   "q": "500 mL of a gaseous hydrocarbon when burnt in excess of $\\text{O}_{2}$ gave 2.5 L of $\\text{CO}_{2}$ and 3.0 L of water vapours under same conditions. Molecular formula of the hydrocarbon is -",
+   "o": [
+    "$\\text{C}_{4}\\text{H}_{8}$",
+    "$\\text{C}_{4}\\text{H}_{10}$",
+    "$\\text{C}_{5}\\text{H}_{10}$",
+    "$\\text{C}_{5}\\text{H}_{12}$"
+   ],
+   "a": 4,
+   "s": "$\\text{CO}_{2}$ per hydrocarbon = 2.5/0.5 = 5, so 5 carbon atoms. $\\text{H}_{2}\\text{O}$ per hydrocarbon = 3.0/0.5 = 6, so 12 hydrogen atoms. The formula is $\\text{C}_{5}\\text{H}_{12}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q8 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-009",
+   "no": 9,
+   "q": "1 L of a hydrocarbon weighs as much as one litre of $\\text{CO}_{2}$ Under similar conditions. Then the molecular formula of the hydrocarbon is -",
+   "o": [
+    "$\\text{C}_{3}\\text{H}_{8}$",
+    "$\\text{C}_{2}\\text{H}_{6}$",
+    "$\\text{C}_{2}\\text{H}_{4}$",
+    "$\\text{C}_{3}\\text{H}_{6}$"
+   ],
+   "a": 1,
+   "s": "Equal volumes under the same conditions have equal moles, so equal mass means equal molar mass. $\\text{CO}_{2}$ is 44 g/mol, and $\\text{C}_{3}\\text{H}_{8}$ = 36 + 8 = 44 g/mol.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q9 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-010",
+   "no": 10,
+   "q": "0.01 mole of iodoform ($\\text{CHI}_{3}$) reacts with Ag to produce a gas whose volume at NTP is\n2$\\text{CHI}_{3}$ + 6Ag → $\\text{C}_{2}\\text{H}_{2}$ + 6AgI(s)",
+   "o": [
+    "224 mL",
+    "112 mL",
+    "336 mL",
+    "None of these"
+   ],
+   "a": 2,
+   "s": "2 mol of $\\text{CHI}_{3}$ give 1 mol of $\\text{C}_{2}\\text{H}_{2}$. So 0.01 mol gives 0.005 mol of $\\text{C}_{2}\\text{H}_{2}$. Volume = 0.005 × 22400 = 112 mL.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q10 · p.10",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex2-011",
+   "no": 11,
+   "q": "$\\text{CaCO}_{3}$ is 90% pure. Volume of $\\text{CO}_{2}$ collected at STP when 10 g of $\\text{CaCO}_{3}$ is decomposed is -",
+   "o": [
+    "2.016 litres",
+    "1.008 litres",
+    "10.08 litres",
+    "20.16 litres"
+   ],
+   "a": 1,
+   "s": "Pure $\\text{CaCO}_{3}$ = 90% of 10 g = 9 g = 0.09 mol. $\\text{CaCO}_{3}$ → CaO + $\\text{CO}_{2}$ gives 0.09 mol of $\\text{CO}_{2}$. Volume = 0.09 × 22.4 = 2.016 L.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q11 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-012",
+   "no": 12,
+   "q": "How many mole of magnesium phosphate, $\\text{Mg}_{3}\\text{(PO}_{4}\\text{)}_{2}$ will contain 0.25 mole of oxygen atoms?",
+   "o": [
+    "$2.5\\times10^{-2}$",
+    "0.02",
+    "$3.125\\times10^{-2}$",
+    "$1.25\\times10^{-2}$"
+   ],
+   "a": 3,
+   "s": "One formula unit of $\\text{Mg}_{3}\\text{(PO}_{4}\\text{)}_{2}$ has 8 oxygen atoms, so 1 mol has 8 mol of O atoms. Moles needed = 0.25/8 = $3.125\\times10^{-2}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q12 · p.10",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-013",
+   "no": 13,
+   "q": "Percentage composition of an organic compound is as follows :\nC=10.06, H=0.84 , Cl=89.10\nWhich of the following corresponds to its molecular formula if the vapour density is 60.0",
+   "o": [
+    "$\\text{CH}_{2}\\text{Cl}_{2}$",
+    "$\\text{CHCl}_{3}$",
+    "$\\text{CH}_{3}\\text{Cl}$",
+    "None"
+   ],
+   "a": 2,
+   "s": "Moles: C = 0.838, H = 0.84, Cl = 89.10/35.5 = 2.51. The ratio is 1 : 1 : 3, giving $\\text{CHCl}_{3}$. Its molar mass is 119.5, which matches 2 × 60 = 120.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Hard",
+   "note": "Exercise-III · Q13 · p.11",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex2-014",
+   "no": 14,
+   "q": "The ratio of masses of oxygen and nitrogen in a particular gaseous mixture is 1 : 4. The ratio of number of their molecule is",
+   "o": [
+    "1 : 8",
+    "3 : 16",
+    "1 : 4",
+    "7 : 32"
+   ],
+   "a": 4,
+   "s": "Moles = mass/molar mass. Oxygen gives 1/32 and nitrogen gives 4/28 = 1/7. The ratio is 1/32 : 1/7 = 7 : 32.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q14 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-015",
+   "no": 15,
+   "q": "23 g sodium metal reacts with water. Calculate the (a) volume of $\\text{H}_{2}$ liberated at NTP (b) moles of $\\text{H}_{2}$ liberated (c) weight of $\\text{H}_{2}$ liberated.\n2Na + 2$\\text{H}_{2}\\text{O}$ → 2NaOH + $\\text{H}_{2}$",
+   "o": [
+    "22.4 L, 1 mol, 2g",
+    "11.2 L, 1/2 mol, 1g",
+    "44.8 L, 2 mol, 4g",
+    "None of the above"
+   ],
+   "a": 2,
+   "s": "23 g of Na is 1 mol. 2 mol of Na give 1 mol of $\\text{H}_{2}$, so 1 mol gives 1/2 mol. That is 11.2 L at NTP and 1/2 × 2 = 1 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q15 · p.11",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex2-016",
+   "no": 16,
+   "q": "Which of the following is a compound",
+   "o": [
+    "graphite",
+    "steel",
+    "cement",
+    "marble"
+   ],
+   "a": 4,
+   "s": "Marble is calcium carbonate ($\\text{CaCO}_{3}$), a pure compound with a fixed ratio of elements. Graphite is an element, while steel and cement are mixtures.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Classification of Matter",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Easy",
+   "note": "Exercise-III · Q16 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-017",
+   "no": 17,
+   "q": "Calculate the number of atoms of chlorine in 2.08 gm of $\\text{BaCl}_{2}$. (Atomic weight of Ba = 137, Cl = 35.5)",
+   "o": [
+    "$2\\times10^{-1}\\,N_A$",
+    "$2\\,N_A$",
+    "$2\\times10^{-2}\\,N_A$",
+    "$2\\times10^{-3}\\,N_A$"
+   ],
+   "a": 3,
+   "s": "Molar mass of $\\text{BaCl}_{2}$ = 137 + 71 = 208. So 2.08 g = 0.01 mol. Each unit has 2 Cl atoms, so Cl atoms = 0.02 mol = $2\\times10^{-2}\\,N_A$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q17 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-018",
+   "no": 18,
+   "q": "A container of volume V, contains 0.28 g of $\\text{N}_{2}$ gas. If same volume of an unknown gas under similar condition of temperature and pressure weighs, 0.44 g, the molecular mass of the gas is",
+   "o": [
+    "22",
+    "44",
+    "66",
+    "88"
+   ],
+   "a": 2,
+   "s": "Same volume, temperature and pressure means the same moles. $\\text{N}_{2}$: 0.28/28 = 0.01 mol. So the unknown gas is 0.01 mol weighing 0.44 g, giving M = 0.44/0.01 = 44.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q18 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-019",
+   "no": 19,
+   "q": "2.2 g of a compound of phosphorous and sulphur has 1.24 g of 'P' in it. Its empirical formula is -",
+   "o": [
+    "$\\text{P}_{2}\\text{S}_{3}$",
+    "$\\text{P}_{3}\\text{S}_{2}$",
+    "$\\text{P}_{3}\\text{S}_{4}$",
+    "$\\text{P}_{4}\\text{S}_{3}$"
+   ],
+   "a": 4,
+   "s": "Sulphur = 2.2 − 1.24 = 0.96 g. Moles: P = 1.24/31 = 0.04 and S = 0.96/32 = 0.03. The ratio P : S is 4 : 3, so the formula is $\\text{P}_{4}\\text{S}_{3}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q19 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-020",
+   "no": 20,
+   "q": "On analysis, a certain compound was found to contain iodine and oxygen in the ratio of 254 : 80. The formula of the compound is :\n(At mass I = 127, O = 16)",
+   "o": [
+    "IO",
+    "$\\text{I}_{2}\\text{O}$",
+    "$\\text{I}_{5}\\text{O}_{2}$",
+    "$\\text{I}_{2}\\text{O}_{5}$"
+   ],
+   "a": 4,
+   "s": "Moles: I = 254/127 = 2 and O = 80/16 = 5. The ratio 2 : 5 gives $\\text{I}_{2}\\text{O}_{5}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q20 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-021",
+   "no": 21,
+   "q": "What volume of oxygen gas ($\\text{O}_{2}$) measured at 0°C and 1 atm, is needed to burn completely 1L, of propane gas ($\\text{C}_{3}\\text{H}_{8}$) measured under the same conditions:-",
+   "o": [
+    "5 L",
+    "10 L",
+    "7 L",
+    "6L"
+   ],
+   "a": 1,
+   "s": "$\\text{C}_{3}\\text{H}_{8}$ + 5$\\text{O}_{2}$ → 3$\\text{CO}_{2}$ + 4$\\text{H}_{2}\\text{O}$. Gas volumes follow mole ratios, so 1 L of propane needs 5 L of oxygen.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Easy",
+   "note": "Exercise-III · Q21 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-022",
+   "no": 22,
+   "q": "Volume occupied by one molecule of water (density =1 g$cm^{-3}$) is :-",
+   "o": [
+    "$3.0\\times10^{-23}$ $cm^{3}$",
+    "$5.5\\times10^{-23}$ $cm^{3}$",
+    "$9.0\\times10^{-23}$ $cm^{3}$",
+    "$6.023\\times10^{-23}$ $cm^{3}$"
+   ],
+   "a": 1,
+   "s": "18 g of water has volume 18 $cm^{3}$ (density 1 g/$cm^{3}$) and holds $6.023\\times10^{23}$ molecules. Volume per molecule = 18/$6.023\\times10^{23}$ = $3.0\\times10^{-23}$ $cm^{3}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Hard",
+   "note": "Exercise-III · Q22 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-023",
+   "no": 23,
+   "q": "How many moles of lead (II) chloride will be formed from a reaction between 6.5 g of PbO and 3.2 g of HCl ? (Atomic wt. of Pb=207)\nPbO + 2HCl → $\\text{PbCl}_{2}$ + $\\text{H}_{2}\\text{O}$",
+   "o": [
+    "0.011",
+    "0.029",
+    "0.044",
+    "0.333"
+   ],
+   "a": 2,
+   "s": "PbO = 6.5/223 = 0.029 mol. HCl = 3.2/36.5 = 0.088 mol, but 0.029 mol of PbO needs only 0.058 mol of HCl. So PbO is limiting and $\\text{PbCl}_{2}$ = 0.029 mol.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Limiting Reagent",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Hard",
+   "note": "Exercise-III · Q23 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-024",
+   "no": 24,
+   "q": "An organic compound contains carbon, hydrogen and oxygen. Its elemental analysis gives C, 38.71% and H, 9.67%. The empirical formula of the compound would be :-",
+   "o": [
+    "CHO",
+    "$\\text{CH}_{4}\\text{O}$",
+    "$\\text{CH}_{3}\\text{O}$",
+    "$\\text{CH}_{2}\\text{O}$"
+   ],
+   "a": 3,
+   "s": "O = 100 − 38.71 − 9.67 = 51.62%. Moles: C = 3.23, H = 9.67 and O = 3.23. The ratio is 1 : 3 : 1, so the formula is $\\text{CH}_{3}\\text{O}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q24 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-025",
+   "no": 25,
+   "q": "10g of hydrogen and 64 g of oxygen were filled in a steel vessel and exploded. Amount of water produced in this reaction will be :-",
+   "o": [
+    "1 mol",
+    "2 mol",
+    "3 mol",
+    "4 mol"
+   ],
+   "a": 4,
+   "s": "$\\text{H}_{2}$ = 10/2 = 5 mol and $\\text{O}_{2}$ = 64/32 = 2 mol. 2$\\text{H}_{2}$ + $\\text{O}_{2}$ → 2$\\text{H}_{2}\\text{O}$ needs 2 mol of $\\text{H}_{2}$ per mol of $\\text{O}_{2}$, so oxygen limits. Water = 2 × 2 = 4 mol.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Limiting Reagent",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q25 · p.12",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-026",
+   "no": 26,
+   "q": "The number of atoms in 0.1 mol of a triatomic gas is :- ($N_A = 6.02\\times10^{23}\\text{ mol}^{-1}$)",
+   "o": [
+    "$1.800\\times10^{22}$",
+    "$6.026\\times10^{22}$",
+    "$1.806\\times10^{23}$",
+    "$3.600\\times10^{23}$"
+   ],
+   "a": 3,
+   "s": "Each molecule has 3 atoms. Atoms = 0.1 × 3 × $6.02\\times10^{23}$ = $1.806\\times10^{23}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Easy",
+   "note": "Exercise-III · Q26 · p.12",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex2-027",
+   "no": 27,
+   "q": "Which has the maximum number of molecules among the following?",
+   "o": [
+    "64 g $\\text{SO}_{2}$",
+    "44 g $\\text{CO}_{2}$",
+    "48 g $\\text{O}_{3}$",
+    "8 g $\\text{H}_{2}$"
+   ],
+   "a": 4,
+   "s": "Moles: $\\text{SO}_{2}$ = 64/64 = 1, $\\text{CO}_{2}$ = 44/44 = 1, $\\text{O}_{3}$ = 48/48 = 1 and $\\text{H}_{2}$ = 8/2 = 4. $\\text{H}_{2}$ has the most moles, so the most molecules.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Easy",
+   "note": "Exercise-III · Q27 · p.12",
+   "conf": "high"
+  }
+ ]
+}

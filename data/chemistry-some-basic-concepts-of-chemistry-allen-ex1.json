@@ -1,0 +1,1323 @@
+{
+ "sourceId": "allen",
+ "sourceLabel": "Allen",
+ "exercise": "ex1",
+ "exerciseLabel": "Try Yourself & Exercise",
+ "chapter": "Some Basic Concepts of Chemistry",
+ "subject": "Chemistry",
+ "questions": [
+  {
+   "id": "sbcc-allen-ex1-001",
+   "no": 1,
+   "q": "The volume of a gas in discharge tube is $1.12\\times10^{-7}$ mL at STP. Then the number of molecule of gas in the tube is -",
+   "o": [
+    "$3.01\\times10^{4}$",
+    "$3.01\\times10^{15}$",
+    "$3.01\\times10^{12}$",
+    "$3.01\\times10^{16}$"
+   ],
+   "a": 3,
+   "s": "First change the volume to litres: $1.12\\times10^{-7}$ mL = $1.12\\times10^{-10}$ L. Moles = $1.12\\times10^{-10}/22.4 = 5\\times10^{-12}$. Molecules = $5\\times10^{-12}\\times6.02\\times10^{23} = 3.01\\times10^{12}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q1 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-002",
+   "no": 2,
+   "q": "Vapour density of gas is 11.2, volume occupied by 2.4 g of this at STP will be -",
+   "o": [
+    "11.2 L",
+    "2.24 L",
+    "22.4 L",
+    "2.4 L"
+   ],
+   "a": 4,
+   "s": "Molar mass = 2 × vapour density = 2 × 11.2 = 22.4 g/mol. So 2.4 g is 2.4/22.4 mole. One mole takes 22.4 L at STP, so the volume is 2.4 L.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q2 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-003",
+   "no": 3,
+   "q": "Which of the following contains the least number of molecules ?",
+   "o": [
+    "4.4 g $\\text{CO}_{2}$",
+    "3.4 g $\\text{NH}_{3}$",
+    "1.6 g $\\text{CH}_{4}$",
+    "3.2 g $\\text{SO}_{2}$"
+   ],
+   "a": 4,
+   "s": "Fewer molecules means fewer moles. Moles: $\\text{CO}_{2}$ = 4.4/44 = 0.1, $\\text{NH}_{3}$ = 3.4/17 = 0.2, $\\text{CH}_{4}$ = 1.6/16 = 0.1, $\\text{SO}_{2}$ = 3.2/64 = 0.05. So $\\text{SO}_{2}$ has the least.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q3 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-004",
+   "no": 4,
+   "q": "The number of molecule in 4.25 g of $\\text{NH}_{3}$ is -",
+   "o": [
+    "$1.505\\times10^{23}$",
+    "$3.01\\times10^{23}$",
+    "$6.02\\times10^{23}$",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "Molar mass of $\\text{NH}_{3}$ is 17 g/mol, so 4.25 g is 4.25/17 = 0.25 mole. Molecules = 0.25 × $6.02\\times10^{23}$ = $1.505\\times10^{23}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q4 · p.2",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-005",
+   "no": 5,
+   "q": "Vapour density of ammonia is 8.5, then 85 g of $\\text{NH}_{3}$ at NTP will occupy.",
+   "o": [
+    "22.4 L",
+    "112 L",
+    "224 L",
+    "1120 L"
+   ],
+   "a": 2,
+   "s": "Molar mass = 2 × 8.5 = 17 g/mol, so 85 g is 5 moles. One mole takes 22.4 L at NTP, so 5 moles take 5 × 22.4 = 112 L.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q5 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-006",
+   "no": 6,
+   "q": "Which of the following contains the highest number of molecules -",
+   "o": [
+    "2.8 g of CO",
+    "3.2 g of $\\text{CH}_{4}$",
+    "1.7 g of $\\text{NH}_{3}$",
+    "3.2 g of $\\text{SO}_{2}$"
+   ],
+   "a": 2,
+   "s": "Moles: CO = 2.8/28 = 0.1, $\\text{CH}_{4}$ = 3.2/16 = 0.2, $\\text{NH}_{3}$ = 1.7/17 = 0.1, $\\text{SO}_{2}$ = 3.2/64 = 0.05. $\\text{CH}_{4}$ has the most moles, so the most molecules.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q6 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-007",
+   "no": 7,
+   "q": "5.6 L of oxygen at NTP is equivalent to –",
+   "o": [
+    "1 mole",
+    "1/2 mole",
+    "1/4 mole",
+    "1/8 mole"
+   ],
+   "a": 3,
+   "s": "At NTP, 22.4 L is 1 mole. So 5.6 L = 5.6/22.4 = 1/4 mole.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q7 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-008",
+   "no": 8,
+   "q": "A gas is found to have the formula $(\\text{CO})_{x}$. It's VD is 70 the value of x must be:-",
+   "o": [
+    "7",
+    "4",
+    "5",
+    "6"
+   ],
+   "a": 3,
+   "s": "Molar mass = 2 × vapour density = 2 × 70 = 140. One CO unit weighs 28, so x = 140/28 = 5.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q8 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-009",
+   "no": 9,
+   "q": "If 32 g of $\\text{O}_{2}$ contains $6.022\\times10^{23}$ molecules at NTP then 32 g of S, under the same conditions, will contain:-",
+   "o": [
+    "$6.022\\times10^{23}$ S",
+    "$3.011\\times10^{21}$ S",
+    "$1\\times10^{23}$ S",
+    "$12.044\\times10^{23}$ S"
+   ],
+   "a": 1,
+   "s": "The atomic mass of sulphur is 32, so 32 g of S is exactly 1 mole of S atoms. One mole always holds $6.022\\times10^{23}$ particles.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q9 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-010",
+   "no": 10,
+   "q": "4.4 g of an unknown gas occupies 2.24 L of volume at STP. The gas may be :-",
+   "o": [
+    "$\\text{N}_{2}\\text{O}$",
+    "CO",
+    "$\\text{CO}_{2}$",
+    "1 & 3 both"
+   ],
+   "a": 4,
+   "s": "2.24 L is 0.1 mole at STP, so molar mass = 4.4/0.1 = 44 g/mol. $\\text{N}_{2}\\text{O}$ and $\\text{CO}_{2}$ both weigh 44 g/mol, while CO weighs 28. So both $\\text{N}_{2}\\text{O}$ and $\\text{CO}_{2}$ are possible.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q10 · p.2",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-011",
+   "no": 11,
+   "q": "Which contains least no. of molecules :–",
+   "o": [
+    "1 g $\\text{CO}_{2}$",
+    "1 g $\\text{N}_{2}$",
+    "1 g $\\text{O}_{2}$",
+    "1 g $\\text{H}_{2}$"
+   ],
+   "a": 1,
+   "s": "For equal mass, a heavier molecule means fewer moles (moles = mass/molar mass). $\\text{CO}_{2}$ (44) is the heaviest here. So 1 g of $\\text{CO}_{2}$ has the fewest molecules.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q11 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-012",
+   "no": 12,
+   "q": "If V mL of the vapours of substance at NTP weight W g. Then molecular weight of substance is:-",
+   "o": [
+    "$(W/V)\\times22400$",
+    "$\\frac{V}{W}\\times22.4$",
+    "$(W-V)\\times22400$",
+    "$\\frac{W\\times1}{V\\times22400}$"
+   ],
+   "a": 1,
+   "s": "V mL weighs W g, so 1 mL weighs W/V g. One mole fills 22400 mL at NTP. So molar mass = (W/V) × 22400.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q12 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-013",
+   "no": 13,
+   "q": "Number of oxygen atoms in 8 g of ozone is -",
+   "o": [
+    "$6.02\\times10^{23}$",
+    "$\\frac{6.02\\times10^{23}}{2}$",
+    "$\\frac{6.02\\times10^{23}}{3}$",
+    "$\\frac{6.02\\times10^{23}}{6}$"
+   ],
+   "a": 2,
+   "s": "Ozone is made only of oxygen, so 8 g of ozone is 8 g of O atoms. That is 8/16 = 0.5 mole of atoms. Atoms = 0.5 × $6.02\\times10^{23}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q13 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-014",
+   "no": 14,
+   "q": "5.6 L of oxygen at STP contains -",
+   "o": [
+    "$6.02\\times10^{23}$ atoms",
+    "$3.01\\times10^{23}$ atoms",
+    "$1.505\\times10^{23}$ atoms",
+    "$0.7525\\times10^{23}$ atoms"
+   ],
+   "a": 2,
+   "s": "5.6 L is 1/4 mole of $\\text{O}_{2}$ molecules. Each molecule has 2 atoms, so atoms = 0.5 mole = 0.5 × $6.02\\times10^{23}$ = $3.01\\times10^{23}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q14 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-015",
+   "no": 15,
+   "q": "Number of neutrons present in 1.7 g of ammonia is -",
+   "o": [
+    "$N_A$",
+    "$\\frac{N_A}{10}\\times4$",
+    "$\\frac{N_A}{10}\\times7$",
+    "$N_A\\times10\\times7$"
+   ],
+   "a": 3,
+   "s": "1.7 g of $\\text{NH}_{3}$ is 0.1 mole, which is $N_A/10$ molecules. Hydrogen (mass 1) has no neutron and nitrogen (mass 14) has 7, so each molecule has 7 neutrons. Total = $(N_A/10)\\times7$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "note": "Exercise-I · Q15 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-016",
+   "no": 16,
+   "q": "Which of the following contains largest number of atoms ?",
+   "o": [
+    "4 g of $\\text{H}_{2}$",
+    "16 g of $\\text{O}_{2}$",
+    "28 g of $\\text{N}_{2}$",
+    "18 g of $\\text{H}_{2}\\text{O}$"
+   ],
+   "a": 1,
+   "s": "Count moles of atoms. $\\text{H}_{2}$: 2 mol × 2 = 4, $\\text{O}_{2}$: 0.5 × 2 = 1, $\\text{N}_{2}$: 1 × 2 = 2, $\\text{H}_{2}\\text{O}$: 1 × 3 = 3. So 4 g of $\\text{H}_{2}$ has the most atoms.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q16 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-017",
+   "no": 17,
+   "q": "The number of atoms present in 16 g of oxygen is",
+   "o": [
+    "$6.02\\times10^{11.5}$",
+    "$3.01\\times10^{23}$",
+    "$3.01\\times10^{11.5}$",
+    "$6.02\\times10^{23}$"
+   ],
+   "a": 4,
+   "s": "An oxygen atom weighs 16 u, so 16 g of oxygen is 1 mole of O atoms. One mole has $6.02\\times10^{23}$ atoms.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q17 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-018",
+   "no": 18,
+   "q": "Which of the following contains greatest number of oxygen atoms ?",
+   "o": [
+    "1 g of O",
+    "1 g of $\\text{O}_{2}$",
+    "1 g of $\\text{O}_{3}$",
+    "all have the same number of atoms"
+   ],
+   "a": 4,
+   "s": "All three samples are made only of oxygen atoms. 1 g of oxygen is 1/16 mole of atoms whether the atoms are free or joined as $\\text{O}_{2}$ or $\\text{O}_{3}$. So the number of atoms is the same.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q18 · p.3",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-019",
+   "no": 19,
+   "q": "A person adds 1.71 gram of sugar ($\\text{C}_{12}\\text{H}_{22}\\text{O}_{11}$) in order to sweeten his tea. The number of carbon atoms added are (mol. mass of sugar = 342)",
+   "o": [
+    "$3.6\\times10^{22}$",
+    "$7.2\\times10^{21}$",
+    "0.05",
+    "$6.6\\times10^{22}$"
+   ],
+   "a": 1,
+   "s": "Moles of sugar = 1.71/342 = 0.005. Each molecule has 12 carbon atoms, so carbon = 0.06 mole. Atoms = 0.06 × $6.02\\times10^{23}$ = $3.6\\times10^{22}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q19 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-020",
+   "no": 20,
+   "q": "No. of atoms in 4.25 g. of $\\text{NH}_{3}$ is approx :–",
+   "o": [
+    "$1\\times10^{23}$",
+    "$1.5\\times10^{23}$",
+    "$2\\times10^{23}$",
+    "$6\\times10^{23}$"
+   ],
+   "a": 4,
+   "s": "4.25 g of $\\text{NH}_{3}$ is 0.25 mole. Each molecule has 4 atoms (1 N and 3 H), so atoms = 0.25 × 4 = 1 mole, about $6\\times10^{23}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q20 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-021",
+   "no": 21,
+   "q": "The number of atoms in n mole of gas can be given by :-",
+   "o": [
+    "n × Av. No. × atomicity",
+    "$\\frac{n\\times\\text{Av.No.}}{\\text{Atomicity}}$",
+    "$\\frac{\\text{Av.No.}\\times\\text{Atomicity}}{n}$",
+    "None"
+   ],
+   "a": 1,
+   "s": "n moles hold n × Avogadro number of molecules, and each molecule has \"atomicity\" atoms. So total atoms = n × Avogadro number × atomicity.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q21 · p.3",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-022",
+   "no": 22,
+   "q": "Sum of number of protons, electrons and neutrons in 12g of ${}^{12}_{6}\\text{C}$ is :-",
+   "o": [
+    "1.8",
+    "$12.044\\times10^{23}$",
+    "$1.084\\times10^{25}$",
+    "$10.84\\times10^{23}$"
+   ],
+   "a": 3,
+   "s": "12 g of carbon-12 is 1 mole of atoms. One atom has 6 protons + 6 electrons + 6 neutrons = 18 particles. Total = 18 × $6.022\\times10^{23}$ = $1.084\\times10^{25}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q22 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-023",
+   "no": 23,
+   "q": "The weight of one atom of Uranium is 238 amu. Its actual weight is .... g.",
+   "o": [
+    "$1.43\\times10^{26}$",
+    "$3.94\\times10^{-22}$",
+    "$6.99\\times10^{-23}$",
+    "None of these"
+   ],
+   "a": 2,
+   "s": "1 amu = $1.66\\times10^{-24}$ g. So one uranium atom weighs 238 × $1.66\\times10^{-24}$, about $3.9\\times10^{-22}$ g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q23 · p.3",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-024",
+   "no": 24,
+   "q": "The actual weight of a molecule of water is -",
+   "o": [
+    "18 g",
+    "$2.99\\times10^{-23}$ g",
+    "both (1) & (2) are correct",
+    "None of these"
+   ],
+   "a": 2,
+   "s": "One mole of water (18 g) holds $6.02\\times10^{23}$ molecules. One molecule weighs 18/$6.02\\times10^{23}$ = $2.99\\times10^{-23}$ g. The 18 g is for a whole mole, not one molecule.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q24 · p.3",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-025",
+   "no": 25,
+   "q": "What is the mass of a molecule of $\\text{CH}_{4}$ :–",
+   "o": [
+    "16 g",
+    "$26.6\\times10^{22}$ g",
+    "$2.66\\times10^{-23}$ g",
+    "$16\\,N_A$ g"
+   ],
+   "a": 3,
+   "s": "Molar mass of $\\text{CH}_{4}$ is 16 g. One molecule weighs 16/$6.02\\times10^{23}$ = $2.66\\times10^{-23}$ g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q25 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-026",
+   "no": 26,
+   "q": "The weight of 1 mole of a gas of density 0.1784 g $L^{-1}$ at NTP is -",
+   "o": [
+    "0.1784 g",
+    "1 g",
+    "4 g",
+    "Can not be Calculate"
+   ],
+   "a": 3,
+   "s": "One mole of any gas fills 22.4 L at NTP. Mass = density × volume = 0.1784 × 22.4, which is about 4 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q26 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-027",
+   "no": 27,
+   "q": "Given that one mole of $\\text{N}_{2}$ at NTP occupies 22.4 litre the density of $\\text{N}_{2}$ is -",
+   "o": [
+    "1.25 g $L^{-1}$",
+    "0.80 g $L^{-1}$",
+    "2.5 g $L^{-1}$",
+    "1.60 g $L^{-1}$"
+   ],
+   "a": 1,
+   "s": "One mole of $\\text{N}_{2}$ weighs 28 g and fills 22.4 L. Density = 28/22.4 = 1.25 g/L.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q27 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-028",
+   "no": 28,
+   "q": "Caffeine has a molecular weight of 194. It contains 28.9% by mass of nitrogen Number of atoms of nitrogen in one molecule of it -",
+   "o": [
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "a": 3,
+   "s": "Mass of nitrogen in one molecule = 28.9% of 194, which is about 56. One nitrogen atom weighs 14, so atoms = 56/14 = 4.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q28 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-029",
+   "no": 29,
+   "q": "A giant molecule contains 0.25% of a metal whose atomic weight is 59. Its molecule contains one atom of that metal. Its minimum molecular weight is -",
+   "o": [
+    "5900",
+    "23600",
+    "11800",
+    "$\\frac{100\\times59}{0.4}$"
+   ],
+   "a": 2,
+   "s": "One metal atom (59) makes up 0.25% of the molecule. So molecular weight = 59 × 100/0.25 = 23600.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q29 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-030",
+   "no": 30,
+   "q": "Insulin contains 3.4% sulphur. The minimum mol. wt. of insulin is –",
+   "o": [
+    "941.176",
+    "944",
+    "945.27",
+    "None"
+   ],
+   "a": 1,
+   "s": "The minimum case is one sulphur atom (32) per molecule. Then 32 is 3.4% of the molecular weight, so M = 32 × 100/3.4 = 941.18.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q30 · p.3",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-031",
+   "no": 31,
+   "q": "Modern atomic weight scale is based on -",
+   "o": [
+    "H–1",
+    "C–12",
+    "C–14",
+    "C–16"
+   ],
+   "a": 2,
+   "s": "Atomic masses are now measured against carbon-12. One atomic mass unit is 1/12 of the mass of one carbon-12 atom.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q31 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-032",
+   "no": 32,
+   "q": "Density of a gas STP is 1.43 g $L^{-1}$. What is its molecular weight ?",
+   "o": [
+    "16",
+    "32",
+    "48",
+    "64"
+   ],
+   "a": 2,
+   "s": "Molar mass = density × 22.4 L = 1.43 × 22.4, which is about 32 g/mol.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Moles",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q32 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-033",
+   "no": 33,
+   "q": "In a gaseous reaction of the type\n$aA + bB \\to cC + dD$,\nwhich statement is wrong ?",
+   "o": [
+    "a litre of A combines with b litre of B to give C and D",
+    "a mole of A combines with b moles of B to give C and D",
+    "a g of A combines with b g of B to give C and D",
+    "a molecules of A combines with b molecules of B to give C and D"
+   ],
+   "a": 3,
+   "s": "The coefficients give the ratio of moles, molecules and (for gases) volumes. They do not give the ratio of masses. So \"a g of A with b g of B\" is the wrong statement.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q33 · p.4",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-034",
+   "no": 34,
+   "q": "9 g of Al will react, with\n2$\\text{Al}$ + 3/2 $\\text{O}_{2}$ → $\\text{Al}_{2}\\text{O}_{3}$",
+   "o": [
+    "6 g $\\text{O}_{2}$",
+    "8 g $\\text{O}_{2}$",
+    "9 g $\\text{O}_{2}$",
+    "4 g $\\text{O}_{2}$"
+   ],
+   "a": 2,
+   "s": "Al = 27, so 9 g is 1/3 mole. 2 moles of Al need 3/2 moles of $\\text{O}_{2}$, so 1/3 mole needs 1/4 mole. That is 0.25 × 32 = 8 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q34 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-035",
+   "no": 35,
+   "q": "The equation :\n2Al(s) + 3/2 $\\text{O}_{2}$(g) → $\\text{Al}_{2}\\text{O}_{3}$(s) shows that :-",
+   "o": [
+    "2 mole of Al reacts with 3/2 mole of $\\text{O}_{2}$ to produce 7/2 mole of $\\text{Al}_{2}\\text{O}_{3}$",
+    "2g of Al reacts with 3/2 g of $\\text{O}_{2}$ to produce one mole of $\\text{Al}_{2}\\text{O}_{3}$",
+    "2 g mole of Al reacts with 3/2 litre of $\\text{O}_{2}$ to produce 1 mole of $\\text{Al}_{2}\\text{O}_{3}$",
+    "2 mole of Al reacts with 3/2 mole of $\\text{O}_{2}$ to produce 1 mole of $\\text{Al}_{2}\\text{O}_{3}$"
+   ],
+   "a": 4,
+   "s": "The coefficients give mole ratios: 2 mol Al + 3/2 mol $\\text{O}_{2}$ gives 1 mol $\\text{Al}_{2}\\text{O}_{3}$. The other statements give the wrong amount of product or mix grams, litres and moles.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q35 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-036",
+   "no": 36,
+   "q": "26 cc of $\\text{CO}_{2}$ are passed over red hot coke. The volume of CO evolved is :–\nC(s) + $\\text{CO}_{2}$(g) → 2CO(g)",
+   "o": [
+    "15 CC",
+    "10 CC",
+    "32 CC",
+    "None of these"
+   ],
+   "a": 4,
+   "s": "One volume of $\\text{CO}_{2}$ gives 2 volumes of CO under the same conditions. So 26 cc gives 52 cc of CO, which is not among the choices.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q36 · p.4",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-037",
+   "no": 37,
+   "q": "If 1/2 moles of oxygen combine with Aluminimum to form $\\text{Al}_{2}\\text{O}_{3}$ then weight of Aluminium metal used in the reaction is (Al= 27)–\n4Al(s) + 3$\\text{O}_{2}$(g) → 2$\\text{Al}_{2}\\text{O}_{3}$(s)",
+   "o": [
+    "27 g",
+    "18 g",
+    "54 g",
+    "40.5 g"
+   ],
+   "a": 2,
+   "s": "3 mol of $\\text{O}_{2}$ need 4 mol of Al. So 1/2 mol of $\\text{O}_{2}$ needs 4/3 × 1/2 = 2/3 mol of Al. Mass = 2/3 × 27 = 18 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q37 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-038",
+   "no": 38,
+   "q": "The number of litres of air required to burn 8 litres of $\\text{C}_{2}\\text{H}_{2}$ is approximately-",
+   "o": [
+    "40",
+    "60",
+    "80",
+    "100"
+   ],
+   "a": 4,
+   "s": "$\\text{C}_{2}\\text{H}_{2}$ + 5/2 $\\text{O}_{2}$ → 2$\\text{CO}_{2}$ + $\\text{H}_{2}\\text{O}$. So 8 L needs 8 × 5/2 = 20 L of oxygen. Air is about 20% oxygen, so air needed = 20 × 5 = 100 L.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Stoichiometry",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q38 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-039",
+   "no": 39,
+   "q": "If 0.5 mole of $\\text{BaCl}_{2}$ is mixed with 0.2 mole of $\\text{Na}_{3}\\text{PO}_{4}$ the maximum number of moles of $\\text{Ba}_{3}\\text{(PO}_{4}\\text{)}_{2}$ that can be formed is -\n3$\\text{BaCl}_{2}$ + 2$\\text{Na}_{3}\\text{PO}_{4}$ → $\\text{Ba}_{3}\\text{(PO}_{4}\\text{)}_{2}$ + 6NaCl",
+   "o": [
+    "0.7",
+    "0.5",
+    "0.3",
+    "0.1"
+   ],
+   "a": 4,
+   "s": "2 mol of $\\text{Na}_{3}\\text{PO}_{4}$ give 1 mol of $\\text{Ba}_{3}\\text{(PO}_{4}\\text{)}_{2}$. $\\text{Na}_{3}\\text{PO}_{4}$ (0.2 mol) runs out first and gives 0.2/2 = 0.1 mol. $\\text{BaCl}_{2}$ alone could give 0.5/3 = 0.17 mol, so it is in excess.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Limiting Reagent",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q39 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-040",
+   "no": 40,
+   "q": "4 g of hydrogen are ignited with 4 g of oxygen. The weight of water formed is -",
+   "o": [
+    "0.5 g",
+    "3.5 g",
+    "4.5 g",
+    "2.5 g"
+   ],
+   "a": 3,
+   "s": "Moles: $\\text{H}_{2}$ = 4/2 = 2, $\\text{O}_{2}$ = 4/32 = 0.125. 2$\\text{H}_{2}$ + $\\text{O}_{2}$ → 2$\\text{H}_{2}\\text{O}$ needs 2 mol $\\text{H}_{2}$ per mol $\\text{O}_{2}$, so oxygen runs out. Water = 0.25 mol × 18 = 4.5 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Limiting Reagent",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q40 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-041",
+   "no": 41,
+   "q": "For the reaction A + 2B → C,\n5 mole of A and 8 mole of B will produce",
+   "o": [
+    "5 mole of C",
+    "4 mole of C",
+    "8 mole of C",
+    "13 mole of C"
+   ],
+   "a": 2,
+   "s": "Each C needs 2 mol of B, so 8 mol of B can make only 4 mol of C. A could make 5, but B runs out first. So 4 mol of C is formed.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Limiting Reagent",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q41 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-042",
+   "no": 42,
+   "q": "If 1.6 g of $\\text{SO}_{2}$ and $1.5\\times10^{22}$ molecules of $\\text{H}_{2}\\text{S}$ are mixed and allowed to remain in contact in a closed vessel until the reaction\n2$\\text{H}_{2}\\text{S}$ + $\\text{SO}_{2}$ → 3S + 2$\\text{H}_{2}\\text{O}$,\nproceeds to completion. Which of the following statement is true ?",
+   "o": [
+    "Only 'S' and 'H2O' remain in the reaction vessel.",
+    "'H2S' will remain in excess",
+    "'SO2' will remain in excess",
+    "None"
+   ],
+   "a": 3,
+   "s": "$\\text{SO}_{2}$ = 1.6/64 = 0.025 mol. $\\text{H}_{2}\\text{S}$ = $1.5\\times10^{22}/6.02\\times10^{23}$, about 0.025 mol. The reaction needs $\\text{H}_{2}\\text{S}$ twice as much as $\\text{SO}_{2}$, so $\\text{H}_{2}\\text{S}$ runs out and $\\text{SO}_{2}$ is left over.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Limiting Reagent",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "note": "Exercise-I · Q42 · p.4",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-043",
+   "no": 43,
+   "q": "12 L of $\\text{H}_{2}$ and 11.2 L of $\\text{Cl}_{2}$ are mixed and exploded. The composition by volume of mixture is–",
+   "o": [
+    "24 L of HCl (g)",
+    "0.8 L $\\text{Cl}_{2}$ and 20.8 L HCl (g)",
+    "0.8 L $\\text{H}_{2}$ and 22.4 L HCl (g)",
+    "22.4 L HCl (g)"
+   ],
+   "a": 3,
+   "s": "$\\text{H}_{2}$ + $\\text{Cl}_{2}$ → 2HCl, and volumes follow the same 1 : 1 : 2 ratio. 11.2 L of $\\text{Cl}_{2}$ uses 11.2 L of $\\text{H}_{2}$ and gives 22.4 L of HCl. The left-over $\\text{H}_{2}$ is 12 − 11.2 = 0.8 L.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Limiting Reagent",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q43 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-044",
+   "no": 44,
+   "q": "A hydrocarbon contains 75% of carbon. Then its molecular formula is -",
+   "o": [
+    "$\\text{CH}_{4}$",
+    "$\\text{C}_{2}\\text{H}_{4}$",
+    "$\\text{C}_{2}\\text{H}_{6}$",
+    "$\\text{C}_{2}\\text{H}_{2}$"
+   ],
+   "a": 1,
+   "s": "In $\\text{CH}_{4}$, carbon is 12/16 = 75%. $\\text{C}_{2}\\text{H}_{6}$ has 80%, $\\text{C}_{2}\\text{H}_{4}$ about 85.7% and $\\text{C}_{2}\\text{H}_{2}$ about 92.3%. So $\\text{CH}_{4}$ fits.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q44 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-045",
+   "no": 45,
+   "q": "A compound of X and Y has equal mass of them. If their atomic weights are 30 and 20 respectively. Molecular formula of that compound (its mol. wt. is 120) could be -",
+   "o": [
+    "$\\text{X}_{2}\\text{Y}_{2}$",
+    "$\\text{X}_{3}\\text{Y}_{3}$",
+    "$\\text{X}_{2}\\text{Y}_{3}$",
+    "$\\text{X}_{3}\\text{Y}_{2}$"
+   ],
+   "a": 3,
+   "s": "Equal masses give the mole ratio X : Y = 1/30 : 1/20 = 2 : 3, so the simplest formula is $\\text{X}_{2}\\text{Y}_{3}$. Its formula weight is 2 × 30 + 3 × 20 = 120, which matches.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q45 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-046",
+   "no": 46,
+   "q": "An oxide of sulphur contains 50% of sulphur in it. Its empirical formula is -",
+   "o": [
+    "$\\text{SO}_{2}$",
+    "$\\text{SO}_{3}$",
+    "SO",
+    "$\\text{S}_{2}\\text{O}$"
+   ],
+   "a": 1,
+   "s": "Take 100 g: S = 50/32 = 1.56 mol and O = 50/16 = 3.13 mol. The ratio S : O is 1 : 2, so the formula is $\\text{SO}_{2}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q46 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-047",
+   "no": 47,
+   "q": "A hydrocarbon contains 80% of carbon, then the hydrocarbon is -",
+   "o": [
+    "$\\text{CH}_{4}$",
+    "$\\text{C}_{2}\\text{H}_{4}$",
+    "$\\text{C}_{2}\\text{H}_{6}$",
+    "$\\text{C}_{2}\\text{H}_{2}$"
+   ],
+   "a": 3,
+   "s": "In $\\text{C}_{2}\\text{H}_{6}$, carbon is 24/30 = 80%. $\\text{CH}_{4}$ has 75%, $\\text{C}_{2}\\text{H}_{4}$ about 85.7% and $\\text{C}_{2}\\text{H}_{2}$ about 92.3%. So the hydrocarbon is $\\text{C}_{2}\\text{H}_{6}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q47 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-048",
+   "no": 48,
+   "q": "Empirical formula of glucose is -",
+   "o": [
+    "$\\text{C}_{6}\\text{H}_{12}\\text{O}_{6}$",
+    "$\\text{C}_{3}\\text{H}_{6}\\text{O}_{3}$",
+    "$\\text{C}_{2}\\text{H}_{4}\\text{O}_{2}$",
+    "$\\text{CH}_{2}\\text{O}$"
+   ],
+   "a": 4,
+   "s": "Glucose is $\\text{C}_{6}\\text{H}_{12}\\text{O}_{6}$. Divide all the subscripts by 6 (their common factor) to get the simplest ratio, $\\text{CH}_{2}\\text{O}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q48 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-049",
+   "no": 49,
+   "q": "A compound is found to contain 80% of carbon and 20% of hydrogen, then the molecular formula of the compound is-",
+   "o": [
+    "$\\text{C}_{6}\\text{H}_{6}$",
+    "$\\text{C}_{2}\\text{H}_{5}\\text{OH}$",
+    "$\\text{C}_{2}\\text{H}_{6}$",
+    "$\\text{C}_{2}\\text{H}_{4}$"
+   ],
+   "a": 3,
+   "s": "C : H = 80/12 : 20/1 = 6.67 : 20 = 1 : 3, so the simplest formula is $\\text{CH}_{3}$. Only $\\text{C}_{2}\\text{H}_{6}$ is a multiple of it that has just carbon and hydrogen.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q49 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-050",
+   "no": 50,
+   "q": "The simplest formula of a compound containing 50% of element X(at wt. = 10) and 50% of element Y(at wt. = 20) is:-",
+   "o": [
+    "XY",
+    "$\\text{X}_{2}\\text{Y}$",
+    "$\\text{XY}_{2}$",
+    "$\\text{X}_{3}\\text{Y}$"
+   ],
+   "a": 2,
+   "s": "Take 100 g: X = 50/10 = 5 mol and Y = 50/20 = 2.5 mol. The ratio X : Y is 2 : 1, so the formula is $\\text{X}_{2}\\text{Y}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q50 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-051",
+   "no": 51,
+   "q": "Which of the following compounds has same empirical formula as that of glucose:-",
+   "o": [
+    "$\\text{CH}_{3}\\text{CHO}$",
+    "$\\text{CH}_{3}\\text{COOH}$",
+    "$\\text{CH}_{3}\\text{OH}$",
+    "$\\text{C}_{2}\\text{H}_{6}$"
+   ],
+   "a": 2,
+   "s": "Glucose's simplest formula is $\\text{CH}_{2}\\text{O}$, a 1 : 2 : 1 ratio of C : H : O. $\\text{CH}_{3}\\text{COOH}$ is $\\text{C}_{2}\\text{H}_{4}\\text{O}_{2}$, which reduces to $\\text{CH}_{2}\\text{O}$. The others do not.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q51 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-052",
+   "no": 52,
+   "q": "A gas is found to contain 2.34 g of Nitrogen and 5.34 g of oxygen. Simplest formula of the compound is -",
+   "o": [
+    "$\\text{N}_{2}\\text{O}$",
+    "NO",
+    "$\\text{N}_{2}\\text{O}_{3}$",
+    "$\\text{NO}_{2}$"
+   ],
+   "a": 4,
+   "s": "Moles: N = 2.34/14 = 0.167 and O = 5.34/16 = 0.334. The ratio N : O is 1 : 2, so the simplest formula is $\\text{NO}_{2}$.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q52 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-053",
+   "no": 53,
+   "q": "The number of atoms of Cr and O are $4.8\\times10^{10}$ and $9.6\\times10^{10}$ respectively. Its empirical formula is –",
+   "o": [
+    "$\\text{Cr}_{2}\\text{O}_{3}$",
+    "$\\text{CrO}_{2}$",
+    "$\\text{Cr}_{2}\\text{O}_{4}$",
+    "None"
+   ],
+   "a": 2,
+   "s": "The atom ratio Cr : O = 4.8 : 9.6 = 1 : 2, so the empirical formula is $\\text{CrO}_{2}$. $\\text{Cr}_{2}\\text{O}_{4}$ has the same ratio but is not in simplest form.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Empirical and Molecular Formula",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q53 · p.5",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-054",
+   "no": 54,
+   "q": "The law of multiple proportion was proposed by:",
+   "o": [
+    "Lavoisier",
+    "Dalton",
+    "Proust",
+    "Gay lussac"
+   ],
+   "a": 2,
+   "s": "John Dalton proposed the law of multiple proportions. Lavoisier gave conservation of mass, Proust gave definite proportions and Gay-Lussac gave gaseous volumes.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q54 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-055",
+   "no": 55,
+   "q": "Which one of the following pairs of compounds illustrates the law of multiple proportions ?",
+   "o": [
+    "$\\text{H}_{2}\\text{O}$, $\\text{Na}_{2}\\text{O}$",
+    "MgO, $\\text{Na}_{2}\\text{O}$",
+    "$\\text{Na}_{2}\\text{O}$, BaO",
+    "$\\text{SnCl}_{2}$, $\\text{SnCl}_{4}$"
+   ],
+   "a": 4,
+   "s": "This law needs two different compounds of the same two elements. $\\text{SnCl}_{2}$ and $\\text{SnCl}_{4}$ are both tin and chlorine, with chlorine in a 1 : 2 ratio for the same mass of tin. The other pairs have different elements.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q55 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-056",
+   "no": 56,
+   "q": "In the reaction $\\text{N}_{2}$ + 3$\\text{H}_{2}$ → 2 $\\text{NH}_{3}$, ratio by volume of $\\text{N}_{2}$, $\\text{H}_{2}$ and $\\text{NH}_{3}$ is 1 : 3 : 2. This illustrates law of -",
+   "o": [
+    "Definite proportion",
+    "Multiple proportion",
+    "Reciprocal proportion",
+    "Gaseous volumes"
+   ],
+   "a": 4,
+   "s": "Gay-Lussac's law of gaseous volumes says gases react in simple whole-number volume ratios. Here the ratio is 1 : 3 : 2.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q56 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-057",
+   "no": 57,
+   "q": "Different proportions of oxygen in the various oxides of nitrogen prove the law of -",
+   "o": [
+    "Equivalent proportion",
+    "Multiple proportion",
+    "Constant proportion",
+    "Conservation of matter"
+   ],
+   "a": 2,
+   "s": "Nitrogen forms several oxides. For a fixed mass of nitrogen, the masses of oxygen are in simple whole-number ratios. That is the law of multiple proportions.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q57 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-058",
+   "no": 58,
+   "q": "The law of conservation of mass holds good for all of the following except -",
+   "o": [
+    "All chemical reactions",
+    "Nuclear reactions",
+    "Endothermic reactions",
+    "Exothermic reactions"
+   ],
+   "a": 2,
+   "s": "In nuclear reactions a small part of the mass changes into energy, so mass alone is not conserved. In ordinary chemical reactions, whether they absorb or release heat, mass is conserved.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q58 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-059",
+   "no": 59,
+   "q": "Number of molecules in 100 mL of each of $\\text{O}_{2}$, $\\text{NH}_{3}$ and $\\text{CO}_{2}$ at STP are –",
+   "o": [
+    "in the order $\\text{CO}_{2}$ < $\\text{O}_{2}$ < $\\text{NH}_{3}$",
+    "in the order $\\text{NH}_{3}$ < $\\text{O}_{2}$ < $\\text{CO}_{2}$",
+    "the same",
+    "$\\text{NH}_{3}$ = $\\text{CO}_{2}$ < $\\text{O}_{2}$"
+   ],
+   "a": 3,
+   "s": "Equal volumes of different gases at the same temperature and pressure hold equal numbers of molecules (Avogadro's law). The kind of gas does not matter.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q59 · p.5",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "sbcc-allen-ex1-060",
+   "no": 60,
+   "q": "Four one litre flasks are seperately filled with the gases hydrogen, helium, oxygen and ozone at same room temp. and pressure. The ratio of total number of atoms of these gases present in the different flasks would be -",
+   "o": [
+    "1 : 1 : 1 : 1",
+    "1 : 2 : 2 : 3",
+    "2 : 1 : 2 : 3",
+    "2 : 1 : 3 : 2"
+   ],
+   "a": 3,
+   "s": "Equal volumes hold equal numbers of molecules. Atoms per molecule: $\\text{H}_{2}$ = 2, He = 1, $\\text{O}_{2}$ = 2, $\\text{O}_{3}$ = 3. So the atoms are in the ratio 2 : 1 : 2 : 3.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q60 · p.6",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-061",
+   "no": 61,
+   "q": "A and B are two identical vessels. A contains 15 g ethane at 1 atm and 298 K. The vessel B contains 75 g of a gas $\\text{X}_{2}$ at same tamperature and pressure. The vapour density of $\\text{X}_{2}$ is –",
+   "o": [
+    "75",
+    "150",
+    "37.5",
+    "45"
+   ],
+   "a": 1,
+   "s": "Same vessel, temperature and pressure means the same moles. Ethane ($\\text{C}_{2}\\text{H}_{6}$, 30 g/mol): 15 g is 0.5 mol. So 75 g of $\\text{X}_{2}$ is 0.5 mol, its molar mass is 150, and vapour density = 150/2 = 75.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "note": "Exercise-I · Q61 · p.6",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-062",
+   "no": 62,
+   "q": "When 100 g of ethylene polymerizes to polythylene according to equation\nn$\\text{CH}_{2}$ = $\\text{CH}_{2}$ → -(- $\\text{CH}_{2}$ - $\\text{CH}_{2}$ -)n-. The weight of polyethylene produced will be:-",
+   "o": [
+    "$\\frac{n}{2}$ g",
+    "100 g",
+    "$\\frac{100}{n}$ g",
+    "100n g"
+   ],
+   "a": 2,
+   "s": "Polymerisation only joins molecules together and no atoms are lost. By conservation of mass, 100 g of ethylene gives 100 g of polyethylene.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q62 · p.6",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-063",
+   "no": 63,
+   "q": "If law of conservation of mass was to hold true, then 20.8 g of $\\text{BaCl}_{2}$ on reaction with 9.8 g of $\\text{H}_{2}\\text{SO}_{4}$ will produce 7.3 g of HCl and $\\text{BaSO}_{4}$ equal to :–",
+   "o": [
+    "11.65 g",
+    "23.3 g",
+    "25.5 g",
+    "30.6 g"
+   ],
+   "a": 2,
+   "s": "Mass before the reaction = 20.8 + 9.8 = 30.6 g. Mass after must be the same, so $\\text{BaSO}_{4}$ = 30.6 − 7.3 = 23.3 g.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q63 · p.6",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-064",
+   "no": 64,
+   "q": "A chemical equation is balanced according to the law of –",
+   "o": [
+    "Multiple proportions",
+    "Constant proportions",
+    "Gaseous volumes",
+    "Conservation of mass"
+   ],
+   "a": 4,
+   "s": "Balancing puts the same number of each kind of atom on both sides. That keeps the total mass equal, which is the law of conservation of mass.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q64 · p.6",
+   "conf": "high"
+  },
+  {
+   "id": "sbcc-allen-ex1-065",
+   "no": 65,
+   "q": "Two flasks A & B of equal capacity of volume contain $\\text{NH}_{3}$ and $\\text{SO}_{2}$ gas respectively under similar conditions. Which flask has more no. of moles –",
+   "o": [
+    "A",
+    "B",
+    "Both have same moles",
+    "None"
+   ],
+   "a": 3,
+   "s": "Equal volumes of gases at the same temperature and pressure hold equal moles (Avogadro's law). The kind of gas does not change this.",
+   "c": "Some Basic Concepts of Chemistry",
+   "topic": "Laws of Chemical Combination",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q65 · p.6",
+   "conf": "high",
+   "lockOrder": true
+  }
+ ]
+}
