@@ -11,7 +11,7 @@
 #ep-splash small{margin-top:-8px;font:800 11px/1.2 system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#64748b}
 #ep-splash.ep-out{opacity:0;visibility:hidden;transition:opacity .38s ease,visibility 0s .38s}
 </style>
-<link rel="stylesheet" href="css/core.css?v=2026-11-27.p23-quota-relief">
+<link rel="stylesheet" href="ep-core.css?v=2026-11-27.p24-flat" onerror="epLoadErr(this.href)">
 
 <!-- 2. PASTE BEFORE 
 <style id="edupulse-final-polish">
@@ -90,12 +90,17 @@ body.dark :is(input,select,textarea){color:var(--text-primary);background-color:
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover" />
 <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>EduPulse — NEET Study Workspace</title>
-<script>window.EP_BUILD="2026-11-27.p23-quota-relief";</script>
-<script src="js/boot.js?v=2026-11-27.p23-quota-relief"></script>
+<script>window.EP_BUILD="2026-11-27.p24-flat";</script>
+<script>(function(){var errs=[];function box(t){var d=document.getElementById('ep-diag');if(!d){d=document.createElement('div');d.id='ep-diag';d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483647;background:#fff;color:#991b1b;border:2px solid #dc2626;border-radius:12px;padding:12px 14px;font:14px/1.4 system-ui,sans-serif;white-space:pre-wrap;box-shadow:0 8px 30px rgba(0,0,0,.25)';(document.body||document.documentElement).appendChild(d)}d.textContent=t}
+window.epLoadErr=function(u){box('EduPulse could not load '+String(u).split('?')[0].split('/').pop()+'.\nPut all the ep-* files in the same folder as index.html.')};
+addEventListener('error',function(e){if(e&&e.message)errs.push(e.message+(e.filename?' @'+String(e.filename).split('?')[0].split('/').pop()+':'+e.lineno:''))});
+setTimeout(function(){var s=document.getElementById('ep-splash');if(!s||!s.classList.contains('ep-out'))box('EduPulse is stuck on startup.'+(errs.length?'\nFirst error: '+errs[0]:'\nNo script error was reported; check that every file loaded (Network tab).'))},10000);})();</script>
+
+<script src="ep-boot.js?v=2026-11-27.p24-flat" onerror="epLoadErr(this.src)"></script>
 
 
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-<script src="js/tailwind-config.js?v=2026-11-27.p23-quota-relief"></script>
+<script src="ep-tailwind-config.js?v=2026-11-27.p24-flat" onerror="epLoadErr(this.src)"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
@@ -295,9 +300,9 @@ body.dark :is(input,select,textarea){color:var(--text-primary);background-color:
 </nav>
 <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2.5 pointer-events-none"></div>
 
-<script src="js/core.js?v=2026-11-27.p23-quota-relief"></script>
+<script src="ep-core.js?v=2026-11-27.p24-flat" onerror="epLoadErr(this.src)"></script>
 
-<link rel="stylesheet" href="css/patches.css?v=2026-11-27.p23-quota-relief">
+<link rel="stylesheet" href="ep-patches.css?v=2026-11-27.p24-flat" onerror="epLoadErr(this.href)">
 
 
 
@@ -312,7 +317,7 @@ body.dark :is(input,select,textarea){color:var(--text-primary);background-color:
 
 
 <div id="bz-warm" aria-hidden="true"></div>
-<script src="js/features-1.js?v=2026-11-27.p23-quota-relief"></script>
+<script src="ep-features-1.js?v=2026-11-27.p24-flat" onerror="epLoadErr(this.src)"></script>
 
 
 
@@ -354,7 +359,7 @@ body.dark :is(input,select,textarea){color:var(--text-primary);background-color:
 <div class="body" id="epn-body" tabindex="0"></div>
 <footer><button type="button" class="nbtn" id="epn-prev">← Previous page</button><span id="epn-pg" aria-live="polite"></span><button type="button" class="nbtn" id="epn-next">Next page →</button></footer>
 </div></div>
-<script src="js/features-2.js?v=2026-11-27.p23-quota-relief"></script>
+<script src="ep-features-2.js?v=2026-11-27.p24-flat" onerror="epLoadErr(this.src)"></script>
 
 
 
@@ -385,7 +390,7 @@ body.dark :is(input,select,textarea){color:var(--text-primary);background-color:
 
 <!-- ===== EduPulse Circles+ : 16 social features + UI polish (additive layer) ===== -->
 
-<script src="js/features-3.js?v=2026-11-27.p23-quota-relief"></script>
+<script src="ep-features-3.js?v=2026-11-27.p24-flat" onerror="epLoadErr(this.src)"></script>
 
 
 
@@ -457,7 +462,7 @@ body.dark :is(input,select,textarea){color:var(--text-primary);background-color:
 
 
 <button id="epc-selpill" type="button" aria-label="Ask Pulse AI about selected text">✨ Ask Pulse AI</button>
-<script src="js/late-1.js?v=2026-11-27.p23-quota-relief"></script>
+<script src="ep-late-1.js?v=2026-11-27.p24-flat" onerror="epLoadErr(this.src)"></script>
 
 
 
@@ -470,42 +475,4 @@ body.dark :is(input,select,textarea){color:var(--text-primary);background-color:
 
 
 
-<script src="js/late-2.js?v=2026-11-27.p23-quota-relief"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="ep-late-2.js?v=2026-11-27.p24-flat" onerror="epLoadErr(this.src)"></script>
