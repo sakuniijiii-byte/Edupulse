@@ -1,0 +1,718 @@
+{
+ "sourceId": "allen",
+ "sourceLabel": "Allen",
+ "exercise": "ex3",
+ "exerciseLabel": "Previous Year Questions",
+ "chapter": "Units and Measurements",
+ "subject": "Physics",
+ "questions": [
+  {
+   "id": "um-allen-ex3-001",
+   "no": 1,
+   "q": "If force (F), velocity (V) and time (T) are taken as fundamental units, then the dimensions of mass are:",
+   "o": [
+    "$[FVT^{-1}]$",
+    "$[FVT^{-2}]$",
+    "$[FV^{-1}T^{-1}]$",
+    "$[FV^{-1}T]$"
+   ],
+   "a": 4,
+   "s": "Mass = force ÷ acceleration, and acceleration = V/T. So mass = F ÷ (V/T) = $FV^{-1}T$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "AIPMT",
+   "year": "2014",
+   "note": "Exercise-II · Q1 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-002",
+   "no": 2,
+   "q": "If energy (E), velocity (V) and time (T) are chosen as the fundamental quantities, the dimensional formula of surface tension will be :",
+   "o": [
+    "$[EV^{-1}T^{-2}]$",
+    "$[EV^{-2}T^{-2}]$",
+    "$[E^{-2}V^{-1}T^{-3}]$",
+    "$[EV^{-2}T^{-1}]$"
+   ],
+   "a": 2,
+   "s": "Surface tension = energy/area = $E/L^2$, and length L = V × T. So it is $E/(V^2T^2) = EV^{-2}T^{-2}$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "AIPMT",
+   "year": "2015",
+   "note": "Exercise-II · Q2 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-003",
+   "no": 3,
+   "q": "If dimension of critical velocity $v_c$ of liquid flowing through a tube is expressed as $(\\eta^x\\rho^yr^z)$, where $\\eta$, $\\rho$ and r the coefficient of viscosity of liquid, density of liquid and radius of the tube respectively, then the values of x, y and z are given by :",
+   "o": [
+    "1, 1, 1",
+    "1, −1, −1",
+    "−1, −1, 1",
+    "−1, −1, −1"
+   ],
+   "a": 2,
+   "s": "Viscosity is $[ML^{-1}T^{-1}]$, density is $[ML^{-3}]$ and radius is $[L]$. Only viscosity has time, so x = 1. Then mass needs y = −1 and length needs z = −1.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "Re-AIPMT",
+   "year": "2015",
+   "note": "Exercise-II · Q3 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-004",
+   "no": 4,
+   "q": "Planck's constant (h), speed of light in vacuum (c) and Newton's gravitational constant (G) are three fundamental constants. Which of the following combinations of these has the dimension of length?",
+   "o": [
+    "$\\sqrt{\\frac{hc}{G}}$",
+    "$\\sqrt{\\frac{Gc}{h^{3/2}}}$",
+    "$\\frac{\\sqrt{hG}}{c^{3/2}}$",
+    "$\\frac{\\sqrt{hG}}{c^{5/2}}$"
+   ],
+   "a": 3,
+   "s": "This is the Planck length. Check: hG is $[L^5T^{-3}]$ and $c^3$ is $[L^3T^{-3}]$, so $\\sqrt{hG/c^3}$ has dimension $[L]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "NEET-II",
+   "year": "2016",
+   "note": "Exercise-II · Q4 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-005",
+   "no": 5,
+   "q": "A physical quantity of the dimensions of length that can be formed out of c, G and $\\frac{e^2}{4\\pi\\epsilon_0}$ is [c is velocity of light, G is universal constant of gravitation and e is charge] :-",
+   "o": [
+    "$c^2\\left[G\\frac{e^2}{4\\pi\\epsilon_0}\\right]^{1/2}$",
+    "$\\frac{1}{c^2}\\left[\\frac{e^2}{G4\\pi\\epsilon_0}\\right]^{1/2}$",
+    "$\\frac{1}{c}G\\frac{e^2}{4\\pi\\epsilon_0}$",
+    "$\\frac{1}{c^2}\\left[G\\frac{e^2}{4\\pi\\epsilon_0}\\right]^{1/2}$"
+   ],
+   "a": 4,
+   "s": "$e^2/4\\pi\\epsilon_0$ is force × length², $[ML^3T^{-2}]$. Multiplying by G gives $[L^6T^{-4}]$, its square root is $[L^3T^{-2}]$, and dividing by $c^2 = [L^2T^{-2}]$ leaves $[L]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "NEET(UG)",
+   "year": "2017",
+   "note": "Exercise-II · Q5 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-006",
+   "no": 6,
+   "q": "A student measured the diameter of a small steel ball using a screw gauge of least count 0.001 cm. The main scale reading is 5 mm and zero of circular scale division coincides with 25 divisions above the reference level. If screw gauge has a zero error of − 0.004 cm, the correct diameter of the ball is :-",
+   "o": [
+    "0.521 cm",
+    "0.525 cm",
+    "0.053 cm",
+    "0.529 cm"
+   ],
+   "a": 4,
+   "s": "Reading = 0.5 cm + 25 × 0.001 cm = 0.525 cm. The zero error is −0.004 cm, so correct diameter = 0.525 − (−0.004) = 0.529 cm.",
+   "c": "Units and Measurements",
+   "topic": "Measurement",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG)",
+   "year": "2018",
+   "note": "Exercise-II · Q6 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-007",
+   "no": 7,
+   "q": "In an experiment, the percentage of error occurred in the measurement of physical quantities A, B, C and D are 1%, 2%, 3% and 4% respectively. Then the maximum percentage of error in the measurement X, where $X = \\frac{A^2B^{1/2}}{C^{1/3}D^3}$, will be :",
+   "o": [
+    "$\\left(\\frac{3}{13}\\right)\\%$",
+    "16%",
+    "−10%",
+    "10%"
+   ],
+   "a": 2,
+   "s": "Multiply each error by its power and add: 2×1 + ½×2 + ⅓×3 + 3×4 = 2 + 1 + 1 + 12 = 16%. Terms in the denominator add too, since errors never cancel.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG)",
+   "year": "2019",
+   "note": "Exercise-II · Q7 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-008",
+   "no": 8,
+   "q": "The unit of thermal conductivity is :",
+   "o": [
+    "$\\text{J m K}^{-1}$",
+    "$\\text{J m}^{-1}\\text{K}^{-1}$",
+    "$\\text{W m K}^{-1}$",
+    "$\\text{W m}^{-1}\\text{K}^{-1}$"
+   ],
+   "a": 4,
+   "s": "From $P = KA\\Delta T/d$, we get $K = Pd/(A\\Delta T)$. Watt × metre ÷ (m² × kelvin) gives $\\text{W m}^{-1}\\text{K}^{-1}$.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "NEET(UG)",
+   "year": "2019",
+   "note": "Exercise-II · Q8 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-009",
+   "no": 9,
+   "q": "The main scale of a vernier calliper has n divisions/cm. n divisions of the vernier scale coincide with (n − 1) divisions of main scale. The least count of the vernier calliper is,",
+   "o": [
+    "$\\frac{1}{(n+1)(n-1)}\\text{ cm}$",
+    "$\\frac{1}{n}\\text{ cm}$",
+    "$\\frac{1}{n^2}\\text{ cm}$",
+    "$\\frac{1}{n(n+1)}\\text{ cm}$"
+   ],
+   "a": 3,
+   "s": "One main division = 1/n cm, so one vernier division = (n−1)/$n^2$ cm. Least count = 1/n − (n−1)/$n^2$ = 1/$n^2$ cm.",
+   "c": "Units and Measurements",
+   "topic": "Measurement",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG) (Odisha)",
+   "year": "2019",
+   "note": "Exercise-II · Q9 · p.7",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-010",
+   "no": 10,
+   "q": "Taking into account of the significant figures, what is the value of 9.99 m − 0.0099 m ?",
+   "o": [
+    "9.9 m",
+    "9.9801 m",
+    "9.98 m",
+    "9.980 m"
+   ],
+   "a": 3,
+   "s": "9.99 − 0.0099 = 9.9801. In a subtraction, keep as many decimal places as the least precise number, 9.99, which has 2. So the answer is 9.98 m.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG)",
+   "year": "2020",
+   "note": "Exercise-II · Q10 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-011",
+   "no": 11,
+   "q": "Dimensions of stress are :",
+   "o": [
+    "$[ML^{-1}T^{-2}]$",
+    "$[MLT^{-2}]$",
+    "$[ML^2T^{-2}]$",
+    "$[ML^0T^{-2}]$"
+   ],
+   "a": 1,
+   "s": "Stress = force/area = $[MLT^{-2}]/[L^2] = [ML^{-1}T^{-2}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "NEET(UG)",
+   "year": "2020",
+   "note": "Exercise-II · Q11 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-012",
+   "no": 12,
+   "q": "A screw gauge has least count of 0.01 mm and there are 50 divisions in its circular scale. The pitch of the screw gauge is :",
+   "o": [
+    "1.0 mm",
+    "0.01 mm",
+    "0.25 mm",
+    "0.5 mm"
+   ],
+   "a": 4,
+   "s": "Least count = pitch ÷ number of divisions. So pitch = 0.01 × 50 = 0.5 mm.",
+   "c": "Units and Measurements",
+   "topic": "Measurement",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "NEET(UG)",
+   "year": "2020",
+   "note": "Exercise-II · Q12 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-013",
+   "no": 13,
+   "q": "The angle of 1' (minute of arc) in radian is nearly equal to",
+   "o": [
+    "$2.91 \\times 10^{-4}$ rad",
+    "$4.85 \\times 10^{-4}$ rad",
+    "$4.80 \\times 10^{-6}$ rad",
+    "$1.75 \\times 10^{-2}$ rad"
+   ],
+   "a": 1,
+   "s": "1° = π/180 rad ≈ 0.01745 rad, and 1' is 1/60 of a degree. So 1' ≈ 0.01745/60 ≈ $2.91 \\times 10^{-4}$ rad.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG) (COVID-19)",
+   "year": "2020",
+   "note": "Exercise-II · Q13 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-014",
+   "no": 14,
+   "q": "Time intervals measured by a clock give the following readings :\n1.25 s, 1.24 s, 1.27 s, 1.21 s and 1.28 s.\nWhat is the percentage relative error of the observations ?",
+   "o": [
+    "2 %",
+    "4 %",
+    "16 %",
+    "1.6 %"
+   ],
+   "a": 4,
+   "s": "Mean = 1.25 s. The absolute deviations are 0, 0.01, 0.02, 0.04 and 0.03, so the mean deviation is 0.02 s. Relative error = 0.02/1.25 = 1.6%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG) (COVID-19)",
+   "year": "2020",
+   "note": "Exercise-II · Q14 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-015",
+   "no": 15,
+   "q": "If force [F], acceleration [A] and time [T] are chosen as the fundamental physical quantities. Find the dimensions of energy.",
+   "o": [
+    "$[F][A][T]$",
+    "$[F][A][T^2]$",
+    "$[F][A][T^{-1}]$",
+    "$[F][A^{-1}][T]$"
+   ],
+   "a": 2,
+   "s": "Mass = F/A, and length goes like $AT^2$. Energy = mass × length² ÷ time² = (F/A)($A^2T^4$)/$T^2$ = $FAT^2$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "NEET(UG)",
+   "year": "2021",
+   "note": "Exercise-II · Q15 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-016",
+   "no": 16,
+   "q": "A screw gauge gives the following readings when used to measure the diameter of a wire\nMain scale reading : 0 mm\nCircular scale reading : 52 divisions\nGiven that 1 mm on main scale corresponds to 100 divisions on the circular scale. The diameter of the wire from the above data is :",
+   "o": [
+    "0.52 cm",
+    "0.026 cm",
+    "0.26 cm",
+    "0.052 cm"
+   ],
+   "a": 4,
+   "s": "100 divisions = 1 mm, so one division = 0.01 mm. Then 52 divisions = 0.52 mm = 0.052 cm.",
+   "c": "Units and Measurements",
+   "topic": "Measurement",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG)",
+   "year": "2021",
+   "note": "Exercise-II · Q16 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-017",
+   "no": 17,
+   "q": "If E and G respectively denote energy and gravitational constant, then $\\frac{E}{G}$ has the dimensions of :",
+   "o": [
+    "$[M^2][L^{-1}][T^0]$",
+    "$[M][L^{-1}][T^{-1}]$",
+    "$[M][L^0][T^0]$",
+    "$[M^2][L^{-2}][T^{-1}]$"
+   ],
+   "a": 1,
+   "s": "E is $[ML^2T^{-2}]$ and G is $[M^{-1}L^3T^{-2}]$. Dividing, the mass powers give $M^2$, length gives $L^{-1}$, and time cancels.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG)",
+   "year": "2021",
+   "note": "Exercise-II · Q17 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-018",
+   "no": 18,
+   "q": "The dimensions of mobility of electrons are",
+   "o": [
+    "$M^{-1}LA^2$",
+    "$MT^{-2}A^{-1}$",
+    "$M^{-1}T^2A$",
+    "$M^{-1}T^2A^{-1}$"
+   ],
+   "a": 3,
+   "s": "Mobility = drift speed ÷ electric field. Speed is $LT^{-1}$ and field is $MLT^{-3}A^{-1}$. Dividing gives $M^{-1}T^2A$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "NEET(UG) (Paper-2)",
+   "year": "2021",
+   "note": "Exercise-II · Q18 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-019",
+   "no": 19,
+   "q": "Plane angle and solid angle have :",
+   "o": [
+    "Dimensions but no units",
+    "No units and no dimensions",
+    "Both units and dimensions",
+    "Units but no dimensions"
+   ],
+   "a": 4,
+   "s": "Angles are ratios (arc ÷ radius, area ÷ radius²), so they have no dimensions. They still have units: radian and steradian.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "NEET(UG)",
+   "year": "2022",
+   "note": "Exercise-II · Q19 · p.8",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex3-020",
+   "no": 20,
+   "q": "The dimensions $[MLT^{-2}A^{-2}]$ belong to the :",
+   "o": [
+    "self inductance",
+    "magnetic permeability",
+    "electric permittivity",
+    "magnetic flux"
+   ],
+   "a": 2,
+   "s": "Permeability is measured in newton per ampere squared. That is force per current squared, $[MLT^{-2}A^{-2}]$. Self inductance and flux have extra powers of length.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG)",
+   "year": "2022",
+   "note": "Exercise-II · Q20 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-021",
+   "no": 21,
+   "q": "The area of a rectangular field (in $\\text{m}^2$) of length 55.3 m and breadth 25 m after rounding off the value for correct significant digits is :",
+   "o": [
+    "1382",
+    "1382.5",
+    "$14 \\times 10^2$",
+    "$138 \\times 10^1$"
+   ],
+   "a": 3,
+   "s": "55.3 × 25 = 1382.5. The answer can only have as many significant figures as the least precise number, 25, which has 2. So it rounds to $14 \\times 10^2$ $\\text{m}^2$.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG)",
+   "year": "2022",
+   "note": "Exercise-II · Q21 · p.8",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-022",
+   "no": 22,
+   "q": "Match List - I with List - II. Choose the correct answer from the options given below :",
+   "o": [
+    "(a)–(ii), (b)–(iv), (c)–(i), (d)–(iii)",
+    "(a)–(ii), (b)–(iv), (c)–(iii), (d)–(i)",
+    "(a)–(iv), (b)–(ii), (c)–(i), (d)–(iii)",
+    "(a)–(ii), (b)–(i), (c)–(iv), (d)–(iii)"
+   ],
+   "a": 1,
+   "s": "G is $[M^{-1}L^3T^{-2}]$ and potential energy is $[ML^2T^{-2}]$. Potential is energy per mass, $[L^2T^{-2}]$, and intensity is force per mass, $[LT^{-2}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG)",
+   "year": "2022",
+   "note": "Exercise-II · Q22 · p.9",
+   "conf": "high",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "List - I",
+     "List - II"
+    ],
+    "rows": [
+     [
+      "(a) Gravitational constant (G)",
+      "(i) $[L^2T^{-2}]$"
+     ],
+     [
+      "(b) Gravitational potential energy",
+      "(ii) $[M^{-1}L^3T^{-2}]$"
+     ],
+     [
+      "(c) Gravitational potential",
+      "(iii) $[LT^{-2}]$"
+     ],
+     [
+      "(d) Gravitational intensity",
+      "(iv) $[ML^2T^{-2}]$"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "um-allen-ex3-023",
+   "no": 23,
+   "q": "The dimensions of mutual inductance (M) are:",
+   "o": [
+    "$[MLT^{-2}A^2]$",
+    "$[M^2L^2T^{-2}A^2]$",
+    "$[ML^2T^{-2}A^{-2}]$",
+    "$[M^2LT^{-2}A^{-2}]$"
+   ],
+   "a": 3,
+   "s": "Induced emf = M × (dI/dt), so M = emf × time ÷ current. Emf is $[ML^2T^{-3}A^{-1}]$, which gives $[ML^2T^{-2}A^{-2}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Hard",
+   "exam": "NEET(UG) (Overseas)",
+   "year": "2022",
+   "note": "Exercise-II · Q23 · p.9",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-024",
+   "no": 24,
+   "q": "When the circular scale of a screw gauge completes 2 rotations, it covers 1 mm over the pitch scale. The total number of the circular scale divisions is 50. The least count of the screw gauge in metre is:",
+   "o": [
+    "$10^{-5}$",
+    "$10^{-2}$",
+    "$10^{-3}$",
+    "$10^{-4}$"
+   ],
+   "a": 1,
+   "s": "Pitch = 1 mm ÷ 2 = 0.5 mm. Least count = 0.5 mm ÷ 50 = 0.01 mm = $10^{-5}$ m.",
+   "c": "Units and Measurements",
+   "topic": "Measurement",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG) (Overseas)",
+   "year": "2022",
+   "note": "Exercise-II · Q24 · p.9",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-025",
+   "no": 25,
+   "q": "The determination of the value of acceleration due to gravity (g) by simple pendulum method employs the formula,\n$g = 4\\pi^2\\frac{L}{T^2}$\nThe expression for the relative error in the value of 'g' is:",
+   "o": [
+    "$\\frac{\\Delta g}{g} = 4\\pi^2\\left[\\frac{\\Delta L}{L} - 2\\frac{\\Delta T}{T}\\right]$",
+    "$\\frac{\\Delta g}{g} = 4\\pi^2\\left[\\frac{\\Delta L}{L} + 2\\frac{\\Delta T}{T}\\right]$",
+    "$\\frac{\\Delta g}{g} = \\frac{\\Delta L}{L} - 2\\frac{\\Delta T}{T}$",
+    "$\\frac{\\Delta g}{g} = \\frac{\\Delta L}{L} + 2\\frac{\\Delta T}{T}$"
+   ],
+   "a": 4,
+   "s": "$4\\pi^2$ is a pure number, so it adds no error. T is squared, so its relative error counts twice. Errors add, so $\\Delta g/g = \\Delta L/L + 2\\Delta T/T$.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG) (Overseas)",
+   "year": "2022",
+   "note": "Exercise-II · Q25 · p.9",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-026",
+   "no": 26,
+   "q": "The physical quantity that has the same dimensional formula as pressure is :",
+   "o": [
+    "Force",
+    "Momentum",
+    "Young's modulus of elasticity",
+    "Coefficient of viscosity"
+   ],
+   "a": 3,
+   "s": "Pressure is force per area, $[ML^{-1}T^{-2}]$. Young's modulus is stress divided by strain, and strain has no dimension, so it matches pressure.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "Re-NEET(UG)",
+   "year": "2022",
+   "note": "Exercise-II · Q26 · p.9",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-027",
+   "no": 27,
+   "q": "The percentage error in the measurement of g is:\n(Given that $g = \\frac{4\\pi^2L}{T^2}$, L = (10 ± 0.1) cm, T = (100 ± 1) s)",
+   "o": [
+    "2%",
+    "5%",
+    "3%",
+    "7%"
+   ],
+   "a": 3,
+   "s": "Error in L is 0.1/10 = 1% and in T is 1/100 = 1%. T is squared, so the error in g = 1 + 2 × 1 = 3%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "Re-NEET(UG)",
+   "year": "2022",
+   "note": "Exercise-II · Q27 · p.9",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-028",
+   "no": 28,
+   "q": "A metal wire has mass (0.4 ± 0.002) g, radius (0.3 ± 0.001) mm and length (5 ± 0.02) cm. The maximum possible percentage error in the measurement of density will nearly be :",
+   "o": [
+    "1.3%",
+    "1.6%",
+    "1.4%",
+    "1.2%"
+   ],
+   "a": 2,
+   "s": "Density = m/(π$r^2$l). Errors: mass 0.002/0.4 = 0.5%, radius 2 × 0.001/0.3 ≈ 0.67%, length 0.02/5 = 0.4%. They add to about 1.6%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG)",
+   "year": "2023",
+   "note": "Exercise-II · Q28 · p.9",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-029",
+   "no": 29,
+   "q": "The errors in the measurement which arise due to unpredictable fluctuations in temperature and voltage supply are :",
+   "o": [
+    "Personal errors",
+    "Least count errors",
+    "Random errors",
+    "Instrumental errors"
+   ],
+   "a": 3,
+   "s": "Random errors come from unpredictable changes, such as in temperature or voltage supply. They are not the same every time and can be positive or negative.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "NEET(UG)",
+   "year": "2023",
+   "note": "Exercise-II · Q29 · p.9",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-030",
+   "no": 30,
+   "q": "The diameter of a spherical bob, when measured with vernier callipers yielded the following values: 3.33 cm, 3.32 cm, 3.34 cm, 3.33 cm and 3.32 cm. The mean diameter to appropriate significant figures is :",
+   "o": [
+    "3.328 cm",
+    "3.3 cm",
+    "3.33 cm",
+    "3.32 cm"
+   ],
+   "a": 3,
+   "s": "Mean = 16.64 ÷ 5 = 3.328 cm. Each reading has 3 significant figures, so the mean is also rounded to 3: 3.33 cm.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Medium",
+   "exam": "NEET(UG) (Manipur)",
+   "year": "2023",
+   "note": "Exercise-II · Q30 · p.9",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex3-031",
+   "no": 31,
+   "q": "The mechanical quantity, which has dimensions of reciprocal of mass ($M^{-1}$) is :",
+   "o": [
+    "angular momentum",
+    "coefficient of thermal conductivity",
+    "torque",
+    "gravitational constant"
+   ],
+   "a": 4,
+   "s": "Gravitational constant is $[M^{-1}L^3T^{-2}]$, so it has $M^{-1}$. Angular momentum, torque and thermal conductivity all have mass to the power +1.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex3",
+   "difficulty": "Easy",
+   "exam": "NEET(UG) (Manipur)",
+   "year": "2023",
+   "note": "Exercise-II · Q31 · p.10",
+   "conf": "high"
+  }
+ ]
+}

@@ -1,0 +1,1208 @@
+{
+ "sourceId": "allen",
+ "sourceLabel": "Allen",
+ "exercise": "ex1",
+ "exerciseLabel": "Try Yourself & Exercise",
+ "chapter": "Units and Measurements",
+ "subject": "Physics",
+ "questions": [
+  {
+   "id": "um-allen-ex1-001",
+   "no": 1,
+   "q": "Which of the following system of units is not based on units of mass, length and time alone?",
+   "o": [
+    "SI",
+    "MKS",
+    "FPS",
+    "CGS"
+   ],
+   "a": 1,
+   "s": "SI also has base units for current, temperature, amount of substance and light, not just mass, length and time. MKS, FPS and CGS use only mass, length and time.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q1 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-002",
+   "no": 2,
+   "q": "Which of the following quantity is unitless?",
+   "o": [
+    "Velocity gradient",
+    "Pressure gradient",
+    "Displacement gradient",
+    "Force gradient"
+   ],
+   "a": 3,
+   "s": "Displacement gradient is length divided by length, so the units cancel and it has no unit. The other gradients still carry units, like per second or pascal per metre.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q2 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-003",
+   "no": 3,
+   "q": "The fundamental unit which has same power in the dimensional formula of surface tension and co-efficient of viscosity is",
+   "o": [
+    "Mass",
+    "Length",
+    "Time",
+    "None"
+   ],
+   "a": 1,
+   "s": "Surface tension is $[MT^{-2}]$ and viscosity is $[ML^{-1}T^{-1}]$. Only mass has the same power (1) in both. Length and time have different powers.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q3 · p.2",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex1-004",
+   "no": 4,
+   "q": "The ratio of one micron to one nanometre is",
+   "o": [
+    "$10^3$",
+    "$10^{-3}$",
+    "$10^{-6}$",
+    "$10^{-1}$"
+   ],
+   "a": 1,
+   "s": "One micron is $10^{-6}$ m and one nanometre is $10^{-9}$ m. Their ratio is $10^{-6}/10^{-9} = 10^3$.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q4 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-005",
+   "no": 5,
+   "q": "Temperature can be expressed as a derived quantity in terms of which of the following?",
+   "o": [
+    "Length and mass",
+    "Mass and time",
+    "Length, mass and time",
+    "None of these"
+   ],
+   "a": 4,
+   "s": "Temperature is a base quantity of its own (measured in kelvin). So it cannot be built from length, mass and time in any combination.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q5 · p.2",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex1-006",
+   "no": 6,
+   "q": "Density of wood is 0.5 gm/cc in CGS system of units. The corresponding value in MKS units is",
+   "o": [
+    "500",
+    "5",
+    "0.5",
+    "5000"
+   ],
+   "a": 1,
+   "s": "1 g/cc = 1000 $\\text{kg/m}^3$. So 0.5 g/cc = 0.5 × 1000 = 500 $\\text{kg/m}^3$.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q6 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-007",
+   "no": 7,
+   "q": "Match list I with list II and select the correct answer by using the codes given below the lists.",
+   "o": [
+    "A-5, B-4, C-2, D-1",
+    "A-3, B-2, C-4, D-1",
+    "A-5, B-2, C-4, D-3",
+    "A-3, B-4, C-1, D-2"
+   ],
+   "a": 2,
+   "s": "Star distances need the light year. Atoms in a solid sit about an angstrom apart, a nucleus is a few fermi wide, and infrared light has a wavelength of a few microns.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q7 · p.2",
+   "conf": "high",
+   "lockOrder": true,
+   "table": {
+    "headers": [
+     "List I (Item)",
+     "List II (Units of length)"
+    ],
+    "rows": [
+     [
+      "A. Distance between earth and stars",
+      "1. Micron"
+     ],
+     [
+      "B. Inter atomic distance in a solid",
+      "2. Angstrom"
+     ],
+     [
+      "C. Size of nucleus",
+      "3. Light year"
+     ],
+     [
+      "D. Wavelength of Infrared Laser",
+      "4. Fermi"
+     ],
+     [
+      "",
+      "5. Kilometre"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "um-allen-ex1-008",
+   "no": 8,
+   "q": "Which of the following is not the unit of time?",
+   "o": [
+    "Micro second",
+    "Leap year",
+    "Lunar month",
+    "Parallactic second"
+   ],
+   "a": 4,
+   "s": "Parallactic second is the full name of the parsec, which is a unit of distance, not time. Microsecond, leap year and lunar month all measure time.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q8 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-009",
+   "no": 9,
+   "q": "Which of the following is smallest unit",
+   "o": [
+    "Millimetre",
+    "Angstrom",
+    "Fermi",
+    "Metre"
+   ],
+   "a": 3,
+   "s": "Fermi is $10^{-15}$ m, angstrom is $10^{-10}$ m, millimetre is $10^{-3}$ m and metre is 1 m. So the fermi is the smallest.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q9 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-010",
+   "no": 10,
+   "q": "Which relation is wrong?",
+   "o": [
+    "1 cal = 4.18 joules",
+    "1 Å = $10^{-10}$ m",
+    "1 MeV = $1.6 \\times 10^{-13}$ joules",
+    "1 newton = $10^{-5}$ dynes"
+   ],
+   "a": 4,
+   "s": "1 newton = $10^5$ dynes, because 1 N = 1000 g × 100 cm/s². The other three relations are correct.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q10 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-011",
+   "no": 11,
+   "q": "'Parsec' is the unit of –",
+   "o": [
+    "time",
+    "distance",
+    "frequency",
+    "angular acceleration"
+   ],
+   "a": 2,
+   "s": "A parsec is a very large distance used for stars, about 3.26 light years. It is not a unit of time, frequency or angular acceleration.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q11 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-012",
+   "no": 12,
+   "q": "The ratio of the dimensions of Planck's constant and that of the moment of inertia is :-",
+   "o": [
+    "Velocity",
+    "Angular momentum",
+    "Time",
+    "Frequency"
+   ],
+   "a": 4,
+   "s": "Planck's constant is $[ML^2T^{-1}]$ and moment of inertia is $[ML^2]$. Dividing gives $[T^{-1}]$, which is the dimension of frequency.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q12 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-013",
+   "no": 13,
+   "q": "When a wave travels in a medium, the displacement of a particle located at distance x at time t is given by $y = a\\sin(bt - cx)$ where a, b and c are constants of the wave. The dimensions of b/c are same as that of :",
+   "o": [
+    "wave velocity",
+    "wave length",
+    "wave amplitude",
+    "wave frequency"
+   ],
+   "a": 1,
+   "s": "bt and cx are angles, so they have no dimension. So b is $[T^{-1}]$ and c is $[L^{-1}]$, and b/c is length per time, which is velocity.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q13 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-014",
+   "no": 14,
+   "q": "The dimensional formula of wave number is",
+   "o": [
+    "$[M^0L^0T^{-1}]$",
+    "$[M^{-1}L^{-1}T^0]$",
+    "$[M^0L^{-1}T^0]$",
+    "$[M^0L^0T^0]$"
+   ],
+   "a": 3,
+   "s": "Wave number is $2\\pi/\\lambda$, the number of waves per metre. So its dimension is $[L^{-1}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q14 · p.2",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-015",
+   "no": 15,
+   "q": "The method of dimensional analysis can be used to derive which of the following relations?",
+   "o": [
+    "$N_0e^{-\\lambda t}$",
+    "$A\\sin(\\omega t + kx)$",
+    "$\\frac{1}{2}mv^2 + \\frac{1}{2}I\\omega^2$",
+    "None of the above"
+   ],
+   "a": 4,
+   "s": "Dimensional analysis cannot give exponential or sine functions, because it cannot find pure numbers like the 1/2 or the form of a function. It also cannot handle sums like the third relation.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q15 · p.2",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex1-016",
+   "no": 16,
+   "q": "Which of the following does not have the dimensions of force?",
+   "o": [
+    "Potential gradient",
+    "Energy gradient",
+    "Weight",
+    "Rate of change of momentum"
+   ],
+   "a": 1,
+   "s": "Potential gradient is potential per metre, which is a field strength, not a force. Energy per metre is joule per metre, which equals newton, and weight and rate of change of momentum are forces.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q16 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-017",
+   "no": 17,
+   "q": "Which of the following is incorrect statement",
+   "o": [
+    "A dimensionally correct equation may be correct",
+    "A dimensionally correct equation may be incorrect",
+    "A dimensionally incorrect equation may be correct",
+    "A dimensionally incorrect equation is incorrect"
+   ],
+   "a": 3,
+   "s": "The false statement is that a dimensionally incorrect equation may be correct. Such an equation is always wrong, while a dimensionally correct equation can still be wrong, for example by missing a factor like 1/2.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q17 · p.3",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex1-018",
+   "no": 18,
+   "q": "A dimensionless quantity",
+   "o": [
+    "Never has a unit",
+    "Always has a unit",
+    "May have a unit",
+    "Does not exist"
+   ],
+   "a": 3,
+   "s": "Some dimensionless quantities, like angle, have units (radian or degree). Others, like strain, have none. So it may or may not have a unit.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q18 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-019",
+   "no": 19,
+   "q": "A unitless quantity",
+   "o": [
+    "Does not exist",
+    "Always has a nonzero dimension",
+    "Never has a nonzero dimension",
+    "May have a nonzero dimension"
+   ],
+   "a": 3,
+   "s": "A quantity with a dimension always needs a unit to measure it. So if a quantity has no unit, it cannot have a nonzero dimension.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q19 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-020",
+   "no": 20,
+   "q": "Which of the following is incorrect?",
+   "o": [
+    "All derived quantities may be represented dimensionally in terms of the base quantities",
+    "A base quantity cannot be represented dimensionally in terms of other base quantities",
+    "The dimension of a derived quantity is never zero in any base quantity",
+    "The dimension of a base quantity in other base quantities is always zero."
+   ],
+   "a": 3,
+   "s": "A derived quantity can have a zero power in some base quantity. For example, velocity has zero power of mass. So saying it is never zero is wrong.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "note": "Exercise-I · Q20 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-021",
+   "no": 21,
+   "q": "Two physical quantities of which one is a vector and the other is a scalar having the same dimensional formula are :",
+   "o": [
+    "Work and energy",
+    "Torque and work",
+    "Impulse and momentum",
+    "Power and pressure"
+   ],
+   "a": 2,
+   "s": "Torque is a vector and work is a scalar, and both are $[ML^2T^{-2}]$. Work and energy are both scalars, and impulse and momentum are both vectors.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q21 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-022",
+   "no": 22,
+   "q": "The equation of a wave is given by $Y = A\\sin\\omega\\left(\\frac{x}{v} - k\\right)$ where $\\omega$ is the angular velocity and v is the linear velocity. The dimensions of k is",
+   "o": [
+    "$[LT]$",
+    "$[T]$",
+    "$[T^{-1}]$",
+    "$[T^2]$"
+   ],
+   "a": 2,
+   "s": "Both terms inside the bracket must have the same dimension, so k has the dimension of x/v. Length divided by velocity is time, $[T]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q22 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-023",
+   "no": 23,
+   "q": "The time dependence of a physical quantity P is given by $P = P_0\\exp(-\\alpha t^2)$, where $\\alpha$ is a constant and t is time. The constant $\\alpha$",
+   "o": [
+    "is dimensionless",
+    "has dimensions $[T^{-2}]$",
+    "has dimensions of P",
+    "has dimensions $[T^2]$"
+   ],
+   "a": 2,
+   "s": "The power of e must have no dimension, so $\\alpha t^2$ is dimensionless. Since $t^2$ is $[T^2]$, $\\alpha$ must be $[T^{-2}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q23 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-024",
+   "no": 24,
+   "q": "The dimensional formula of angular velocity is",
+   "o": [
+    "$[M^0L^0T^{-1}]$",
+    "$[MLT^{-1}]$",
+    "$[M^0L^0T^1]$",
+    "$[ML^0T^{-2}]$"
+   ],
+   "a": 1,
+   "s": "Angular velocity is angle divided by time. Angle has no dimension, so it is $[T^{-1}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q24 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-025",
+   "no": 25,
+   "q": "A force F is given by $F = at + bt^2$, where t is time. The dimensions of a and b are",
+   "o": [
+    "$[MLT^{-3}]$ and $[MLT^{-4}]$",
+    "$[MLT^{-4}]$ and $[MLT^{-3}]$",
+    "$[MLT^{-1}]$ and $[MLT^{-2}]$",
+    "$[MLT^{-2}]$ and $[MLT^0]$"
+   ],
+   "a": 1,
+   "s": "Each term must have the dimension of force, $[MLT^{-2}]$. So a = force/time = $[MLT^{-3}]$ and b = force/time² = $[MLT^{-4}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q25 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-026",
+   "no": 26,
+   "q": "The velocity v of a particle at time t is given by $v = at + \\frac{b}{t + c}$, where a, b and c are constants. The dimensions of a, b and c are respectively :-",
+   "o": [
+    "$LT^{-2}$, L and T",
+    "$L^2$, T and $LT^2$",
+    "$LT^2$, LT and L",
+    "L, LT and $T^2$"
+   ],
+   "a": 1,
+   "s": "c is added to t, so c has the dimension of time, T. Then b/(t + c) is a velocity, so b = velocity × time = L. And at is a velocity, so a = velocity/time = $LT^{-2}$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Hard",
+   "note": "Exercise-I · Q26 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-027",
+   "no": 27,
+   "q": "Which of the following pairs does not have similar dimensions?",
+   "o": [
+    "Tension and surface tension",
+    "Stress and pressure",
+    "Planck's constant and angular momentum",
+    "Angle and strain"
+   ],
+   "a": 1,
+   "s": "Tension is a force, $[MLT^{-2}]$, while surface tension is force per length, $[MT^{-2}]$. The other pairs have the same dimensions.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q27 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-028",
+   "no": 28,
+   "q": "The dimensions of torque are:",
+   "o": [
+    "$[ML^3L^{-3}]$",
+    "$[ML^{-1}T^{-1}]$",
+    "$[ML^2T^{-2}]$",
+    "$[ML^{-2}]$"
+   ],
+   "a": 3,
+   "s": "Torque = force × distance = $[MLT^{-2}] \\times [L] = [ML^2T^{-2}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q28 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-029",
+   "no": 29,
+   "q": "Dimensions of relative density is",
+   "o": [
+    "$\\text{kg m}^{-3}$",
+    "$[ML^{-3}]$",
+    "Dimensionless",
+    "$[M^2L^{-6}]$"
+   ],
+   "a": 3,
+   "s": "Relative density is a ratio of two densities, so the units cancel. It has no dimension.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q29 · p.3",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-030",
+   "no": 30,
+   "q": "Dimensions of electrical resistance is :–",
+   "o": [
+    "$[ML^2T^{-3}A^{-1}]$",
+    "$[ML^2T^{-3}A^{-2}]$",
+    "$[ML^3T^{-3}A^{-2}]$",
+    "$[ML^{-1}L^3T^3A^2]$"
+   ],
+   "a": 2,
+   "s": "Voltage is $[ML^2T^{-3}A^{-1}]$ and R = V/I. Dividing by current gives $[ML^2T^{-3}A^{-2}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q30 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-031",
+   "no": 31,
+   "q": "The dimensions of $(\\mu_0\\epsilon_0)^{-1/2}$ are :-",
+   "o": [
+    "$[L^{1/2}T^{-1/2}]$",
+    "$[L^{-1}T]$",
+    "$[LT^{-1}]$",
+    "$[L^{-1/2}T^{1/2}]$"
+   ],
+   "a": 3,
+   "s": "$1/\\sqrt{\\mu_0\\epsilon_0}$ is the speed of light in vacuum. So its dimension is that of velocity, $[LT^{-1}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q31 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-032",
+   "no": 32,
+   "q": "The dimensions of universal gravitational constant are :-",
+   "o": [
+    "$[ML^2T^{-1}]$",
+    "$[M^{-2}L^3T^{-2}]$",
+    "$[M^{-2}L^2T^{-1}]$",
+    "$[M^{-1}L^3T^{-2}]$"
+   ],
+   "a": 4,
+   "s": "From $F = Gm_1m_2/r^2$, we get $G = Fr^2/(m_1m_2)$. Putting in $F = [MLT^{-2}]$ gives $[M^{-1}L^3T^{-2}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q32 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-033",
+   "no": 33,
+   "q": "The dimensions of $\\frac{1}{2}\\epsilon_0E^2$, where $\\epsilon_0$ is permittivity of free space and E is electric field, is:-",
+   "o": [
+    "$[MLT^{-1}]$",
+    "$[ML^2T^{-2}]$",
+    "$[ML^{-1}T^{-2}]$",
+    "$[ML^2T^{-1}]$"
+   ],
+   "a": 3,
+   "s": "$\\frac{1}{2}\\epsilon_0E^2$ is the energy stored per unit volume of an electric field. Energy divided by volume is $[ML^2T^{-2}]/[L^3] = [ML^{-1}T^{-2}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q33 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-034",
+   "no": 34,
+   "q": "If dimensions of A and B are different, then which of the following operation is valid?",
+   "o": [
+    "$\\frac{A}{B}$",
+    "$e^{-A/B}$",
+    "$A - B$",
+    "$A + B$"
+   ],
+   "a": 1,
+   "s": "We can only add or subtract quantities with the same dimensions, so A − B and A + B are not valid. The power of e must have no dimension, which A/B does not. Division of any two quantities is fine.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q34 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-035",
+   "no": 35,
+   "q": "The density of a material in CGS system of units is 4 g/cm³. In a system of units in which unit of length is 10 cm and unit of mass is 100 g, the value of density of material will be :-",
+   "o": [
+    "0.04",
+    "0.4",
+    "40",
+    "400"
+   ],
+   "a": 3,
+   "s": "New unit of density = 100 g ÷ $(10\\text{ cm})^3$ = 0.1 g/cm³. So the value = 4 ÷ 0.1 = 40.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q35 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-036",
+   "no": 36,
+   "q": "A quantity is represented by $X = M^aL^bT^c$. The percentage error in measurement of M, L and T are α%, β% and γ% respectively. The percentage error in X would be",
+   "o": [
+    "$(\\alpha a + \\beta b + \\gamma c)\\%$",
+    "$(\\alpha a - \\beta b + \\gamma c)\\%$",
+    "$(\\alpha a - \\beta b - \\gamma c)\\%$",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "For a product of powers, each percentage error is multiplied by its power and they all add. Errors never cancel, so there are no minus signs.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q36 · p.4",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex1-037",
+   "no": 37,
+   "q": "An experiment measures quantities a, b and c, and X is calculated from $X = ab^2/c^3$. If the percentage error in a, b and c are ±1%, ±3% and ±2% respectively, the percentage error in X will be –",
+   "o": [
+    "±13%",
+    "±7%",
+    "±4%",
+    "±1%"
+   ],
+   "a": 1,
+   "s": "Each error is multiplied by its power and then added: 1 + 2×3 + 3×2 = 1 + 6 + 6 = 13%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q37 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-038",
+   "no": 38,
+   "q": "Zero error of an instrument introduces",
+   "o": [
+    "Systematic errors",
+    "Random errors",
+    "Both",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "Zero error shifts every reading by the same amount in the same direction. Such a fixed, repeatable error is a systematic error.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q38 · p.4",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex1-039",
+   "no": 39,
+   "q": "What is the fractional error in g calculated from $T = 2\\pi\\sqrt{\\ell/g}$? Given that fractional errors in T and $\\ell$ are ±x and ±y respectively.",
+   "o": [
+    "x + y",
+    "x − y",
+    "2x + y",
+    "2x − y"
+   ],
+   "a": 3,
+   "s": "Rewrite as $g = 4\\pi^2\\ell/T^2$. The error in $\\ell$ counts once (y) and the error in T counts twice (2x), and they add to 2x + y.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q39 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-040",
+   "no": 40,
+   "q": "A thin copper wire of length $\\ell$ metre increases in length by 2% when heated through 10°C. What is the percentage increase in area when a square copper sheet of length $\\ell$ metre is heated through 10°C?",
+   "o": [
+    "4%",
+    "8%",
+    "16%",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "Area = length × length, so its percentage increase is about twice the percentage increase in length. That gives 2 × 2 = 4%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q40 · p.4",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex1-041",
+   "no": 41,
+   "q": "If voltage across a bulb rated 220 Volt 100 Watt drops by 2.5% of its rated value, the percentage of the rated value by which the power would decrease is :-",
+   "o": [
+    "5%",
+    "10%",
+    "20%",
+    "2.5%"
+   ],
+   "a": 1,
+   "s": "Power = $V^2/R$ and the bulb's resistance stays the same. So a 2.5% drop in voltage gives about 2 × 2.5 = 5% drop in power.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q41 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-042",
+   "no": 42,
+   "q": "The resistance is $R = \\frac{V}{I}$ where V = (100 ± 5) volt and I = (10 ± 0.2) ampere. What is the total error in R?",
+   "o": [
+    "5 %",
+    "7 %",
+    "5.2 %",
+    "$\\left(\\frac{5}{2}\\right)\\%$"
+   ],
+   "a": 2,
+   "s": "Error in V is 5/100 = 5% and in I is 0.2/10 = 2%. For a division the percentage errors add: 5 + 2 = 7%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q42 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-043",
+   "no": 43,
+   "q": "If error in measuring diameter of a circle is 4 %, the error in circumference of the circle would be :-",
+   "o": [
+    "2%",
+    "8%",
+    "4%",
+    "1%"
+   ],
+   "a": 3,
+   "s": "Circumference = π × diameter, and π is a fixed number. So the percentage error stays the same, 4%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q43 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-044",
+   "no": 44,
+   "q": "The external and internal radius of a hollow cylinder are measured to be (4.23 ± 0.01) cm and (3.89 ± 0.01) cm. The thickness of the wall of the cylinder is :-",
+   "o": [
+    "(0.34 ± 0.02) cm",
+    "(0.17 ± 0.02) cm",
+    "(0.17 ± 0.01) cm",
+    "(0.34 ± 0.01) cm"
+   ],
+   "a": 1,
+   "s": "Thickness = 4.23 − 3.89 = 0.34 cm. Errors add even in a subtraction, so the error is 0.01 + 0.01 = 0.02 cm.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q44 · p.4",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-045",
+   "no": 45,
+   "q": "Percentage error in measuring the radius and mass of a solid sphere are 2% & 1% respectively. Then error in measurement of moment of inertia about to its diameter is :-",
+   "o": [
+    "3 %",
+    "6 %",
+    "5 %",
+    "4 %"
+   ],
+   "a": 3,
+   "s": "Moment of inertia $I = \\frac{2}{5}MR^2$. So the error is 1 + 2 × 2 = 5%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q45 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-046",
+   "no": 46,
+   "q": "The heat generated in a circuit is dependent upon the resistance, current and time for which the current is flown. If the error in measuring the above are as 1%, 2% and 1% the maximum error in measuring heat will be",
+   "o": [
+    "2%",
+    "3%",
+    "6%",
+    "1%"
+   ],
+   "a": 3,
+   "s": "Heat = $I^2Rt$. The maximum error is 2 × 2 (current) + 1 (resistance) + 1 (time) = 6%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q46 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-047",
+   "no": 47,
+   "q": "The percentage errors in the measurement of mass and speed are 2% and 3% respectively. How much will be the maximum error in the estimate of kinetic energy obtained by measuring mass and speed?",
+   "o": [
+    "11 %",
+    "8 %",
+    "5 %",
+    "1 %"
+   ],
+   "a": 2,
+   "s": "Kinetic energy = $\\frac{1}{2}mv^2$. The error is 2 + 2 × 3 = 8%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q47 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-048",
+   "no": 48,
+   "q": "While measuring acceleration due to gravity by a simple pendulum a student makes a positive error of 1% in the length of the pendulum and a negative error of 3% in the value of the time period. His percentage error in the measurement of the value of g will be -",
+   "o": [
+    "2 %",
+    "4 %",
+    "7 %",
+    "10 %"
+   ],
+   "a": 3,
+   "s": "$g = 4\\pi^2\\ell/T^2$. The 1% error in length adds to 2 × 3% = 6% from the time period, giving 7%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q48 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-049",
+   "no": 49,
+   "q": "The pressure on a square plate is measured by measuring the force on the plate and the length of the sides of the plate. If the maximum error in the measurement of force and length are respectively 4% and 2%, the maximum error in the measurement of pressure is –",
+   "o": [
+    "1%",
+    "2%",
+    "6%",
+    "8%"
+   ],
+   "a": 4,
+   "s": "Pressure = force/area = $F/L^2$. The maximum error is 4 + 2 × 2 = 8%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q49 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-050",
+   "no": 50,
+   "q": "The error in measuring the side of a cube is ±1%. The error in the calculation of the volume of the cube will be about",
+   "o": [
+    "±0.001 %",
+    "± 1 %",
+    "±6 %",
+    "±3 %"
+   ],
+   "a": 4,
+   "s": "Volume = side³, so the percentage error is 3 × 1 = 3%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q50 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-051",
+   "no": 51,
+   "q": "When a copper sphere is heated, maximum percentage change will be observed in–",
+   "o": [
+    "radius",
+    "area",
+    "volume",
+    "none of these"
+   ],
+   "a": 3,
+   "s": "On heating, the radius grows by a small percentage, the area by about twice that, and the volume by about three times that. So the volume changes the most.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q51 · p.5",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex1-052",
+   "no": 52,
+   "q": "The resistance R of a wire is given by the relation $R = \\frac{\\rho\\ell}{\\pi r^2}$. Percentage error in the measurement of $\\rho$, $\\ell$ and r is 1%, 2% and 3% respectively. Then the percentage error in the measurement of R is",
+   "o": [
+    "6%",
+    "9%",
+    "8%",
+    "10%"
+   ],
+   "a": 2,
+   "s": "The error is 1 (ρ) + 2 (ℓ) + 2 × 3 (r is squared) = 9%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q52 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-053",
+   "no": 53,
+   "q": "Which of the following has the highest number of significant figures?",
+   "o": [
+    "0.007 $\\text{m}^2$",
+    "$2.64 \\times 10^{24}$ kg",
+    "0.0006032 $\\text{m}^2$",
+    "6.3200 J"
+   ],
+   "a": 4,
+   "s": "Leading zeros do not count, but trailing zeros after the decimal point do. The counts are 1, 3, 4 and 5, so 6.3200 J has the most.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q53 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-054",
+   "no": 54,
+   "q": "A physical quantity X is given by $X = \\frac{2k^3\\ell^2}{m\\sqrt{n}}$. The percentage error in the measurements of k, $\\ell$, m and n are 1%, 2%, 3% and 4% respectively. The value of X is uncertain by",
+   "o": [
+    "8 %",
+    "10 %",
+    "12 %",
+    "None"
+   ],
+   "a": 3,
+   "s": "Multiply each error by its power and add: 3×1 + 2×2 + 1×3 + ½×4 = 3 + 4 + 3 + 2 = 12%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q54 · p.5",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex1-055",
+   "no": 55,
+   "q": "In a vernier callipers, N divisions of vernier scale coincide with (N − 1) divisions of main scale (in which 1 division represents 1 mm). The least count of the instrument in cm should be",
+   "o": [
+    "N",
+    "N − 1",
+    "$\\frac{1}{10N}$",
+    "$\\frac{1}{N-1}$"
+   ],
+   "a": 3,
+   "s": "Least count = 1 main division − 1 vernier division = 1 mm − (N−1)/N mm = 1/N mm. In cm this is 1/(10N).",
+   "c": "Units and Measurements",
+   "topic": "Measurement",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q55 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-056",
+   "no": 56,
+   "q": "A vernier callipers has 20 divisions on the vernier scale which coincide with 19 divisions on the main scale. The least count of the instrument is 0.1 mm. The main scale divisions are of",
+   "o": [
+    "0.5 mm",
+    "1 mm",
+    "2 mm",
+    "1/4 mm"
+   ],
+   "a": 3,
+   "s": "Least count = one main division ÷ 20, the number of vernier divisions. So one main division = 20 × 0.1 = 2 mm.",
+   "c": "Units and Measurements",
+   "topic": "Measurement",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q56 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-057",
+   "no": 57,
+   "q": "One centimetre on the main scale of vernier callipers is divided into ten equal parts. If 10 divisions of vernier scale coincide with 8 small divisions of the main scale, the least count of the callipers is",
+   "o": [
+    "0.01 cm",
+    "0.02 cm",
+    "0.05 cm",
+    "0.005 cm"
+   ],
+   "a": 2,
+   "s": "One main division = 1 cm ÷ 10 = 0.1 cm. Then 10 vernier divisions = 8 × 0.1 = 0.8 cm, so one vernier division = 0.08 cm. Least count = 0.1 − 0.08 = 0.02 cm.",
+   "c": "Units and Measurements",
+   "topic": "Measurement",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Medium",
+   "note": "Exercise-I · Q57 · p.5",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex1-058",
+   "no": 58,
+   "q": "A student measured the diameter of a wire using a screw gauge with least count 0.001 cm and listed the measurements. The correct measurement is –",
+   "o": [
+    "5.3 cm",
+    "5.32 cm",
+    "5.320 cm",
+    "5.3200 cm"
+   ],
+   "a": 3,
+   "s": "A reading must be written to the same decimal place as the least count. A least count of 0.001 cm means 3 decimal places, so 5.320 cm.",
+   "c": "Units and Measurements",
+   "topic": "Measurement",
+   "source": "allen",
+   "section": "ex1",
+   "difficulty": "Easy",
+   "note": "Exercise-I · Q58 · p.6",
+   "conf": "high"
+  }
+ ]
+}

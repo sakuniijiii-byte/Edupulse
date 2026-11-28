@@ -1,0 +1,251 @@
+{
+ "sourceId": "allen",
+ "sourceLabel": "Allen",
+ "exercise": "ex2",
+ "exerciseLabel": "NEET / AIIMS Objective",
+ "chapter": "Units and Measurements",
+ "subject": "Physics",
+ "questions": [
+  {
+   "id": "um-allen-ex2-001",
+   "no": 1,
+   "q": "In a particular system the units of length mass and time are chosen to be 10 cm, 10 g and 0.1 s respectively. The unit of force in this system will be equal to",
+   "o": [
+    "0.1 N",
+    "1 N",
+    "10 N",
+    "100 N"
+   ],
+   "a": 1,
+   "s": "New unit of force = 10 g × 10 cm ÷ $(0.1\\text{ s})^2$ = 100 ÷ 0.01 = $10^4$ dyne. Since 1 N = $10^5$ dyne, this is 0.1 N.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Hard",
+   "note": "Exercise-III · Q1 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex2-002",
+   "no": 2,
+   "q": "The period of oscillation of a simple pendulum in an experiment is recorded as 2.63 s, 2.56 s, 2.42 s, 2.71 s and 2.80 s respectively. The average absolute error is",
+   "o": [
+    "0.1 s",
+    "0.11 s",
+    "0.01 s",
+    "1.0 s"
+   ],
+   "a": 2,
+   "s": "Mean = 13.12 ÷ 5 ≈ 2.62 s. The absolute deviations are 0.01, 0.06, 0.20, 0.09 and 0.18. Their average = 0.54 ÷ 5 ≈ 0.11 s.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q2 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex2-003",
+   "no": 3,
+   "q": "The length, breadth and thickness of a strip are (10.0 ± 0.1) cm, (1.00 ± 0.01) cm and (0.100 ± 0.001) cm respectively. The most probable error in its volume will be",
+   "o": [
+    "± 0.03 $\\text{cm}^3$",
+    "± 0.111 $\\text{cm}^3$",
+    "± 0.012 $\\text{cm}^3$",
+    "None of these"
+   ],
+   "a": 1,
+   "s": "Volume = 10.0 × 1.00 × 0.100 = 1.00 $\\text{cm}^3$. Each measurement has a 1% error, so the total is 1 + 1 + 1 = 3%. And 3% of 1.00 $\\text{cm}^3$ is ±0.03 $\\text{cm}^3$.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q3 · p.11",
+   "conf": "high",
+   "lockOrder": true
+  },
+  {
+   "id": "um-allen-ex2-004",
+   "no": 4,
+   "q": "The length of a cylinder is measured with a metre rod having least count 0.1 cm. Its diameter is measured with vernier callipers having least count 0.01 cm. Given the length is 5.0 cm and diameter is 4.00 cm. The percentage error in the calculated value of volume will be –",
+   "o": [
+    "3.5%",
+    "1.5%",
+    "2.5%",
+    "4.5%"
+   ],
+   "a": 3,
+   "s": "Volume = $\\pi d^2 l/4$. Error in length = 0.1/5.0 = 2%. Error in diameter = 0.01/4.00 = 0.25%, counted twice = 0.5%. Total = 2.5%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q4 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex2-005",
+   "no": 5,
+   "q": "If energy (E), velocity (V) and time (T) were chosen as fundamental physical quantities for measurement, then the dimensional formula for mass will be :-",
+   "o": [
+    "$[E^1V^2T^1]$",
+    "$[E^2V^{-2}T^0]$",
+    "$[E^1V^{-2}T^0]$",
+    "$[E^{-1}V^2T^1]$"
+   ],
+   "a": 3,
+   "s": "Energy = mass × velocity², so mass = E/$V^2$. Time does not come in, so mass is $[EV^{-2}T^0]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q5 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex2-006",
+   "no": 6,
+   "q": "Which of the following does not have the same unit as others ?",
+   "o": [
+    "watt-s",
+    "kilowatt-hour",
+    "eV",
+    "J-s"
+   ],
+   "a": 4,
+   "s": "Watt-second, kilowatt-hour and electron volt are all units of energy. Joule-second is the unit of Planck's constant (angular momentum), not energy.",
+   "c": "Units and Measurements",
+   "topic": "Unit",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q6 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex2-007",
+   "no": 7,
+   "q": "Which two of the following five physical parameters have the same dimensions ?\n(a) energy density\n(b) refractive index\n(c) dielectric constant\n(d) Young's modulus\n(e) magnetic field",
+   "o": [
+    "(a), (d)",
+    "(a), (e)",
+    "(b), (d)",
+    "(c), (e)"
+   ],
+   "a": 1,
+   "s": "Energy density is energy per volume, $[ML^{-1}T^{-2}]$, the same as Young's modulus (a pressure-type quantity). Refractive index and dielectric constant have no dimension, and magnetic field is different.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q7 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex2-008",
+   "no": 8,
+   "q": "Suppose refractive index µ is given as $\\mu = A + B/\\lambda^2$, were A and B are constants and $\\lambda$ is wavelength then the dimension of B are same as that of :-",
+   "o": [
+    "wavelength",
+    "pressure",
+    "area",
+    "volume"
+   ],
+   "a": 3,
+   "s": "Refractive index has no dimension, so $B/\\lambda^2$ must have none too. So B has the dimension of $\\lambda^2$, which is length squared, the same as area.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q8 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex2-009",
+   "no": 9,
+   "q": "The dimensional formula for Planck's constant h and gravitational constant G respectively are :-",
+   "o": [
+    "$[ML^3T^{-2}]$, $[M^{-1}L^2T^{-3}]$",
+    "$[ML^2T^{-1}]$, $[M^{-1}L^3T^{-2}]$",
+    "$[ML^3T^{-2}]$, $[M^{-1}L^2T^2]$",
+    "$[MLT^{-3}]$, $[M^{-1}L^3T^{-3}]$"
+   ],
+   "a": 2,
+   "s": "From E = hf, h = energy × time = $[ML^2T^{-1}]$. From $F = Gm_1m_2/r^2$, G = $[M^{-1}L^3T^{-2}]$.",
+   "c": "Units and Measurements",
+   "topic": "Dimensions",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q9 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex2-010",
+   "no": 10,
+   "q": "A wire has a mass (0.3 ± 0.003) g, radius (0.5 ± 0.005) mm and length (6 ± 0.06) cm. The maximum percentage error in the measurement of its density is–",
+   "o": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "a": 4,
+   "s": "Density = m/(π$r^2$l). Errors: mass 0.003/0.3 = 1%, radius 0.005/0.5 = 1% counted twice = 2%, length 0.06/6 = 1%. Total = 1 + 2 + 1 = 4%.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q10 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex2-011",
+   "no": 11,
+   "q": "A student measures the distance traversed in free fall of a body, initially at rest in a given time. He uses this data to estimate g, the acceleration due to gravity. If the maximum percentage errors in measurement of the distance and the time are $e_1$ and $e_2$ respectively, the percentage error in the estimation of g is :-",
+   "o": [
+    "$e_1 + 2e_2$",
+    "$e_1 + e_2$",
+    "$e_1 - 2e_2$",
+    "$e_2 - e_1$"
+   ],
+   "a": 1,
+   "s": "From $s = \\frac{1}{2}gt^2$ we get $g = 2s/t^2$. The distance error counts once and the time error counts twice, and they add: $e_1 + 2e_2$.",
+   "c": "Units and Measurements",
+   "topic": "Errors",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q11 · p.11",
+   "conf": "high"
+  },
+  {
+   "id": "um-allen-ex2-012",
+   "no": 12,
+   "q": "In a vernier callipers, one main scale division is x cm and n divisions of the vernier scale coincide with (n − 1) divisions of the main scale. The least count (in cm) of the callipers is :-",
+   "o": [
+    "$\\left(\\frac{n-1}{n}\\right)x$",
+    "$\\frac{nx}{n-1}$",
+    "$\\frac{x}{n}$",
+    "$\\frac{x}{n-1}$"
+   ],
+   "a": 3,
+   "s": "n vernier divisions = (n−1)x, so one vernier division = (n−1)x/n. Least count = x − (n−1)x/n = x/n.",
+   "c": "Units and Measurements",
+   "topic": "Measurement",
+   "source": "allen",
+   "section": "ex2",
+   "difficulty": "Medium",
+   "note": "Exercise-III · Q12 · p.11",
+   "conf": "high"
+  }
+ ]
+}
